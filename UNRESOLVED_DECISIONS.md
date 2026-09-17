@@ -1,5 +1,7 @@
 # UNRESOLVED_DECISIONS
 
+> Current register: revision 0.6, Phase 0 / Work Unit 11. Sections 17-20 contain the current approval reconciliation and four open blockers. The original control table and sections 1-16 below are preserved historical revision 0.5 text. Full Phase 0 approval and Phase 1 execution remain unauthorized.
+
 ## Document control
 
 | Field | Value |
@@ -951,3 +953,141 @@ No `PHASE_0_APPROVAL.md`, Phase 1 plan, executable schema, fixture, package, alg
 | Current status | Twenty-five accepted decisions in their stated scopes; two pending WU5 choices; no full Phase 0 or implementation authorization |
 
 Local document checks cover decision-body preservation, referenced IDs, allowed file scope, input hashes, Markdown structure and archive contents. The drafting assistant performs those checks; no independent review, runtime security testing, empirical confirmation or CI run is claimed.
+
+## 17. Work Unit 11 current register and approval reconciliation
+
+### 17.1 Authority, scope and reading order
+
+This is the current register supplement, revision 0.6, dated 2026-09-17. It records the first final-audit pass over repository commit `e9262d7a14bfb0df18f7444d60c0d06d59581e9f`.
+
+The user instructed `可以，继续Work Unit 11` after the WU10 handoff. That contextual acceptance adopts WU10-C01/WU10-C02/WU10-C03 as the architecture/dependency/governance design submitted for final audit and authorizes this audit. It does not certify that the submission discharged every earlier gate, approve new remedies found in this audit, approve the complete Phase 0 baseline or authorize Phase 1.
+
+Sections 1-16 and the original document-control table above are retained as historical revision 0.5 material. Their then-pending entries are read with this later supplement. The current dispositions in this section supersede historical status text, without changing the original questions, options, recommendations or approval evidence.
+
+### 17.2 Current central decisions
+
+| Decisions | Current disposition | Scope and acceptance evidence |
+|---|---|---|
+| SIT-D001-SIT-D018 | APPROVED directions | Existing WU3 intake record in this file; exact later contracts retain their assigned gates |
+| SIT-D019-SIT-D025 | APPROVED detailed contracts | Existing WU5 intake record and original per-decision approvals |
+| SIT-D026-SIT-D027 | APPROVED, Option B for both | `OBSERVABILITY_AND_REPORTING.md` §11.1 records the WU6 intake acceptance; this supplements the historical WU5 pending labels |
+| SIT-D028 | BLOCKING | Input normalization, snapshot capture and numeric representation realization remain unspecified |
+| SIT-D029 | BLOCKING | Report serialization, report-local identity/witness selection and public outcome mapping remain unspecified |
+| SIT-D030 | BLOCKING | Resource-accounting and execution scheduling realization remain unspecified |
+| SIT-D031 | BLOCKING | Supported filesystem/platform primitives and safe publication realization remain unspecified |
+
+There are 31 central decision IDs: 27 prior decisions accepted in their recorded scope and four newly identified final-audit blockers. No earlier decision is revoked. The new blockers concern incomplete realization of accepted requirements; they are not findings that the source theory has failed.
+
+### 17.3 Work-unit supplements consolidated
+
+| Supplement | Current disposition | Evidence and limit |
+|---|---|---|
+| WU6-C01-WU6-C03 | APPROVED for continued Phase 0 specification work | `VALIDATION_PLAN.md` §9 records acceptance of the WU7 package and its named WU6 dependency; no approval is backdated to the earlier bare WU7 continuation |
+| WU7-C01-WU7-C02 | APPROVED case baseline | `VALIDATION_PLAN.md` §9; exact H7/W7 populations and logical oracles retained |
+| WU8-C01-WU8-C03 | APPROVED as the continued specification/test-planning basis | The explicit `Work Unit 9 继续` instruction, together with threat §11.1's recorded consumption of the WU8 package; this does not claim executable tests passed |
+| WU9-C01-WU9-C02 | APPROVED, Option B for both | `GOVERNANCE_AND_HANDOFF.md` §1 records the contextual instruction to enter WU10 |
+| WU9-C03 | APPROVED uniform Apache-2.0 engineering policy | `LICENSING_NOTES.md` revision 0.2 and the explicit `那就apache2.0吧` instruction; prior split-license recommendation superseded |
+| WU10-C01-WU10-C03 | APPROVED as the submitted design subject to final audit | Current instruction to continue WU11; outstanding obligations are exposed by SIT-D028-SIT-D031 rather than treated as implemented |
+| Complete Phase 0 baseline | BLOCKING | Four realization decisions remain open; no final owner approval has been issued |
+| Phase 1 execution | Not authorized | Requires the later approved baseline and a separately authorized scaffold plan |
+
+The single Apache-2.0 engineering policy covers original project materials only when applied under the later authorized scaffold. Theory papers retain their existing notices; third-party and user-input rights are not swept into the project grant. The historical WU9 split-license row in the threat model has no current selection effect.
+
+## 18. Final-audit realization blockers
+
+### SIT-D028: Input capture, compact measurement and number preservation
+
+**Status:** BLOCKING before final Phase 0 approval.  
+**Audit finding:** W11-A01.  
+**Owning consumers:** `REPOSITORY_ARCHITECTURE.md`, `DEPENDENCY_STRATEGY.md`; source constraints remain in lineage, privacy and reporting.  
+**Trace/test links:** SIT-TR001, SIT-TR020, SIT-TR027-SIT-TR028, SIT-TR031; SIT-VG001, SIT-VG006, SIT-VG016, SIT-VG018-SIT-VG019, SIT-VG022-SIT-VG023; W9-12, W9-20 and W9-22.
+
+**Evidence.** Privacy §3.1 expressly assigns snapshot-copy and concurrent-mutation strategy to WU10. Privacy §8.1 assigns the compact in-process JSON byte measurement to WU10, and §8.2 assigns loss-aware non-integer parsing/serialization. Validation §§11 and 17 preserve those gates. Architecture §§4, 8 and 10 name a normalized immutable snapshot and owners, but supply no such concrete representation/capture protocol. Dependency strategy selects the standard library without closing these choices.
+
+**Why this blocks adoption.** The 16,777,216-byte in-process boundary cannot be reproduced until its measuring representation is fixed. Two representations can differ in escaping/number spelling and therefore cross the limit differently. Caller mutation, cyclic built-in containers, permitted scalar types and finite decimal treatment need explicit handling before the two public input modes have a reproducible contract. This is a documentary gap; no runtime failure has been observed because no runtime exists.
+
+**Alternatives.** A: complete the bounded normalization/capture/measurement protocol in Phase 0 while preserving the existing input vocabulary and limits. B: explicitly amend the earlier gate and assign these decisions to a named later specification step before any parser or byte oracle is implemented. C: relax exactness or allow implicit framework defaults.
+
+**Recommendation.** A. Keep the adopted input classes, no-callback boundary, source-read-only behavior and all WU9 ceilings. Specify the accepted in-process scalar/container types, handling of aliasing/cycles, caller ownership/concurrency precondition, bounded copy order, compact-byte measurement and loss-aware numerical round trip. Distinguish a documented caller precondition from an unproved ability to detect arbitrary concurrent mutation. Do not select an unmentioned library or change a field through implementation convenience.
+
+**Acceptance evidence required.** Written file/in-process pairs, a mutation/cycle case, a non-integer round-trip case and below/at/above byte-boundary cases must have one derivable outcome. Every rule must identify its existing diagnostic/resource mapping and concrete future owner. Runtime tests remain later work.
+
+**Approval record:** No resolution recorded. Authorizing the final audit did not approve a newly drafted normalization policy.
+
+### SIT-D029: Report realization, witnesses and invocation outcomes
+
+**Status:** BLOCKING before final Phase 0 approval.  
+**Audit finding:** W11-A02.  
+**Owning consumers:** `REPOSITORY_ARCHITECTURE.md` and the reporting/validation contract where a substantive amendment is needed.  
+**Trace/test links:** SIT-TR018, SIT-TR021-SIT-TR028; SIT-VG008, SIT-VG010-SIT-VG018, SIT-VG023; W6-30, W7-14 and W9-09-W9-11.
+
+**Evidence.** Reporting §19.2 reserves exact byte serialization and report-ID derivation for WU10. Traceability §9 and validation §17 also assign deterministic witness-selection and exact interface realization to WU10. Architecture §§4, 7 and 9 give operation names, generic types and renderers, but no deterministic tie-breaking/ID/byte rules. `options=None` and `AuditReportSummary` are not accompanied by a closed option or outcome contract. The existing reporting §12.2 diagnostic envelopes are not explicitly mapped to library returns, safe exceptions and CLI exit behavior.
+
+**Why this blocks adoption.** Equal source graphs may have several valid witness paths; source array order cannot choose priority. A declaration of deterministic rendering does not decide report-local IDs, canonical ordering, escaping, exact numbers or the treatment of volatile metadata. The named API must also explain how accepted, rejected, interrupted and failed processing reaches the caller without inventing a second analytical report shape. This finding does not assert that every Python type annotation must already be implemented.
+
+**Alternatives.** A: finish a deterministic realization profile and the invocation outcome table in prose. B: expressly defer byte identity while approving only semantic equivalence, with corresponding changes to every earlier gate and future oracle obligation. C: allow renderer or container iteration defaults to decide public behavior.
+
+**Recommendation.** A. Preserve the 57 leaves, states, reasons and H7 oracle. Define deterministic report-local identification, ordering, finite witness tie-breaking, JSON number/string serialization, safe Markdown encoding, fixed output filenames, the accepted trusted option set and an end-to-end return/error/exit table. Volatile time/run metadata must remain explicitly separated from semantic equality; do not promise equal wall-clock interrupted outputs across different machines. A retained witness cannot stand in for complete ancestry or conceal a contrary premise.
+
+**Acceptance evidence required.** A reordered equivalent input, a diamond with two equally valid paths, native failure data, invalid input, pre/post-acceptance interruption, and an output failure must each have one specified interface outcome. Byte comparisons must state exactly which metadata is excluded or fixed. No new metric, source score or network mode may be introduced.
+
+**Approval record:** No resolution recorded. The accepted WU10 layout remains the design input, not evidence that these missing rules exist.
+
+### SIT-D030: Resource accounting, scheduling and interruption propagation
+
+**Status:** BLOCKING before final Phase 0 approval.  
+**Audit finding:** W11-A03.  
+**Owning consumers:** `REPOSITORY_ARCHITECTURE.md`, with privacy §8 controlling limits and reporting §12 controlling outcomes.  
+**Trace/test links:** SIT-TR001, SIT-TR018, SIT-TR021, SIT-TR028-SIT-TR031; SIT-VG008, SIT-VG010-SIT-VG012, SIT-VG022-SIT-VG023; W9-20-W9-23.
+
+**Evidence.** Privacy §8.1 requires WU10 to specify traversal scheduling, amortized/container accounting and cancellation points. Architecture §10 names `runtime/resources.py` as owner but defines none of those rules. Validation SIT-VG022 and §17 retain the execution-strategy gate. Architecture's pure analysis boundary and dependency direction also need a specified way to receive/propagate quota interruption without pulling filesystem or network authority into graph/analysis code.
+
+**Why this blocks adoption.** Numeric ceilings alone do not identify when a unit is charged, which scope owns shared work, when a result is committed, or which work may survive a stop. An uncharged normalization/sort/support scan can defeat the intended bound. Different ad hoc schedules can change which cells are finished at a deterministic quota boundary. No hard timing guarantee is demanded; the accepted sixty-second guard remains cooperative.
+
+**Alternatives.** A: define a bounded execution/accounting protocol within the accepted module boundaries. B: explicitly move the missing protocol to a named later design gate and amend the Phase 0 readiness claim. C: treat each implementation's unspecified operation count as equivalent compliance.
+
+**Recommendation.** A. Specify the work-unit charge table, whole-bundle and per-capability/scope ownership, scheduling order, shared-result accounting, finite witness/output limits, cancellation checks and atomic result-commit points. Define the authority-free quota/cancellation interface that pure modules can consume and how its interruption becomes the existing report state. Preserve exact ceilings and the prohibition on salvaging an unfinished absence result.
+
+**Acceptance evidence required.** Written traces just below, at and above each relevant work boundary must distinguish completed cells from unfinished searches. Include a late conflicting record, shared work across scopes and a renderer-size failure. Every scan must have an accounting owner. Runtime fault injection and measured performance remain later validation.
+
+**Approval record:** No resolution recorded. Existing limits are retained; no limit is raised or waived here.
+
+### SIT-D031: Filesystem/platform realization and safe report publication
+
+**Status:** BLOCKING before final Phase 0 approval.  
+**Audit finding:** W11-A04.  
+**Owning consumers:** `REPOSITORY_ARCHITECTURE.md`, `DEPENDENCY_STRATEGY.md`; privacy §§5-6 remain controlling.  
+**Trace/test links:** SIT-TR026, SIT-TR028-SIT-TR031; SIT-VG017, SIT-VG020-SIT-VG023; W9-13-W9-19.
+
+**Evidence.** Privacy §5.1 assigns handle-based operations and platform checks to WU10. Sections 5.2-5.3 require private destinations, rejection of path redirections, no clobber even after preflight, and publication of a complete report pair. Threat §14 explicitly repeats the WU10 platform/primitive obligation. Architecture §§10-11 names I/O owners and prospective Linux/Windows checks but leaves the concrete primitive/support profile unselected; dependency §2 acknowledges unsolved details.
+
+**Why this blocks adoption.** A proposed Linux/Windows test runner is not a selected safe file-open, permission or no-clobber publication mechanism. A path pre-check alone is not the required race-preserving design. Standard-library-only is an approved dependency posture, not proof that a particular platform behavior has been established. This audit makes no claim that the required mechanism is impossible.
+
+**Alternatives.** A: select and document platform-specific primitives and a bounded support/fail-closed profile consistent with the accepted controls. B: explicitly narrow initial file-interface platform support, keeping in-process support separate where justified. C: weaken private-output/no-redirection/no-clobber requirements to convenient defaults.
+
+**Recommendation.** A, with B available as an explicit owner-approved scope decision if necessary. Specify supported platform/filesystem assumptions, handle/path lifecycle, private directory creation, no-clobber pair publication, staging/cleanup ownership and failure behavior. Any proposed native binding or third-party dependency must be reviewed against the dependency policy before adoption. Do not select a mechanism from memory and call it verified; its official platform basis must be checked during the remedy work. Do not execute product code in Phase 0.
+
+**Acceptance evidence required.** A stepwise documentary operation sequence and fault/race table must cover swapped path components, concurrently created destinations, permission failure, one-renderer failure, crash residue and cleanup with an unexpected object. Unsupported cases must fail safely and must not silently downgrade protection. Later implementation must supply the platform test evidence before claiming support.
+
+**Approval record:** No resolution recorded. No supported platform is added, removed or certified by this finding.
+
+## 19. Final-audit disposition and permitted next work
+
+The first WU11 audit pass is recorded, with approval readiness **BLOCKING** at SIT-D028-SIT-D031. `GOVERNANCE_AND_HANDOFF.md` §§16-20 contains the audit findings, source/registry checks and candidate-snapshot manifest. The original theory files, product definitions, case oracles and numerical limits remain unchanged.
+
+The recommended next action is a **Phase 0 WU10 completion/remediation pass**, restricted to the owning architecture/dependency/report/validation documents and this register as explicitly authorized. It should supply the missing prose contracts, then return to WU11 for a complete recheck. No library installation, production implementation, executable schema, fixture execution or CI run is needed to record these decisions.
+
+The remedies are recommendations, not pre-approved specifications. Merely approving this audit record cannot close a blocker whose missing contract has not yet been written and checked. Moving a gate to a later phase requires an explicit plan amendment identifying the affected consumer and the resulting limit on the Phase 0 readiness claim.
+
+No `PHASE_0_APPROVAL.md`, `PHASE_1_PLAN.md`, `LICENSE`, package skeleton or implementation is created by this audit. A final approval manifest must identify the actual corrected candidate and its SHA-256 file hashes after all blockers are resolved; the current Git-blob inventory is the input snapshot of a blocked audit, not that approval manifest.
+
+## 20. Revision 0.6 history
+
+| Event | Effect |
+|---|---|
+| WU11 intake instruction | Contextual acceptance of WU10-C01-WU10-C03 for final review; no full Phase 0 approval |
+| Approval reconciliation | Consolidates existing WU5-WU10 supplements without altering original recommendation bodies or inventing earlier approvals |
+| First final-audit findings | Adds SIT-D028-SIT-D031 for explicit WU10 realization gaps |
+| Current status | 27 prior decisions accepted in their stated scope; four blockers; Phase 1 unauthorized |
+
+This revision preserves the complete prior register as historical text. The drafting assistant performed the document checks; no independent second reviewer, runtime security pass or empirical confirmation is asserted.
