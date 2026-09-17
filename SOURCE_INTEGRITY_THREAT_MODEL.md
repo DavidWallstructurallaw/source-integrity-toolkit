@@ -6,20 +6,20 @@
 |---|---|
 | Project | Source Integrity Toolkit |
 | Target release | v0.1 |
-| Phase / work unit | Phase 0 / Work Unit 5: Threat model and failure taxonomy |
-| Revision | 0.1 |
+| Phase / work unit | Phase 0 / Work Unit 9: Privacy, security and licensing realization |
+| Revision | 0.2 |
 | Date | 2026-09-17 |
-| Status | PROPOSED FOR REVIEW; WU3 and WU4 input contracts accepted for continued Phase 0 design |
+| Status | PROPOSED FOR REVIEW; original WU5 threat contract preserved |
 | Theory Owner | Xiangyu Guo |
 | Technical Owner | Unassigned |
-| Accepted decision basis | SIT-D001-SIT-D018 directions; SIT-D019-SIT-D025 detailed contracts, as recorded in register revision 0.5 |
-| New decisions | SIT-D026-SIT-D027 |
-| Input contract | `CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md` revision 0.1 |
-| Analytical contract | `DEFINITIONS_AND_UNITS.md` revision 0.2; `OBSERVABILITY_AND_REPORTING.md` revision 0.1 |
-| Product companion | `V0.1_PRODUCT_SPEC.md` revision 0.3 |
-| Current outputs | This document, product revision 0.3 and decision register revision 0.5 |
-| Scope reserved | WU6 final output states and capability matrix; WU7 hero; WU8 tests; WU9 security/privacy limits; WU10 architecture |
+| Current repository baseline | `bfebc1095ff000f816e21fecf34df32debe6727b` |
+| Current input / reporting / validation | Lineage 0.3; reporting 0.2; validation 0.2; traceability 0.1 |
+| New material | Sections 11-15: control realization, WU9 cases, choices and intake fingerprints |
+| Current outputs | Privacy 0.1; licensing 0.1; this threat model 0.2 |
+| Current review items | WU9-C01-WU9-C03 |
 | Implementation / full Phase 0 approval | Neither is authorized by this delivery |
+
+**Revision 0.2 reading rule.** Numbered sections 1-10 retain the WU5 revision 0.1 text verbatim. Their current-at-the-time status, file permissions and later-work statements are historical. Sections 11-15 carry the WU9 extension and current repository authorization. No threat ID or prior witness is reassigned, and no prior wording is silently made retroactive.
 
 ## 1. Purpose, authority and source basis
 
@@ -572,3 +572,133 @@ The required checks are: exact WU5 file allowlist; preserved input hashes; retai
 The companion product revision updates current authorization references and adds the WU5 threat-capability crosswalk without altering the sixteen product requirement identities or fifteen analytical definitions. The register preserves all prior recommendation bodies, records current acceptance of the seven detailed choices, and submits two new decisions. Historical files remain available in their original unit directories and archives.
 
 Local check results and archive validation are completed before delivery. The next user decision concerns this WU5 submission. No new approval is inferred from the act of creating these files.
+
+
+## 11. Work Unit 9 authority and current baseline
+
+### 11.1 Scope and continuity
+
+The owner explicitly requested “Work Unit 9 继续” after authorizing direct GitHub work and the repair of the migration baseline. This unit consumes the WU8 validation/traceability package as the current working basis for continued Phase 0 design. It submits new handling, resource and license choices; it does not record those new choices as pre-approved.
+
+The WU5 approval supplement remains in reporting §11.1. The WU6/WU7 case adoption remains in validation §9. The central decision register retains its WU5 historical snapshot and is read-only in this unit. Scoped acceptance records must be consolidated at the next authorized register/final-audit step without changing the earlier alternatives or inventing approval dates.
+
+At intake, GitHub main was `bfebc1095ff000f816e21fecf34df32debe6727b`. All thirteen repository blobs match the latest local WU1-WU8 deliveries, including the repaired 108,749-byte decision register. That is a byte-identity check of the migration, not final approval of all specification details or a scientific validation.
+
+WU9's only allowed project files are `PRIVACY_AND_DATA_HANDLING.md`, `LICENSING_NOTES.md` and this document. Its publication of specification text to GitHub is an authorized authoring action. The future audit runtime remains offline. No source PDF, previous ZIP, private dossier, schema, production code, CI workflow, root LICENSE or package metadata is added.
+
+### 11.2 Source and engineering separation
+
+The original threat families and source citations in §§1-10 remain unchanged. The papers motivate traceable sources, preserved difference, bounded authority and correction. Their text does not prescribe the numeric budgets, output-directory policy, digest default or licensing allocation introduced here.
+
+The twenty SIT-DH control obligations and fourteen WU9-L budget entries are proposed engineering rules, owned by the new privacy document. Standard license explanations in licensing §3 are the only outside-reference addition: official Apache/Creative Commons terms, checked on 2026-09-17. They do not revise the theory map or turn a governance proposal into a licensing permission.
+
+No input kind, relation predicate, assessment kind, diagnostic family, numerical formula, registered output leaf, prerequisite ID, finding condition or result-reason code changes. The detailed WU9 policies use the existing report envelopes and qualifications. A need for another substantive field must return to the relevant schema owner rather than enter through this appendix.
+
+## 12. Concrete control realization and residual risks
+
+| Existing risk | WU9 realization | Residual risk and later test responsibility |
+|---|---|---|
+| SIT-TS001: fabricated provenance | Preserve conditional assertions and protected-attestation boundaries; admit no identity resolver or authenticity badge | Internally consistent false dossiers can still pass local structural checks; SIT-VG007/SIT-VG021 and W7-28 remain necessary |
+| SIT-TS002: manipulated populations | Redaction uses a newly identified caller-prepared snapshot, followed by a fresh audit; maintain exact units and denominator changes | A caller can omit outside evidence; coverage remains supplied and scoped |
+| SIT-TS003: self-certification and disputes | Inspectable summaries and unavailable underlying material stay distinct; secrecy cannot count as qualification | An attestor can be wrong or deceptive; no live credential verification occurs |
+| SIT-TS004: content/control injection | Exact data-only input; safe JSON/Markdown/terminal rendering; no custom object callbacks, content detector, remote read or dynamic policy | A downstream system can misuse an exported report as instructions; the toolkit cannot govern that receiver |
+| SIT-TS005: exhaustion and false completion | Whole-payload ceilings, work/time/witness/output guards, safe interruption and atomic result rules | Cooperative timing and host failure limits remain explicit; no hard performance or memory guarantee is claimed |
+| SIT-TS006: protected-source leakage | Opaque references, pre-audit disclosure minimization, private fresh output directories, no overwrite, safe diagnostics and optional digests | Topology, rare facts and basis text can identify a source; no automated anonymity certificate |
+| SIT-TS007: report laundering/replay | One frozen result for both formats, no-clobber pair publication, explicit snapshot identity and re-audit after material redaction | External selective quotation remains possible; partial extracts are not complete toolkit reports |
+
+### 12.1 Data movement and permissions
+
+Authorized dossier bytes enter only the invocation's local validation/analysis context. Declared local/external locators, `predecessor`, identity maps and source documents remain unopened. The Python interface accepts only the approved ordinary JSON-compatible values, without invoking source-supplied behavior. Caller object mutation and host filesystem races must have explicit WU10 handling.
+
+Output authority covers a fresh private report directory, not arbitrary filesystem writes or an audited target. The no-overwrite and non-redirection rules apply on errors as well as success. Rendering one report does not create consent for telemetry, issue attachments, source contact or public distribution. Cleanup is restricted to safe known staging objects owned by that invocation.
+
+### 12.2 Protection without invented independence
+
+The default protection strategy preserves provenance at the allowed level in the input snapshot. A permitted opaque shared ID remains shared; different pseudonyms do not count as evidence of independent acquisition. A supplied protected attestation can carry a scoped method and visible summary while its underlying record remains withheld. Removing the visible support changes what the downstream qualification checks can establish.
+
+If the relationship itself cannot be disclosed, retain an explicit gap or keep the result restricted. Do not create fictitious roots, remove an adverse witness only from Markdown, or carry a private HHI into a public-looking report whose population/support changed. The public derivative is either a newly audited, explicitly transformed snapshot or an honestly labeled incomplete extract. The latter must not claim complete `sit-report/0.1` conformance.
+
+### 12.3 Bounded execution and safety-state mapping
+
+Privacy §8 supplies numeric limits and portable-integer requirements. Structural type/grammar/range failure remains structural rejection; aggregate resource exhaustion is interruption. A completed native correction event marked `failed` is still an attributed input record. No incident record is still insufficient to certify a clean source. WU9 adds no new reason code for either condition.
+
+Before input acceptance, interruption emits only processing diagnostics when possible. After acceptance, independently completed cells may survive only under the existing interrupted-audit contract. A clipped population, partial ancestor search or omitted late contradiction cannot become an exact count or completed absence. An output failure must not publish a mismatched or truncated JSON/Markdown pair. A host-killed process may emit nothing; it cannot retrospectively be described as a completed audit.
+
+## 13. Written Work Unit 9 control cases
+
+These cases specify later tests. They have not been executed against product code. Each must include its stated positive control and adverse/missing/boundary variants, using fictional material. Exact module/test paths belong to WU10. The existing twenty-four W5 cases, thirty-two W6 cases, H7-01, three hero variants, twenty-eight W7 cases and WU8 obligations retain their meanings.
+
+| Case | Input or event | Required result and boundary |
+|---|---|---|
+| W9-01 | Public and private source locators, including a local path, appear in admitted text | No locator read/fetch; distinguish those inert strings from an explicitly selected invocation file path. Missing supporting content stays missing |
+| W9-02 | Three seeds share an opaque protected upstream reference | Preserve that commonality without exporting a real name; do not certify its hidden multiplicity or turn three aliases into three origins |
+| W9-03 | Upstream reference exists, but its protected ancestry is unavailable | Valid sparse input and explicit frontier; no qualification or new root inferred from secrecy |
+| W9-04 | A visible scoped protected attestation accompanies withheld source material | Preserve the summary's basis and underlying withholding separately. Removing the visible summary weakens qualification without inventing verification |
+| W9-05 | A custodian consistently renames all protected IDs in a new snapshot | Same represented topology/counts where all semantic premises remain equivalent; preserve new snapshot and transformation provenance; test accidental splitting/merging as a failure |
+| W9-06 | A public-facing snapshot omits the support for an independence assessment | Re-audit its actual evidence; do not carry over the private qualified count or replace missing support with a reassuring label |
+| W9-07 | A disclosure transformation removes a source contribution | Disclose changed population/denominator and comparability limits; no unchanged-scope integrity-improvement claim |
+| W9-08 | An extension asks to enable network, change limits, suppress gaps or write a chosen path | Treat it as inert metadata. No scope, permission, finding or output-path change; no malicious-author inference |
+| W9-09 | A source field contains HTML, Markdown images, fences and table/heading delimiters | Encode as data in both outputs; no active loads, injected report sections or hidden markup copies. Ordinary prose remains readable |
+| W9-10 | Multilingual text includes terminal escapes and bidirectional formatting controls | Display relevant controls safely and retain traceability to the allowed original; do not erase legitimate language or execute terminal actions |
+| W9-11 | Malformed JSON contains a secret-looking key/value and duplicate keys | Safe existing structural diagnostic; no payload, local path or arbitrary rejected-key echo. Already constructed dictionaries cannot prove prior key preservation |
+| W9-12 | Library input uses custom mappings/iterators/serialization methods | Reject without executing those methods; ordinary bounded built-in input remains supported; no caller mutation |
+| W9-13 | Input or output path includes a symbolic link, junction, special file or explicit network share | Refuse that invocation path under the policy; do not follow the redirection or change source files. Ordinary permitted local files remain accepted |
+| W9-14 | Selected report destination already exists or aliases input | No overwrite or force path; existing bytes stay unchanged on success/failure attempts |
+| W9-15 | Destination/parent is swapped during publication or required private permissions fail | Preserve handle/path safety and no-clobber semantics; otherwise fail safely. No briefly public sensitive report is an acceptable success |
+| W9-16 | JSON staging succeeds but Markdown encoding, size or disk write fails | No final report pair is published; no older Markdown is paired with new JSON; only safe status travels through the caller channel |
+| W9-17 | Process terminates during staging and cleanup later encounters an unexpected object | Residual staging remains private; recovery is explicit and scoped; never follow a cleanup link or delete unrelated evidence |
+| W9-18 | Canaries occupy IDs, names, locators, excerpts, methods, qualifications and extensions | Incidental logs/errors/terminal output do not disclose them. Authorized report selections are tested separately from forbidden echo surfaces |
+| W9-19 | Digest setting is absent, explicitly enabled, in-process, or interrupted during read | Default null with qualification; requested whole-file digest covers exactly all read bytes; no invented whole-file/in-process digest or hashed identity pseudonym |
+| W9-20 | Every WU9-L ceiling and sublimit is exercised below, at and above its boundary | Inclusive upper bounds; correct structural/resource outcome; test extensions and unselected records too. No silent deletion to get under a limit |
+| W9-21 | Traversal stops before acceptance, after a full inventory, or midway through a no-path query | Correct processing envelope; only wholly completed cells may remain; unfinished search is not_evaluated, never zero overlap or absent correction |
+| W9-22 | Integer boundary, overlong number, boolean count and H7 fraction are presented | Exact permitted integers, no boolean coercion or silent rounding; reject incompatible exact values; preserve H7's 26/36 and population evidence |
+| W9-23 | A correction input says failed, while separate runs hit a guard or an implementation error | Native failure remains data; resource interruption and execution failure retain different processing meanings; none rewrites the input event |
+| W9-24 | A nominally public/opaque report still reveals identity through rare topology or method text | No public-safe/anonymity assurance; operator review or another protected snapshot is required. Do not use real protected records in this test |
+
+Licensing adds W9-LIC01-W9-LIC06 in its own document. Those cases address file-class separation, retained theory rights, user evidence, adaptations, dependency review and the difference between policy approval and scaffold authorization.
+
+### 13.1 Coverage and unchanged oracles
+
+SIT-DH001-SIT-DH020 map to existing SIT-TR001/SIT-TR005/SIT-TR009/SIT-TR020-SIT-TR023/SIT-TR026-SIT-TR032/SIT-TR035 as specified in privacy §9. Existing shared validation families SIT-VG001/SIT-VG002/SIT-VG006/SIT-VG007/SIT-VG010/SIT-VG012/SIT-VG016-SIT-VG017/SIT-VG019-SIT-VG024/SIT-VG026 remain the consumers. This crosswalk supplements the read-only WU8 trace file without editing it.
+
+The H7 dossier is a fictional test oracle. WU9 changes neither its six source-contribution seeds, source groups, independent comparison, separate stage cohorts nor the three documentary target changes. New protection/resource variants need their own test identity and cannot replace the original oracle. Resource ceilings are design decisions; meeting them is not evidence that the source theory is true.
+
+## 14. Submitted choices and next gate
+
+| Review item | Alternatives | Recommendation and approval boundary |
+|---|---|---|
+| WU9-C01 | A: automatic public-report anonymization and post-audit redaction; B: disclosure-appropriate caller snapshots, complete local reports and explicit re-audit; C: require named public sources | B, under privacy §§2-7 and §§9-10. Preserve opaque commonality, private fresh outputs and minimal report disclosure. No automatic anonymity or truth guarantee |
+| WU9-C02 | A: unlimited/permissive processing; B: the explicit fourteen bounded limits and exact-number policy; C: suppress all results when any evidence is incomplete | B, under privacy §8. WU10 must realize the chosen limits, platform primitives and accounting. No measured performance promise or new analytics |
+| WU9-C03 | A: uniform license for newly authored materials; B: separated Apache-2.0 software and CC-BY-4.0 specifications/fictional data with exclusions; C: defer release licensing | B, under licensing §§2-9. Owner acceptance and rights confirmation precede license application; existing paper/input rights stay unchanged |
+
+One scoped acceptance can select the three recommendations. No separate approval is required for every control/test ID. None of these choices has been approved merely by requesting its preparation. The next unit is WU10 under its four-file allowlist. It must bind exact future modules, interfaces, dependencies, supported platforms, filesystem primitives, work accounting and escaping/serialization rules to these obligations. It must not start implementation.
+
+The central register remains unchanged here. WU11 must reconcile the accepted scoped records, remaining platform/rights gates and actual file hashes before complete Phase 0 approval. No final approval document, software release, runtime test result or security certification is issued in WU9.
+
+## 15. Intake fingerprints and delivery checks
+
+### 15.1 Repository and local evidence
+
+The following manifest records the thirteen verified baseline files at the intake commit. Hashes identify their exact bytes; they do not certify factual correctness, source authenticity, authorship or approval status. This unit changes only the threat document among those inputs; the other twelve must remain byte-identical.
+
+| Baseline file | Bytes | SHA-256 |
+|---|---:|---|
+| `CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md` | 129967 | `32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374` |
+| `DEFINITIONS_AND_UNITS.md` | 94436 | `913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d` |
+| `OBSERVABILITY_AND_REPORTING.md` | 111615 | `44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a` |
+| `PHASE_0_PLAN.md` | 45379 | `2d97a820ae218c33cfd00dd96a762853e887f867973a2b2da0945fc4414495b1` |
+| `PROJECT_INSTRUCTIONS.md` | 22037 | `cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746` |
+| `SOURCE_INTEGRITY_THREAT_MODEL.md` | 74822 | `d62d1fab2ea6891404193eda3bab4dc23c77c05bd608a6e55e2f6cb97f2a7e82` |
+| `SPEC_AUDIT.md` | 42589 | `3565ab8f1b08f30e06f4983ffd26adbe8bc977b655ebf410b634918a7ae7949a` |
+| `SUCCESS_CRITERIA.md` | 58182 | `270eed959a08607e182ff5922d6cacdec3c3536c954f3f65d5e9b8d9bcfb5476` |
+| `THEORY_SOURCE_MAP.md` | 56697 | `015e65baf3fcad8ce78a2285df8f2de8d5b7b4cbdd347707ba3cc5d5ba46b627` |
+| `THEORY_TO_CODE_TRACEABILITY.md` | 65779 | `73a69a56828b6ff416164b7bd6420521da1c635bd92f03b92e07231b552a7849` |
+| `UNRESOLVED_DECISIONS.md` | 108749 | `06aefb57436c2f8e79238f87078b98e00e13a7feb1204fa6f1b1f6cab83656f9` |
+| `V0.1_PRODUCT_SPEC.md` | 62420 | `70ab331662741c0177908ec5ccac09ff7538f98643567eb3066e0ed8c9cb84e1` |
+| `VALIDATION_PLAN.md` | 148233 | `f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707` |
+
+### 15.2 Verification boundary
+
+Before publication, check the three-file allowlist, preserved original threat §§1-10, inherited IDs and hero values, new control/case ID uniqueness, Markdown structure, licensed-source notices and current baseline blob identities. Compare final remote blob IDs to the exact local document bytes and confirm that every other baseline path remains unchanged. Report the actual commit in the user handoff only after GitHub confirms it.
+
+These are document-authoring, arithmetic and byte-integrity checks by the drafting assistant. They are not independent peer review, penetration tests, runtime unit tests, empirical theory validation or a legal-compliance audit. No implementation exists in this delivery against which the new security cases could run.
