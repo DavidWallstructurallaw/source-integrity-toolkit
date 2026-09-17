@@ -1,417 +1,270 @@
 # GOVERNANCE_AND_HANDOFF
 
-> Current audit supplement: revision 0.2, Phase 0 / Work Unit 11, dated 2026-09-17. Sections 16-20 record the first final-audit pass and its BLOCKING disposition. The original document-control table and sections 1-15 below remain historical WU10 revision 0.1 text. No final Phase 0 approval or Phase 1 authorization has been issued.
-
 ## Document control
 
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
 | Target release | v0.1 |
-| Phase / work unit | Phase 0 / Work Unit 10 |
-| Revision | 0.1 |
+| Phase / work unit | Phase 0 / WU11 remediation and re-audit |
+| Revision | 0.3 |
 | Date | 2026-09-17 |
-| Status | PROPOSED FOR REVIEW; governance and handoff only |
 | Theory Owner | Xiangyu Guo |
 | Technical Owner | Unassigned |
-| Repository | `DavidWallstructurallaw/source-integrity-toolkit` |
-| Prior accepted WU9 policy | WU9-C01 and WU9-C02 accepted by the instruction to proceed to WU10; WU9-C03 approved as Apache-2.0 |
-| Companion outputs | `REPOSITORY_ARCHITECTURE.md`, `DEPENDENCY_STRATEGY.md` |
-| Next planned unit | Work Unit 11 final Phase 0 audit |
-| Full Phase 0 approval | Not issued |
-| Implementation / Phase 1 authorization | Not issued |
+| Repository | DavidWallstructurallaw/source-integrity-toolkit |
+| Technical review | PASS at specification-candidate level, with the declared implementation evidence limits |
+| Final Phase 0 owner approval | Not issued |
+| Phase 1 / implementation authorization | Not issued |
+| Historical first-audit snapshot | 2a19833c53fd9a7b1065f568f470919d79583bfd |
+| Completed architecture input | Revision 0.2, blob f9123f217e567b6aed34f876824c3dcd13dab467 |
 
-## 1. Purpose
+## 1. Purpose and current authority
 
-This document defines how the Source Integrity Toolkit specification moves from the current Phase 0 baseline into final audit, later scaffold work and future releases without losing the distinctions established in the theory, product, lineage, observability, security and validation contracts.
+The owner requested: `可以，执行补齐，再进行 WU11 复审`. This authorizes completing the four identified realization gaps and performing their re-audit in this work item. That re-audit is performed here; it is not deferred for another permission to inspect the documents.
 
-It also records the current contextual acceptance of Work Unit 9. The preceding handoff explicitly stated that WU9-C01 and WU9-C02 required confirmation before entering Work Unit 10. The owner replied `可以，继续 Work Unit 10`. That instruction is recorded as acceptance of those two proposals in their stated scope. WU9-C03 had already been explicitly resolved to Apache-2.0.
+The complete earlier governance and first blocked-audit record remain preserved at the immutable historical reference in section 16. This current document consolidates the operative governance, records the completed review, and supplies the precision clarifications in section 22. It does not revise source papers or represent new detailed design as having been approved before it was written.
 
-This record does not alter historical Work Unit 9 files. The final Work Unit 11 audit may consolidate status and decision history in the documents permitted by its allowlist.
+Technical readiness of a candidate, owner adoption of the complete Phase 0 baseline, and permission to implement the next phase are distinct events. Only the first is reported as passed here.
 
 ## 2. Governance roles
 
-### 2.1 Theory Owner
+The Theory Owner approves product operationalizations, source interpretation, scope and public analytical changes, phase completion and responses to counterexamples. That role does not assign authorship of all contributions or ownership of third-party material.
 
-The Theory Owner has authority to:
+The Technical Owner, when appointed, owns conformance of implementation, module boundaries, resource/failure behavior, dependencies, CI and release artifacts. This role cannot change theory meaning, qualification rules or denominators through a convenient code change. No specific technical maintainer or independent reviewer has been appointed by this document.
 
-- approve or reject Phase 0 product operationalizations;
-- decide how ambiguous source theory is represented in the product;
-- approve changes to product scope, public analytical semantics and theory attribution;
-- approve phase completion and progression;
-- decide whether a counterexample requires reopening the product specification.
-
-The Theory Owner does not by that role become the technical author of every code contribution or third-party asset.
-
-### 2.2 Technical Owner
-
-The Technical Owner, once assigned, owns implementation consistency with the approved contracts. Responsibilities include:
-
-- module boundaries and implementation quality;
-- dependency and platform conformance;
-- resource/failure behavior;
-- CI and executable tests;
-- release artifact integrity;
-- architecture-compliance checks.
-
-The Technical Owner cannot change theory meaning or public analytical semantics solely through code review.
-
-### 2.3 Maintainers and reviewers
-
-Later maintainers may approve ordinary code changes inside an already approved contract. Changes that alter public fields, qualification rules, resource/security guarantees, license scope, or cross-project semantics require the appropriate higher-level review described below.
-
-No current document appoints a specific maintainer or claims an independent security review.
+Maintainers can review work within an adopted contract. Public behavior, security, license or cross-project changes use the higher-level review gates below.
 
 ## 3. Change classes
 
-| Class | Examples | Required treatment |
+| Class | Effect | Required treatment |
 |---|---|---|
-| C0: implementation-preserving | refactor, internal performance work, test cleanup | Technical review plus regression suite; no spec change if behavior is unchanged |
-| C1: contract clarification | wording that removes ambiguity without changing outcomes | Update owning spec and traceability; Theory Owner review when public interpretation is affected |
-| C2: public behavioral change | new field, changed denominator, new relation meaning, different non-result behavior | Reopen product/report/validation contracts; Theory Owner approval; new/updated Trace and tests |
-| C3: boundary/security change | network mode, changed resource ceiling, weaker output protections, new plugin mechanism | Security/privacy and architecture review; explicit owner approval; expanded adversarial tests |
-| C4: theory mapping change | new paper version, changed source interpretation, theory conflict | Reopen source map/audit and affected product decisions before implementation |
-| C5: licensing/distribution change | different project license, bundled theory paper, new third-party asset class | Rights review and explicit license/governance approval |
-| C6: cross-project semantic coupling | direct import from another toolkit, shared core, schema compatibility promise | Separate interoperability proposal and approval; cannot be hidden in implementation |
+| C0 | Implementation-preserving refactor | Technical review and regression evidence |
+| C1 | Contract clarification without changed outcomes | Owning specification and traceability review |
+| C2 | Public field, denominator, relation or result-state change | Product/report/validation review and owner approval |
+| C3 | Security, network, resource or protection change | Privacy/security/architecture review and explicit approval |
+| C4 | Theory source/version or interpretation change | Source map/audit and affected product decision review |
+| C5 | Licensing/distribution change | Actual rights review and explicit approval |
+| C6 | Shared internals or cross-project semantic coupling | Separate interoperability proposal and approval |
 
-A change is classified by its strongest effect. Labeling a change “refactor” does not make a semantic change C0.
+Classify by strongest effect. Neither a refactor label nor passing tests can conceal a semantic change.
 
-## 4. Specification authority and conflict handling
+## 4. Authority and conflict handling
 
-The approved plan and explicit owner decisions remain controlling. Within their scopes, later approved detailed specifications supersede earlier proposals but do not rewrite historical records.
+The approved Phase 0 plan and explicit owner decisions control their scopes. Later adopted detail supersedes an earlier proposal without rewriting its historical status. A candidate clarification becomes part of the proposed baseline; it is not a hidden runtime default.
 
-Implementation resolves no specification conflict by choosing whichever text is easiest to code.
-
-When two current specifications appear incompatible:
-
-1. identify the exact fields/rules and owning documents;
-2. stop affected implementation or audit conclusion;
-3. preserve existing behavior only if it is already approved and unambiguous;
-4. open a scoped decision for the owner;
-5. update traceability and tests after resolution.
-
-No CI green status can overrule a documented contract conflict.
+On conflicting current requirements, identify the affected fields/documents, stop the affected conclusion or implementation, and obtain a scoped resolution. Update traceability and expected tests after resolution. CI cannot overrule a contract conflict. A failed future feasibility test reopens the relevant design rather than authorizing an insecure fallback.
 
 ## 5. Traceability governance
 
-`THEORY_TO_CODE_TRACEABILITY.md` retains SIT-TR001 through SIT-TR035 as stable responsibility IDs.
+The binding remains SIT-TR ID to logical owner to concrete module/test owner. All 35 Trace IDs and 19 logical owners retain their identities. Architecture section 5 supplies their module homes; its completion sections add only internal execution/platform slots to existing owners.
 
-`REPOSITORY_ARCHITECTURE.md` supplies the concrete module/test mapping for the logical owners already named there. The composite binding is:
+Every one of the 57 analytical output fields keeps one primary Trace and its four SIT-VF obligations. Cross-cutting state, evidence, privacy, time and rendering rules remain additional requirements. A source-map citation alone never proves an implementation correct.
 
-```text
-SIT-TR → logical owner → concrete module/test owner
-```
+Moving a path without changing meaning is possible through an explicit binding update. Changing meaning requires its public-contract gate. The WU11 precision rules in section 22 bind to the existing normalization, report and runtime owners and their shared tests.
 
-The original trace file need not duplicate every path to make the binding effective, provided both documents are included in the approved baseline and the Work Unit 11 audit verifies that every logical owner resolves exactly once.
+## 6. Validation governance
 
-A future code path can move without changing a Trace ID when the semantic owner remains the same. A change in semantic ownership requires an architecture/traceability update.
+Later executable evidence includes structural contracts, the 228 field obligations, 26 shared families, H7/W7 golden cases, W9 security/resource cases, W11 realization cases, trace closure and packaging checks. An ordinary unit-test count or coverage percentage cannot substitute for these named duties.
 
-All 57 analytical output leaves retain their Work Unit 8 positive, negative, missing-data and boundary obligations. Architecture does not replace those tests with generic unit coverage.
+A failure must be distinguished as an implementation defect, ambiguous specification, bad fixture evidence or product-model limitation. Preserve inconvenient counterexamples. Do not change golden expectations solely to make an implementation pass.
 
-## 6. Test and validation governance
+A correct number with a missing population, basis, qualification or uncertainty state fails. Documentation checks in this phase are not runtime tests.
 
-The hierarchy of executable evidence in later phases is:
+## 7. Privacy and security governance
 
-1. structural schema/contract tests;
-2. field-level SIT-VF obligations;
-3. shared SIT-VG contract/integration tests;
-4. canonical hero/golden cases;
-5. privacy/security/resource adversarial cases from Work Unit 9;
-6. trace-closure and architecture-compliance checks;
-7. release packaging and no-network checks.
+The accepted local/no-network/no-telemetry/non-intervention requirements remain controlling. Input locators and extensions stay inert. Protected-source references must preserve known commonality and explicitly represent withheld information. No anonymous/public-safe certificate is added.
 
-A test may expose a code bug, a specification ambiguity, bad fixture evidence or a product-model failure. `VALIDATION_PLAN.md` already requires distinguishing those cases. Never change a golden expected result only to make a failing implementation pass.
-
-A report that is numerically correct but loses scope, denominator, witness or uncertainty fails the contract.
-
-## 7. Security and privacy governance
-
-The accepted Work Unit 9 controls are now architectural requirements for later implementation.
-
-The v0.1 reference implementation remains local, no-network, no-telemetry and non-intervening. Protected-source handling, report minimization, safe rendering, private output publication and resource ceilings cannot be weakened by a convenience option without a C3 change.
-
-Resource ceilings WU9-L01 through WU9-L14 are release contract values until an approved successor changes them. Source data cannot override them.
-
-A platform is supported only after its filesystem/ACL behavior satisfies the approved disclosure contract in tests. “Works on my machine” is insufficient for a privacy-support claim.
+The fourteen WU9-L limits remain unchanged. Their accounting and stopping interpretation is completed in architecture section 19. Platform support requires the later native/permission/fault tests, including no-clobber publication and failure before sensitive writes. Kernel, host configuration and privileged/same-principal compromise remain explicitly outside the claimed boundary.
 
 ## 8. Licensing governance
 
-WU9-C03 selects Apache-2.0 for original engineering repository materials.
+The owner selected Apache-2.0 for original engineering repository material, including documentation and fictional examples. The actual license/notice/scaffold files remain a later authorized step. Existing theory-paper licenses, third-party rights and user evidence are excluded from automatic relicensing.
 
-The later scaffold should create the standard Apache-2.0 license artifacts and clear exclusion language for theory papers, third-party assets and user evidence. No current Phase 0 document applies Apache-2.0 to material whose rights are not controlled by the project.
+A dependency or source asset keeps its own terms. Review actual versions and distribution contents. No license change, rights assignment, source-return charge or endorsement is inferred from a successful audit.
 
-Dependencies retain their own licenses. Release review must inspect actual included versions and artifacts.
+## 9. Versioning
 
-Changing the project license or adding source-paper expression to ordinary distributions is a C5 change.
+Contract versions change when interpretation changes. Closed fields cannot acquire undocumented meanings through an alleged compatible extension. Old snapshots retain their original version; conversions must be explicit and provenance-preserving.
 
-## 9. Versioning policy
+Package versioning begins with implementation and its release policy. No package release is fabricated here. Internal byte-profile refinements before initial release are recorded in the candidate and locked only with the approved baseline. After adoption, changing those bytes or outcomes follows the appropriate C1/C2/C3 process.
 
-### 9.1 Contract versions
+## 10. Repository workflow
 
-Bundle/report contract versions change when a consumer must interpret data differently.
+Direct specification commits to main remain authorized for this project. Later substantive implementation should use reviewed branches/PRs and phase-appropriate CI. This document does not claim branch protection or CI has been installed.
 
-Backward-compatible additions require explicit extension rules and cannot be smuggled into closed core fields. A breaking semantic change requires a new contract version and migration guidance.
+No real private dossier, hidden identity map, source-paper PDF, executable fixture or generated user report belongs in this Phase 0 repository. The current work changes documentation only. Historical documents remain retrievable through immutable commits, and current-status indexes explicitly identify their historical references.
 
-Historical snapshots keep their original declared version. A reader must not reinterpret an old snapshot as a new schema without an explicit, provenance-recorded conversion.
+## 11. Cross-project separation
 
-### 9.2 Package versions
+Source Integrity Toolkit and Recursive Integrity Toolkit remain peer products. No internal import, submodule, shared database, vendored internal package or integrity-core dependency is selected for v0.1.
 
-Package semantic versioning should reflect public API and contract behavior once the first implementation release exists.
+A later public-artifact adapter must preserve contract versions, query/claim scope, types, assertion provenance, unknown/disputed states, population meaning and privacy boundaries. Unsupported mappings must be rejected or explicitly qualified; successful conversion is not independent validation. This candidate creates no adapter.
 
-Internal refactors can be patch releases when public behavior is unchanged. New backward-compatible public capabilities can be minor releases. Breaking public API or contract behavior requires a major-version decision or a documented pre-1.0 compatibility policy before release.
+## 12. Phase 0 to Phase 1 gate
 
-No package version is assigned by Phase 0.
+The complete 18-file candidate is ready for the owner's final adoption after the documentation writes and readback checks for this re-audit. That adoption has not occurred merely because the owner requested the audit.
 
-## 10. Repository and branch governance
+After adoption, PHASE_0_APPROVAL.md must identify the exact final candidate commit and SHA-256 of every approved file, its approved decision effects, exclusions and authorized next planning boundary. The approval document must not hash itself as a member of its own input baseline.
 
-The current Phase 0 work is committed directly to `main` under explicit owner instructions. Later implementation should use reviewed branches or pull requests for nontrivial code changes once CI exists.
+A separately authorized PHASE_1_PLAN.md then supplies the exact scaffold file allowlist. Final Phase 0 approval cannot be presented as blanket analytical implementation authority.
 
-Phase 1 should define required checks before merges, including at minimum contract/static checks appropriate to its scaffold. Later analytical phases add the relevant executable test suites before enabling corresponding behavior.
+## 13. Phase 1 handoff payload
 
-Generated artifacts, user dossiers and private test evidence must not be committed to the public repository.
+The candidate hands off the plan, product/ontology/analysis/report specifications, source map, current decision register, 35 Trace bindings, field/shared validation obligations, H7/W7 cases, W9 privacy/limits, the completed SIT-RP-0.1 realization and Apache-2.0 policy.
 
-The public repository should contain synthetic fixtures only unless a separately reviewed asset is explicitly authorized.
+Phase 1 may scaffold imports, contract placeholders, fixture/test structure, metadata, licensing files and CI only within its own approved plan. It must not implement ancestry traversal, qualification, concentration, evaluator overlap, correction analysis, report generation or native security behavior prematurely. Empty modules cannot be described as satisfying their Trace obligations.
 
-## 11. Cross-project handoff and interoperability
+## 14. Release stops
 
-Source Integrity Toolkit and Recursive Integrity Toolkit remain peer projects.
+Stop if a public result lacks a semantic/test owner, an output loses uncertainty, a dependency introduces hidden authority, source data can override limits, native protection is unverified, JSON and Markdown disagree, an unfinished search becomes an absence, rights are swept into the project license, or an adapter loses provenance.
 
-No direct import, submodule, vendored internal package or shared database is permitted in v0.1. A future integration must operate through versioned public artifacts and an explicit adapter.
+Also stop when a later actual platform test contradicts the selected primitive composition. This document's source checks establish the facilities being specified, not successful execution of the eventual composition.
 
-The adapter must preserve:
+## 15. Accepted work-unit directions
 
-- source/target contract versions;
-- inquiry and claim scope;
-- record/relationship type;
-- assertion provenance;
-- unknown and disputed state;
-- population/denominator meaning;
-- protected-source disclosure boundaries.
+WU9-C01/C02 were accepted on explicit entry to WU10. WU9-C03 was explicitly resolved to Apache-2.0. WU10-C01-C03 were accepted as submissions for final audit. The first WU11 pass correctly exposed four missing protocols. The present owner instruction authorized completing those protocols and conducting this second pass.
 
-If the receiving product lacks an equivalent semantic state, the adapter must reject or explicitly downgrade the mapping. It cannot silently coerce unknown ancestry into an independent root or convert a qualified process assessment into a global property.
+No earlier bare continuation is retroactively changed into a different approval. New precise choices in the completed candidate remain visible for final owner adoption.
 
-Interchange success does not certify either product's result.
+## 16. Immutable first-audit history
 
-## 12. Phase 0 to Phase 1 handoff
+The unabridged governance revision 0.2, including first-pass findings W11-A01-W11-A07, registry checks and its input manifest, is preserved at:
 
-Work Unit 10 does not authorize Phase 1. After this unit is accepted, Work Unit 11 performs the complete Phase 0 audit.
+`https://github.com/DavidWallstructurallaw/source-integrity-toolkit/blob/2a19833c53fd9a7b1065f568f470919d79583bfd/GOVERNANCE_AND_HANDOFF.md`
 
-The Work Unit 11 audit should verify at least:
+Its blob is `4cbd35a32e00215f803bc1ffb03508c5fd341cba`. The full contemporaneous decision register is preserved at the same commit, blob `0245b20b77a41a9f7a0fad510dd4dc5553715592`.
 
-- no BLOCKING in-scope decision remains;
-- all required Phase 0 documents exist;
-- terms, object names, analytical fields and result states are consistent;
-- WU9-C01 through WU9-C03 acceptance is reflected without rewriting historical bytes;
-- every SIT-TR logical owner maps to a concrete architecture owner;
-- every public analytical field retains future tests;
-- dependency strategy introduces no hidden runtime capability;
-- Apache-2.0 policy and theory/user exclusions are consistent;
-- cross-project separation is maintained;
-- no implementation code, executable schema or Phase 1 behavior has entered Phase 0.
+This revision consolidates present governance and review status. It does not erase that first BLOCKING result or claim its gaps were already closed then. Historical section references resolve against those immutable versions.
 
-Only after an explicit owner approval of the audited Phase 0 bundle should `PHASE_0_APPROVAL.md` be created.
+## 17. Re-audit disposition
 
-A later `PHASE_1_PLAN.md` must then enumerate exact scaffold files it may create or modify. Phase 1 cannot rely on this handoff as blanket coding authority.
-
-## 13. Phase 1 architecture handoff payload
-
-Subject to Work Unit 11 approval, Phase 1 planning receives:
-
-- the complete approved Phase 0 Markdown baseline;
-- the module layout in `REPOSITORY_ARCHITECTURE.md`;
-- the standard-library-only runtime strategy in `DEPENDENCY_STRATEGY.md`;
-- the Apache-2.0 repository policy in `LICENSING_NOTES.md`;
-- the fixed WU9 privacy/resource controls;
-- the existing SIT-TR/SIT-VF/SIT-VG trace and test obligations;
-- the canonical hero/micro-case expected behavior;
-- the explicit list of Phase 1 analytical prohibitions.
-
-The scaffold should make later implementation slots obvious without pretending those slots already satisfy their Trace obligations.
-
-## 14. Release stop rules
-
-Stop a release or phase transition when any of the following is true:
-
-- a public result has no trace/test owner;
-- a dependency introduces undeclared network/model/plugin behavior;
-- a protected-source report path has not passed required platform tests;
-- a resource failure can appear as a successful negative result;
-- JSON and Markdown disagree substantively;
-- theory PDFs or third-party data have been swept into Apache-2.0 scope without rights review;
-- a cross-project adapter loses uncertainty or provenance;
-- a golden oracle was changed without a corresponding approved contract decision;
-- a required phase gate has been replaced by “the code works.”
-
-## 15. Work Unit 10 review package
-
-Work Unit 10 has three review items:
-
-- **WU10-C01:** concrete repository/module/public-interface architecture;
-- **WU10-C02:** standard-library-only runtime and minimal build/test dependency strategy;
-- **WU10-C03:** governance, change classification, traceability binding, cross-project interchange boundary and Phase 0 → Phase 1 handoff.
-
-The recommended action is to approve all three together if no amendment is required, then proceed to Work Unit 11 final Phase 0 audit.
-
-No Phase 1 implementation, licensing file, schema, fixture or CI workflow is created by this Work Unit 10 package.
-
-## 16. Work Unit 11 first final-audit record
-
-### 16.1 Audit control and disposition
-
-| Field | Current value |
-|---|---|
-| Audit revision | 0.2 supplement to this document |
-| Audit date | 2026-09-17 |
-| Audited input commit | `e9262d7a14bfb0df18f7444d60c0d06d59581e9f` |
-| Input inventory | 18 Phase 0 Markdown files, listed in §19 |
-| Owner instruction | `可以，继续Work Unit 11` |
-| Approval interpretation | WU10-C01-WU10-C03 accepted as the submitted design for final review; no final baseline approval |
-| Audit disposition | BLOCKING: four incomplete realization contracts |
-| Decision register | `UNRESOLVED_DECISIONS.md` revision 0.6, §§17-20 |
-| Prior decisions consolidated | SIT-D001-SIT-D027 and the recorded WU6-WU10 supplements |
-| New decisions | SIT-D028-SIT-D031 |
-| Outputs of this audit pass | This supplement and decision-register revision 0.6 |
-| Final approval artifact | Not created |
-| Runtime / CI tests | Not run; no product implementation exists in this baseline |
-
-The approved plan permits a final consistency audit and requires unresolved blockers to remain visible. The present pass completes that inspection and records the findings. It does not satisfy the no-blocker condition for approving Phase 0.
-
-Acceptance of a work-unit submission and verification that it discharged every assigned obligation are separate events. The WU10 package provides a useful layout, owner mapping and dependency posture, but its completion handoff overstated readiness: several requirements explicitly assigned to WU10 in WU6-WU9 remain stated only as future implementation responsibilities. The four findings below identify those missing contracts. No earlier theory, analytical definition or canonical oracle is rejected by this audit.
-
-### 16.2 Approval-history reconciliation
-
-The decision register's original WU5 status table left SIT-D026-SIT-D027 pending because subsequent units could not edit that file. Reporting §11.1 contains their later acceptance. Validation §9 and the later unit intakes record the reporting/case/test-planning basis. This document §1 records WU9-C01/WU9-C02 acceptance, and licensing revision 0.2 records the explicit Apache-2.0 selection.
-
-Register revision 0.6 consolidates those events with their original scope. It also records the current WU11 intake as acceptance of the submitted WU10 design for final review. The preceding original decision text remains historical; a later acceptance is not backdated into it. Current status is 27 prior central decisions accepted in their recorded scope and four newly identified blockers.
-
-WU9-C03's current choice is uniform Apache-2.0 for original engineering repository materials. The earlier split Apache/CC BY recommendation is superseded. Historical companion-version references and then-pending labels are interpreted using this reconciliation and licensing revision 0.2, rather than as new contradictory approvals. None of this grants a license over theory papers, third-party material or user evidence by association.
-
-## 17. Final-audit findings
-
-### 17.1 Blocking realization gaps
-
-| Finding / decision | Exact missing realization | Controlling evidence | Required closure |
-|---|---|---|---|
-| W11-A01 / SIT-D028 | Bounded in-process capture, immutable normalization, compact byte measurement and loss-aware numbers | Privacy §§3.1, 8.1-8.2; validation §§11,17; architecture §§4,8,10 | One explicit input/capture/measurement protocol with paired file/library and boundary witnesses |
-| W11-A02 / SIT-D029 | Deterministic report IDs, witness selection, exact serialization and library/CLI outcome mapping | Reporting §19.2; traceability §9; validation §17; architecture §§4,7,9 | One realization profile, fixed trusted option/outcome table and deterministic representative-witness rules |
-| W11-A03 / SIT-D030 | Work-unit accounting, scope scheduling, shared-work charging and cancellation/result-commit points | Privacy §8.1; validation SIT-VG022 and §17; architecture §10 | A bounded execution protocol preserving the pure-core boundary and existing interruption semantics |
-| W11-A04 / SIT-D031 | Supported filesystem primitives, private staging, path-race handling and no-clobber complete-pair publication | Privacy §§5-6; threat §14; architecture §§10-11; dependency §2 | A platform/operation/failure profile checked against official primitive behavior, with unsupported cases explicitly bounded |
-
-SIT-D028-SIT-D031 each include alternatives, a recommended direction, affected trace/test families and acceptance evidence in the register. All remain BLOCKING. This audit records no selected implementation primitive, new dependency, changed ceiling, additional public analytical field or code.
-
-**W11-A01.** The limit on a constructed Python dossier needs a specified compact measuring representation. Number and string representation can affect that measurement. The immutable-snapshot promise also needs an explicit capture and caller-concurrency contract; it cannot be justified by a module name alone. Existing input constraints remain valid while the realization is completed.
-
-**W11-A02.** Two valid paths can support the same finding. Their selection and report-local identities need a stable rule before byte-level golden outputs can be frozen. Public invocation must also preserve the distinction between input rejection, an interrupted run, a completed audit with unavailable evidence, and a source-native failure record. The existing report schema supplies those meanings; the interface and renderer must realize them consistently.
-
-**W11-A03.** Numeric resource ceilings are already fixed. What remains is the protocol that charges work and commits complete results under those ceilings. Uncharged preprocessing, shared support scans or implementation-specific scheduling cannot silently determine compliance. A cooperative time guard is retained; the audit demands no hard real-time or cross-host identical interruption guarantee.
-
-**W11-A04.** Naming prospective Linux and Windows runners does not select the file-handle, permission or publication sequence required by the privacy contract. The issue concerns a missing bounded design, not a conclusion that the required protections are impossible. Choosing a narrower initial support profile would be a separate explicit scope decision, not an automatic fallback.
-
-### 17.2 Reconciled and retained matters
-
-**W11-A05: historical approval and license labels.** Reconciled through register §17 and this supplement. The original labels remain evidence of what was proposed at that time. The current Apache policy and later approval events control their respective scopes. No original approval is fabricated or silently rewritten.
-
-**W11-A06: transitive trace ownership.** The architecture's nineteen logical-owner rows provide concrete module/test homes for the nineteen owner labels in traceability §3. The 35 stable Trace IDs do not need new numbers. Reporting's two renderer paths share one frozen result authority; validation governance is realized through tests/review rather than a new analytical runtime module. This ownership mapping passes the documentary check, while realization details in W11-A01-W11-A04 remain open.
-
-**W11-A07: later-phase dependencies and executable evidence.** Exact build/test package versions, installed platform tests, measured performance and executable golden outputs remain intentionally assigned to later approved phases. Their absence alone is not a new Phase 0 blocker. The blockers above are narrower: earlier accepted documents specifically assigned their missing prose protocols to WU10.
-
-## 18. Verification results and evidence limits
-
-### 18.1 Registry and cross-document checks
-
-The following are specification checks. They do not report product runtime success.
-
-| Check | Observed result | Interpretation |
+| Original finding / decision | Supplied realization | Re-audit result |
 |---|---|---|
-| Phase 0 input inventory | 18 expected Markdown paths present at the pinned commit | File presence verified; semantic readiness is evaluated separately |
-| Theory map | 40 stable SIT-T IDs | No missing or additional numbered entry in the checked range |
-| Product requirements | 16 stable SIT-P IDs | Existing product scope retained |
-| Logical dossier | 12 canonical record kinds, 24 relation predicates, 9 assessment kinds | The WU3 vocabulary remains the input authority |
-| Analytical families | 15 SIT-M families | No new analytical family introduced by WU9/WU10 |
-| Trace register | 35 SIT-TR responsibilities | Each has source-map references; referenced source IDs resolve |
-| Logical implementation owners | 19 | Each has an architecture owner row; no owner disappears during transitive mapping |
-| Public analytical leaves | 57 | Reporting §17, traceability §5 and validation §12 contain the same leaf set |
-| Field-test obligations | 228 distinct IDs | Exactly P/N/M/B for each of SIT-VF001-SIT-VF057 |
-| Shared validation families | 26 SIT-VG sections | Cross-cutting rules remain additional obligations |
-| Prerequisite catalog | 24 PC codes | Reporting and validation catalogs match |
-| Non-result reasons | 40 codes | Reporting and validation catalogs match |
-| Narrow finding conditions | 22 codes | Reporting and validation catalogs match |
-| Success criteria | 66 stable SIT-SC IDs | Existing acceptance obligations retained; their existence is not a pass claim |
-| Canonical case catalog | H7-01, three controlled variants and 28 W7 micro-cases | Logical oracles preserved; no machine-readable fixtures or byte oracles generated |
+| W11-A01 / SIT-D028 | Architecture section 17 fixes types, immutable capture, exact scalars, J measurement and acceptance; dependency section 16 fixes numeric guard classification | PASS: the missing specification exists; caller/host limitations are explicit |
+| W11-A02 / SIT-D029 | Architecture section 18 fixes local IDs, witnesses, output/interface meanings; section 22 below fixes exact framing and cancellation transport | PASS: no renderer default or invented cancellation evidence state remains |
+| W11-A03 / SIT-D030 | Architecture section 19 fixes charges, schedule, shared-work rule, reserve, result commits and abort behavior | PASS: ceilings and unfinished-result meanings remain intact |
+| W11-A04 / SIT-D031 | Architecture section 20 and dependency sections 15-17 fix native primitives, private creation, non-replacement, commit acknowledgement and cleanup | PASS as a specified design; future native conformance tests remain required |
 
-The raw text used for automated ID/set checks was matched to the pinned repository blob identities for the twelve locally available predecessor documents listed in §19. The WU9/WU10 documents were inspected through the connected repository. The audit does not count a repeated statement as a new independent test or a second reviewer.
+These are technical documentation closure results. All four recommended completion directions are recorded in the current register. No unresolved engineering gap from the first-pass list remains in this candidate. Overall phase adoption and runtime validation are not represented as passed.
 
-### 18.2 Analytical and hero consistency
+## 18. Verification results
 
-The core distinctions remain present across definitions, lineage, reporting and validation: Artifact versions, claim-bound contributions and origin events have separate units; comparison-set qualification is scope-specific; unknown ancestry cannot create independent roots; disagreement remains representable; and graph-derived findings retain the basis of their supplied premises.
+### 18.1 Recomputed checks
 
-The main six-contribution hero retains its five-to-one origin incidence. Under its qualified complete single-origin premises, the HHI is `(5^2 + 1^2) / 6^2 = 26/36`, displayed as `0.722222` when the defined decimal presentation is used. The one-origin selected variant retains `25/25`. These arithmetic checks concern the finite written oracle, not an implemented graph algorithm or a claim of source truth.
+Local original WU1-WU8 text was matched to the unchanged repository blobs before it was used for source/field/Trace checks. The current architecture, dependency, governance, licensing, privacy and threat additions were read through the connected repository and/or checked as exact local outgoing documents. No unverified local predecessor is presented as a current remote version.
 
-The seventh unresolved contribution remains in its original denominator and withholds full-population HHI. A seventh contribution with two known origins also withholds that scalar under the unallocated multi-parent rule, while preserving the distinction from unknown ancestry. Neither case is repaired by equal splitting or resolved-only filtering.
+| Check | Result |
+|---|---|
+| Source-map identities | 40 SIT-T entries retained |
+| Product requirements | 16 SIT-P identities retained |
+| Analytical families | 15 SIT-M identities retained |
+| Trace ownership | 35 SIT-TR identities and 19 logical owners retained |
+| Public field equality | All 57 fields match across reporting, traceability and validation tables |
+| Field obligations | Exactly 228 P/N/M/B IDs, four for each of 57 fields |
+| Shared validation | 26 SIT-VG families retained |
+| Runtime prerequisite vocabulary | 24 PC identities retained |
+| Reason vocabulary | 40 existing reason codes; no new cancellation or guessed not_yet_evaluated code |
+| Success criteria | 66 SIT-SC identities retained |
+| New realization cases | 32 W11-R cases specified with future test-path ownership |
+| Basic numeric witnesses | J fragment length 13 bytes; 26/36 rounds half-up to 0.722222; 10,000,000 minus 1,024 is 9,998,976 |
 
-Correction and stage records retain their own populations. A submission, accepted handling and evidence-linked downstream change remain different records and units. Missing change evidence is not converted to a failed correction. Changing the selected source population does not silently change the pipeline cohort or correction targets. H7 and W7 expected meanings have not been rewritten to conceal the realization gaps.
+The tests here are document-set, identifier, arithmetic and outgoing-file checks. No production parser, serializer, graph routine or platform adapter was implemented or executed to obtain them.
 
-### 18.3 Theory and licensing scope
+### 18.2 Unchanged epistemic and analytical requirements
 
-The six supplied theory PDF byte identities were recomputed and matched the SHA-256 values already recorded in `SPEC_AUDIT.md`. This checks source version identity. It does not newly verify each cited empirical study, publication metadata, external standard or mathematical result.
+The 12 record kinds, 24 predicates, 9 assessment kinds and 22 finding conditions remain in their existing authoritative documents, which this remediation does not edit. Qualified process independence remains scoped and evidence-based. Missing ancestry cannot become a root. Disagreement remains representable. Structural consistency cannot authenticate a coherently fabricated dossier.
 
-The 35 trace responsibilities retain the distinction between source claims and toolkit operationalizations. No count or HHI is relabeled as entropy, mutual information, truth probability or measured error correlation. The local dossier remains caller-supplied evidence; structural consistency does not authenticate a coherently fabricated dossier.
+H7-01 retains its six source contributions and the conditional 26/36 HHI. The one-origin selected variant remains 25/25. An added unresolved contribution and a known unallocated multiparent contribution both withhold the full scalar while preserving their distinct profiles and full denominators. Pipeline cohorts and correction target sets are not silently changed by source selection.
 
-The current licensing decision is the owner's uniform Apache-2.0 engineering policy. Its source-paper, third-party and user-input exclusions remain explicit. The policy's later application is separate from final Phase 0 approval. No root license text, package metadata or new distribution grant is created by WU11.
+The three documented linked changes remain their own evidence. A missing change is not a failed correction, an accepted objection is not proof of truth, and a route is not evidence that it was used.
 
-### 18.4 Boundary and review limitations
+### 18.3 Review limits
 
-The pinned repository contains specification Markdown only. Planned Python paths and command examples are documentation, not executable product files. No package skeleton, runtime algorithm, machine-readable schema, executable fixture or CI workflow was present in the audited tree, and this audit adds none.
+This is the drafting assistant's review, not an independent second reviewer, penetration test, platform certification, legal clearance or scientific validation. Primary documentation was checked for the native/API facilities. ABI correctness, runtime determinism, exact byte golden files, actual performance and all fault/race tests remain future executable evidence under their named owners.
 
-Source Integrity Toolkit retains its separate repository/runtime boundary from Recursive Integrity Toolkit. Future public-artifact adapters remain proposals with semantic preservation requirements. No import, shared core, database or compatibility certificate is introduced.
+A later test failure must reopen the relevant design when necessary. It must not be hidden by replacing the written oracle or lowering the security boundary.
 
-These checks are performed by the drafting assistant, with local authoring utilities and connected repository reads. No independent security review, runtime fault injection, empirical validation, platform support certification or complete distribution license clearance is claimed. Readiness remains blocked even though the identifier and ownership checks pass.
+## 19. Candidate file inventory and identity procedure
 
-## 19. Pinned audit-input manifest
+The candidate consists of exactly these 18 Markdown paths:
 
-### 19.1 Repository snapshot
+| Path | Role |
+|---|---|
+| PHASE_0_PLAN.md | Approved phase/work-unit boundary |
+| SPEC_AUDIT.md | Original source audit |
+| THEORY_SOURCE_MAP.md | Forty-entry theory provenance map |
+| UNRESOLVED_DECISIONS.md | Current decisions with immutable historical references |
+| PROJECT_INSTRUCTIONS.md | Execution rules and historical work-unit authority |
+| V0.1_PRODUCT_SPEC.md | Product requirements and scope |
+| DEFINITIONS_AND_UNITS.md | Object, analytical and unit semantics |
+| CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md | Logical input and hero representation |
+| SOURCE_INTEGRITY_THREAT_MODEL.md | Threat/self-protection classes and W9 cases |
+| OBSERVABILITY_AND_REPORTING.md | States, prerequisites, field catalog and report envelope |
+| THEORY_TO_CODE_TRACEABILITY.md | Thirty-five responsibilities and field/test bindings |
+| VALIDATION_PLAN.md | Hero/micro-case oracles and future test obligations |
+| PRIVACY_AND_DATA_HANDLING.md | Privacy, safe I/O and fourteen fixed ceilings |
+| LICENSING_NOTES.md | Approved Apache-2.0 engineering policy with exclusions |
+| SUCCESS_CRITERIA.md | Cumulative specification/release gates |
+| REPOSITORY_ARCHITECTURE.md | Module owners and completed SIT-RP-0.1 protocol |
+| DEPENDENCY_STRATEGY.md | Runtime/build/test and fixed native dependency boundary |
+| GOVERNANCE_AND_HANDOFF.md | Current governance, re-audit and adoption handoff |
 
-The table identifies the input to this first audit, commit `e9262d7a14bfb0df18f7444d60c0d06d59581e9f`. Git blob identities and byte sizes are taken from the connected repository tree. They identify file versions; they do not establish source truth or approval.
+Use the final remote commit after the four intended documentation changes as the immutable candidate identity. Compare its full tree with the first-audit commit: no added/deleted path, implementation file, package metadata, LICENSE or CI is permitted in this work item. The fourteen unaffected paths must retain their original blobs.
 
-| Input file | Git blob identity | Bytes |
-|---|---|---:|
-| `CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md` | `a08e94bee1e4c8aaa4a47fcdd79b1e8db0fe6911` | 129967 |
-| `DEFINITIONS_AND_UNITS.md` | `36fd49115cd7a3a85be93eeeb480042a1b74496f` | 94436 |
-| `DEPENDENCY_STRATEGY.md` | `591db2c814e1a924b1c8c474c51cdbe7e52c231d` | 10842 |
-| `GOVERNANCE_AND_HANDOFF.md` | `396ecbf52208a1a1cd59cff13c20f436bf3dc582` | 14088 |
-| `LICENSING_NOTES.md` | `3468b44ec858ac1068f041affe94f8c183e3289a` | 10911 |
-| `OBSERVABILITY_AND_REPORTING.md` | `cf6c1d0aeb069cf5b68c3ea37b490dd6f5912208` | 111615 |
-| `PHASE_0_PLAN.md` | `d5ea6f6dd79b5770dfe80a3677d76706c7e78db8` | 45379 |
-| `PRIVACY_AND_DATA_HANDLING.md` | `8e7f6a1835104af4714826311db3ba92d1dd1c0f` | 28777 |
-| `PROJECT_INSTRUCTIONS.md` | `20c0b8fb6a870ccb21acbfc2024096e95cf317a4` | 22037 |
-| `REPOSITORY_ARCHITECTURE.md` | `08d72712b52557474d2f7c6109cf3504cf9421cc` | 19310 |
-| `SOURCE_INTEGRITY_THREAT_MODEL.md` | `7ba8945cf68e0069d42ad975d5a9ceaeb047d75e` | 93871 |
-| `SPEC_AUDIT.md` | `67f6b4ccb33f6db2aca508a64993661b3e28f3a9` | 42589 |
-| `SUCCESS_CRITERIA.md` | `63151e95af72d6aea224858bc356f1528a013661` | 58182 |
-| `THEORY_SOURCE_MAP.md` | `9cc299535f71b57f8800f6406723a689a6ce2560` | 56697 |
-| `THEORY_TO_CODE_TRACEABILITY.md` | `a6b6c716636bb15bb569b257e9b82086c18185ab` | 65779 |
-| `UNRESOLVED_DECISIONS.md` | `3b034483d660b9dcaad8ea2ea47d9c19d98d2ae9` | 108749 |
-| `V0.1_PRODUCT_SPEC.md` | `ad896af3b749220b1f4adf979fbae4fa5f01b165` | 62420 |
-| `VALIDATION_PLAN.md` | `701ec6a3e215638a02dd1eb82b2f503dd48d16e8` | 148233 |
+Git blob identities establish the comparison now. The approval artifact, created only after owner adoption, must calculate the separate requested SHA-256 manifest from that exact final candidate; Git SHA-1 identifiers must not be mislabeled SHA-256. This document avoids a self-referential claim to contain its own final hash. No missing hash is fabricated.
 
-Twelve files had exact matching local predecessor bytes: the plan, audit, source map, project instructions, definitions, lineage specification, reporting, product, validation, success criteria, traceability and the input decision register. Their Git blob hashes were recomputed before using them for document checks. The six newer files without a matching local predecessor were read through GitHub: dependency, governance, licensing, privacy, architecture and the WU9 threat revision. No whole-file SHA-256 result for those six is invented here.
+## 20. Current stop point
 
-This is a pinned input manifest for a blocked audit. The plan's final SHA-256 approval manifest remains a requirement for the corrected approval candidate. It must be computed from the actual final files after remediation and re-audit. This table cannot substitute for it.
+The requested remediation and WU11 technical re-audit are complete for the candidate described here, subject to final remote write/readback confirmation. The next decision is final owner adoption of this complete Phase 0 baseline, not another authorization to perform the same re-audit.
 
-### 19.2 Output identities and preservation
+No PHASE_0_APPROVAL.md, PHASE_1_PLAN.md, LICENSE, implementation package, executable schema, runtime fixture or workflow is created. On adoption, the approval record must use the actual final file identities and preserve the remaining scaffold and implementation prohibitions.
 
-The decision-register update was committed at `40edd886c816af0f28f4648566ed482140e82c6a`, with returned blob identity `0245b20b77a41a9f7a0fad510dd4dc5553715592`. GitHub's comparison with the input commit reports 140 added lines and no deleted lines for that update. Its banner and sections 17-20 supply the current view while retaining the original history.
+## 21. Re-audit change control
 
-This governance update likewise retains the original control table and sections 1-15, adds a current-reading banner and appends sections 16-20. Its final commit/blob identity must be read from GitHub after publication; it is not self-declared inside its own bytes. The combined final comparison for this audit should show only the two allowed Markdown updates. Any unexpected change prevents a preservation claim until examined.
+This candidate completes the four previously approved-direction remedies rather than revising theory or adding analytics. It also consolidates the current governance and decision indexes, with the unabridged historical text preserved by pinned Git references. The consolidation is explicit; the previous observations and approval evidence remain available unchanged.
 
-## 20. Stop point, remedy request and re-audit contract
+Sections 17-20 of architecture remain the protocol owners. Section 22 below is a binding precision supplement to that same SIT-RP-0.1 candidate, assigned to those existing owners. No implementation may ignore it as non-normative commentary. A later purely editorial relocation into the owning sections must preserve its outcomes.
 
-The first WU11 audit pass stops at **SIT-D028-SIT-D031**. Approval readiness is BLOCKING. No `PHASE_0_APPROVAL.md`, `PHASE_1_PLAN.md`, `LICENSE`, package metadata, executable schema or implementation is created.
+## 22. Precision resolutions checked in the second pass
 
-The recommended next work is a bounded **WU10 completion/remediation pass within Phase 0**. On explicit owner authorization, finish the four missing prose protocols in the architecture and dependency documents, updating reporting/validation only where their owned contracts require clarification, and record each resolution in the decision register. Retain the original source theory, product scope, analytical units, 57 leaves, H7/W7 logical oracles, no-network boundary and WU9 numerical ceilings.
+### 22.1 Numeric guard and schema vocabulary
 
-A proposed remedy that changes any of those retained contracts must be identified as a new scoped decision, not presented as an editorial repair. Narrowing platform support, adding a native or third-party dependency, weakening byte determinism, or moving a Phase 0 gate to a later phase requires explicit owner selection and corresponding consumer changes. No such choice is made by this audit record.
+The existing numeric-token scan ceiling is a resource guard. An overlong raw token or exact in-process emitted token stops with resource_limit_reached, as required by privacy section 8.3; it is not a new structural source-quality rule. Out-of-range exact integers, non-finite numbers and incompatible field types remain structural errors. No bool is an integer count.
 
-The re-audit must verify the actual remedy text against each decision's acceptance conditions, rerun the registry/field/trace checks, review the complete updated dependency and security boundaries, and inspect the final changed-file set. It must then assemble the SHA-256 manifest for the corrected candidate. A missing contract cannot be marked resolved solely because its recommended direction was accepted.
+Integral normalization is a mathematical JSON-number convention for fields that admit numbers; it never bypasses a stricter field's declared type or range rule. J changes formatting, not claim/evidence relationships. A derived report introduces none of the speculative root fields used in informal examples: the actual root keys remain reporting section 16.1's exact table.
 
-Only after that re-audit finds no in-scope blocker should the complete Phase 0 baseline be presented for the owner's explicit final approval. The approval record may then be created with the approved file identities and exact next-phase authorization. Until then, the project remains in Phase 0.
+### 22.2 Exact Markdown framing
+
+Complete architecture section 18.3 with this fixed layout. The document starts with `# Source Integrity Audit` followed by two LF characters, then the tool-controlled lines `Report kind: <report_kind>`, `Processing state: <run.processing_state>`, and `Input state: <input_validation.state>`, each followed by LF, then one blank line.
+
+Visit the 16 root keys in reporting section 16.1 table order. Emit `## <root_key>` followed by two LFs. For every root except results, emit its complete value in a fenced pretty-JSON block. Pretty JSON uses J's key ordering/scalars, two spaces per indentation level, comma then LF between entries, colon then one space, no trailing commas/spaces, and compact empty arrays/objects. Nonempty arrays/objects place one entry per indented line and a closing delimiter at the opening indentation. Scalars occupy one line. A block ends with one LF before its closing fence, and the fence is followed by two LFs.
+
+For results, emit one `### <Result ID>: <field_key>` heading followed by two LFs, then that complete Result block. For each available fraction Result, emit the exact decimal-display line from architecture section 18.3 and two LFs. Emit `Reason details` and two LFs, then the complete array of referenced Reasons in their canonical order as another block. An empty results array is represented by a single empty-array block. Do not display a summary number without its Result scope/population/basis references and qualifications; all linked details appear in the corresponding root sections.
+
+Every block has a tool-owned backtick fence of length max(3, one greater than the longest consecutive backtick run in its body), with the opening info string json. Source strings occur only inside encoded block values. After the final block, remove the final extra blank line so the Markdown ends with exactly one LF. The JSON sibling is J of the same frozen envelope plus one LF.
+
+This selects representation bytes only. It adds no report field and does not alter any availability, witness or numeric oracle. Unknown run times use the already allowed TimeValue fields state/value/precision/reason, with a truthful not-recorded reason.
+
+### 22.3 Caller cancellation is not resource exhaustion
+
+The resource/cancellation shorthand in architecture section 18.4 is refined here. A caller/KeyboardInterrupt cancellation is a separate safe transport event: preserve the actual accepted/not_completed state and known publication state in a payload-free AuditCancelled outcome/exception; CLI exits 130. It may suppress report delivery. It does not fabricate resource_limit_reached, execution_failed, analysis_not_selected or a new report reason code merely to label that cancellation.
+
+A resource guard still uses exit 3 and its existing reason. An actual runtime/I/O failure still uses exit 4. A native source record saying failed remains data. First safely established cause controls a simultaneous stop; later cancellation cannot change an already observed publication commit into no publication. Hard termination may have no return. No public cancellation callback or source-provided handler is introduced.
+
+### 22.4 Path and native protection limits
+
+Dependency section 15 adds a no-follow regular-file precheck before Linux's existing descriptor read. The subsequent regular descriptor and identity checks remain necessary; this is not a check-then-open security claim without the accepted parent/owner/quiescence assumptions.
+
+For Windows, the selected output parent must be controlled by the invoking principal or trusted OS administrators/system identities. Refuse unrecognized ordinary write/delete-child authority when it prevents establishing that profile; do not repair the caller's parent ACL. Retained directory handles, private creation descriptors and no-replace publication remain required. Unexpected sharing/permission/ABI behavior fails safely and keeps that platform unclaimed until its tests pass.
+
+The current primary Microsoft documentation permits a relative rename target through RootDirectory and specifies error on an existing target when ReplaceIfExists is false. The complete safe directory transaction remains a project composition requiring future tests. No primitive documentation is presented as a tested proof of the composition.
+
+### 22.5 Deterministic optional choices and witness ordering
+
+For this reference profile, deduplicate identical explanatory report objects by their complete ID-free semantic bodies and anchor keys; do not leave that choice renderer-dependent. Never deduplicate input records or distinct input IDs. Two unequal values for one Result slot are an internal error.
+
+To break equal-length path ties, compare the complete edge-key sequence, not only the final predecessor's local ID. A breadth-first distance pass followed by lexicographic ranking of complete predecessor prefixes meets the rule. Cyclic-component and all-parent/conflict checks remain independent of which representative is selected.
+
+### 22.6 Scope of this pass
+
+These precision resolutions are part of the proposed final baseline and bind the existing normalization/report/runtime owners and W11-R/SIT-VG tests. They were reviewed as documentation now; they were not implemented. They close the identified ambiguity instead of moving a hidden decision into a later code default. Final owner adoption of this candidate remains required.
