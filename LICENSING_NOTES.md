@@ -7,136 +7,127 @@
 | Project | Source Integrity Toolkit |
 | Target release | v0.1 |
 | Phase / work unit | Phase 0 / Work Unit 9 |
-| Revision | 0.1 |
+| Revision | 0.2 |
 | Date | 2026-09-17 |
-| Status | PROPOSED LICENSE POLICY; no license is applied by this proposal |
+| Status | WU9-C03 APPROVED; Apache-2.0 selected for original engineering repository materials; license file not yet applied |
 | Decision owner | Xiangyu Guo, subject to authority over each included work |
-| Repository baseline | `bfebc1095ff000f816e21fecf34df32debe6727b` |
-| Review item | WU9-C03 |
-| Current authority | Draft and publish this specification; no blanket relicensing or runtime release |
-| Existing source basis | SPEC_AUDIT source register; six supplied theory notices |
-| External reference scope | Official Apache and Creative Commons license text only |
+| Approval evidence | User instruction: `那就apache2.0吧` |
+| Supersedes | Revision 0.1 split Apache-2.0 / CC BY 4.0 proposal |
+| Existing source basis | `SPEC_AUDIT.md` source register; six supplied theory notices |
+| Implementation / final Phase 0 approval | Neither is authorized by this decision |
 
-## 1. Purpose and current status
+## 1. Approved policy
 
-PLAN Work Unit 9 requires separate treatment of software, reusable specifications, example data, theory papers and third-party source material. SIT-D015 explicitly reserved this decision. Recursive Integrity Toolkit's license and earlier assistant suggestions do not select the license of this independent project.
+WU9-C03 is resolved in favor of a single Apache License 2.0 policy for the project's newly authored engineering repository materials.
 
-This document proposes a file-class policy for later adoption. It does not grant a new license, retroactively relicense historical snapshots, declare the public repository to be a released open-source package, or change any paper's existing notice. No `LICENSE`, `NOTICE`, package metadata or license header is created in this work unit. Their implementation belongs to a separately approved scaffold phase after the relevant owner decisions.
+When the later scaffold phase applies the license, Apache-2.0 is intended to cover original project material whose rights are controlled by the licensor, including:
 
-The source papers support provenance, accountability and source return. They do not establish a software licensing scheme. The explanations of standard license terms in §3 are limited external reference checks; the material classification, approval procedure and release checklist below are proposed project policy. This is not a legal opinion about ownership, fair use, privacy compliance or any particular third-party asset.
+- software implementation, CLI and library code;
+- build and maintenance tools;
+- executable tests and fixture generators;
+- machine-readable schemas and configuration;
+- original reusable specifications and architecture documents;
+- original explanatory engineering documentation;
+- original prose test/oracle descriptions;
+- original fictional evidence bundles, examples and synthetic fixture data.
 
-## 2. Recommended separation of materials
+The unified policy reduces license-boundary complexity inside the engineering repository. File type alone does not determine ownership or permission. Material that the project does not have authority to license remains outside the Apache-2.0 grant even when stored beside covered project files.
 
-| Material class | Proposed later license treatment | Boundaries |
+This Phase 0 decision records the selected policy. It does not yet create a root `LICENSE`, `NOTICE`, package metadata, SPDX headers or a released software distribution. Those repository artifacts belong to the separately approved scaffold phase after the Phase 0 baseline is completed and approved.
+
+## 2. Materials excluded from the repository Apache-2.0 grant
+
+| Material class | Treatment | Boundary |
 |---|---|---|
-| Original software implementation, CLI/library glue, build tools and executable tests | Apache-2.0 | Applies only to included contributions whose rights are controlled or properly licensed |
-| Original machine-readable schemas and software configuration | Apache-2.0 | Classify explicitly; do not label a whole mixed repository with one ambiguous expression |
-| Original reusable specifications, explanatory documentation and prose test/oracle descriptions | CC-BY-4.0 | Embedded third-party passages, images and existing papers remain separately identified |
-| Original fictional evidence bundles and standalone synthetic fixture data | CC-BY-4.0 | A synthetic label does not authorize copied real records; executable fixture generators follow the software class |
-| Theory papers and their full-text extracts, page images or translations | Retain their source-specific rights; exclude from the normal toolkit distribution | No transfer to the code/specification license by association |
-| Third-party code, documentation, data, standards extracts or media | Preserve their own licenses/permissions and distribution conditions | Approval and a provenance/rights record precede incorporation |
-| User input dossiers and confidential identity mappings | No toolkit license is applied | Auditing or storing a record does not claim its ownership or authorize redistribution |
-| User-generated audit reports | No blanket license over embedded user/source material | Tool-authored template text and input-derived content remain distinguishable |
+| Six theory papers by Xiangyu Guo | Retain their displayed CC BY-NC-ND 4.0 notices | They are reference assets and are excluded from the normal engineering distribution unless separately authorized |
+| Extracts, page images, translations or adaptations of the theory papers | Source-specific rights or separate permission | Inclusion in an Apache-licensed repository does not relicense them |
+| Third-party code, documents, data, standards extracts, media or benchmark material | Preserve the applicable third-party license or permission | Review origin, version and distribution conditions before incorporation |
+| User-supplied evidence dossiers | No toolkit license is applied | Auditing does not transfer ownership or authorize redistribution |
+| Confidential identity mappings or protected-source material | No toolkit license is applied | Privacy and disclosure rules remain controlling |
+| Input-derived portions of audit reports | Preserve the rights and disclosure limits of the supplied material | Tool-authored template text can be project material; embedded source expression is not automatically Apache-licensed |
 
-This is a file-class policy, not dual licensing of every file. A schema with code-like configuration and a fictional JSON evidence bundle may share an extension while belonging to different classes. A future manifest must identify actual paths after WU10 fixes the architecture.
+The repository license must therefore be accompanied by clear exclusion language in later public-facing documentation. A root Apache-2.0 license cannot be described as relicensing every byte that may ever be processed by, linked from, or referenced by the toolkit.
 
-The recommendation permits commercial adoption and modification of the project's newly licensed software, specifications and fictional examples, subject to their actual license terms. That product-policy choice does not loosen the theory papers' notices or promise commercial rights to third-party evidence. WU9-C03 must be explicitly accepted before it is implemented.
+## 3. Apache-2.0 reference and intended effect
 
-## 3. Limited external license-reference check
+Apache License 2.0 provides copyright permissions and a defined contributor patent grant subject to its conditions. Redistribution requires preservation of the license and applicable notices, and modified files must carry appropriate change notices. The patent grant and termination terms apply according to the standard license text.
 
-The following official texts were consulted on 2026-09-17. Their legal text controls; these brief notes explain the proposed choices and do not replace it.
+Official reference:
 
-### 3.1 Apache-2.0
+- Apache Software Foundation, Apache License, Version 2.0: `https://www.apache.org/licenses/LICENSE-2.0.html`
 
-Apache License 2.0 §§2-4 provides copyright permissions and a defined contributor patent grant, subject to its conditions. Redistribution requires the license, change notices and relevant retained notices; an included NOTICE has its own carry-forward treatment. Sections 6-8 address trademarks, warranty and liability. The patent grant is limited to covered contributor claims and has a litigation-termination condition. It supplies no general clearance of third-party patents. [EXT-L01]
+The standard legal text controls. This specification records project policy and does not replace that text or provide a legal opinion about ownership, patent scope, fair use or a particular third-party asset.
 
-### 3.2 CC-BY-4.0
+The selected policy permits commercial adoption, modification and redistribution of the newly licensed engineering material under Apache-2.0. It does not modify the NC or ND conditions attached to the theory papers and does not grant commercial rights to evidence that the project does not own.
 
-CC BY 4.0 permits sharing and adaptation, including commercial uses, with attribution, license identification and modification notices as applicable. It does not authorize additional restrictions that defeat the licensed rights. The legal code distinguishes the licensor's controlled copyright/database rights from privacy, publicity, patent and trademark rights. Compliance with a copyright license therefore does not establish that publishing a personal-data dossier is permissible. [EXT-L02]
+## 4. Theory-source register remains separate
 
-### 3.3 Existing CC-BY-NC-ND-4.0 theory notices
+The source identities recorded in `SPEC_AUDIT.md` remain controlling for theory provenance.
 
-The six reviewed PDFs display CC BY-NC-ND 4.0 notices. Under that license, permitted sharing is limited to noncommercial use, and the license does not authorize sharing adapted material. Its exceptions-and-limitations provision and permitted technical modifications must be considered separately. A rights holder may grant additional permissions; this work unit records none. Do not automatically treat a translation, edited paper, diagram adaptation or extracted collection as newly licensed toolkit material. [EXT-L03; SPEC_AUDIT §2]
-
-### Official references
-
-- EXT-L01: Apache Software Foundation, Apache License, Version 2.0, §§2-9 and application guidance. `https://www.apache.org/licenses/LICENSE-2.0.html`
-- EXT-L02: Creative Commons, Attribution 4.0 International, legal code, §§1-6. `https://creativecommons.org/licenses/by/4.0/legalcode`
-- EXT-L03: Creative Commons, Attribution-NonCommercial-NoDerivatives 4.0 International, legal code, §§1-6. `https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode`
-
-No current national-law analysis, standards-compliance review or dependency compatibility audit was performed. No exact third-party dependency has been selected in this unit.
-
-## 4. Theory-source register and attribution
-
-The existing SPEC_AUDIT §2 supplies complete filenames, version observations, page counts and SHA-256 values. Retain those identities rather than inferring a new canonical version from filename suffixes or current publication metadata.
-
-| Source ID | Reviewed work | Displayed notice / version observation |
+| Source ID | Reviewed work | Existing notice |
 |---|---|---|
-| SIL | The Source Integrity Layer: Presence × Integrity and the Governance of AI-Native Information Distribution | CC BY-NC-ND 4.0; copyright 2026; no numbered cover revision |
-| UIL | The Universal Inbreeding Law: Closure, Diversity Loss, Correlated Error, and Integrity Decay in Self-Organizing Systems | CC BY-NC-ND 4.0; copyright 2026; v2 in supplied filename |
-| EC | Evaluation Closure Benchmark Inbreeding and the Design of Open AI Evaluation | CC BY-NC-ND 4.0; cover 2026; no numbered cover revision |
-| HDL | The Heat Death of Language: Reality-Coupled Information, Semantic Gradient Collapse, and the Source Integrity of AI | CC BY-NC-ND 4.0; cover August 2026, Version 2.0 |
-| EBC | Entropy as a Structural Boundary Condition, Not a Causal Force | CC BY-NC-ND 4.0; preserve cover copyright 2025 and the separate 2026 original-publication revision note |
-| BVL | The Boundary Vacuum Law: Gradient, Boundary Failure, Topological Flow, and Pressure Capture in Social Systems | CC BY-NC-ND 4.0; copyright 2026; v2 in supplied filename |
+| SIL | The Source Integrity Layer: Presence × Integrity and the Governance of AI-Native Information Distribution | CC BY-NC-ND 4.0 |
+| UIL | The Universal Inbreeding Law: Closure, Diversity Loss, Correlated Error, and Integrity Decay in Self-Organizing Systems | CC BY-NC-ND 4.0 |
+| EC | Evaluation Closure: Benchmark Inbreeding and the Design of Open AI Evaluation | CC BY-NC-ND 4.0 |
+| HDL | The Heat Death of Language: Reality-Coupled Information, Semantic Gradient Collapse, and the Source Integrity of AI | CC BY-NC-ND 4.0 |
+| EBC | Entropy as a Structural Boundary Condition, Not a Causal Force | CC BY-NC-ND 4.0 |
+| BVL | The Boundary Vacuum Law: Gradient, Boundary Failure, Topological Flow, and Pressure Capture in Social Systems | CC BY-NC-ND 4.0 |
 
-The author named in these sources is Xiangyu Guo. Project attribution may identify that theory provenance without declaring that every software or documentation contribution has the same author. Attribution must not imply endorsement by a cited standards body, journal, software foundation or unrelated contributor.
+Normal toolkit releases should use original engineering descriptions, citations and the traceability map rather than bundling theory PDFs, page screenshots or long extracts. The Apache-2.0 selection for the engineering repository does not alter those papers' existing notices.
 
-Normal public releases should contain original engineering descriptions, source references and the traceability map, not bundled theory PDFs, screenshots, extracted full texts, fonts or previous conversation archives. Any later inclusion of source expression requires an item-specific rights decision. Citation alone is not treated as redistribution permission, and using a theoretical idea is not automatically classified as copying a whole paper. The proposed policy requires distinguishing those cases rather than making a blanket legal determination.
+## 5. Third-party material and user evidence
 
-## 5. Third-party material and input-derived reports
+Before a third-party asset is incorporated into a distributable repository artifact, future release governance must record its origin, exact version or digest where practical, rights holder where known, license or permission basis, intended use, required notices and any modification or redistribution conditions.
 
-Before including a third-party asset in the repository, a maintainer must record its origin, exact version or digest, rights holder where known, license/permission basis, intended use, permitted modifications/distribution, required notices and decision owner. A relevant source license must be reviewed for the actual use. A link, downloadable file or source-verified label cannot fill an absent permission record.
+A URL, source citation, public availability or successful audit does not itself establish a right to redistribute the underlying work. Real-world material must not be turned into an Apache-licensed fixture merely by changing names or formatting.
 
-These rights-review records belong to future release governance. They do not add a mandatory runtime license field or expand `sit-bundle/0.1`. An audit may represent an unknown or restricted source through an authorized locator or protected attestation while exposing its evidentiary limits. The runtime does not adjudicate whether every source's license was correctly supplied.
+Tests of protected-data behavior should use independently constructed fictional canaries. User evidence may be represented through an authorized locator or protected attestation without being copied into a public example set.
 
-Do not place licensed or confidential real-world material in a fictional fixture by changing its names. Third-party JSON data, excerpts, photos, benchmark questions, expected answers and screenshots need the same review as other assets. Tests of protected-data handling must use independently constructed fictional canaries.
-
-A report should reproduce only material permitted by the disclosure contract. Applying a toolkit template does not convert user evidence to Apache-2.0 or CC-BY-4.0. Any report licensing statement must describe the covered portion and exclude source/input content whose rights the issuer does not control. No mandatory ownership assignment from users, source-return charge or data-sharing permission is introduced.
-
-The full Source Integrity Layer's licensing markets and source-return infrastructure remain outside v0.1. Representing a source-return event, where otherwise expressible, cannot execute payment or grant a reuse license.
+Applying an Apache-licensed report template does not relicense the user's evidence. Any later report license statement must identify the portion actually covered by the project license and preserve source/input rights and disclosure restrictions.
 
 ## 6. Contributions and rights uncertainty
 
-For future contributions, record the intended material class and confirmation that the contributor has authority to submit it under that class's adopted terms. An employer-controlled contribution, an imported passage or material with uncertain rights requires review before inclusion. No copyright assignment or contributor agreement is presumed signed by this conversation.
+Future contributions should record that the contributor has authority to submit the covered material under Apache-2.0. Employer-controlled material, copied passages, third-party examples or assets with uncertain rights require review before inclusion.
 
-AI-assisted drafting must not be used as evidence that all output is original or that all necessary rights are owned. Preserve material provenance and review copied source expression. License only rights the licensor controls; do not manufacture legal ownership, an earlier approval date or a contributor signature.
+AI-assisted drafting does not by itself establish originality or ownership. Project maintainers must continue to distinguish original engineering expression from copied theory or third-party expression before applying the repository license.
 
-Project safety, privacy and evidentiary rules govern what the project accepts and how its reference implementation behaves. They must not be silently inserted as extra downstream restrictions into an unmodified standard license. Required attribution and change notices remain distinct from demands for permission, ideological agreement or endorsement of the theory.
+Project privacy, security and evidentiary rules are implementation and governance requirements. They are not added as extra downstream restrictions to the standard Apache-2.0 license.
 
-## 7. Adoption and later scaffold requirements
+## 7. Later scaffold requirements
 
-Before any license is applied, the owner must accept WU9-C03's chosen policy and confirm the authority to license the covered project material. The complete Phase 0 audit must also reconcile source-expression exclusions and unresolved rights issues. The future scaffold plan must then list the exact license/notice files and covered paths it may create.
+After final Phase 0 approval and under the separately approved scaffold plan, the repository should implement this decision by creating and checking the appropriate release artifacts. At minimum, the scaffold plan should address:
 
-Later implementation of the recommended policy must include:
-
-| Release obligation | Required evidence |
+| Release artifact / check | Required treatment |
 |---|---|
-| Clear license application | Correct standard text and material/path-specific scope; no ambiguous single-license assertion over excluded assets |
-| Attribution and modification records | Project contributors, source references and changes identified without false endorsement |
-| Third-party notices | Only actually included dependencies/assets; their actual versions and licenses reviewed |
-| Software/package scope | Code, schemas and executable tests classified consistently; no runtime dossier automatically included |
-| Specification/data scope | Original reusable prose and fictional data identified; embedded source material excluded or separately authorized |
-| Distribution inspection | Wheel/source archive/docs/example bundle contents checked, not merely the root directory |
-| Theory exclusion | No automatic packaging of the six PDFs, extracted full texts or page images |
-| No fabricated legal completion | Actual adoption event recorded; unresolved assets excluded until cleared |
+| `LICENSE` | Standard Apache License 2.0 text |
+| `NOTICE` | Project attribution and any notices that are actually required; no fabricated third-party notices |
+| README license statement | State that original engineering repository materials are Apache-2.0, subject to clearly named exclusions |
+| Package metadata | Use `Apache-2.0` consistently where package metadata applies |
+| Specifications and fictional examples | Include them in the engineering Apache-2.0 scope unless an individual file carries an explicit separate notice |
+| Theory sources | Exclude PDFs/full-text/page images from ordinary toolkit packages; preserve their CC BY-NC-ND 4.0 notices when referenced |
+| Third-party materials | Preserve their own terms and list included items in the appropriate notice/rights record |
+| User/runtime data | Never package it as project-licensed fixture material by default |
+| Distribution inspection | Verify source archives, wheels, docs and examples rather than checking only the repository root |
 
-The absence of an implemented licensing file in the present Phase 0 repository is intentional. This proposal does not retrospectively apply terms simply because a document was publicly uploaded.
+No `LICENSE` file is created in Work Unit 9 because Phase 0 remains a specification phase.
 
 ## 8. Written licensing acceptance cases
 
 | Case | Required result |
 |---|---|
-| W9-LIC01: Original executable test plus separate fictional JSON dossier | Classify test software and standalone fixture data separately under the adopted policy |
-| W9-LIC02: Full HDL PDF is copied into an examples folder | Do not include it in the standard toolkit release; require separate source-rights review |
-| W9-LIC03: A private supplied dossier is audited successfully | No automatic license, publication or ownership transfer attaches to the dossier or its evidence |
-| W9-LIC04: A diagram is adapted from a theory paper and labeled CC-BY-4.0 | Block the proposed inclusion until specific permission/basis is established; do not silently relicense it |
-| W9-LIC05: A dependency is proposed in WU10 | Inspect its actual version/license and distribution role; this document has approved no dependency by name |
-| W9-LIC06: The owner approves the policy but Phase 1 is not authorized | Record the decision in an allowed document; create no implementation, package metadata or scaffold license files yet |
+| W9-LIC01: Original executable test plus original fictional JSON dossier | Both fall under the later repository Apache-2.0 policy |
+| W9-LIC02: Full HDL PDF is placed in an examples directory | Exclude it from the ordinary engineering distribution or handle it under its existing CC BY-NC-ND 4.0 terms and a separate rights decision |
+| W9-LIC03: A private supplied dossier is audited successfully | No Apache-2.0 license, publication permission or ownership transfer attaches to the dossier |
+| W9-LIC04: A diagram adapted from a theory paper is labeled Apache-2.0 | Do not accept that relicensing without an independent rights basis or specific permission |
+| W9-LIC05: WU10 proposes a dependency | Review the actual dependency version, license and distribution role before adoption |
+| W9-LIC06: This Apache-2.0 policy is approved while Phase 1 remains unauthorized | Record the policy now; wait for the authorized scaffold phase before creating `LICENSE`, `NOTICE` or package metadata |
 
-These are documentation-level acceptance obligations. No runtime test or legal clearance of an actual new asset is claimed.
+These are documentation-level obligations. No runtime test, dependency review or legal clearance of a new asset is claimed here.
 
-## 9. Review item and stop point
+## 9. Decision record and remaining Work Unit 9 gates
 
-WU9-C03 offers three alternatives: A, one uniform license for all newly authored project materials; B, the separated Apache-2.0 / CC-BY-4.0 policy in §2 with source/input exclusions; C, defer a licensing decision and prohibit representing the project as a licensed release until that gate is resolved. **Option B is recommended.** It separates reusable engineering material from separately licensed papers and caller evidence while keeping software adoption straightforward.
+**WU9-C03: APPROVED.** The owner selected Apache-2.0 for the project's original engineering repository materials through the instruction `那就apache2.0吧`. This supersedes revision 0.1's split Apache-2.0 / CC BY 4.0 recommendation.
 
-This choice requires owner acceptance. It leaves source-paper rights unchanged and does not authorize Phase 1, a source-return service, a third-party rights assumption or final Phase 0 approval. The next work unit remains architecture and handoff, subject to its own authorization.
+WU9-C01 and WU9-C02 concern privacy/disclosure and bounded-processing controls. This license decision does not approve, reject or modify those separate proposals.
+
+The next planned unit remains Work Unit 10 after the remaining Work Unit 9 package is accepted. Full Phase 0 approval and implementation authorization remain separate later actions.
