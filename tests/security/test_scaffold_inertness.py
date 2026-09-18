@@ -9,6 +9,7 @@ This is not a sandbox or a complete proof of absence of all possible effects.
 """
 from __future__ import annotations
 
+import ast
 import json
 import os
 import shutil
@@ -24,6 +25,9 @@ from tools import check_scaffold_boundary as guard
 
 PROBE = r'''
 import contextlib, ctypes, importlib, io, json, os, pathlib, socket, sys, typing
+# P1-W06-R01: preload cache and hostname helpers before the observer.
+import importlib.util
+import encodings.idna
 request = json.loads(sys.stdin.read())
 package_dir = os.path.abspath(request["package"])
 source_dir = os.path.dirname(package_dir)
@@ -203,6 +207,31 @@ def run_probe(mutation: tuple[str, str] | None = None) -> dict:
 
 
 class ScaffoldInertnessTests(unittest.TestCase):
+    def test_cache_helper_preloads_in_clean_interpreter(self):
+        # Exercise the actual probe preamble without site initialization or a
+        # parent pytest process implicitly providing importlib.util.
+        preload, delimiter, _ = PROBE.partition("\nrequest = json.loads(sys.stdin.read())\n")
+        self.assertTrue(delimiter)
+        imports = {alias.name for node in ast.parse(preload).body
+                   if isinstance(node, ast.Import) for alias in node.names}
+        self.assertIn("importlib.util", imports)
+        self.assertIn("encodings.idna", imports)
+        script = preload + "\n" + (
+            "cache = importlib.util.cache_from_source('probe.py')\n"
+            "if importlib.util.source_from_cache(cache) != 'probe.py':\n"
+            "    raise RuntimeError('cache_helper_round_trip_failed')\n"
+            "if 'canary.invalid'.encode('idna') != b'canary.invalid':\n"
+            "    raise RuntimeError('hostname_helper_failed')\n"
+            "print('CACHE_HELPER_READY')\n"
+        )
+        with tempfile.TemporaryDirectory(prefix="sit-preload-regression-") as temp:
+            process = subprocess.run([sys.executable, "-I", "-S", "-B", "-c", script],
+                                     cwd=temp, capture_output=True, text=True,
+                                     encoding="utf-8", timeout=20)
+        self.assertEqual(process.returncode, 0, process.stderr)
+        self.assertEqual(process.stdout, "CACHE_HELPER_READY\n")
+        self.assertEqual(process.stderr, "")
+
     def test_imports_api_and_cli_are_inert(self):
         result = run_probe()
         self.assertTrue(result["ok"], result)

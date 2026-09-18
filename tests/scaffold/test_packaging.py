@@ -78,6 +78,50 @@ def distributions(tmp_path_factory):
     return work, next(artifact_dir.glob("*.tar.gz")), next(artifact_dir.glob("*.whl"))
 
 
+def check_generated_setup_cfg(content: bytes, *, platform_name: str) -> None:
+    """Check one backend-generated file, without normalizing any input bytes."""
+    expected = {
+        "posix": b"[egg_info]\ntag_build = \ntag_date = 0\n\n",
+        "nt": b"[egg_info]\r\ntag_build = \r\ntag_date = 0\r\n\r\n",
+    }
+    assert platform_name in expected, "Unreviewed generated-metadata platform"
+    assert content == expected[platform_name], "Unexpected generated setup.cfg bytes"
+
+
+@pytest.mark.parametrize("platform_name, content", [
+    ("posix", b"[egg_info]\ntag_build = \ntag_date = 0\n\n"),
+    ("nt", b"[egg_info]\r\ntag_build = \r\ntag_date = 0\r\n\r\n"),
+])
+def test_generated_setup_cfg_exact_platform_bytes(platform_name, content):
+    check_generated_setup_cfg(content, platform_name=platform_name)
+
+
+@pytest.mark.parametrize("platform_name, newline", [("posix", b"\n"), ("nt", b"\r\n")])
+def test_generated_setup_cfg_rejects_extra_or_malformed_content(platform_name, newline):
+    valid = newline.join([b"[egg_info]", b"tag_build = ", b"tag_date = 0", b"", b""])
+    other = b"\n" if newline == b"\r\n" else b"\r\n"
+    invalid = (
+        valid + b"[options]" + newline + b"zip_safe = True" + newline,
+        valid.replace(b"tag_date = 0", b"tag_date = 1"),
+        valid.replace(b"tag_build = ", b"tag_build = injected"),
+        valid.replace(b"tag_build = ", b"tag_build="),
+        valid[:-1],
+        b"\xef\xbb\xbf" + valid,
+        valid.replace(newline, other),
+        valid.replace(newline, other, 1),
+        newline.join([b"[egg_info]", b"tag_date = 0", b"tag_build = ", b"", b""]),
+    )
+    for candidate in invalid:
+        with pytest.raises(AssertionError, match="Unexpected generated setup.cfg bytes"):
+            check_generated_setup_cfg(candidate, platform_name=platform_name)
+
+
+def test_generated_setup_cfg_rejects_unreviewed_platform():
+    with pytest.raises(AssertionError, match="Unreviewed generated-metadata platform"):
+        check_generated_setup_cfg(b"[egg_info]\ntag_build = \ntag_date = 0\n\n",
+                                  platform_name="unreviewed")
+
+
 def test_source_distribution_inventory(distributions):
     work, sdist, _ = distributions
     intended = {line.split(" ", 1)[1] for line in (work / "MANIFEST.in").read_text().splitlines() if line.startswith("include ")}
@@ -89,7 +133,8 @@ def test_source_distribution_inventory(distributions):
         # Setuptools emits this tag-normalization metadata into the sdist.
         # Admit only its fixed, inspected content, never an arbitrary setup.cfg.
         assert relative == intended | {"PKG-INFO", "setup.cfg"}
-        assert archive.extractfile(prefix + "setup.cfg").read() == b"[egg_info]\ntag_build = \ntag_date = 0\n\n"
+        check_generated_setup_cfg(archive.extractfile(prefix + "setup.cfg").read(),
+                                  platform_name=os.name)
         for member in members:
             assert ".." not in PurePosixPath(member.name).parts
             assert CANARY.encode() not in archive.extractfile(member).read()

@@ -5,99 +5,81 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Progress revision | 0.9 |
-| Record date | 2026-09-18 UTC |
-| Approved plan | PHASE_1_PLAN.md revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
-| Owner authorization | `可以，继续P1-W05`, followed by acceptance of the explicitly proposed P1-W04-T01 import, verified merge and W05 continuation |
-| Accepted predecessor | W04, PR #5, head `9b3478b394305f4367642fba56f49d443143e565` |
-| Actual W04 merge / W05 intake | `391a69aa351bef4ec00b580d97e3e87e6f2df10d` |
-| Review branch | `phase1/p1-w05` |
-| W05 delivery | Twelve-path developer guard/test candidate; 42 local tests passed; submitted for review |
-| Owner W05 acceptance / merge | Pending |
-| W06 and later work | Not executed or authorized by this delivery |
+| Revision | 0.14, P1-W06-R02 complete matrix verification |
+| Date | 2026-09-18 UTC |
+| Owner repair approval | `批准`, responding to the single-file P1-W06-R02 request |
+| Approved plan | Revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
+| W05 merge / unchanged main | `ecf4eb5126201a7c31250c6dae8cbe2c64f9066a` |
+| R02 intake | `c6d8969d8b82d86900fbd36c6d657538f47af35a` |
+| Repaired executable candidate | `e102b7f31427f5a0dce288517284eaf4e3a6a7dd` |
+| Inspected passing run | `35365045308`, attempt 1 |
+| Branch / PR | `phase1/p1-w06`, PR #7 |
+| W06 technical status | Four-row matrix PASS on the named repaired candidate; final review-head checks recorded separately in PR #7 |
+| W06 owner acceptance / merge | Pending / not performed |
+| P1-W07 and Phase 2 | Not authorized or executed |
 
-## 1. Predecessor delivery closed
+## 1. Authority and closed scope
 
-The owner-approved one-time importer ran successfully on the isolated transport branch. Run `35330401864`, attempt 1, job `105553187836`, used Ubuntu 24.04.5 and CPython 3.12.3. Its logs were read through the connector. All fifteen accepted W04 candidate files were imported with their exact original bytes, and the existing 29 static fixture checks passed with no failures, errors or skips.
+The owner approved P1-W06-R02 after the R01 handoff identified the remaining Windows canary failure. The additional authority covers only `tests/security/test_scaffold_no_native_loading.py`, necessary existing W06 evidence/status records, and the complete four-row rerun. It does not authorize product implementation, another earlier test repair, merger or W07.
 
-The importer independently checked complete stored bytes of all eighteen specifications, corrected approval and Phase 1 plan before and after tests. It created `38d16d713bda963a53bd131d171e02bc90602e41`; the progress-only successor recorded those results without changing tested data. PR #5 was inspected and merged using expected-head protection at 2026-09-18T09:41:58Z, producing the intake commit above. The connector subsequently confirmed merged=true.
+The full W06 PR now has eight permitted paths: its original workflow, CI review, CI policy/evidence helper, README and progress record; the two R01 test files; and the single R02 test file. This R02 pass changes the latter test and three documentation records only. No further test, workflow/helper, product module, dependency pin, packaging rule, fixture/oracle, catalog, license, approved plan or frozen specification changes.
 
-The temporary workflow was never included in main or the W05 branch. It was removed from `transport/p1-w04` after successful delivery at commit `072990829fb28e25522d05e1985222549c5a28c5`. Its historical source and run remain inspectable, but the current transport branch no longer contains the importer. No repository settings, secrets or general CI permissions were changed.
+## 2. Exact R02 repair
 
-Complete W04 history remains in PR #5 and progress revision 0.8 at its accepted head. Earlier failed transfer attempts, the accepted local ZIP, and the progress-only gate record at `89b313a` remain historical facts. They are not overwritten with a claim that transfer had succeeded earlier.
+The existing `test_deliberate_cdll_is_blocked_before_loading` now selects the fixed string `SYNTHETIC_NONEXISTENT_LIBRARY` as its CDLL argument on Windows. Other platforms retain None. The probe remains injected into `io/platform_linux.py`, because all package slots must remain inert on every tested host, irrespective of a slot's prospective platform role.
 
-## 2. Exact W05 scope
+The three original native-test methods and every original assertion are unchanged. In particular, the canary must fail as an application operation and retain an actual `ctypes.dlopen` entry. A TypeError, missing event or skipped test cannot satisfy it. The other-slot named-library control remains intact. No actual native loading is granted and the shared observer is unchanged by R02.
 
-Only these twelve plan-section-9 paths are created or updated:
+The fetched input blob was `7f80974968f5636b4f6aa87d4efc8c13d9bc834c`, SHA-256 `3875064a1222480e2ee1611fcbef033099887cfb43e0a9684ce9425aa355e5b6`. The committed repaired blob is `69d06755fa425d8508369b744277b2f47e4694af`, SHA-256 `add4a523f73deba8380a257a1846d8c044249996ec88ca56be1f4903563a96a6`.
 
-```text
-tools/check_phase0_baseline.py
-tools/check_scaffold_boundary.py
-tests/scaffold/test_baseline_integrity.py
-tests/scaffold/test_no_runtime_implementation.py
-tests/scaffold/test_layer_boundaries.py
-tests/security/test_scaffold_inertness.py
-tests/security/test_scaffold_no_native_loading.py
-tests/security/test_scaffold_no_network.py
-tests/integration/README.md
-tests/unit/README.md
-tests/contract/README.md
-PHASE_1_PROGRESS.md
-```
+Local checks established matching input bytes, Python syntax, unchanged methods/assertions and the fixed Windows/POSIX argument selection. They did not pretend to execute Windows locally. Acceptance evidence is the actual hosted matrix below. R02 adds no collected test and removes none.
 
-The two tools are repository-only developer commands. They are not imported by the installed auditor, do not accept evidence dossiers and do not implement runtime parsing, source analysis, native filesystem publication or report generation. No package, dependency, packaging rule, earlier test, catalog, fixture, logical oracle or frozen file is modified.
+## 3. Complete passing matrix
 
-## 3. Guard design and independent controls
+Run `35365045308`, attempt 1, executed commit `e102b7f31427f5a0dce288517284eaf4e3a6a7dd`. All four jobs completed successfully. Their complete evidence ZIPs were downloaded through the connector and matched against Actions byte counts and SHA-256 digests before inspection.
 
-The baseline checker pins the accepted W01 manifest object independently, checks its closed eighteen-file contract, then compares complete stored bytes, SHA-256 and Git object identities, including the separately protected approval and plan. Editing a source and its manifest together cannot authorize a new freeze. Missing or altered bytes fail; there is no repair, network fetch, partial-pass or rehash-and-accept mode. Its ordinary CLI has no test-anchor override.
+| Hosted profile | Actual Python | Collected / passed | Failed | Errors / skipped |
+|---|---|---:|---:|---|
+| Ubuntu 24.04 x64, image 20260907.300.1 | 3.11.16 | 194 / 194 | 0 | 0 / 0 |
+| Ubuntu 24.04 x64, image 20260907.300.1 | 3.13.15 | 194 / 194 | 0 | 0 / 0 |
+| Windows Server 2025 x64, image 20260907.229.1 | 3.11.9 | 194 / 194 | 0 | 0 / 0 |
+| Windows Server 2025 x64, image 20260907.229.1 | 3.13.15 | 194 / 194 | 0 | 0 / 0 |
 
-The package checker independently enumerates all 48 accepted W02 paths and their Git blobs. It separately checks executable AST forms, import targets, software-layer direction and dependency cycles. Hash matching is not the only test: the AST and layer routines receive deliberately wrong source strings directly, with no accepted-byte check to mask their behavior. An otherwise permissible layer import still fails the inert-body contract. Extra code, native/data files, mutable registries, side-effecting annotations/defaults/decorators, argument inspection and fake successful audit results are rejected.
+Each row additionally reports 420 successful subtest events. The JUnit aggregate is 614 events, containing 194 top-level result elements. Local evidence inspection independently matched every result identity to collection, confirmed the same 194 collected IDs as the R01 run, checked zero failures/errors/skips and pytest exit zero, and verified all three native methods passed. Subtests do not become additional domain-test implementations.
 
-The subprocess harness imports all 48 real byte-matched slots and exercises four API refusal calls plus CLI help/version/refusal. Synthetic input/output canaries are checked before and after. The harness preloads its own standard libraries, then distinguishes Python module-loader reads from application-originated file/path/native/network effects. Deliberate socket/DNS/native-library probes are intercepted before executing those operations. Even a module that catches an interception exception leaves a recorded violation and cannot turn the probe into a pass.
+All four rows passed the actual twenty-file baseline and forty-eight-module guards before and after execution. Tracked bytes remained unchanged during testing. The pinned developer wheels and existing Windows Colorama marker were verified and installed without adding runtime dependencies. All packaging tests passed: exact 65-regular-member source inventory, 55-member wheel, exclusion checks, clean offline installation without developer dependencies, and equal member bytes in the original and source-rebuilt wheels.
 
-All deliberate mutations live in temporary copies. No mutated source, private evidence or paper PDF enters the actual package or repository. These finite checks are not a production sandbox or a complete security proof.
+The existing API refusal, import, CLI, file/path, DNS/socket, native-loading, architecture, catalog, fixture and CI-policy checks are included. There is no test skip, xfail, deselection, reduced matrix or accepted generic exception. These are scaffold checks, not an implementation of the 228 pending analytical test obligations or the future native adapters.
 
-## 4. Actual W05 execution
+## 4. Downloaded evidence identities
 
-The six new test files ran locally with Python standard-library unittest, CPython 3.13.5, Linux x86_64 and glibc 2.41. The selected combined run reported:
+| Row | Job ID | Artifact ID | ZIP bytes | Complete ZIP SHA-256 |
+|---|---:|---:|---:|---|
+| Ubuntu / 3.11 | 105665328413 | 10556316686 | 36945 | `07d826b768d5f1dadf186e6277055a3bfa091862c636a144a3ba8efac14666b3` |
+| Ubuntu / 3.13 | 105665328371 | 10555379689 | 36791 | `0c7b4e53fba727520501db9ca610fc7ea9e06dfc4aa92536341ff54b212d84cb` |
+| Windows / 3.11 | 105665328541 | 10555707419 | 43125 | `dbdc8d09459e3fd427153bd6b9db0c769136ad727f3a9c3124470d17bcdef8bb` |
+| Windows / 3.13 | 105665328095 | 10555962094 | 42916 | `4a78be1202842cfc29491d9e8d973ffdf964902883ad784fada922aee603dce1` |
 
-```text
-Ran 42 tests in 13.035s
-OK
-```
+Run URL: `https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35365045308`.
 
-There were zero failures, zero errors and zero skipped tests in that final run. The counts are:
+The JSON/XML/log inspection includes environment and commit identity, collection, pytest exit, suite and element counts, before/after guards, reviewed/installed wheels, tracked hashes and archive member hashes. Hosted image/patch details are observed environments, not a newest-release or production-support claim.
 
-| New test surface | Test methods |
-|---|---:|
-| Baseline guard controls | 11 |
-| Package inventory and non-implementation controls | 12 |
-| Software layer controls | 7 |
-| Inertness, filesystem and argument probes | 6 |
-| Application native-binding probes | 3 |
-| Application network probes | 3 |
-| Total | 42 |
+## 5. Retained failure history
 
-Per-file commands are recorded in tests/contract/README.md. The actual package checker also passed its complete 48-module CLI invocation. Its tests execute both positive and negative CLI cases under Python -O; guard enforcement does not disappear when assert statements would be optimized away.
+The complete earlier progress revision 0.13 is preserved at `c6d8969d8b82d86900fbd36c6d657538f47af35a`, this path. It retains the R01 authority, intermediate results, exact CPython source verification and the R02 proposal before approval. Earlier revisions remain reachable through its pinned history.
 
-### Evidence scope
+| Historical run | Outcome retained |
+|---|---|
+| 35357942013 | Initial W06 matrix failed; isolated-probe initialization, Windows generated newline and summary-accounting defects exposed |
+| 35358820107 | Accounting corrected, but twelve Linux and thirteen Windows failures remained |
+| 35362756160 | Initial R01 repair exposed deferred IDNA initialization and the Windows None canary |
+| 35363039474 | R01 complete; Linux 194/194, Windows 193/194, with only the R02 canary still failing |
+| 35365045308 | R02 repaired; all four rows 194/194 |
 
-The local W05 view contains all 48 accepted package files as independently byte-matched copies, the exact W01 manifest, eleven complete original specification files and the accepted W04 artifacts. The 48 package blobs all matched before testing and were not modified. Eleven available full specification files were rehashed against their approved values; newer full specification/approval/plan files were not reconstructed in this local view.
+No previous failure is erased, relabeled or credited to later code. R01's preload and strict generated-metadata repairs remain unchanged. The separate old W02 workflow stays limited to its original scope; its skip on a W06 PR is not counted as W06 evidence.
 
-The baseline unit tests therefore explicitly distinguish a synthetic full twenty-file workspace, real manifest-anchor validation and a complete actual reference-document check. The synthetic fixture changes only the test process's trust anchor; it does not change the production developer command or the real repository manifest. These are positive/adverse tests of guard logic, not a claim that synthetic strings are the approved baseline.
+## 6. Delivery gate
 
-A new full-checkout invocation of tools/check_phase0_baseline.py over all twenty actual files was not executed locally in W05. The complete actual-byte baseline evidence comes from the successful W04 hosted importer; remote object/diff preservation connects that unchanged baseline to W05. Full-checkout execution of the new command and the combined suite remains an explicit P1-W06 CI duty. The absence of that later run is not hidden as a skipped test or relabeled as a local pass.
+This documentation successor updates only progress, CI review and README after the named passing executable run. It must receive its own passing exact-head checks before delivery; that final commit/run pairing is recorded in PR #7 and the exported verification summary rather than creating a self-referential commit hash in this file.
 
-No selected setuptools/pytest installation, W02 packaging rerun, W03 full-suite rerun, Windows/CPython 3.11 run, W05 hosted workflow or package publication occurred in this unit. Earlier passing runs retain their own checked commits and scopes. The 42 methods do not satisfy the 228 pending analytical obligations.
-
-### Corrected test-harness defect
-
-The first security-harness run failed all twelve security methods before completing any package import. Stack inspection via sys._getframe generated another audit event, recursively re-entering the observer. The observer was corrected to filter to monitored operations before stack inspection. The final unchanged positive and adverse assertions then all passed. No product code, approved expectation or source contract was changed to obtain the pass; no failing test was skipped. The raw initial failure log is retained with the local verification artifacts.
-
-## 5. Preservation and handoff
-
-Remote final tree and PR checks must confirm exactly eleven additions plus this progress update relative to the actual W04 merge. All twelve outgoing file identities are compared with the tested/reviewed local bytes. Final commit/PR identifiers belong in the PR handoff after they exist, avoiding a document that tries to contain its own hash.
-
-The eighteen frozen specifications, corrected approval, Phase 1 plan, baseline manifest, accepted catalogs, 48 product modules, W04 fixture/oracle files, license notices, development pins and existing W02 workflow remain unchanged. The earlier broad scientific and theoretical material is not reinterpreted in W05.
-
-Submit the W05 review PR and stop for owner acceptance. Do not merge W05, change the CI workflow, execute W06 or begin Phase 2 automatically. On the next authorized step, W06 must run the complete checkout, new developer guards and accumulated suite on its reviewed interpreter/platform matrix and preserve any actual failures.
+W06 technical verification is complete on the named candidate. Owner acceptance and merging PR #7 remain separate, unperformed actions. Main stays at the accepted W05 merge. No P1-W07 completion file, Phase 2 work, actual auditing, report generation, native security implementation, package release or deployment is introduced.

@@ -16,7 +16,9 @@ class ScaffoldNativeTests(unittest.TestCase):
         self.assertFalse(any(v.startswith("ctypes.") for v in result["violations"]))
 
     def test_deliberate_cdll_is_blocked_before_loading(self):
-        result = run_probe(("io/platform_linux.py", '\nimport ctypes\nctypes.CDLL(None)\n'))
+        # Windows requires a string before it emits the loader audit event.
+        argument = '"SYNTHETIC_NONEXISTENT_LIBRARY"' if sys.platform == "win32" else "None"
+        result = run_probe(("io/platform_linux.py", f'\nimport ctypes\nctypes.CDLL({argument})\n'))
         self.assertFalse(result["ok"])
         self.assertIn("ctypes.dlopen", result["violations"])
 
