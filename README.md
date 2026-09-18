@@ -2,7 +2,7 @@
 
 A local, supplied-evidence toolkit for examining source lineage, evidence independence, external presence and corrective capacity in AI-native information systems.
 
-**Status: Phase 1 repository scaffold in progress. No audit functionality is implemented.** P1-W01 establishes the project's license, governance and frozen-baseline controls. The repository does not yet contain an installable auditor, working CLI, runtime schema validator or generated analytical report.
+**Status: Phase 1 repository scaffold. No audit functionality is implemented.** The source package is installable as version `0.1.0.dev0`. Its 48 import-safe modules, static contract catalogs, fictional inputs and test-only logical expectations are present. Public audit calls immediately raise `NotImplementedError`. The CLI provides help/version and refuses audit execution with exit code 1; it reads no dossier and creates no report.
 
 ## Intended purpose
 
@@ -30,7 +30,31 @@ The eighteen Phase 0 specifications are approved at commit `7d2e5fcaff591641b5ce
 
 [PHASE_1_PLAN.md](PHASE_1_PLAN.md) controls the work-unit sequence and closed file allowlists. [PHASE_1_PROGRESS.md](PHASE_1_PROGRESS.md) records actual execution and review status. Each work unit has its own acceptance gate. Phase 1 does not implement source tracing, independence qualification, concentration, correction analysis, report rendering or native filesystem security.
 
-The future Python package and `sit` command are design targets. Installation and usage instructions will be added with the relevant scaffold work. No package release or supported production platform is claimed here.
+## Developer installation and checks
+
+Use a clean CPython 3.11 or 3.13 development environment. From this source checkout, install the already reviewed development pins, then the scaffold without resolving new build/runtime dependencies:
+
+```sh
+python -m pip install -r requirements-dev.txt
+python -m pip install --no-build-isolation --no-deps .
+sit --version
+sit --help
+python -B tools/check_phase0_baseline.py
+python -B tools/check_scaffold_boundary.py
+python -m pytest tests/scaffold tests/security -q
+```
+
+Dependency installation is a developer operation that may access the package index. It does not enable source retrieval in the product. The installed product has zero third-party runtime dependencies. An invocation such as `sit audit input.json --output result` deliberately returns exit 1 and a fixed unimplemented message. This is a scaffold refusal, not an audit result or a final report-protocol exit code. No package-index release has been published.
+
+Both test directories are explicit in the command above. The earlier pytest default covers only tests/scaffold and must not be mistaken for the entire security suite. Neither passing static fixture checks nor reading stored logical expectations establishes any of the 228 pending domain-test obligations.
+
+## CI scope and evidence
+
+[Phase 1 scaffold CI](.github/workflows/phase1-ci.yml) defines four required rows: Ubuntu 24.04 and Windows Server 2025, each with Python 3.11 and 3.13. It uses read-only repository permissions and full-commit action pins, checks the exact candidate head, runs both full-checkout guards, reviews and installs pinned developer wheels, collects and runs the accumulated tests, and checks source/wheel contents plus an offline clean installation. It uploads only verification records for fourteen days, with no package publication or automatic merge.
+
+The workflow is expressed in JSON-form YAML so the standard library can inspect its complete permission/trigger/matrix structure without an extra parser dependency. The associated policy tests include deliberate unsafe mutations. Networked dependency setup is separate from the application's no-network probes. Runner images and Python patch releases are recorded at execution time.
+
+P1-W06 hosted results are pending in this candidate. Consult the actual run and [PHASE_1_PROGRESS.md](PHASE_1_PROGRESS.md); a declared matrix or green historical W02 run is not evidence that the new matrix passed. Windows Server scaffold checks do not certify the future Windows 11/NTFS file adapter, and no production platform support is asserted.
 
 ## Specifications
 
@@ -44,7 +68,7 @@ The frozen specifications and approved plan remain at their root paths. Their hi
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for scoped changes, rights and review rules, and [SECURITY.md](SECURITY.md) for the present reporting limitations. Do not post private evidence, credentials, confidential identity maps or real protected-source dossiers in this public repository. Use fictional examples for development.
 
-The intended runtime has no required third-party Python dependencies. Proposed build/test tools are reviewed separately in [scaffold/toolchain_review.md](scaffold/toolchain_review.md). Those tools have not been installed or exercised for the project in P1-W01.
+The installed runtime has no required third-party Python dependencies. Build/test tools and their actual historical results are reviewed separately in [scaffold/toolchain_review.md](scaffold/toolchain_review.md). Current matrix/action choices are documented in [scaffold/ci_toolchain_review.md](scaffold/ci_toolchain_review.md). Developer tools retain their own rights and are excluded from the product wheel.
 
 ## License
 
