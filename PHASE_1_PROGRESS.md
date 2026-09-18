@@ -5,28 +5,30 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Progress revision | 0.10, P1-W06 execution candidate |
-| Record date | 2026-09-18 UTC |
-| Approved plan | PHASE_1_PLAN.md revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
+| Revision | 0.11, P1-W06 first matrix review |
+| Date | 2026-09-18 UTC |
 | Owner instruction | `批准并合并 PR #6，然后进入 P1-W06` |
+| Approved plan | Revision 0.1, Git blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
 | Accepted W05 head | `6bf3ef93fd90471da709d6f90e598e9d84f95908` |
 | Actual PR #6 merge / W06 intake | `ecf4eb5126201a7c31250c6dae8cbe2c64f9066a` |
-| Review branch | `phase1/p1-w06` |
-| W06 state | Five-path candidate; local policy tests passed; hosted matrix pending |
-| W06 owner acceptance / merge | Pending |
-| P1-W07 / Phase 2 | Not authorized or executed |
+| Branch / PR | `phase1/p1-w06`, draft PR #7 |
+| First hosted candidate | `668d4af4382b03aad19852aef2bdaa9252dc66d9` |
+| Hosted run | `35357942013`, attempt 1 |
+| W06 status | BLOCKED: previous-unit test repairs require scoped approval |
+| W06 acceptance / merge | Not issued / not performed |
+| P1-W07 and Phase 2 | Not authorized or executed |
 
-## 1. Accepted predecessor and history
+## 1. Authority and history
 
-The owner explicitly accepted PR #6 and requested its merge before W06. The connector confirmed its exact head, open/non-draft and mergeable state. The remote comparison listed the same twelve authorized W05 paths. The expected-head-protected merge succeeded and returned the intake commit above. W06 starts from that actual commit; no history was rewritten or force-pushed.
+The owner accepted W05 and explicitly requested merger followed by W06. The connector verified the exact PR #6 head and twelve-path diff, then performed the merge with expected-head protection. W06 was branched from the returned merge commit. No force push or history rewriting occurred.
 
-W05's 42 local tests and precise execution limits remain preserved in PR #6 and progress revision 0.9 at `6bf3ef93fd90471da709d6f90e598e9d84f95908`. Its new baseline command had not been exercised against a complete actual local checkout. W06 explicitly runs that command on all twenty actual protected files in each required hosted matrix row. A future pass will supplement, not rewrite, that historical limitation.
+W05's original 42 local methods and execution limits remain preserved at its accepted head and PR #6. The first W06 hosted run now supplies the previously missing execution of the new baseline command against all twenty actual protected files. This supplements that evidence; it does not turn the earlier local limited checkout into a full-checkout run.
 
-W04's accepted exact-byte import, 29 hosted static checks, PR #5 merge and removal of its isolated temporary transport workflow remain preserved in the predecessor records. The one-time import mechanism is not reused or included in W06.
+The complete first W06 candidate, pre-execution review, workflow and helper are preserved at `668d4af4382b03aad19852aef2bdaa9252dc66d9`. Failures below are retained as actual findings, with no skipped tests or relaxed historical assertions. W04's earlier exact import and isolated transport-workflow removal remain in the predecessor history.
 
-## 2. Closed W06 change scope
+## 2. Closed change scope
 
-Only these five paths are created or updated:
+Only these five plan-section-10 paths change in W06:
 
 ```text
 .github/workflows/phase1-ci.yml
@@ -36,24 +38,51 @@ README.md
 PHASE_1_PROGRESS.md
 ```
 
-The frozen eighteen specifications, corrected approval, approved plan, baseline manifest, all product modules, existing tests, fixture/oracle assets, catalogs, development pins, packaging configuration, licenses and existing dedicated W02 workflow are unchanged. The new CI helper lives in the allowed developer test file and implements no source-audit operation.
+The eighteen frozen specifications, corrected approval, approved plan, baseline manifest, product modules, accepted earlier tests, fixture/oracle assets, catalogs, dependency pins, packaging rules, licenses and earlier W02 workflow remain unchanged. No application auditing, native loading, source retrieval or report generation is implemented.
 
-## 3. Workflow and verification design
+## 3. Actual first hosted matrix
 
-The four-row matrix selects ubuntu-24.04 and windows-2025, each with CPython 3.11 and 3.13. The official action refs, action manifests, LICENSE files, runner labels, Python support status and relevant PyPI records were checked at execution time. Exact reviewed action SHAs are in scaffold/ci_toolchain_review.md. All three selected actions declare Node 24. No insecure Node override, new runtime dependency or build frontend is introduced.
+Run `35357942013`, attempt 1, executed the exact first candidate. All four evidence ZIPs were downloaded through the connector, their SHA-256 digests matched the Actions metadata, and their complete pytest/JUnit, environment, guard, collection and build records were inspected.
 
-The workflow uses contents-read permission, exact candidate checkout without stored credentials, no cache, no privileged trigger, no deployment/publication, finite timeouts and no repository-secret reference. It operates on review PRs and main pushes. Only verification JSON/XML/log files under a fixed runner-temp evidence directory are uploaded for fourteen days. User dossiers, source-paper PDFs, arbitrary workspace contents and package binaries are excluded.
+| Hosted profile | Actual Python | Top-level collected | Passed | Failed | Errors / skipped |
+|---|---|---:|---:|---:|---|
+| Ubuntu 24.04.5 | 3.11.16 | 182 | 170 | 12 | 0 / 0 |
+| Ubuntu 24.04.5 | 3.13.15 | 182 | 170 | 12 | 0 / 0 |
+| Windows Server 2025, build 26100 | 3.11.9 | 182 | 169 | 13 | 0 / 0 |
+| Windows Server 2025, build 26100 | 3.13.15 | 182 | 169 | 13 | 0 / 0 |
 
-Preflight verifies the actual checked SHA, records actual environment and tracked-file digests, and executes both W05 developer guards on the full checkout. Preparation reviews the exact selected development wheels before offline installation. The test stage explicitly collects and runs tests/scaffold plus tests/security, including the earlier packaging and clean-runtime tests. The always-run evidence stage preserves actual outcomes, inspects self-built archive inventories and reruns guards while checking all tracked bytes remain unchanged.
+Each row also reported 420 successful unittest subtests. These are separate from the 182 collected top-level instances. They do not represent 420 additional independently collected test functions or satisfy the 228 future domain obligations.
 
-A declared workflow matrix is not a test result. Collection failures, omitted test files, skips, setup failures, missing build evidence and guard failures remain blocking. A failed prior-unit file is not edited under this unit's five-path scope.
+All four rows passed the actual twenty-file baseline and forty-eight-module guards before and after execution. All tracked file hashes remained unchanged. The selected development distributions were verified and installed: six Linux wheels and the same six plus the preselected Windows-only Colorama wheel. No runtime dependency was added.
 
-## 4. Actual preparation evidence
+All rows built source/wheel artifacts and passed clean-runtime installation and source-rebuild member-byte equality. Inventories contained 65 regular source-distribution files and 55 wheel members. The Windows source-inventory test failed on backend-generated setup.cfg newline bytes, so the complete Windows source-inventory gate is not marked passed. The real clean-install test remained distinct and passed.
 
-The fourteen new standard-library policy tests passed locally with zero failures/errors/skips. They include deliberate mutations of permission, privileged trigger, action pin, stored credential, required platform/minor, skipped stage, ignored failure, untrusted shell expression, upload scope and secret environment settings, plus duplicate-key rejection. The helper's suite-running function is deliberately not named as a pytest test.
+## 4. Failures requiring earlier-unit repair
 
-Direct local Git access still fails DNS resolution for github.com. The local workspace was used for authoring and policy controls only. No full local repository test or selected-toolchain installation is claimed. The hosted workflow will provide the actual-checkout and matrix evidence. Current candidate commits add only the allowed files; final compare and byte checks remain required before handoff.
+### P1-W06-R01-A: isolated security-probe initialization
 
-## 5. Current gate
+All twelve W05 security methods fail before a product module is imported, with AttributeError and an empty interception list. The embedded probe in `tests/security/test_scaffold_inertness.py` imports importlib, but its audit hook references importlib.util.source_from_cache without explicitly importing importlib.util. A minimal isolated local reproduction using the same preload list produced `AttributeError: module 'importlib' has no attribute 'util'`; explicitly importing the submodule resolved that initialization condition.
 
-Create the W06 draft review PR, run its four required jobs, inspect their logs and artifacts, and record actual failures or success at the exact tested head. Keep the PR unmerged. P1-W06 remains pending until all required results exist and pass; P1-W07 remains a separate owner-authorized unit. No general platform certification, production security proof, domain-test success or final Phase 1 completion follows from these scaffold checks.
+Proposed repair: explicitly preload the needed standard-library submodule before installing interception, retain the complete positive/adverse checks, and add a clean-interpreter regression where necessary. Do not inject a monkeypatch from W06 to conceal the earlier test's dependency, change product code or remove the native/network probes. The proposal does not claim that a repaired full matrix has already passed.
+
+### P1-W06-R01-B: generated source-metadata newline expectation
+
+On both Windows rows, `tests/scaffold/test_packaging.py::test_source_distribution_inventory` compares generated setup.cfg against an LF-only byte string. The backend writes the same fixed egg_info fields with Windows CRLF. The inspected failure shows no different fields or unexpected file. The repository's frozen source bytes remain unchanged.
+
+Proposed repair: give this one backend-generated file an explicit platform-specific expected byte spelling, retaining exact field/order/content checks and a negative control for extra settings or malformed/mixed endings. Do not normalize frozen files, change MANIFEST.in, broaden allowed distribution members, skip Windows, or change the backend pin.
+
+Both target files belong to earlier units and are outside the five-path W06 allowlist. They remain unmodified. **P1-W06-R01 requests owner permission for exactly these two file repairs and the necessary existing W06 evidence-record updates, followed by rerunning all four rows.** This request does not approve itself.
+
+## 5. W06-local summary correction
+
+The new driver initially compared JUnit's suite `tests=602` directly with the 182 collected IDs. The selected pytest includes successful subtest events in that aggregate but emits 182 testcase elements. The full downloaded XML established the mismatch. This is a W06 summary defect, separate from the actual twelve/thirteen failing tests.
+
+Within the already authorized W06 helper, accounting now matches exact classname/name pairs against all collected IDs, rejects missing/duplicate/unexpected outcomes, preserves failure/error/skip information from both suite totals and result elements, and reports aggregate events separately. No nonzero pytest exit can be converted to a pass. Six independent accounting controls were added alongside the original fourteen policy tests.
+
+All twenty W06-local methods passed with zero failures/errors/skips. Applying the corrected parser to all four original JUnit files reproduced the table above and retained every failure. These checks do not close the earlier-unit failures. The successor hosted run will be recorded in PR #7 after its identity and outcomes exist; no first-run green result is attached to a changed helper.
+
+## 6. Evidence and stop point
+
+The four original Actions artifact IDs and complete hashes are listed in scaffold/ci_toolchain_review.md. Logs and artifact bytes remain inspectable. The workflow is read-only, exact-head checked, finite, and limited to verification records. Neither the temporary W04 importer nor a write token is reused.
+
+Keep PR #7 in draft and leave main at the accepted W05 merge. Wait for P1-W06-R01 before changing earlier tests. After the scoped repair, rerun all four jobs without omitting existing methods. A new defect outside that repair scope must be recorded rather than silently fixed. P1-W06 acceptance, merger and P1-W07 remain separate gates.

@@ -151,6 +151,87 @@ class CiContractTests(unittest.TestCase):
         self.altered(lambda v: v["jobs"]["scaffold"]["steps"].pop(2))
 
 
+
+def junit_counts(xml_bytes: bytes, collected_nodes: list[str]) -> dict:
+    """Match top-level outcomes to collection while retaining all failure events.
+
+    Pytest 9.1 includes successful unittest subtest events in the suite's tests
+    attribute but does not emit a separate testcase element for each of them.
+    Keep that aggregate separate from actual collected top-level test instances.
+    """
+    root = ET.fromstring(xml_bytes)
+    require(root.tag == "testsuites", "unexpected JUnit root")
+    suites = list(root)
+    require(bool(suites) and all(s.tag == "testsuite" for s in suites), "JUnit suites missing")
+    totals = {key: sum(int(s.attrib[key]) for s in suites)
+              for key in ("tests", "failures", "errors", "skipped")}
+    require(all(value >= 0 for value in totals.values()), "negative JUnit count")
+    expected = []
+    for node in collected_nodes:
+        parts = node.split("::")
+        require(len(parts) >= 2 and parts[0].endswith(".py"), "bad collected node")
+        classname = parts[0][:-3].replace("/", ".")
+        if len(parts) > 2:
+            classname += "." + ".".join(parts[1:-1])
+        expected.append((classname, parts[-1]))
+    require(bool(expected) and len(set(expected)) == len(expected), "ambiguous collection identity")
+    cases = list(root.iter("testcase"))
+    actual = [(case.get("classname"), case.get("name")) for case in cases]
+    require(len(actual) == len(expected) and len(set(actual)) == len(actual) and
+            set(actual) == set(expected), "JUnit does not cover exact collected test identities")
+    require(totals["tests"] >= len(cases), "JUnit aggregate smaller than top-level results")
+    failed = sum(case.find("failure") is not None for case in cases)
+    errored = sum(case.find("error") is not None for case in cases)
+    skipped = sum(case.find("skipped") is not None for case in cases)
+    return {"tests": len(cases), "reported_test_events": totals["tests"],
+            "additional_reported_events": totals["tests"] - len(cases),
+            "failures": max(totals["failures"], failed),
+            "errors": max(totals["errors"], errored),
+            "skipped": max(totals["skipped"], skipped),
+            "top_level_failures": failed, "top_level_errors": errored,
+            "top_level_skipped": skipped, "collection_identities_match": True}
+
+
+class JunitAccountingTests(unittest.TestCase):
+    NODE = "tests/scaffold/test_example.py::Example::test_one"
+
+    def document(self, aggregate=4, failures=0, child=""):
+        return (f'<testsuites><testsuite tests="{aggregate}" failures="{failures}" errors="0" skipped="0">'
+                '<testcase classname="tests.scaffold.test_example.Example" name="test_one">'
+                + child + '</testcase></testsuite></testsuites>').encode()
+
+    def test_subtest_aggregate_does_not_inflate_top_level_count(self):
+        result = junit_counts(self.document(), [self.NODE])
+        self.assertEqual(result["tests"], 1)
+        self.assertEqual(result["reported_test_events"], 4)
+        self.assertEqual(result["additional_reported_events"], 3)
+        self.assertEqual(result["failures"], 0)
+
+    def test_subtest_failure_in_suite_cannot_be_lost(self):
+        result = junit_counts(self.document(failures=1), [self.NODE])
+        self.assertEqual(result["failures"], 1)
+
+    def test_failure_element_overrides_false_zero_header(self):
+        result = junit_counts(self.document(child='<failure message="canary"/>'), [self.NODE])
+        self.assertEqual(result["failures"], 1)
+
+    def test_missing_collected_result_is_rejected(self):
+        with self.assertRaises(ValueError):
+            junit_counts(self.document(), [self.NODE, self.NODE.replace("test_one", "test_two")])
+
+    def test_unknown_or_duplicate_test_identity_is_rejected(self):
+        with self.assertRaises(ValueError):
+            junit_counts(self.document().replace(b"test_one", b"test_other"), [self.NODE])
+        with self.assertRaises(ValueError):
+            junit_counts(self.document(), [self.NODE, self.NODE])
+
+    def test_invalid_aggregate_and_skipped_child_do_not_pass(self):
+        with self.assertRaises(ValueError):
+            junit_counts(self.document(aggregate=0), [self.NODE])
+        result = junit_counts(self.document(child='<skipped message="canary"/>'), [self.NODE])
+        self.assertEqual(result["skipped"], 1)
+
+
 def ci_paths():
     require(os.environ.get("GITHUB_ACTIONS") == "true", "CI stages require an explicit hosted Actions invocation")
     base = Path(os.environ["RUNNER_TEMP"]) / "sit-w06"
@@ -290,9 +371,9 @@ def evidence_report(base: Path, evidence: Path) -> None:
                          "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "members": inventory})
     save(evidence / "build-inventories.json", archives)
     xml = evidence / "junit.xml"
-    if xml.exists():
-        suites = list(ET.parse(xml).getroot().iter("testsuite"))
-        summary.update({k: sum(int(s.get(k, "0")) for s in suites) for k in ("tests", "failures", "errors", "skipped")})
+    collection = evidence / "collection.json"
+    if xml.exists() and collection.exists():
+        summary.update(junit_counts(xml.read_bytes(), json.loads(collection.read_text())["nodes"]))
     before_file = evidence / "tracked-before.json"
     unchanged = before_file.exists() and json.loads(before_file.read_text()) == tracked_bytes()
     summary["tracked_bytes_unchanged"] = unchanged

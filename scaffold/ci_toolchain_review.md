@@ -4,83 +4,86 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.1, execution candidate |
+| Revision | 0.2, first matrix findings and summary correction |
 | Date | 2026-09-18 UTC |
 | Owner instruction | `批准并合并 PR #6，然后进入 P1-W06` |
-| Accepted W05 head | `6bf3ef93fd90471da709d6f90e598e9d84f95908` |
-| Actual merge / W06 intake | `ecf4eb5126201a7c31250c6dae8cbe2c64f9066a` |
-| Review branch | `phase1/p1-w06` |
-| Scope | Five paths in PHASE_1_PLAN.md section 10 |
-| Hosted execution | Pending; no matrix pass claimed by this version |
-| Runtime dependencies / analytical implementation | None / absent |
+| Intake merge | `ecf4eb5126201a7c31250c6dae8cbe2c64f9066a` |
+| Branch / PR | `phase1/p1-w06`, draft PR #7 |
+| First tested head | `668d4af4382b03aad19852aef2bdaa9252dc66d9` |
+| First run | `35357942013`, attempt 1; failed |
+| Current gate | Earlier-unit test repairs need P1-W06-R01 approval |
+| Product runtime dependencies / analytics | None / unimplemented |
 
-## 1. Selected matrix
+The complete pre-execution revision 0.1 is preserved at the first tested head, this path. This current record retains its selected tools, exact action identities, security scope and primary references while adding observed results. It does not rewrite failed history.
 
-The four required combinations are Ubuntu 24.04 x64 and Windows Server 2025 x64, each with CPython 3.11 and 3.13. These are explicit standard hosted runner labels, not `latest` or self-hosted machines. The GitHub hosted-runner reference was checked on the review date and lists `ubuntu-24.04` and `windows-2025`. The Python Developer's Guide lists 3.11 as security-supported and 3.13 as bugfix-supported. The lower-bound and additional-minor selection remains inside the approved plan.
+## 1. Selected and executed matrix
 
-The workflow resolves the selected minor through setup-python with prereleases and check-latest disabled. Each run records the actual complete Python version, platform, runner image version, exact checked commit, matrix row and attempt. A floating runner image/minor selection is not a claim of immutable system images. Actual package and scaffold compatibility is an execution gate, not inferred solely from release metadata. Windows Server scaffold checks do not certify the future Windows 11/NTFS native profile.
+Ubuntu 24.04 x64 and Windows Server 2025 x64 each run CPython 3.11 and 3.13. The official hosted-runner labels and Python support table were checked before submission. Actual first-run environments were Ubuntu 24.04.5, image 20260907.300.1, Python 3.11.16/3.13.15; and Windows-2025Server-10.0.26100, image 20260907.229.1, Python 3.11.9/3.13.15.
 
-Primary sources:
+The requested minors are resolved with check-latest and prereleases disabled. An installed patch is reported exactly, not described as the newest security release. These ephemeral hosted images and successful import/build probes do not certify the later Windows 11/NTFS native adapter or supported production deployment.
 
-- `https://docs.github.com/en/actions/reference/runners/github-hosted-runners`
-- `https://devguide.python.org/versions/`
+Sources: `https://docs.github.com/en/actions/reference/runners/github-hosted-runners`; `https://devguide.python.org/versions/`.
 
-## 2. Reviewed immutable action selection
+## 2. Fixed actions and authority
 
-Official repository tag refs, pinned `action.yml` and LICENSE files were read through the GitHub connector on 2026-09-18.
+Official tag refs, pinned action.yml and LICENSE files were read through the connector before submission. The actual runner logs confirm execution of these selected commits.
 
-| Action | Release | Exact commit | Declared runtime | License |
-|---|---|---|---|---|
-| actions/checkout | v7.0.1 | `3d3c42e5aac5ba805825da76410c181273ba90b1` | node24 | MIT |
-| actions/setup-python | v7.0.0 | `5fda3b95a4ea91299a34e894583c3862153e4b97` | node24 | MIT |
-| actions/upload-artifact | v7.0.1 | `043fb46d1a93c77aae656e7c1c64a875d1fc6a0a` | node24 | MIT |
+| Action | Release | Commit | Runtime / license |
+|---|---|---|---|
+| actions/checkout | v7.0.1 | `3d3c42e5aac5ba805825da76410c181273ba90b1` | Node 24 / MIT |
+| actions/setup-python | v7.0.0 | `5fda3b95a4ea91299a34e894583c3862153e4b97` | Node 24 / MIT |
+| actions/upload-artifact | v7.0.1 | `043fb46d1a93c77aae656e7c1c64a875d1fc6a0a` | Node 24 / MIT |
 
-The pinned action.yml Git blobs are respectively `5b0524f730db83f9513c18ab31a6c086c7239076`, `df6c8235b476652b6402d31d92a2a89cdea74bb9`, and `7cb4d1e81db55320b41217e1a78a1a46e3d2baef`. License blobs are respectively `a67dca8b4f65d6bd351f6b1e333ce2cd84d843a5`, `a426ef259d6c5d705e9c1405075c3b318093c65e`, and `a67dca8b4f65d6bd351f6b1e333ce2cd84d843a5`.
+Pinned action manifest blobs: checkout `5b0524f730db83f9513c18ab31a6c086c7239076`; setup-python `df6c8235b476652b6402d31d92a2a89cdea74bb9`; upload-artifact `7cb4d1e81db55320b41217e1a78a1a46e3d2baef`. License blobs are `a67dca8b4f65d6bd351f6b1e333ce2cd84d843a5`, `a426ef259d6c5d705e9c1405075c3b318093c65e`, and `a67dca8b4f65d6bd351f6b1e333ce2cd84d843a5` respectively.
 
-Checkout v7.0.1 replaces the earlier dedicated W02 workflow's Node-20-targeted checkout for this new workflow only. No insecure Node override is set and the accepted W02 workflow is unchanged. The checkout manifest exposes exact-ref selection and disabled credential persistence. Setup-python exposes the chosen minor, x64 architecture and disabled prerelease selection without a dependency-cache setting. Upload-artifact exposes finite retention and hidden-file exclusion. This is a review of identity, declared interface, license and selected authority, not an audit of every bundled JavaScript dependency.
+The new workflow replaces neither the old dedicated W02 workflow nor any product dependency. It uses contents-read permission, exact candidate head checkout, no persisted checkout credentials, no cache configuration, no privileged trigger, no deployment/merge/publication step and no repository-secret reference. Job timeouts are 25 minutes; fail-fast is false. No insecure Node runtime override is set. Actions' internal token use for checkout/Python acquisition is separate from explicitly passing secrets to tests.
 
-Canonical source pattern: `https://github.com/actions/<name>/blob/<exact-commit>/action.yml` and the corresponding LICENSE and `/git/ref/tags/<release>` records. GitHub's secure-use guidance supports full-commit action pinning and least-privilege tokens:
+The workflow is JSON-form YAML accepted by GitHub and validated with duplicate-key rejection and closed structural comparisons. Fourteen policy tests guard permissions, pins, matrix, stage execution, credential persistence, shell interpolation and upload boundaries. Full commit selection follows `https://docs.github.com/en/actions/reference/security/secure-use`. This is an interface/identity/authority review, not an audit of every bundled action dependency.
 
-`https://docs.github.com/en/actions/reference/security/secure-use`
+## 3. Actual development dependency installation
 
-## 3. Existing Python development dependencies
+The unchanged requirements blob is `e037242d849f827a6c968a0f97830610a1718138`. Every row downloaded binary wheels, checked exact allowed name/version sets, complete SHA-256/size against PyPI release records and non-yanked status, inventoried licenses and vendored metadata, installed offline and passed pip check. The existing selected direct hashes were separately enforced.
 
-The accepted requirements file remains unchanged, Git blob `e037242d849f827a6c968a0f97830610a1718138`. Setuptools 84.0.0, pytest 9.1.1, iniconfig 2.3.0, packaging 25.0, pluggy 1.6.0 and Pygments 2.20.0 are selected. Colorama 0.4.6 is already selected by its Windows-only marker; W06 does not introduce it as a new dependency.
+Pins remain setuptools 84.0.0, pytest 9.1.1, iniconfig 2.3.0, packaging 25.0, pluggy 1.6.0 and Pygments 2.20.0. Windows additionally resolves the already approved Colorama 0.4.6 marker. No new runtime library, plugin or build frontend is introduced. Actual complete wheel metadata and notice hashes are in each reviewed-wheels.json. The prior setuptools vendored-license and archive_util applicability qualifications remain in the immutable W02 toolchain review; they are not replaced by a claim that every included component is MIT or vulnerability-free.
 
-The six Linux wheel identities and previous notice/vendored review remain in `scaffold/toolchain_review.md` at the intake commit. The new driver retains the previously pinned direct-wheel digests, downloads only wheels into a fresh tools environment, checks the exact allowed distribution/version set, checks each complete byte digest/size and non-yanked status against its PyPI release JSON, and inventories license/notice paths and vendored metadata before offline installation. A seventh Windows wheel must be Colorama 0.4.6. No additional dependency is silently accepted if the resolver asks for one.
+The bootstrap pip comes from each selected Python/venv environment without an automatic upgrade. Networked acquisition is limited to CI setup. Tests receive PIP_NO_INDEX=1; the product's no-network behavior is separately probed. No developer wheel binaries are included in product packages or uploaded as evidence. Sources checked included exact release JSON for setuptools 84.0.0, pytest 9.1.1 and Colorama 0.4.6 at `https://pypi.org/pypi/<name>/<version>/json`.
 
-The official release records checked during preparation include:
+## 4. First execution results
 
-- `https://pypi.org/pypi/setuptools/84.0.0/json`
-- `https://pypi.org/pypi/pytest/9.1.1/json`
-- `https://pypi.org/pypi/colorama/0.4.6/json`
+The full test collection explicitly included tests/scaffold and tests/security. Each row collected 182 unique top-level instances, covering every existing test file in those scopes. There were no deselections, skipped methods or xfail allowances.
 
-Colorama's record describes a BSD license and no non-stdlib requirements. Its use inside the developer runner is distinct from the tested product's native-loading boundary. The existing setuptools vendored-license qualifications, including the previously recorded LGPLv3 metadata, remain unchanged. No claim that every developer component is Apache-2.0 or MIT is made. Developer wheels and action bundles are not redistributed in the product wheel or uploaded as CI evidence.
+| Row | Passed | Failed | Additional successful subtests |
+|---|---:|---:|---:|
+| Ubuntu / 3.11 | 170 | 12 | 420 |
+| Ubuntu / 3.13 | 170 | 12 | 420 |
+| Windows / 3.11 | 169 | 13 | 420 |
+| Windows / 3.13 | 169 | 13 | 420 |
 
-The bootstrap pip is supplied by the selected Python/venv installation; its actual version is logged without an automatic pip upgrade or a new build frontend. `pip check` and exact installed-version checks follow offline installation. The existing source/wheel, clean-runtime and source-rebuild tests run unchanged.
+All four full-checkout baseline and module guards passed before/after. Tracked bytes remained identical. Both original/rebuilt wheels had 55 members, and each source distribution had 65 regular members. Clean offline installation without developer dependencies and source-rebuild member-byte equality passed on each row. Windows' complete source-inventory test failed because the backend-generated setup.cfg uses CRLF while its historical expected byte string uses LF.
 
-## 4. Authority and workflow contract
+All twelve W05 security methods failed during probe initialization before importing the first product module, reporting AttributeError. Source inspection and an isolated minimal reproduction identify the unpreloaded importlib.util reference in the probe. Passing static module guards does not replace the failing dynamic probes. Two earlier-unit files need the explicitly scoped repair recorded as P1-W06-R01 in PHASE_1_PROGRESS.md; neither has been modified.
 
-The workflow runs on pull requests into main and pushes to main. PR jobs check out the actual PR head SHA; push jobs check out github.sha. The driver verifies HEAD before running repository code. The matrix has fail-fast disabled so one failure cannot hide another platform result. Each job has a 25-minute timeout, bounded subprocesses, and only contents-read permission. There is no privileged trigger, write token, deployment, package upload, automatic merge, arbitrary user ref input, repository-secret reference, cache or pull-request title/body interpolation into a shell command.
+## 5. Evidence accounting and local correction
 
-The file `.github/workflows/phase1-ci.yml` uses JSON-form YAML. This permits a strict standard-library JSON parser with duplicate-key rejection, without adding PyYAML. Fourteen independent policy tests check the approved structure and deliberate changes to permissions, triggers, pins, retained credentials, matrix coverage, skipped stages, ignored failures, shell interpolation and artifact scope. Successful parsing or policy tests do not establish hosted success; GitHub's actual workflow execution remains required.
+The first helper mistakenly compared the JUnit suite aggregate of 602 events with 182 collected instances. Full XML inspection found 182 testcase elements and suite tests=602, with the log separately reporting 420 successful subtests. This driver defect is repaired inside the authorized W06 test file. The new parser matches each classname/name pair to an actual collected ID, rejects omitted/duplicate/unexpected outcomes and reports the event aggregate separately. Suite or element failures/errors/skips and a nonzero pytest exit still block acceptance.
 
-The bounded CI driver resides in the same allowed developer test file, `tests/scaffold/test_ci_contract.py`. It is never imported by the installed auditor. Its explicit stages are preflight, prepare, test and evidence. CI-stage invocation requires GITHUB_ACTIONS=true; ordinary test collection executes no dependency acquisition. All application modules remain the exact W02 placeholders.
+Six accounting controls join the fourteen policy methods. All twenty methods passed locally, and the corrected parser was applied to all four downloaded original JUnit files, preserving the actual twelve/thirteen failures. A new hosted run on the successor is needed and will be recorded in PR #7. The older run is not relabeled as a pass or attributed to changed executable bytes.
 
-## 5. Actual-checkout and test evidence design
+## 6. Downloaded evidence identity
 
-Before dependency installation the driver records all tracked-file SHA-256 identities and runs both W05 developer commands against the full actual checkout. This closes W05's expressly deferred full-checkout test when it succeeds. The driver records the true result rather than substituting the prior synthetic-workspace check.
+All four complete first-run evidence ZIPs were retrieved through the connector and matched against these Actions SHA-256 records before their JSON/XML/log contents were inspected:
 
-The accumulated suite explicitly selects both tests/scaffold and tests/security. The original pytest default selects only tests/scaffold, so relying on that default would omit W05 security tests. The collection gate requires every existing test file in those two scopes, unique collected node IDs and at least the 168 earlier test instances. W06 contributes fourteen policy tests. No deselection, skip/xfail allowance, parallel test plugin or modified historical test is selected.
+| Row | Artifact ID | Bytes | ZIP SHA-256 |
+|---|---:|---:|---|
+| Ubuntu / 3.11 | 10552901530 | 38761 | `6d29a54760d9385b8ada06847ac58c2d4da9797740ebf215a644c9b422ad9fb0` |
+| Ubuntu / 3.13 | 10552856527 | 38613 | `beadf5644ef1344ac229a1d575e9b03261e9caa2c2bb1ab6b328a38125389e5a` |
+| Windows / 3.11 | 10552926653 | 46347 | `9e78f49ab64130b0f57652acdbe2f62c9a8e8a99692ca02ba1866e27eb3709eb` |
+| Windows / 3.13 | 10553106403 | 46152 | `daa3937d3e268f0749b5c25747a993e35d5acba9eeee7b19e2a5bf8393f796b5` |
 
-Test execution uses the isolated tools interpreter. Package-index access is disabled during the tests; the existing application network probes still independently test application-originated effects. The build tests use the reviewed backend directly and perform offline installation into a no-pip runtime venv. They inspect source/wheel contents, exclusions, original license bytes, lack of runtime requirements, refusal behavior and source-rebuild member-byte equality. Native files, logical expected answers and domain algorithms remain absent from the product package.
+Canonical run: `https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35357942013`.
 
-Always-run evidence recording captures JUnit totals, collection IDs, pytest exit, dependency/installation records, guards, tracked-byte preservation, and member hashes of self-built archives. It requires all collected tests to finish without failure/error/skip, both guards to pass, tracked files to remain unchanged and the expected build evidence to exist. A setup or execution failure stays failed even if some other checks pass.
+Uploads are restricted to explicit JSON/XML/log patterns under RUNNER_TEMP/sit-w06/evidence for fourteen days. No workspace dump, user dossier, theory PDF, source archive, wheel binary or credential dump is uploaded. Artifacts preserve failures rather than hiding them behind a missing file or a success-only upload.
 
-Only explicit JSON, XML and log patterns under RUNNER_TEMP/sit-w06/evidence are uploaded for fourteen days. No source-paper PDFs, real user dossiers, whole workspace, package binaries, wheelhouse or environment dump is uploaded. Evidence contains hashes and synthetic-test diagnostics. No credentials are explicitly injected into the driver or child tests.
+## 7. Stop point
 
-## 6. Execution record and next gate
-
-Local standard-library policy testing passed all fourteen methods before submission. Local direct Git transport still cannot resolve github.com; no complete local clone or full local accumulated-suite result is claimed. The connected repository is the authority, and the hosted matrix will operate on its full checkout.
-
-Hosted results, failures and final candidate identity will be recorded after they exist in PHASE_1_PROGRESS.md and the W06 PR. P1-W06 must remain unaccepted while a required matrix job is failed or missing. A defect in a previous unit's file requires a scoped repair authorization rather than a silent edit. No P1-W07 work or final Phase 1 completion is authorized by this document.
+P1-W06 is blocked and PR #7 remains draft. The next approval requested is limited to the two test-file repairs, retained adverse controls and full matrix rerun. Original specifications, product code, dependency pins and case oracles remain frozen. No P1-W07, production platform claim, domain implementation or package publication is authorized.

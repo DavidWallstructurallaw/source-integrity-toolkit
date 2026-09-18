@@ -52,9 +52,11 @@ Both test directories are explicit in the command above. The earlier pytest defa
 
 [Phase 1 scaffold CI](.github/workflows/phase1-ci.yml) defines four required rows: Ubuntu 24.04 and Windows Server 2025, each with Python 3.11 and 3.13. It uses read-only repository permissions and full-commit action pins, checks the exact candidate head, runs both full-checkout guards, reviews and installs pinned developer wheels, collects and runs the accumulated tests, and checks source/wheel contents plus an offline clean installation. It uploads only verification records for fourteen days, with no package publication or automatic merge.
 
-The workflow is expressed in JSON-form YAML so the standard library can inspect its complete permission/trigger/matrix structure without an extra parser dependency. The associated policy tests include deliberate unsafe mutations. Networked dependency setup is separate from the application's no-network probes. Runner images and Python patch releases are recorded at execution time.
+The workflow is expressed in JSON-form YAML so the standard library can inspect its complete permission/trigger/matrix structure without an extra parser dependency. Policy tests include deliberate unsafe mutations. Networked dependency setup is separate from the application's no-network probes. Runner images and Python patch releases are recorded at execution time.
 
-P1-W06 hosted results are pending in this candidate. Consult the actual run and [PHASE_1_PROGRESS.md](PHASE_1_PROGRESS.md); a declared matrix or green historical W02 run is not evidence that the new matrix passed. Windows Server scaffold checks do not certify the future Windows 11/NTFS file adapter, and no production platform support is asserted.
+**P1-W06 is currently blocked on two earlier test-file repairs.** The first hosted matrix passed both actual-checkout guards and developer setup on every row, but the isolated W05 security probe failed before product import. Windows also exposed an LF-only expectation for backend-generated setup.cfg. Full results and the scoped repair proposal are in [PHASE_1_PROGRESS.md](PHASE_1_PROGRESS.md); no failing test has been skipped. The new CI summary also now distinguishes top-level test instances from subtest events. A declared matrix or green historical W02 run is not evidence that W06 passed.
+
+Windows Server scaffold checks do not certify the future Windows 11/NTFS file adapter, and no production platform support is asserted.
 
 ## Specifications
 
