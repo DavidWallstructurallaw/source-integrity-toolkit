@@ -5,81 +5,58 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Revision | 0.14, P1-W06-R02 complete matrix verification |
+| Revision | 0.15, P1-W07 final scaffold audit and handoff |
 | Date | 2026-09-18 UTC |
-| Owner repair approval | `批准`, responding to the single-file P1-W06-R02 request |
+| Owner instruction | `批准并合并 PR #7，然后进入 P1-W07` |
 | Approved plan | Revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
-| W05 merge / unchanged main | `ecf4eb5126201a7c31250c6dae8cbe2c64f9066a` |
-| R02 intake | `c6d8969d8b82d86900fbd36c6d657538f47af35a` |
-| Repaired executable candidate | `e102b7f31427f5a0dce288517284eaf4e3a6a7dd` |
-| Inspected passing run | `35365045308`, attempt 1 |
-| Branch / PR | `phase1/p1-w06`, PR #7 |
-| W06 technical status | Four-row matrix PASS on the named repaired candidate; final review-head checks recorded separately in PR #7 |
-| W06 owner acceptance / merge | Pending / not performed |
-| P1-W07 and Phase 2 | Not authorized or executed |
+| Accepted main / W06 merge | `6d7f7e3f54bebf5f7f3b680988b10cee096ae8ba` |
+| W07 audited precursor | `d00f4faeeed414b1729bc2e5643af5b65737093a` |
+| Inspected W07 run | `35384829099`, attempt 1 |
+| Branch / PR | `phase1/p1-w07`, PR #8 |
+| Current technical result | Precursor audit PASS; final record-set CI gate recorded separately in PR #8 |
+| W07 owner acceptance / merge | Pending / not performed |
+| Phase 2 | No plan, code or execution authorized |
 
-## 1. Authority and closed scope
+## 1. Acceptance and merge actually performed
 
-The owner approved P1-W06-R02 after the R01 handoff identified the remaining Windows canary failure. The additional authority covers only `tests/security/test_scaffold_no_native_loading.py`, necessary existing W06 evidence/status records, and the complete four-row rerun. It does not authorize product implementation, another earlier test repair, merger or W07.
+The current instruction accepted W06 and authorized PR #7's merger plus W07. The PR was re-read at `c24b9b6ccc5ce178f52f989f80dfde1cc26a7e39`; its exact-head run 35365621100 and four successful jobs were rechecked. Expected-head-protected merge returned `6d7f7e3f54bebf5f7f3b680988b10cee096ae8ba`. The merge tree equals the accepted W06 tree `d231330752a888048559a7be5b5deb11bc5827f8`.
 
-The full W06 PR now has eight permitted paths: its original workflow, CI review, CI policy/evidence helper, README and progress record; the two R01 test files; and the single R02 test file. This R02 pass changes the latter test and three documentation records only. No further test, workflow/helper, product module, dependency pin, packaging rule, fixture/oracle, catalog, license, approved plan or frozen specification changes.
+The complete W06/R02 progress revision 0.14 remains at that merge and at `c24b9b6ccc5ce178f52f989f80dfde1cc26a7e39`, this path. Revision 0.13 at `c6d8969d8b82d86900fbd36c6d657538f47af35a` preserves the R01 evidence and R02 proposal before approval. These histories retain the initial failures and the exact permissions for each repair. This successor does not relabel them as passing.
 
-## 2. Exact R02 repair
+## 2. W07 closed file scope
 
-The existing `test_deliberate_cdll_is_blocked_before_loading` now selects the fixed string `SYNTHETIC_NONEXISTENT_LIBRARY` as its CDLL argument on Windows. Other platforms retain None. The probe remains injected into `io/platform_linux.py`, because all package slots must remain inert on every tested host, irrespective of a slot's prospective platform role.
+Only PHASE_1_COMPLETION.md, PHASE_1_PROGRESS.md, scaffold/delivery_manifest.json and README.md are authorized by plan section 11. The precursor updates README only. Its tested tree is `9b645fd7cc3a13d5661a80138f23381fd02b4822`. The final record-set successor adds completion and delivery manifest, updates this progress record and changes no manifested byte.
 
-The three original native-test methods and every original assertion are unchanged. In particular, the canary must fail as an application operation and retain an actual `ctypes.dlopen` entry. A TypeError, missing event or skipped test cannot satisfy it. The other-slot named-library control remains intact. No actual native loading is granted and the shared observer is unchanged by R02.
+No product module, prior test, dependency pin, package selection, workflow, license, catalog, input/oracle, baseline manifest, frozen specification, approval or Phase 1 plan is edited. No tests or skip markers are added. All new metadata is delivery/governance material outside the runtime.
 
-The fetched input blob was `7f80974968f5636b4f6aa87d4efc8c13d9bc834c`, SHA-256 `3875064a1222480e2ee1611fcbef033099887cfb43e0a9684ce9425aa355e5b6`. The committed repaired blob is `69d06755fa425d8508369b744277b2f47e4694af`, SHA-256 `add4a523f73deba8380a257a1846d8c044249996ec88ca56be1f4903563a96a6`.
+## 3. Scope audit and acceptance chain
 
-Local checks established matching input bytes, Python syntax, unchanged methods/assertions and the fixed Windows/POSIX argument selection. They did not pretend to execute Windows locally. Acceptance evidence is the actual hosted matrix below. R02 adds no collected test and removes none.
+PRs #2-#7 were read and their full changed-path lists checked against the plan plus explicit exceptions. Counts are 11, 58, 9, 15, 12 and 8. Their union and the twenty pre-scaffold paths account for all 122 accepted files, with no missing or unexpected path. The temporary W04 importer is absent. The old draft PR #1 remains unmerged history, superseded for acceptance by PR #2; no cleanup mutation was performed.
 
-## 3. Complete passing matrix
+The accepted heads, merge commits and original local/hosted test scopes are tabulated in PHASE_1_COMPLETION.md section 2. W05's documented lack of a local twenty-actual-file check is closed by the later W06 and current W07 hosted full-checkout executions, not backdated to W05.
 
-Run `35365045308`, attempt 1, executed commit `e102b7f31427f5a0dce288517284eaf4e3a6a7dd`. All four jobs completed successfully. Their complete evidence ZIPs were downloaded through the connector and matched against Actions byte counts and SHA-256 digests before inspection.
+## 4. Actual W07 precursor results
 
-| Hosted profile | Actual Python | Collected / passed | Failed | Errors / skipped |
-|---|---|---:|---:|---|
-| Ubuntu 24.04 x64, image 20260907.300.1 | 3.11.16 | 194 / 194 | 0 | 0 / 0 |
-| Ubuntu 24.04 x64, image 20260907.300.1 | 3.13.15 | 194 / 194 | 0 | 0 / 0 |
-| Windows Server 2025 x64, image 20260907.229.1 | 3.11.9 | 194 / 194 | 0 | 0 / 0 |
-| Windows Server 2025 x64, image 20260907.229.1 | 3.13.15 | 194 / 194 | 0 | 0 / 0 |
+Run 35384829099, attempt 1, checks exactly d00f4faeeed414b1729bc2e5643af5b65737093a. All four jobs succeed. Each collects and passes the same 194 top-level instances as W06, with zero failures, errors or skips and 420 separately counted successful subtest events. The four environments are Ubuntu 24.04 x64 with CPython 3.11.16 and 3.13.15, and Windows Server 2025 x64 with CPython 3.11.9 and 3.13.15. Image versions remain 20260907.300.1 and 20260907.229.1 respectively.
 
-Each row additionally reports 420 successful subtest events. The JUnit aggregate is 614 events, containing 194 top-level result elements. Local evidence inspection independently matched every result identity to collection, confirmed the same 194 collected IDs as the R01 run, checked zero failures/errors/skips and pytest exit zero, and verified all three native methods passed. Subtests do not become additional domain-test implementations.
+Both actual twenty-file baseline and forty-eight-module guards pass before and after. Tracked bytes remain unchanged during tests; all four tracked maps are identical and differ from W06 only in README. Pinned developer-wheel review/install, all fourteen test files, exact source/wheel inventories, clean offline installation and source-rebuild wheel member-byte equality pass. The source archive includes its four approved original scaffold tests; the wheel includes no tests or logical expectations. Counts remain 65 regular sdist members and 55 wheel members.
 
-All four rows passed the actual twenty-file baseline and forty-eight-module guards before and after execution. Tracked bytes remained unchanged during testing. The pinned developer wheels and existing Windows Colorama marker were verified and installed without adding runtime dependencies. All packaging tests passed: exact 65-regular-member source inventory, 55-member wheel, exclusion checks, clean offline installation without developer dependencies, and equal member bytes in the original and source-rebuilt wheels.
+All four evidence ZIPs were downloaded and matched to Actions byte counts and SHA-256 values. Local inspection independently matches collection IDs to 194 JUnit elements, checks the aggregate/subtest distinction, all zero error/failure/skip counts, pytest exit, guard logs, tracked hashes, installed versions and archive members. Artifact IDs, hashes and job IDs are retained in completion section 6. Source locators and real evidence were not used.
 
-The existing API refusal, import, CLI, file/path, DNS/socket, native-loading, architecture, catalog, fixture and CI-policy checks are included. There is no test skip, xfail, deselection, reduced matrix or accepted generic exception. These are scaffold checks, not an implementation of the 228 pending analytical test obligations or the future native adapters.
+A direct local Git clone failed DNS resolution. No local full-checkout test run is claimed. Local evidence verification initially used an overbroad assertion excluding every test from the sdist. The accepted MANIFEST.in expressly includes four original tests; the supplemental checker was corrected to compare the complete accepted inventory. That authoring-check error altered no repository file or hosted test, and is retained in the local verification notes.
 
-## 4. Downloaded evidence identities
+## 5. Manifest and final delivery evidence
 
-| Row | Job ID | Artifact ID | ZIP bytes | Complete ZIP SHA-256 |
-|---|---:|---:|---:|---|
-| Ubuntu / 3.11 | 105665328413 | 10556316686 | 36945 | `07d826b768d5f1dadf186e6277055a3bfa091862c636a144a3ba8efac14666b3` |
-| Ubuntu / 3.13 | 105665328371 | 10555379689 | 36791 | `0c7b4e53fba727520501db9ca610fc7ea9e06dfc4aa92536341ff54b212d84cb` |
-| Windows / 3.11 | 105665328541 | 10555707419 | 43125 | `dbdc8d09459e3fd427153bd6b9db0c769136ad727f3a9c3124470d17bcdef8bb` |
-| Windows / 3.13 | 105665328095 | 10555962094 | 42916 | `4a78be1202842cfc29491d9e8d973ffdf964902883ad784fada922aee603dce1` |
+The delivery manifest pins the exact d00f4fa precursor and 121 complete-file SHA-256 values, excluding itself and the completion/progress records. Its local bytes match created Git blob `706db89ddb69fb8f0c8db80f27b4128c50afab54`; its own SHA-256 is `c354ec51acbe4ad90cb2f15037b3a3d043eec21e39cd348d8b5ecb2afae3fc5a`. The final record-set contains 124 tracked files. This is a predecessor manifest with an explicit boundary, not a self-hashing claim.
 
-Run URL: `https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35365045308`.
+The final record-set commit must receive its own four-row CI rerun. Its actual commit/run/artifact pairing and four-path diff are recorded in PR #8 after creation and inspection, rather than trying to embed this file's future commit inside itself. The final downloaded tracked map must match all 121 manifest entries and introduce only the two planned new files plus the updated progress. Prior green results do not waive that gate.
 
-The JSON/XML/log inspection includes environment and commit identity, collection, pytest exit, suite and element counts, before/after guards, reviewed/installed wheels, tracked hashes and archive member hashes. Hosted image/patch details are observed environments, not a newest-release or production-support claim.
+## 6. Historical failures and remaining boundary
 
-## 5. Retained failure history
+The W01 digest errors, W02 local tool-version mismatch and W04 transport delay retain their accepted repair/verification records. W06 runs 35357942013, 35358820107, 35362756160 and 35363039474 retain their original failures. R02 runs 35365045308 and 35365621100 retain the actual passing repairs. No failing test was dropped, no product boundary relaxed and no source oracle rewritten.
 
-The complete earlier progress revision 0.13 is preserved at `c6d8969d8b82d86900fbd36c6d657538f47af35a`, this path. It retains the R01 authority, intermediate results, exact CPython source verification and the R02 proposal before approval. Earlier revisions remain reachable through its pinned history.
+The 228 domain obligations remain pending. Passing static catalogs/fixtures, imports, package inspection and scaffold probes does not implement parsing, qualification, source graphs, HHI, correction, report serialization, resource enforcement or native adapters. SECURITY.md's private-reporting limitation and the prior dependency/security applicability qualifications remain visible.
 
-| Historical run | Outcome retained |
-|---|---|
-| 35357942013 | Initial W06 matrix failed; isolated-probe initialization, Windows generated newline and summary-accounting defects exposed |
-| 35358820107 | Accounting corrected, but twelve Linux and thirteen Windows failures remained |
-| 35362756160 | Initial R01 repair exposed deferred IDNA initialization and the Windows None canary |
-| 35363039474 | R01 complete; Linux 194/194, Windows 193/194, with only the R02 canary still failing |
-| 35365045308 | R02 repaired; all four rows 194/194 |
+## 7. Stop
 
-No previous failure is erased, relabeled or credited to later code. R01's preload and strict generated-metadata repairs remain unchanged. The separate old W02 workflow stays limited to its original scope; its skip on a W06 PR is not counted as W06 evidence.
-
-## 6. Delivery gate
-
-This documentation successor updates only progress, CI review and README after the named passing executable run. It must receive its own passing exact-head checks before delivery; that final commit/run pairing is recorded in PR #7 and the exported verification summary rather than creating a self-referential commit hash in this file.
-
-W06 technical verification is complete on the named candidate. Owner acceptance and merging PR #7 remain separate, unperformed actions. Main stays at the accepted W05 merge. No P1-W07 completion file, Phase 2 work, actual auditing, report generation, native security implementation, package release or deployment is introduced.
+W07 ends after submitting PHASE_1_COMPLETION.md and its final checked review package for owner acceptance. Main remains at the accepted W06 merge unless a later owner instruction authorizes PR #8. No Phase 2 plan, release, deployment, source-paper update or cross-project integration is created.
