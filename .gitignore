@@ -1,0 +1,35 @@
+# Local Python environments and caches
+/.venv/
+/venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+/.tox/
+/.nox/
+
+# Build and local test outputs
+/build/
+/dist/
+*.egg-info/
+.coverage
+.coverage.*
+/htmlcov/
+
+# Local settings and confidential runtime material
+/.env
+/.env.*
+!/.env.example
+/private/
+/local-data/
+/runtime-data/
+/audit-output/
+/.sit-stage-*/
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+
+# Do not ignore whole file classes such as *.json or *.md:
+# specifications, catalogs, fictional fixtures and tests must stay visible.

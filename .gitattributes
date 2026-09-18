@@ -1,0 +1,25 @@
+# New scaffold text uses LF; binary files are detected automatically.
+* text=auto eol=lf
+
+# Exact approved bytes: no text conversion, filter or ident expansion.
+# An intentional baseline amendment still requires explicit authorization.
+/CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md -text !eol -filter -ident !working-tree-encoding
+/DEFINITIONS_AND_UNITS.md -text !eol -filter -ident !working-tree-encoding
+/DEPENDENCY_STRATEGY.md -text !eol -filter -ident !working-tree-encoding
+/GOVERNANCE_AND_HANDOFF.md -text !eol -filter -ident !working-tree-encoding
+/LICENSING_NOTES.md -text !eol -filter -ident !working-tree-encoding
+/OBSERVABILITY_AND_REPORTING.md -text !eol -filter -ident !working-tree-encoding
+/PHASE_0_APPROVAL.md -text !eol -filter -ident !working-tree-encoding
+/PHASE_0_PLAN.md -text !eol -filter -ident !working-tree-encoding
+/PHASE_1_PLAN.md -text !eol -filter -ident !working-tree-encoding
+/PRIVACY_AND_DATA_HANDLING.md -text !eol -filter -ident !working-tree-encoding
+/PROJECT_INSTRUCTIONS.md -text !eol -filter -ident !working-tree-encoding
+/REPOSITORY_ARCHITECTURE.md -text !eol -filter -ident !working-tree-encoding
+/SOURCE_INTEGRITY_THREAT_MODEL.md -text !eol -filter -ident !working-tree-encoding
+/SPEC_AUDIT.md -text !eol -filter -ident !working-tree-encoding
+/SUCCESS_CRITERIA.md -text !eol -filter -ident !working-tree-encoding
+/THEORY_SOURCE_MAP.md -text !eol -filter -ident !working-tree-encoding
+/THEORY_TO_CODE_TRACEABILITY.md -text !eol -filter -ident !working-tree-encoding
+/UNRESOLVED_DECISIONS.md -text !eol -filter -ident !working-tree-encoding
+/V0.1_PRODUCT_SPEC.md -text !eol -filter -ident !working-tree-encoding
+/VALIDATION_PLAN.md -text !eol -filter -ident !working-tree-encoding
