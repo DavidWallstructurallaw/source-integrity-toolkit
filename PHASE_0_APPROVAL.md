@@ -6,7 +6,7 @@
 |---|---|
 | Project | Source Integrity Toolkit |
 | Target release | v0.1 |
-| Record revision | 1.0 |
+| Record revision | 1.1 |
 | Approval date | 2026-09-17 |
 | Theory Owner / approving owner | Xiangyu Guo |
 | Technical Owner | Unassigned |
@@ -38,20 +38,20 @@ The manifest contains exactly eighteen files, totaling 1,094,920 bytes. It exclu
 |---|---:|---|
 | `CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md` | 129967 | `32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374` |
 | `DEFINITIONS_AND_UNITS.md` | 94436 | `913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d` |
-| `DEPENDENCY_STRATEGY.md` | 15029 | `6f266470bcd812965debd889df8c533a68b2aa8374da1541676162f0a74ebc9f` |
-| `GOVERNANCE_AND_HANDOFF.md` | 26255 | `5210097e37a8c502939d769bf04c3bfa53628a837c447e435e78fd02090d9599` |
-| `LICENSING_NOTES.md` | 10911 | `8c2d4f106bfea0676a991200c0aebbc6532ce865d079b733522e5b43b4bf4b28` |
+| `DEPENDENCY_STRATEGY.md` | 15029 | `65b5c4f1f91be019e1fb09329ff5214980e5956579c1c8ccec7f4b6f7b4174ad` |
+| `GOVERNANCE_AND_HANDOFF.md` | 26255 | `13e535ded411a3ad5967226e07761d4e88615f5b04c0b5a64c6cbf738cbc9ee8` |
+| `LICENSING_NOTES.md` | 10911 | `e544f6f38d4fa83faaba0da42d85bc4af4e3a86028f3a4ab78132d21b2ddb80f` |
 | `OBSERVABILITY_AND_REPORTING.md` | 111615 | `44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a` |
 | `PHASE_0_PLAN.md` | 45379 | `2d97a820ae218c33cfd00dd96a762853e887f867973a2b2da0945fc4414495b1` |
-| `PRIVACY_AND_DATA_HANDLING.md` | 28777 | `a364119c0a9cde098cf3f2f84d3c053e67c9871d492ba62a0ca7d1d9e695610` |
+| `PRIVACY_AND_DATA_HANDLING.md` | 28777 | `3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8` |
 | `PROJECT_INSTRUCTIONS.md` | 22037 | `cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746` |
-| `REPOSITORY_ARCHITECTURE.md` | 67030 | `4bde46a39961bff9e99f7e5f82b6e57c7a911f437a79c1436d37cdcfa9ff1f3` |
-| `SOURCE_INTEGRITY_THREAT_MODEL.md` | 93871 | `bdb82719e05a7c7a41b0f9bdce409b37f31f7a08d6327f710ba5da0d6044f13` |
+| `REPOSITORY_ARCHITECTURE.md` | 67030 | `8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d` |
+| `SOURCE_INTEGRITY_THREAT_MODEL.md` | 93871 | `e74e1bd146acb3ece62dcc4c0096f5fae9f7b72950c5827956fff0398c1c374a` |
 | `SPEC_AUDIT.md` | 42589 | `3565ab8f1b08f30e06f4983ffd26adbe8bc977b655ebf410b634918a7ae7949a` |
 | `SUCCESS_CRITERIA.md` | 58182 | `270eed959a08607e182ff5922d6cacdec3c3536c954f3f65d5e9b8d9bcfb5476` |
 | `THEORY_SOURCE_MAP.md` | 56697 | `015e65baf3fcad8ce78a2285df8f2de8d5b7b4cbdd347707ba3cc5d5ba46b627` |
 | `THEORY_TO_CODE_TRACEABILITY.md` | 65779 | `73a69a56828b6ff416164b7bd6420521da1c635bd92f03b92e07231b552a7849` |
-| `UNRESOLVED_DECISIONS.md` | 15713 | `e562031d15d14ea74724b520db9cbe6a5b62b85105c611fb1430c9a6cddf4a0` |
+| `UNRESOLVED_DECISIONS.md` | 15713 | `4d79c732f31eefaad54fb53209e535a248d824e78673a31383442b5ebe74a59e` |
 | `V0.1_PRODUCT_SPEC.md` | 62420 | `70ab331662741c0177908ec5ccac09ff7538f98643567eb3066e0ed8c9cb84e1` |
 | `VALIDATION_PLAN.md` | 148233 | `f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707` |
 
@@ -123,3 +123,27 @@ A later counterexample, feasibility failure or security-test failure must reopen
 Keep the eighteen approved files and this approval record read-only during ordinary Phase 1 execution. New progress and test evidence belong to separately authorized Phase 1 artifacts. Do not edit old headers simply to make them say APPROVED, relocate the files, change their line endings, or replace their hashes with those of a modified copy.
 
 The next artifact is a proposed `PHASE_1_PLAN.md`. The next execution gate is approval of that plan and authorization of its first work unit. No scaffold, implementation or release is reported complete by this approval.
+
+## 9. Authorized manifest correction: revision 1.1
+
+The owner replied `批准，继续` to the scoped repair request recorded in P1-W01's entry-hold handoff and `PHASE_1_PROGRESS.md` section 4. That instruction authorizes recomputing all eighteen digests, correcting erroneous manifest values and necessary correction metadata, and then resuming P1-W01. It grants no permission to modify the eighteen underlying specifications, the approved candidate commit, the design decisions or `PHASE_1_PLAN.md`.
+
+Revision 1.0 remains available at its original commit `6650984502637bb167c38e7e370c46e246591480`, Git blob `5f9732b2ab1cf51c513e2bcf71a0cdb8a4f055d3`, 11,830 bytes. Its actual file SHA-256 is `73c10235549ffc725f9035f07281818f560a9262361acca2ba81c3d7a01e7ccd`.
+
+The P1-W01 check first identified four 63-character manifest entries. Full recomputation then found three additional incorrect 64-character values. Revision 1.1 corrects the following seven entries in section 2:
+
+| File | Defect in revision 1.0 |
+|---|---|
+| `DEPENDENCY_STRATEGY.md` | 64-character value did not match the approved file bytes |
+| `GOVERNANCE_AND_HANDOFF.md` | 64-character value did not match the approved file bytes |
+| `LICENSING_NOTES.md` | 64-character value did not match the approved file bytes |
+| `PRIVACY_AND_DATA_HANDLING.md` | Incomplete 63-character value |
+| `REPOSITORY_ARCHITECTURE.md` | Incomplete 63-character value |
+| `SOURCE_INTEGRITY_THREAT_MODEL.md` | Incomplete 63-character value |
+| `UNRESOLVED_DECISIONS.md` | Incomplete 63-character value |
+
+The original claim that the entire manifest had already been verified was inaccurate. This correction records the actual completed verification now; it does not backdate that verification. All eighteen complete local byte sequences were matched to the Git blob identities and byte counts returned for the exact approved commit. SHA-256 was then computed with Python hashlib and independently compared with sha256sum over the same bytes. The eleven other entries already matched. Every corrected entry is exactly 64 lowercase hexadecimal characters; the eighteen file paths, byte counts and total of 1,094,920 bytes are unchanged.
+
+Only the record revision, seven manifest digest values and this correction-history section change. Sections 1-8 otherwise retain their previous text and substantive scope. The unchanged approved commit remains `7d2e5fcaff591641b5cefce00e71e88941dd1f95`. This is a correction to freeze evidence, with the owner's semantic approval preserved.
+
+The corrected approval record's own hash and actual correction commit are recorded separately in the P1-W01 baseline manifest and progress record after creation. This document does not hash itself. The already approved Phase 1 plan remains unchanged, and the current execution authorization remains P1-W01 only.
