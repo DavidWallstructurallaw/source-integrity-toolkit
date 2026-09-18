@@ -25,8 +25,9 @@ from tools import check_scaffold_boundary as guard
 
 PROBE = r'''
 import contextlib, ctypes, importlib, io, json, os, pathlib, socket, sys, typing
-# P1-W06-R01: load the cache helper before installing the observer.
+# P1-W06-R01: preload cache and hostname helpers before the observer.
 import importlib.util
+import encodings.idna
 request = json.loads(sys.stdin.read())
 package_dir = os.path.abspath(request["package"])
 source_dir = os.path.dirname(package_dir)
@@ -214,10 +215,13 @@ class ScaffoldInertnessTests(unittest.TestCase):
         imports = {alias.name for node in ast.parse(preload).body
                    if isinstance(node, ast.Import) for alias in node.names}
         self.assertIn("importlib.util", imports)
+        self.assertIn("encodings.idna", imports)
         script = preload + "\n" + (
             "cache = importlib.util.cache_from_source('probe.py')\n"
             "if importlib.util.source_from_cache(cache) != 'probe.py':\n"
             "    raise RuntimeError('cache_helper_round_trip_failed')\n"
+            "if 'canary.invalid'.encode('idna') != b'canary.invalid':\n"
+            "    raise RuntimeError('hostname_helper_failed')\n"
             "print('CACHE_HELPER_READY')\n"
         )
         with tempfile.TemporaryDirectory(prefix="sit-preload-regression-") as temp:
