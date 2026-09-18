@@ -1,104 +1,99 @@
 # PHASE_1_PROGRESS
 
-## Document control
+## Current control record
 
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Progress revision | 0.2 |
-| Record date | 2026-09-17 |
-| Approved Phase 1 plan | Revision 0.1 at `2fa58fce603e28f1160bd68eeadbe315db941501` |
-| Plan Git blob | `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
-| Plan approval and initial execution instruction | `批准，开始 P1-W01` |
-| Scoped repair and continuation instruction | `批准，继续`, following the approval-manifest repair request |
-| Current work unit | P1-W01: Freeze verification, project governance and license application |
-| Execution intake commit | `2fa58fce603e28f1160bd68eeadbe315db941501` |
-| Approved Phase 0 candidate | `7d2e5fcaff591641b5cefce00e71e88941dd1f95` |
-| Original approval-record commit | `6650984502637bb167c38e7e370c46e246591480` |
-| Corrected approval-record commit | `f84c58cf6ca93b57020fd9b271de4c33e1bf1ebd` |
-| Reviewed pre-progress candidate | `4a998023ec3a4a87702b023481b14ba48366435f` |
-| Review branch / pull request | `phase1/p1-w01` / PR #2 |
-| Current disposition | P1-W01 artifacts completed and checked; submitted for owner review |
-| Owner acceptance of this delivery / merge | Pending |
-| P1-W02 and later units | Not started |
+| Progress revision | 0.3 |
+| Date | 2026-09-17 |
+| Approved plan | PHASE_1_PLAN.md revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
+| Current owner instruction | `可以，合并 PR #2，并开始 P1-W02` |
+| Accepted predecessor | P1-W01 at `63c03ee82ebffd5f4dc73972b2baa158c20cdf33` |
+| Merged PR | #2 |
+| Merge / W02 intake commit | `ae61bb6fa36d53fb2138542ee69e36585ee7bc72` |
+| Current branch | `phase1/p1-w02` |
+| Work status | W02 scaffold prepared; selected-toolchain verification BLOCKED |
+| W02 acceptance / merge | Pending; not claimed complete |
+| W03 and later work | Not started |
 
-## 1. Authority and immutable failed-gate history
+## 1. Preserved predecessor and merge evidence
 
-The original instruction approved PHASE_1_PLAN.md and authorized P1-W01. Its historical PROPOSED header remains unchanged. The first attempt stopped at the required freeze check and recorded four malformed approval-manifest digests. That complete entry-hold record is preserved at:
+The owner accepted the submitted W01 delivery and explicitly authorized its merge. GitHub confirmed a merge of PR #2 using expected head `63c03ee82ebffd5f4dc73972b2baa158c20cdf33`, producing `ae61bb6fa36d53fb2138542ee69e36585ee7bc72`. No force push, squash of the correction history, or branch-protection change was used.
 
-`https://github.com/DavidWallstructurallaw/source-integrity-toolkit/blob/6e37659bdf345484babc4eb37ef7b547980998d1/PHASE_1_PROGRESS.md`
+The complete prior progress record remains at:
 
-Its blob is `3c4ddf4f6e1a5c313c83a3246e32732fecf4029e`. This revision preserves the failed-gate event by that immutable reference. It does not claim that the first check passed or erase the earlier limitation that only eleven files had then been independently rehashed.
+`https://github.com/DavidWallstructurallaw/source-integrity-toolkit/blob/63c03ee82ebffd5f4dc73972b2baa158c20cdf33/PHASE_1_PROGRESS.md`
 
-The owner subsequently approved the proposed narrow repair with `批准，继续`. That authorizes correcting erroneous digest/revision-history metadata in PHASE_0_APPROVAL.md, after recomputing all eighteen entries, then resuming the existing W01 allowlist. It does not authorize changing any underlying specification, the approved design or PHASE_1_PLAN.md.
+It preserves the original entry hold, seven approval-manifest corrections, eighteen-file rehash evidence, licensing and governance delivery, and W01 test limitations. The initial blocked record also remains at commit `6e37659bdf345484babc4eb37ef7b547980998d1`.
 
-## 2. P1-W01-B01 resolved: complete manifest recomputation
+The accepted eighteen-file Phase 0 candidate remains `7d2e5fcaff591641b5cefce00e71e88941dd1f95`, interpreted through approval revision 1.1. W02 does not change any specification, that approval record, the Phase 1 plan, W01 licensing files or the baseline manifest.
 
-All eighteen complete file byte sequences were matched against the approved commit's Git blob identities and byte counts. Local SHA-256 calculations with hashlib were independently cross-checked using sha256sum. There was no checkout normalization, missing-character guess or substitution of Git SHA-1 for file SHA-256.
+## 2. W02 delivered scope
 
-The eleven previously checked entries matched. Full verification found seven erroneous values in the approval record: the four previously reported 63-character entries plus three 64-character mismatches for DEPENDENCY_STRATEGY.md, GOVERNANCE_AND_HANDOFF.md and LICENSING_NOTES.md. Those are approval-record defects; the corresponding specification blobs still match the approved candidate.
+The candidate changes only the section 6 allowlist: 48 explicitly named Python package files; pyproject.toml, MANIFEST.in and requirements-dev.txt; the four named tests/scaffold files; scaffold/toolchain_review.md; and this progress file. This is 57 paths, consisting of 55 new paths and the two allowed progress/toolchain updates.
 
-The authorized repair changed only the approval record's revision to 1.1, the seven incorrect table values and a correction-history section. All eighteen specification paths and byte counts, their 1,094,920-byte total, the approved commit and the original semantic approval remain unchanged. Original revision 1.0 remains available in Git. The earlier assertion of a fully checked manifest is explicitly corrected rather than retroactively treated as true.
+The package name is source-integrity-toolkit, import name source_integrity_toolkit and unreleased scaffold version 0.1.0.dev0. Package initializers and future domain/native modules are import-safe slots. Forty-four Python files contain only an explanatory docstring and copyright/license comments. The remaining four contain the package exports, two immediate-refusal API functions, fixed CLI help/version/refusal and the literal scaffold version.
 
-| Corrected approval identity | Value |
+`audit_bundle` and `audit_file` immediately raise NotImplementedError without inspecting arguments, options or paths. The CLI displays tool-authored help/version or emits a fixed refusal with exit 1. It does not parse the future audit grammar, validate a dossier, call the API to inspect evidence, create a report or emit sit-report/0.1 states. Unknown switches and argument text are not echoed. Exit 1 is explicitly the temporary scaffold refusal.
+
+No executable schema, static trace/obligation catalog, hero fixture, domain test, native binding or CI workflow is added. Those belong to later work units. No analytical obligation has been marked implemented or tested.
+
+## 3. Packaging selection and actual checks
+
+The source archive selection names individual project files rather than including all repository data. LICENSE and NOTICE are included unchanged. Wheel package-data discovery is disabled, and both artifact inventories are checked for exact membership. Normative specifications remain in the repository and are not relabeled as package output.
+
+The local build view was assembled from new candidate files and connector-read README/NOTICE plus an identical copy of the standard Apache text. All three unchanged packaging inputs were checked against their repository Git blobs and byte counts. This is a controlled packaging view, not a claim that a full remote git clone succeeded. Frozen-file preservation is separately checked through remote tree/diff identity.
+
+Actual supplemental run:
+
+```text
+PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 python -m pytest tests/scaffold -q
+```
+
+The exact executed command additionally set an external temporary directory and an external JUnit output path. It did not add logs, wheels or temporary environments to the repository. The final suite collected 78 checks: **77 passed, 1 failed, 0 skipped, 0 errors**.
+
+| Check group | Actual result and scope |
 |---|---|
-| Commit | `f84c58cf6ca93b57020fd9b271de4c33e1bf1ebd` |
-| Bytes | 14670 |
-| Git blob SHA-1 | `3e61806e3df5afc7d88fae27db765c5e5eb4bdb9` |
-| File SHA-256 | `92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c` |
+| 48 module imports | Passed under local CPython 3.13.5 |
+| Inert slot/file-set and guarded fresh imports | Passed; no application I/O, mutation, network/process activity or native binding observed in these cases |
+| API signatures and hostile arguments | Passed; immediate refusal, unchanged input, no path access or output creation |
+| CLI help/version and malformed/ordinary audit requests | Passed; fixed messages, no payload echo or report creation |
+| Declared metadata and runtime dependencies | Passed; selected pins unchanged, project Requires-Dist empty |
+| Source/wheel inventory and exclusion canaries | Passed using the available older backend; no excluded material packaged |
+| Clean runtime installation | Passed for the supplemental wheel; target contained only the project distribution |
+| Source-archive rebuild | Passed; same wheel member names and contents |
+| Selected build/test versions installed | FAILED: actual setuptools 82.0.1 / pytest 9.0.2 versus selected 84.0.0 / 9.1.1 |
 
-The remote updated blob equals the complete locally checked outgoing document. Its manifest contains exactly eighteen valid 64-character digests, each equal to the recomputed value. The entry blocker is resolved within the approved repair scope. The machine-readable manifest records the approval hash separately from the eighteen-file baseline and keeps the original and correction commits distinct.
+The source archive has 65 regular files; the wheel has 55 members. Supplemental archive identities are:
 
-## 3. W01 artifacts delivered
+| Artifact | Bytes | SHA-256 |
+|---|---:|---|
+| source_integrity_toolkit-0.1.0.dev0.tar.gz | 21833 | `9fccf8738ffe2d45b227729cc96b734983b950dc345d635c9e9790e398c3c078` |
+| source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl | 34573 | `83db3bba949795bb188b2599c5c6f3f0729d8d1984086828e23058bcdd6622a3` |
 
-| Path | Delivery |
-|---|---|
-| `README.md` | Public purpose, accurate nonfunctional scaffold status, roadmap and license/data exclusions |
-| `LICENSE` | Unmodified official Apache License 2.0 text, including appendix |
-| `NOTICE` | Project attribution and material-scope information; no extra license condition |
-| `CONTRIBUTING.md` | Scoped changes, frozen-byte discipline, evidence and contribution-rights rules |
-| `SECURITY.md` | Present support limit, verified public Issues route and unverified private-intake limitation |
-| `.gitignore` | Local environments, artifacts and private runtime folders; specifications/tests remain visible |
-| `.gitattributes` | Explicit byte-preservation entries for eighteen specifications, approval and Phase 1 plan; new text uses LF |
-| `scaffold/baseline_manifest.json` | Eighteen-file byte/SHA-256 manifest, corrected approval identity and approved-plan reference |
-| `scaffold/toolchain_review.md` | Exact proposed build/test pins, published compatibility, dependency/license implications and evidence limits |
-| `PHASE_1_PROGRESS.md` | This authorization, repair, check and handoff record |
+These identify local supplemental test artifacts, not published releases. Byte-reproducible ZIP containers are not claimed; the rebuild compared member bytes.
 
-`PHASE_0_APPROVAL.md` is the sole additional changed path, authorized by the narrow repair. No other frozen document or Phase 1 plan byte changed. The original licensing notes remain historical; the root license now applies the previously approved engineering-material policy.
+## 4. Failures, repairs and unresolved gate
 
-## 4. Checks actually performed
+The initial packaging check did not account for the backend-generated setup.cfg. Its actual content was inspected and compared with the selected upstream backend's documented source behavior. The test now permits only the fixed egg_info tag metadata. No setup.cfg is added to the repository and no executable build hook is invented.
 
-The checking workspace used CPython 3.13.5, Linux x86_64 with glibc 2.41, and Git 2.47.3. These identify the authoring environment, not a supported or tested toolkit release. General-purpose local verification scripts were kept outside the repository delivery.
+A subsequent canary scan matched the canary's own literal in its test source. That false positive was corrected by assembling the fictional sentinel from separate literals. The exclusion assertion remains active. Both local failure records are retained in the handoff evidence.
 
-| Check group | Result and scope |
-|---|---|
-| Exact baseline bytes | PASS: eighteen full files matched approved Git blobs/lengths; hashlib and sha256sum agree |
-| Approval correction scope | PASS: removing the correction section and reversing the seven values/revision reproduces original sections 1-8 exactly |
-| Machine-readable manifest | PASS: eighteen rows equal the corrected authoritative table; separate approval digest/bytes/blob verified; no self-hash |
-| Official license source | PASS: all 11,358 bytes equal Apache website source blob `d645695673349e3947e8e5ae42332d0ac3164cd7` |
-| Allowlist and text integrity | PASS: only the ten W01 paths and authorized approval amendment; new text is UTF-8/LF |
-| Protected-path attributes | PASS: twenty explicit path settings checked; all nineteen available complete specification/approval files preserve their blobs under core.autocrlf true and false; approved-plan path settings also checked |
-| New-text normalization | PASS: a CRLF README probe produces the intended LF Git content |
-| Ignore boundaries | PASS: fourteen local/private-output probes ignored; thirty specification/test/catalog/public/example probes remain visible |
-| Public-document consistency | PASS: local references, license exclusions, unimplemented status and security limitations reviewed |
-| Remote delivery comparison | PASS at the named pre-progress candidate: all ten outgoing non-progress files match their checked local blobs and lengths; original eighteen specs and approved plan unchanged |
+The remaining failed check is not repaired by changing expectations. The local execution environment cannot resolve/download the selected packages, while connected GitHub reads/writes and external release-metadata checks work through different paths. The build/test declarations retain setuptools 84.0.0 and pytest 9.1.1. Tests with the older preinstalled tools provide supplemental compatibility evidence only. Their direct backend invocation does not resolve build-system.requires and cannot satisfy the declared environment gate.
 
-These are authoring, manifest, Git-attribute and documentation checks. They do not implement or test the auditor. No parser, graph algorithm, metric, native file adapter, package skeleton, executable schema, fixture or CI workflow was created. No dependency install, resolver execution, package build, hosted CI run, penetration test or independent review is claimed. The 228 domain field obligations remain unexecuted.
+The selected tools' isolated installation, actual downloaded-artifact/transitive review and exact-version test run remain pending. scaffold/toolchain_review.md records the rechecked upstream extraction-safety note and its limitations. No developer tool is promoted to an application runtime dependency.
 
-## 5. Toolchain and security handoff
+## 5. Environment and execution boundary
 
-The proposed direct pins are setuptools 84.0.0 for building and pytest 9.1.1 for tests. Published metadata for both admits Python 3.10+, including the project's 3.11 target. Their project licenses were read from versioned sources. The review records pytest's conditional dependencies and the presence of setuptools vendored components without claiming a resolved dependency lock or complete artifact clearance.
+Observed authoring environment: CPython 3.13.5, Linux x86_64/glibc 2.41, setuptools 82.0.1, pytest 9.0.2, pip 25.1.1, iniconfig 2.3.0, packaging 25.0, pluggy 1.6.0 and Pygments 2.20.0. Pytest external plugin autoload was disabled. A separate clean runtime venv was created without pip/setuptools/pytest and populated offline with the self-built project wheel using the existing installer.
 
-P1-W02 must inspect actual installed/resolved versions and licenses, test compatibility, and recheck the recorded upstream archive-extraction safety note before installation. No optional tool, extra build frontend or product runtime dependency is added now.
+No selected-version download/installation, Windows run, minimum-version CPython 3.11 run, hosted CI, native platform conformance, production analytics or package publication is claimed. The attached theory papers were not copied into this repository or used to change its frozen requirements.
 
-Issues are available as a public route. The attempted private-reporting status check did not establish a supported confidential channel. SECURITY.md discloses that limitation and requests only a non-sensitive contact request on the public tracker. No private reporting feature, security email, key or response SLA was invented or configured.
+## 6. Delivery and next gate
 
-## 6. Remote workflow and next stop
+The W02 candidate is submitted as a draft PR against the merged main baseline. The actual candidate commit and PR identifiers are recorded by GitHub and the external verification handoff after they exist, avoiding self-referential hashes in this file. Only the W02 branch receives these changes; main retains the accepted W01 merge.
 
-The existing PR is:
+W02 remains BLOCKED_AT_SELECTED_TOOLCHAIN_VERIFICATION. The narrow remaining work is to obtain/install the already selected tools in an authorized network-capable environment, inspect the resolved dependencies/artifacts, rerun the suite including its strict version assertion, and review the resulting diff/evidence. The failed assertion must not be skipped or relaxed. A new execution service or early CI path would require the applicable separate authorization; this candidate adds neither.
 
-`https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/2`
-
-The pre-progress candidate contains the corrected approval and all nine other W01 artifacts. Its diff against intake has exactly eleven paths, including this progress record already present from the entry hold. This final progress update and PR metadata are verified after their writes; the final candidate commit belongs in the PR/handoff rather than as a self-referential value in this document.
-
-The branch is submitted for owner review. Main has not been changed by this unit, and no merge or P1-W02 execution is claimed. The next step is acceptance and merge of this W01 delivery, followed by explicit authorization of P1-W02 under the unchanged plan.
+Do not merge this draft, mark W02 complete, or enter W03 until that gate and owner acceptance are satisfied. The original software, privacy, license and phase boundaries remain intact.

@@ -1,0 +1,44 @@
+# Copyright 2026 Xiangyu Guo
+# SPDX-License-Identifier: Apache-2.0
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "source-integrity-toolkit"
+version = "0.1.0.dev0"
+description = "Non-operational scaffold for a local source-integrity auditor"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{name = "Xiangyu Guo"}]
+dependencies = []
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.urls]
+Repository = "https://github.com/DavidWallstructurallaw/source-integrity-toolkit"
+
+[project.scripts]
+sit = "source_integrity_toolkit.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = false
+packages = [
+  "source_integrity_toolkit",
+  "source_integrity_toolkit.contracts",
+  "source_integrity_toolkit.io",
+  "source_integrity_toolkit.validation",
+  "source_integrity_toolkit.graph",
+  "source_integrity_toolkit.analysis",
+  "source_integrity_toolkit.reporting",
+  "source_integrity_toolkit.runtime"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/scaffold"]
+addopts = "-ra"

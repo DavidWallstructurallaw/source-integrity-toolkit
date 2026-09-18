@@ -1,0 +1,10 @@
+# Developer/build dependencies only; no extras or external pytest plugins.
+# Direct pins retained from P1-W01. Installation remains a verification gate.
+setuptools==84.0.0
+pytest==9.1.1
+# Explicit transitive candidates satisfying the reviewed pytest base constraints.
+iniconfig==2.3.0
+packaging==25.0
+pluggy==1.6.0
+Pygments==2.20.0
+colorama==0.4.6; sys_platform == "win32"

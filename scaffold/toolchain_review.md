@@ -1,96 +1,100 @@
-# P1-W01 Toolchain Review
+# Scaffold Toolchain Review
 
-## Review record
+## Current record
 
-| Item | Value |
+| Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Work unit | P1-W01 |
-| Review date | 2026-09-17 |
-| Review revision | 0.1 |
-| Governing decision | Approved DEPENDENCY_STRATEGY.md and PHASE_1_PLAN.md |
-| Proposed build pin | `setuptools==84.0.0` |
-| Proposed test pin | `pytest==9.1.1` |
+| Review revision | 0.2 |
+| Work unit | P1-W02 |
+| Date | 2026-09-17 |
+| Governing plan | PHASE_1_PLAN.md revision 0.1, section 6 |
+| Selected build pin | `setuptools==84.0.0`, unchanged |
+| Selected test pin | `pytest==9.1.1`, unchanged |
+| Installed versions available in this session | setuptools 82.0.1; pytest 9.0.2 |
+| Selected-toolchain acceptance | BLOCKED: selected versions cannot be acquired in the current execution environment |
 | Product runtime dependencies | None |
-| Review level | Published metadata, versioned license/source inspection and scoped risk review |
-| Installation, resolution, build or compatibility execution | Not performed in P1-W01; assigned to P1-W02 |
 
-These pins select the two tool classes already allowed by the plan. They introduce no runtime dependency, optional framework, additional build frontend or product capability. Metadata compatibility is distinct from successful installation or tests on an actual platform.
+The complete P1-W01 review, original version/license sources, Apache license byte comparison and initial risk note remain at:
 
-## 1. Exact direct-tool choices
+`https://github.com/DavidWallstructurallaw/source-integrity-toolkit/blob/63c03ee82ebffd5f4dc73972b2baa158c20cdf33/scaffold/toolchain_review.md`
 
-| Tool | Published compatibility and license | Intended use and limits |
+This revision records actual W02 work and limits. It does not replace the selected pins with older installed versions or describe supplemental compatibility checks as selected-toolchain acceptance.
+
+## 1. Selected versions and current primary-source check
+
+The current PyPI metadata for setuptools 84.0.0 and pytest 9.1.1 was re-read. Both releases are marked non-yanked, declare Python >=3.10 and MIT licensing. The project retains its approved Python >=3.11 requirement. Published compatibility remains distinct from executed compatibility.
+
+The selected setuptools wheel is listed by PyPI as 818,216 bytes with SHA-256 `51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670`. The selected pytest wheel is listed as 386,536 bytes with SHA-256 `37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c`. These are upstream advertised identities, not hashes of artifacts downloaded here. Neither selected wheel was obtained or installed in this session.
+
+The metadata continues to show no unconditional separately installed setuptools base dependencies and the pytest requirements already recorded in W01. Vendored setuptools components remain part of its upstream dependency surface even when no separate base requirement is installed. No backend or vendor source is copied into the project package.
+
+## 2. Acquisition failure and preserved gate
+
+An attempted public repository clone failed because the execution environment could not resolve github.com. Explicit DNS checks also failed for pypi.org and files.pythonhosted.org. The GitHub connector continued to read and write the authorized repository successfully; those are separate access paths.
+
+The command below failed without downloading either selected package:
+
+```text
+python -m pip download --disable-pip-version-check --retries 0 --timeout 8 --only-binary=:all: --no-deps --dest /mnt/data/sit-p1w02/wheelhouse setuptools==84.0.0 pytest==9.1.1
+```
+
+Its diagnostic reported no matching distribution in this environment. That result does not contradict the observed upstream release metadata. The separate binary download path also failed. No package-index release was created, no dependency was silently downgraded, and no GitHub Actions workflow was added ahead of W06 to bypass this limitation.
+
+`test_declared_toolchain_is_actually_available` explicitly compares the installed direct tools with 84.0.0 and 9.1.1. It fails in this session. It is retained, without skip, xfail, environment-variable waiver or relaxed comparison.
+
+## 3. Development dependency declarations
+
+`requirements-dev.txt` keeps the two selected direct pins and names compatible transitive candidates:
+
+| Package | Declared version | Session evidence / license |
 |---|---|---|
-| setuptools 84.0.0 | Published `Requires-Python: >=3.10`; project MIT license; versioned tag `v84.0.0` | PEP 517 build backend `setuptools.build_meta`, only in the isolated build/development environment |
-| pytest 9.1.1 | Published `Requires-Python: >=3.10`; project MIT license; versioned tag `9.1.1` | Scaffold test runner only; no `pytest[dev]` extras or external test plugins selected |
+| setuptools | 84.0.0 | Upstream metadata/license checked; unavailable locally |
+| pytest | 9.1.1 | Upstream metadata/license checked; unavailable locally |
+| iniconfig | 2.3.0 | Installed metadata and MIT license text inspected |
+| packaging | 25.0 | Installed metadata and Apache-2.0/BSD license alternatives inspected |
+| pluggy | 1.6.0 | Installed metadata and MIT license text inspected |
+| Pygments | 2.20.0 | Installed metadata and BSD-2-Clause license text inspected |
+| colorama | 0.4.6, Windows marker only | Not installed or executed here; Windows resolution/license-artifact review remains pending |
 
-Both published lower bounds admit the project's CPython 3.11 lower-bound target. No claim is made that every later Python minor, PyPy, Windows filesystem adapter or Linux native ABI is supported. Actual interpreter choices and resolved environments must be recorded when executed. A project's classifiers are not this toolkit's conformance evidence.
+The selected direct tools' full transitive resolver result and downloaded-artifact review remain pending. These declarations are not represented as a verified cross-platform lock. Python <3.11-only exceptiongroup/tomli requirements are inactive for the project's target. No pytest extras, unrelated external plugins, runtime dependency or new build frontend is selected.
 
-The proposed backend exposes the standard wheel/source-distribution build hooks. P1-W02 may use those hooks in its controlled authoring environment without adding an unreviewed frontend. Any extra frontend or developer tool still needs the plan's scoped review before adoption. There is no `setup.py` or packaging declaration in P1-W01.
+## 4. Supplemental local compatibility evidence
 
-## 2. Dependency implications
+The existing environment contains CPython 3.13.5, setuptools 82.0.1, pytest 9.0.2 and pip 25.1.1 on Linux x86_64/glibc 2.41. The four installed transitive packages above were used. This environment was not installed from requirements-dev.txt and is not the required isolated selected-toolchain environment.
 
-Setuptools 84.0.0 declares no unconditional separately installed project dependencies in its base metadata. It nevertheless includes vendored components and distutils-derived code. The reviewed `_vendor` directory includes, among other entries, autocommand 2.2.2, backports.tarfile 1.2.0, importlib_metadata 8.7.1, jaraco components, more_itertools 10.8.0 and packaging 26.0. An empty top-level dependency list does not make those components disappear or relicense them as project-owned MIT code.
+With pytest plugin autoload disabled, the committed test bodies were exercised against only the approved scaffold and fictional canaries. Direct calls to the existing setuptools.build_meta hooks built a source archive and wheel. Those hooks do not resolve build-system.requires, so this execution deliberately remains supplemental and the independent version test stays failed.
 
-Do not request setuptools test/doc/core/check/cover/type extras. Their additional dependencies are outside the selected minimal toolchain. Preserve upstream vendored and distutils notices in the installed tool environment. Do not copy the backend or its vendored tree into the toolkit wheel. P1-W02 must inspect the actual downloaded artifact and any files it places in generated distributions; this source-directory inspection is not a completed wheel audit.
+The supplemental wheel was installed using the existing pip into a new venv created with `--without-pip`, with `--no-index --no-deps --no-cache-dir`. The target contained only the project distribution. Its CLI help/version and fixed audit refusal worked, and its API stubs raised without returning a report. This demonstrates that the built wheel did not require pytest, setuptools or another third-party runtime package. It does not demonstrate a build with setuptools 84.0.0.
 
-Pytest 9.1.1 publishes the following base requirements. The constraints are copied from its metadata; they are not an already resolved lockfile.
+The source archive contained 65 regular files; the wheel contained 55 members, including the 48 approved Python files and seven dist-info/license entries. Rebuilding from the inspected self-created source archive produced the same member bytes. ZIP timestamps may differ; archive-wide reproducible build identity is not claimed.
 
-| Dependency constraint | Applicability for the planned environment |
-|---|---|
-| `iniconfig>=1.0.1` | Test environment |
-| `packaging>=22` | Test environment |
-| `pluggy>=1.5,<2` | Test environment |
-| `pygments>=2.7.2` | Test environment |
-| `colorama>=0.4; sys_platform == "win32"` | Windows test environment only |
-| `exceptiongroup>=1; python_version < "3.11"` | Inactive for the project's Python 3.11+ target |
-| `tomli>=1; python_version < "3.11"` | Inactive for the project's Python 3.11+ target |
+The tests initially exposed an omitted generated `setup.cfg` expectation and a canary appearing in its own test source. The packaging test now permits only the inspected fixed egg_info tag metadata, and assembles its fictional canary from separate literals. Neither repair relaxes a source-integrity contract or a package exclusion. The upstream setuptools 84.0.0 sdist implementation also explicitly writes setup.cfg through save_version_info.
 
-P1-W02 owns the actual resolver result, exact transitive versions, applicable artifact licenses and environment-specific differences. Those transitive packages remain developer dependencies even though pytest calls them its runtime requirements. They must not appear as runtime requirements of Source Integrity Toolkit. No `pytest[dev]` dependency such as requests, hypothesis or xmlschema is adopted by this review.
+Final supplemental suite result: **77 passed, 1 failed, 0 skipped, 0 errors**. The remaining failure is the unchanged selected-toolchain gate.
 
-A third-party license retains its own attribution and redistribution conditions. Review the resolved artifact's notices before redistributing any part of it. This work unit distributes none of these tool packages and makes no claim of complete legal clearance for a future dependency graph.
+## 5. Packaging and authority boundaries
 
-## 3. Execution and supply-chain boundary
+The source distribution explicitly selects the 48 package slots, four scaffold test files, build/developer metadata, README, LICENSE and NOTICE, plus known backend-generated metadata. Normative specifications and approval/history records remain repository authorities and are not silently copied into the wheel or source archive. No paper PDF, private evidence, identity map, generated user report or unrelated data file is selected.
 
-Use isolated project environments when P1-W02 is authorized. Record exact artifacts/versions and the actual installer environment; do not silently install latest versions in place of these pins. Do not add a global package, native binding or product dependency to make a scaffold check pass. The installed toolkit must work without pytest or setuptools in its runtime dependency set.
+The wheel includes the named packages, metadata and the original license/notice. Package data discovery is disabled. Artifact inventory tests reject additional members; an unexpected Python source file cannot be accepted merely because setuptools discovered it. Fictional excluded-file probes were used. Root README retains its W01 wording because editing it is outside W02; PHASE_1_PROGRESS.md is the current work record.
 
-Build only the explicitly reviewed checkout. Do not use the backend to process caller evidence or arbitrary archive uploads. Treat tests and build hooks as executable developer code, with only the authority required by the current step. Future CI installation networking is distinct from the auditor's local-only runtime requirement. Disable unrequested pytest plugin autoload in the controlled test invocation so unrelated installed plugins cannot change the test environment; this is a future invocation requirement, not configuration created in this unit.
+No dossier parser, semantic validator, graph operation, analytical computation, serializer, native binding, clock/budget engine, HTTP client or model integration is implemented. Build and test tools exercise developer code only. Installing the scaffold creates no operational auditing claim.
 
-### Current risk note
+## 6. Upstream risk recheck
 
-The upstream setuptools history viewed during this review contains an unreleased archive-util extraction-safety change associated with `GHSA-grgh-hr87-3jpw`. The separately linked advisory page could not be retrieved. This review therefore does not assert its complete affected-version range or that 84.0.0 contains the unreleased fix. P1-W02 must recheck the current upstream advisory/release status before installation and keep untrusted archive extraction outside the build workflow. If a required operation is affected, review an appropriate fixed pin before proceeding. An empty vulnerability array in package-index metadata is not a security certification.
+The upstream setuptools history still labels its archive_util extraction-safety changes as unreleased. It states that backslash/drive/UNC traversal handling and an UnsafeMember exception are being changed, referencing GHSA-grgh-hr87-3jpw. The separately linked advisory remained unavailable with a 404 response. No complete affected-version range or claim that 84.0.0 contains that fix is asserted.
 
-No dependency installation, archive extraction, resolver run, package build or product test was performed here. This residual review requirement does not authorize substituting an unreviewed tool or disabling a guard.
+Only a controlled project snapshot and self-generated archives were used for supplemental builds. No untrusted archive was handed to setuptools.archive_util. Source rebuild tests copy only inspected regular members under a checked relative prefix using the standard library; they do not call the backend's archive extractor. The known operation boundary is retained while the selected-toolchain and applicable security review stay open.
 
-## 4. License text applied in this work unit
+An empty vulnerability array is not a security certification. Before W02 acceptance, obtain the selected packages in an authorized network-capable environment, review their actual artifacts and transitive notices, repeat the advisory/release check, install the declared environment and run every test including the strict version gate. A necessary version or policy change must be documented and approved within its proper scope.
 
-The root `LICENSE` contains the standard Apache License 2.0 text, including its unmodified appendix. Project attribution is in `NOTICE` and README; no project-specific condition is inserted into the standard license.
+## 7. Current source locators
 
-The official Apache plain-text license was viewed at execution time. The byte reference was also fetched from Apache's own website source repository, `apache/www-site`, path `content/licenses/LICENSE-2.0.txt`, Git blob `d645695673349e3947e8e5ae42332d0ac3164cd7`, 11,358 bytes. The local license copy matches that entire blob byte-for-byte. Its file SHA-256 is `cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30`.
+- `https://pypi.org/pypi/setuptools/84.0.0/json`
+- `https://pypi.org/pypi/pytest/9.1.1/json`
+- `https://setuptools.pypa.io/en/latest/history.html`
+- `https://github.com/pypa/setuptools/security/advisories/GHSA-grgh-hr87-3jpw` (unavailable during this recheck)
+- `https://github.com/pypa/setuptools/blob/v84.0.0/setuptools/command/sdist.py`, make_release_tree / save_version_info, blob `c86f540bf59302f316f014eb48f4f9f8704f1d81`
 
-The selected license applies only to the original engineering material identified by LICENSING_NOTES.md. It does not relicense theory works, third-party components or user evidence. MIT tool notices are not replaced with Apache-2.0 notices. No upstream Apache project endorsement or software contribution is claimed by using the standard license text.
-
-## 5. Primary sources inspected
-
-| Source | Locator and reviewed use |
-|---|---|
-| Apache standard license | `https://www.apache.org/licenses/LICENSE-2.0.txt`; legal text viewed at execution |
-| Apache website source | `https://github.com/apache/www-site/blob/main/content/licenses/LICENSE-2.0.txt`; whole-file identity recorded in section 4 |
-| setuptools release metadata | `https://pypi.org/pypi/setuptools/84.0.0/json`; version, Requires-Python, license expression and declared dependency markers |
-| setuptools versioned source | `https://github.com/pypa/setuptools/blob/v84.0.0/pyproject.toml`; project metadata |
-| setuptools versioned license | `https://github.com/pypa/setuptools/blob/v84.0.0/LICENSE`; MIT text, blob `1bb5a44356f00884a71ceeefd24ded6caaba2418` |
-| setuptools vendored inventory | `https://github.com/pypa/setuptools/tree/v84.0.0/setuptools/_vendor`; source-level component inventory, not installed-wheel clearance |
-| setuptools backend documentation | `https://setuptools.pypa.io/en/latest/build_meta.html`; standard backend hooks |
-| setuptools history | `https://setuptools.pypa.io/en/latest/history.html`; current unreleased extraction-safety note, with the limitation in section 3 |
-| pytest release metadata | `https://pypi.org/pypi/pytest/9.1.1/json`; version, Python bound, license and base requirements |
-| pytest versioned source | `https://github.com/pytest-dev/pytest/blob/9.1.1/pyproject.toml`; requirement markers and extras |
-| pytest versioned license | `https://github.com/pytest-dev/pytest/blob/9.1.1/LICENSE`; MIT text, blob `c3f1657fce94589bd1ec7cead810639047f3d359` |
-| Git attributes documentation | `https://git-scm.com/docs/gitattributes`; explicit unset text behavior and path-level attributes |
-
-Versioned locators and recorded blob identities preserve what was inspected. Unversioned documentation may change; later execution must review actual resolved tools and operations. These are engineering-tool sources, not additional evidence for the project's source theory.
-
-## 6. Handoff to P1-W02
-
-The next unit may declare the two reviewed direct pins, resolve and inspect the necessary developer dependencies, build and inspect its source/wheel artifacts, and run the permitted scaffold smoke tests. It must record the actual interpreter/platform, installer, transitive dependency graph, license review, current security observations and test outcomes in this file and PHASE_1_PROGRESS.md.
-
-No application runtime dependency, package publication, production parser, source retrieval, analytical computation or native platform implementation follows from this toolchain review. W01 review completion does not mark later installation, packaging or CI checks as passed.
+These are engineering-tool references. They add no theory source or analytical finding. The preserved W01 source table retains its original versioned licenses and metadata references.
