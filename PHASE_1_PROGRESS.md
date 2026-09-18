@@ -5,105 +5,50 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Progress revision | 0.6 |
-| Date | 2026-09-17, project-local date; merge timestamps use UTC |
-| Approved plan | PHASE_1_PLAN.md revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
-| Owner instruction | `合并 PR #3，再开始 P1-W03` |
-| Accepted predecessor | P1-W02 at `9fb556f2035d84abc03f83c422259f7a8d588110` |
-| Merged PR | #3, merge method preserving commit history |
-| Merge / W03 intake | `0ff5644349b31214aa0691d8d94385f374f530a8` |
-| Review branch | `phase1/p1-w03` |
-| Work-unit result | W03 static catalog and reservation checks passed; submitted for owner review |
-| Owner acceptance / W03 merge | Pending |
-| W04 and later execution | Not started |
+| Progress revision | 0.7 |
+| Record date | 2026-09-18 UTC |
+| Approved plan | PHASE_1_PLAN.md revision 0.1; blob 27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb |
+| Current owner instruction | `可以，继续P1-W05` |
+| Accepted repository predecessor | P1-W03, PR #4, merged at bfac2e69dd653823201a16069615cc9044a4b39c |
+| Accepted local successor | The previously delivered P1-W04 fifteen-path candidate, identified below |
+| W04 remote delivery | Pending; this commit records the intake only |
+| W05 authorization | Granted by the current owner instruction |
+| W05 execution | Held at the predecessor repository-delivery gate; no W05 implementation or test result claimed |
+| Current review branch | phase1/p1-w04 |
+| W06 and later | Not authorized or executed |
 
-## 1. Accepted predecessor and preserved history
+## 1. Preserved history
 
-The owner explicitly accepted the W02 handoff by requesting its merge and the next named unit. Before merging, the connected PR record still showed the expected head, an open non-draft PR and successful selected-toolchain run `35307485434`. The merge used expected-head protection and produced the intake commit above. GitHub subsequently confirmed `merged: true` and merge time 2026-09-18 04:50:52 UTC.
+The complete accepted W03 progress record remains at bfac2e69dd653823201a16069615cc9044a4b39c:PHASE_1_PROGRESS.md, blob c407cb1e3d6eafadd6e510228260311000586dbb. Its original candidate and test evidence remain in PR #4 and commit bad936b4e224857e6073720afebe83fc7df9eb64. The W02 hosted verification remains separate evidence and is not a W04 or W05 run.
 
-The full W02 progress and review evidence remain at commit `9fb556f2035d84abc03f83c422259f7a8d588110`, in `PHASE_1_PROGRESS.md` and `scaffold/toolchain_review.md`. They preserve the local 77-pass/1-fail history, the selected-toolchain hosted passes, and their exact evidence scope. That prior CI result is not relabeled as a W03 run.
+The current owner continuation accepts the submitted W04 local candidate and requests W05. Acceptance of the local material does not assert that its remote commit, PR or merge has occurred. At this intake, both main and phase1/p1-w04 still pointed to bfac2e69dd653823201a16069615cc9044a4b39c, before this progress-only update.
 
-The eighteen-file Phase 0 baseline, corrected approval revision 1.1, Phase 1 plan, baseline manifest, licenses, package files, tool pins and W02 tests remain unchanged. The W03 branch begins at the actual merge, not a reconstructed or independently advanced base.
+## 2. Exact accepted local W04 candidate
 
-## 2. Exact W03 delivery scope
+Artifact: Source_Integrity_Toolkit_P1_W04_Local_Candidate.zip.
 
-This unit creates the eight new paths and updates the common progress record allowed by plan section 7:
+ZIP size: 87,385 bytes.
 
-```text
-schemas/README.md
-schemas/bundle/README.md
-schemas/report/README.md
-scaffold/module_manifest.json
-scaffold/trace_catalog.json
-scaffold/obligation_catalog.json
-tests/scaffold/test_contract_catalogs.py
-tests/scaffold/test_module_manifest.py
-PHASE_1_PROGRESS.md
-```
+ZIP SHA-256: a74a1e661d103e58b820bd976f9ebf2827faed6e6038686cd02a4a89a3cf80fd.
 
-The three schema documents reserve the adopted logical names `sit-bundle/0.1` and `sit-report/0.1`. No executable or permissive empty schema is added.
+The archive contains exactly the fifteen paths in PHASE_1_PLAN.md section 8, totaling 877,728 uncompressed bytes. Fourteen paths are additions and PHASE_1_PROGRESS.md is an update. The separate P1_W04_VERIFICATION.json records each complete file's byte count, SHA-256 and Git blob identity.
 
-The finite module manifest covers the exact 48 accepted W02 Python files and records their accepted Git blob identities, layer restrictions, owner labels and scaffold form. It retains all nineteen owner bindings, including the non-runtime test/CI home of VALIDATION_GOVERNANCE. REPORT_PRESENTATION retains the later section 16 semantic authority in `reporting/assemble.py`, with both renderers and escaping as supporting homes. A wildcard in a source responsibility label never enables dynamic discovery or new files.
+At this intake the archive hash, exact entry set and all fifteen file identities were recomputed and matched to that prior verification record. Four complete local source documents were also rehashed: CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md, DEFINITIONS_AND_UNITS.md, OBSERVABILITY_AND_REPORTING.md and VALIDATION_PLAN.md. Each matched the recorded approved source bytes. No fixture or logical expectation was edited.
 
-The trace and obligation indexes transcribe the following adopted registries:
+The unchanged test_fixture_integrity.py was rerun in a controlled local view of those exact files with Python's standard-library unittest. Result: 29 tests passed, zero failures, zero errors and zero skipped; 0.122 seconds reported by unittest. This is a W04 static-transcription recheck. It is not a W05 boundary test, hosted CI result, production audit or fresh full eighteen-document baseline run.
 
-| Registry | Entries |
-|---|---:|
-| Trace responsibilities | 35 |
-| Logical owners | 19 |
-| Analytical families | 15 |
-| Registered output fields | 57 |
-| P/N/M/B field obligations | 228 |
-| Shared validation families | 26 |
-| Prerequisite codes | 24 |
-| Reason codes | 40 |
-| Finding conditions | 22 |
-| Data-handling control references | 20 |
-| Resource-limit references | 14 |
-| W9 control cases | 24 |
-| W9 licensing cases | 6 |
-| W11 realization cases | 32 |
+## 3. Repository-delivery gate
 
-## 3. Source fidelity and reference design
+Current discovery does expose GitHub text/blob/tree/commit write actions. Do not repeat the earlier claim that this connection is read-only. However, it exposes no mounted-local-file upload argument for transferring this candidate directly. The local Git transport attempt failed because github.com could not be resolved. A lookup of the first candidate fixture's known blob returned not found; no remote fixture commit is assumed from the local hashes.
 
-The primary registry rows come from the frozen traceability, reporting and validation documents. Trace records preserve their exact controlling specification text, source/product/acceptance IDs and non-negotiable interpretation limits. Every field retains one primary Trace, its value kind and four separately named test obligations.
+This update deliberately writes only the common progress record. It does not claim that the remaining fourteen candidate paths have been uploaded, or that an absent W04 PR has been merged. Main and the frozen specifications remain untouched.
 
-The 228 expectations are exact pointers to their full validation-table cells, with one-based source line and zero-based cell index. Shared test families reference their complete section spans. Full source-file identities and mandatory surrounding sections accompany these references. These are navigable indexes into the adopted specifications; they do not replace a qualified paragraph with a short title or turn a logical oracle into a computed result.
+A proposed transfer exception, P1-W04-T01, would allow one temporary, narrowly scoped importer workflow on an isolated transport branch. Its sole purpose would be to materialize the already accepted fifteen files from an embedded losslessly compressed payload, verify every expected byte identity and path, rerun the existing static fixture checks, and commit to the existing W04 review branch using a guarded non-force update. The workflow would not be merged into main, publish a package, implement analytics, modify dependencies or alter frozen files. Contents-write permission would be limited to that explicitly authorized authoring operation.
 
-W9 controls and W11 cases retain their original names, document sections, existing shared-owner links and exact future test bindings where supplied. A W9 case with no assigned individual test filename is not given an invented one. Later governance section 22 and dependency/architecture refinements remain binding. In particular, `outside_v01` is retained exactly, including its digits, and native source failure stays distinct from execution failure.
+That additional workflow path and permission are outside the current work-unit allowlists, so this transfer method remains a proposal until specifically authorized. No importer workflow or payload has been committed here.
 
-All analytical and native-runtime implementation/test statuses remain pending. Existing W01 licensing and W02 scaffold evidence are separate historical facts. Catalog completion does not reset those facts or promote future domain obligations to passing.
+## 4. Next gate
 
-## 4. Actual tests and review evidence
+Complete and verify the accepted W04 repository delivery before representing W05 as based on a delivered predecessor. Then execute only the twelve paths in PHASE_1_PLAN.md section 9: the two developer guards, six scaffold/security tests, three test-surface reservation READMEs and this progress record.
 
-The two new test files use Python's standard-library unittest. No external dependency was installed, no selected version was changed, and no W02 tool-version assertion was skipped or relaxed. These tests can also be collected by the already selected pytest runner in later authorized CI.
-
-Actual local command, with bytecode writes disabled:
-
-```text
-python -m unittest discover -s tests/scaffold -p 'test_*.py' -v
-```
-
-The controlled local W03 verification view contains exactly the two new test files in that directory. This run therefore executes W03 tests only. The committed reservation README gives separate per-file commands suitable for a full repository checkout.
-
-Observed environment: CPython 3.13.5 on Linux x86_64, glibc 2.41. Result: **19 tests passed, 0 failures, 0 errors, 0 skipped**. Eleven methods check contract catalogs and eight check the module manifest. Included negative probes exercise twenty mutated catalog copies and one mutated product-file byte sequence; a separate duplicate-key probe is also active. These totals are static test methods and mutation probes, not the 228 unimplemented analytical tests.
-
-Checks cover full-byte identity of the three primary registries; exact table-set equality; field kinds and primary ownership; every P/N/M/B cell reference; complete shared-family spans; registered codes and finding associations; W9/W11 finite cross-links; all 48 accepted package blobs and forms; presentation/governance homes; absent executable schema; and absence of a catalog dependency in product source.
-
-The local view was assembled from preserved original deliverables and byte-matched W02 module files. Relevant newer supplement sections, the approved plan and current repository identities were read through the GitHub connector. A direct clone could not resolve github.com in this execution environment. No successful full clone or fresh local rehash of all eighteen complete newer documents is claimed. Remote tree/diff equality establishes preservation of paths outside the nine-file allowlist; the three complete primary documents and the 48 module files were independently inspected as local bytes.
-
-The authoring extractor initially treated a finding-table header as a data row and initially omitted the digit-bearing `outside_v01` reason. Its count checks rejected both attempts before publication. The extractor was corrected to follow the actual frozen rows; no source or expectation was changed. The final committed test files independently check those registries and include a negative probe removing `outside_v01`.
-
-## 5. Unchanged runtime, packaging and CI boundaries
-
-No package code is modified. The existing API stubs still immediately raise NotImplementedError and the CLI still uses its temporary refusal. No parser, normalizer, validator, observability classifier, graph operation, HHI, correction logic, renderer, native adapter or quota engine is implemented, including inside developer tests.
-
-No new build, wheel publication, Windows run, Python 3.11 run or hosted W03 test execution is claimed. The dedicated early workflow remains limited to PR #3/phase1/p1-w02. A skipped job on another PR would not constitute W03 CI evidence. General CI and packaging expansion remain at their approved later work units. No workflow is altered to bypass this scope.
-
-The catalogs remain repository-level developer data and are not runtime plugin registries, evidence bundles or public report schemas. Existing package selection and runtime dependencies are unchanged. Theory PDFs, private evidence and additional theory interpretations are not introduced.
-
-## 6. Delivery and next gate
-
-The outgoing package is restricted to nine allowed paths. Final remote commit/tree, PR number, exact outgoing hashes and remote preservation checks are recorded in the PR handoff after those identities exist, without self-referential file hashes.
-
-P1-W03 is submitted for owner acceptance. Do not merge its review branch or begin P1-W04 automatically. The next named unit prepares static hero fixtures and logical expectations only after this delivery is accepted and continuation is authorized.
+The already granted W05 authorization remains recorded. No new theory, product, licensing or source-schema decision is requested by this gate. W05 acceptance, its review-branch merge and any W06 work remain separate later events.
