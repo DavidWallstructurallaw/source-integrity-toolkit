@@ -11,7 +11,7 @@ Current tests under `tests/scaffold` verify developer guard behavior. The freeze
 guard has an independently generated synthetic twenty-file positive workspace,
 byte/manifest/approval/plan mutation controls, real manifest-anchor validation
 and a complete real reference-document byte check. Synthetic files are never
-represented as the project's approved specifications. The production CLI
+represented as the project's approved specifications. The developer guard CLI
 always uses the real pinned manifest and has no test-anchor override.
 
 The package guard separately checks all actual accepted module bytes, closed
