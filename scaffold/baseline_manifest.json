@@ -1,0 +1,146 @@
+{
+  "manifest_version": "1.0",
+  "purpose": "Exact-byte Phase 0 freeze evidence; subordinate to PHASE_0_APPROVAL.md",
+  "repository": "DavidWallstructurallaw/source-integrity-toolkit",
+  "approved_phase0_commit": "7d2e5fcaff591641b5cefce00e71e88941dd1f95",
+  "baseline_file_count": 18,
+  "baseline_total_bytes": 1094920,
+  "original_approval_commit": "6650984502637bb167c38e7e370c46e246591480",
+  "approval_record": {
+    "path": "PHASE_0_APPROVAL.md",
+    "revision": "1.1",
+    "commit": "f84c58cf6ca93b57020fd9b271de4c33e1bf1ebd",
+    "bytes": 14670,
+    "sha256": "92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c",
+    "git_blob_sha1": "3e61806e3df5afc7d88fae27db765c5e5eb4bdb9"
+  },
+  "approved_phase1_plan": {
+    "path": "PHASE_1_PLAN.md",
+    "revision": "0.1",
+    "commit": "2fa58fce603e28f1160bd68eeadbe315db941501",
+    "bytes": 28837,
+    "git_blob_sha1": "27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb",
+    "approval_evidence": "批准，开始 P1-W01"
+  },
+  "hashing": {
+    "algorithm": "SHA-256",
+    "input": "Complete stored bytes without text or line-ending normalization",
+    "git_blob_algorithm": "SHA-1 over Git blob header and content; kept distinct from file SHA-256",
+    "verification": "All eighteen local byte sequences matched to approved remote Git blob identities and byte counts; hashlib SHA-256 cross-checked with sha256sum"
+  },
+  "baseline_files": [
+    {
+      "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+      "bytes": 129967,
+      "sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
+      "git_blob_sha1": "a08e94bee1e4c8aaa4a47fcdd79b1e8db0fe6911"
+    },
+    {
+      "path": "DEFINITIONS_AND_UNITS.md",
+      "bytes": 94436,
+      "sha256": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d",
+      "git_blob_sha1": "36fd49115cd7a3a85be93eeeb480042a1b74496f"
+    },
+    {
+      "path": "DEPENDENCY_STRATEGY.md",
+      "bytes": 15029,
+      "sha256": "65b5c4f1f91be019e1fb09329ff5214980e5956579c1c8ccec7f4b6f7b4174ad",
+      "git_blob_sha1": "74849cc4b4ee3ab927e6de3a721ddc3edba10b15"
+    },
+    {
+      "path": "GOVERNANCE_AND_HANDOFF.md",
+      "bytes": 26255,
+      "sha256": "13e535ded411a3ad5967226e07761d4e88615f5b04c0b5a64c6cbf738cbc9ee8",
+      "git_blob_sha1": "81aed5fd6d8edb185ab30881f238aeb5fe8680a6"
+    },
+    {
+      "path": "LICENSING_NOTES.md",
+      "bytes": 10911,
+      "sha256": "e544f6f38d4fa83faaba0da42d85bc4af4e3a86028f3a4ab78132d21b2ddb80f",
+      "git_blob_sha1": "3468b44ec858ac1068f041affe94f8c183e3289a"
+    },
+    {
+      "path": "OBSERVABILITY_AND_REPORTING.md",
+      "bytes": 111615,
+      "sha256": "44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a",
+      "git_blob_sha1": "cf6c1d0aeb069cf5b68c3ea37b490dd6f5912208"
+    },
+    {
+      "path": "PHASE_0_PLAN.md",
+      "bytes": 45379,
+      "sha256": "2d97a820ae218c33cfd00dd96a762853e887f867973a2b2da0945fc4414495b1",
+      "git_blob_sha1": "d5ea6f6dd79b5770dfe80a3677d76706c7e78db8"
+    },
+    {
+      "path": "PRIVACY_AND_DATA_HANDLING.md",
+      "bytes": 28777,
+      "sha256": "3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8",
+      "git_blob_sha1": "8e7f6a1835104af4714826311db3ba92d1dd1c0f"
+    },
+    {
+      "path": "PROJECT_INSTRUCTIONS.md",
+      "bytes": 22037,
+      "sha256": "cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746",
+      "git_blob_sha1": "20c0b8fb6a870ccb21acbfc2024096e95cf317a4"
+    },
+    {
+      "path": "REPOSITORY_ARCHITECTURE.md",
+      "bytes": 67030,
+      "sha256": "8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d",
+      "git_blob_sha1": "f9123f217e567b6aed34f876824c3dcd13dab467"
+    },
+    {
+      "path": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "bytes": 93871,
+      "sha256": "e74e1bd146acb3ece62dcc4c0096f5fae9f7b72950c5827956fff0398c1c374a",
+      "git_blob_sha1": "7ba8945cf68e0069d42ad975d5a9ceaeb047d75e"
+    },
+    {
+      "path": "SPEC_AUDIT.md",
+      "bytes": 42589,
+      "sha256": "3565ab8f1b08f30e06f4983ffd26adbe8bc977b655ebf410b634918a7ae7949a",
+      "git_blob_sha1": "67f6b4ccb33f6db2aca508a64993661b3e28f3a9"
+    },
+    {
+      "path": "SUCCESS_CRITERIA.md",
+      "bytes": 58182,
+      "sha256": "270eed959a08607e182ff5922d6cacdec3c3536c954f3f65d5e9b8d9bcfb5476",
+      "git_blob_sha1": "63151e95af72d6aea224858bc356f1528a013661"
+    },
+    {
+      "path": "THEORY_SOURCE_MAP.md",
+      "bytes": 56697,
+      "sha256": "015e65baf3fcad8ce78a2285df8f2de8d5b7b4cbdd347707ba3cc5d5ba46b627",
+      "git_blob_sha1": "9cc299535f71b57f8800f6406723a689a6ce2560"
+    },
+    {
+      "path": "THEORY_TO_CODE_TRACEABILITY.md",
+      "bytes": 65779,
+      "sha256": "73a69a56828b6ff416164b7bd6420521da1c635bd92f03b92e07231b552a7849",
+      "git_blob_sha1": "a6b6c716636bb15bb569b257e9b82086c18185ab"
+    },
+    {
+      "path": "UNRESOLVED_DECISIONS.md",
+      "bytes": 15713,
+      "sha256": "4d79c732f31eefaad54fb53209e535a248d824e78673a31383442b5ebe74a59e",
+      "git_blob_sha1": "6a037328e6ccae48d13c272c0453bc8f43ca67c9"
+    },
+    {
+      "path": "V0.1_PRODUCT_SPEC.md",
+      "bytes": 62420,
+      "sha256": "70ab331662741c0177908ec5ccac09ff7538f98643567eb3066e0ed8c9cb84e1",
+      "git_blob_sha1": "ad896af3b749220b1f4adf979fbae4fa5f01b165"
+    },
+    {
+      "path": "VALIDATION_PLAN.md",
+      "bytes": 148233,
+      "sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+      "git_blob_sha1": "701ec6a3e215638a02dd1eb82b2f503dd48d16e8"
+    }
+  ],
+  "exclusions": [
+    "This manifest does not hash itself.",
+    "Approval record and Phase 1 plan are protected separately, not included in the eighteen-file total.",
+    "Historical snapshots, theory PDFs and future scaffold artifacts are not members of the approved Phase 0 manifest."
+  ]
+}
