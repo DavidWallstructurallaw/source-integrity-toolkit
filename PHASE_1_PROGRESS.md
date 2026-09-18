@@ -5,77 +5,81 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Revision | 0.13, P1-W06-R01 results and remaining Windows canary |
+| Revision | 0.14, P1-W06-R02 complete matrix verification |
 | Date | 2026-09-18 UTC |
-| Owner repair approval | `批准`, responding to P1-W06-R01 |
+| Owner repair approval | `批准`, responding to the single-file P1-W06-R02 request |
 | Approved plan | Revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
 | W05 merge / unchanged main | `ecf4eb5126201a7c31250c6dae8cbe2c64f9066a` |
-| Repaired executable candidate | `641f2b9711aad9812a0c709eb949798a4f4ebee7` |
-| Inspected hosted run | `35363039474`, attempt 1 |
-| Branch / PR | `phase1/p1-w06`, draft PR #7 |
-| W06 status | BLOCKED on one previously masked Windows-only test-canary defect |
-| W06 acceptance / merge | Not issued / not performed |
+| R02 intake | `c6d8969d8b82d86900fbd36c6d657538f47af35a` |
+| Repaired executable candidate | `e102b7f31427f5a0dce288517284eaf4e3a6a7dd` |
+| Inspected passing run | `35365045308`, attempt 1 |
+| Branch / PR | `phase1/p1-w06`, PR #7 |
+| W06 technical status | Four-row matrix PASS on the named repaired candidate; final review-head checks recorded separately in PR #7 |
+| W06 owner acceptance / merge | Pending / not performed |
 | P1-W07 and Phase 2 | Not authorized or executed |
 
-## 1. Authority, repairs and history
+## 1. Authority and closed scope
 
-The owner approved exactly the two earlier-unit test repairs described by P1-W06-R01, plus necessary W06 records and a four-row rerun. The seven-path W06 scope consists of its original five allowed files and `tests/security/test_scaffold_inertness.py` plus `tests/scaffold/test_packaging.py`. No third earlier-unit test is implicitly authorized.
+The owner approved P1-W06-R02 after the R01 handoff identified the remaining Windows canary failure. The additional authority covers only `tests/security/test_scaffold_no_native_loading.py`, necessary existing W06 evidence/status records, and the complete four-row rerun. It does not authorize product implementation, another earlier test repair, merger or W07.
 
-The full first-run record and original review remain at `8ea5becfe11165e745bec72b5f42e467fa92c69f`. The approved-repair intake, initial exact-byte identities and local regression account remain at `a8741ed71317cfdb47c7554fd267624334e901a6`, progress revision 0.12. Those histories are retained rather than relabeled as successful.
+The full W06 PR now has eight permitted paths: its original workflow, CI review, CI policy/evidence helper, README and progress record; the two R01 test files; and the single R02 test file. This R02 pass changes the latter test and three documentation records only. No further test, workflow/helper, product module, dependency pin, packaging rule, fixture/oracle, catalog, license, approved plan or frozen specification changes.
 
-R01-A now preloads both `importlib.util` and `encodings.idna` inside the isolated probe, before request processing and interception. The first fixes the cache-helper initialization failure; the second completes the same preloading boundary for the existing DNS canary. No observation rule, native/network exception or product code is changed. The added clean `-I -S -B` regression inspects the actual preamble and exercises both helpers.
+## 2. Exact R02 repair
 
-The first R01 run `35362756160` checked `a8741ed`: all four jobs failed. Downloaded, hash-matched Linux 3.13 evidence showed 193 passed/1 failed, and Windows 3.13 evidence showed 192 passed/2 failed. The DNS canary was stopped by the observer's file-read rule while the standard library tried to load IDNA, before the DNS event. An isolated local reproduction showed `open` before preloading and `socket.getaddrinfo` after preloading; both operations were intercepted before source access/resolution. The follow-up at `641f2b9` added only the explicit codec preload and its regression checks inside the same authorized file. The original DNS test file and assertion stayed unchanged.
+The existing `test_deliberate_cdll_is_blocked_before_loading` now selects the fixed string `SYNTHETIC_NONEXISTENT_LIBRARY` as its CDLL argument on Windows. Other platforms retain None. The probe remains injected into `io/platform_linux.py`, because all package slots must remain inert on every tested host, irrespective of a slot's prospective platform role.
 
-R01-B checks only backend-generated setup.cfg against exact POSIX LF or Windows CRLF bytes. It does not normalize supplied bytes, change any source-file line endings, broaden archive membership or change backend versions. Five new instances retain positive spellings and reject an unreviewed platform plus nine extra/malformed-content variants per platform. All pre-existing package inspection, clean install and rebuild tests remain.
+The three original native-test methods and every original assertion are unchanged. In particular, the canary must fail as an application operation and retain an actual `ctypes.dlopen` entry. A TypeError, missing event or skipped test cannot satisfy it. The other-slot named-library control remains intact. No actual native loading is granted and the shared observer is unchanged by R02.
 
-## 2. Actual repaired matrix
+The fetched input blob was `7f80974968f5636b4f6aa87d4efc8c13d9bc834c`, SHA-256 `3875064a1222480e2ee1611fcbef033099887cfb43e0a9684ce9425aa355e5b6`. The committed repaired blob is `69d06755fa425d8508369b744277b2f47e4694af`, SHA-256 `add4a523f73deba8380a257a1846d8c044249996ec88ca56be1f4903563a96a6`.
 
-Run `35363039474`, attempt 1, executed the exact repaired candidate. All four job statuses, complete evidence ZIPs, their SHA-256 identities and JSON/XML/log contents were inspected.
+Local checks established matching input bytes, Python syntax, unchanged methods/assertions and the fixed Windows/POSIX argument selection. They did not pretend to execute Windows locally. Acceptance evidence is the actual hosted matrix below. R02 adds no collected test and removes none.
 
-| Hosted profile | Actual Python | Collected | Passed | Failed | Errors / skipped |
-|---|---|---:|---:|---:|---|
-| Ubuntu 24.04.5 | 3.11.16 | 194 | 194 | 0 | 0 / 0 |
-| Ubuntu 24.04.5 | 3.13.15 | 194 | 194 | 0 | 0 / 0 |
-| Windows Server 2025 build 26100 | 3.11.9 | 194 | 193 | 1 | 0 / 0 |
-| Windows Server 2025 build 26100 | 3.13.15 | 194 | 193 | 1 | 0 / 0 |
+## 3. Complete passing matrix
 
-Each row has 420 additional successful subtest events, retained separately from the 194 collected top-level instances. Collection identities match all results. There is no xfail, deselection or test skip in this hosted run. Both Linux jobs completed successfully; both Windows jobs failed on the same one test below.
+Run `35365045308`, attempt 1, executed commit `e102b7f31427f5a0dce288517284eaf4e3a6a7dd`. All four jobs completed successfully. Their complete evidence ZIPs were downloaded through the connector and matched against Actions byte counts and SHA-256 digests before inspection.
 
-All four rows passed the actual twenty-file baseline and forty-eight-module guards before and after testing; tracked bytes were unchanged. All packaging tests now pass on every row, including the previously failing Windows source-inventory test, source/wheel exclusions, clean offline installation without developer dependencies and source-rebuild member-byte equality. Existing source distribution and wheel member inventories remain 65 and 55. The development pins and Windows-only Colorama marker are unchanged.
+| Hosted profile | Actual Python | Collected / passed | Failed | Errors / skipped |
+|---|---|---:|---:|---|
+| Ubuntu 24.04 x64, image 20260907.300.1 | 3.11.16 | 194 / 194 | 0 | 0 / 0 |
+| Ubuntu 24.04 x64, image 20260907.300.1 | 3.13.15 | 194 / 194 | 0 | 0 / 0 |
+| Windows Server 2025 x64, image 20260907.229.1 | 3.11.9 | 194 / 194 | 0 | 0 / 0 |
+| Windows Server 2025 x64, image 20260907.229.1 | 3.13.15 | 194 / 194 | 0 | 0 / 0 |
 
-The original twelve security methods now pass on Linux. On Windows, eleven pass, including real inert imports, all DNS/socket probes, file/path probes and the separately named-library native probe. The remaining method has reached a Windows-specific canary construction problem that the earlier initialization failure had masked.
+Each row additionally reports 420 successful subtest events. The JUnit aggregate is 614 events, containing 194 top-level result elements. Local evidence inspection independently matched every result identity to collection, confirmed the same 194 collected IDs as the R01 run, checked zero failures/errors/skips and pytest exit zero, and verified all three native methods passed. Subtests do not become additional domain-test implementations.
 
-## 3. Remaining issue: P1-W06-R02, proposed only
+All four rows passed the actual twenty-file baseline and forty-eight-module guards before and after execution. Tracked bytes remained unchanged during testing. The pinned developer wheels and existing Windows Colorama marker were verified and installed without adding runtime dependencies. All packaging tests passed: exact 65-regular-member source inventory, 55-member wheel, exclusion checks, clean offline installation without developer dependencies, and equal member bytes in the original and source-rebuilt wheels.
 
-File: `tests/security/test_scaffold_no_native_loading.py`.
-Method: `test_deliberate_cdll_is_blocked_before_loading`.
+The existing API refusal, import, CLI, file/path, DNS/socket, native-loading, architecture, catalog, fixture and CI-policy checks are included. There is no test skip, xfail, deselection, reduced matrix or accepted generic exception. These are scaffold checks, not an implementation of the 228 pending analytical test obligations or the future native adapters.
 
-The method injects `ctypes.CDLL(None)` and requires the real `ctypes.dlopen` audit event. Both Windows rows fail because their violation list is empty. CPython 3.11.9's ctypes Python wrapper tests path separators in the name before the loader; None is not a valid string there. In CPython 3.13.15, the Windows C wrapper requires a Unicode argument via `PyArg_ParseTuple(..., "U|i:LoadLibrary", ...)` before `PySys_Audit("ctypes.dlopen", ...)`. Neither path reaches the expected audit event with this argument. These primary implementations explain the observed failure; this is a test-canary portability defect, not evidence that a product library load escaped interception.
+## 4. Downloaded evidence identities
 
-Sources checked: `python/cpython` tag `v3.11.9`, `Lib/ctypes/__init__.py` blob `26135ad96296acc6aeda25d8b686f780e0b9e2c4`; tag `v3.13.15`, `Lib/ctypes/__init__.py` blob `7fc1181f25a26430d74044d114afd87be1df3d47`; and `Modules/_ctypes/callproc.c` blob `066cbb99bdd758fe4a91f4b1f70c237178ecfe4a`. No source code from those projects is incorporated into the toolkit.
+| Row | Job ID | Artifact ID | ZIP bytes | Complete ZIP SHA-256 |
+|---|---:|---:|---:|---|
+| Ubuntu / 3.11 | 105665328413 | 10556316686 | 36945 | `07d826b768d5f1dadf186e6277055a3bfa091862c636a144a3ba8efac14666b3` |
+| Ubuntu / 3.13 | 105665328371 | 10555379689 | 36791 | `0c7b4e53fba727520501db9ca610fc7ea9e06dfc4aa92536341ff54b212d84cb` |
+| Windows / 3.11 | 105665328541 | 10555707419 | 43125 | `dbdc8d09459e3fd427153bd6b9db0c769136ad727f3a9c3124470d17bcdef8bb` |
+| Windows / 3.13 | 105665328095 | 10555962094 | 42916 | `4a78be1202842cfc29491d9e8d973ffdf964902883ad784fada922aee603dce1` |
 
-Recommended scoped repair: permit this one additional test file to use a fixed fictional string library name on Windows, retaining None on POSIX, with the same mandatory actual-event assertion and adverse controls. Never accept a generic TypeError, empty event list or skipped test as proof of interception. Keep the other slot's named-library probe and all existing boundary assertions. No native library should actually be loaded by the probe.
+Run URL: `https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35365045308`.
 
-This file is outside R01's exact two-file scope and remains unmodified. P1-W06-R02 requests permission for that targeted canary repair and necessary W06 records, followed by the complete four-row rerun. It does not authorize another module, product implementation, changed dependency, source oracle, W06 merge or W07.
+The JSON/XML/log inspection includes environment and commit identity, collection, pytest exit, suite and element counts, before/after guards, reviewed/installed wheels, tracked hashes and archive member hashes. Hosted image/patch details are observed environments, not a newest-release or production-support claim.
 
-## 4. Evidence identities
+## 5. Retained failure history
 
-| Row | Job ID | Artifact ID | Complete ZIP SHA-256 |
-|---|---:|---:|---|
-| Ubuntu / 3.11 | 105658728693 | 10555032250 | `bb592ea04d4a1e9951195c4f95aa1a7bfc28c57d4aa9dc07f36b19f71d9205ff` |
-| Ubuntu / 3.13 | 105658728963 | 10555158354 | `ddbcaa1477618efa796ef37622587b51ab2cfac47ae83f85416e7a20e5f2a4c2` |
-| Windows / 3.11 | 105658728899 | 10555533189 | `0501b3a572065a11f8d52a56a92e45923ca7512aff02546d42402f834f620455` |
-| Windows / 3.13 | 105658728999 | 10555048397 | `d930a89ed746fcd53ad87e5efcc1cb807356b829302c4f61f411d6def14bcb92` |
+The complete earlier progress revision 0.13 is preserved at `c6d8969d8b82d86900fbd36c6d657538f47af35a`, this path. It retains the R01 authority, intermediate results, exact CPython source verification and the R02 proposal before approval. Earlier revisions remain reachable through its pinned history.
 
-Run URL: `https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35363039474`.
+| Historical run | Outcome retained |
+|---|---|
+| 35357942013 | Initial W06 matrix failed; isolated-probe initialization, Windows generated newline and summary-accounting defects exposed |
+| 35358820107 | Accounting corrected, but twelve Linux and thirteen Windows failures remained |
+| 35362756160 | Initial R01 repair exposed deferred IDNA initialization and the Windows None canary |
+| 35363039474 | R01 complete; Linux 194/194, Windows 193/194, with only the R02 canary still failing |
+| 35365045308 | R02 repaired; all four rows 194/194 |
 
-Final repaired security blob: `a7a876006eb75ab5c3542e01f4b72c8a7483519f`, SHA-256 `cd741cf4bde1192b63d6c3951022bdab08dabf7b4fe4bfaf3ed8dba1e2960b3d`. Repaired packaging blob: `c872c4080d08e331b9253cd3cdd9467050d540a4`, SHA-256 `cfc891098830d9adf1f2ee3a0c3bcc06e884fb00f356aa5a8e1822feb1aa5d93`. All original observer/application boundary code and pre-existing functions apart from the targeted metadata assertion were compared locally and preserved.
+No previous failure is erased, relabeled or credited to later code. R01's preload and strict generated-metadata repairs remain unchanged. The separate old W02 workflow stays limited to its original scope; its skip on a W06 PR is not counted as W06 evidence.
 
-## 5. Preservation and stop point
+## 6. Delivery gate
 
-This evidence-record successor changes only progress, the CI review and the README status text. The table describes its named executed predecessor; it does not invent results for a later commit. Current-head checks remain independently visible in PR #7.
+This documentation successor updates only progress, CI review and README after the named passing executable run. It must receive its own passing exact-head checks before delivery; that final commit/run pairing is recorded in PR #7 and the exported verification summary rather than creating a self-referential commit hash in this file.
 
-Frozen specifications, approval, plan, baseline manifest, all product modules, case/oracle data, catalogs, dependency pins, packaging rules, other earlier tests and workflow/helper bytes remain unchanged. Historical source papers are not reinterpreted. No application algorithm, parser, report renderer or native adapter is implemented.
-
-Keep PR #7 in draft and main at the accepted W05 merge. R01's permitted repairs have been executed and tested; full W06 acceptance remains blocked by the unmodified R02 canary. The next required decision concerns that single additional file, not a new design or a rerun of earlier approvals.
+W06 technical verification is complete on the named candidate. Owner acceptance and merging PR #7 remain separate, unperformed actions. Main stays at the accepted W05 merge. No P1-W07 completion file, Phase 2 work, actual auditing, report generation, native security implementation, package release or deployment is introduced.

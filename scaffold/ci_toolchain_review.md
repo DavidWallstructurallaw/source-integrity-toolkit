@@ -4,49 +4,49 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.3, authorized R01 rerun |
+| Revision | 0.4, R02 four-row passing evidence |
 | Date | 2026-09-18 UTC |
-| Repair authority | Owner approved P1-W06-R01 with `批准` |
-| Tested executable candidate | `641f2b9711aad9812a0c709eb949798a4f4ebee7` |
-| Inspected run | `35363039474`, attempt 1 |
-| Result | Linux rows pass; one Windows-only native-canary test remains failed on each Windows row |
-| PR / merge | Draft PR #7; not merged |
+| Repair authority | Owner approved P1-W06-R02 with `批准` |
+| Tested executable candidate | `e102b7f31427f5a0dce288517284eaf4e3a6a7dd` |
+| Inspected run | `35365045308`, attempt 1 |
+| Technical result | Four successful jobs; 194 passed per row; zero failures/errors/skips |
+| PR / merge | PR #7 awaiting owner acceptance; not merged |
 | Product dependencies / analysis | None / unimplemented |
 
-## 1. Preserved toolchain review
+## 1. Preserved selections and review scope
 
-The complete revision 0.2 at commit `8ea5becfe11165e745bec72b5f42e467fa92c69f`, this path, remains the unchanged toolchain selection, permissions, license, source-reference and initial failure record. The earlier W02 vendored-material and archive_util applicability qualifications also remain controlling. This successor adds execution evidence; it selects no new tool, runtime, dependency, license or platform.
+Full selection/permission/license/source review revision 0.2 remains at `8ea5becfe11165e745bec72b5f42e467fa92c69f`, this path. R01 evidence and the verified Windows canary diagnosis remain in revision 0.3 at `c6d8969d8b82d86900fbd36c6d657538f47af35a`. The earlier W02 vendored-material and archive_util qualifications are also retained. This revision supplies new execution evidence without adopting another dependency, action, native capability, license or production platform.
 
-The retained action pins are checkout v7.0.1 at `3d3c42e5aac5ba805825da76410c181273ba90b1`, setup-python v7.0.0 at `5fda3b95a4ea91299a34e894583c3862153e4b97`, and upload-artifact v7.0.1 at `043fb46d1a93c77aae656e7c1c64a875d1fc6a0a`. All target Node 24; their reviewed root licenses are MIT. Original action manifest/notice identities and source links remain in revision 0.2.
+The unchanged action pins are checkout v7.0.1 at `3d3c42e5aac5ba805825da76410c181273ba90b1`, setup-python v7.0.0 at `5fda3b95a4ea91299a34e894583c3862153e4b97`, and upload-artifact v7.0.1 at `043fb46d1a93c77aae656e7c1c64a875d1fc6a0a`. Their reviewed manifest and notice identities remain in revision 0.2.
 
-The workflow and evidence driver are unchanged by R01: contents-read permission, exact-head checkout without persisted credentials, finite 25-minute jobs, no cache input, privileged trigger, configured secret, package publication, deployment or merge. Only verification JSON/XML/logs are uploaded for fourteen-day retention. Setup network activity remains separate from application no-network tests. A skipped old W02 workflow is not a passing W06 job.
+The workflow/helper remains unchanged by R02: contents-read permission, exact-head checkout without saved credentials, four finite 25-minute jobs, no cache, privileged trigger, configured repository secret, package publication, deployment or automatic merge. Uploads contain only verification JSON/XML/log records with fourteen-day retention. Dependency acquisition is CI setup; application-originated network/native effects remain prohibited by the scaffold tests.
 
-## 2. Actual rerun environments and dependency boundary
+## 2. Actual environments and pins
 
-The exact four environments in run `35363039474` are Ubuntu 24.04.5 with CPython 3.11.16 and 3.13.15, plus Windows Server 2025 build 26100 with CPython 3.11.9 and 3.13.15. These are actual installed patches, not claims that they are the newest security releases. They test the scaffold, not the future Windows 11/NTFS native design.
+The passing run used Ubuntu 24.04 x64 image 20260907.300.1 with CPython 3.11.16/3.13.15, and Windows Server 2025 x64 image 20260907.229.1 with CPython 3.11.9/3.13.15. The evidence reports the actual kernel/build, interpreter and patch string. No claim is made that these are the newest releases or that hosted scaffold tests certify the future Windows 11/NTFS adapter.
 
-Every row verified and installed the unchanged selected wheels: setuptools 84.0.0, pytest 9.1.1, iniconfig 2.3.0, packaging 25.0, pluggy 1.6.0 and Pygments 2.20.0; Windows also installed its preselected Colorama 0.4.6. Requirements blob remains `e037242d849f827a6c968a0f97830610a1718138`. Bootstrap pip was 24.0 on the 3.11 rows and 26.2.1 on the 3.13 rows, separate from the product. No pin was lowered, added or removed.
+Every row verified and installed the same six selected developer wheels: setuptools 84.0.0, pytest 9.1.1, iniconfig 2.3.0, packaging 25.0, pluggy 1.6.0 and Pygments 2.20.0. Windows also installed the already approved Colorama 0.4.6 marker. Requirements blob remains `e037242d849f827a6c968a0f97830610a1718138`. Actual wheel identities, metadata and notice hashes remain in each reviewed-wheels.json. Bootstrap pip is an environment tool, not a toolkit runtime dependency.
 
-The four downloaded evidence archives were fully SHA-256 checked against Actions metadata, then their environment, reviewed-wheel, install, collection, pytest, JUnit, guard and build records inspected. Complete artifact IDs and hashes are in PHASE_1_PROGRESS.md section 4. The actual 65-member source distributions and 55-member wheels passed all package tests on both operating systems, including exact platform-specific generated setup.cfg bytes. Clean offline installations contain only the project; rebuild checks preserve wheel member bytes. No developer wheel or product package binary was published.
+All selected-wheel verification, offline installation and pip check stages passed. The installed project has zero third-party runtime dependencies. R02 does not change pyproject.toml, MANIFEST.in, dependency pins or the archive member allowlists.
 
-## 3. Repairs and test outcomes
+## 3. Narrow repair and evidence
 
-R01 modifies only the previously approved two test files. The isolated observer now explicitly preloads importlib.util and the IDNA hostname codec before interception. Its observer body and all adverse operations remain unchanged. Its clean-interpreter regression checks both explicit dependencies. The packaging repair accepts only the precise generated file for the current platform and adds exact positive/negative controls without transforming source bytes.
+R02 changes only the argument used by one existing native-loading canary: Windows receives a fixed fictional string name, while POSIX retains None. Its module slot, every assertion, other native controls and shared interception rules are retained. An actual `ctypes.dlopen` event is still mandatory, so ordinary argument failure or an empty interception list cannot pass.
 
-Run `35362756160` preserves the intermediate R01 failure: the cache-helper repair exposed IDNA's deferred file load before the DNS audit event; Windows also exposed the None native-canary issue below. The IDNA preload was completed inside the same authorized initialization repair. Its source inspection and isolated reproduction are retained locally and in progress revision 0.13.
+The inspected CPython implementations and pre-audit argument boundary are preserved in progress revision 0.13. Python's ctypes documentation identifies the named-library audit event: `https://docs.python.org/3.13/library/ctypes.html`. This documentation supports the event contract; actual acceptance comes from the executed positive and adverse probes. No third-party code is copied and no native adapter is implemented.
 
-Run `35363039474` collected 194 top-level instances per row, with 420 separate successful subtest events. Linux reports 194 passed/0 failed on both Python minors. Windows reports 193 passed/1 failed on both minors. All rows have zero errors/skips, matching collection identities, unchanged tracked bytes, and passing before/after twenty-file baseline and forty-eight-module guards. Every packaging test, all socket/DNS controls, and the additional R01 regressions pass.
+The local patch check matched the fetched blob, compiled the file, compared all retained method/assertion ASTs and checked fixed argument selection. It did not substitute a simulated Windows result for the hosted run. No collected test was added or removed by R02.
 
-The only remaining failure is `test_deliberate_cdll_is_blocked_before_loading` in the unchanged `tests/security/test_scaffold_no_native_loading.py`. Its None argument fails Windows' argument handling before a real ctypes.dlopen audit event. The other named-library canary passes. Do not count absence of an event caused by invalid arguments as successful interception.
+## 4. Passing matrix and artifact verification
 
-## 4. Narrow primary-source verification and next gate
+Run `35365045308` executed `e102b7f31427f5a0dce288517284eaf4e3a6a7dd`. Each of its four jobs collected and passed the same 194 test instances, with zero failures, errors or skips. The 420 successful subtest events are recorded separately; 614 JUnit events do not become 614 collected functions. All original R01 collection identities remain present, including the three native methods and the strict platform-specific generated setup.cfg check.
 
-Python 3.11 importlib documentation identifies source_from_cache in the importlib.util submodule. Python's open documentation explains platform newline translation for text output. These support the repair mechanics; actual acceptance still comes from the executed cases.
+All rows passed both actual-checkout guards before/after, preserved tracked bytes, and passed every packaging/clean-install/rebuild test. Source inventories contain 65 regular files; each original/rebuilt wheel has 55 members with equal member-content hashes. A successful scaffold build does not implement source analysis or certify native filesystem behavior.
 
-- `https://docs.python.org/3.11/library/importlib.html#importlib.util.source_from_cache`
-- `https://docs.python.org/3.11/library/functions.html#open`
-- `https://docs.python.org/3.13/library/ctypes.html`
+All four complete ZIPs were downloaded and checked against Actions byte counts and full SHA-256 digests. Their environment, collection, JUnit, pytest, guard, reviewed/installed-wheel and archive records were inspected independently of the displayed green job state. Exact job/artifact IDs and hashes are in PHASE_1_PROGRESS.md section 4. No package binary, source dossier, theory PDF or secret dump is uploaded.
 
-The remaining failure was checked against CPython's exact primary implementations: tag v3.11.9, Lib/ctypes/__init__.py; tag v3.13.15, Lib/ctypes/__init__.py and Modules/_ctypes/callproc.c. Their concrete blobs and the before-audit argument checks are recorded in progress section 3. No third-party implementation was copied.
+## 5. Handoff
 
-P1-W06-R02 proposes permission for one additional earlier test file to use a valid fixed fictional library-name argument on Windows while retaining the POSIX None case and mandatory actual-event assertion. The file remains unchanged pending approval. All matrix rows must then rerun. These findings provide no permission to weaken the observer, skip Windows, report a green CI result, merge W06 or begin W07.
+Historical failed runs remain recorded and unmodified. Both scoped repairs R01 and R02 now have passing four-row evidence. The documentation-only review successor requires an exact-head CI recheck, recorded in PR #7 and the verification export; it cannot inherit an unobserved green result solely from equal executable bytes.
+
+W06 technical verification and owner acceptance remain distinct. PR #7 is not merged, main remains at `ecf4eb5126201a7c31250c6dae8cbe2c64f9066a`, and W07/Phase 2 are not started. Future native ABI, security-race and analytical validations remain pending their own implementation plans.
