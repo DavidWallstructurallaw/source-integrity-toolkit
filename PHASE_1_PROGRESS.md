@@ -5,98 +5,100 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Progress revision | 0.1 |
-| Date | 2026-09-17 |
+| Progress revision | 0.2 |
+| Record date | 2026-09-17 |
 | Approved Phase 1 plan | Revision 0.1 at `2fa58fce603e28f1160bd68eeadbe315db941501` |
 | Plan Git blob | `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
-| Plan approval and execution instruction | `批准，开始 P1-W01` |
+| Plan approval and initial execution instruction | `批准，开始 P1-W01` |
+| Scoped repair and continuation instruction | `批准，继续`, following the approval-manifest repair request |
 | Current work unit | P1-W01: Freeze verification, project governance and license application |
 | Execution intake commit | `2fa58fce603e28f1160bd68eeadbe315db941501` |
 | Approved Phase 0 candidate | `7d2e5fcaff591641b5cefce00e71e88941dd1f95` |
 | Original approval-record commit | `6650984502637bb167c38e7e370c46e246591480` |
-| Review branch | `phase1/p1-w01` |
-| Current result | BLOCKED_AT_ENTRY: four malformed SHA-256 entries in the frozen approval record |
-| P1-W01 completion | Not claimed |
+| Corrected approval-record commit | `f84c58cf6ca93b57020fd9b271de4c33e1bf1ebd` |
+| Reviewed pre-progress candidate | `4a998023ec3a4a87702b023481b14ba48366435f` |
+| Review branch / pull request | `phase1/p1-w01` / PR #2 |
+| Current disposition | P1-W01 artifacts completed and checked; submitted for owner review |
+| Owner acceptance of this delivery / merge | Pending |
 | P1-W02 and later units | Not started |
 
-## 1. Authorization and scope
+## 1. Authority and immutable failed-gate history
 
-The owner's instruction approves the exact Phase 1 plan identified above and authorizes P1-W01 only. The plan remains byte-identical; its historical PROPOSED header is read with this later approval event. No separate approval of an unwritten later step is inferred.
+The original instruction approved PHASE_1_PLAN.md and authorized P1-W01. Its historical PROPOSED header remains unchanged. The first attempt stopped at the required freeze check and recorded four malformed approval-manifest digests. That complete entry-hold record is preserved at:
 
-PHASE_1_PLAN.md section 5 requires an exact-byte approval-manifest check before license and governance application. Section 3 freezes the eighteen Phase 0 files, PHASE_0_APPROVAL.md and the approved plan. Section 13 requires recording a failed gate here and obtaining scoped authorization before changing a frozen record.
+`https://github.com/DavidWallstructurallaw/source-integrity-toolkit/blob/6e37659bdf345484babc4eb37ef7b547980998d1/PHASE_1_PROGRESS.md`
 
-The current permitted write is this progress record. No other P1-W01 artifact is represented as completed, and no approval file or specification has been changed.
+Its blob is `3c4ddf4f6e1a5c313c83a3246e32732fecf4029e`. This revision preserves the failed-gate event by that immutable reference. It does not claim that the first check passed or erase the earlier limitation that only eleven files had then been independently rehashed.
 
-## 2. Entry verification performed
+The owner subsequently approved the proposed narrow repair with `批准，继续`. That authorizes correcting erroneous digest/revision-history metadata in PHASE_0_APPROVAL.md, after recomputing all eighteen entries, then resuming the existing W01 allowlist. It does not authorize changing any underlying specification, the approved design or PHASE_1_PLAN.md.
 
-The connected repository's main branch was read at the intake commit. Its complete tree contains the eighteen original Phase 0 paths plus PHASE_0_APPROVAL.md and PHASE_1_PLAN.md. The eighteen original Git blob identities and byte counts agree with the tree at the approved candidate commit. This establishes snapshot continuity at the Git-object level; it does not validate a malformed printed SHA-256 value.
+## 2. P1-W01-B01 resolved: complete manifest recomputation
 
-PHASE_0_APPROVAL.md was fetched in full. The byte-preserving local copy was checked against its remote blob before inspection:
+All eighteen complete file byte sequences were matched against the approved commit's Git blob identities and byte counts. Local SHA-256 calculations with hashlib were independently cross-checked using sha256sum. There was no checkout normalization, missing-character guess or substitution of Git SHA-1 for file SHA-256.
 
-| Property | Verified value |
+The eleven previously checked entries matched. Full verification found seven erroneous values in the approval record: the four previously reported 63-character entries plus three 64-character mismatches for DEPENDENCY_STRATEGY.md, GOVERNANCE_AND_HANDOFF.md and LICENSING_NOTES.md. Those are approval-record defects; the corresponding specification blobs still match the approved candidate.
+
+The authorized repair changed only the approval record's revision to 1.1, the seven incorrect table values and a correction-history section. All eighteen specification paths and byte counts, their 1,094,920-byte total, the approved commit and the original semantic approval remain unchanged. Original revision 1.0 remains available in Git. The earlier assertion of a fully checked manifest is explicitly corrected rather than retroactively treated as true.
+
+| Corrected approval identity | Value |
 |---|---|
-| Bytes | 11830 |
-| Git blob SHA-1 | `5f9732b2ab1cf51c513e2bcf71a0cdb8a4f055d3` |
-| Independently computed file SHA-256 | `73c10235549ffc725f9035f07281818f560a9262361acca2ba81c3d7a01e7ccd` |
-| Manifest rows | 18 |
-| Sum of listed baseline bytes | 1094920 |
-| Rows containing exactly 64 lowercase hexadecimal characters | 14 |
-| Rows containing only 63 hexadecimal characters | 4 |
+| Commit | `f84c58cf6ca93b57020fd9b271de4c33e1bf1ebd` |
+| Bytes | 14670 |
+| Git blob SHA-1 | `3e61806e3df5afc7d88fae27db765c5e5eb4bdb9` |
+| File SHA-256 | `92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c` |
 
-Eleven locally available original baseline files were independently hashed after their complete bytes were matched to the current remote Git blobs. Those eleven SHA-256 values and lengths match the approval table: CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md, DEFINITIONS_AND_UNITS.md, OBSERVABILITY_AND_REPORTING.md, PHASE_0_PLAN.md, PROJECT_INSTRUCTIONS.md, SPEC_AUDIT.md, SUCCESS_CRITERIA.md, THEORY_SOURCE_MAP.md, THEORY_TO_CODE_TRACEABILITY.md, V0.1_PRODUCT_SPEC.md and VALIDATION_PLAN.md.
+The remote updated blob equals the complete locally checked outgoing document. Its manifest contains exactly eighteen valid 64-character digests, each equal to the recomputed value. The entry blocker is resolved within the approved repair scope. The machine-readable manifest records the approval hash separately from the eighteen-file baseline and keeps the original and correction commits distinct.
 
-The other seven baseline SHA-256 values have not been independently rehashed in this unit. Four of those seven fail even the digest-format check. Correct length in the other three is not evidence that their values are correct. No claim of eighteen successfully recomputed digests is made.
+## 3. W01 artifacts delivered
 
-## 3. P1-W01-B01: malformed approval-manifest digests
+| Path | Delivery |
+|---|---|
+| `README.md` | Public purpose, accurate nonfunctional scaffold status, roadmap and license/data exclusions |
+| `LICENSE` | Unmodified official Apache License 2.0 text, including appendix |
+| `NOTICE` | Project attribution and material-scope information; no extra license condition |
+| `CONTRIBUTING.md` | Scoped changes, frozen-byte discipline, evidence and contribution-rights rules |
+| `SECURITY.md` | Present support limit, verified public Issues route and unverified private-intake limitation |
+| `.gitignore` | Local environments, artifacts and private runtime folders; specifications/tests remain visible |
+| `.gitattributes` | Explicit byte-preservation entries for eighteen specifications, approval and Phase 1 plan; new text uses LF |
+| `scaffold/baseline_manifest.json` | Eighteen-file byte/SHA-256 manifest, corrected approval identity and approved-plan reference |
+| `scaffold/toolchain_review.md` | Exact proposed build/test pins, published compatibility, dependency/license implications and evidence limits |
+| `PHASE_1_PROGRESS.md` | This authorization, repair, check and handoff record |
 
-**Status:** BLOCKING at the P1-W01 freeze-verification gate.
+`PHASE_0_APPROVAL.md` is the sole additional changed path, authorized by the narrow repair. No other frozen document or Phase 1 plan byte changed. The original licensing notes remain historical; the root license now applies the previously approved engineering-material policy.
 
-**Affected file:** PHASE_0_APPROVAL.md, section 2, at the exact approval blob above.
+## 4. Checks actually performed
 
-| Baseline path named in the approval | Printed SHA-256 value | Hex characters |
-|---|---|---:|
-| PRIVACY_AND_DATA_HANDLING.md | `a364119c0a9cde098cf3f2f84d3c053e67c9871d492ba62a0ca7d1d9e695610` | 63 |
-| REPOSITORY_ARCHITECTURE.md | `4bde46a39961bff9e99f7e5f82b6e57c7a911f437a79c1436d37cdcfa9ff1f3` | 63 |
-| SOURCE_INTEGRITY_THREAT_MODEL.md | `bdb82719e05a7c7a41b0f9bdce409b37f31f7a08d6327f710ba5da0d6044f13` | 63 |
-| UNRESOLVED_DECISIONS.md | `e562031d15d14ea74724b520db9cbe6a5b62b85105c611fb1430c9a6cddf4a0` | 63 |
+The checking workspace used CPython 3.13.5, Linux x86_64 with glibc 2.41, and Git 2.47.3. These identify the authoring environment, not a supported or tested toolkit release. General-purpose local verification scripts were kept outside the repository delivery.
 
-A complete SHA-256 hexadecimal encoding needs 64 characters: 256 bits divided by four bits per hexadecimal digit. The four values cannot be accepted as complete encodings. Do not guess a missing character, prepend a zero, copy a Git SHA-1 into a SHA-256 field, or weaken the manifest checker.
+| Check group | Result and scope |
+|---|---|
+| Exact baseline bytes | PASS: eighteen full files matched approved Git blobs/lengths; hashlib and sha256sum agree |
+| Approval correction scope | PASS: removing the correction section and reversing the seven values/revision reproduces original sections 1-8 exactly |
+| Machine-readable manifest | PASS: eighteen rows equal the corrected authoritative table; separate approval digest/bytes/blob verified; no self-hash |
+| Official license source | PASS: all 11,358 bytes equal Apache website source blob `d645695673349e3947e8e5ae42332d0ac3164cd7` |
+| Allowlist and text integrity | PASS: only the ten W01 paths and authorized approval amendment; new text is UTF-8/LF |
+| Protected-path attributes | PASS: twenty explicit path settings checked; all nineteen available complete specification/approval files preserve their blobs under core.autocrlf true and false; approved-plan path settings also checked |
+| New-text normalization | PASS: a CRLF README probe produces the intended LF Git content |
+| Ignore boundaries | PASS: fourteen local/private-output probes ignored; thirty specification/test/catalog/public/example probes remain visible |
+| Public-document consistency | PASS: local references, license exclusions, unimplemented status and security limitations reviewed |
+| Remote delivery comparison | PASS at the named pre-progress candidate: all ten outgoing non-progress files match their checked local blobs and lengths; original eighteen specs and approved plan unchanged |
 
-This observation does not show that the four underlying specification files were altered. Their current Git objects match the approved snapshot. It identifies a defective approval-manifest representation. The preceding delivery's claim that the complete approval manifest had been checked was too strong; that omission is corrected by this entry.
+These are authoring, manifest, Git-attribute and documentation checks. They do not implement or test the auditor. No parser, graph algorithm, metric, native file adapter, package skeleton, executable schema, fixture or CI workflow was created. No dependency install, resolver execution, package build, hosted CI run, penetration test or independent review is claimed. The 228 domain field obligations remain unexecuted.
 
-The owner's semantic adoption of the named Phase 0 commit is preserved. Execution remains blocked because the required machine-checkable freeze evidence must be corrected under the frozen-record amendment procedure.
+## 5. Toolchain and security handoff
 
-## 4. Narrow proposed repair
+The proposed direct pins are setuptools 84.0.0 for building and pytest 9.1.1 for tests. Published metadata for both admits Python 3.10+, including the project's 3.11 target. Their project licenses were read from versioned sources. The review records pytest's conditional dependencies and the presence of setuptools vendored components without claiming a resolved dependency lock or complete artifact clearance.
 
-The following repair requires explicit owner authorization because PHASE_0_APPROVAL.md is outside P1-W01's writable allowlist:
+P1-W02 must inspect actual installed/resolved versions and licenses, test compatibility, and recheck the recorded upstream archive-extraction safety note before installation. No optional tool, extra build frontend or product runtime dependency is added now.
 
-1. Read the complete eighteen file byte sequences at the existing approved commit, match their lengths and Git blob identities, and compute every SHA-256 without checkout or text normalization.
-2. Revise only PHASE_0_APPROVAL.md's erroneous manifest values and necessary revision/correction-history metadata. Preserve the existing approved candidate commit, approval event, design decisions and scope. Keep revision 1.0 available at its immutable original commit.
-3. Recheck every manifest row, its exact value and length, and the aggregate file count/byte total. Compute the revised approval record's own separate hash after its bytes are fixed.
-4. Record the correction commit and evidence in this progress file, then resume the already authorized P1-W01 allowlist. Create scaffold/baseline_manifest.json only from the corrected verified record.
+Issues are available as a public route. The attempted private-reporting status check did not establish a supported confidential channel. SECURITY.md discloses that limitation and requests only a non-sensitive contact request on the public tracker. No private reporting feature, security email, key or response SLA was invented or configured.
 
-No change to any of the eighteen baseline specifications or to PHASE_1_PLAN.md is proposed. Any newly observed difference in those source bytes would be a separate stop, not permission to update their content. The repair must not be described as a new theory decision, a full product audit, or authorization to execute P1-W02.
+## 6. Remote workflow and next stop
 
-## 5. Other intake observations and incomplete work
+The existing PR is:
 
-Public-source checks were started for the already approved license and build/test tool classes. They are preliminary inputs only. Setuptools 84.0.0 and pytest 9.1.1 were observed as candidate build/test versions with declared Python >=3.10 and MIT project licensing. Their versioned project metadata was read; no package installation, resolver run, complete vendored-license review or compatibility test occurred. Final pins and dependency implications still belong in the pending scaffold/toolchain_review.md.
+`https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/2`
 
-The official Apache-2.0 plain-text license was viewed, but no root LICENSE or NOTICE has been committed. This record adds no license grant or altered licensing policy.
+The pre-progress candidate contains the corrected approval and all nine other W01 artifacts. Its diff against intake has exactly eleven paths, including this progress record already present from the entry hold. This final progress update and PR metadata are verified after their writes; the final candidate commit belongs in the PR/handoff rather than as a self-referential value in this document.
 
-Repository metadata confirms a public repository with Issues available. The attempted private-vulnerability-reporting status endpoint was rejected by the connector's permitted-route boundary. Private reporting therefore remains unverified; no email address or private reporting capability is invented. The later SECURITY.md must disclose the actual verified route and prohibit posting secrets.
-
-The local shell could not resolve github.com for a public clone, and direct binary/text download attempts did not furnish a complete local repository. Connected GitHub reads remained available. No local clone is presented as successful. This transport limitation is separate from the verified malformed-digest defect, and no credential or security bypass was attempted.
-
-## 6. Check evidence and boundary
-
-Local authoring checks used CPython 3.13.5 on Linux and Git 2.47.3. They checked UTF-8 bytes, standard Git blob hashing, SHA-256, exact digest lengths, manifest row counts and arithmetic. These environment versions describe the checking workspace only; they establish no supported toolkit runtime or tested platform.
-
-The initial strict 64-hex row parser found only fourteen admissible digest rows and failed its expected eighteen-row assertion. A second inspection that retained malformed rows confirmed eighteen rows in total and exactly the four 63-character entries listed above. The first failure is preserved as a failed gate; it was not converted into a pass by accepting shorter hashes.
-
-No runtime parser, schema, API, CLI, native binding, dependency manifest, fixture, test suite, workflow or implementation is created. No product tests, package builds or hosted CI runs are claimed. Existing specifications, the approval record and plan stay unchanged.
-
-The review branch receives this one progress file and a draft pull request describing the hold. Its actual commit and PR are supplied by GitHub after creation and in the handoff, without inserting a self-referential commit ID here. It must not be merged or described as a completed P1-W01 delivery while the recorded gate is unresolved.
-
-## 7. Current stop
-
-P1-W01 has started and is blocked at entry verification. The next owner decision is the scoped approval-record repair in section 4, followed by continuation of P1-W01. Later work units remain unstarted. The approved Phase 1 plan and the substantive Phase 0 design remain in force.
+The branch is submitted for owner review. Main has not been changed by this unit, and no merge or P1-W02 execution is claimed. The next step is acceptance and merge of this W01 delivery, followed by explicit authorization of P1-W02 under the unchanged plan.
