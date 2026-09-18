@@ -1,0 +1,165 @@
+# Copyright 2026 Xiangyu Guo
+# SPDX-License-Identifier: Apache-2.0
+# P1-W04-T01: owner approved the proposed one-time importer with "可以，继续".
+# Transport branch only. Never merge this workflow into main.
+name: P1-W04 one-time exact-byte import
+on:
+  push:
+    branches: [transport/p1-w04]
+    paths: [.github/workflows/p1-w04-import.yml]
+permissions: {}
+concurrency:
+  group: p1-w04-one-time-transport
+  cancel-in-progress: false
+jobs:
+  import:
+    if: github.repository == 'DavidWallstructurallaw/source-integrity-toolkit' && github.ref == 'refs/heads/transport/p1-w04'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Checkout the guarded W04 predecessor without saved credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 89b313aed8223af95c4b1999802d0f5b379eeccb
+          persist-credentials: false
+          fetch-depth: 1
+          submodules: false
+          lfs: false
+      - name: Verify payload, frozen files, static tests, and guarded branch update
+        env:
+          IMPORT_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, lzma, os, pathlib, platform, subprocess, sys, urllib.request
+          REPO = 'DavidWallstructurallaw/source-integrity-toolkit'
+          BASE = 'bfac2e69dd653823201a16069615cc9044a4b39c'
+          BEFORE = '89b313aed8223af95c4b1999802d0f5b379eeccb'
+          BRANCH = 'phase1/p1-w04'
+          API = 'https://api.github.com/repos/' + REPO
+          token = os.environ.pop('IMPORT_TOKEN')
+          def require(condition, message):
+              if not condition:
+                  raise RuntimeError(message)
+          def api(path, method='GET', data=None):
+              raw = None if data is None else json.dumps(data).encode('utf-8')
+              request = urllib.request.Request(API + path, data=raw, method=method, headers={
+                  'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json',
+                  'X-GitHub-Api-Version': '2022-11-28', 'Content-Type': 'application/json'})
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  return json.load(response)
+          def blob(data):
+              return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+          def unique(pairs):
+              value = {}
+              for key, item in pairs:
+                  require(key not in value, 'Duplicate transport key')
+                  value[key] = item
+              return value
+          root = pathlib.Path.cwd()
+          require(subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip() == BEFORE, 'Wrong checkout')
+          require(api('/git/ref/heads/main')['object']['sha'] == BASE, 'Main moved; stop for review')
+          require(api('/git/ref/heads/' + BRANCH)['object']['sha'] == BEFORE, 'Target moved or import already ran')
+          manifest_raw = (root / 'scaffold/baseline_manifest.json').read_bytes()
+          require(blob(manifest_raw) == 'da48da62c4d1dd8e27af43daa0ecdc8e6c4698d8', 'Baseline manifest changed')
+          manifest = json.loads(manifest_raw, object_pairs_hook=unique)
+          rows = manifest['baseline_files'] + [manifest['approval_record'], manifest['approved_phase1_plan']]
+          require(len(rows) == 20, 'Wrong freeze count')
+          for row in rows:
+              value = (root / row['path']).read_bytes()
+              require(len(value) == row['bytes'] and blob(value) == row['git_blob_sha1'], 'Frozen byte identity mismatch')
+              if 'sha256' in row:
+                  require(hashlib.sha256(value).hexdigest() == row['sha256'], 'Frozen SHA-256 mismatch')
+          print('FROZEN_FILES_VERIFIED: 18 specifications, approval and plan', flush=True)
+          # Lossless payload pieces are content-addressed temporary Git blobs, not
+          # additional branch paths. Their complete concatenation is pinned below.
+          chunks = [
+              ('44b9623a15d7bf91f4c40ac4c5d7a1e223b36836',8000),
+              ('9b6f02c1f9ea4c202764a0091f86be3b3d21577a',8000),
+              ('39bd6dc704a351bc3662eff5bc93784bdc69cd3d',8000),
+              ('23acedb96537ad00d5869731f3e5ce4e6f29a45c',8000),
+              ('f1eb77462628be5715d022f2558d6d190bbc44fc',8000),
+              ('d1a791fb2fcc0a53d2716ed649337c74e5fde715',1664)]
+          encoded = bytearray()
+          for sha, length in chunks:
+              item = api('/git/blobs/' + sha)
+              require(item['encoding'] == 'base64', 'Unexpected blob encoding')
+              part = base64.b64decode(item['content'])
+              require(len(part) == length and blob(part) == sha, 'Transport piece mismatch')
+              encoded.extend(part)
+          compressed = base64.b64decode(encoded, validate=True)
+          require(len(compressed) == 31248 and hashlib.sha256(compressed).hexdigest() == '8d6466c7f9a133789ce286ec0e951e9a971d9ad5cdce44423192919684e8d5f0', 'Compressed payload mismatch')
+          decoder = lzma.LZMADecompressor(memlimit=128*1024*1024)
+          decoded = decoder.decompress(compressed, max_length=968925)
+          require(decoder.eof and not decoder.unused_data and len(decoded) == 968924, 'Transport expansion bound failed')
+          require(hashlib.sha256(decoded).hexdigest() == '887d29858c52e70df6f3509c0071b133fdf005f37ec11a8bd10ca927d1c60445', 'Decoded payload mismatch')
+          files = json.loads(decoded, object_pairs_hook=unique)
+          allowed = {
+              'tests/fixtures/README.md','tests/fixtures/hero/H7-01.bundle.json',
+              'tests/fixtures/hero/H7-V01.bundle.json','tests/fixtures/hero/H7-V02.bundle.json',
+              'tests/fixtures/hero/H7-V03.bundle.json','tests/fixtures/hero/fixture_manifest.json',
+              'tests/fixtures/micro/case_index.json','tests/fixtures/adversarial/case_index.json',
+              'tests/golden/README.md','tests/golden/H7-01.logical.json',
+              'tests/golden/H7-V01.logical.json','tests/golden/H7-V02.logical.json',
+              'tests/golden/H7-V03.logical.json','tests/scaffold/test_fixture_integrity.py',
+              'PHASE_1_PROGRESS.md'}
+          require(type(files) is dict and set(files) == allowed, 'Wrong transfer path set')
+          require(sum(len(v.encode('utf-8')) for v in files.values()) == 877728, 'Wrong total input bytes')
+          evidence = []
+          for name, text in sorted(files.items()):
+              require(type(text) is str, 'Non-text candidate member')
+              path = root / name
+              require(not path.is_symlink(), 'Unexpected checkout symlink')
+              for parent in path.parents:
+                  if parent == root:
+                      break
+                  require(not parent.is_symlink(), 'Unexpected parent symlink')
+              if name != 'PHASE_1_PROGRESS.md':
+                  require(not path.exists(), 'Candidate addition already exists')
+              path.parent.mkdir(parents=True, exist_ok=True)
+              value = text.encode('utf-8')
+              path.write_bytes(value)
+              evidence.append({'path':name,'bytes':len(value),'sha256':hashlib.sha256(value).hexdigest(),'git_blob_sha1':blob(value)})
+          print('PAYLOAD_VERIFIED: exact 15-path accepted candidate, 877728 bytes', flush=True)
+          print(json.dumps({'python':sys.version,'platform':platform.platform(),'run_id':os.environ['GITHUB_RUN_ID'],'files':evidence}), flush=True)
+          # No token is inherited by the owner-approved static test process.
+          subprocess.run([sys.executable,'-m','unittest','discover','-s','tests/scaffold','-p','test_fixture_integrity.py','-v'], check=True, timeout=90, env=dict(os.environ))
+          for row in evidence:
+              require(blob((root / row['path']).read_bytes()) == row['git_blob_sha1'], 'Test changed transferred bytes')
+          for row in rows:
+              require(blob((root / row['path']).read_bytes()) == row['git_blob_sha1'], 'Test changed frozen bytes')
+          subprocess.run(['git','add','--'] + sorted(allowed), check=True)
+          staged = set(subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines())
+          require(staged == allowed, 'Wrong staged path set')
+          before_commit = api('/git/commits/' + BEFORE)
+          base_tree = before_commit['tree']['sha']
+          entries = []
+          for row in evidence:
+              value = (root / row['path']).read_bytes()
+              stored = api('/git/blobs','POST',{'content':base64.b64encode(value).decode('ascii'),'encoding':'base64'})
+              require(stored['sha'] == row['git_blob_sha1'], 'Remote written blob mismatch')
+              entries.append({'path':row['path'],'mode':'100644','type':'blob','sha':stored['sha']})
+          tree = api('/git/trees','POST',{'base_tree':base_tree,'tree':entries})
+          old = api('/git/trees/' + base_tree + '?recursive=1')
+          new = api('/git/trees/' + tree['sha'] + '?recursive=1')
+          require(not old.get('truncated') and not new.get('truncated'), 'Tree truncated')
+          def inventory(payload):
+              return {r['path']:(r['mode'],r['type'],r['sha']) for r in payload['tree'] if r['type'] != 'tree'}
+          a,b = inventory(old),inventory(new)
+          require({p for p in set(a)|set(b) if a.get(p)!=b.get(p)} == allowed, 'Remote diff exceeds transfer allowlist')
+          created = api('/git/commits','POST',{'message':'fixtures: import exact accepted P1-W04 candidate after 29 static checks\n\nOwner-approved P1-W04-T01 transport only. Input and logical-oracle bytes unchanged. No runtime implementation. Transport workflow excluded from this tree. Historical progress is retained as accepted and followed by a current handoff record.','tree':tree['sha'],'parents':[BEFORE]})
+          require(api('/git/ref/heads/main')['object']['sha'] == BASE, 'Main advanced during import')
+          require(api('/git/ref/heads/' + BRANCH)['object']['sha'] == BEFORE, 'Target advanced during import')
+          updated = api('/git/refs/heads/' + BRANCH,'PATCH',{'sha':created['sha'],'force':False})
+          require(updated['object']['sha'] == created['sha'], 'Ref verification failed')
+          require(api('/git/ref/heads/' + BRANCH)['object']['sha'] == created['sha'], 'Final ref verification failed')
+          require(api('/git/ref/heads/main')['object']['sha'] == BASE, 'Main changed unexpectedly')
+          result = {'status':'imported_and_verified','commit':created['sha'],'tree':tree['sha'],'parent':BEFORE,'main':BASE,'files':15,'bytes':877728,'tests':'29 unittest methods, no failures/errors/skips; see full test log','runtime_implementation':False}
+          print('P1_W04_IMPORT_SUCCESS ' + json.dumps(result), flush=True)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as output:
+              output.write('## P1-W04 exact-byte transport\n\n```json\n' + json.dumps(result,indent=2) + '\n```\n\nOwner acceptance and merge are separate connector actions. This workflow never changes main.\n')
+          PY
