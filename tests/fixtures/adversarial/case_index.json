@@ -1,0 +1,640 @@
+{
+  "artifact_type": "test_only_case_index",
+  "specification_snapshot": "bfac2e69dd653823201a16069615cc9044a4b39c",
+  "source_bound_index": {
+    "path": "scaffold/obligation_catalog.json",
+    "git_blob_sha1": "62ec0c934aee408c5bd9e9e32d0c03bac3c806e4",
+    "json_member": "control_cases"
+  },
+  "warning": "Index of adverse/control and licensing obligations, including their positive controls. No executable hostile fixture, detector, native implementation or passing domain test is delivered here.",
+  "binding_refinements": [
+    "GOVERNANCE_AND_HANDOFF.md section 22",
+    "DEPENDENCY_STRATEGY.md sections 15-16",
+    "REPOSITORY_ARCHITECTURE.md sections 17-20"
+  ],
+  "original_rights_and_scaffold_history": "Pending native/analytical tests do not undo W01 licensing or earlier accepted scaffold evidence.",
+  "cases": [
+    {
+      "case_id": "W9-01",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-01",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-02",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-02",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-03",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-03",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-04",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-04",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-05",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-05",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-06",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-06",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-07",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-07",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-08",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-08",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-09",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-09",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-10",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-10",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-11",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-11",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-12",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-12",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-13",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-13",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-14",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-14",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-15",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-15",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-16",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-16",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-17",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-17",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-18",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-18",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-19",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-19",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-20",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-20",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-21",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-21",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-22",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-22",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-23",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-23",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-24",
+      "source_document": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "source_section": "13",
+      "row_selector": "W9-24",
+      "future_test_binding": "Source section 13.1; existing SIT-DH controls and SIT-VG owners; no new file-specific path assigned here",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-LIC01",
+      "source_document": "LICENSING_NOTES.md",
+      "source_section": "8",
+      "row_selector": "W9-LIC01",
+      "future_test_binding": "Written licensing acceptance cases; engineering rights and packaging review, not analytical runtime tests",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-LIC02",
+      "source_document": "LICENSING_NOTES.md",
+      "source_section": "8",
+      "row_selector": "W9-LIC02",
+      "future_test_binding": "Written licensing acceptance cases; engineering rights and packaging review, not analytical runtime tests",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-LIC03",
+      "source_document": "LICENSING_NOTES.md",
+      "source_section": "8",
+      "row_selector": "W9-LIC03",
+      "future_test_binding": "Written licensing acceptance cases; engineering rights and packaging review, not analytical runtime tests",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-LIC04",
+      "source_document": "LICENSING_NOTES.md",
+      "source_section": "8",
+      "row_selector": "W9-LIC04",
+      "future_test_binding": "Written licensing acceptance cases; engineering rights and packaging review, not analytical runtime tests",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-LIC05",
+      "source_document": "LICENSING_NOTES.md",
+      "source_section": "8",
+      "row_selector": "W9-LIC05",
+      "future_test_binding": "Written licensing acceptance cases; engineering rights and packaging review, not analytical runtime tests",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W9-LIC06",
+      "source_document": "LICENSING_NOTES.md",
+      "source_section": "8",
+      "row_selector": "W9-LIC06",
+      "future_test_binding": "Written licensing acceptance cases; engineering rights and packaging review, not analytical runtime tests",
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R01",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R01",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R02",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R02",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R03",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R03",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R04",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R04",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R05",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R05",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R06",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R06",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R07",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R07",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R08",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R08",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R09",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R09",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R10",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R10",
+      "future_test_paths": [
+        "tests/contract/test_normalization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R11",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R11",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R12",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R12",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R13",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R13",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R14",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R14",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R15",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R15",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R16",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R16",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R17",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R17",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R18",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R18",
+      "future_test_paths": [
+        "tests/security/test_resource_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R19",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R19",
+      "future_test_paths": [
+        "tests/security/test_resource_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R20",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R20",
+      "future_test_paths": [
+        "tests/security/test_resource_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R21",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R21",
+      "future_test_paths": [
+        "tests/security/test_resource_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R22",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R22",
+      "future_test_paths": [
+        "tests/security/test_resource_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R23",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R23",
+      "future_test_paths": [
+        "tests/security/test_filesystem_profiles.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R24",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R24",
+      "future_test_paths": [
+        "tests/security/test_filesystem_profiles.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R25",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R25",
+      "future_test_paths": [
+        "tests/security/test_filesystem_profiles.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R26",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R26",
+      "future_test_paths": [
+        "tests/security/test_filesystem_profiles.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R27",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R27",
+      "future_test_paths": [
+        "tests/security/test_filesystem_profiles.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R28",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R28",
+      "future_test_paths": [
+        "tests/security/test_filesystem_profiles.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R29",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R29",
+      "future_test_paths": [
+        "tests/security/test_filesystem_profiles.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R30",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R30",
+      "future_test_paths": [
+        "tests/security/test_filesystem_profiles.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R31",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R31",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W11-R32",
+      "source_document": "REPOSITORY_ARCHITECTURE.md",
+      "source_section": "21",
+      "row_selector": "W11-R32",
+      "future_test_paths": [
+        "tests/contract/test_realization_profile.py"
+      ],
+      "materialization_status": "indexed_only",
+      "runtime_test_status": "pending"
+    }
+  ]
+}

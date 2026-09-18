@@ -1,0 +1,68 @@
+{
+  "artifact_type": "static_fixture_manifest",
+  "work_unit": "P1-W04",
+  "intake_commit": "bfac2e69dd653823201a16069615cc9044a4b39c",
+  "authority": "PHASE_1_PLAN.md section 8; frozen lineage sections 24-28 and validation sections 1-7",
+  "byte_rule": "Complete stored UTF-8/LF bytes; no normalization before hashing.",
+  "self_hash_policy": "This manifest excludes itself and mutable progress/evidence files.",
+  "runtime_implementation": "not_performed",
+  "domain_tests": "pending",
+  "files": [
+    {
+      "case_id": "H7-01",
+      "role": "input",
+      "path": "tests/fixtures/hero/H7-01.bundle.json",
+      "bytes": 163904,
+      "sha256": "06d342e4d12457dd186c48d917ed023a30e24f66e4226dd1ebf769a6365c47f7"
+    },
+    {
+      "case_id": "H7-01",
+      "role": "test_only_oracle",
+      "path": "tests/golden/H7-01.logical.json",
+      "bytes": 27056,
+      "sha256": "bec2d971ded08baeaeb85f3ca340e05e959381540adf944bb437eeef4bf640d5"
+    },
+    {
+      "case_id": "H7-V01",
+      "role": "input",
+      "path": "tests/fixtures/hero/H7-V01.bundle.json",
+      "bytes": 163875,
+      "sha256": "98f3b5b1d8e1214211adbdbdaa5cdcb71e5bb1b226fb26c2615648bcd49e5d09"
+    },
+    {
+      "case_id": "H7-V01",
+      "role": "test_only_oracle",
+      "path": "tests/golden/H7-V01.logical.json",
+      "bytes": 28111,
+      "sha256": "7cfb2f5d09175e0f658dac6d5db09777eab2b57406312775b18c0796b147b9ac"
+    },
+    {
+      "case_id": "H7-V02",
+      "role": "input",
+      "path": "tests/fixtures/hero/H7-V02.bundle.json",
+      "bytes": 173059,
+      "sha256": "043d7c3652035042ca2602d48efeed250d6599874b7ae7206cd74de23f596663"
+    },
+    {
+      "case_id": "H7-V02",
+      "role": "test_only_oracle",
+      "path": "tests/golden/H7-V02.logical.json",
+      "bytes": 29361,
+      "sha256": "4bcd1bb23086e475d35830fe01487dde8d4740b5010f59b1da34e4f8445f4134"
+    },
+    {
+      "case_id": "H7-V03",
+      "role": "input",
+      "path": "tests/fixtures/hero/H7-V03.bundle.json",
+      "bytes": 171096,
+      "sha256": "213e84942b77e43291ffec5feed4628ef075ddeb9262224c3d326b9402eae013"
+    },
+    {
+      "case_id": "H7-V03",
+      "role": "test_only_oracle",
+      "path": "tests/golden/H7-V03.logical.json",
+      "bytes": 29215,
+      "sha256": "44f5315b7a6e50aae7a9f0d800b7c94f6b6a06425473c7982af100822150487d"
+    }
+  ]
+}

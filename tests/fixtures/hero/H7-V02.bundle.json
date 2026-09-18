@@ -1,0 +1,5766 @@
+{
+  "contract_version": "sit-bundle/0.1",
+  "bundle_id": "H7-BUNDLE",
+  "snapshot_id": "H7-S-UNKNOWN",
+  "recorded_at": {
+    "state": "known",
+    "value": "2026-01-10T14:00:00Z",
+    "precision": "instant"
+  },
+  "predecessor": null,
+  "inquiries": [
+    {
+      "id": "H7-I1",
+      "target_claim_refs": [
+        "H7-C1"
+      ],
+      "target_object_refs": [
+        "H7-ANSWER",
+        "H7-EVAL",
+        "H7-HREVIEW"
+      ],
+      "seed_artifact_refs": [
+        "H7-A",
+        "H7-B",
+        "H7-C",
+        "H7-D",
+        "H7-E",
+        "H7-F",
+        "H7-U"
+      ],
+      "seed_evidence_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF",
+        "H7-EU"
+      ],
+      "boundary": {
+        "description": "The represented answer workflow consuming the first export and its A-E derivative chain",
+        "criterion": "External input means a separately acquired observation outside that represented reuse chain, under an attributed process assessment",
+        "system_refs": [
+          "H7-R1-V1",
+          "H7-A",
+          "H7-B",
+          "H7-C",
+          "H7-D",
+          "H7-E",
+          "H7-MGEN",
+          "H7-MJUDGE",
+          "H7-ANSWER"
+        ]
+      },
+      "time_window": {
+        "start": {
+          "state": "known",
+          "value": "2026-01-10T00:00:00Z",
+          "precision": "instant"
+        },
+        "end": {
+          "state": "known",
+          "value": "2026-01-10T14:00:00Z",
+          "precision": "instant"
+        }
+      },
+      "as_of": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "dependency_dimensions": [
+        "acquisition",
+        "analytical_method",
+        "model_ancestry",
+        "evaluation_rubric",
+        "organizational_control"
+      ],
+      "coverage_assertion_refs": [
+        "H7-COV-ACQ",
+        "H7-COV-COMP",
+        "H7-COV-MODEL",
+        "H7-COV-ROUTE",
+        "H7-COV-ADM",
+        "H7-COV-PRES",
+        "H7-COV-SEL",
+        "H7-COV-USE",
+        "H7-COV-ACQ-OLD"
+      ],
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      }
+    }
+  ],
+  "records": [
+    {
+      "id": "H7-A",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-A",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-A"
+    },
+    {
+      "id": "H7-A-V2",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-A",
+        "version_label": "v2",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "CORR-supported fictional description: amended material referring to the corrected 21-degree export."
+        ]
+      },
+      "label": "H7-A-V2"
+    },
+    {
+      "id": "H7-AN1",
+      "kind": "anomaly",
+      "data": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_ref": null,
+        "original_context": "A local clock alignment difference may affect event ordering; the present peak-value Claim does not represent this timing distinction.",
+        "context_evidence_ref": null,
+        "classification_state": "unclassified",
+        "caller_label": null,
+        "comparison_note": "No rarity estimate or cohort classification is supplied."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-AN1"
+    },
+    {
+      "id": "H7-ANSWER",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "answer",
+        "work_key": "H7-ANSWER",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-ANSWER"
+    },
+    {
+      "id": "H7-B",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-B",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-B"
+    },
+    {
+      "id": "H7-C",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-C",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-C"
+    },
+    {
+      "id": "H7-C1",
+      "kind": "claim",
+      "data": {
+        "claim_key": "H7-TEMPERATURE",
+        "version_label": "v1",
+        "text": "During chamber run RUN-17, the peak temperature was 24 degrees Celsius.",
+        "context": "RUN-17; the quoted peak-temperature statement."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-C1"
+    },
+    {
+      "id": "H7-CASE1",
+      "kind": "correction_event",
+      "data": {
+        "event_kind": "submission",
+        "case_ref": null,
+        "channel_ref": "H7-CHANNEL",
+        "target_refs": [
+          "H7-R1-V1",
+          "H7-A",
+          "H7-D",
+          "H7-E"
+        ],
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T12:10:00Z",
+          "precision": "instant"
+        },
+        "details": {
+          "submission_kind": "proposed_correction",
+          "summary": "First-export discrepancy and requested amendments to R1-V1, A, D and E."
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-CASE1"
+    },
+    {
+      "id": "H7-CHANGE-A",
+      "kind": "correction_event",
+      "data": {
+        "event_kind": "change",
+        "case_ref": "H7-CASE1",
+        "channel_ref": "H7-CHANNEL",
+        "target_refs": [
+          "H7-A"
+        ],
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T13:10:00Z",
+          "precision": "instant"
+        },
+        "details": {
+          "action_type": "amend",
+          "before_ref": "H7-A",
+          "after_ref": "H7-A-V2",
+          "after_absence_reason": null,
+          "linkage_description": "The supplied CORR process log links H7-A to H7-A-V2 to CASE1."
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-CHANGE-A"
+    },
+    {
+      "id": "H7-CHANGE-D",
+      "kind": "correction_event",
+      "data": {
+        "event_kind": "change",
+        "case_ref": "H7-CASE1",
+        "channel_ref": "H7-CHANNEL",
+        "target_refs": [
+          "H7-D"
+        ],
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T13:20:00Z",
+          "precision": "instant"
+        },
+        "details": {
+          "action_type": "amend",
+          "before_ref": "H7-D",
+          "after_ref": "H7-D-V2",
+          "after_absence_reason": null,
+          "linkage_description": "The supplied CORR process log links H7-D to H7-D-V2 to CASE1."
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-CHANGE-D"
+    },
+    {
+      "id": "H7-CHANGE-R1",
+      "kind": "correction_event",
+      "data": {
+        "event_kind": "change",
+        "case_ref": "H7-CASE1",
+        "channel_ref": "H7-CHANNEL",
+        "target_refs": [
+          "H7-R1-V1"
+        ],
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T13:00:00Z",
+          "precision": "instant"
+        },
+        "details": {
+          "action_type": "amend",
+          "before_ref": "H7-R1-V1",
+          "after_ref": "H7-R1-V2",
+          "after_absence_reason": null,
+          "linkage_description": "The supplied CORR process log links H7-R1-V1 to H7-R1-V2 to CASE1."
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-CHANGE-R1"
+    },
+    {
+      "id": "H7-CHANNEL",
+      "kind": "correction_channel",
+      "data": {
+        "owner_refs": [
+          "H7-EDITOR"
+        ],
+        "target_refs": [
+          "H7-R1-V1",
+          "H7-A",
+          "H7-D",
+          "H7-E"
+        ],
+        "contact_locator": null,
+        "declared_action_types": [
+          "amend"
+        ],
+        "valid_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-GRANT"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-CHANNEL",
+      "gaps": [
+        {
+          "field": "data.contact_locator",
+          "reason": "withheld",
+          "detail": "No contact endpoint is needed by this offline fixture."
+        }
+      ]
+    },
+    {
+      "id": "H7-CHECK-METHOD",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-CHECK-METHOD",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-REVIEWER",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-CHECK-METHOD"
+    },
+    {
+      "id": "H7-COL1",
+      "kind": "actor",
+      "data": {
+        "actor_kind": "human",
+        "identity_disclosure": "named",
+        "display_name": "Collector One"
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Fictional identity/model inventory",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "Fictional identity/model inventory; identities are supplied rather than authenticated."
+        ]
+      },
+      "label": "H7-COL1"
+    },
+    {
+      "id": "H7-COL2",
+      "kind": "actor",
+      "data": {
+        "actor_kind": "human",
+        "identity_disclosure": "named",
+        "display_name": "Collector Two"
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Fictional identity/model inventory",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "Fictional identity/model inventory; identities are supplied rather than authenticated."
+        ]
+      },
+      "label": "H7-COL2"
+    },
+    {
+      "id": "H7-D",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-D",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-D"
+    },
+    {
+      "id": "H7-D-V2",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-D",
+        "version_label": "v2",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "CORR-supported fictional description: amended material referring to the corrected 21-degree export."
+        ]
+      },
+      "label": "H7-D-V2"
+    },
+    {
+      "id": "H7-DOC-ACQ",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-ACQ",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-ACQ"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-ACQ"
+    },
+    {
+      "id": "H7-DOC-CHAIN",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-CHAIN",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-CHAIN"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-CHAIN"
+    },
+    {
+      "id": "H7-DOC-COMPARE",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-COMPARE",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-COMPARE"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-COMPARE"
+    },
+    {
+      "id": "H7-DOC-CONTEXT",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-CONTEXT",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-CONTEXT"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-CONTEXT"
+    },
+    {
+      "id": "H7-DOC-CORR",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-CORR",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-CORR"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-CORR"
+    },
+    {
+      "id": "H7-DOC-GRANT",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-GRANT",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-GRANT"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-GRANT"
+    },
+    {
+      "id": "H7-DOC-MODEL",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-MODEL",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-MODEL"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-MODEL"
+    },
+    {
+      "id": "H7-DOC-PIPE",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-PIPE",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-PIPE"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-PIPE"
+    },
+    {
+      "id": "H7-DOC-V02",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-DOC-V02",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": [
+          "H7-SUP-V02"
+        ]
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-DOC-V02"
+    },
+    {
+      "id": "H7-E",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "dataset",
+        "work_key": "H7-E",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-E"
+    },
+    {
+      "id": "H7-EA",
+      "kind": "evidence_item",
+      "data": {
+        "claim_ref": "H7-C1",
+        "artifact_ref": "H7-A",
+        "locator": "entry-1",
+        "epistemic_type": "documentary_statement",
+        "description": "Repeats the first export."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-EA"
+    },
+    {
+      "id": "H7-EB",
+      "kind": "evidence_item",
+      "data": {
+        "claim_ref": "H7-C1",
+        "artifact_ref": "H7-B",
+        "locator": "entry-1",
+        "epistemic_type": "documentary_statement",
+        "description": "Republishes that report."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-EB"
+    },
+    {
+      "id": "H7-EC",
+      "kind": "evidence_item",
+      "data": {
+        "claim_ref": "H7-C1",
+        "artifact_ref": "H7-C",
+        "locator": "entry-1",
+        "epistemic_type": "documentary_statement",
+        "description": "Quotes the report."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-EC"
+    },
+    {
+      "id": "H7-ED",
+      "kind": "evidence_item",
+      "data": {
+        "claim_ref": "H7-C1",
+        "artifact_ref": "H7-D",
+        "locator": "entry-1",
+        "epistemic_type": "analytical_inference",
+        "description": "Model summary based on B, with no new represented acquisition."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-ED"
+    },
+    {
+      "id": "H7-EDITOR",
+      "kind": "actor",
+      "data": {
+        "actor_kind": "organization",
+        "identity_disclosure": "named",
+        "display_name": "Fixture Editorial Service"
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Fictional identity/model inventory",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "Fictional identity/model inventory; identities are supplied rather than authenticated."
+        ]
+      },
+      "label": "H7-EDITOR"
+    },
+    {
+      "id": "H7-EE",
+      "kind": "evidence_item",
+      "data": {
+        "claim_ref": "H7-C1",
+        "artifact_ref": "H7-E",
+        "locator": "entry-1",
+        "epistemic_type": "documentary_statement",
+        "description": "Database entry copied from A."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-EE"
+    },
+    {
+      "id": "H7-EF",
+      "kind": "evidence_item",
+      "data": {
+        "claim_ref": "H7-C1",
+        "artifact_ref": "H7-F",
+        "locator": "entry-1",
+        "epistemic_type": "measurement",
+        "description": "Second collection's claimed peak 21."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-EF"
+    },
+    {
+      "id": "H7-ER1",
+      "kind": "evidence_item",
+      "data": {
+        "claim_ref": "H7-C1",
+        "artifact_ref": "H7-R1-V1",
+        "locator": "entry-1",
+        "epistemic_type": "measurement",
+        "description": "First export's claimed peak 24; ancestor only."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-ER1"
+    },
+    {
+      "id": "H7-EU",
+      "kind": "evidence_item",
+      "data": {
+        "claim_ref": "H7-C1",
+        "artifact_ref": "H7-U",
+        "locator": "entry-1",
+        "epistemic_type": "documentary_statement",
+        "description": "EU has a recorded acquisition link to UX, an upstream EvidenceItem for C1 whose parentage is not recorded. The complete original nine-member acquisition subview remains exactly EA, EB, EC, ED, EE, EF, ER1, O1 and O2, with L01-L07 as supplied. This supplement leaves EU and UX unresolved and does not claim complete ancestry for that new branch."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-V02"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-EU"
+    },
+    {
+      "id": "H7-EVAL",
+      "kind": "evaluation",
+      "data": {
+        "evaluation_kind": "judgment",
+        "target_refs": [
+          "H7-ANSWER",
+          "H7-C1"
+        ],
+        "role_bindings": [
+          {
+            "role": "candidate",
+            "object_ref": "H7-ANSWER",
+            "evidence_ref_ids": [
+              "H7-SUP-MODEL"
+            ],
+            "qualifications": [
+              "Fictional conformance material; no independent authentication by the toolkit.",
+              "Supplied role binding only; no independent vote or authentication is implied."
+            ]
+          },
+          {
+            "role": "generator",
+            "object_ref": "H7-MGEN",
+            "evidence_ref_ids": [
+              "H7-SUP-MODEL"
+            ],
+            "qualifications": [
+              "Fictional conformance material; no independent authentication by the toolkit.",
+              "Supplied role binding only; no independent vote or authentication is implied."
+            ]
+          },
+          {
+            "role": "judge",
+            "object_ref": "H7-MJUDGE",
+            "evidence_ref_ids": [
+              "H7-SUP-MODEL"
+            ],
+            "qualifications": [
+              "Fictional conformance material; no independent authentication by the toolkit.",
+              "Supplied role binding only; no independent vote or authentication is implied."
+            ]
+          },
+          {
+            "role": "reference_answer",
+            "object_ref": "H7-REFERENCE",
+            "evidence_ref_ids": [
+              "H7-SUP-MODEL"
+            ],
+            "qualifications": [
+              "Fictional conformance material; no independent authentication by the toolkit.",
+              "Supplied role binding only; no independent vote or authentication is implied."
+            ]
+          },
+          {
+            "role": "rubric",
+            "object_ref": "H7-RUBRIC",
+            "evidence_ref_ids": [
+              "H7-SUP-MODEL"
+            ],
+            "qualifications": [
+              "Fictional conformance material; no independent authentication by the toolkit.",
+              "Supplied role binding only; no independent vote or authentication is implied."
+            ]
+          }
+        ],
+        "result_refs": [
+          "H7-EVAL-RESULT"
+        ],
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T11:50:00Z",
+          "precision": "instant"
+        },
+        "review_contribution": null
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-EVAL"
+    },
+    {
+      "id": "H7-EVAL-RESULT",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "judgment",
+        "work_key": "H7-EVAL-RESULT",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-EVAL-RESULT"
+    },
+    {
+      "id": "H7-F",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "observation_record",
+        "work_key": "H7-F",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-F"
+    },
+    {
+      "id": "H7-HAND1",
+      "kind": "correction_event",
+      "data": {
+        "event_kind": "handling",
+        "case_ref": "H7-CASE1",
+        "channel_ref": "H7-CHANNEL",
+        "target_refs": [
+          "H7-R1-V1",
+          "H7-A",
+          "H7-D",
+          "H7-E"
+        ],
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T12:20:00Z",
+          "precision": "instant"
+        },
+        "details": {
+          "outcome": "accepted",
+          "reason": "The service accepts the documented export-correction request."
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-HAND1"
+    },
+    {
+      "id": "H7-HREVIEW",
+      "kind": "evaluation",
+      "data": {
+        "evaluation_kind": "human_review",
+        "target_refs": [
+          "H7-R1-V1"
+        ],
+        "role_bindings": [
+          {
+            "role": "human_reviewer",
+            "object_ref": "H7-REVIEWER",
+            "evidence_ref_ids": [
+              "H7-SUP-CORR"
+            ],
+            "qualifications": [
+              "Fictional conformance material; no independent authentication by the toolkit.",
+              "Supplied role binding only; no independent vote or authentication is implied."
+            ]
+          },
+          {
+            "role": "method_input",
+            "object_ref": "H7-CHECK-METHOD",
+            "evidence_ref_ids": [
+              "H7-SUP-CORR"
+            ],
+            "qualifications": [
+              "Fictional conformance material; no independent authentication by the toolkit.",
+              "Supplied role binding only; no independent vote or authentication is implied."
+            ]
+          }
+        ],
+        "result_refs": [
+          "H7-REVIEW-RESULT"
+        ],
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T12:00:00Z",
+          "precision": "instant"
+        },
+        "review_contribution": "Compared the capture/export records, identified the discrepancy, and reasoned about the proposed correction."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-REVIEWER",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-HREVIEW"
+    },
+    {
+      "id": "H7-MBASE",
+      "kind": "model",
+      "data": {
+        "model_key": "H7-base",
+        "version_label": "v1",
+        "family_label": "H7-family",
+        "provider_ref": "H7-EDITOR"
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Fictional identity/model inventory",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "Fictional identity/model inventory; identities are supplied rather than authenticated."
+        ]
+      },
+      "label": "H7-MBASE"
+    },
+    {
+      "id": "H7-METHOD1",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-METHOD1",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-METHOD1"
+    },
+    {
+      "id": "H7-METHOD2",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-METHOD2",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-METHOD2"
+    },
+    {
+      "id": "H7-MGEN",
+      "kind": "model",
+      "data": {
+        "model_key": "H7-generator",
+        "version_label": "v1",
+        "family_label": "H7-family",
+        "provider_ref": "H7-EDITOR"
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Fictional identity/model inventory",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "Fictional identity/model inventory; identities are supplied rather than authenticated."
+        ]
+      },
+      "label": "H7-MGEN"
+    },
+    {
+      "id": "H7-MJUDGE",
+      "kind": "model",
+      "data": {
+        "model_key": "H7-judge",
+        "version_label": "v1",
+        "family_label": "H7-family",
+        "provider_ref": "H7-EDITOR"
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Fictional identity/model inventory",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "Fictional identity/model inventory; identities are supplied rather than authenticated."
+        ]
+      },
+      "label": "H7-MJUDGE"
+    },
+    {
+      "id": "H7-O1",
+      "kind": "origin_event",
+      "data": {
+        "event_kind": "data_collection",
+        "event_key": "RUN-17",
+        "performed_by_refs": [
+          "H7-COL1"
+        ],
+        "method_ref": "H7-METHOD1",
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T08:00:00Z",
+          "precision": "instant"
+        },
+        "description": "First acquisition process and its exported peak record."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-O1"
+    },
+    {
+      "id": "H7-O2",
+      "kind": "origin_event",
+      "data": {
+        "event_kind": "data_collection",
+        "event_key": "RUN-17",
+        "performed_by_refs": [
+          "H7-COL2"
+        ],
+        "method_ref": "H7-METHOD2",
+        "occurred_at": {
+          "state": "known",
+          "value": "2026-01-10T08:05:00Z",
+          "precision": "instant"
+        },
+        "description": "Separate acquisition process, distinct raw capture and operator, for the same chamber run."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-O2"
+    },
+    {
+      "id": "H7-PA-A",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EA",
+        "run_key": "answer-run-1",
+        "stage_key": "intake-1",
+        "stage": "admission",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EA"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:10:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EA: admission occurred at intake-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PA-A"
+    },
+    {
+      "id": "H7-PA-B",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EB",
+        "run_key": "answer-run-1",
+        "stage_key": "intake-1",
+        "stage": "admission",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EB"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:10:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EB: admission occurred at intake-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PA-B"
+    },
+    {
+      "id": "H7-PA-C",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EC",
+        "run_key": "answer-run-1",
+        "stage_key": "intake-1",
+        "stage": "admission",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EC"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:10:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EC: admission occurred at intake-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PA-C"
+    },
+    {
+      "id": "H7-PA-D",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-ED",
+        "run_key": "answer-run-1",
+        "stage_key": "intake-1",
+        "stage": "admission",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ED"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:10:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-ED: admission occurred at intake-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PA-D"
+    },
+    {
+      "id": "H7-PA-E",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EE",
+        "run_key": "answer-run-1",
+        "stage_key": "intake-1",
+        "stage": "admission",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EE"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:10:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EE: admission occurred at intake-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PA-E"
+    },
+    {
+      "id": "H7-PA-F",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EF",
+        "run_key": "answer-run-1",
+        "stage_key": "intake-1",
+        "stage": "admission",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EF"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:10:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EF: admission occurred at intake-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PA-F"
+    },
+    {
+      "id": "H7-PP-A",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EA",
+        "run_key": "answer-run-1",
+        "stage_key": "store-1",
+        "stage": "preservation",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EA"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:20:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EA: preservation occurred at store-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PP-A"
+    },
+    {
+      "id": "H7-PP-B",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EB",
+        "run_key": "answer-run-1",
+        "stage_key": "store-1",
+        "stage": "preservation",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EB"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:20:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EB: preservation occurred at store-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PP-B"
+    },
+    {
+      "id": "H7-PP-C",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EC",
+        "run_key": "answer-run-1",
+        "stage_key": "store-1",
+        "stage": "preservation",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EC"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:20:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EC: preservation occurred at store-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PP-C"
+    },
+    {
+      "id": "H7-PP-D",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-ED",
+        "run_key": "answer-run-1",
+        "stage_key": "store-1",
+        "stage": "preservation",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ED"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:20:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-ED: preservation occurred at store-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PP-D"
+    },
+    {
+      "id": "H7-PP-E",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EE",
+        "run_key": "answer-run-1",
+        "stage_key": "store-1",
+        "stage": "preservation",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EE"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:20:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EE: preservation occurred at store-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PP-E"
+    },
+    {
+      "id": "H7-PP-F",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EF",
+        "run_key": "answer-run-1",
+        "stage_key": "store-1",
+        "stage": "preservation",
+        "state": "occurred",
+        "output_refs": [
+          "H7-EF"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:20:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EF: preservation occurred at store-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PP-F"
+    },
+    {
+      "id": "H7-PREP",
+      "kind": "actor",
+      "data": {
+        "actor_kind": "software_agent",
+        "identity_disclosure": "named",
+        "display_name": "Fixture packet preparer"
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Fictional identity/model inventory",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "Fictional identity/model inventory; identities are supplied rather than authenticated."
+        ]
+      },
+      "label": "H7-PREP"
+    },
+    {
+      "id": "H7-PS-A",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EA",
+        "run_key": "answer-run-1",
+        "stage_key": "select-1",
+        "stage": "selection",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ANSWER"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:30:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EA: selection occurred at select-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PS-A"
+    },
+    {
+      "id": "H7-PS-B",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EB",
+        "run_key": "answer-run-1",
+        "stage_key": "select-1",
+        "stage": "selection",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ANSWER"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:30:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EB: selection occurred at select-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PS-B"
+    },
+    {
+      "id": "H7-PS-C",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EC",
+        "run_key": "answer-run-1",
+        "stage_key": "select-1",
+        "stage": "selection",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ANSWER"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:30:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EC: selection occurred at select-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PS-C"
+    },
+    {
+      "id": "H7-PS-D",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-ED",
+        "run_key": "answer-run-1",
+        "stage_key": "select-1",
+        "stage": "selection",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ANSWER"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:30:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-ED: selection occurred at select-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PS-D"
+    },
+    {
+      "id": "H7-PS-E",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EE",
+        "run_key": "answer-run-1",
+        "stage_key": "select-1",
+        "stage": "selection",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ANSWER"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:30:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EE: selection occurred at select-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PS-E"
+    },
+    {
+      "id": "H7-PS-F",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EF",
+        "run_key": "answer-run-1",
+        "stage_key": "select-1",
+        "stage": "selection",
+        "state": "did_not_occur",
+        "output_refs": [],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:30:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EF: selection did_not_occur at select-1 in answer-run-1."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PS-F"
+    },
+    {
+      "id": "H7-PU-A",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EA",
+        "run_key": "answer-run-1",
+        "stage_key": "answer-use-1",
+        "stage": "influence",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ANSWER"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:40:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EA: influence occurred at answer-use-1 in answer-run-1. Recorded use only; no causal effect is established."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PU-A"
+    },
+    {
+      "id": "H7-PU-B",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EB",
+        "run_key": "answer-run-1",
+        "stage_key": "answer-use-1",
+        "stage": "influence",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ANSWER"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:40:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EB: influence occurred at answer-use-1 in answer-run-1. Recorded use only; no causal effect is established."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PU-B"
+    },
+    {
+      "id": "H7-PU-C",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EC",
+        "run_key": "answer-run-1",
+        "stage_key": "answer-use-1",
+        "stage": "influence",
+        "state": "did_not_occur",
+        "output_refs": [],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:40:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EC: influence did_not_occur at answer-use-1 in answer-run-1. Recorded use only; no causal effect is established."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PU-C"
+    },
+    {
+      "id": "H7-PU-D",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-ED",
+        "run_key": "answer-run-1",
+        "stage_key": "answer-use-1",
+        "stage": "influence",
+        "state": "occurred",
+        "output_refs": [
+          "H7-ANSWER"
+        ],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:40:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-ED: influence occurred at answer-use-1 in answer-run-1. Recorded use only; no causal effect is established."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PU-D"
+    },
+    {
+      "id": "H7-PU-E",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EE",
+        "run_key": "answer-run-1",
+        "stage_key": "answer-use-1",
+        "stage": "influence",
+        "state": "unknown",
+        "output_refs": [],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:40:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "unspecified",
+        "detail": "Use of EE was not established in the supplied process log."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PU-E"
+    },
+    {
+      "id": "H7-PU-F",
+      "kind": "pipeline_record",
+      "data": {
+        "subject_ref": "H7-EF",
+        "run_key": "answer-run-1",
+        "stage_key": "answer-use-1",
+        "stage": "influence",
+        "state": "did_not_occur",
+        "output_refs": [],
+        "observed_at": {
+          "state": "known",
+          "value": "2026-01-10T11:40:00Z",
+          "precision": "instant"
+        },
+        "linkage_kind": "use_record",
+        "detail": "The exact contribution H7-EF: influence did_not_occur at answer-use-1 in answer-run-1. Recorded use only; no causal effect is established."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-PU-F"
+    },
+    {
+      "id": "H7-R1-V1",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "observation_record",
+        "work_key": "H7-R1",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-R1-V1"
+    },
+    {
+      "id": "H7-R1-V2",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "observation_record",
+        "work_key": "H7-R1",
+        "version_label": "v2",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "CORR-supported fictional description: corrected 21-degree export."
+        ]
+      },
+      "label": "H7-R1-V2"
+    },
+    {
+      "id": "H7-REFERENCE",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "reference_answer",
+        "work_key": "H7-REFERENCE",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-REFERENCE"
+    },
+    {
+      "id": "H7-REVIEW-RESULT",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "judgment",
+        "work_key": "H7-REVIEW-RESULT",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-REVIEWER",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-REVIEW-RESULT"
+    },
+    {
+      "id": "H7-REVIEWER",
+      "kind": "actor",
+      "data": {
+        "actor_kind": "human",
+        "identity_disclosure": "named",
+        "display_name": "Fixture Process Reviewer"
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [],
+        "method": "Fictional identity/model inventory",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit.",
+          "Fictional identity/model inventory; identities are supplied rather than authenticated."
+        ]
+      },
+      "label": "H7-REVIEWER"
+    },
+    {
+      "id": "H7-RUBRIC",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "rubric",
+        "work_key": "H7-RUBRIC",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-RUBRIC"
+    },
+    {
+      "id": "H7-TRAINING",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "dataset",
+        "work_key": "H7-TRAINING",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-TRAINING"
+    },
+    {
+      "id": "H7-U",
+      "kind": "artifact",
+      "data": {
+        "artifact_kind": "document",
+        "work_key": "H7-U",
+        "version_label": "v1",
+        "locators": [],
+        "published_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "retrieved_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "Publication/retrieval time is not part of this supplied fixture record."
+        },
+        "content_evidence_refs": []
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-V02"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-U"
+    },
+    {
+      "id": "H7-UX",
+      "kind": "unresolved_reference",
+      "data": {
+        "expected_kinds": [
+          "evidence_item"
+        ],
+        "reason": "not_recorded",
+        "description": "Missing upstream EvidenceItem contribution for H7-C1; EU derives from this explicitly unresolved C1 contribution."
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-V02"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "label": "H7-UX"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "H7-AUTH",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-EDITOR",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-GRANT"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "authority",
+        "subject_refs": [
+          "H7-CHANNEL"
+        ],
+        "details": {
+          "target_refs": [
+            "H7-R1-V1",
+            "H7-A",
+            "H7-D",
+            "H7-E"
+          ],
+          "action_types": [
+            "amend"
+          ],
+          "valid_window": {
+            "start": {
+              "state": "known",
+              "value": "2026-01-10T00:00:00Z",
+              "precision": "instant"
+            },
+            "end": {
+              "state": "known",
+              "value": "2026-01-10T23:59:59Z",
+              "precision": "instant"
+            }
+          },
+          "authorized_by_ref": "H7-EDITOR",
+          "grant_state": "granted",
+          "authority_basis": "Editorial Service grants channel H7-CHANNEL amend authority for exactly R1-V1, A, D and E during 2026-01-10T00:00:00Z through 2026-01-10T23:59:59Z. The complete stated routing view for these four tuples consists of this direct channel and these targets. This is the supplied institutional grant, without external authentication.",
+          "coverage_ref": "H7-COV-ROUTE"
+        }
+      }
+    },
+    {
+      "id": "H7-CITE-D",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "cites",
+        "from_ref": "H7-D",
+        "to_ref": "H7-B",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-CITE-E",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "cites",
+        "from_ref": "H7-E",
+        "to_ref": "H7-A",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-COV-ACQ",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN",
+          "H7-SUP-ACQ",
+          "H7-SUP-V02"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-I1",
+          "H7-O1",
+          "H7-O2"
+        ],
+        "details": {
+          "coverage_kind": "upstream_history",
+          "state": "partial",
+          "relation_types": [
+            "derived_from",
+            "copies",
+            "syndicated_from",
+            "summarizes",
+            "translates",
+            "quotes",
+            "originates_from",
+            "depends_on"
+          ],
+          "dimensions": [
+            "acquisition"
+          ],
+          "member_refs": [
+            "H7-EA",
+            "H7-EB",
+            "H7-EC",
+            "H7-ED",
+            "H7-EE",
+            "H7-EF",
+            "H7-ER1",
+            "H7-O1",
+            "H7-O2",
+            "H7-EU",
+            "H7-UX"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": true,
+          "scope_note": "EU has a recorded acquisition link to UX, an upstream EvidenceItem for C1 whose parentage is not recorded. The complete original nine-member acquisition subview remains exactly EA, EB, EC, ED, EE, EF, ER1, O1 and O2, with L01-L07 as supplied. This supplement leaves EU and UX unresolved and does not claim complete ancestry for that new branch."
+        }
+      },
+      "gaps": [
+        {
+          "field": "unmodeled_history",
+          "reason": "not_recorded",
+          "detail": "The EU/UX acquisition branch lacks recorded upstream parentage; complete qualification is confined to the original subview."
+        }
+      ]
+    },
+    {
+      "id": "H7-COV-ACQ-OLD",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN",
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-I1",
+          "H7-O1",
+          "H7-O2"
+        ],
+        "details": {
+          "coverage_kind": "upstream_history",
+          "state": "complete_for_scope",
+          "relation_types": [
+            "derived_from",
+            "copies",
+            "syndicated_from",
+            "summarizes",
+            "translates",
+            "quotes",
+            "originates_from",
+            "depends_on"
+          ],
+          "dimensions": [
+            "acquisition"
+          ],
+          "member_refs": [
+            "H7-EA",
+            "H7-EB",
+            "H7-EC",
+            "H7-ED",
+            "H7-EE",
+            "H7-EF",
+            "H7-ER1",
+            "H7-O1",
+            "H7-O2"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": true,
+          "scope_note": "All outgoing in-scope acquisition parents of these seven contributions and two processes are enumerated by CHAIN and ACQ within the fictional boundary. Retained original nine-member subview only; this assessment does not cover EU or UX."
+        }
+      }
+    },
+    {
+      "id": "H7-COV-ADM",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-PA-A"
+        ],
+        "details": {
+          "coverage_kind": "pipeline_universe",
+          "state": "complete_for_scope",
+          "relation_types": [],
+          "dimensions": [],
+          "member_refs": [
+            "H7-EA",
+            "H7-EB",
+            "H7-EC",
+            "H7-ED",
+            "H7-EE",
+            "H7-EF"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": true,
+          "scope_note": "The explicitly enumerated six-member cohort in answer-run-1, stage admission, stage_key intake-1; anchored at H7-PA-A."
+        }
+      }
+    },
+    {
+      "id": "H7-COV-COMP",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-ACQ",
+          "H7-SUP-COMPARE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-O1",
+          "H7-O2"
+        ],
+        "details": {
+          "coverage_kind": "upstream_history",
+          "state": "complete_for_scope",
+          "relation_types": [
+            "depends_on"
+          ],
+          "dimensions": [
+            "acquisition"
+          ],
+          "member_refs": [
+            "H7-O1",
+            "H7-O2"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": true,
+          "scope_note": "The exact acquisition-process pair O1/O2; no broader independence is claimed."
+        }
+      }
+    },
+    {
+      "id": "H7-COV-MODEL",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-MGEN",
+          "H7-MJUDGE",
+          "H7-MBASE"
+        ],
+        "details": {
+          "coverage_kind": "model_history",
+          "state": "partial",
+          "relation_types": [
+            "model_derived_from",
+            "trained_on"
+          ],
+          "dimensions": [
+            "model_ancestry"
+          ],
+          "member_refs": [
+            "H7-MGEN",
+            "H7-MJUDGE",
+            "H7-MBASE",
+            "H7-TRAINING"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": false,
+          "scope_note": "Partial represented model history only. Further model ancestry and exact training rows were not examined."
+        }
+      },
+      "gaps": [
+        {
+          "field": "unmodeled_history",
+          "reason": "not_examined",
+          "detail": "Further model ancestry and exact training rows were not examined."
+        }
+      ]
+    },
+    {
+      "id": "H7-COV-PRES",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-PP-A"
+        ],
+        "details": {
+          "coverage_kind": "pipeline_universe",
+          "state": "complete_for_scope",
+          "relation_types": [],
+          "dimensions": [],
+          "member_refs": [
+            "H7-EA",
+            "H7-EB",
+            "H7-EC",
+            "H7-ED",
+            "H7-EE",
+            "H7-EF"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": true,
+          "scope_note": "The explicitly enumerated six-member cohort in answer-run-1, stage preservation, stage_key store-1; anchored at H7-PP-A."
+        }
+      }
+    },
+    {
+      "id": "H7-COV-ROUTE",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-GRANT"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-CHANNEL"
+        ],
+        "details": {
+          "coverage_kind": "correction_routes",
+          "state": "complete_for_scope",
+          "relation_types": [
+            "propagates_to"
+          ],
+          "dimensions": [],
+          "member_refs": [
+            "H7-CHANNEL",
+            "H7-R1-V1",
+            "H7-A",
+            "H7-D",
+            "H7-E"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": true,
+          "scope_note": "The complete stated direct-target field routing view is H7-CHANNEL to R1-V1, A, D and E for amend during the supplied day-long grant window."
+        }
+      }
+    },
+    {
+      "id": "H7-COV-SEL",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-PS-A"
+        ],
+        "details": {
+          "coverage_kind": "pipeline_universe",
+          "state": "complete_for_scope",
+          "relation_types": [],
+          "dimensions": [],
+          "member_refs": [
+            "H7-EA",
+            "H7-EB",
+            "H7-EC",
+            "H7-ED",
+            "H7-EE",
+            "H7-EF"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": true,
+          "scope_note": "The explicitly enumerated six-member cohort in answer-run-1, stage selection, stage_key select-1; anchored at H7-PS-A."
+        }
+      }
+    },
+    {
+      "id": "H7-COV-USE",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-PIPE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "coverage",
+        "subject_refs": [
+          "H7-PU-A"
+        ],
+        "details": {
+          "coverage_kind": "pipeline_universe",
+          "state": "complete_for_scope",
+          "relation_types": [],
+          "dimensions": [],
+          "member_refs": [
+            "H7-EA",
+            "H7-EB",
+            "H7-EC",
+            "H7-ED",
+            "H7-EE",
+            "H7-EF"
+          ],
+          "omitted_refs": [],
+          "universe_enumerated": true,
+          "scope_note": "The explicitly enumerated six-member cohort in answer-run-1, stage influence, stage_key answer-use-1; anchored at H7-PU-A."
+        }
+      }
+    },
+    {
+      "id": "H7-EXT-F",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT",
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "externality",
+        "subject_refs": [
+          "H7-EF"
+        ],
+        "details": {
+          "boundary_inquiry_ref": "H7-I1",
+          "conclusion": "external",
+          "grounding_basis": "Separately documented O2 acquisition outside the named reuse chain",
+          "relevant_time": {
+            "state": "known",
+            "value": "2026-01-10T10:00:00Z",
+            "precision": "instant"
+          }
+        }
+      }
+    },
+    {
+      "id": "H7-GEN-ANSWER",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "generated_by",
+        "from_ref": "H7-ANSWER",
+        "to_ref": "H7-MGEN",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-GEN-D",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "generated_by",
+        "from_ref": "H7-D",
+        "to_ref": "H7-MGEN",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-GEN-REFERENCE",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "generated_by",
+        "from_ref": "H7-REFERENCE",
+        "to_ref": "H7-MGEN",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-GEN-RUBRIC",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "generated_by",
+        "from_ref": "H7-RUBRIC",
+        "to_ref": "H7-MGEN",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-IND12",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-REVIEWER",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-COMPARE"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "independence",
+        "subject_refs": [
+          "H7-O1",
+          "H7-O2"
+        ],
+        "details": {
+          "comparison_form": "pairwise",
+          "dimension": "acquisition",
+          "conclusion": "independent_process",
+          "examined_dependency_refs": [
+            "H7-OB1",
+            "H7-OB2",
+            "H7-COV-COMP"
+          ],
+          "unexamined_dimensions": [
+            "analytical_method",
+            "model_ancestry",
+            "evaluation_rubric",
+            "organizational_control"
+          ],
+          "coverage_ref": "H7-COV-COMP",
+          "scope_note": "Exactly the O1/O2 collection-process pair in acquisition; analytical-method, model, rubric and organizational independence were not assessed. Shared event context is acknowledged; this is not statistical-independence certification."
+        }
+      }
+    },
+    {
+      "id": "H7-INT-A",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT",
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "externality",
+        "subject_refs": [
+          "H7-EA"
+        ],
+        "details": {
+          "boundary_inquiry_ref": "H7-I1",
+          "conclusion": "internal",
+          "grounding_basis": "Represented reuse of ER1 inside the named chain",
+          "relevant_time": {
+            "state": "known",
+            "value": "2026-01-10T10:00:00Z",
+            "precision": "instant"
+          }
+        }
+      }
+    },
+    {
+      "id": "H7-L01",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "originates_from",
+        "from_ref": "H7-ER1",
+        "to_ref": "H7-O1",
+        "polarity": "affirmed",
+        "dimension": "acquisition",
+        "details": {
+          "portion_note": "Entire represented contribution for C1",
+          "dependency_note": "Entire represented contribution for C1"
+        }
+      }
+    },
+    {
+      "id": "H7-L02",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "derived_from",
+        "from_ref": "H7-EA",
+        "to_ref": "H7-ER1",
+        "polarity": "affirmed",
+        "dimension": "acquisition",
+        "details": {
+          "portion_note": "Entire represented contribution for C1"
+        }
+      }
+    },
+    {
+      "id": "H7-L03",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "syndicated_from",
+        "from_ref": "H7-EB",
+        "to_ref": "H7-ER1",
+        "polarity": "affirmed",
+        "dimension": "acquisition",
+        "details": {
+          "portion_note": "Entire represented contribution for C1"
+        }
+      }
+    },
+    {
+      "id": "H7-L04",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "quotes",
+        "from_ref": "H7-EC",
+        "to_ref": "H7-ER1",
+        "polarity": "affirmed",
+        "dimension": "acquisition",
+        "details": {
+          "portion_note": "Entire represented contribution for C1"
+        }
+      }
+    },
+    {
+      "id": "H7-L05",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "summarizes",
+        "from_ref": "H7-ED",
+        "to_ref": "H7-EB",
+        "polarity": "affirmed",
+        "dimension": "acquisition",
+        "details": {
+          "portion_note": "Entire represented contribution for C1"
+        }
+      }
+    },
+    {
+      "id": "H7-L06",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "copies",
+        "from_ref": "H7-EE",
+        "to_ref": "H7-EA",
+        "polarity": "affirmed",
+        "dimension": "acquisition",
+        "details": {
+          "portion_note": "Entire represented contribution for C1"
+        }
+      }
+    },
+    {
+      "id": "H7-L07",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "originates_from",
+        "from_ref": "H7-EF",
+        "to_ref": "H7-O2",
+        "polarity": "affirmed",
+        "dimension": "acquisition",
+        "details": {
+          "portion_note": "Entire represented contribution for C1",
+          "dependency_note": "Entire represented contribution for C1"
+        }
+      }
+    },
+    {
+      "id": "H7-LU",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN",
+          "H7-SUP-V02"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "derived_from",
+        "from_ref": "H7-EU",
+        "to_ref": "H7-UX",
+        "polarity": "affirmed",
+        "dimension": "acquisition",
+        "details": {
+          "portion_note": "Entire represented contribution for C1"
+        }
+      }
+    },
+    {
+      "id": "H7-MAT-A",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "derived_from",
+        "from_ref": "H7-A",
+        "to_ref": "H7-R1-V1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-MAT-B",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "syndicated_from",
+        "from_ref": "H7-B",
+        "to_ref": "H7-R1-V1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-MAT-C",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "quotes",
+        "from_ref": "H7-C",
+        "to_ref": "H7-R1-V1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-MAT-D",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "summarizes",
+        "from_ref": "H7-D",
+        "to_ref": "H7-B",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-MAT-E",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "copies",
+        "from_ref": "H7-E",
+        "to_ref": "H7-A",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-ML01",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "model_derived_from",
+        "from_ref": "H7-MGEN",
+        "to_ref": "H7-MBASE",
+        "polarity": "affirmed",
+        "dimension": "model_ancestry",
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-ML02",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "model_derived_from",
+        "from_ref": "H7-MJUDGE",
+        "to_ref": "H7-MBASE",
+        "polarity": "affirmed",
+        "dimension": "model_ancestry",
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-ML03",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "trained_on",
+        "from_ref": "H7-MGEN",
+        "to_ref": "H7-TRAINING",
+        "polarity": "affirmed",
+        "dimension": "model_ancestry",
+        "details": {
+          "subset_descriptor": "split-A"
+        }
+      }
+    },
+    {
+      "id": "H7-ML04",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-MODEL"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "trained_on",
+        "from_ref": "H7-MJUDGE",
+        "to_ref": "H7-TRAINING",
+        "polarity": "affirmed",
+        "dimension": "model_ancestry",
+        "details": {
+          "subset_descriptor": "split-B"
+        }
+      }
+    },
+    {
+      "id": "H7-OB1",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "origin_boundary",
+        "subject_refs": [
+          "H7-O1"
+        ],
+        "details": {
+          "dimension": "acquisition",
+          "boundary_role": "documented_origin",
+          "coverage_ref": "H7-COV-ACQ-OLD",
+          "termination_reason": "Origin of the first listed acquisition within the complete stated acquisition view."
+        }
+      }
+    },
+    {
+      "id": "H7-OB2",
+      "assertion_kind": "assessment",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "assessment_kind": "origin_boundary",
+        "subject_refs": [
+          "H7-O2"
+        ],
+        "details": {
+          "dimension": "acquisition",
+          "boundary_role": "documented_origin",
+          "coverage_ref": "H7-COV-ACQ-OLD",
+          "termination_reason": "Origin of the second listed acquisition within the complete stated acquisition view."
+        }
+      }
+    },
+    {
+      "id": "H7-PUB-A",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "published_by",
+        "from_ref": "H7-A",
+        "to_ref": "H7-EDITOR",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-PUB-B",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "published_by",
+        "from_ref": "H7-B",
+        "to_ref": "H7-EDITOR",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-PUB-C",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "published_by",
+        "from_ref": "H7-C",
+        "to_ref": "H7-EDITOR",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-PUB-D",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "published_by",
+        "from_ref": "H7-D",
+        "to_ref": "H7-EDITOR",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-PUB-E",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "declaration",
+        "evidence_ref_ids": [
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual expansion of the approved fictional fixture specification",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "published_by",
+        "from_ref": "H7-E",
+        "to_ref": "H7-EDITOR",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-REV-A",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "supersedes",
+        "from_ref": "H7-A-V2",
+        "to_ref": "H7-A",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {
+          "reason": "Revision linked to CASE1",
+          "effective_at": {
+            "state": "known",
+            "value": "2026-01-10T13:10:00Z",
+            "precision": "instant"
+          }
+        }
+      }
+    },
+    {
+      "id": "H7-REV-D",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "supersedes",
+        "from_ref": "H7-D-V2",
+        "to_ref": "H7-D",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {
+          "reason": "Revision linked to CASE1",
+          "effective_at": {
+            "state": "known",
+            "value": "2026-01-10T13:20:00Z",
+            "precision": "instant"
+          }
+        }
+      }
+    },
+    {
+      "id": "H7-REV-R1",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CORR"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "supersedes",
+        "from_ref": "H7-R1-V2",
+        "to_ref": "H7-R1-V1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {
+          "reason": "Revision linked to CASE1",
+          "effective_at": {
+            "state": "known",
+            "value": "2026-01-10T13:00:00Z",
+            "precision": "instant"
+          }
+        }
+      }
+    },
+    {
+      "id": "H7-ST-A",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT",
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "supports",
+        "from_ref": "H7-EA",
+        "to_ref": "H7-C1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-ST-B",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT",
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "supports",
+        "from_ref": "H7-EB",
+        "to_ref": "H7-C1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-ST-C",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT",
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "supports",
+        "from_ref": "H7-EC",
+        "to_ref": "H7-C1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-ST-D",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT",
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "supports",
+        "from_ref": "H7-ED",
+        "to_ref": "H7-C1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-ST-E",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT",
+          "H7-SUP-CHAIN"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "supports",
+        "from_ref": "H7-EE",
+        "to_ref": "H7-C1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    },
+    {
+      "id": "H7-ST-F",
+      "assertion_kind": "relation",
+      "scope": {
+        "inquiry_refs": [
+          "H7-I1"
+        ],
+        "claim_refs": [
+          "H7-C1"
+        ],
+        "effective_window": {
+          "start": {
+            "state": "known",
+            "value": "2026-01-10T00:00:00Z",
+            "precision": "instant"
+          },
+          "end": {
+            "state": "known",
+            "value": "2026-01-10T23:59:59Z",
+            "precision": "instant"
+          }
+        }
+      },
+      "provenance": {
+        "attributed_to_ref": "H7-PREP",
+        "basis_kind": "documented_record",
+        "evidence_ref_ids": [
+          "H7-SUP-CONTEXT",
+          "H7-SUP-ACQ"
+        ],
+        "method": "Manual transcription and scope check of the named supplied fixture excerpt",
+        "qualifications": [
+          "Fictional conformance material; no independent authentication by the toolkit."
+        ]
+      },
+      "asserted_at": {
+        "state": "known",
+        "value": "2026-01-10T14:00:00Z",
+        "precision": "instant"
+      },
+      "lifecycle_state": "active",
+      "lifecycle_basis_ref_ids": [],
+      "data": {
+        "predicate": "contradicts",
+        "from_ref": "H7-EF",
+        "to_ref": "H7-C1",
+        "polarity": "affirmed",
+        "dimension": null,
+        "details": {}
+      }
+    }
+  ],
+  "evidence_references": [
+    {
+      "id": "H7-SUP-ACQ",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-ACQ",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "O1 and O2 are distinct capture events using different collection instruments, operators and raw capture logs. Both observe RUN-17. Neither capture consumes the other's export within the examined acquisition process. The first export reports 24; the second reports 21. Upstream acquisition enumeration for these two events is complete within the stated boundary.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Supports origins/boundaries and acquisition coverage."
+    },
+    {
+      "id": "H7-SUP-CHAIN",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-CHAIN",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "For C1 acquisition, ER1 comes directly from O1. A, B and C inherit ER1; D inherits B; E inherits A; F comes directly from O2. These are all in-scope immediate and upstream acquisition links of the seven listed contributions and two listed processes. No additional acquisition parents are recorded within this enumerated fixture boundary.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Supports the claim-origin edges and finite history coverage."
+    },
+    {
+      "id": "H7-SUP-COMPARE",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-COMPARE",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "The reviewer compared exactly O1 and O2 in acquisition, examined their raw capture receipts and separate collection procedures, and concluded independent_process for that pair only. Shared event context is acknowledged. Analytical-method, model, rubric and organizational independence were not assessed.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Supports one pairwise assessment, without statistical-independence certification."
+    },
+    {
+      "id": "H7-SUP-CONTEXT",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-CONTEXT",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "EF is an attributed contradiction of C1. It is assessed external to the I1 reuse chain because it comes from O2's separately documented acquisition. A represents internal reuse of O1 within that boundary. The original anomaly text concerns a timestamp alignment issue outside the current peak-value claim; it remains unclassified.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Supports stance/externality/context records."
+    },
+    {
+      "id": "H7-SUP-CORR",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-CORR",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "The human reviewer compared the first export with the capture material, identified an export discrepancy and proposed an amendment. Submission CASE1 targets R1-V1, A, D and E. Handling accepted the request. The process log links changes R1-V1 to R1-V2, A to A-V2, and D to D-V2 to CASE1. No change record for E is included. No claim about unlisted downstream targets or sustained capacity is supplied.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Supports review, submission, handling and the three linked changes."
+    },
+    {
+      "id": "H7-SUP-GRANT",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-GRANT",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "Editorial Service grants channel H7-CHANNEL amend authority for exactly R1-V1, A, D and E during 2026-01-10T00:00:00Z through 2026-01-10T23:59:59Z. The complete stated routing view for these four tuples consists of this direct channel and these targets. This is the supplied institutional grant, without external authentication.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Supports route coverage and authority."
+    },
+    {
+      "id": "H7-SUP-MODEL",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-MODEL",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "Generator MGEN and judge MJUDGE each derive from MBASE and each name TRAINING. Their supplied subset descriptors are split-A and split-B; exact row overlap is not established. No further model ancestry is represented. REFERENCE, RUBRIC, D and ANSWER have generator MGEN.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Supports the eight model/generation relations."
+    },
+    {
+      "id": "H7-SUP-PIPE",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-PIPE",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "The finite population is EA, EB, EC, ED, EE, EF in run answer-run-1. All six have admission and preservation records. Selection occurred for EA-EE and did_not_occur for EF. Use occurred for EA, EB, ED; did_not_occur for EC and EF; use of EE is unknown. All observations use their explicitly named stage key; use records do not establish a causal effect.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Supports §27's exact matrix and cohort assessments."
+    },
+    {
+      "id": "H7-SUP-V02",
+      "reference_kind": "supplied_excerpt",
+      "availability": "supplied",
+      "artifact_ref": "H7-DOC-V02",
+      "record_ref": null,
+      "locator": "fixture-section-1",
+      "excerpt": "EU has a recorded acquisition link to UX, an upstream EvidenceItem for C1 whose parentage is not recorded. The complete original nine-member acquisition subview remains exactly EA, EB, EC, ED, EE, EF, ER1, O1 and O2, with L01-L07 as supplied. This supplement leaves EU and UX unresolved and does not claim complete ancestry for that new branch.",
+      "provided_by_ref": "H7-PREP",
+      "attestor_ref": null,
+      "scope_note": "Fictional H7-V02 parentage/coverage supplement specified in lineage section 28.1; original evidence meanings and all other populations remain unchanged."
+    }
+  ]
+}
