@@ -5,95 +5,48 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Progress revision | 0.3 |
+| Progress revision | 0.4 |
 | Date | 2026-09-17 |
-| Approved plan | PHASE_1_PLAN.md revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
-| Current owner instruction | `可以，合并 PR #2，并开始 P1-W02` |
-| Accepted predecessor | P1-W01 at `63c03ee82ebffd5f4dc73972b2baa158c20cdf33` |
-| Merged PR | #2 |
-| Merge / W02 intake commit | `ae61bb6fa36d53fb2138542ee69e36585ee7bc72` |
-| Current branch | `phase1/p1-w02` |
-| Work status | W02 scaffold prepared; selected-toolchain verification BLOCKED |
-| W02 acceptance / merge | Pending; not claimed complete |
-| W03 and later work | Not started |
+| Approved plan | Revision 0.1, Git blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
+| Accepted predecessor | P1-W01, merged PR #2, commit `ae61bb6fa36d53fb2138542ee69e36585ee7bc72` |
+| W02 candidate before this supplement | `1126eff7d98023b9bc835dc00026ea5629f64a77` |
+| Review branch / PR | `phase1/p1-w02` / #3 |
+| Current work | P1-W02 selected-toolchain verification |
+| Current result | Hosted verification authorized and prepared; executed outcome pending |
+| Merge / W03 | Not authorized by this supplement |
 
-## 1. Preserved predecessor and merge evidence
+## 1. Preserved history
 
-The owner accepted the submitted W01 delivery and explicitly authorized its merge. GitHub confirmed a merge of PR #2 using expected head `63c03ee82ebffd5f4dc73972b2baa158c20cdf33`, producing `ae61bb6fa36d53fb2138542ee69e36585ee7bc72`. No force push, squash of the correction history, or branch-protection change was used.
+The complete W01 repair, acceptance and merge history remains in Git. The W02 preparation record at commit `1126eff7d98023b9bc835dc00026ea5629f64a77`, this path, preserves all 57-path scaffold changes, actual older-tool packaging checks, the 77-pass/1-fail result and its environmental cause. Its toolchain review preserves the exact selected pins and security-review limits.
 
-The complete prior progress record remains at:
+No historical failure is erased or reclassified as passing. The previous local run used setuptools 82.0.1 and pytest 9.0.2; it did not satisfy the selected 84.0.0/9.1.1 gate.
 
-`https://github.com/DavidWallstructurallaw/source-integrity-toolkit/blob/63c03ee82ebffd5f4dc73972b2baa158c20cdf33/PHASE_1_PROGRESS.md`
+## 2. Scoped exception P1-W02-A01
 
-It preserves the original entry hold, seven approval-manifest corrections, eighteen-file rehash evidence, licensing and governance delivery, and W01 test limitations. The initial blocked record also remains at commit `6e37659bdf345484babc4eb37ef7b547980998d1`.
+After the W02 handoff explicitly proposed an early workflow limited to acquiring the selected tools, inspecting their actual artifacts and running the existing scaffold tests, the owner replied `可以`.
 
-The accepted eighteen-file Phase 0 candidate remains `7d2e5fcaff591641b5cefce00e71e88941dd1f95`, interpreted through approval revision 1.1. W02 does not change any specification, that approval record, the Phase 1 plan, W01 licensing files or the baseline manifest.
+This accepts that narrow proposal. It adds one path to the current W02 allowlist: `.github/workflows/p1-w02-verify.yml`. Inline developer verification inside that workflow and updates to the already allowed progress/toolchain records are included. The approved Phase 1 plan itself stays byte-identical. This is a recorded exception to workflow timing, not general W06 authorization, baseline amendment, package publication, repository-setting change or authority to merge PR #3.
 
-## 2. W02 delivered scope
+The dedicated job is restricted to same-repository PR #3 from `phase1/p1-w02` against main. It checks out the exact PR head, uses read-only contents permission, does not persist checkout credentials, receives no configured repository secrets and grants no release/package/PR write permission. Official actions are pinned by full commit SHA. The job uses an ephemeral Ubuntu runner and CPython 3.13; the exact executed patch/platform and installer versions are recorded by the run. Windows and the Python 3.11 minimum-version matrix remain later work.
 
-The candidate changes only the section 6 allowlist: 48 explicitly named Python package files; pyproject.toml, MANIFEST.in and requirements-dev.txt; the four named tests/scaffold files; scaffold/toolchain_review.md; and this progress file. This is 57 paths, consisting of 55 new paths and the two allowed progress/toolchain updates.
+## 3. Verification sequence
 
-The package name is source-integrity-toolkit, import name source_integrity_toolkit and unreleased scaffold version 0.1.0.dev0. Package initializers and future domain/native modules are import-safe slots. Forty-four Python files contain only an explanatory docstring and copyright/license comments. The remaining four contain the package exports, two immediate-refusal API functions, fixed CLI help/version/refusal and the literal scaffold version.
+The workflow verifies the pinned W01 baseline-manifest blob, then all eighteen specification byte counts and hashes, the corrected approval record and the unchanged Phase 1 plan. It obtains only the six declared Linux development wheels, checks direct wheel hashes against the prior reviewed values and all wheel hashes against exact-release PyPI metadata, records included license and vendored metadata, and installs offline into an isolated tool environment.
 
-`audit_bundle` and `audit_file` immediately raise NotImplementedError without inspecting arguments, options or paths. The CLI displays tool-authored help/version or emits a fixed refusal with exit 1. It does not parse the future audit grammar, validate a dossier, call the API to inspect evidence, create a report or emit sit-report/0.1 states. Unknown switches and argument text are not echoed. Exit 1 is explicitly the temporary scaffold refusal.
+It runs the four existing W02 test files without changing their strict version gate. Those tests build and inspect the source archive/wheel, install the project without developer dependencies in a clean runtime environment, and compare rebuilt wheel member bytes. No additional build frontend is installed. A failing, skipped or absent required test keeps the job red.
 
-No executable schema, static trace/obligation catalog, hero fixture, domain test, native binding or CI workflow is added. Those belong to later work units. No analytical obligation has been marked implemented or tested.
+Verification JSON, JUnit XML and logs are retained as scoped Actions evidence for fourteen days. No package binary, private dossier, theory PDF, arbitrary workspace or environment/secret dump is uploaded. Source artifacts remain temporary test products and are not published to a package index or GitHub release.
 
-## 3. Packaging selection and actual checks
+## 4. Current actual checks and limits
 
-The source archive selection names individual project files rather than including all repository data. LICENSE and NOTICE are included unchanged. Wheel package-data discovery is disabled, and both artifact inventories are checked for exact membership. Normative specifications remain in the repository and are not relabeled as package output.
+Before submission, the workflow YAML and embedded Python syntax were checked locally; trigger, permission and full-SHA action settings were inspected. The GitHub PR head was re-read before writing. Application source, tests, packaging declarations, development pins, licensing files and the twenty protected specification/approval/plan paths are unchanged in this supplement.
 
-The local build view was assembled from new candidate files and connector-read README/NOTICE plus an identical copy of the standard Apache text. All three unchanged packaging inputs were checked against their repository Git blobs and byte counts. This is a controlled packaging view, not a claim that a full remote git clone succeeded. Frozen-file preservation is separately checked through remote tree/diff identity.
+The local session still cannot resolve github.com or pypi.org. This is not treated as a failed upstream release. Hosted installation/test/build evidence has not yet been observed at this preparation checkpoint. The final run/attempt/job identifiers and outcome must be recorded after they exist.
 
-Actual supplemental run:
+The upstream setuptools extraction-safety note remains explicitly qualified in scaffold/toolchain_review.md. No untrusted archive is submitted to its extractor. A green scaffold job does not establish production security, source analysis or native platform support.
 
-```text
-PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 python -m pytest tests/scaffold -q
-```
+## 5. Stop and review gate
 
-The exact executed command additionally set an external temporary directory and an external JUnit output path. It did not add logs, wheels or temporary environments to the repository. The final suite collected 78 checks: **77 passed, 1 failed, 0 skipped, 0 errors**.
+Keep PR #3 unmerged and W03 unstarted. Retrieve the actual hosted run, steps and logs. If installation, artifact identity, tests or packaging fail, preserve the failure and repair only within the current authorized scope. Do not relax the selected-version assertion or alter frozen semantics to obtain green status.
 
-| Check group | Actual result and scope |
-|---|---|
-| 48 module imports | Passed under local CPython 3.13.5 |
-| Inert slot/file-set and guarded fresh imports | Passed; no application I/O, mutation, network/process activity or native binding observed in these cases |
-| API signatures and hostile arguments | Passed; immediate refusal, unchanged input, no path access or output creation |
-| CLI help/version and malformed/ordinary audit requests | Passed; fixed messages, no payload echo or report creation |
-| Declared metadata and runtime dependencies | Passed; selected pins unchanged, project Requires-Dist empty |
-| Source/wheel inventory and exclusion canaries | Passed using the available older backend; no excluded material packaged |
-| Clean runtime installation | Passed for the supplemental wheel; target contained only the project distribution |
-| Source-archive rebuild | Passed; same wheel member names and contents |
-| Selected build/test versions installed | FAILED: actual setuptools 82.0.1 / pytest 9.0.2 versus selected 84.0.0 / 9.1.1 |
-
-The source archive has 65 regular files; the wheel has 55 members. Supplemental archive identities are:
-
-| Artifact | Bytes | SHA-256 |
-|---|---:|---|
-| source_integrity_toolkit-0.1.0.dev0.tar.gz | 21833 | `9fccf8738ffe2d45b227729cc96b734983b950dc345d635c9e9790e398c3c078` |
-| source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl | 34573 | `83db3bba949795bb188b2599c5c6f3f0729d8d1984086828e23058bcdd6622a3` |
-
-These identify local supplemental test artifacts, not published releases. Byte-reproducible ZIP containers are not claimed; the rebuild compared member bytes.
-
-## 4. Failures, repairs and unresolved gate
-
-The initial packaging check did not account for the backend-generated setup.cfg. Its actual content was inspected and compared with the selected upstream backend's documented source behavior. The test now permits only the fixed egg_info tag metadata. No setup.cfg is added to the repository and no executable build hook is invented.
-
-A subsequent canary scan matched the canary's own literal in its test source. That false positive was corrected by assembling the fictional sentinel from separate literals. The exclusion assertion remains active. Both local failure records are retained in the handoff evidence.
-
-The remaining failed check is not repaired by changing expectations. The local execution environment cannot resolve/download the selected packages, while connected GitHub reads/writes and external release-metadata checks work through different paths. The build/test declarations retain setuptools 84.0.0 and pytest 9.1.1. Tests with the older preinstalled tools provide supplemental compatibility evidence only. Their direct backend invocation does not resolve build-system.requires and cannot satisfy the declared environment gate.
-
-The selected tools' isolated installation, actual downloaded-artifact/transitive review and exact-version test run remain pending. scaffold/toolchain_review.md records the rechecked upstream extraction-safety note and its limitations. No developer tool is promoted to an application runtime dependency.
-
-## 5. Environment and execution boundary
-
-Observed authoring environment: CPython 3.13.5, Linux x86_64/glibc 2.41, setuptools 82.0.1, pytest 9.0.2, pip 25.1.1, iniconfig 2.3.0, packaging 25.0, pluggy 1.6.0 and Pygments 2.20.0. Pytest external plugin autoload was disabled. A separate clean runtime venv was created without pip/setuptools/pytest and populated offline with the self-built project wheel using the existing installer.
-
-No selected-version download/installation, Windows run, minimum-version CPython 3.11 run, hosted CI, native platform conformance, production analytics or package publication is claimed. The attached theory papers were not copied into this repository or used to change its frozen requirements.
-
-## 6. Delivery and next gate
-
-The W02 candidate is submitted as a draft PR against the merged main baseline. The actual candidate commit and PR identifiers are recorded by GitHub and the external verification handoff after they exist, avoiding self-referential hashes in this file. Only the W02 branch receives these changes; main retains the accepted W01 merge.
-
-W02 remains BLOCKED_AT_SELECTED_TOOLCHAIN_VERIFICATION. The narrow remaining work is to obtain/install the already selected tools in an authorized network-capable environment, inspect the resolved dependencies/artifacts, rerun the suite including its strict version assertion, and review the resulting diff/evidence. The failed assertion must not be skipped or relaxed. A new execution service or early CI path would require the applicable separate authorization; this candidate adds neither.
-
-Do not merge this draft, mark W02 complete, or enter W03 until that gate and owner acceptance are satisfied. The original software, privacy, license and phase boundaries remain intact.
+Once all W02 evidence is complete, submit the candidate for owner acceptance. Actual merge and the next unit require the corresponding owner instruction.

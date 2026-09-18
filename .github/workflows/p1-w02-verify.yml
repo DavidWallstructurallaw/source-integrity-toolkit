@@ -1,0 +1,227 @@
+# Copyright 2026 Xiangyu Guo
+# SPDX-License-Identifier: Apache-2.0
+# Scoped owner authorization: P1-W02 verification only; see PHASE_1_PROGRESS.md.
+name: P1-W02 selected-toolchain verification
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p1-w02-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: >-
+      github.repository == 'DavidWallstructurallaw/source-integrity-toolkit' &&
+      github.event.pull_request.number == 3 &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.head.ref == 'phase1/p1-w02'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+      PIP_NO_INPUT: '1'
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout exact review head without persisted credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+          submodules: false
+          lfs: false
+
+      - name: Select CPython 3.13
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+          architecture: x64
+          check-latest: false
+
+      - name: Verify frozen inputs and record invocation
+        env:
+          REVIEW_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, pathlib, platform, subprocess, sys
+          root = pathlib.Path.cwd()
+          evidence = pathlib.Path(os.environ['RUNNER_TEMP']) / 'sit-w02-evidence'
+          evidence.mkdir()
+          def blob(data):
+              return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+          raw = (root / 'scaffold/baseline_manifest.json').read_bytes()
+          assert blob(raw) == 'da48da62c4d1dd8e27af43daa0ecdc8e6c4698d8'
+          manifest = json.loads(raw)
+          rows = manifest['baseline_files']
+          assert len(rows) == 18 and sum(r['bytes'] for r in rows) == 1094920
+          records = []
+          for row in rows + [manifest['approval_record'], manifest['approved_phase1_plan']]:
+              data = (root / row['path']).read_bytes()
+              actual = {'path': row['path'], 'bytes': len(data),
+                        'sha256': hashlib.sha256(data).hexdigest(), 'git_blob_sha1': blob(data)}
+              assert actual['bytes'] == row['bytes'], row['path']
+              assert actual['git_blob_sha1'] == row['git_blob_sha1'], row['path']
+              if 'sha256' in row:
+                  assert actual['sha256'] == row['sha256'], row['path']
+              records.append(actual)
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          assert head == os.environ['REVIEW_HEAD']
+          data = {'head_sha': head, 'run_id': os.environ['GITHUB_RUN_ID'],
+                  'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'python': sys.version,
+                  'platform': platform.platform(), 'scope': 'P1-W02 only', 'protected_files': records}
+          (evidence / 'baseline-and-environment.json').write_text(json.dumps(data, indent=2) + '\n')
+          print('FROZEN_INPUTS_OK: 18 specifications, approval record and Phase 1 plan')
+          print(json.dumps({k: v for k, v in data.items() if k != 'protected_files'}))
+          PY
+
+      - name: Obtain only selected development wheels
+        run: |
+          python -m venv "$RUNNER_TEMP/sit-w02-tools"
+          "$RUNNER_TEMP/sit-w02-tools/bin/python" -m pip --version
+          "$RUNNER_TEMP/sit-w02-tools/bin/python" -m pip --isolated download \
+            --index-url https://pypi.org/simple --only-binary=:all: --no-cache-dir \
+            --retries 2 --timeout 30 --dest "$RUNNER_TEMP/sit-w02-wheelhouse" \
+            -r requirements-dev.txt 2>&1 | tee "$RUNNER_TEMP/sit-w02-evidence/download.log"
+
+      - name: Inspect downloaded identity, metadata and notices before installation
+        run: |
+          python - <<'PY'
+          from email.parser import BytesParser
+          import hashlib, json, os, pathlib, urllib.request, zipfile
+          base = pathlib.Path(os.environ['RUNNER_TEMP'])
+          selected = {'setuptools': '84.0.0', 'pytest': '9.1.1', 'iniconfig': '2.3.0',
+                      'packaging': '25.0', 'pluggy': '1.6.0', 'pygments': '2.20.0'}
+          direct = {'setuptools': '51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670',
+                    'pytest': '37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c'}
+          records, seen = [], set()
+          for path in sorted((base / 'sit-w02-wheelhouse').glob('*.whl')):
+              raw = path.read_bytes()
+              sha = hashlib.sha256(raw).hexdigest()
+              with zipfile.ZipFile(path) as z:
+                  entries = z.namelist()
+                  roots = [n for n in entries if n.endswith('.dist-info/METADATA') and n.count('/') == 1]
+                  assert len(roots) == 1
+                  meta = BytesParser().parsebytes(z.read(roots[0]))
+                  name, version = meta['Name'].lower(), meta['Version']
+                  assert name in selected and version == selected[name] and name not in seen
+                  seen.add(name)
+                  if name in direct:
+                      assert sha == direct[name]
+                  url = f'https://pypi.org/pypi/{name}/{version}/json'
+                  with urllib.request.urlopen(url, timeout=30) as response:
+                      upstream = json.load(response)
+                  matches = [f for f in upstream['urls'] if f['filename'] == path.name]
+                  assert len(matches) == 1 and not matches[0]['yanked']
+                  assert matches[0]['digests']['sha256'] == sha and matches[0]['size'] == len(raw)
+                  notices = []
+                  for entry in entries:
+                      if any(part.lower().startswith(('license', 'copying', 'notice')) for part in entry.split('/')):
+                          if not entry.endswith('/'):
+                              text = z.read(entry)
+                              notices.append({'path': entry, 'sha256': hashlib.sha256(text).hexdigest(),
+                                              'text': text.decode('utf-8', errors='replace')})
+                  assert notices, f'No license/notice material found for {name}'
+                  vendors = []
+                  for entry in entries:
+                      if '/_vendor/' in entry and entry.endswith('.dist-info/METADATA'):
+                          vendor = BytesParser().parsebytes(z.read(entry))
+                          vendors.append({'path': entry, 'name': vendor['Name'], 'version': vendor['Version'],
+                                          'license': vendor.get('License-Expression') or vendor.get('License')})
+                  row = {'name': name, 'version': version, 'filename': path.name, 'bytes': len(raw),
+                         'sha256': sha, 'metadata_source': url, 'requires_python': meta.get('Requires-Python'),
+                         'requires_dist': meta.get_all('Requires-Dist', []),
+                         'license': meta.get('License-Expression') or meta.get('License'),
+                         'notices': notices, 'vendored_metadata': vendors}
+                  records.append(row)
+                  print(json.dumps({k: v for k, v in row.items() if k != 'notices'}))
+                  print(f'NOTICE_INVENTORY: {name} {len(notices)} files')
+          assert seen == set(selected)
+          (base / 'sit-w02-evidence/downloaded-wheel-review.json').write_text(
+              json.dumps({'packages': records, 'scope': 'Third-party notices retain upstream rights; no package publication'}, indent=2) + '\n')
+          print('DOWNLOADED_WHEELS_VERIFIED: six pinned Linux development distributions')
+          PY
+
+      - name: Install offline into isolated tools environment
+        run: |
+          "$RUNNER_TEMP/sit-w02-tools/bin/python" -m pip --isolated install \
+            --no-index --find-links "$RUNNER_TEMP/sit-w02-wheelhouse" --no-cache-dir \
+            --report "$RUNNER_TEMP/sit-w02-evidence/install-report.json" \
+            -r requirements-dev.txt 2>&1 | tee "$RUNNER_TEMP/sit-w02-evidence/install.log"
+          "$RUNNER_TEMP/sit-w02-tools/bin/python" -m pip --isolated check
+          "$RUNNER_TEMP/sit-w02-tools/bin/python" -m pip --isolated list --format=json \
+            > "$RUNNER_TEMP/sit-w02-evidence/installed-packages.json"
+
+      - name: Run all existing W02 tests with strict version gate
+        run: |
+          PYTHONPATH="$GITHUB_WORKSPACE/src" "$RUNNER_TEMP/sit-w02-tools/bin/python" \
+            -m pytest tests/scaffold -q \
+            --basetemp "$RUNNER_TEMP/sit-w02-pytest" \
+            --junitxml "$RUNNER_TEMP/sit-w02-evidence/junit.xml" \
+            2>&1 | tee "$RUNNER_TEMP/sit-w02-evidence/pytest.log"
+
+      - name: Record test totals and self-built archive inventories
+        if: ${{ always() }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, pathlib, tarfile, xml.etree.ElementTree as ET, zipfile
+          base = pathlib.Path(os.environ['RUNNER_TEMP'])
+          evidence = base / 'sit-w02-evidence'
+          evidence.mkdir(exist_ok=True)
+          xml = evidence / 'junit.xml'
+          summary = {'tests_executed': xml.exists(), 'artifacts': []}
+          if xml.exists():
+              root = ET.parse(xml).getroot()
+              suites = [root] if root.tag == 'testsuite' else list(root.iter('testsuite'))
+              summary.update({key: sum(int(s.get(key, '0')) for s in suites)
+                              for key in ('tests', 'failures', 'errors', 'skipped')})
+          for path in sorted((base / 'sit-w02-pytest').rglob('*')):
+              if not path.is_file() or not (path.name.endswith('.whl') or path.name.endswith('.tar.gz')):
+                  continue
+              raw = path.read_bytes()
+              if path.suffix == '.whl':
+                  with zipfile.ZipFile(path) as z:
+                      inventory = [{'path': n, 'sha256': hashlib.sha256(z.read(n)).hexdigest()} for n in z.namelist()]
+              else:
+                  with tarfile.open(path) as t:
+                      inventory = [{'path': m.name, 'sha256': hashlib.sha256(t.extractfile(m).read()).hexdigest()}
+                                   for m in t.getmembers() if m.isfile()]
+              summary['artifacts'].append({'path': path.relative_to(base / 'sit-w02-pytest').as_posix(),
+                                           'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest(),
+                                           'members': inventory})
+          summary['acceptance_pass'] = (summary.get('tests') == 78 and all(summary.get(k) == 0 for k in ('failures', 'errors', 'skipped')))
+          (evidence / 'verification-summary.json').write_text(json.dumps(summary, indent=2) + '\n')
+          print(json.dumps({k: v for k, v in summary.items() if k != 'artifacts'}))
+          for a in summary['artifacts']:
+              print(json.dumps({k: v for k, v in a.items() if k != 'members'} | {'member_count': len(a['members'])}))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+              f.write('## P1-W02 selected-toolchain verification\n\n' +
+                      'Scaffold checks only. No analysis, release, merge, or P1-W03 authorization.\n\n' +
+                      '```json\n' + json.dumps({k: v for k, v in summary.items() if k != 'artifacts'}, indent=2) + '\n```\n')
+          if not summary['acceptance_pass']:
+              raise SystemExit('P1-W02 acceptance remains blocked; inspect actual failed or absent steps.')
+          PY
+
+      - name: Preserve only verification records
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: p1-w02-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/sit-w02-evidence/*.json
+            ${{ runner.temp }}/sit-w02-evidence/*.xml
+            ${{ runner.temp }}/sit-w02-evidence/*.log
+          if-no-files-found: error
+          include-hidden-files: false
+          overwrite: false
+          retention-days: 14
