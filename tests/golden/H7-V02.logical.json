@@ -1,0 +1,1018 @@
+{
+  "artifact_type": "test_only_logical_oracle",
+  "case_id": "H7-V02",
+  "fixture_path": "tests/fixtures/hero/H7-V02.bundle.json",
+  "specification_snapshot": "bfac2e69dd653823201a16069615cc9044a4b39c",
+  "status": {
+    "specification": "adopted",
+    "static_oracle": "transcribed",
+    "runtime_execution": "not_performed",
+    "domain_tests": "pending"
+  },
+  "warning": "Test-only expected observations, not a toolkit report or an executable public output schema. No implementation may load this file to answer an audit.",
+  "conditions": [
+    "All stated results assume structurally accepted input and completion of the entire required operation.",
+    "Every result must retain its own inquiry, claim, dependency dimension, population, supplied basis and qualifications.",
+    "Unknown selected dimensions, partial model history, missing capacity and missing corrective-independence assessment remain explicit.",
+    "A document or process assessment is supplied evidence, not independent authentication by the toolkit.",
+    "Additional reason codes require their own actual case premise; no relevant blocker may be hidden.",
+    "Apply this case-specific override to the original source-selection scope only. Pipeline, correction and comparison populations remain their own unchanged sets.",
+    "The original six complete rows qualify through H7-COV-ACQ-OLD. The new frontier does not establish any finite hidden-root multiplicity."
+  ],
+  "authoritative_sections": [
+    {
+      "path": "DEFINITIONS_AND_UNITS.md",
+      "heading": "## 22. Origin incidence and unresolved contribution",
+      "start_line": 609,
+      "end_line": 663,
+      "source_sha256": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d",
+      "section_sha256": "850e374aafc172b99b42ff1ecd88f51e9d352d29ea0b3bf9b043de69f2304bea",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "DEFINITIONS_AND_UNITS.md",
+      "heading": "## 24. Inherited contribution at the represented evidence layer",
+      "start_line": 712,
+      "end_line": 752,
+      "source_sha256": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d",
+      "section_sha256": "e187b1f555082c473f9a748c4bfa454ffe09bd2420dc3d74515bc14d9b2cf132",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "VALIDATION_PLAN.md",
+      "heading": "## 1. Purpose and source discipline",
+      "start_line": 26,
+      "end_line": 45,
+      "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+      "section_sha256": "731106fd5cb5e5fd8797ca1ac3cc2240d8d95fd8478343dfc0512705d0d3db20",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "VALIDATION_PLAN.md",
+      "heading": "## 2. H7-01 canonical logical result oracle",
+      "start_line": 46,
+      "end_line": 174,
+      "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+      "section_sha256": "ef84c8b118f94eb399bdb5a80aafd15a2438694e1eec9b6c466e960fe528469b",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+      "heading": "## 24. H7-01: False plurality, independent disagreement and partial correction",
+      "start_line": 1062,
+      "end_line": 1176,
+      "source_sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
+      "section_sha256": "d4c16a2e9234d4ac3d864660b28b3c0e498572efe8b02090896fd3a2a72475e5",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+      "heading": "## 25. Hero graph, evaluations and documentary qualification",
+      "start_line": 1177,
+      "end_line": 1217,
+      "source_sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
+      "section_sha256": "dc2f9c40428706aee28c140eac7ea66ff77de86c393bf7e9d9901321fdc4ed73",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+      "heading": "## 26. Hero assessment inventory and finite coverage",
+      "start_line": 1218,
+      "end_line": 1249,
+      "source_sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
+      "section_sha256": "697035e43a6deea5aa40745b3a982e943388ca2061967d95bb9a02ae9b01dcdf",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+      "heading": "## 27. Hero pipeline, anomaly and correction records",
+      "start_line": 1250,
+      "end_line": 1288,
+      "source_sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
+      "section_sha256": "61477d3e58ca03ba70c626ac25192d8281a9aa2c137fc95fa5c0dac2c182e31c",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+      "heading": "## 28. Controlled hero variants and logical fixture freeze",
+      "start_line": 1289,
+      "end_line": 1311,
+      "source_sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
+      "section_sha256": "2ef87a01bf6e3c3e9b2a44b659f04c9107e128f61127e680986d2a5ce333e835",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    },
+    {
+      "path": "VALIDATION_PLAN.md",
+      "heading": "### 3.2 H7-V02: Seventh seed with unresolved parentage",
+      "start_line": 185,
+      "end_line": 192,
+      "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+      "section_sha256": "f32754ca8bfeb092aeebc9735b91b8d542d04a7d0ac9b5f2b4ed0b9b554fa4ce",
+      "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+    }
+  ],
+  "scope": {
+    "inquiry_ref": "H7-I1",
+    "claim_ref": "H7-C1",
+    "origin_dimension": "acquisition",
+    "temporal_basis": "snapshot_structural",
+    "snapshot_id": "H7-S-UNKNOWN"
+  },
+  "populations": {
+    "source_artifacts": [
+      "H7-A",
+      "H7-B",
+      "H7-C",
+      "H7-D",
+      "H7-E",
+      "H7-F",
+      "H7-U"
+    ],
+    "source_contributions": [
+      "H7-EA",
+      "H7-EB",
+      "H7-EC",
+      "H7-ED",
+      "H7-EE",
+      "H7-EF",
+      "H7-EU"
+    ],
+    "pipeline_cohort": [
+      "H7-EA",
+      "H7-EB",
+      "H7-EC",
+      "H7-ED",
+      "H7-EE",
+      "H7-EF"
+    ],
+    "correction_targets": [
+      "H7-R1-V1",
+      "H7-A",
+      "H7-D",
+      "H7-E"
+    ],
+    "comparison_members": [
+      "H7-O1",
+      "H7-O2"
+    ],
+    "ancestor_only_contribution": "H7-ER1",
+    "anomaly_outside_seeds_and_pipeline": "H7-AN1"
+  },
+  "selected_field_expectations": {
+    "SIT-M001.nominal_seed_artifact_record_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 7,
+      "required_reason_codes": []
+    },
+    "SIT-M001.unresolved_seed_artifact_reference_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 0,
+      "required_reason_codes": []
+    },
+    "SIT-M001.seed_evidence_item_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 7,
+      "required_reason_codes": []
+    },
+    "SIT-M001.claim_artifact_record_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 7,
+      "required_reason_codes": []
+    },
+    "SIT-M001.claim_unassigned_seed_artifact_record_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 0,
+      "required_reason_codes": []
+    },
+    "SIT-M002.reached_origin_record_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 2,
+      "required_reason_codes": []
+    },
+    "SIT-M002.documentary_origin_boundary_record_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 2,
+      "required_reason_codes": []
+    },
+    "SIT-M002.origin_boundary_disclosures": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": [
+        "H7-OB1",
+        "H7-OB2"
+      ],
+      "required_reason_codes": []
+    },
+    "SIT-M003.submitted_comparison_member_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 2,
+      "required_reason_codes": []
+    },
+    "SIT-M003.qualified_process_set_member_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 2,
+      "required_reason_codes": []
+    },
+    "SIT-M003.qualified_origin_set_member_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 2,
+      "required_reason_codes": []
+    },
+    "SIT-M004.documentary_origin_resolution_fraction": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": {
+        "numerator": 6,
+        "denominator": 7
+      },
+      "required_reason_codes": []
+    },
+    "SIT-M005.single_origin_contribution_hhi": {
+      "execution_state": "completed",
+      "result_state": "unavailable",
+      "value": null,
+      "required_reason_codes": [
+        "unknown_endpoint",
+        "upstream_coverage_incomplete"
+      ]
+    },
+    "SIT-M006.inherited_only_seed_fraction": {
+      "execution_state": "completed",
+      "result_state": "unavailable",
+      "value": null,
+      "required_reason_codes": [],
+      "qualification": "Required point unavailability; relevant reasons must follow the approved owning contract, not be invented by this static oracle."
+    },
+    "SIT-M006.inherited_only_completion_interval": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": {
+        "interval_kind": "finite_record_completion",
+        "lower": {
+          "numerator": 5,
+          "denominator": 7
+        },
+        "upper": {
+          "numerator": 6,
+          "denominator": 7
+        }
+      },
+      "required_reason_codes": []
+    },
+    "SIT-M007.unresolved_frontier_reference_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 1,
+      "required_reason_codes": []
+    },
+    "SIT-M007.seed_items_with_unresolved_ancestry_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 1,
+      "required_reason_codes": []
+    },
+    "SIT-M012.correction_case_record_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 1,
+      "required_reason_codes": []
+    },
+    "SIT-M012.handling_event_record_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 1,
+      "required_reason_codes": []
+    },
+    "SIT-M012.linked_change_event_record_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 3,
+      "required_reason_codes": []
+    },
+    "SIT-M012.documentary_linked_change_target_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 3,
+      "required_reason_codes": []
+    },
+    "SIT-M012.cases_with_documentary_linked_change_count": {
+      "execution_state": "completed",
+      "result_state": "available",
+      "value": 1,
+      "required_reason_codes": []
+    }
+  },
+  "origin_rows": [
+    {
+      "seed_ref": "H7-EA",
+      "finite_witness": [
+        "H7-EA",
+        "H7-L02",
+        "H7-ER1",
+        "H7-L01",
+        "H7-O1"
+      ],
+      "qualified_origin_refs": [
+        "H7-O1"
+      ],
+      "origin_disposition": "single_documented_origin",
+      "immediate_disposition": "inherited_only_at_evidence_layer"
+    },
+    {
+      "seed_ref": "H7-EB",
+      "finite_witness": [
+        "H7-EB",
+        "H7-L03",
+        "H7-ER1",
+        "H7-L01",
+        "H7-O1"
+      ],
+      "qualified_origin_refs": [
+        "H7-O1"
+      ],
+      "origin_disposition": "single_documented_origin",
+      "immediate_disposition": "inherited_only_at_evidence_layer"
+    },
+    {
+      "seed_ref": "H7-EC",
+      "finite_witness": [
+        "H7-EC",
+        "H7-L04",
+        "H7-ER1",
+        "H7-L01",
+        "H7-O1"
+      ],
+      "qualified_origin_refs": [
+        "H7-O1"
+      ],
+      "origin_disposition": "single_documented_origin",
+      "immediate_disposition": "inherited_only_at_evidence_layer"
+    },
+    {
+      "seed_ref": "H7-ED",
+      "finite_witness": [
+        "H7-ED",
+        "H7-L05",
+        "H7-EB",
+        "H7-L03",
+        "H7-ER1",
+        "H7-L01",
+        "H7-O1"
+      ],
+      "qualified_origin_refs": [
+        "H7-O1"
+      ],
+      "origin_disposition": "single_documented_origin",
+      "immediate_disposition": "inherited_only_at_evidence_layer"
+    },
+    {
+      "seed_ref": "H7-EE",
+      "finite_witness": [
+        "H7-EE",
+        "H7-L06",
+        "H7-EA",
+        "H7-L02",
+        "H7-ER1",
+        "H7-L01",
+        "H7-O1"
+      ],
+      "qualified_origin_refs": [
+        "H7-O1"
+      ],
+      "origin_disposition": "single_documented_origin",
+      "immediate_disposition": "inherited_only_at_evidence_layer"
+    },
+    {
+      "seed_ref": "H7-EF",
+      "finite_witness": [
+        "H7-EF",
+        "H7-L07",
+        "H7-O2"
+      ],
+      "qualified_origin_refs": [
+        "H7-O2"
+      ],
+      "origin_disposition": "single_documented_origin",
+      "immediate_disposition": "direct_origin_link_only"
+    },
+    {
+      "seed_ref": "H7-EU",
+      "finite_witness": [
+        "H7-EU",
+        "H7-LU",
+        "H7-UX"
+      ],
+      "qualified_origin_refs": [],
+      "origin_disposition": "unresolved_or_conflicted",
+      "immediate_disposition": "unresolved_at_evidence_layer",
+      "frontier_ref": "H7-UX"
+    }
+  ],
+  "origin_partition_order": [
+    "unresolved_or_conflicted",
+    "contains_baseline_or_scope_cut",
+    "contains_declared_origin",
+    "multiple_documented_origins",
+    "single_documented_origin"
+  ],
+  "origin_partition_counts": [
+    1,
+    0,
+    0,
+    0,
+    6
+  ],
+  "immediate_partition_order": [
+    "inherited_only_at_evidence_layer",
+    "direct_origin_link_only",
+    "mixed_direct_and_inherited",
+    "unresolved_at_evidence_layer"
+  ],
+  "immediate_partition_counts": [
+    5,
+    1,
+    0,
+    1
+  ],
+  "origin_incidences": [
+    {
+      "origin_ref": "H7-O1",
+      "member_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE"
+      ],
+      "count": 5,
+      "fraction": {
+        "numerator": 5,
+        "denominator": 7
+      }
+    },
+    {
+      "origin_ref": "H7-O2",
+      "member_refs": [
+        "H7-EF"
+      ],
+      "count": 1,
+      "fraction": {
+        "numerator": 1,
+        "denominator": 7
+      }
+    }
+  ],
+  "comparison": {
+    "assessment_ref": "H7-IND12",
+    "subject_refs": [
+      "H7-O1",
+      "H7-O2"
+    ],
+    "dimension": "acquisition",
+    "comparison_form": "pairwise",
+    "unexamined_dimensions": [
+      "analytical_method",
+      "model_ancestry",
+      "evaluation_rubric",
+      "organizational_control"
+    ],
+    "limitation": "One supplied, qualified acquisition-process pair; neither statistical independence nor a global independent-source total."
+  },
+  "evaluator_pair": {
+    "evaluation_ref": "H7-EVAL",
+    "left_role": "generator",
+    "right_role": "judge",
+    "view": "model_evaluation",
+    "shared_recorded_ancestor_count": 2,
+    "shared_ancestor_refs": [
+      "H7-MBASE",
+      "H7-TRAINING"
+    ],
+    "matching_family_label_count": 1,
+    "matching_family_labels": [
+      "H7-family"
+    ],
+    "paired_witnesses": [
+      [
+        [
+          "H7-MGEN",
+          "H7-ML01",
+          "H7-MBASE"
+        ],
+        [
+          "H7-MJUDGE",
+          "H7-ML02",
+          "H7-MBASE"
+        ]
+      ],
+      [
+        [
+          "H7-MGEN",
+          "H7-ML03",
+          "H7-TRAINING"
+        ],
+        [
+          "H7-MJUDGE",
+          "H7-ML04",
+          "H7-TRAINING"
+        ]
+      ]
+    ],
+    "shared_exact_role_bound_objects": [],
+    "one_sided_ancestor_relationships": [],
+    "limitations": [
+      "Model history is partial.",
+      "Shared training collection does not establish row overlap or error correlation.",
+      "Empty same-object/one-sided sets do not establish process independence."
+    ]
+  },
+  "externality": [
+    {
+      "assessment_ref": "H7-EXT-F",
+      "subject_ref": "H7-EF",
+      "conclusion": "external",
+      "basis_refs": [
+        "H7-SUP-CONTEXT",
+        "H7-SUP-ACQ"
+      ]
+    },
+    {
+      "assessment_ref": "H7-INT-A",
+      "subject_ref": "H7-EA",
+      "conclusion": "internal",
+      "basis_refs": [
+        "H7-SUP-CONTEXT",
+        "H7-SUP-CHAIN"
+      ]
+    }
+  ],
+  "pipeline": [
+    {
+      "run_key": "answer-run-1",
+      "stage": "admission",
+      "stage_key": "intake-1",
+      "coverage_ref": "H7-COV-ADM",
+      "cohort_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF"
+      ],
+      "positive_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF",
+        "H7-EU"
+      ],
+      "negative_refs": [],
+      "unknown_refs": [],
+      "record_refs": [
+        "H7-PA-A",
+        "H7-PA-B",
+        "H7-PA-C",
+        "H7-PA-D",
+        "H7-PA-E",
+        "H7-PA-F"
+      ],
+      "stage_occurrence_fraction": {
+        "execution_state": "completed",
+        "result_state": "available",
+        "value": {
+          "numerator": 6,
+          "denominator": 6
+        },
+        "required_reason_codes": []
+      },
+      "stage_occurrence_completion_interval": {
+        "execution_state": "completed",
+        "result_state": "not_applicable",
+        "value": null,
+        "required_reason_codes": [
+          "completion_interval_not_needed"
+        ]
+      },
+      "limitation": "Recorded stage occurrence at its own cohort; not a causal effect, adequate replenishment, or a forced funnel."
+    },
+    {
+      "run_key": "answer-run-1",
+      "stage": "preservation",
+      "stage_key": "store-1",
+      "coverage_ref": "H7-COV-PRES",
+      "cohort_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF"
+      ],
+      "positive_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF",
+        "H7-EU"
+      ],
+      "negative_refs": [],
+      "unknown_refs": [],
+      "record_refs": [
+        "H7-PP-A",
+        "H7-PP-B",
+        "H7-PP-C",
+        "H7-PP-D",
+        "H7-PP-E",
+        "H7-PP-F"
+      ],
+      "stage_occurrence_fraction": {
+        "execution_state": "completed",
+        "result_state": "available",
+        "value": {
+          "numerator": 6,
+          "denominator": 6
+        },
+        "required_reason_codes": []
+      },
+      "stage_occurrence_completion_interval": {
+        "execution_state": "completed",
+        "result_state": "not_applicable",
+        "value": null,
+        "required_reason_codes": [
+          "completion_interval_not_needed"
+        ]
+      },
+      "limitation": "Recorded stage occurrence at its own cohort; not a causal effect, adequate replenishment, or a forced funnel."
+    },
+    {
+      "run_key": "answer-run-1",
+      "stage": "selection",
+      "stage_key": "select-1",
+      "coverage_ref": "H7-COV-SEL",
+      "cohort_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF"
+      ],
+      "positive_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE"
+      ],
+      "negative_refs": [
+        "H7-EF"
+      ],
+      "unknown_refs": [],
+      "record_refs": [
+        "H7-PS-A",
+        "H7-PS-B",
+        "H7-PS-C",
+        "H7-PS-D",
+        "H7-PS-E",
+        "H7-PS-F"
+      ],
+      "stage_occurrence_fraction": {
+        "execution_state": "completed",
+        "result_state": "available",
+        "value": {
+          "numerator": 5,
+          "denominator": 6
+        },
+        "required_reason_codes": []
+      },
+      "stage_occurrence_completion_interval": {
+        "execution_state": "completed",
+        "result_state": "not_applicable",
+        "value": null,
+        "required_reason_codes": [
+          "completion_interval_not_needed"
+        ]
+      },
+      "limitation": "Recorded stage occurrence at its own cohort; not a causal effect, adequate replenishment, or a forced funnel."
+    },
+    {
+      "run_key": "answer-run-1",
+      "stage": "influence",
+      "stage_key": "answer-use-1",
+      "coverage_ref": "H7-COV-USE",
+      "cohort_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF"
+      ],
+      "positive_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-ED"
+      ],
+      "negative_refs": [
+        "H7-EC",
+        "H7-EF"
+      ],
+      "unknown_refs": [
+        "H7-EE"
+      ],
+      "record_refs": [
+        "H7-PU-A",
+        "H7-PU-B",
+        "H7-PU-C",
+        "H7-PU-D",
+        "H7-PU-E",
+        "H7-PU-F"
+      ],
+      "stage_occurrence_fraction": {
+        "execution_state": "completed",
+        "result_state": "unavailable",
+        "value": null,
+        "required_reason_codes": [
+          "stage_classification_unresolved"
+        ]
+      },
+      "stage_occurrence_completion_interval": {
+        "execution_state": "completed",
+        "result_state": "available",
+        "value": {
+          "interval_kind": "finite_cohort_completion",
+          "lower": {
+            "numerator": 3,
+            "denominator": 6
+          },
+          "upper": {
+            "numerator": 4,
+            "denominator": 6
+          }
+        },
+        "required_reason_codes": []
+      },
+      "limitation": "Recorded stage occurrence at its own cohort; not a causal effect, adequate replenishment, or a forced funnel."
+    }
+  ],
+  "eligible_transition_expectations": [
+    {
+      "run_key": "answer-run-1",
+      "from_stage_key": "intake-1",
+      "to_stage_key": "store-1",
+      "cohort_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF"
+      ],
+      "fraction": {
+        "execution_state": "completed",
+        "result_state": "available",
+        "value": {
+          "numerator": 6,
+          "denominator": 6
+        },
+        "required_reason_codes": []
+      },
+      "completion_interval": {
+        "execution_state": "completed",
+        "result_state": "not_applicable",
+        "value": null,
+        "required_reason_codes": [
+          "completion_interval_not_needed"
+        ]
+      }
+    },
+    {
+      "run_key": "answer-run-1",
+      "from_stage_key": "intake-1",
+      "to_stage_key": "select-1",
+      "cohort_refs": [
+        "H7-EA",
+        "H7-EB",
+        "H7-EC",
+        "H7-ED",
+        "H7-EE",
+        "H7-EF"
+      ],
+      "fraction": {
+        "execution_state": "completed",
+        "result_state": "available",
+        "value": {
+          "numerator": 5,
+          "denominator": 6
+        },
+        "required_reason_codes": []
+      },
+      "completion_interval": {
+        "execution_state": "completed",
+        "result_state": "not_applicable",
+        "value": null,
+        "required_reason_codes": [
+          "completion_interval_not_needed"
+        ]
+      }
+    }
+  ],
+  "correction": {
+    "channel_ref": "H7-CHANNEL",
+    "action_type": "amend",
+    "declared_target_refs": [
+      "H7-R1-V1",
+      "H7-A",
+      "H7-D",
+      "H7-E"
+    ],
+    "authorized_target_refs": [
+      "H7-R1-V1",
+      "H7-A",
+      "H7-D",
+      "H7-E"
+    ],
+    "authority_ref": "H7-AUTH",
+    "case_refs": [
+      "H7-CASE1"
+    ],
+    "handling_refs": [
+      "H7-HAND1"
+    ],
+    "native_handling_outcome": "accepted",
+    "linked_change_refs": [
+      "H7-CHANGE-R1",
+      "H7-CHANGE-A",
+      "H7-CHANGE-D"
+    ],
+    "documentary_case_before_pairs": [
+      [
+        "H7-CASE1",
+        "H7-R1-V1"
+      ],
+      [
+        "H7-CASE1",
+        "H7-A"
+      ],
+      [
+        "H7-CASE1",
+        "H7-D"
+      ]
+    ],
+    "undocumented_target_effect": {
+      "target_ref": "H7-E",
+      "expectation": {
+        "execution_state": "completed",
+        "result_state": "unavailable",
+        "value": null,
+        "required_reason_codes": [
+          "change_evidence_missing"
+        ]
+      }
+    },
+    "downstream_subset": {
+      "target_refs": [
+        "H7-A",
+        "H7-D",
+        "H7-E"
+      ],
+      "documented_target_refs": [
+        "H7-A",
+        "H7-D"
+      ],
+      "undocumented_target_refs": [
+        "H7-E"
+      ]
+    },
+    "capacity_assessment_refs": [],
+    "unlisted_target_change_status": "No inference about B, C or F.",
+    "limitations": [
+      "Four target/action tuples represent one channel, not four independent channels.",
+      "Accepted handling does not prove successful or substantively correct correction.",
+      "One case does not establish sustained processing capacity."
+    ]
+  },
+  "human_review": {
+    "evaluation_ref": "H7-HREVIEW",
+    "reviewer_ref": "H7-REVIEWER",
+    "contribution_visible": true,
+    "support_ref": "H7-SUP-CORR",
+    "corrective_independence": {
+      "execution_state": "completed",
+      "result_state": "unavailable",
+      "value": null,
+      "required_reason_codes": [
+        "missing_comparison_assessment"
+      ]
+    }
+  },
+  "context": {
+    "stance_assertion_refs": [
+      "H7-ST-A",
+      "H7-ST-B",
+      "H7-ST-C",
+      "H7-ST-D",
+      "H7-ST-E",
+      "H7-ST-F"
+    ],
+    "contradiction_ref": "H7-ST-F",
+    "anomaly_ref": "H7-AN1",
+    "anomaly_claim_ref": null,
+    "classification_state": "unclassified",
+    "anomaly_context": "A local clock alignment difference may affect event ordering; the present peak-value Claim does not represent this timing distinction.",
+    "tail_stage_refs": [
+      "H7-PA-F",
+      "H7-PP-F",
+      "H7-PS-F",
+      "H7-PU-F"
+    ],
+    "no_whole_anomaly_retention_rate": true
+  },
+  "basis_inventory_scope": {
+    "relation_refs": [
+      "H7-L01",
+      "H7-L02",
+      "H7-L03",
+      "H7-L04",
+      "H7-L05",
+      "H7-L06",
+      "H7-L07"
+    ],
+    "documented_record_labels": 7,
+    "reference_refs": [
+      "H7-SUP-CHAIN",
+      "H7-SUP-ACQ",
+      "H7-SUP-COMPARE",
+      "H7-SUP-MODEL",
+      "H7-SUP-PIPE",
+      "H7-SUP-GRANT",
+      "H7-SUP-CORR",
+      "H7-SUP-CONTEXT"
+    ],
+    "supplied_labels": 8,
+    "qualification": "These are named-subset label inventories; never counts of authenticated sources or a whole-dossier completeness percentage."
+  },
+  "required_narrow_finding_conditions": [
+    "shared_origin_witness",
+    "transformation_path_witness",
+    "model_mediated_derivation_witness",
+    "evaluator_overlap_witness",
+    "family_label_match",
+    "case_handling_disclosure",
+    "linked_change_disclosure",
+    "downstream_change_undocumented",
+    "recorded_stage_exclusion",
+    "anomaly_or_contestation_disclosure"
+  ],
+  "future_completed_envelope": {
+    "report_kind": "audit_report",
+    "processing_state": "completed",
+    "input_validation_state": "accepted",
+    "capability_family_ids": [
+      "SIT-M001",
+      "SIT-M002",
+      "SIT-M003",
+      "SIT-M004",
+      "SIT-M005",
+      "SIT-M006",
+      "SIT-M007",
+      "SIT-M008",
+      "SIT-M009",
+      "SIT-M010",
+      "SIT-M011",
+      "SIT-M012",
+      "SIT-M013",
+      "SIT-M014",
+      "SIT-M015"
+    ]
+  },
+  "prohibited_conclusions": [
+    "independent_source_count",
+    "unknown_root_count",
+    "effective independent sample size",
+    "universal source-integrity score",
+    "correction_success_rate",
+    "all corrections propagated",
+    "two globally independent sources",
+    "the source is clean",
+    "the toolkit verified the true chamber temperature",
+    "malicious laundering or collusion inferred from commonality alone"
+  ],
+  "not_an_output_golden": "No report-local IDs, timestamps, tool version, raw digest, serialized report bytes or successful test result is supplied here.",
+  "variant_source_text": "N = 7; resolved seed Artifacts = 7; unresolved seed Artifact-reference count = 0, because the new Artifact U is known and the missing object is an **upstream EvidenceItem**. M002 still reaches two documentary-qualified origins. The six original rows qualify through COV-ACQ-OLD; EU remains unresolved_or_conflicted. M004 partition is `(1,0,0,0,6)` and resolution fraction 6/7. Incidences remain O1 = 5 and O2 = 1.\n\nM005 is completed/unavailable, null, with unknown_endpoint and upstream_coverage_incomplete. No 26/36 fallback is returned for the seven-seed result. M006 is `(5,1,0,1)`; point fraction unavailable, and the permitted finite_record_completion interval is `[5/7,6/7]`. M007 has one represented unresolved frontier and one affected seed. There is no seventh original source and no upper bound on hidden roots.\n\nThe supported O1/O2 pair, positive model overlap, stage cohorts and linked changes remain visible. They retain their own populations and do not inherit EU's uncertainty as a dossier-wide failure."
+}

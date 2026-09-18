@@ -1,0 +1,427 @@
+{
+  "artifact_type": "test_only_case_index",
+  "specification_snapshot": "bfac2e69dd653823201a16069615cc9044a4b39c",
+  "warning": "Index only. No micro-case executable fixture or runtime test is delivered by this index.",
+  "cases": [
+    {
+      "case_id": "W7-01",
+      "title": "Three documented acquisition processes and one setwise assessment",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-01: Three documented acquisition processes and one setwise assessment",
+        "start_line": 226,
+        "end_line": 233,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "2d7d468618fa831c49e72ee005fb89fcfe9302dc9884e0096b73b09b2a1e99ac",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-02",
+      "title": "Five distinct domains, one documented acquisition",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-02: Five distinct domains, one documented acquisition",
+        "start_line": 234,
+        "end_line": 241,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "011d636a8890f7c4f2406ed55e4ef8ac6a3d412e966156dc9f96f0abdf51206a",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-03",
+      "title": "One unresolved endpoint shared by two seeds",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-03: One unresolved endpoint shared by two seeds",
+        "start_line": 242,
+        "end_line": 249,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "cf6bc6f61678f41a08ab3a1f41be890d9ad014063ebdd093ee7390ceef0b19a0",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-04",
+      "title": "Citation circularity and claim-origin circularity are separate",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-04: Citation circularity and claim-origin circularity are separate",
+        "start_line": 250,
+        "end_line": 257,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "82ab1ef32bc5fcc43acaba35ec2a4eabded5ced944338b531b16347ed9cc35e0",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-05",
+      "title": "Related generator and judge",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-05: Related generator and judge",
+        "start_line": 258,
+        "end_line": 265,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "61923f5d0261bfd6e3f112f5d045f5aa7e15c185dc2c9867df17c23c0c0bcc18",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-06",
+      "title": "Independent review procedure with unexamined model exposure",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-06: Independent review procedure with unexamined model exposure",
+        "start_line": 266,
+        "end_line": 273,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "8fd1abe1a3e0f2d58b66fedea7abb784a618a850d098d75972517b138f918291",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-07",
+      "title": "Independently acquired disagreement",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-07: Independently acquired disagreement",
+        "start_line": 274,
+        "end_line": 281,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "747bd710110b7ca87ff9bf7def95a58af885744c8b41af170800d8acc59d94a0",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-08",
+      "title": "Model paraphrases preserve the inherited source",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-08: Model paraphrases preserve the inherited source",
+        "start_line": 282,
+        "end_line": 289,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "b2cb8a978dc124a26865ddb88a9bcfa835f3159baa3a750ec838f4b382931a3e",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-09",
+      "title": "Recorded correction without recorded propagation",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-09: Recorded correction without recorded propagation",
+        "start_line": 290,
+        "end_line": 297,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "c8dcf7ce7584723a09524ebe6dfc2924c9766dd6be08d936c64b8b2c63bb400d",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-10",
+      "title": "Independently grounded input enters a later represented run",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-10: Independently grounded input enters a later represented run",
+        "start_line": 298,
+        "end_line": 305,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "25017448f8c07c9f3be2906013726fb329b74c511a4e35f6a8b27ada4208f649",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-11",
+      "title": "One Artifact has different claim-relative roles",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-11: One Artifact has different claim-relative roles",
+        "start_line": 306,
+        "end_line": 313,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "440d4fbff51b5ef01dda2749813434762950e2f58c74fbe4855a6e6b4c70cab1",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-12",
+      "title": "Pairwise qualifications do not create a joint set",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-12: Pairwise qualifications do not create a joint set",
+        "start_line": 314,
+        "end_line": 321,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "4b3ae45fcfa259f717cdcba04253b7d25a6b4927bfffab8d12f7cf9b1c8684d9",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-13",
+      "title": "Complete multi-parent ancestry with no allocation",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-13: Complete multi-parent ancestry with no allocation",
+        "start_line": 322,
+        "end_line": 329,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "6328b65ab9f4782391de47d599416116da9ffc5aec8a4f701fd3eafab332f672",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-14",
+      "title": "A diamond contains several paths to one origin",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-14: A diamond contains several paths to one origin",
+        "start_line": 330,
+        "end_line": 337,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "a028421ed5d6bf81f7d5b4b3c1608d414dbaa7c72dcb8ddbcbee36082e071455",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-15",
+      "title": "Known immediate copying, unknown distant ancestry",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-15: Known immediate copying, unknown distant ancestry",
+        "start_line": 338,
+        "end_line": 345,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "3807abe9c33f971d8bed6a76e358d43af9e46d37069294a01aed41c0e609e9c8",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-16",
+      "title": "Caller decomposition changes contribution units",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-16: Caller decomposition changes contribution units",
+        "start_line": 346,
+        "end_line": 353,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "92ce6e33653e6a88f0dfba313627884eda4db9bde5348bef02b2edb233c3e15b",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-17",
+      "title": "Documentary, declared and chosen boundary cuts coexist",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-17: Documentary, declared and chosen boundary cuts coexist",
+        "start_line": 354,
+        "end_line": 361,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "e2a6e781838b65eb6cabaa7d118462b0e9f0b47dfc9bebf064f002ea614f4edd",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-18",
+      "title": "Protected commonality and inspectable attestation",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-18: Protected commonality and inspectable attestation",
+        "start_line": 362,
+        "end_line": 369,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "bc7b03b3ed83ebcbd7c59ddfaf835749a329c8cf19e82af7e69fdf1a89ae1a31",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-19",
+      "title": "One unknown cohort member remains in the denominator",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-19: One unknown cohort member remains in the denominator",
+        "start_line": 370,
+        "end_line": 377,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "975714a17acbebe63ec3e4f58309b616b6b5b72ceeb771d6806884430adf365a",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-20",
+      "title": "Final-only context cannot establish retention",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-20: Final-only context cannot establish retention",
+        "start_line": 378,
+        "end_line": 385,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "7c2931d2a2a44c1a4b16e8b415f127fa621ab8e327fb0cb59626bb047e0350c9",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-21",
+      "title": "Action-limited authority and documented change are separate",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-21: Action-limited authority and documented change are separate",
+        "start_line": 386,
+        "end_line": 393,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "6bf9caace674022e6c67ea4270d12e00754d8b3e045d8325a28869fedc4969eb",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-22",
+      "title": "Failure outcome, explicit removal and duplicate target changes",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-22: Failure outcome, explicit removal and duplicate target changes",
+        "start_line": 394,
+        "end_line": 401,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "012ebdb0a972f63ae7c79393b8bb4351361e3f5cc681d33105c8d5e0def03cde",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-23",
+      "title": "Relevant disputed identity blocks only dependent conclusions",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-23: Relevant disputed identity blocks only dependent conclusions",
+        "start_line": 402,
+        "end_line": 409,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "a4c7b1dbd31b1075b34032d9bb662b6bd7a881390faf12f43155a7fd80bb9831",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-24",
+      "title": "Missing references and unknown evidence have different input outcomes",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-24: Missing references and unknown evidence have different input outcomes",
+        "start_line": 410,
+        "end_line": 417,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "514496c3eba6711303c25b04fc58c6f921846b7ea9065f56f6647949bfa56ef7",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-25",
+      "title": "Documentary labels, locator-only evidence and assurance loops",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-25: Documentary labels, locator-only evidence and assurance loops",
+        "start_line": 418,
+        "end_line": 425,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "bb753c3da9cd23d1b14c339777dae2feb56069211d9dbcf146a6c9adf8016678",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-26",
+      "title": "Source content cannot command the auditor",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-26: Source content cannot command the auditor",
+        "start_line": 426,
+        "end_line": 433,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "41497bc93369926a8e8db9ec8015bdbf587bc58e8d652dc22df42bc23b863248",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-27",
+      "title": "Interruption and report parity are separate conformance checks",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-27: Interruption and report parity are separate conformance checks",
+        "start_line": 434,
+        "end_line": 441,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "837f0788f635340972a67f757a005de441a813cbf9a7298dc1b61ca90b8d7cfe",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    },
+    {
+      "case_id": "W7-28",
+      "title": "A coherent fabricated dossier can remain locally convincing",
+      "source": {
+        "path": "VALIDATION_PLAN.md",
+        "heading": "### W7-28: A coherent fabricated dossier can remain locally convincing",
+        "start_line": 442,
+        "end_line": 449,
+        "source_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "section_sha256": "994f6f47c7342311cd97da5c4efa890de93ff201ccbbd18aec6ab740dac9ef83",
+        "scope_rule": "This whole section and its mandatory surrounding clauses remain controlling."
+      },
+      "fixture_materialization": "pending",
+      "runtime_test_status": "pending"
+    }
+  ]
+}
