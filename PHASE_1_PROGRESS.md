@@ -5,92 +5,64 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Progress revision | 0.7 local candidate |
-| Date | 2026-09-18 |
-| Approved plan | PHASE_1_PLAN.md revision 0.1; Git blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
-| Owner instruction | `批准并合并 PR #4，再进入 P1-W04` |
-| Accepted predecessor | P1-W03, head `bad936b4e224857e6073720afebe83fc7df9eb64` |
-| Verified PR #4 merge | `bfac2e69dd653823201a16069615cc9044a4b39c`; merged at 2026-09-18T07:22:10Z |
-| P1-W04 intake | `bfac2e69dd653823201a16069615cc9044a4b39c` |
-| Existing review branch | `phase1/p1-w04`, observed at the intake commit |
-| Local work | Four full static inputs, four logical oracles, indexes, manifest, documentation and tests prepared |
-| Static test result | 29 passed; 0 failures; 0 errors; 0 skipped |
-| Remote delivery | NOT SUBMITTED in this execution; write capability unavailable |
-| P1-W04 completion / owner acceptance | Pending remote delivery and review |
-| P1-W05 and later | Not started |
+| Progress revision | 0.8 |
+| Record date | 2026-09-18 UTC |
+| Approved plan | PHASE_1_PLAN.md revision 0.1; blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
+| W04 intake main | `bfac2e69dd653823201a16069615cc9044a4b39c` |
+| Accepted candidate | Original fifteen-path W04 ZIP, SHA-256 `a74a1e661d103e58b820bd976f9ebf2827faed6e6038686cd02a4a89a3cf80fd` |
+| Transport authority | P1-W04-T01, explicitly proposed and accepted with `可以，继续` |
+| Imported candidate | `38d16d713bda963a53bd131d171e02bc90602e41` |
+| Import tree | `c95c828d597194a3a0b81625d5b586c7f2a2df65` |
+| Review branch | `phase1/p1-w04` |
+| W04 technical result | Exact accepted bytes imported; hosted static checks passed |
+| W04 acceptance and merge | Owner accepted the local candidate and authorized merge after verified import; merge result recorded separately once it exists |
+| W05 authorization | Granted; start after actual W04 merge |
+| W06 and later | Not authorized or executed |
 
-## 1. Accepted predecessor and authority
+## 1. Authority and preserved history
 
-The owner accepted P1-W03 and requested merge of PR #4 followed by P1-W04. The first connected read in this execution found PR #4 already closed and merged, with the expected W03 head. A separate main-ref read confirmed the merge commit above. This execution verifies the existing merge rather than claiming to have issued a second merge.
+The owner first accepted the W04 local delivery through `可以，继续P1-W05`. The following handoff proposed P1-W04-T01: a temporary isolated importer, exact fifteen-path delivery, verification, W04 merge, then the already authorized W05. The current `可以，继续` accepts that specific proposal. This closes the transport authorization gate without changing source, fixture, licensing or product decisions.
 
-The existing `phase1/p1-w04` branch was also found at that merge commit. No branch replacement, force push or history rewrite is authorized or performed.
+Historical progress records remain in Git: W03 at `bfac2e69dd653823201a16069615cc9044a4b39c`, the delivery-gate intake at `89b313aed8223af95c4b1999802d0f5b379eeccb`, and the unchanged accepted local-candidate record at `38d16d713bda963a53bd131d171e02bc90602e41`. This successor corrects current status; it does not make those earlier pending states retroactively successful. W02's selected-toolchain run remains separate evidence.
 
-The complete W03 progress remains in `PHASE_1_PROGRESS.md` at commit `bad936b4e224857e6073720afebe83fc7df9eb64`, Git blob `c407cb1e3d6eafadd6e510228260311000586dbb`. Its 19 static tests and the earlier W02 hosted runs remain historical evidence with their original scope. They are not W04 execution results.
+## 2. Completed exact-byte transport
 
-## 2. P1-W04 closed file scope
+The ZIP contains exactly fifteen allowed paths and 877,728 uncompressed bytes. A lossless path-to-text representation was compressed and split into six content-addressed temporary Git blobs. They add no branch paths. The importer pins and checks every piece plus the complete compressed and decoded SHA-256 before materializing any candidate file.
 
-The local candidate contains exactly the fifteen paths permitted by plan section 8, consisting of fourteen new files and this updated progress file:
+The sole temporary branch path is `.github/workflows/p1-w04-import.yml` on `transport/p1-w04`, commit `4bcae12a8bb9d1bfef315b95b12c7ffebf10100d`. It is excluded from the W04 tree and must never be merged into main. Its authority is a fixed same-repository authoring operation, not part of the installed toolkit or general W06 CI.
 
-```text
-tests/fixtures/README.md
-tests/fixtures/hero/H7-01.bundle.json
-tests/fixtures/hero/H7-V01.bundle.json
-tests/fixtures/hero/H7-V02.bundle.json
-tests/fixtures/hero/H7-V03.bundle.json
-tests/fixtures/hero/fixture_manifest.json
-tests/fixtures/micro/case_index.json
-tests/fixtures/adversarial/case_index.json
-tests/golden/README.md
-tests/golden/H7-01.logical.json
-tests/golden/H7-V01.logical.json
-tests/golden/H7-V02.logical.json
-tests/golden/H7-V03.logical.json
-tests/scaffold/test_fixture_integrity.py
-PHASE_1_PROGRESS.md
-```
+The workflow uses a fixed checkout without persisted credentials, no dependencies, no package publication, and no merge action. The job has contents-write permission for the authorized import; it checks the exact main and W04 heads before and after its non-force ref update. The token is removed from the test subprocess environment. The old-head check makes another run refuse after this successful import rather than overwrite subsequent work.
 
-One-off authoring utilities, logs and local verification JSON live outside this delivery. No authoring generator is proposed as a repository or runtime addition. Local copies of four frozen specifications are test inputs, not outgoing modifications.
+All fifteen imported blobs matched the accepted local byte identities. The remote tree comparison against the guarded predecessor contained exactly those paths. Main remained at the W03 merge. Fourteen fixture, oracle, index, README and test files remain untouched by this progress-only successor.
 
-## 3. Static input and oracle contents
+## 3. Actual hosted evidence
 
-The four input files are independent complete snapshots. The main fixture has 78 records, 50 assertions and eight supporting references. V01 retains that complete object inventory and changes only the snapshot identity and two seed lists. V02 has 82 records, 52 assertions and nine references; V03 has 81 records, 52 assertions and nine references.
+Run `35330401864`, attempt 1, job `105553187836`, completed successfully at 2026-09-18T09:36:35Z. The job log and step results were read through the GitHub connector. It ran Ubuntu 24.04.5, CPython 3.12.3, Linux x86_64 and glibc 2.39.
 
-Only the prescribed source populations change. Every variant preserves the six-member pipeline cohorts, four correction targets and independently scoped O1/O2 comparison. V02's unknown object is the upstream EvidenceItem UX, while Artifact U is present. Its old complete acquisition subview has an explicit coverage assertion. V03's two recorded parents have no numerical allocation.
+Before import, the job verified the pinned baseline manifest and complete stored bytes of all eighteen specifications, the corrected approval record and the Phase 1 plan. It checked their byte counts, Git blobs and applicable SHA-256 entries. These checks ran again after the static tests to detect input changes.
 
-The main and five-seed logical HHI expectations retain 26/36 and 25/25 respectively. The two seven-seed cases require unavailable full-population HHI with their distinct causes. The files preserve the source scope, origin and immediate-layer partitions, exact fractions and intervals, supplied independence limitations, partial model history, native handling, three linked changes and E's missing change evidence. No temperature-truth conclusion or successful-correction rate is added.
-
-The 28 W7 micro-case index entries point to complete frozen sections, with full source and section hashes. The adverse/control index retains 24 W9 cases, six licensing cases and 32 W11 cases. Its existing W03 control-case bindings and WU11 refinements are preserved; no unassigned W9 test filename is invented.
-
-The fixtures README records conservative prose-expansion choices. Descriptions of the amended Artifacts use their existing CORR-bound provenance qualifications rather than adding an unsupported Artifact data key. The eight original supporting excerpts remain exact copies. Newly materialized variant supplements express only the parentage/coverage facts already prescribed in lineage section 28.1.
-
-## 4. Source verification and actual tests
-
-The complete local lineage, validation, reporting and definitions files were hashed and matched to the current connected Git blob identities. Those bytes came from preserved original deliveries. The approved plan, PR state, main and review-branch refs, current progress and the W03 control-case catalog were read through the connector at the intake snapshot.
-
-Actual local command:
+The existing unchanged `tests/scaffold/test_fixture_integrity.py` ran with Python's standard-library unittest:
 
 ```text
-PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests/scaffold -p test_fixture_integrity.py -v
+python3 -m unittest discover -s tests/scaffold -p test_fixture_integrity.py -v
+Ran 29 tests in 0.070s
+OK
 ```
 
-Environment: CPython 3.13.5, Linux x86_64, glibc 2.41. The final new file ran 29 test methods, with no failures, errors or skips. The checks include eight deliberately damaged in-memory fixture/oracle probes and a separate duplicate-JSON-key probe. They exercise direct-reference integrity, exact original support text, original acquisition-table transcription, variant preservation, all pipeline native states, correction identities, source-scoped fractions/non-results and full-section pointers.
+All twenty-nine methods passed, with zero failures, errors or skips. This is static transcription/reference/oracle verification, not a production audit or execution of the 228 future analytical obligations. No setuptools/pytest version check, W02 full-suite rerun, Windows run or W05 test is claimed here.
 
-The first 27-method run passed its checks. Manual source review then found an overly abbreviated `unresolved` label in the V02 test-only immediate disposition. It was corrected to the adopted `unresolved_at_evidence_layer`, and two tests were added for exact disposition vocabulary and the source-table witness transcription. The final 29-method run passed. No frozen source or expected substantive result changed.
+The successful import produced commit `38d16d713bda963a53bd131d171e02bc90602e41`, parent `89b313aed8223af95c4b1999802d0f5b379eeccb`. This progress-only successor records that already completed run. A new run on the successor is not claimed; tested input, oracle and test blobs are unchanged.
 
-These tests read fixed repository test assets and inspect direct references. They do not construct or traverse a source graph, qualify independence, compute HHI, classify observability, serialize a toolkit report or invoke native operations. No analytical obligation is promoted from pending to passed.
+The runner forced the pinned checkout action's deprecated Node 20 target onto Node 24 and reported that warning. No insecure Node-version override was enabled. No broad platform or security certification follows from the successful transport.
 
-No W02/W03 full-suite rerun, fresh selected-toolchain installation, package build, hosted W04 CI, Windows run or native-security test is claimed. No private evidence or source-paper PDF is used as test data.
+## 4. Retained W04 scope
 
-## 5. Remote-delivery blocker
+The delivery contains four static `sit-bundle/0.1` dossiers, four test-only logical expectation files, a fixture hash manifest, W7/W9/W11 case indexes, two READMEs and one static test file. They preserve the main 26/36 and V01 25/25 fractions, the distinct unknown and unallocated-multiparent reasons, unchanged pipeline/correction populations, and separate submission, handling and three linked changes.
 
-The GitHub tools exposed in this execution support reads but do not expose file creation/update, Git object/ref writes or PR creation. Plugin discovery confirmed the existing GitHub integration, with no alternative available write action. The local CLI does not have `gh`; an ordinary Git clone failed because github.com could not be resolved. No credentials were requested, inspected or transferred.
+The remote compare from W03 to the imported candidate lists fifteen changed paths, fourteen additions and this common progress file. No frozen specification, approval, Phase 1 plan, module, catalog, dependency, packaging rule, existing test, license or main-branch workflow changed. No live source, theory PDF, private evidence or runtime analytical behavior was introduced.
 
-Therefore the local candidate is preserved without claiming a remote commit, push, PR number or completed W04 delivery. The repository's underlying account permission is not inferred from the available action set. This is a limitation of this execution path, not a new project dependency or an authorization to weaken the workflow.
+## 5. Handoff
 
-No existing repository file was written by this execution. The local candidate must later be checked against the actual remote branch head before any authorized submission. A changed base requires reconciliation instead of overwriting it.
+Create and inspect the W04 review PR, verify its exact head and fifteen-path scope, then perform the already authorized merge preserving history. Record the returned merge identity before creating the W05 branch. Do not merge the transport branch or broaden its permissions.
 
-## 6. Remaining gate
-
-The local candidate is ready for remote delivery review. The remaining tasks are to submit the fifteen permitted paths to the existing review branch, verify exact outgoing blobs and the allowed diff, and create an unmerged review PR. No remote submission or automatic future work is promised by this record.
-
-P1-W04 owner acceptance and merge remain separate. P1-W05 must not start until this delivery has actually been submitted and accepted. The Phase 0 baseline, approval, Phase 1 plan, package code, earlier catalogs, packaging configuration, tool pins, LICENSE, NOTICE and workflows remain outside this unit's outgoing scope.
+W05 is limited to the twelve paths in plan section 9: two repository-only guards, six scaffold/security tests, three test-surface reservation READMEs and this progress record. W05 delivery and acceptance remain separate from W04's now-verified transport. W06 CI work remains outside this instruction.
