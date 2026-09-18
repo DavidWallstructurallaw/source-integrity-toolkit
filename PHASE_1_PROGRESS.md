@@ -5,64 +5,99 @@
 | Field | Value |
 |---|---|
 | Project | Source Integrity Toolkit |
-| Progress revision | 0.8 |
+| Progress revision | 0.9 |
 | Record date | 2026-09-18 UTC |
-| Approved plan | PHASE_1_PLAN.md revision 0.1; blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
-| W04 intake main | `bfac2e69dd653823201a16069615cc9044a4b39c` |
-| Accepted candidate | Original fifteen-path W04 ZIP, SHA-256 `a74a1e661d103e58b820bd976f9ebf2827faed6e6038686cd02a4a89a3cf80fd` |
-| Transport authority | P1-W04-T01, explicitly proposed and accepted with `可以，继续` |
-| Imported candidate | `38d16d713bda963a53bd131d171e02bc90602e41` |
-| Import tree | `c95c828d597194a3a0b81625d5b586c7f2a2df65` |
-| Review branch | `phase1/p1-w04` |
-| W04 technical result | Exact accepted bytes imported; hosted static checks passed |
-| W04 acceptance and merge | Owner accepted the local candidate and authorized merge after verified import; merge result recorded separately once it exists |
-| W05 authorization | Granted; start after actual W04 merge |
-| W06 and later | Not authorized or executed |
+| Approved plan | PHASE_1_PLAN.md revision 0.1, blob `27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb` |
+| Owner authorization | `可以，继续P1-W05`, followed by acceptance of the explicitly proposed P1-W04-T01 import, verified merge and W05 continuation |
+| Accepted predecessor | W04, PR #5, head `9b3478b394305f4367642fba56f49d443143e565` |
+| Actual W04 merge / W05 intake | `391a69aa351bef4ec00b580d97e3e87e6f2df10d` |
+| Review branch | `phase1/p1-w05` |
+| W05 delivery | Twelve-path developer guard/test candidate; 42 local tests passed; submitted for review |
+| Owner W05 acceptance / merge | Pending |
+| W06 and later work | Not executed or authorized by this delivery |
 
-## 1. Authority and preserved history
+## 1. Predecessor delivery closed
 
-The owner first accepted the W04 local delivery through `可以，继续P1-W05`. The following handoff proposed P1-W04-T01: a temporary isolated importer, exact fifteen-path delivery, verification, W04 merge, then the already authorized W05. The current `可以，继续` accepts that specific proposal. This closes the transport authorization gate without changing source, fixture, licensing or product decisions.
+The owner-approved one-time importer ran successfully on the isolated transport branch. Run `35330401864`, attempt 1, job `105553187836`, used Ubuntu 24.04.5 and CPython 3.12.3. Its logs were read through the connector. All fifteen accepted W04 candidate files were imported with their exact original bytes, and the existing 29 static fixture checks passed with no failures, errors or skips.
 
-Historical progress records remain in Git: W03 at `bfac2e69dd653823201a16069615cc9044a4b39c`, the delivery-gate intake at `89b313aed8223af95c4b1999802d0f5b379eeccb`, and the unchanged accepted local-candidate record at `38d16d713bda963a53bd131d171e02bc90602e41`. This successor corrects current status; it does not make those earlier pending states retroactively successful. W02's selected-toolchain run remains separate evidence.
+The importer independently checked complete stored bytes of all eighteen specifications, corrected approval and Phase 1 plan before and after tests. It created `38d16d713bda963a53bd131d171e02bc90602e41`; the progress-only successor recorded those results without changing tested data. PR #5 was inspected and merged using expected-head protection at 2026-09-18T09:41:58Z, producing the intake commit above. The connector subsequently confirmed merged=true.
 
-## 2. Completed exact-byte transport
+The temporary workflow was never included in main or the W05 branch. It was removed from `transport/p1-w04` after successful delivery at commit `072990829fb28e25522d05e1985222549c5a28c5`. Its historical source and run remain inspectable, but the current transport branch no longer contains the importer. No repository settings, secrets or general CI permissions were changed.
 
-The ZIP contains exactly fifteen allowed paths and 877,728 uncompressed bytes. A lossless path-to-text representation was compressed and split into six content-addressed temporary Git blobs. They add no branch paths. The importer pins and checks every piece plus the complete compressed and decoded SHA-256 before materializing any candidate file.
+Complete W04 history remains in PR #5 and progress revision 0.8 at its accepted head. Earlier failed transfer attempts, the accepted local ZIP, and the progress-only gate record at `89b313a` remain historical facts. They are not overwritten with a claim that transfer had succeeded earlier.
 
-The sole temporary branch path is `.github/workflows/p1-w04-import.yml` on `transport/p1-w04`, commit `4bcae12a8bb9d1bfef315b95b12c7ffebf10100d`. It is excluded from the W04 tree and must never be merged into main. Its authority is a fixed same-repository authoring operation, not part of the installed toolkit or general W06 CI.
+## 2. Exact W05 scope
 
-The workflow uses a fixed checkout without persisted credentials, no dependencies, no package publication, and no merge action. The job has contents-write permission for the authorized import; it checks the exact main and W04 heads before and after its non-force ref update. The token is removed from the test subprocess environment. The old-head check makes another run refuse after this successful import rather than overwrite subsequent work.
-
-All fifteen imported blobs matched the accepted local byte identities. The remote tree comparison against the guarded predecessor contained exactly those paths. Main remained at the W03 merge. Fourteen fixture, oracle, index, README and test files remain untouched by this progress-only successor.
-
-## 3. Actual hosted evidence
-
-Run `35330401864`, attempt 1, job `105553187836`, completed successfully at 2026-09-18T09:36:35Z. The job log and step results were read through the GitHub connector. It ran Ubuntu 24.04.5, CPython 3.12.3, Linux x86_64 and glibc 2.39.
-
-Before import, the job verified the pinned baseline manifest and complete stored bytes of all eighteen specifications, the corrected approval record and the Phase 1 plan. It checked their byte counts, Git blobs and applicable SHA-256 entries. These checks ran again after the static tests to detect input changes.
-
-The existing unchanged `tests/scaffold/test_fixture_integrity.py` ran with Python's standard-library unittest:
+Only these twelve plan-section-9 paths are created or updated:
 
 ```text
-python3 -m unittest discover -s tests/scaffold -p test_fixture_integrity.py -v
-Ran 29 tests in 0.070s
+tools/check_phase0_baseline.py
+tools/check_scaffold_boundary.py
+tests/scaffold/test_baseline_integrity.py
+tests/scaffold/test_no_runtime_implementation.py
+tests/scaffold/test_layer_boundaries.py
+tests/security/test_scaffold_inertness.py
+tests/security/test_scaffold_no_native_loading.py
+tests/security/test_scaffold_no_network.py
+tests/integration/README.md
+tests/unit/README.md
+tests/contract/README.md
+PHASE_1_PROGRESS.md
+```
+
+The two tools are repository-only developer commands. They are not imported by the installed auditor, do not accept evidence dossiers and do not implement runtime parsing, source analysis, native filesystem publication or report generation. No package, dependency, packaging rule, earlier test, catalog, fixture, logical oracle or frozen file is modified.
+
+## 3. Guard design and independent controls
+
+The baseline checker pins the accepted W01 manifest object independently, checks its closed eighteen-file contract, then compares complete stored bytes, SHA-256 and Git object identities, including the separately protected approval and plan. Editing a source and its manifest together cannot authorize a new freeze. Missing or altered bytes fail; there is no repair, network fetch, partial-pass or rehash-and-accept mode. Its ordinary CLI has no test-anchor override.
+
+The package checker independently enumerates all 48 accepted W02 paths and their Git blobs. It separately checks executable AST forms, import targets, software-layer direction and dependency cycles. Hash matching is not the only test: the AST and layer routines receive deliberately wrong source strings directly, with no accepted-byte check to mask their behavior. An otherwise permissible layer import still fails the inert-body contract. Extra code, native/data files, mutable registries, side-effecting annotations/defaults/decorators, argument inspection and fake successful audit results are rejected.
+
+The subprocess harness imports all 48 real byte-matched slots and exercises four API refusal calls plus CLI help/version/refusal. Synthetic input/output canaries are checked before and after. The harness preloads its own standard libraries, then distinguishes Python module-loader reads from application-originated file/path/native/network effects. Deliberate socket/DNS/native-library probes are intercepted before executing those operations. Even a module that catches an interception exception leaves a recorded violation and cannot turn the probe into a pass.
+
+All deliberate mutations live in temporary copies. No mutated source, private evidence or paper PDF enters the actual package or repository. These finite checks are not a production sandbox or a complete security proof.
+
+## 4. Actual W05 execution
+
+The six new test files ran locally with Python standard-library unittest, CPython 3.13.5, Linux x86_64 and glibc 2.41. The selected combined run reported:
+
+```text
+Ran 42 tests in 13.035s
 OK
 ```
 
-All twenty-nine methods passed, with zero failures, errors or skips. This is static transcription/reference/oracle verification, not a production audit or execution of the 228 future analytical obligations. No setuptools/pytest version check, W02 full-suite rerun, Windows run or W05 test is claimed here.
+There were zero failures, zero errors and zero skipped tests in that final run. The counts are:
 
-The successful import produced commit `38d16d713bda963a53bd131d171e02bc90602e41`, parent `89b313aed8223af95c4b1999802d0f5b379eeccb`. This progress-only successor records that already completed run. A new run on the successor is not claimed; tested input, oracle and test blobs are unchanged.
+| New test surface | Test methods |
+|---|---:|
+| Baseline guard controls | 11 |
+| Package inventory and non-implementation controls | 12 |
+| Software layer controls | 7 |
+| Inertness, filesystem and argument probes | 6 |
+| Application native-binding probes | 3 |
+| Application network probes | 3 |
+| Total | 42 |
 
-The runner forced the pinned checkout action's deprecated Node 20 target onto Node 24 and reported that warning. No insecure Node-version override was enabled. No broad platform or security certification follows from the successful transport.
+Per-file commands are recorded in tests/contract/README.md. The actual package checker also passed its complete 48-module CLI invocation. Its tests execute both positive and negative CLI cases under Python -O; guard enforcement does not disappear when assert statements would be optimized away.
 
-## 4. Retained W04 scope
+### Evidence scope
 
-The delivery contains four static `sit-bundle/0.1` dossiers, four test-only logical expectation files, a fixture hash manifest, W7/W9/W11 case indexes, two READMEs and one static test file. They preserve the main 26/36 and V01 25/25 fractions, the distinct unknown and unallocated-multiparent reasons, unchanged pipeline/correction populations, and separate submission, handling and three linked changes.
+The local W05 view contains all 48 accepted package files as independently byte-matched copies, the exact W01 manifest, eleven complete original specification files and the accepted W04 artifacts. The 48 package blobs all matched before testing and were not modified. Eleven available full specification files were rehashed against their approved values; newer full specification/approval/plan files were not reconstructed in this local view.
 
-The remote compare from W03 to the imported candidate lists fifteen changed paths, fourteen additions and this common progress file. No frozen specification, approval, Phase 1 plan, module, catalog, dependency, packaging rule, existing test, license or main-branch workflow changed. No live source, theory PDF, private evidence or runtime analytical behavior was introduced.
+The baseline unit tests therefore explicitly distinguish a synthetic full twenty-file workspace, real manifest-anchor validation and a complete actual reference-document check. The synthetic fixture changes only the test process's trust anchor; it does not change the production developer command or the real repository manifest. These are positive/adverse tests of guard logic, not a claim that synthetic strings are the approved baseline.
 
-## 5. Handoff
+A new full-checkout invocation of tools/check_phase0_baseline.py over all twenty actual files was not executed locally in W05. The complete actual-byte baseline evidence comes from the successful W04 hosted importer; remote object/diff preservation connects that unchanged baseline to W05. Full-checkout execution of the new command and the combined suite remains an explicit P1-W06 CI duty. The absence of that later run is not hidden as a skipped test or relabeled as a local pass.
 
-Create and inspect the W04 review PR, verify its exact head and fifteen-path scope, then perform the already authorized merge preserving history. Record the returned merge identity before creating the W05 branch. Do not merge the transport branch or broaden its permissions.
+No selected setuptools/pytest installation, W02 packaging rerun, W03 full-suite rerun, Windows/CPython 3.11 run, W05 hosted workflow or package publication occurred in this unit. Earlier passing runs retain their own checked commits and scopes. The 42 methods do not satisfy the 228 pending analytical obligations.
 
-W05 is limited to the twelve paths in plan section 9: two repository-only guards, six scaffold/security tests, three test-surface reservation READMEs and this progress record. W05 delivery and acceptance remain separate from W04's now-verified transport. W06 CI work remains outside this instruction.
+### Corrected test-harness defect
+
+The first security-harness run failed all twelve security methods before completing any package import. Stack inspection via sys._getframe generated another audit event, recursively re-entering the observer. The observer was corrected to filter to monitored operations before stack inspection. The final unchanged positive and adverse assertions then all passed. No product code, approved expectation or source contract was changed to obtain the pass; no failing test was skipped. The raw initial failure log is retained with the local verification artifacts.
+
+## 5. Preservation and handoff
+
+Remote final tree and PR checks must confirm exactly eleven additions plus this progress update relative to the actual W04 merge. All twelve outgoing file identities are compared with the tested/reviewed local bytes. Final commit/PR identifiers belong in the PR handoff after they exist, avoiding a document that tries to contain its own hash.
+
+The eighteen frozen specifications, corrected approval, Phase 1 plan, baseline manifest, accepted catalogs, 48 product modules, W04 fixture/oracle files, license notices, development pins and existing W02 workflow remain unchanged. The earlier broad scientific and theoretical material is not reinterpreted in W05.
+
+Submit the W05 review PR and stop for owner acceptance. Do not merge W05, change the CI workflow, execute W06 or begin Phase 2 automatically. On the next authorized step, W06 must run the complete checkout, new developer guards and accumulated suite on its reviewed interpreter/platform matrix and preserve any actual failures.
