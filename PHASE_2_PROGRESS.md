@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.9 |
+| Revision | 0.10 |
 | Work unit | P2-W04 with approved P2-W04-R01 |
 | Owner instruction | 批准 P2-W04-R01 继续已经授权的 W04 解码与快照捕获工作 |
 | Approved plan | PHASE_2_PLAN.md revision 0.1, sections 3, 6 and 10 |
@@ -13,7 +13,7 @@
 | Accepted entry tree | ad16a08dc2382b3d007038c4861d010f52a15e4b |
 | W04 intake record | 9333c4e8868bdd1209cb773904b1d2603f5b152f |
 | Branch | phase2/p2-w04 |
-| Status | Local component candidate passed; full exact-head hosted verification pending |
+| Status | Code candidate passed all four hosted profiles; successor-record exact-head gate pending in PR #13 |
 | W04 acceptance / W05 execution | Not granted |
 
 ## 1. Authority and preserved history
@@ -54,8 +54,34 @@ Two local authoring-test issues were corrected before remote delivery: pytest at
 
 Primary facility references checked for the implementation were Python 3.11 json documentation (numeric/object-pairs hooks, permissive defaults and the untrusted-input warning) and built-in types documentation (strict decoding and dictionary-view mutation limits): https://docs.python.org/3.11/library/json.html and https://docs.python.org/3.11/library/stdtypes.html. These explain available facilities; the frozen project specifications determine admission semantics, numerical spelling, limits and errors.
 
-## 5. Hosted acceptance gate and stop
+## 5. Complete hosted code-head evidence
 
-The exact candidate must pass all four original Linux/Windows and Python 3.11/3.13 profiles with the original reviewed dependencies. Inspect complete artifacts, exact-head metadata, raw collection/JUnit identities, all 537 predecessor tests, entry archives, immediate/cumulative scope, twenty frozen files, forty-eight modules, unchanged tracked bytes, packaging and clean installation. Do not substitute expected test counts or an older code-head run for final evidence.
+Workflow 35422372556, attempt 1, executed the exact code head 940c34f382fd46444f70e4fee64dad6e2ebc9ee1 and tree 4859d9d1eeb6e1c3d220bb1f20dc8682da6d9285. All four jobs and required preflight, dependency, cumulative test, evidence and packaging stages succeeded. This was the first hosted W04 run; no hosted failure, test skip or exception outside R01 was introduced.
 
-Keep the W04 PR draft until these checks are complete. Owner acceptance and merge remain separate. W05 is not authorized. No release or public successful audit may be inferred from this capture candidate.
+| Profile | Actual CPython | Job ID | Collected / passed | Failures / errors / skips |
+|---|---|---:|---:|---|
+| Ubuntu 24.04 | 3.11.16 | 105842278798 | 724 / 724 | 0 / 0 / 0 |
+| Ubuntu 24.04 | 3.13.15 | 105842278788 | 724 / 724 | 0 / 0 / 0 |
+| Windows Server 2025 | 3.11.9 | 105842278846 | 724 / 724 | 0 / 0 / 0 |
+| Windows Server 2025 | 3.13.15 | 105842278812 | 724 / 724 | 0 / 0 / 0 |
+
+Each profile retained all 537 predecessor test identities and executed 187 new instances. The nine Git-dependent new R01 instances omitted from the explicitly partial local run all executed and passed. Raw JUnit contains 724 direct testcase elements and 428 separate successful subtest events, for 1,152 reported events. Collection identities were independently mapped to every raw JUnit classname/name; no count was inferred merely from the summary. The four rows repeat the same suite rather than representing 2,896 distinct designs.
+
+| Profile | Artifact ID | ZIP bytes | SHA-256 |
+|---|---:|---:|---|
+| Ubuntu 3.11 | 10577504845 | 58994 | 0f28800fdbc480100eda65b9c896dab3a1ca92381797611daa20371ad4c0acd6 |
+| Ubuntu 3.13 | 10577454974 | 58752 | 7291170d05d5b7e15aaed39578c05a97ca9fd5c72249109ceec880c17966a4dd |
+| Windows 3.11 | 10577975307 | 65132 | 49afd107b6bd5e2b5080d8c6a58db83987af2ab46d73f630701308e615365547 |
+| Windows 3.13 | 10577824584 | 64932 | a689d85f30ba44cf599a058cc330ff362a70b8927b8a754c46a2e7b11eb34961 |
+
+All four complete artifact ZIPs were downloaded, matched to service byte counts and SHA-256, and inspected for environment/head/run identity, raw collection/JUnit, dependency versions, full Git archive checks, immediate/cumulative scope, before/after guards and tracked hashes. The actual 124-file Phase 1 and 125-file Phase 2 entry snapshots were recomputed in hosted full checkouts. The twenty-file freeze and forty-eight-module checks passed both before and after tests. Exactly fifteen paths differ from accepted W03, with no deletions or renames; every other accepted tracked file remains byte-identical. All 143 tracked hashes agree across profiles and remained unchanged during execution. All fifteen local authored files match their hosted checkout bytes.
+
+Reviewed setuptools 84.0.0 and pytest 9.1.1, plus the original supporting dependency pins, were installed and checked in every profile. All package tests passed: 65 regular source-distribution members, 55 wheel members, clean offline installation without developer dependencies, and equal original/rebuilt wheel member contents. No whole compressed-archive reproducibility or native-platform security certification is asserted.
+
+The original generic capture, scalar and safety tests passed alongside the R01 exact-change regressions. The latter confirm that the two transport files contain precisely the new cycle constant/basis and that only two permitted old scope-test bodies changed. All old observer assertions remain intact. These are finite tests and static checks, not proof against arbitrary interpreter or same-principal compromise.
+
+## 6. Successor record and final stop
+
+This successor changes PHASE_2_PROGRESS.md and phase2/implementation_evidence.json only. Its own exact-head four-row run and complete inspected artifact identities must be recorded in PR #13 before readiness. The code-head evidence above does not predeclare that successor result. External PR recording avoids circular self-commit references inside the records.
+
+Keep the W04 delivery unmerged until the final-head gate passes and the owner accepts it. W05 remains unauthorized. Capture still cannot establish PC01/input acceptance or a public successful audit. Global structural, identity, reference, type, time and scope-plan integration; all analysis, witness/report operations, native I/O and release remain pending. No frozen specification, input schema, analytical oracle, dependency pin or workflow permission was altered.
