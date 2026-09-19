@@ -22,6 +22,15 @@ P2_W02_R01_PATHS = frozenset((
 ))
 
 
+# Explicit owner-approved P2-W04-R01: fixed cycle qualifier and scope tests.
+# Only W04 receives immediate permission; no candidate metadata adds paths.
+P2_W04_R01_PATHS = frozenset((
+    "src/source_integrity_toolkit/contracts/execution.py",
+    "src/source_integrity_toolkit/runtime/diagnostics.py",
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_bundle_contract.py",
+))
+
 def effective_paths(paths, unit, *, cumulative=False):
     current = phase_guard.unit_number(unit)
     steps = range(1, current + 1) if cumulative else (current,)
@@ -30,6 +39,8 @@ def effective_paths(paths, unit, *, cumulative=False):
         allowed.update(paths[f"P2-W{step:02}"])
         if step == 2:
             allowed.update(P2_W02_R01_PATHS)
+        if step == 4:
+            allowed.update(P2_W04_R01_PATHS)
     return frozenset(allowed)
 
 
@@ -131,7 +142,8 @@ def entry_and_scope(evidence):
     save(evidence / "entry-and-scope.json", {"ok": True, "unit": unit, "base": base,
         "intake_commit": entry["intake_commit"], "actual_entry_files": 125, "actual_phase1_files": 124,
         "changed_paths": sorted(changed), "tracked_files": len(actual), "historical_test_identities": len(old),
-        "scope_exceptions": ["P2-W02-R01"] if phase_guard.unit_number(unit) >= 2 else [],
+        "scope_exceptions": (["P2-W02-R01"] if phase_guard.unit_number(unit) >= 2 else []) +
+            (["P2-W04-R01"] if phase_guard.unit_number(unit) >= 4 else []),
         "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata"})
 
 

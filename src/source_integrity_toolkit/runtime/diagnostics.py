@@ -21,6 +21,7 @@ _CONSTRAINT_BASIS = (
     ("identifier_length", "PRIVACY_AND_DATA_HANDLING section 8.1 WU9-L09: identifier byte length."),
     ("string_length", "PRIVACY_AND_DATA_HANDLING section 8.1 WU9-L10: decoded string/key byte length."),
     ("locator_length", "PRIVACY_AND_DATA_HANDLING section 8.1 WU9-L10: decoded locator byte length."),
+    ("container_cycle", "REPOSITORY_ARCHITECTURE section 17.1: acyclic caller-container ancestry."),
 )
 _STRUCTURAL_BASIS = "OBSERVABILITY_AND_REPORTING section 12.2: declared structural diagnostic."
 _CANCEL_BASIS = "GOVERNANCE_AND_HANDOFF section 22.3: private cancellation transport."

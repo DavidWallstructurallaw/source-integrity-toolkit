@@ -91,3 +91,16 @@ class _InputLedger:
     def field_bytes(self, value: object, *, locator: bool = False,
                     identifier: bool = False) -> tuple[int, int]:
         return _string_lengths(value, self.port, locator=locator, identifier=identifier)
+
+    def children_fit(self, count: int) -> None:
+        """Prospective lower bound, not a second count or an allocation permit.
+
+        Used before enumerating a caller container. Actual occurrences are still
+        counted when visited; the same alias therefore consumes its full size.
+        """
+        i = self._index("nodes")
+        if type(count) is not int or count < 0:
+            raise TypeError("invalid_private_counter")
+        if count > _AGGREGATES[i][1] - self._counts[i]:
+            self.port.interrupt("WU9-L08")
+        self.port.check()

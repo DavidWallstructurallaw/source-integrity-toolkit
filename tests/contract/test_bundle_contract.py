@@ -128,8 +128,10 @@ def test_repair_does_not_expand_another_units_immediate_diff():
     paths = ci.phase_guard.plan_paths(ci.ROOT)
     for step in (1, 3, 4, 5, 6, 7, 8, 9):
         unit = f"P2-W{step:02}"
-        assert ci.effective_paths(paths, unit) == paths[unit]
-        for path in ci.P2_W02_R01_PATHS - paths[unit]:
+        # W04 has its own later, separately approved four-path exception.
+        extra = ci.P2_W04_R01_PATHS if step == 4 else frozenset()
+        assert ci.effective_paths(paths, unit) == paths[unit] | extra
+        for path in ci.P2_W02_R01_PATHS - paths[unit] - extra:
             with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
                 ci.check_changed_paths(paths, unit, {path})
 
@@ -141,6 +143,8 @@ def test_repair_cumulative_accounting_retains_only_authorized_extras():
         unit = f"P2-W{step:02}"
         original = set().union(*(paths[f"P2-W{i:02}"] for i in range(1, step + 1)))
         extras = ci.P2_W02_R01_PATHS if step >= 2 else frozenset()
+        if step >= 4:
+            extras = extras | ci.P2_W04_R01_PATHS
         assert ci.effective_paths(paths, unit, cumulative=True) == original | extras
 
 

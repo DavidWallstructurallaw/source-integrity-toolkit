@@ -1,23 +1,22 @@
 {
   "format": "sit-phase2-evidence/0.1",
-  "unit": "P2-W03",
+  "unit": "P2-W04",
   "components": [
     {
       "path": "contracts/bundle.py",
       "first_unit": 2,
-      "implementation": "exact_number_and_scalar_J_primitives; bounded_index_helpers; no_capture",
-      "behavior_tests": "complete_code_head_matrix_passed; final_record_head_gate_in_review_PR",
+      "implementation": "exact_scalars_and_private_capture_representation",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
       "evidence": [
-        "tests/contract/test_normalization_profile.py",
-        "tests/security/test_input_resource_limits.py",
-        "tests/security/test_input_diagnostics.py"
+        "tests/unit/test_value_capture.py",
+        "tests/unit/test_input_decoding.py"
       ]
     },
     {
       "path": "contracts/constants.py",
       "first_unit": 2,
       "implementation": "declarations_and_local_invariants_only",
-      "behavior_tests": "complete_code_head_matrix_passed; final_record_head_gate_in_review_PR",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -28,7 +27,7 @@
       "path": "contracts/evidence.py",
       "first_unit": 2,
       "implementation": "declarations_and_local_invariants_only",
-      "behavior_tests": "complete_code_head_matrix_passed; final_record_head_gate_in_review_PR",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -38,19 +37,17 @@
     {
       "path": "contracts/execution.py",
       "first_unit": 2,
-      "implementation": "private_port_and_safe_stop_transports",
-      "behavior_tests": "complete_code_head_matrix_passed; final_record_head_gate_in_review_PR",
+      "implementation": "existing_stops_plus_fixed_container_cycle_qualifier",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
       "evidence": [
-        "tests/contract/test_normalization_profile.py",
-        "tests/security/test_input_resource_limits.py",
-        "tests/security/test_input_diagnostics.py"
+        "tests/security/test_input_capture.py"
       ]
     },
     {
       "path": "contracts/report.py",
       "first_unit": 2,
       "implementation": "declarations_and_local_invariants_only",
-      "behavior_tests": "complete_code_head_matrix_passed; final_record_head_gate_in_review_PR",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -60,48 +57,48 @@
     {
       "path": "io/input_file.py",
       "first_unit": 4,
-      "implementation": "pending",
-      "behavior_tests": "pending",
-      "evidence": []
+      "implementation": "strict_supplied_utf8_preflight_project_hooks_and_capture_without_file_io",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
+      "evidence": [
+        "tests/unit/test_input_decoding.py",
+        "tests/security/test_input_capture.py"
+      ]
     },
     {
       "path": "runtime/boundary.py",
       "first_unit": 4,
-      "implementation": "pending",
-      "behavior_tests": "pending",
-      "evidence": []
+      "implementation": "private_capture_or_safe_diagnostic_no_input_acceptance",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
+      "evidence": [
+        "tests/security/test_input_capture.py"
+      ]
     },
     {
       "path": "runtime/diagnostics.py",
       "first_unit": 3,
-      "implementation": "fixed_private_diagnostics_and_single_emergency_delivery",
-      "behavior_tests": "complete_code_head_matrix_passed; final_record_head_gate_in_review_PR",
+      "implementation": "existing_diagnostics_plus_fixed_cycle_basis",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
       "evidence": [
-        "tests/contract/test_normalization_profile.py",
-        "tests/security/test_input_resource_limits.py",
-        "tests/security/test_input_diagnostics.py"
+        "tests/security/test_input_capture.py"
       ]
     },
     {
       "path": "runtime/resources.py",
       "first_unit": 3,
-      "implementation": "preparation_global_work_deadline_reserve_and_sticky_stops",
-      "behavior_tests": "complete_code_head_matrix_passed; final_record_head_gate_in_review_PR",
+      "implementation": "unchanged_W03_preparation_global_budget",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
       "evidence": [
-        "tests/contract/test_normalization_profile.py",
-        "tests/security/test_input_resource_limits.py",
-        "tests/security/test_input_diagnostics.py"
+        "tests/security/test_input_resource_limits.py"
       ]
     },
     {
       "path": "validation/limits.py",
       "first_unit": 3,
-      "implementation": "preparation_counter_and_field_length_primitives; no_parser_integration",
-      "behavior_tests": "complete_code_head_matrix_passed; final_record_head_gate_in_review_PR",
+      "implementation": "capture_bytes_depth_nodes_and_prospective_children_bound",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
       "evidence": [
-        "tests/contract/test_normalization_profile.py",
-        "tests/security/test_input_resource_limits.py",
-        "tests/security/test_input_diagnostics.py"
+        "tests/unit/test_value_capture.py",
+        "tests/unit/test_input_decoding.py"
       ]
     },
     {
@@ -121,52 +118,30 @@
     {
       "path": "validation/structure.py",
       "first_unit": 4,
-      "implementation": "pending",
-      "behavior_tests": "pending",
-      "evidence": []
+      "implementation": "exact_type_iterative_capture_only_no_global_validation",
+      "behavior_tests": "local_component_pass_or_retained_prior_evidence; cumulative_hosted_pending",
+      "evidence": [
+        "tests/unit/test_value_capture.py",
+        "tests/security/test_input_capture.py"
+      ]
     }
   ],
-  "public_audit": "unchanged_refusal",
-  "product_implementation": "private_scalar_budget_diagnostic_primitives; full_preparation_unavailable",
   "domain_traces_closed": [],
-  "control_evidence": "W02 accepted by owner and PR #11 merged at d3e314c9da12ad886b09885bbc9b71166c24d10b. Existing R01 path exception and all original tests/guards/workflow remain unchanged.",
+  "control_evidence": "W03 accepted by PR #12 merge e292bf6023a59d3019221a768d9f2d4ac5c4d4cf. P2-W04-R01 expressly approved after intake 9333c4e8868bdd1209cb773904b1d2603f5b152f.",
+  "product_implementation": "private_bounded_capture_only_no_full_preparation_or_input_acceptance",
+  "public_audit": "unchanged_refusal",
   "verification": {
-    "overall": "code_head_passed; successor_record_exact_head_gate_pending",
-    "tested_commit": "0102ff8483250f9420b15f400eb60bc9fff5e627",
-    "run_id": 35418938131,
-    "matrix_rows": 4,
-    "per_row": {
-      "collected": 537,
-      "passed": 537,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "predecessor_test_identities_retained": 374,
-      "new_W03_instances": 163,
-      "separate_successful_subtest_events": 428
+    "status": "candidate; hosted_complete_checkout_and_selected_toolchain_pending",
+    "local": {
+      "python": "3.13.5",
+      "pytest": "9.0.2",
+      "component_passes": 178,
+      "git_dependent_new_tests_not_run_locally": 9,
+      "scope": "partial local workspace; selected component invocation, not cumulative acceptance"
     },
-    "actual_phase1_archive_files": 124,
-    "actual_entry_archive_files": 125,
-    "frozen_files_checked": 20,
-    "installed_modules_checked": 48,
-    "protected_modules": 40,
-    "tracked_files_unchanged": 140,
-    "all_four_complete_artifacts_downloaded_and_checked": true,
-    "prior_failed_run": 35418843995,
-    "authoring_correction": "validation/limits.py owner annotation restored to accepted RUNTIME_BOUNDARY only; no executable/test/guard change",
-    "package_members": {
-      "sdist_regular": 65,
-      "wheel": 55,
-      "rebuilt_member_bytes_match": true
-    },
-    "local_scope": "163 new instances on CPython 3.13.5 / pytest 9.0.2 in partial workspace. Actual full-checkout selected-toolchain evidence comes from hosted runs.",
-    "later_limits_unvalidated": [
-      "WU9-L11 analytical_scope_work",
-      "WU9-L13",
-      "WU9-L14"
-    ],
-    "parser_and_global_admission": "pending_W04_W05",
-    "final_delivery_gate": "Exact successor-head four-row CI plus independently inspected artifacts in review PR before readiness; no circular self-commit claim.",
-    "next_gate": "Owner acceptance/merge of W03; W04 not authorized"
+    "approved_repair": "P2-W04-R01; exactly four named additional paths; fixed container_cycle qualifier only",
+    "preserved_predecessor_test_identities": 537,
+    "final_delivery_gate": "Exact-head four-row cumulative execution, inspected full artifacts, path and tracked-byte verification; then owner review before merge.",
+    "limits": "Capture has no accepted flag. Global schema/reference/time/typed-record and reference-occurrence duties remain W05; all analysis, witnesses, reporting and native I/O remain pending."
   }
 }

@@ -429,3 +429,42 @@ def _lookup_pair(pairs: tuple, key: object, port: _BudgetPort) -> tuple | None:
         return pairs[low]
     port.check()
     return None
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _DecodedObject:
+    """Private temporary decoder pairs, not an admitted caller value.
+
+    Only the project-owned object-pairs hook constructs this after preflight.
+    Arrays inside it may still be decoder lists; they never leave capture.
+    """
+    items: tuple
+
+    def __post_init__(self) -> None:
+        _require(type(self.items) is tuple)
+
+
+def _freeze_array(items: list, port: _BudgetPort) -> _Array:
+    """Already counted, project-owned, frozen child occurrences only."""
+    port.charge(2 * len(items) + 2)
+    result = _Array(tuple(items))
+    port.check()
+    return result
+
+
+def _freeze_object(items: list, port: _BudgetPort) -> _Object:
+    """No duplicate-key overwrite; all child occurrences are already frozen."""
+    port.charge(len(items) + 1)
+    pairs = _sorted_pairs(tuple(items), port)
+    previous = None
+    for key, value in pairs:
+        port.charge(2)
+        if previous is not None and _compare_text(previous, key, port) == 0:
+            port.reject("duplicate_key")
+        # Charge the constructor's separate key/hash and entry validation pass.
+        _byte_work(port, 4 * len(key), 3)
+        previous = key
+    port.charge(1)
+    result = _Object(pairs)
+    port.check()
+    return result

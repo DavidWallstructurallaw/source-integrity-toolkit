@@ -4,65 +4,58 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.8 |
-| Work unit | P2-W04 intake |
-| Owner instruction | 批准并合并 PR #12，再开始 P2-W04 |
-| Approved plan | PHASE_2_PLAN.md revision 0.1, sections 6 and 10 |
+| Revision | 0.9 |
+| Work unit | P2-W04 with approved P2-W04-R01 |
+| Owner instruction | 批准 P2-W04-R01 继续已经授权的 W04 解码与快照捕获工作 |
+| Approved plan | PHASE_2_PLAN.md revision 0.1, sections 3, 6 and 10 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
 | Accepted W03 merge | e292bf6023a59d3019221a768d9f2d4ac5c4d4cf |
-| Entry tree | ad16a08dc2382b3d007038c4861d010f52a15e4b |
+| Accepted entry tree | ad16a08dc2382b3d007038c4861d010f52a15e4b |
+| W04 intake record | 9333c4e8868bdd1209cb773904b1d2603f5b152f |
 | Branch | phase2/p2-w04 |
-| Status | Entry dependency review blocked at proposed P2-W04-R01; implementation has not begun |
-| W04 execution | Authorized within the existing plan; additional repair paths await explicit approval |
+| Status | Local component candidate passed; full exact-head hosted verification pending |
 | W04 acceptance / W05 execution | Not granted |
 
-## 1. Accepted predecessor and preserved history
+## 1. Authority and preserved history
 
-PR #12 was merged with expected-head protection at the owner's instruction. The accepted head is 4189edc62a9c321dd6eed71c5106cea7311907e6. Its cumulative runs 35419147787 and 35419301845 were confirmed successful before merge. The merge's tree is identical to the reviewed tree and its message contains exactly one SIT-Phase-Unit: P2-W03 footer. W03 is accepted and W04 execution is authorized under the existing plan.
+PR #12 accepted W03 and merged its exact reviewed tree. The current instruction expressly approves the four additional paths proposed in progress revision 0.8 and continues W04 only. That unabridged intake finding remains at 9333c4e8868bdd1209cb773904b1d2603f5b152f. The complete W03 record, initial annotation failure, correction, final 537-test four-row pass and 428 separate subtest events remain at 4189edc62a9c321dd6eed71c5106cea7311907e6 and PR #12. No historical test or source outcome is rewritten.
 
-The unabridged preceding progress revision 0.7 and implementation evidence remain at 4189edc62a9c321dd6eed71c5106cea7311907e6. PR #12 records the final exact-head 537-instance four-row verification and its separate 428 subtest events. The initial owner-annotation failure and its correction remain in that history. This intake review does not rerun or relabel those results.
+The attached theory papers do not change the frozen engineering baseline or this work-unit scope. No paper text, PDF, new metric or theory amendment is imported.
 
-The attached theory sources do not replace any frozen specification. The present issue concerns an implementation seam and its immediate file allowance, not a new theory or public diagnostic rule.
+## 2. Exact repair and implementation scope
 
-## 2. P2-W04 entry finding: a required cycle rejection has no truthful current qualifier
+P2-W04-R01 adds only container_cycle to the closed private qualifier vocabulary and one fixed REPOSITORY_ARCHITECTURE section 17.1 diagnostic basis. Public input_constraint_violation, stop states, payload-free messages and null locations remain unchanged. runtime/resources.py is untouched. Missing and unknown qualifiers still fail closed.
 
-REPOSITORY_ARCHITECTURE section 17.1 requires an active-ancestor container cycle to be classified as input_constraint_violation. PHASE_2_PLAN section 10 requires that detection during bounded caller-value capture. This concerns a Python container referencing itself through the active ancestry, not a valid cycle in evidence relationships and not a repeated non-cyclic alias.
+The CI driver recognizes exactly the four approved R01 paths as W04 immediate permissions. Earlier/later units receive no new immediate permissions; cumulative accounting retains the actual approved deltas. Exactly the two existing immediate/cumulative permission regression bodies in test_bundle_contract.py are refined. Their identities and every other body, including the original observer-preservation check, remain unchanged. New tests independently check these boundaries and the exact constant-only product repair against pinned entry blobs.
 
-The accepted contracts/execution.py declares six private constraint qualifiers: exact_integer_range, unicode_scalar, identifier_ascii, identifier_length, string_length and locator_length. runtime/resources.py requires one of these whenever input_constraint_violation is requested. runtime/diagnostics.py accepts the corresponding six fixed normative bases. None describes a container cycle.
+The complete candidate uses fifteen paths within the twelve original allowed paths plus four approved exception paths. tests/contract/test_normalization_profile.py is not changed; its existing scalar tests remain cumulative. Seven product modules change. Eleven slots are cumulatively promoted; thirty-seven installed modules retain Phase 1 bytes. No schema, field map, frozen specification/plan, public API/CLI/export, existing safety observer, dependency, workflow, package configuration, boundary checker, fixture, catalog or analytical expectation changes.
 
-A read-only local reproduction against exact accepted source blobs confirmed the seam behavior. Calling the current budget rejection with input_constraint_violation and either no qualifier or the proposed container_cycle qualifier results in execution_failed with input not_completed. Using an existing number/Unicode qualifier instead yields structural rejection with the wrong normative basis. Neither is an acceptable implementation of the cycle rule. The caller-value parser does not yet exist; this is a manually established downstream diagnostic-seam reproduction, not a claim that a completed parser was tested.
+## 3. Bounded capture implementation
 
-| Exact file inspected and executed locally | Accepted Git blob | Bytes |
-|---|---|---:|
-| src/source_integrity_toolkit/contracts/execution.py | a5d66263f572c2b888d148727b97797a3aa0a521 | 4893 |
-| src/source_integrity_toolkit/runtime/resources.py | f27b66d3a2e073aded7f31c6fb30ebff4db90d93 | 4838 |
-| src/source_integrity_toolkit/runtime/diagnostics.py | 1873edfdf9379991cb4750b6a8e41f8dd7ccb85c | 5354 |
+The private _prepare_value and _prepare_utf8 seams create their own fixed W03 budget and input ledger. They currently return only _CapturedBundle or a fixed safe diagnostic. _CapturedBundle retains exactly tree and source_mode and has no accepted/pass field. Whole preparation, PC01, global structure/reference/time checks and scope planning remain W05. Public audit entry points are unchanged refusals.
 
-All three local copies matched their connected-repository Git blob identities before execution. The reproduction ran under CPython 3.13.5 in a partial local workspace. Full local Git access failed DNS resolution. No complete-checkout, selected-toolchain or W04 cumulative-test claim is made from this reproduction.
+The bytes path accepts exact immutable bytes only. It checks actual raw size before strict UTF-8 decoding. A separately charged finite grammar/lexical preflight checks the complete input, depth, value nodes, decoded string/key length, escape/surrogate correctness, number-token length and exact scalar range before full JSON tree construction. No valid prefix can suppress an invalid suffix. The bounded decoder pass is prepaid independently. All numeric and duplicate-key hooks are project-owned; duplicate comparison occurs after escape decoding. Nonstandard JSON constants, BOMs, malformed UTF-8, lone surrogates and unsafe exact numbers are not silently repaired. No paths, streams or callbacks are accepted.
 
-## 3. Proposed bounded repair P2-W04-R01
+Caller capture uses an explicit depth-bounded frame stack and active-container identity set. Exact types are checked before custom operations. Each non-cyclic alias is copied and counted as another occurrence. Active-ancestor cycles use the approved cycle qualifier. The original mutable containers are not retained in the immutable tree. Object keys sort by the existing charged scalar ordering; arrays keep their supplied order. Missing keys, explicit nulls, empty collections, booleans, numeric source categories and source-native states remain distinct.
 
-This proposal is not yet authorized. Preserve the existing public input_constraint_violation code and all stop states. Add one private constant qualifier, container_cycle, and its fixed REPOSITORY_ARCHITECTURE section 17.1 basis. Do not allow arbitrary qualifiers or source-supplied diagnostic text. The existing resources implementation already imports the constraint vocabulary and does not need modification for this proposal.
+Observable size/iterator inconsistencies become safe execution failures. The caller must keep the reachable graph quiescent; arbitrary same-size concurrent mutation, hostile same-process mutation and debugger access are not claimed detectable or isolated. This is bounded ordinary execution, not a hard real-time or resident-memory guarantee.
 
-The four additional immediate write paths requested are:
+J size is accumulated without constructing a complete JSON serialization for caller values. Supplied-byte size remains its raw byte count. Decoded strings and escaped J size remain separate. Repeated passes charge work but do not double-count one raw payload's value nodes. A prospective child-count lower bound rejects impossible wide caller containers before expansion. All generic nested content, including extensions and currently unselected records, is visited. Typed collection/reference-occurrence integration and field-role-specific validation remain explicit W05 obligations; their existing ledger primitives are not presented as completed capture-time semantic validation.
 
-| Path outside the original W04 allowlist | Exact proposed purpose |
-|---|---|
-| src/source_integrity_toolkit/contracts/execution.py | Add the one fixed container_cycle qualifier; preserve existing transport fields, states and validation |
-| src/source_integrity_toolkit/runtime/diagnostics.py | Add the matching fixed cycle basis; preserve constant messages, null locations and no-payload rules |
-| tests/scaffold/test_ci_contract.py | Record exactly these four owner-authorized W04 repair paths, retaining cumulative accounting without granting other units new immediate permissions |
-| tests/contract/test_bundle_contract.py | Refine only the two existing immediate/cumulative exception-accounting regressions for the new explicit W04 exception; retain W02's exact two-path exception, all test identities and observer-preservation assertions |
+No graph-relationship cycle analysis, evidence interpretation, identity merge, report, score, native loading, source I/O, model call or persistent cache is introduced. All 228 domain-analysis obligations and analytical Trace closures remain pending.
 
-The last test file is included deliberately: its current R01 regression asserts every other unit has no exception. Changing only the CI driver would therefore contradict that existing assertion. The refinement must explicitly separate the two named owner authorizations instead of removing the no-expansion requirement.
+## 4. Actual local evidence and facility basis
 
-New cycle, repeated-alias, missing/unknown-qualifier, canary, state and scope-counterexample regressions belong to W04's already allowed test paths, especially tests/security/test_input_capture.py. No existing security observer needs weakening or modification. Retain all 537 predecessor test identities, supplement them with the new tests, and execute the complete four-profile matrix before claiming W04 completion.
+Local reconstruction of the required accepted source files was checked against their Git blob identities before editing. Full local Git clone still failed DNS resolution; this workspace is partial and lacks the historical Git database. The actual package/entry/frozen checks must therefore run in GitHub Actions, not be inferred from these local results.
 
-No frozen specification, approved plan, schema, fixture, expected analytical result, dependency pin, workflow permission, public API/CLI or boundary checker is part of this requested exception. The repair does not authorize graph cycle analysis, new public diagnostic codes, native loading or source access.
+On CPython 3.13.5 with pytest 9.0.2, all 178 selected new component instances passed. Nine additional Git-dependent R01 scope/preservation tests were explicitly not run locally; the hosted suite must collect and execute them, along with every one of the 537 predecessor identities. No hosted skip or deselection is permitted. New tests include exact-byte/scalar pairs, duplicate escaped keys, suffix errors, surrogate pairs, raw-size/depth/string limits, alias expansion, mutation faults, cancellation, real deadline checks, safe canaries and isolated source-I/O/network/native probes. Existing normalization tests are unchanged.
 
-## 4. Actual write scope and stopping point
+Two local authoring-test issues were corrected before remote delivery: pytest attempted to stringify a huge integer for a parameter ID, now given an explicit fixed ID; the new isolated DNS counterexample required encodings.idna to be loaded before observation, now explicitly preloaded. No product rule, existing test or safety hook was weakened. The first executed component run had 177 passes and one DNS-probe failure; the corrected run passed all 178. Local collection/failure logs remain retained.
 
-This intake changes PHASE_2_PROGRESS.md only on the W04 branch. All 48 installed module bodies, existing tests, schemas, fixtures, plans, catalogs, manifests, policy and implementation-evidence files remain at the accepted entry bytes. The unchanged module policy still describes the accepted W03 implementation; no W04 slot has been promoted.
+Primary facility references checked for the implementation were Python 3.11 json documentation (numeric/object-pairs hooks, permissive defaults and the untrusted-input warning) and built-in types documentation (strict decoding and dictionary-view mutation limits): https://docs.python.org/3.11/library/json.html and https://docs.python.org/3.11/library/stdtypes.html. These explain available facilities; the frozen project specifications determine admission semantics, numerical spelling, limits and errors.
 
-No W04 parser/capture implementation, partial-success substitute or diagnostic workaround is committed. A W04 delivery PR has not been opened, because the candidate stops before implementation and its live policy has not advanced. Hosted checks triggered by the preceding authorized main merge concern the accepted W03 tree, not W04 behavior.
+## 5. Hosted acceptance gate and stop
 
-Plan section 6 requires a named authorization for repairs outside the current allowlist. Stop for approval of P2-W04-R01, then implement that bounded vocabulary/scope repair together with the already authorized W04 capture work. Preserve the error taxonomy, all limits, independent test expectations and the complete history. W05 remains unauthorized.
+The exact candidate must pass all four original Linux/Windows and Python 3.11/3.13 profiles with the original reviewed dependencies. Inspect complete artifacts, exact-head metadata, raw collection/JUnit identities, all 537 predecessor tests, entry archives, immediate/cumulative scope, twenty frozen files, forty-eight modules, unchanged tracked bytes, packaging and clean installation. Do not substitute expected test counts or an older code-head run for final evidence.
+
+Keep the W04 PR draft until these checks are complete. Owner acceptance and merge remain separate. W05 is not authorized. No release or public successful audit may be inferred from this capture candidate.

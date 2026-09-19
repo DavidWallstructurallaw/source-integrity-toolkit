@@ -1,10 +1,49 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Non-operational Phase 1 slot: runtime/boundary.
+"""Owner: RUNTIME_BOUNDARY.
 
-Owner: RUNTIME_BOUNDARY.
-Authority: REPOSITORY_ARCHITECTURE.md sections 5-10 and 16-20;
-PHASE_1_PLAN.md sections 4 and 6.
-Specification adopted; scaffold slot present; behavior unimplemented.
-No validation, traversal, scoring, rendering, I/O or native binding is provided.
+Private W04 capture seams, not public ingestion or completed preparation.
+Success returns only _CapturedBundle, which has no accepted/pass flag. W05 must
+complete all global validation and scope planning before recording acceptance.
+No file access, options, callbacks, report, cache or public export is added.
 """
+from ..contracts.execution import _PreparationAborted, _AuditCancelled
+from ..io.input_file import _decode_utf8
+from ..validation.structure import _capture_tree
+from ..validation.limits import _InputLedger
+from .resources import _new_budget
+from .diagnostics import _diagnostic, _emergency_diagnostic
+
+
+def _capture(value: object, *, supplied_utf8: bool):
+    # Mode is a tool-owned constant selected by the two private entry points.
+    # The budget and ledger are never supplied by source data or callers.
+    budget = None
+    try:
+        budget = _new_budget()
+        mode = "supplied_utf8" if supplied_utf8 else "constructed_value"
+        ledger = _InputLedger(budget, mode)
+        try:
+            result = _decode_utf8(value, ledger) if supplied_utf8 else _capture_tree(value, ledger)
+            budget.check()
+            return result
+        except (_PreparationAborted, _AuditCancelled):
+            raise
+        except KeyboardInterrupt:
+            budget.cancel()
+        except Exception:
+            budget.fail()
+    except (_PreparationAborted, _AuditCancelled) as cause:
+        # Return a constant diagnostic, never the raw exception or a partial
+        # snapshot. A constructor failure can precede assignment of the budget.
+        return _diagnostic(cause) if budget is None else _emergency_diagnostic(budget)
+
+
+def _prepare_value(value: object):
+    """W04: capture an exact built-in root dict; full preparation is pending."""
+    return _capture(value, supplied_utf8=False)
+
+
+def _prepare_utf8(raw: object):
+    """W04: capture already supplied exact bytes; no file-open claim."""
+    return _capture(raw, supplied_utf8=True)

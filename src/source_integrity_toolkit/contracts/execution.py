@@ -72,7 +72,7 @@ _STRUCTURAL_CODES = (
 )
 _CONSTRAINT_CODES = (
     "exact_integer_range", "unicode_scalar", "identifier_ascii",
-    "identifier_length", "string_length", "locator_length",
+    "identifier_length", "string_length", "locator_length", "container_cycle",
 )
 _PREPARATION_LIMIT_IDS = (
     "WU9-L01", "WU9-L02", "WU9-L03", "WU9-L04", "WU9-L05", "WU9-L06",
