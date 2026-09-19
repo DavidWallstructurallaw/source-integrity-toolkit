@@ -4,84 +4,85 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.10 |
-| Work unit | P2-W04 with approved P2-W04-R01 |
-| Owner instruction | 批准 P2-W04-R01 继续已经授权的 W04 解码与快照捕获工作 |
-| Approved plan | PHASE_2_PLAN.md revision 0.1, sections 3, 6 and 10 |
+| Revision | 0.11 |
+| Work unit | P2-W05 intake |
+| Owner instruction | 批准并合并 PR #13，再进入 P2-W05 |
+| Approved plan | PHASE_2_PLAN.md revision 0.1, sections 2.2, 3, 5-6 and 11 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
-| Accepted W03 merge | e292bf6023a59d3019221a768d9f2d4ac5c4d4cf |
-| Accepted entry tree | ad16a08dc2382b3d007038c4861d010f52a15e4b |
-| W04 intake record | 9333c4e8868bdd1209cb773904b1d2603f5b152f |
-| Branch | phase2/p2-w04 |
-| Status | Code candidate passed all four hosted profiles; successor-record exact-head gate pending in PR #13 |
-| W04 acceptance / W05 execution | Not granted |
+| Accepted W04 head | 80ea8ab34f5881dcb8b6a307391464c752aa6310 |
+| Accepted W04 merge | a1f102d82b7321f47df98f2672b91491cbd7fc9f |
+| Entry tree | 351ac074ac2d988a59758b6584168fef9af989a6 |
+| Branch | phase2/p2-w05 |
+| Status | Intake blocked at proposed P2-W05-R01 test-transition scope; W05 implementation has not begun |
+| W05 execution | Authorized within the plan; extra repair paths require explicit approval |
+| W05 acceptance / W06 execution | Not granted |
 
-## 1. Authority and preserved history
+## 1. Accepted predecessor and preserved evidence
 
-PR #12 accepted W03 and merged its exact reviewed tree. The current instruction expressly approves the four additional paths proposed in progress revision 0.8 and continues W04 only. That unabridged intake finding remains at 9333c4e8868bdd1209cb773904b1d2603f5b152f. The complete W03 record, initial annotation failure, correction, final 537-test four-row pass and 428 separate subtest events remain at 4189edc62a9c321dd6eed71c5106cea7311907e6 and PR #12. No historical test or source outcome is rewritten.
+PR #13 was merged with expected-head protection after confirming its reviewed head and successful cumulative runs 35422618560 and 35422727694. The resulting merge tree is exactly the reviewed W04 tree. The merge message records owner acceptance and contains exactly one SIT-Phase-Unit: P2-W04 footer. This accepts W04 and authorizes W05 only.
 
-The attached theory papers do not change the frozen engineering baseline or this work-unit scope. No paper text, PDF, new metric or theory amendment is imported.
+The complete W04 progress revision 0.10 and implementation evidence remain at 80ea8ab34f5881dcb8b6a307391464c752aa6310. PR #13 records its final-head verification, 724 tests per profile and 428 separately counted subtest events. W04's R01 cycle-diagnostic repair, earlier intake and local authoring corrections remain in that history. No failed result or prior approval is rewritten.
 
-## 2. Exact repair and implementation scope
+Attached theory papers do not replace a frozen engineering source or authorize a new field, diagnostic, analytical algorithm or licensing change. This intake finding concerns the transition between component tests and their planned integration.
 
-P2-W04-R01 adds only container_cycle to the closed private qualifier vocabulary and one fixed REPOSITORY_ARCHITECTURE section 17.1 diagnostic basis. Public input_constraint_violation, stop states, payload-free messages and null locations remain unchanged. runtime/resources.py is untouched. Missing and unknown qualifiers still fail closed.
+## 2. Finding: W04 tests still target the seams that W05 must complete
 
-The CI driver recognizes exactly the four approved R01 paths as W04 immediate permissions. Earlier/later units receive no new immediate permissions; cumulative accounting retains the actual approved deltas. Exactly the two existing immediate/cumulative permission regression bodies in test_bundle_contract.py are refined. Their identities and every other body, including the original observer-preservation check, remain unchanged. New tests independently check these boundaries and the exact constant-only product repair against pinned entry blobs.
+Plan section 2.2 names _prepare_value and _prepare_utf8 as the private preparation entry points. Section 10 allows them temporarily to return captured data without acceptance while W05 remains pending. Section 11 requires the full captured bundle's structural, identity, reference, endpoint, time and scope-plan checks to finish before acceptance.
 
-The complete candidate uses fifteen paths within the twelve original allowed paths plus four approved exception paths. tests/contract/test_normalization_profile.py is not changed; its existing scalar tests remain cumulative. Seven product modules change. Eleven slots are cumulatively promoted; thirty-seven installed modules retain Phase 1 bytes. No schema, field map, frozen specification/plan, public API/CLI/export, existing safety observer, dependency, workflow, package configuration, boundary checker, fixture, catalog or analytical expectation changes.
+The accepted runtime/boundary.py currently routes both names directly to _capture. Its docstrings explicitly identify this as W04-only capture. Three W04 test files call these names and intentionally require a _CapturedBundle for payloads that are valid capture inputs but invalid complete dossiers.
 
-## 3. Bounded capture implementation
+| Source-bound witness | Accepted W04 expectation | Required full-preparation treatment |
+|---|---|---|
+| test_input_decoding.py::test_byte_and_value_capture_have_equal_content_for_exact_values, source0 | Both {} and its UTF-8 form return _CapturedBundle | The empty root omits all nine required envelope fields in lineage section 2; it cannot be accepted as a dossier |
+| test_input_decoding.py::test_captured_unknown_fields_are_not_falsely_claimed_schema_valid | The object containing not_a_declared_field and contract_version=wrong is captured without an acceptance flag | The declared contract label and closed root fields must be checked; full preparation cannot return this as an admitted dossier |
+| test_value_capture.py::test_source_relationship_cycles_and_control_words_remain_inert_data | A generic object with relations/instructions/state remains inert captured data | Its generic keys do not constitute the canonical dossier envelope; a separate well-formed cyclic-evidence test is needed for full validation |
+| test_input_capture.py::test_isolated_capture_has_no_source_io_network_or_native_loading | The isolated probe expects captured objects from generic path/url/nested inputs | Preserve this capture isolation probe, and separately test complete preparation with valid canonical data and invalid inputs |
 
-The private _prepare_value and _prepare_utf8 seams create their own fixed W03 budget and input ledger. They currently return only _CapturedBundle or a fixed safe diagnostic. _CapturedBundle retains exactly tree and source_mode and has no accepted/pass field. Whole preparation, PC01, global structure/reference/time checks and scope planning remain W05. Public audit entry points are unchanged refusals.
+These W04 expectations are correct at the capture layer. The missing element is their transition to a clearly named capture-only target when the existing _prepare entry points acquire full W05 behavior. The original W05 allowlist has seventeen paths and omits all three W04 test files. Silently keeping _prepare capture-only and calling W05 complete would leave the planned integration unfinished. Special-casing tests, returning partial captures after structural failure, or dropping existing identities would violate the plan.
 
-The bytes path accepts exact immutable bytes only. It checks actual raw size before strict UTF-8 decoding. A separately charged finite grammar/lexical preflight checks the complete input, depth, value nodes, decoded string/key length, escape/surrogate correctness, number-token length and exact scalar range before full JSON tree construction. No valid prefix can suppress an invalid suffix. The bounded decoder pass is prepaid independently. All numeric and duplicate-key hooks are project-owned; duplicate comparison occurs after escape decoding. Nonstandard JSON constants, BOMs, malformed UTF-8, lone surrogates and unsafe exact numbers are not silently repaired. No paths, streams or callbacks are accepted.
+This is a test-transition scope gap in the implementation plan/test arrangement. It is not evidence that W04's accepted capture implementation failed, and no unimplemented W05 validator has been reported as an executed failure.
 
-Caller capture uses an explicit depth-bounded frame stack and active-container identity set. Exact types are checked before custom operations. Each non-cyclic alias is copied and counted as another occurrence. Active-ancestor cycles use the approved cycle qualifier. The original mutable containers are not retained in the immutable tree. Object keys sort by the existing charged scalar ordering; arrays keep their supplied order. Missing keys, explicit nulls, empty collections, booleans, numeric source categories and source-native states remain distinct.
+## 3. Actual intake checks and their limits
 
-Observable size/iterator inconsistencies become safe execution failures. The caller must keep the reachable graph quiescent; arbitrary same-size concurrent mutation, hostile same-process mutation and debugger access are not claimed detectable or isolated. This is bounded ordinary execution, not a hard real-time or resident-memory guarantee.
+The current plan, capture wrapper, three affected tests, CI exception logic and transition ledger were read from the connected repository at the accepted merge. Complete local bytes for PHASE_2_PLAN.md and CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md were checked against their connected Git blob identities and the accepted artifact hashes:
 
-J size is accumulated without constructing a complete JSON serialization for caller values. Supplied-byte size remains its raw byte count. Decoded strings and escaped J size remain separate. Repeated passes charge work but do not double-count one raw payload's value nodes. A prospective child-count lower bound rejects impossible wide caller containers before expansion. All generic nested content, including extensions and currently unselected records, is visited. Typed collection/reference-occurrence integration and field-role-specific validation remain explicit W05 obligations; their existing ledger primitives are not presented as completed capture-time semantic validation.
+| File | Git blob | SHA-256 |
+|---|---|---|
+| PHASE_2_PLAN.md | 17b91fd2851006d8bd5c14f6ff922a9d8abbeb0c | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
+| CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md | a08e94bee1e4c8aaa4a47fcdd79b1e8db0fe6911 | 32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374 |
 
-No graph-relationship cycle analysis, evidence interpretation, identity merge, report, score, native loading, source I/O, model call or persistent cache is introduced. All 228 domain-analysis obligations and analytical Trace closures remain pending.
+The four stored final W04 artifact ZIPs from run 35422618560 were rechecked against their recorded service byte counts and SHA-256. Each contains the correct W04 head, 724 collected identities and 724 direct successful JUnit testcase elements. Five selected witness identities, including both empty-root encodings, passed in every profile. The four 143-file checkout hash maps agree. The sorted 724-node list, joined by LF with one final LF, has SHA-256 4013eaf4cc7ee9c9c8b413300e49ad9ee98bd80db8f43437ac7868c431613a46.
 
-## 4. Actual local evidence and facility basis
+An intake-only check extracted the nine required root keys from the frozen lineage table and identified the missing/undeclared keys in the source-bound examples above. It did not select a new error-precedence rule. This is source-contract compatibility checking plus reinspection of accepted W04 evidence, not a new W05 parser/validator test or a new four-profile run.
 
-Local reconstruction of the required accepted source files was checked against their Git blob identities before editing. Full local Git clone still failed DNS resolution; this workspace is partial and lacks the historical Git database. The actual package/entry/frozen checks must therefore run in GitHub Actions, not be inferred from these local results.
+A full local Git clone was attempted and failed to resolve github.com. This environmental limitation does not cause the present scope gate and does not alter the connected merge result. No complete local checkout or new selected-toolchain execution is claimed.
 
-On CPython 3.13.5 with pytest 9.0.2, all 178 selected new component instances passed. Nine additional Git-dependent R01 scope/preservation tests were explicitly not run locally; the hosted suite must collect and execute them, along with every one of the 537 predecessor identities. No hosted skip or deselection is permitted. New tests include exact-byte/scalar pairs, duplicate escaped keys, suffix errors, surrogate pairs, raw-size/depth/string limits, alias expansion, mutation faults, cancellation, real deadline checks, safe canaries and isolated source-I/O/network/native probes. Existing normalization tests are unchanged.
+## 4. Proposed P2-W05-R01: preserve component tests while integrating preparation
 
-Two local authoring-test issues were corrected before remote delivery: pytest attempted to stringify a huge integer for a parameter ID, now given an explicit fixed ID; the new isolated DNS counterexample required encodings.idna to be loaded before observation, now explicitly preloaded. No product rule, existing test or safety hook was weakened. The first executed component run had 177 passes and one DNS-probe failure; the corrected run passed all 178. Local collection/failure logs remain retained.
+This proposal awaits explicit owner authorization. Keep a plainly named private capture-only seam over the existing capture implementation. Redirect W04 component tests to that seam without changing their inputs, numerical expectations, cycle/alias rules, resource classifications, immutability requirements or event-interception assertions. Complete _prepare_value and _prepare_utf8 as the real full-preparation seams under the already authorized W05 code paths. No public mode switch or caller-controlled validation bypass is introduced.
 
-Primary facility references checked for the implementation were Python 3.11 json documentation (numeric/object-pairs hooks, permissive defaults and the untrusted-input warning) and built-in types documentation (strict decoding and dictionary-view mutation limits): https://docs.python.org/3.11/library/json.html and https://docs.python.org/3.11/library/stdtypes.html. These explain available facilities; the frozen project specifications determine admission semantics, numerical spelling, limits and errors.
+The five additional immediate write paths requested are:
 
-## 5. Complete hosted code-head evidence
+| Path outside W05's original allowlist | Exact purpose |
+|---|---|
+| tests/unit/test_input_decoding.py | Explicitly retarget capture-only tests to the capture layer; preserve test names, parameter identities, payloads and all existing capture expectations |
+| tests/unit/test_value_capture.py | Retarget the same component boundary, retaining hostile-type, alias, cycle, quota, mutation and immutable-copy checks |
+| tests/security/test_input_capture.py | Retarget capture probes, including their isolated process; preserve the audit-hook body and real negative-control events; refine only named scope/preservation regressions needed to recognize this authorization and additive W05 tests |
+| tests/scaffold/test_ci_contract.py | Add exactly these five P2-W05-R01 paths to W05 immediate scope and retain them only for cumulative accounting afterward; keep prior W02/W04 exceptions and all workflow/collection/guard controls |
+| phase2/transition_ledger.md | Append the explicit old-test-to-component mapping and new full-preparation coverage; preserve historical rows and results |
 
-Workflow 35422372556, attempt 1, executed the exact code head 940c34f382fd46444f70e4fee64dad6e2ebc9ee1 and tree 4859d9d1eeb6e1c3d220bb1f20dc8682da6d9285. All four jobs and required preflight, dependency, cumulative test, evidence and packaging stages succeeded. This was the first hosted W04 run; no hosted failure, test skip or exception outside R01 was introduced.
+Within W05's already allowed tests/contract/test_bundle_contract.py, refine the two existing immediate/cumulative exception-accounting tests for this named authorization. The W04 test that pins old test_bundle_contract bodies must continue to verify the original identities and unchanged unrelated assertions, while allowing explicitly identified W05 additions. It cannot be removed or replaced with a count-only check. Original R01 constant-only checks on execution.py and diagnostics.py remain intact; neither product path is requested by this proposal.
 
-| Profile | Actual CPython | Job ID | Collected / passed | Failures / errors / skips |
-|---|---|---:|---:|---|
-| Ubuntu 24.04 | 3.11.16 | 105842278798 | 724 / 724 | 0 / 0 / 0 |
-| Ubuntu 24.04 | 3.13.15 | 105842278788 | 724 / 724 | 0 / 0 / 0 |
-| Windows Server 2025 | 3.11.9 | 105842278846 | 724 / 724 | 0 / 0 / 0 |
-| Windows Server 2025 | 3.13.15 | 105842278812 | 724 / 724 | 0 / 0 / 0 |
+New integration tests in W05's existing allowed paths must distinguish the two levels explicitly: the empty or unknown-field object can be captured, but complete preparation rejects it; a valid sparse canonical dossier can complete preparation only after every required check; all four unchanged H7 inputs must pass actual full preparation without importing oracle values into product code. Preserve attributions, lawful gaps and valid evidence cycles. A declaration or successful preparation must never become an independence or truth certificate.
 
-Each profile retained all 537 predecessor test identities and executed 187 new instances. The nine Git-dependent new R01 instances omitted from the explicitly partial local run all executed and passed. Raw JUnit contains 724 direct testcase elements and 428 separate successful subtest events, for 1,152 reported events. Collection identities were independently mapped to every raw JUnit classname/name; no count was inferred merely from the summary. The four rows repeat the same suite rather than representing 2,896 distinct designs.
+Retain all 724 predecessor collected identities, add new tests, preserve real source-I/O/network/native counterexamples and execute the complete four-profile cumulative suite before W05 delivery. No blanket skip, xfail, deselection, generic-exception pass, test-dependent product behavior or hidden monkeypatch may simulate success.
 
-| Profile | Artifact ID | ZIP bytes | SHA-256 |
-|---|---:|---:|---|
-| Ubuntu 3.11 | 10577504845 | 58994 | 0f28800fdbc480100eda65b9c896dab3a1ca92381797611daa20371ad4c0acd6 |
-| Ubuntu 3.13 | 10577454974 | 58752 | 7291170d05d5b7e15aaed39578c05a97ca9fd5c72249109ceec880c17966a4dd |
-| Windows 3.11 | 10577975307 | 65132 | 49afd107b6bd5e2b5080d8c6a58db83987af2ab46d73f630701308e615365547 |
-| Windows 3.13 | 10577824584 | 64932 | a689d85f30ba44cf599a058cc330ff362a70b8927b8a754c46a2e7b11eb34961 |
+No frozen specification, approved plan, input schema, fixture, analytical oracle, dependency version, workflow permission, boundary checker, public API/CLI or additional installed package path is included in the repair. The original seventeen-path W05 implementation authority otherwise remains unchanged.
 
-All four complete artifact ZIPs were downloaded, matched to service byte counts and SHA-256, and inspected for environment/head/run identity, raw collection/JUnit, dependency versions, full Git archive checks, immediate/cumulative scope, before/after guards and tracked hashes. The actual 124-file Phase 1 and 125-file Phase 2 entry snapshots were recomputed in hosted full checkouts. The twenty-file freeze and forty-eight-module checks passed both before and after tests. Exactly fifteen paths differ from accepted W03, with no deletions or renames; every other accepted tracked file remains byte-identical. All 143 tracked hashes agree across profiles and remained unchanged during execution. All fifteen local authored files match their hosted checkout bytes.
+## 5. Actual write scope and stopping point
 
-Reviewed setuptools 84.0.0 and pytest 9.1.1, plus the original supporting dependency pins, were installed and checked in every profile. All package tests passed: 65 regular source-distribution members, 55 wheel members, clean offline installation without developer dependencies, and equal original/rebuilt wheel member contents. No whole compressed-archive reproducibility or native-platform security certification is asserted.
+This intake changes PHASE_2_PROGRESS.md only on phase2/p2-w05. All 48 installed product modules, existing tests, policy, implementation evidence, schemas, catalogs, fixtures, frozen documents and plans retain their accepted W04 bytes. The unchanged policy continues to describe W04; no W05 module has been promoted.
 
-The original generic capture, scalar and safety tests passed alongside the R01 exact-change regressions. The latter confirm that the two transport files contain precisely the new cycle constant/basis and that only two permitted old scope-test bodies changed. All old observer assertions remain intact. These are finite tests and static checks, not proof against arbitrary interpreter or same-principal compromise.
+No W05 validator, incomplete-success workaround, test migration or new public interface is committed. No W05 review PR has been opened and no W05 CI result is claimed. The preceding authorized main merge may run the existing W04 CI normally; it cannot certify W05 behavior.
 
-## 6. Successor record and final stop
-
-This successor changes PHASE_2_PROGRESS.md and phase2/implementation_evidence.json only. Its own exact-head four-row run and complete inspected artifact identities must be recorded in PR #13 before readiness. The code-head evidence above does not predeclare that successor result. External PR recording avoids circular self-commit references inside the records.
-
-Keep the W04 delivery unmerged until the final-head gate passes and the owner accepts it. W05 remains unauthorized. Capture still cannot establish PC01/input acceptance or a public successful audit. Global structural, identity, reference, type, time and scope-plan integration; all analysis, witness/report operations, native I/O and release remain pending. No frozen specification, input schema, analytical oracle, dependency pin or workflow permission was altered.
+Stop for the named five-path repair authorization under plan sections 6 and 17. After approval, perform that bounded migration together with the already authorized W05 validation work. Any separate specification/fixture defect or additional out-of-scope repair found later retains its own stop rule. W06 and release remain unauthorized.
