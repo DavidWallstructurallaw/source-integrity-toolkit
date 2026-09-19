@@ -2,22 +2,32 @@
 # SPDX-License-Identifier: Apache-2.0
 """Owner: RUNTIME_BOUNDARY.
 
-Authority-free private port and payload-limited declaration types. No budget,
-clock, cancellation trigger, decoder or preparation operation is implemented.
-Messages cannot carry arbitrary caller content. Construction is internal and
-cannot grant input acceptance. Public audit functions remain exact refusals.
+Private authority-free execution port and payload-free stopping vocabulary.
+Ports are supplied only by project-owned runtime construction, never evidence,
+public options or callbacks. Type hints do not authenticate an arbitrary port.
+No input acceptance, audit envelope, filesystem or clock is constructed here.
 """
 from dataclasses import dataclass
 from typing import Protocol
-from .bundle import _require
+
+
+def _require(ok: bool) -> None:
+    if not ok:
+        raise TypeError("invalid_private_representation")
 
 
 class _BudgetPort(Protocol):
-    """Only project-owned instances from the later runtime may supply this port."""
+    """Private precondition: the runtime has supplied its own budget instance."""
     def charge(self, units: int) -> None:
         ...
 
     def check(self) -> None:
+        ...
+
+    def reject(self, code: str, constraint: str | None = None) -> None:
+        ...
+
+    def interrupt(self, limit_id: str) -> None:
         ...
 
 
@@ -52,3 +62,65 @@ class _AuditCancelled(Exception):
     def __post_init__(self) -> None:
         _require(type(self.input_state) is str and
                  self.input_state in ("accepted", "not_completed"))
+
+
+_STRUCTURAL_CODES = (
+    "invalid_syntax", "duplicate_key", "unsupported_input_contract",
+    "duplicate_identifier", "dangling_reference", "type_or_enum_violation",
+    "missing_required_field", "endpoint_or_claim_mismatch", "invalid_time",
+    "input_constraint_violation",
+)
+_CONSTRAINT_CODES = (
+    "exact_integer_range", "unicode_scalar", "identifier_ascii",
+    "identifier_length", "string_length", "locator_length",
+)
+_PREPARATION_LIMIT_IDS = (
+    "WU9-L01", "WU9-L02", "WU9-L03", "WU9-L04", "WU9-L05", "WU9-L06",
+    "WU9-L07", "WU9-L08", "WU9-L09", "WU9-L11", "WU9-L12",
+)
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _PreparationAborted(Exception):
+    """Finite constant classification only, with no input or native exception."""
+    stop: _PreparationStop
+    diagnostic_code: str | None = None
+    limit_id: str | None = None
+    constraint: str | None = None
+
+    def __post_init__(self) -> None:
+        _require(type(self.stop) is _PreparationStop)
+        if self.stop.execution_state == "rejected":
+            _require(type(self.diagnostic_code) is str and
+                     self.diagnostic_code in _STRUCTURAL_CODES and self.limit_id is None)
+            if self.diagnostic_code == "input_constraint_violation":
+                _require(type(self.constraint) is str and self.constraint in _CONSTRAINT_CODES)
+            else:
+                _require(self.constraint is None)
+        elif self.stop.execution_state == "interrupted":
+            _require(self.diagnostic_code is None and type(self.limit_id) is str and
+                     self.limit_id in _PREPARATION_LIMIT_IDS and self.constraint is None)
+        else:
+            _require(self.diagnostic_code is None and self.limit_id is None and self.constraint is None)
+
+    def __str__(self) -> str:
+        return "input_preparation_stopped"
+
+    def __repr__(self) -> str:
+        return "_PreparationAborted()"
+
+
+def _byte_work(port: _BudgetPort, length: int, visits: int = 0) -> None:
+    """Precharge a bounded native pass; cooperative check at each <=256 bytes.
+
+    length and visits are project-calculated nonnegative exact integers. This
+    is a conservative reference work model, not a CPU-instruction estimate.
+    """
+    if type(length) is not int or length < 0 or type(visits) is not int or visits < 0:
+        raise TypeError("invalid_private_representation")
+    port.charge(visits)
+    remaining = length
+    while remaining:
+        port.charge(1)
+        remaining -= min(256, remaining)
+    port.check()

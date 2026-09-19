@@ -1,142 +1,148 @@
 {
+  "format": "sit-phase2-evidence/0.1",
+  "unit": "P2-W03",
   "components": [
     {
-      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
+      "path": "contracts/bundle.py",
+      "first_unit": 2,
+      "implementation": "exact_number_and_scalar_J_primitives; bounded_index_helpers; no_capture",
+      "behavior_tests": "new_component_tests_passed_locally; exact_head_cumulative_verification_pending",
+      "evidence": [
+        "tests/contract/test_normalization_profile.py",
+        "tests/security/test_input_resource_limits.py",
+        "tests/security/test_input_diagnostics.py"
+      ]
+    },
+    {
+      "path": "contracts/constants.py",
+      "first_unit": 2,
+      "implementation": "declarations_and_local_invariants_only",
+      "behavior_tests": "accepted_W02_matrix_passed; current_cumulative_recheck_pending",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
         "tests/contract/test_input_schema_mapping.py"
-      ],
-      "first_unit": 2,
-      "implementation": "declarations_and_local_invariants_only",
-      "path": "contracts/bundle.py"
+      ]
     },
     {
-      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
+      "path": "contracts/evidence.py",
+      "first_unit": 2,
+      "implementation": "declarations_and_local_invariants_only",
+      "behavior_tests": "accepted_W02_matrix_passed; current_cumulative_recheck_pending",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
         "tests/contract/test_input_schema_mapping.py"
-      ],
-      "first_unit": 2,
-      "implementation": "declarations_and_local_invariants_only",
-      "path": "contracts/constants.py"
+      ]
     },
     {
-      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
+      "path": "contracts/execution.py",
+      "first_unit": 2,
+      "implementation": "private_port_and_safe_stop_transports",
+      "behavior_tests": "new_component_tests_passed_locally; exact_head_cumulative_verification_pending",
+      "evidence": [
+        "tests/contract/test_normalization_profile.py",
+        "tests/security/test_input_resource_limits.py",
+        "tests/security/test_input_diagnostics.py"
+      ]
+    },
+    {
+      "path": "contracts/report.py",
+      "first_unit": 2,
+      "implementation": "declarations_and_local_invariants_only",
+      "behavior_tests": "accepted_W02_matrix_passed; current_cumulative_recheck_pending",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
         "tests/contract/test_input_schema_mapping.py"
-      ],
-      "first_unit": 2,
-      "implementation": "declarations_and_local_invariants_only",
-      "path": "contracts/evidence.py"
+      ]
     },
     {
-      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
-      "evidence": [
-        "tests/contract/test_bundle_contract.py",
-        "tests/contract/test_evidence_basis.py",
-        "tests/contract/test_input_schema_mapping.py"
-      ],
-      "first_unit": 2,
-      "implementation": "declarations_and_local_invariants_only",
-      "path": "contracts/execution.py"
-    },
-    {
-      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
-      "evidence": [
-        "tests/contract/test_bundle_contract.py",
-        "tests/contract/test_evidence_basis.py",
-        "tests/contract/test_input_schema_mapping.py"
-      ],
-      "first_unit": 2,
-      "implementation": "declarations_and_local_invariants_only",
-      "path": "contracts/report.py"
-    },
-    {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "path": "io/input_file.py",
       "first_unit": 4,
       "implementation": "pending",
-      "path": "io/input_file.py"
+      "behavior_tests": "pending",
+      "evidence": []
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "path": "runtime/boundary.py",
       "first_unit": 4,
       "implementation": "pending",
-      "path": "runtime/boundary.py"
+      "behavior_tests": "pending",
+      "evidence": []
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "path": "runtime/diagnostics.py",
       "first_unit": 3,
-      "implementation": "pending",
-      "path": "runtime/diagnostics.py"
+      "implementation": "fixed_private_diagnostics_and_single_emergency_delivery",
+      "behavior_tests": "new_component_tests_passed_locally; exact_head_cumulative_verification_pending",
+      "evidence": [
+        "tests/contract/test_normalization_profile.py",
+        "tests/security/test_input_resource_limits.py",
+        "tests/security/test_input_diagnostics.py"
+      ]
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "path": "runtime/resources.py",
       "first_unit": 3,
-      "implementation": "pending",
-      "path": "runtime/resources.py"
+      "implementation": "preparation_global_work_deadline_reserve_and_sticky_stops",
+      "behavior_tests": "new_component_tests_passed_locally; exact_head_cumulative_verification_pending",
+      "evidence": [
+        "tests/contract/test_normalization_profile.py",
+        "tests/security/test_input_resource_limits.py",
+        "tests/security/test_input_diagnostics.py"
+      ]
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "path": "validation/limits.py",
       "first_unit": 3,
-      "implementation": "pending",
-      "path": "validation/limits.py"
+      "implementation": "preparation_counter_and_field_length_primitives; no_parser_integration",
+      "behavior_tests": "new_component_tests_passed_locally; exact_head_cumulative_verification_pending",
+      "evidence": [
+        "tests/contract/test_normalization_profile.py",
+        "tests/security/test_input_resource_limits.py",
+        "tests/security/test_input_diagnostics.py"
+      ]
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "path": "validation/references.py",
       "first_unit": 5,
       "implementation": "pending",
-      "path": "validation/references.py"
+      "behavior_tests": "pending",
+      "evidence": []
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "path": "validation/semantics.py",
       "first_unit": 5,
       "implementation": "pending",
-      "path": "validation/semantics.py"
+      "behavior_tests": "pending",
+      "evidence": []
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "path": "validation/structure.py",
       "first_unit": 4,
       "implementation": "pending",
-      "path": "validation/structure.py"
+      "behavior_tests": "pending",
+      "evidence": []
     }
   ],
-  "control_evidence": "W01 accepted through PR #10 merge 41e7ba2f8046b3791f860313ea3ad54dcd4cb25c. W02 model/schema evidence is component-level only; final-head execution is recorded in the review PR.",
-  "domain_traces_closed": [],
-  "format": "sit-phase2-evidence/0.1",
-  "product_implementation": "private_models_and_declarations_only",
   "public_audit": "unchanged_refusal",
-  "unit": "P2-W02",
+  "product_implementation": "private_scalar_budget_diagnostic_primitives; full_preparation_unavailable",
+  "domain_traces_closed": [],
+  "control_evidence": "W02 accepted by owner and PR #11 merged at d3e314c9da12ad886b09885bbc9b71166c24d10b. Existing R01 path exception and all original tests/guards/workflow remain unchanged.",
   "verification": {
-    "tested_commit": "405b16f1d8d713cd6776fe16793757eb313bbdf2",
-    "run_id": 35414689827,
-    "matrix_rows": 4,
-    "per_row": {
-      "collected": 374,
-      "passed": 374,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "original_w02_component_passes": 146,
-      "new_repair_tests": 7,
-      "separate_subtest_events": 428
-    },
-    "overall": "repair_code_passed; final_record_head_gate_pending_in_PR",
-    "blocker": null,
-    "approved_repair": "P2-W02-R01; owner instruction: 批准限定修复 P2-W02-R01",
-    "prior_failed_run": 35411233144,
-    "evidence_scope": "All four complete artifacts downloaded, size/SHA-256 checked, raw results and tracked hashes inspected; see PHASE_2_PROGRESS.md revision 0.5.",
-    "final_delivery_gate": "Exact successor-head four-row CI and inspected artifacts must be recorded in PR #11 before readiness. Owner acceptance/merge and W03 remain unauthorized."
+    "overall": "pending_exact_head_hosted_matrix",
+    "local_new_instances": 163,
+    "local_python": "3.13.5",
+    "local_pytest": "9.0.2",
+    "local_scope": "Partial workspace: new primitive tests only. Full clone failed DNS; no full checkout/selected-toolchain claim.",
+    "prior_accepted_tests": 374,
+    "later_limits_unvalidated": [
+      "WU9-L11 analytical_scope_work",
+      "WU9-L13",
+      "WU9-L14"
+    ],
+    "parser_and_global_admission": "pending_W04_W05",
+    "next_gate": "Owner acceptance/merge of W03; W04 not authorized"
   }
 }
