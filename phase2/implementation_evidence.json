@@ -1,7 +1,7 @@
 {
   "components": [
     {
-      "behavior_tests": "pending_execution",
+      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -12,7 +12,7 @@
       "path": "contracts/bundle.py"
     },
     {
-      "behavior_tests": "pending_execution",
+      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -23,7 +23,7 @@
       "path": "contracts/constants.py"
     },
     {
-      "behavior_tests": "pending_execution",
+      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -34,7 +34,7 @@
       "path": "contracts/evidence.py"
     },
     {
-      "behavior_tests": "pending_execution",
+      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -45,7 +45,7 @@
       "path": "contracts/execution.py"
     },
     {
-      "behavior_tests": "pending_execution",
+      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -117,5 +117,22 @@
   "format": "sit-phase2-evidence/0.1",
   "product_implementation": "private_models_and_declarations_only",
   "public_audit": "unchanged_refusal",
-  "unit": "P2-W02"
+  "unit": "P2-W02",
+  "verification": {
+    "tested_commit": "ff6c1eb401590454069e23bcdacaa7d4d627d2df",
+    "run_id": 35411233144,
+    "matrix_rows": 4,
+    "per_row": {
+      "collected": 367,
+      "passed": 360,
+      "failures": 7,
+      "errors": 0,
+      "skipped": 0,
+      "new_w02_component_passes": 146,
+      "separate_subtest_events": 428
+    },
+    "overall": "blocked",
+    "blocker": "existing security probe does not preload dataclasses before restricting application-stack loader reads",
+    "proposed_repair": "P2-W02-R01; pending owner authorization"
+  }
 }

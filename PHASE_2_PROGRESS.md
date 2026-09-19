@@ -4,54 +4,76 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.3 |
-| Current work unit | P2-W02 |
+| Revision | 0.4 |
+| Work unit | P2-W02 |
 | Owner instruction | 批准并合并 PR #10，再开始 P2-W02 |
-| Accepted plan | PHASE_2_PLAN.md revision 0.1 |
+| Approved plan | PHASE_2_PLAN.md revision 0.1 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
-| Accepted P2-W01 head | 8e3af5e5b5f4ca9879add9bdd934603e307e6abf |
-| Actual PR #10 merge / W02 intake | 41e7ba2f8046b3791f860313ea3ad54dcd4cb25c |
+| Accepted W01 / PR #10 merge | 41e7ba2f8046b3791f860313ea3ad54dcd4cb25c |
 | Intake tree | ac8bb232d929d18fc56fc053be1b37fb354957ce |
-| W02 branch | phase2/p2-w02 |
-| Status | Candidate; full hosted cumulative verification pending |
-| Product change | Five private contract modules; declarations and local invariants only |
-| W02 acceptance / merge | Not authorized by the execution instruction |
+| Branch / review | phase2/p2-w02; draft PR #11 |
+| Tested candidate | ff6c1eb401590454069e23bcdacaa7d4d627d2df |
+| Status | BLOCKED: seven cumulative security-test failures; W02 component tests pass |
+| W02 acceptance / merge | Not granted |
 | W03 and later | Not started |
 
-## 1. Acceptance history and exact intake
+## 1. Acceptance and retained history
 
-The W01 final head passed all four rows of run 35409171111. The subsequent ready-for-review run 35409335305 also passed. Before the authorized merge, PR #10's exact head, sixteen-path diff and current cumulative-run results were re-read. The expected-head-protected merge succeeded at the commit above. Its tree equals the reviewed W01 tree, and its single SIT-Phase-Unit: P2-W01 footer supplies the post-merge CI context.
+The owner accepted W01 and authorized W02 only. PR #10 was merged with expected-head protection after rechecking its exact 8e3af5e5b5f4ca9879add9bdd934603e307e6abf head, sixteen-path diff and successful cumulative runs. The merge tree equals that reviewed tree. Its single SIT-Phase-Unit: P2-W01 footer preserves the post-merge CI context.
 
-That merge records W01 acceptance and authorizes only W02 under plan section 8. The original plan, frozen specifications and earlier Phase 1 documents remain unchanged. Unabridged W01 progress revision 0.2 and all its evidence remain at commit 8e3af5e5b5f4ca9879add9bdd934603e307e6abf. This current progress record does not rewrite that historical event.
+Unabridged W01 progress revision 0.2 remains at 8e3af5e5b5f4ca9879add9bdd934603e307e6abf. W02 candidate progress revision 0.3 remains at f7a1f9f69351951162142d4bf41a554de89dcb53, including local source verification, design details, initial local failure and fixes. This current record supersedes only their present-status statements. No history is rewritten.
 
-The six paper attachments remain source background. No attachment replaces a frozen source or authorizes a theory, schema, metric or product-scope change.
+The original plan, frozen specifications, source versions and Phase 1 records remain unchanged. The six paper attachments do not replace a frozen source or authorize a theory, schema, metric or product-scope change.
 
-## 2. W02 candidate and contract coverage
+## 2. Candidate scope
 
-The candidate is restricted to the fifteen allowed paths. Five existing contract modules gain immutable private representations, exact number-atom declarations, source-bound vocabulary/field tables and safe preparation/cancellation/observability declarations. Forty-three installed modules keep their accepted bytes, including all public API/CLI entry points, graph/analysis/rendering modules and native file/output adapters. No new installed module or dependency is added. Version remains 0.1.0.dev0.
+Exactly fifteen plan-section-8 paths change. Five existing contract modules gain private immutable representations, exact number-atom declarations, closed vocabulary/field tables and safe preparation/cancellation/observability declarations. Forty-three installed modules retain their accepted bytes, including public API/CLI refusal, all graph/analysis/rendering code and native file/output adapters. No new installed module or dependency is added. Version remains 0.1.0.dev0.
 
-The fifty closed shape declarations cover 242 named fields, Inquiry, twelve record kinds, twenty-four predicates, nine assessment kinds and shared support structures. Each shape uses its exact fields in an immutable _Object tagged by _Node. The tag and local constructors establish representation invariants only. They do not validate required source fields, parse a dossier or establish accepted input. Private constructors require bounded project-owned parts; the later public-facing boundary must enforce that precondition.
+Fifty shape declarations and 242 named fields cover Inquiry, twelve record kinds, twenty-four predicates, nine assessment kinds and shared support structures. An immutable _Object field bag tagged by _Node preserves explicit null, absent fields and supplied attribution. Local constructor invariants require bounded project-owned parts. They do not parse input, validate all required source fields or establish accepted input.
 
-The input Draft 2020-12 structural schema uses local references only. Required, optional and nullable branches retain their distinct meanings. There is no default insertion, truth/independence flag or coercion. Structural subject cardinalities are distinct from aggregate processing ceilings. The coverage record joins each field to its complete frozen-source section/range, immutable representation, schema location, validator owner and four-way declaration test bindings. Thirty remaining global/semantic/parser duties stay explicitly pending. The coverage case IDs do not represent executed full-admission or domain tests.
+The Draft 2020-12 input structural aid has local references, closed keys, exact vocabularies and explicit nullable/subtype branches. The coverage record connects each field to its complete frozen-source section/range, representation, schema pointer, validator owner and four-way declaration tests. Thirty mandatory parser/global/semantic duties remain pending. No general schema evaluator or dependency is introduced; no metaschema or complete-instance conformance is claimed.
 
-Exact number atoms preserve sign, coefficient, exponent and source numeric category without implementing conversion, rounding, J measurement or resource admission. Preparation transport declarations separate rejection, resource interruption, execution failure and cancellation. Five domain declarations retain supplied selectors and pending PC references, with no available Result references, report ID or completed prerequisite outcome.
+Number conversion, rounding, J measurement, quotas, bounded decoding/capture, global validation and observability execution remain later work. All whole prerequisite completions and analytical Trace closures remain empty. The 228 domain behavior obligations stay pending.
 
-## 3. Actual authoring checks and their limits
+## 3. Local evidence and transmission repair
 
-The complete local lineage source was recovered from the earlier delivery and matched to the connected repository's a08e94bee1e4c8aaa4a47fcdd79b1e8db0fe6911 blob and its 129967 bytes. SHA-256 is 32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374. Field/branch mapping follows sections 2-9 and preserves the later approved realization and error-classification rules.
+The full 129967-byte lineage source was checked against Git blob a08e94bee1e4c8aaa4a47fcdd79b1e8db0fe6911 and SHA-256 32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374. Primary JSON Schema and dataclass documentation supplies format/representation facilities only; adopted project sources supply field meaning.
 
-The new three-file test set was executed locally on a partial candidate workspace using CPython 3.13.5 and pytest 9.0.2: 146 passed, zero failed or skipped. These are local immutable-model and finite source/schema/declaration checks. They include all fifty shape representations, all 242 field mappings, 968 deliberately altered field/type/presence/open-shape fragments, malformed private objects, hostile conversion and metaclass hooks, structural-null exceptions and declaration/status preservation. The repeated mutation cases are not counted as additional top-level tests.
+Local new-component tests used a partial workspace, CPython 3.13.5 and pytest 9.0.2: 146 passed. An initial run had 144 passes and one overly broad no-maxItems assertion failure. The corrected check permits only adopted exact one/two-subject cardinalities, retaining the resource-category restriction. A source review corrected RelationData.dimension's structural-null coverage and added an independent nullable-field check. Exact-type comparisons were hardened against hostile metaclass hooks. Full local clone failed DNS resolution; no full local checkout or selected-toolchain pass is claimed.
 
-An initial local run had 144 passed and one failure because a test incorrectly prohibited every maxItems occurrence. The corrected assertion permits only the explicitly specified exact one/two-subject cardinalities while still excluding resource-budget substitution. The coverage wording was made consistent with that distinction. A subsequent authoring review corrected the RelationData.dimension coverage classification to structural_or_conditional, as required by lineage section 8.1, and added an independent complete nullable-field classification check. Exact-type membership was hardened to identity comparisons, with a hostile-metaclass regression. No adopted input meaning or existing test was changed.
+Initial hosted run 35411043925 on f7a1f9f69351951162142d4bf41a554de89dcb53 stopped at all four preflights on invalid_phase_policy. The transmitted policy lacked its final object brace although the local file retained it. Commit ff6c1eb401590454069e23bcdacaa7d4d627d2df restored only that missing brace/newline, matching local blob ed143a9933c76b3b7864ab261e8248d717b87f6d. This was an authoring/transmission error. No guard or expectation was relaxed. That first run executed no tests; its skipped downstream stages are not passes.
 
-Local full clone failed DNS resolution. No full local baseline/cumulative suite or selected-toolchain validation is claimed. Full execution must use the unchanged hosted workflow, exact candidate head, reviewed developer pins and all four existing rows. The earlier local tool versions are supplemental evidence only, never a replacement for those checks.
+## 4. Actual cumulative verification
 
-Primary JSON Schema Core/Validation and CPython dataclass documentation were checked for format and representation facilities. They do not supply or replace the toolkit's field meanings. No generic schema evaluator, validator package or metaschema-conformance result is claimed.
+Run 35411233144 executed ff6c1eb401590454069e23bcdacaa7d4d627d2df with the original reviewed toolchain and unchanged workflow:
 
-## 4. Verification gate and stop
+| Profile | Actual Python | Passed | Failed | Errors | Skipped |
+|---|---|---:|---:|---:|---:|
+| Ubuntu 24.04 | 3.11.16 | 360 | 7 | 0 | 0 |
+| Ubuntu 24.04 | 3.13.15 | 360 | 7 | 0 | 0 |
+| Windows Server 2025 | 3.11.9 | 360 | 7 | 0 | 0 |
+| Windows Server 2025 | 3.13.15 | 360 | 7 | 0 | 0 |
 
-Before W02 is ready, inspect the complete hosted evidence for the exact candidate: all old identities retained, the new tests collected, baseline/module/scope guards passing, no changed input/oracle bytes, clean packaging/install/rebuild results and unchanged tracked files before/after. Record actual outcomes, including any failed attempt, without weakening out-of-scope tests.
+Each row has 367 top-level identities: 221 retained W01 instances plus 146 new W02 instances. All 146 new instances pass. Raw JUnit contains 795 events, including 428 separately counted successful subtest events. The same seven old security-test identities fail on every row. No test was skipped, xfailed, removed, renamed or deselected.
 
-W02 creates neither bounded ingestion nor whole-bundle acceptance. W03 budgets/number conversion/J, W04 capture/decoding, W05 complete validation and W06 preparation remain future work. All analytical Trace closures and 228 domain obligations remain pending. The public API and CLI keep their exact refusal behavior.
+All eight complete artifacts across both runs were downloaded, size/SHA-256 checked and inspected. Cumulative artifact IDs are 10574092984 (Ubuntu 3.11), 10574397741 (Ubuntu 3.13), 10574637551 (Windows 3.11) and 10573592532 (Windows 3.13). Collection identities agree with raw JUnit. All fifteen authored file hashes match the tested checkout. All 137 tracked hashes match across rows and remain unchanged during execution.
 
-W02 delivery acceptance and merge require the next owner instruction. No W03 work, native source access, output publication, package release or branch deletion occurs here. A later authorized W02 merge must include exactly one SIT-Phase-Unit: P2-W02 footer. Final head/run identities belong to PR evidence rather than a circular self-commit reference in this file.
+Actual 124-file Phase 1 and 125-file entry archive checks, fifteen-path scope checks, twenty-file freeze guards and forty-eight-module guards pass before and after. Selected dependency review/install passes. All package tests pass: 65 regular source members, 55 wheel members, clean offline installation and equal original/rebuilt wheel member bytes. These separate successes do not clear the seven failures.
+
+## 5. Shared failure and diagnostic limit
+
+The existing shared security harness reports application_open after 21 module imports, before API refusals. It preloads several standard-library helpers before its observer but omits dataclasses. W02's bundle module imports dataclasses; the observer sees an application frame and permits only package-module loader reads, so it blocks the standard-library loader. This early stop also prevents some deliberately bad API/network/native probes from reaching the specific event each assertion requires.
+
+A local isolated diagnostic using the same preamble and application-open predicate against the actual W02 bundle module identified dataclasses.cpython-313.pyc loaded by importlib._bootstrap_external. Preloading dataclasses before that unchanged observer allowed the same module import with no blocked open. This CPython 3.13.5 diagnostic locates the cause; it does not substitute for a repaired four-row run. No repository test was modified for the diagnostic.
+
+## 6. Proposed P2-W02-R01 and stop
+
+The proposed repair remains unapproved. It needs these narrowly scoped changes:
+
+1. tests/security/test_scaffold_inertness.py: preload the specifically permitted dataclasses module before the observer; add an isolated regression; retain all monitored operations, refusal checks, mutation probes and event-specific assertions.
+2. tests/scaffold/test_ci_contract.py: enumerate only the W02 exception paths for the harness and this driver repair, and preserve the harness change explicitly in later cumulative path accounting. Keep the frozen plan/pins unchanged and reject unlisted exceptions. Exercise that exception in the already allowed W02 contract-test path.
+3. PHASE_2_PROGRESS.md and phase2/implementation_evidence.json: record actual authorization and exact-head results.
+
+Do not generally allow arbitrary library/file reads, disable the observer, skip tests or refactor the product to evade it. No live workflow, boundary-checker implementation, dependency, oracle, product module or frozen document is included in this repair proposal.
+
+The existing harness and CI driver are outside W02's fifteen-path allowlist and remain unchanged. PR #11 stays draft; main remains at 41e7ba2f8046b3791f860313ea3ad54dcd4cb25c. W02 is incomplete and W03 has not started. This documentation successor records the actual tested candidate; it does not claim a green final-head workflow, publish a package or authorize the proposed repair.
