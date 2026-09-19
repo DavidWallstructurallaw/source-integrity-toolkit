@@ -1,5 +1,5 @@
 {
-  "active_unit": "P2-W02",
+  "active_unit": "P2-W03",
   "first_units": {
     "contracts/bundle.py": 2,
     "contracts/constants.py": 2,
@@ -18,10 +18,37 @@
   "format": "sit-phase2-modules/0.1",
   "plan_sha256": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
   "promotions": [
-    {"path": "contracts/bundle.py", "unit": 2},
-    {"path": "contracts/constants.py", "unit": 2},
-    {"path": "contracts/evidence.py", "unit": 2},
-    {"path": "contracts/execution.py", "unit": 2},
-    {"path": "contracts/report.py", "unit": 2}
+    {
+      "path": "contracts/bundle.py",
+      "unit": 2
+    },
+    {
+      "path": "contracts/constants.py",
+      "unit": 2
+    },
+    {
+      "path": "contracts/evidence.py",
+      "unit": 2
+    },
+    {
+      "path": "contracts/execution.py",
+      "unit": 2
+    },
+    {
+      "path": "contracts/report.py",
+      "unit": 2
+    },
+    {
+      "path": "runtime/diagnostics.py",
+      "unit": 3
+    },
+    {
+      "path": "runtime/resources.py",
+      "unit": 3
+    },
+    {
+      "path": "validation/limits.py",
+      "unit": 3
+    }
   ]
 }
