@@ -4,83 +4,65 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.7 |
-| Work unit | P2-W03 |
-| Owner instruction | 批准并合并 PR #11，再进入 P2-W03 |
-| Approved plan | PHASE_2_PLAN.md revision 0.1, section 9 |
+| Revision | 0.8 |
+| Work unit | P2-W04 intake |
+| Owner instruction | 批准并合并 PR #12，再开始 P2-W04 |
+| Approved plan | PHASE_2_PLAN.md revision 0.1, sections 6 and 10 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
-| Accepted W02 merge | d3e314c9da12ad886b09885bbc9b71166c24d10b |
-| Entry tree | d30f18a6f55cbe8aedebfb3b83e96ef8eae2ae8c |
-| Branch | phase2/p2-w03 |
-| Status | Code candidate passed; successor-record exact-head verification pending in review PR |
-| W03 acceptance / W04 execution | Not granted |
+| Accepted W03 merge | e292bf6023a59d3019221a768d9f2d4ac5c4d4cf |
+| Entry tree | ad16a08dc2382b3d007038c4861d010f52a15e4b |
+| Branch | phase2/p2-w04 |
+| Status | Entry dependency review blocked at proposed P2-W04-R01; implementation has not begun |
+| W04 execution | Authorized within the existing plan; additional repair paths await explicit approval |
+| W04 acceptance / W05 execution | Not granted |
 
 ## 1. Accepted predecessor and preserved history
 
-PR #11 was merged with expected-head protection at the owner's instruction after checking that its reviewed head d6f6a42663f5857e99f90cec3fd88e923cd28790 remained unchanged and its cumulative runs 35414897827 and 35415022956 succeeded. The merge tree is identical to the reviewed tree and contains one SIT-Phase-Unit: P2-W02 footer. This records W02 acceptance and W03 execution authority only.
+PR #12 was merged with expected-head protection at the owner's instruction. The accepted head is 4189edc62a9c321dd6eed71c5106cea7311907e6. Its cumulative runs 35419147787 and 35419301845 were confirmed successful before merge. The merge's tree is identical to the reviewed tree and its message contains exactly one SIT-Phase-Unit: P2-W03 footer. W03 is accepted and W04 execution is authorized under the existing plan.
 
-The unabridged preceding progress revision 0.5 and implementation evidence remain at d6f6a42663f5857e99f90cec3fd88e923cd28790. That delivery preserves its initial failures, R01 repair and final 374-instance four-row pass. No original approval, source, failure record or golden expectation is rewritten. The six attached papers do not replace the frozen engineering baseline or expand this work unit.
+The unabridged preceding progress revision 0.7 and implementation evidence remain at 4189edc62a9c321dd6eed71c5106cea7311907e6. PR #12 records the final exact-head 537-instance four-row verification and its separate 428 subtest events. The initial owner-annotation failure and its correction remain in that history. This intake review does not rerun or relabel those results.
 
-## 2. Exact scope
+The attached theory sources do not replace any frozen specification. The present issue concerns an implementation seam and its immediate file allowance, not a new theory or public diagnostic rule.
 
-This candidate changes only the eleven paths in plan section 9. Five product modules change: contracts/bundle.py, contracts/execution.py, validation/limits.py, runtime/resources.py and runtime/diagnostics.py. The three new W03 slots raise the cumulative promotion count from five to eight. Forty installed modules still retain Phase 1 bytes; the other three W02-only contract modules remain unchanged. All 48 package paths, public API/CLI refusals, frozen sources/plans, original catalogs/fixtures/oracles, schema, existing tests, dependency pins, packaging files, live workflow and both boundary checkers remain unchanged.
+## 2. P2-W04 entry finding: a required cycle rejection has no truthful current qualifier
 
-No extra-path exception is requested. W02-R01's approved cumulative exception remains as implemented; it grants no additional W03 direct write authority.
+REPOSITORY_ARCHITECTURE section 17.1 requires an active-ancestor container cycle to be classified as input_constraint_violation. PHASE_2_PLAN section 10 requires that detection during bounded caller-value capture. This concerns a Python container referencing itself through the active ancestry, not a valid cycle in evidence relationships and not a repeated non-cyclic alias.
 
-## 3. Implemented private components and exact boundaries
+The accepted contracts/execution.py declares six private constraint qualifiers: exact_integer_range, unicode_scalar, identifier_ascii, identifier_length, string_length and locator_length. runtime/resources.py requires one of these whenever input_constraint_violation is requested. runtime/diagnostics.py accepts the corresponding six fixed normative bases. None describes a container cycle.
 
-The zero-argument runtime factory uses the fixed monotonic_ns clock, a 10,000,000-unit total and a single prepaid 1,024-unit reserve inside it. The ordinary balance begins at 9,998,976. Charges cannot be negative or Boolean, the sixty-second deadline never resets, equality is admitted, and the first established stop remains sticky. Tests control clocks by patching the fixed symbol outside the product. Source values, public options and environment variables do not select limits, clocks or cancellation callbacks.
+A read-only local reproduction against exact accepted source blobs confirmed the seam behavior. Calling the current budget rejection with input_constraint_violation and either no qualifier or the proposed container_cycle qualifier results in execution_failed with input not_completed. Using an existing number/Unicode qualifier instead yields structural rejection with the wrong normative basis. Neither is an acceptable implementation of the cycle rule. The caller-value parser does not yet exist; this is a manually established downstream diagnostic-seam reproduction, not a claim that a completed parser was tested.
 
-The charge/check port remains in contracts; runtime owns clock and ledger implementation. execution no longer imports bundle solely for its private invariant helper, preventing a cycle when bundle consumes the port. Existing value and stop fields are preserved. A trusted future boundary may record actual input acceptance only after W05's full work; calling this state recorder in a transport test does not implement validation or PC01.
+| Exact file inspected and executed locally | Accepted Git blob | Bytes |
+|---|---|---:|
+| src/source_integrity_toolkit/contracts/execution.py | a5d66263f572c2b888d148727b97797a3aa0a521 | 4893 |
+| src/source_integrity_toolkit/runtime/resources.py | f27b66d3a2e073aded7f31c6fb30ebff4db90d93 | 4838 |
+| src/source_integrity_toolkit/runtime/diagnostics.py | 1873edfdf9379991cb4750b6a8e41f8dd7ccb85c | 5354 |
 
-The input ledger supplies whole-payload count/depth primitives for L01-L08 and fixed string/locator/identifier length helpers. Raw supplied byte length and constructed-value J length remain separate transport meanings. Repeated occurrences consume repeated counts; no counter refund exists. W04/W05 must still integrate these guards into all capture, extension and reference paths. Analytical per-scope work, witnesses and report-output budgets are recorded but remain unimplemented and unvalidated.
+All three local copies matched their connected-repository Git blob identities before execution. The reproduction ran under CPython 3.13.5 in a partial local workspace. Full local Git access failed DNS resolution. No complete-checkout, selected-toolchain or W04 cumulative-test claim is made from this reproduction.
 
-Exact scalar conversion preserves source numeric category, normalizes coefficient/sign/exponent without rounding and compares integral magnitude before exponent expansion. A raw numeric token longer than 128 characters, or a built-in float whose exact emitted token is too long, interrupts through WU9-L09. Prohibited integral values and field/scalar errors remain structural. Huge negative exponents stay compact; a zero with a huge exponent remains zero. The sole bounded power calculation converts a finite binary float's denominator, capped at 1074 binary places; raw exponent values never become a power or an exponent-sized allocation.
+## 3. Proposed bounded repair P2-W04-R01
 
-J scalar bytes and decoded UTF-8 lengths are separate. Controls use the frozen escape ranges, ordinary multilingual text is preserved, slash is not escaped, and no Unicode normalization occurs. There is no complete dossier/report serializer. Stable bottom-up pair sorting and binary lookup are charged internal index primitives; they do not deduplicate records, discover ancestry, or interpret text. Constructors/index consumers retain explicit bounded-project-owned-input preconditions.
+This proposal is not yet authorized. Preserve the existing public input_constraint_violation code and all stop states. Add one private constant qualifier, container_cycle, and its fixed REPOSITORY_ARCHITECTURE section 17.1 basis. Do not allow arbitrary qualifiers or source-supplied diagnostic text. The existing resources implementation already imports the constraint vocabulary and does not need modification for this proposal.
 
-Safe private stops distinguish structural rejection, resource interruption, actual failure and cancellation. Diagnostics accept only known typed stops and fixed rule identifiers, with null locations and constant, bounded messages. Specific input_constraint_violation cases retain a fixed normative condition reference. The emergency path delivers at most one small record from its prepaid reserve; it never resumes work or returns a partial snapshot. These transports are not sit-report/0.1 envelopes or new public reason states.
+The four additional immediate write paths requested are:
 
-## 4. Source and implementation evidence
+| Path outside the original W04 allowlist | Exact proposed purpose |
+|---|---|
+| src/source_integrity_toolkit/contracts/execution.py | Add the one fixed container_cycle qualifier; preserve existing transport fields, states and validation |
+| src/source_integrity_toolkit/runtime/diagnostics.py | Add the matching fixed cycle basis; preserve constant messages, null locations and no-payload rules |
+| tests/scaffold/test_ci_contract.py | Record exactly these four owner-authorized W04 repair paths, retaining cumulative accounting without granting other units new immediate permissions |
+| tests/contract/test_bundle_contract.py | Refine only the two existing immediate/cumulative exception-accounting regressions for the new explicit W04 exception; retain W02's exact two-path exception, all test identities and observer-preservation assertions |
 
-The controlling requirements were re-read from the accepted repository: plan sections 3.1-3.2 and 9; privacy section 8; architecture sections 17 and 19; governance sections 22.1 and 22.3; dependency section 16. No new scalar limits, analytical formulas, source classifications or permissions are introduced.
+The last test file is included deliberately: its current R01 regression asserts every other unit has no exception. Changing only the CI driver would therefore contradict that existing assertion. The refinement must explicitly separate the two named owner authorizations instead of removing the no-expansion requirement.
 
-Primary Python documentation was checked for monotonic_ns and finite float integer-ratio facilities: https://docs.python.org/3.11/library/time.html and https://docs.python.org/3.11/library/stdtypes.html. These are implementation-facility references only. The project sources determine numeric spelling, guard categories, resource arithmetic and acceptance meanings.
+New cycle, repeated-alias, missing/unknown-qualifier, canary, state and scope-counterexample regressions belong to W04's already allowed test paths, especially tests/security/test_input_capture.py. No existing security observer needs weakening or modification. Retain all 537 predecessor test identities, supplement them with the new tests, and execute the complete four-profile matrix before claiming W04 completion.
 
-New local tests: 163 passed on CPython 3.13.5 / pytest 9.0.2 in a partial workspace. They include exact scalar examples, independent Decimal/Fraction oracles and 180 fixed-seed finite numeric cases; hostile subclasses; giant exponents and exact float tails; control/multibyte byte accounting; each applicable counter threshold; nonresetting reserve/deadline behavior; before/after component-action interruption; independent cancellation; stable sorting and charged lookup; and canaries across fixed diagnostic surfaces. Loop iterations are not additional top-level tests. No old test or source expectation was changed.
+No frozen specification, approved plan, schema, fixture, expected analytical result, dependency pin, workflow permission, public API/CLI or boundary checker is part of this requested exception. The repair does not authorize graph cycle analysis, new public diagnostic codes, native loading or source access.
 
-The first complete new-component local run passed. Full local Git clone failed because github.com did not resolve. That local run is not selected-toolchain or complete-repository evidence. The hosted evidence below supplies those checks. All eleven authored local files were matched to their remote Git blob identities before the initial tree was created.
+## 4. Actual write scope and stopping point
 
-## 5. Hosted checks, authoring correction and inspected evidence
+This intake changes PHASE_2_PROGRESS.md only on the W04 branch. All 48 installed module bodies, existing tests, schemas, fixtures, plans, catalogs, manifests, policy and implementation-evidence files remain at the accepted entry bytes. The unchanged module policy still describes the accepted W03 implementation; no W04 slot has been promoted.
 
-Initial head 9dd2d1050f9af1a35e03d2937e15503c1b441a53 ran in workflow 35418843995. Each of the four profiles collected 537 top-level instances, passed 536 and failed one, with no errors/skips. All 163 new component instances passed. The existing ModuleManifestTests.test_exact_paths_owners_forms_and_accepted_bytes check correctly rejected the extra INGESTION_CONTRACT owner annotation placed on validation/limits.py. Its accepted owner is RUNTIME_BOUNDARY alone. This was an authoring error, not an approved reassignment.
+No W04 parser/capture implementation, partial-success substitute or diagnostic workaround is committed. A W04 delivery PR has not been opened, because the candidate stops before implementation and its live policy has not advanced. Hosted checks triggered by the preceding authorized main merge concern the accepted W03 tree, not W04 behavior.
 
-Commit 0102ff8483250f9420b15f400eb60bc9fff5e627 restores only that one documentation line. Executable statements, tests, guard rules, permissions and expected values are unchanged. The correction stays within plan section 9. All four initial failure artifacts were downloaded, checked against service size/SHA-256, and their raw failure/collection evidence inspected; the failed run remains recorded as failed.
-
-Workflow 35418938131, attempt 1, executed the corrected code head 0102ff8483250f9420b15f400eb60bc9fff5e627 with the original selected toolchain:
-
-| Profile | Actual CPython | Collected / passed | Failures / errors / skips |
-|---|---|---:|---|
-| Ubuntu 24.04 | 3.11.16 | 537 / 537 | 0 / 0 / 0 |
-| Ubuntu 24.04 | 3.13.15 | 537 / 537 | 0 / 0 / 0 |
-| Windows Server 2025 | 3.11.9 | 537 / 537 | 0 / 0 / 0 |
-| Windows Server 2025 | 3.13.15 | 537 / 537 | 0 / 0 / 0 |
-
-Each row retains every prior 374 test identity and adds 163 new instances. Raw JUnit has 537 direct testcase elements and 428 separately reported successful subtest events, totaling 965 events. These are repeated environments, not 2,148 different test designs. No skip, xfail, test deletion, renamed identity or deselection was introduced. All collection identities were matched to raw JUnit independently of the CI summary.
-
-| Profile | Artifact ID | ZIP bytes | SHA-256 |
-|---|---:|---:|---|
-| Ubuntu 3.11 | 10576975979 | 51761 | 810062e8efdbc78f04541ece2d142e416ae4827de74688aa932e0317f711bfe2 |
-| Ubuntu 3.13 | 10577145816 | 51570 | 2548e6e9cc6397dd8dfa16ef39dbee47c1a4c2f0668da230a6154a20d2c44584 |
-| Windows 3.11 | 10576274745 | 57955 | da28ec09ad19b879c2052a5d6568a3bba51185a9e2fa1e48b6c5102096e027ca |
-| Windows 3.13 | 10576761147 | 57745 | c371a4496b2896392eb4356debd606b4731b358bf2ac1b110828e1dc2618af08 |
-
-All four complete passing artifacts were downloaded and size/digest-verified. Actual 124-file Phase 1 and 125-file Phase 2 entry archives, exact eleven-path scope, original R01 exception accounting, twenty-file baseline and forty-eight-module guards passed. Guard output identifies eight promoted and forty protected modules. All 140 tracked file hashes remain unchanged during each run and match across the four checkouts. The eleven authored files match actual hosted checkout bytes.
-
-Reviewed setuptools 84.0.0, pytest 9.1.1 and the other original dependency pins were installed and checked on all rows. Package tests passed: 65 regular source-distribution members, 55 wheel members, clean offline installation without developer dependencies, and equal original/rebuilt wheel member content. No whole compressed-archive reproducibility or native-file certification is asserted.
-
-## 6. Final record and stop
-
-This successor changes only PHASE_2_PROGRESS.md and phase2/implementation_evidence.json. Its own exact-head four-row execution and full inspected artifact identities must be recorded in the review PR before readiness. The code-head pass above does not predeclare that final-record gate. Recording the final run externally avoids a circular self-commit reference in these files.
-
-Keep the W03 review unmerged until its exact final-head matrix and full artifacts have been inspected and the owner accepts the delivery. No W04 capture, W05 acceptance, observability execution, graph analysis, report generation, native I/O, network/model runtime or release is enabled. All analytical Trace closures and 228 domain obligations remain pending. Private primitive checks and finite fault tests do not prove arbitrary Python isolation or scientific validity.
+Plan section 6 requires a named authorization for repairs outside the current allowlist. Stop for approval of P2-W04-R01, then implement that bounded vocabulary/scope repair together with the already authorized W04 capture work. Preserve the error taxonomy, all limits, independent test expectations and the complete history. W05 remains unauthorized.
