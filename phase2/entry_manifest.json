@@ -1,0 +1,21 @@
+{
+  "additional_files": {
+    "PHASE_1_COMPLETION.md": "3524fdc08eaf9d8b18468ea5838da696acb9790b7419d008f990d4c384a0dccd",
+    "PHASE_1_PROGRESS.md": "86f41a273434e399b667a8c9437a8ad54a242b03e7a790d90bd4748e98c3f8f9",
+    "PHASE_2_PLAN.md": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
+    "scaffold/delivery_manifest.json": "c354ec51acbe4ad90cb2f15037b3a3d043eec21e39cd348d8b5ecb2afae3fc5a"
+  },
+  "file_count": 125,
+  "format": "sit-phase2-entry/0.1",
+  "included_manifest": {
+    "members": 121,
+    "path": "scaffold/delivery_manifest.json",
+    "sha256": "c354ec51acbe4ad90cb2f15037b3a3d043eec21e39cd348d8b5ecb2afae3fc5a"
+  },
+  "intake_commit": "eb730dda31d189c8487b5247a45bae47b678821b",
+  "intake_tree": "48ee53f455e6ce4766a38de8c48141bac3dfc93b",
+  "phase1_commit": "d7d73a790a2a627d19307c9dd48281eff3017023",
+  "phase1_tree": "837cb01265c22cb17bea66b2e7e1f8a7e1006924",
+  "plan_commit": "10e4ea2e20e9d9dfbefe656579e52d2fdffc67ae",
+  "scope": "Resolve the 121 exact path/SHA-256 pairs from the hash-pinned prior manifest and add the four disjoint entries. The resolved set is exactly 125 files at intake. No future W01 file or self-hash is included. W01 CI must compare every byte hash with the actual local Git commit archives and checkout."
+}

@@ -1,11 +1,11 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Developer-only package boundary checks, PHASE_1_PLAN.md sections 4, 6 and 9.
+"""Developer-only Phase 2 boundary checks; never imported by the product.
 
-Checks use independently enumerated adopted paths and accepted W02 blob IDs.
-The package's own metadata cannot grant itself an extra module or capability.
-AST checks are independently testable without the byte pin. Import relationships
-here concern software modules only, never an evidence/source graph.
+The accepted plan, entry manifest, fixed module inventory, external work-unit
+context, static checks and behavioral tests are separate controls. A candidate
+policy cannot authorize its own stage or additional module. This checker is not
+a proof against an actor who also replaces the checker or trusted CI context.
 """
 from __future__ import annotations
 
@@ -14,11 +14,15 @@ import ast
 import hashlib
 import json
 import os
+import re
+import subprocess
 from graphlib import CycleError, TopologicalSorter
 from pathlib import Path
 
 PACKAGE = "source_integrity_toolkit"
-# Exact W02 objects as retained by the W03 manifest at accepted commit bad936b.
+PLAN_SHA256 = "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918"
+ENTRY_SHA256 = "bdec51c6499e080385140446eece9014144cf277c1651b05734f5166a831623f"
+INTAKE = "eb730dda31d189c8487b5247a45bae47b678821b"
 PIN_TEXT = """__init__.py 7bea94e138804cbeea4048ef152dcb5726047f1f
 api.py 0603b4de9888a51190eeeefc6186b47e2afd88bd
 cli.py f48f869385fbeb711458f0189ff55194f73fd050
@@ -69,6 +73,15 @@ validation/semantics.py c49d712867ead29d92eaef5c4c7a16d715a10ba3
 validation/structure.py 7f61b244d272cd2aa1b23c2a9af9bc61b371196d"""
 PINS = tuple(tuple(line.split()) for line in PIN_TEXT.splitlines())
 EXPECTED_PATHS = frozenset(p for p, _ in PINS)
+FIRST_UNIT = {
+    "contracts/bundle.py": 2, "contracts/evidence.py": 2,
+    "contracts/constants.py": 2, "contracts/execution.py": 2,
+    "contracts/report.py": 2, "validation/limits.py": 3,
+    "runtime/resources.py": 3, "runtime/diagnostics.py": 3,
+    "io/input_file.py": 4, "runtime/boundary.py": 4,
+    "validation/structure.py": 4, "validation/references.py": 5,
+    "validation/semantics.py": 5,
+}
 LAYER_PERMISSIONS = {
     "contracts": frozenset(("contracts",)),
     "validation": frozenset(("validation", "contracts")),
@@ -92,8 +105,6 @@ Audit functionality is not implemented. Audit requests exit 1 without reading
 input, inspecting paths, or producing a report. This temporary refusal is not
 a sit-report/0.1 processing result. The audit grammar is reserved for later work.
 """
-# These templates describe the accepted executable AST, independently of the
-# candidate file under examination. They never execute, load or repair a module.
 API_FORM = f'''from typing import NoReturn
 
 def audit_bundle(bundle: object, *, options: object = None) -> NoReturn:
@@ -122,46 +133,119 @@ if __name__ == "__main__":
     raise SystemExit(main())
 '''
 SPECIAL_FORMS = {
-    "api.py": API_FORM,
-    "cli.py": CLI_FORM,
+    "api.py": API_FORM, "cli.py": CLI_FORM,
     "contracts/constants.py": 'SCAFFOLD_VERSION = "0.1.0.dev0"',
     "__init__.py": '''from .api import audit_bundle, audit_file
 from .contracts.constants import SCAFFOLD_VERSION as __version__
 __all__ = ("audit_bundle", "audit_file", "__version__")''',
 }
+SAFE_IMPORTS = frozenset(("__future__", "typing", "dataclasses", "enum", "math", "json", "re",
+    "decimal", "fractions", "collections", "bisect", "types", "unicodedata", "datetime"))
+FORBIDDEN_NAMES = frozenset(("open", "eval", "exec", "compile", "__import__", "globals", "locals",
+    "getattr", "setattr", "delattr", "vars", "print", "input", "breakpoint"))
+FORBIDDEN_ATTRS = frozenset(("read_text", "read_bytes", "write_text", "write_bytes", "load", "dump",
+    "CDLL", "WinDLL", "PyDLL", "dlopen", "connect", "getaddrinfo", "urlopen", "system", "popen"))
 
 
-def git_blob(data: bytes) -> str:
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def unique(pairs):
+    result = {}
+    for key, value in pairs:
+        require(key not in result, "duplicate_policy_key")
+        result[key] = value
+    return result
+
+
+def unit_number(unit=None):
+    value = os.environ.get("SIT_PHASE_UNIT", "P2-W01") if unit is None else unit
+    require(isinstance(value, str) and re.fullmatch(r"P2-W0[1-9]", value), "invalid_trusted_unit")
+    return int(value[-1])
+
+
+def git_blob(data):
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
 
-def executable_ast(source: str) -> ast.Module:
+def plan_paths(root):
+    raw = (root / "PHASE_2_PLAN.md").read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == PLAN_SHA256, "approved_plan_changed")
+    found = re.findall(r"^## \d+\. (P2-W0[1-9]):[^\n]*\n\n### Allowed paths\n\n```text\n(.*?)\n```",
+                       raw.decode("utf-8"), re.M | re.S)
+    require([u for u, _ in found] == [f"P2-W{i:02}" for i in range(1, 10)], "unit_path_table")
+    return {u: frozenset(body.splitlines()) for u, body in found}
+
+
+def entry_manifest(root):
+    raw = (root / "phase2/entry_manifest.json").read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == ENTRY_SHA256, "entry_manifest_changed")
+    entry = json.loads(raw, object_pairs_hook=unique)
+    require(entry["intake_commit"] == INTAKE and entry["file_count"] == 125, "entry_identity")
+    reference = entry["included_manifest"]
+    require(reference["path"] == "scaffold/delivery_manifest.json" and reference["members"] == 121, "parent_manifest_identity")
+    parent_raw = (root / reference["path"]).read_bytes()
+    require(hashlib.sha256(parent_raw).hexdigest() == reference["sha256"], "parent_manifest_changed")
+    parent = json.loads(parent_raw, object_pairs_hook=unique)
+    require(len(parent["files"]) == 121 and len(entry["additional_files"]) == 4, "composed_entry_count")
+    require(not set(parent["files"]) & set(entry["additional_files"]), "overlapping_entry_paths")
+    entry["files"] = {**parent["files"], **entry["additional_files"]}
+    return entry
+
+
+def policy_promotions(value, unit=None):
+    current = unit_number(unit)
+    require(set(value) == {"format", "plan_sha256", "active_unit", "first_units", "promotions"}, "policy_keys")
+    require(value["format"] == "sit-phase2-modules/0.1" and value["plan_sha256"] == PLAN_SHA256, "policy_identity")
+    require(value["active_unit"] == f"P2-W{current:02}", "policy_cannot_select_unit")
+    require(value["first_units"] == FIRST_UNIT, "policy_cannot_expand_modules")
+    rows = value["promotions"]
+    require(isinstance(rows, list), "promotion_type")
+    promoted = set()
+    for row in rows:
+        require(set(row) == {"path", "unit"}, "promotion_keys")
+        path, step = row["path"], row["unit"]
+        require(path in FIRST_UNIT and path not in promoted, "unknown_or_duplicate_promotion")
+        require(type(step) is int and FIRST_UNIT[path] == step <= current, "premature_promotion")
+        promoted.add(path)
+    return frozenset(promoted)
+
+
+def promotions(root, unit=None):
+    unit_number(unit)
+    p = root / "phase2/module_policy.json"
+    if not (root / "PHASE_2_PLAN.md").exists():
+        # Explicit package-only historical test workspace: no live promotion.
+        require(not p.exists(), "policy_without_approved_plan")
+        return frozenset()
+    plan_paths(root)
+    entry_manifest(root)
+    return policy_promotions(json.loads(p.read_bytes(), object_pairs_hook=unique), unit)
+
+
+def executable_ast(source):
     tree = ast.parse(source)
-    # A docstring may identify the owner but does not execute behavior.
     for node in ast.walk(tree):
         if isinstance(node, (ast.Module, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-            if (node.body and isinstance(node.body[0], ast.Expr) and
-                    isinstance(node.body[0].value, ast.Constant) and
-                    isinstance(node.body[0].value.value, str)):
+            if node.body and isinstance(node.body[0], ast.Expr) and isinstance(node.body[0].value, ast.Constant) and isinstance(node.body[0].value.value, str):
                 node.body.pop(0)
     return tree
 
 
-def module_name(path: str) -> str:
+def module_name(path):
     parts = path.removesuffix(".py").split("/")
     if parts[-1] == "__init__":
         parts.pop()
     return ".".join((PACKAGE, *parts))
 
 
-def layer(path: str) -> str:
-    if path == "__init__.py":
-        return "exports"
-    return path.split("/", 1)[0] if "/" in path else "composition"
+def layer(path):
+    return "exports" if path == "__init__.py" else path.split("/", 1)[0] if "/" in path else "composition"
 
 
-def import_targets(path: str, tree: ast.Module) -> tuple[list[str], list[str]]:
-    """Resolve only syntactic Python imports, never execute import machinery."""
+def import_targets(path, tree):
     targets, issues = [], []
     module = module_name(path)
     parent = module if path.endswith("__init__.py") else module.rpartition(".")[0]
@@ -176,8 +260,7 @@ def import_targets(path: str, tree: ast.Module) -> tuple[list[str], list[str]]:
                 if node.level > len(parts):
                     issues.append("relative_import_escape")
                     continue
-                prefix = parts[:len(parts) - node.level + 1]
-                target = ".".join(prefix + ([node.module] if node.module else []))
+                target = ".".join(parts[:len(parts) - node.level + 1] + ([node.module] if node.module else []))
             else:
                 target = node.module or ""
             targets.append(target)
@@ -186,7 +269,7 @@ def import_targets(path: str, tree: ast.Module) -> tuple[list[str], list[str]]:
     return targets, issues
 
 
-def layer_issues(path: str, source: str) -> list[str]:
+def layer_issues(path, source, *, live=False):
     try:
         tree = ast.parse(source)
     except (SyntaxError, ValueError, RecursionError):
@@ -195,28 +278,87 @@ def layer_issues(path: str, source: str) -> list[str]:
     by_name = {module_name(p): p for p in EXPECTED_PATHS}
     for target in targets:
         if target in ("sys", "typing"):
+            if live and target == "sys":
+                issues.append("unapproved_import")
+            continue
+        if live and (target in SAFE_IMPORTS or (path == "runtime/resources.py" and target == "time")):
             continue
         if target not in by_name:
             issues.append("unapproved_import")
             continue
         if layer(by_name[target]) not in LAYER_PERMISSIONS[layer(path)]:
             issues.append("layer_violation")
+        if live and (by_name[target].startswith(("analysis/", "graph/", "reporting/")) or
+                     by_name[target] in ("io/platform_linux.py", "io/platform_windows.py", "io/publication.py", "io/output_directory.py", "api.py", "cli.py")):
+            issues.append("phase2_forbidden_dependency")
     return sorted(set(issues))
 
 
-def form_issues(path: str, source: str) -> list[str]:
+def form_issues(path, source):
     if path not in EXPECTED_PATHS:
         return ["unexpected_module"]
     try:
-        tree = executable_ast(source)
-        expected = executable_ast(SPECIAL_FORMS.get(path, ""))
+        tree, expected = executable_ast(source), executable_ast(SPECIAL_FORMS.get(path, ""))
     except (SyntaxError, ValueError, RecursionError):
         return ["invalid_python"]
-    return ([] if ast.dump(tree, include_attributes=False) == ast.dump(expected, include_attributes=False)
-            else ["non_scaffold_body"])
+    return [] if ast.dump(tree, include_attributes=False) == ast.dump(expected, include_attributes=False) else ["non_scaffold_body"]
 
 
-def import_cycle_issues(sources: dict[str, str]) -> list[str]:
+def live_issues(path, source):
+    if path not in FIRST_UNIT:
+        return ["unapproved_live_module"]
+    issues = layer_issues(path, source, live=True)
+    try:
+        tree = ast.parse(source)
+    except (SyntaxError, ValueError, RecursionError):
+        return ["invalid_python"]
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Name) and node.id in FORBIDDEN_NAMES:
+            issues.append("forbidden_effect")
+        if isinstance(node, ast.Attribute) and (node.attr in FORBIDDEN_ATTRS or node.attr.startswith("__")):
+            issues.append("forbidden_effect")
+        if isinstance(node, (ast.AsyncFunctionDef, ast.Await)):
+            issues.append("async_execution_not_selected")
+        if isinstance(node, ast.ClassDef) and node.keywords:
+            issues.append("custom_metaclass")
+        if isinstance(node, ast.Constant) and isinstance(node.value, str) and any(s in node.value for s in ("tests/golden/", "scaffold/", "phase2/", "module_manifest.json", "trace_catalog.json", "obligation_catalog.json")):
+            issues.append("runtime_catalog_or_oracle_reference")
+    for node in tree.body:
+        if not isinstance(node, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.ClassDef, ast.Assign, ast.AnnAssign, ast.Expr)):
+            issues.append("import_time_execution")
+        if isinstance(node, ast.Expr) and not (isinstance(node.value, ast.Constant) and isinstance(node.value.value, str)):
+            issues.append("import_time_execution")
+    # Only named pure declaration helpers may run at module definition time.
+    # This intentionally conservative whitelist does not certify helper semantics.
+    definitions = (ast.FunctionDef, ast.AsyncFunctionDef)
+    roots = []
+    for node in tree.body:
+        if isinstance(node, definitions):
+            roots.extend(node.decorator_list)
+            roots.extend(node.args.defaults)
+            roots.extend(d for d in node.args.kw_defaults if d is not None)
+            roots.extend(a.annotation for a in node.args.args + node.args.kwonlyargs if a.annotation is not None)
+            if node.returns is not None:
+                roots.append(node.returns)
+        elif isinstance(node, ast.ClassDef):
+            roots.extend(node.bases + node.decorator_list)
+            roots.extend(n for n in node.body if not isinstance(n, definitions))
+        elif isinstance(node, (ast.Assign, ast.AnnAssign)):
+            roots.append(node)
+    for root in roots:
+        for node in ast.walk(root):
+            if isinstance(node, ast.Call) and not (isinstance(node.func, ast.Name) and node.func.id in
+                    {"dataclass", "field", "frozenset", "tuple", "MappingProxyType", "NamedTuple"}):
+                issues.append("import_time_execution")
+    if path == "contracts/constants.py":
+        values = [n.value.value for n in tree.body if isinstance(n, ast.Assign) and isinstance(n.value, ast.Constant)
+                  and any(isinstance(t, ast.Name) and t.id == "SCAFFOLD_VERSION" for t in n.targets)]
+        if values != ["0.1.0.dev0"]:
+            issues.append("scaffold_version_changed")
+    return sorted(set(issues))
+
+
+def import_cycle_issues(sources):
     by_name = {module_name(p): p for p in sources}
     dependencies = {}
     for path, source in sources.items():
@@ -232,79 +374,110 @@ def import_cycle_issues(sources: dict[str, str]) -> list[str]:
     return []
 
 
-def check_repository(root: Path) -> dict:
+def check_repository(root, *, unit=None):
+    issues, found, sources = [], set(), {}
+    try:
+        promoted = promotions(root, unit)
+    except (ValueError, OSError, KeyError, TypeError):
+        return {"ok": False, "checked_modules": 0, "issues": [{"path": "phase2", "code": "invalid_phase_policy"}]}
     package = root / "src" / PACKAGE
-    issues: list[dict] = []
-    found: set[str] = set()
-    sources: dict[str, str] = {}
     if (root / "src").is_symlink() or package.is_symlink() or not package.is_dir():
-        return {"ok": False, "checked_modules": 0,
-                "issues": [{"path": "src/" + PACKAGE, "code": "missing_or_linked_package"}]}
+        return {"ok": False, "checked_modules": 0, "issues": [{"path": "src/" + PACKAGE, "code": "missing_or_linked_package"}]}
     expected_dirs = {p.split("/")[0] for p in EXPECTED_PATHS if "/" in p}
     for directory, dirs, files in os.walk(package, followlinks=False):
         current = Path(directory)
-        relative = current.relative_to(package)
         for name in list(dirs):
             child = current / name
-            child_rel = child.relative_to(package).as_posix()
+            key = child.relative_to(package).as_posix()
             if child.is_symlink():
-                issues.append({"path": child_rel, "code": "linked_directory"})
-                dirs.remove(name)
+                issues.append({"path": key, "code": "linked_directory"}); dirs.remove(name)
             elif name == "__pycache__":
-                # CPython may create ordinary caches. Reject code, native files,
-                # links or subdirectories masquerading as a cache.
-                for cached in child.iterdir():
-                    if cached.is_symlink() or not cached.is_file() or cached.suffix != ".pyc":
-                        issues.append({"path": child_rel, "code": "unexpected_cache_entry"})
+                if any(c.is_symlink() or not c.is_file() or c.suffix != ".pyc" for c in child.iterdir()):
+                    issues.append({"path": key, "code": "unexpected_cache_entry"})
                 dirs.remove(name)
-            elif child_rel not in expected_dirs:
-                issues.append({"path": child_rel, "code": "unexpected_directory"})
-                dirs.remove(name)
+            elif key not in expected_dirs:
+                issues.append({"path": key, "code": "unexpected_directory"}); dirs.remove(name)
         for name in files:
             path = current / name
-            key = path.relative_to(package).as_posix()
-            found.add(key)
+            key = path.relative_to(package).as_posix(); found.add(key)
             if path.is_symlink() or not path.is_file():
-                issues.append({"path": key, "code": "not_regular_module"})
-                continue
+                issues.append({"path": key, "code": "not_regular_module"}); continue
             if key not in EXPECTED_PATHS:
-                issues.append({"path": key, "code": "unexpected_package_file"})
-                continue
+                issues.append({"path": key, "code": "unexpected_package_file"}); continue
+            limit = 262144 if key in promoted else 16384
             with path.open("rb") as handle:
-                data = handle.read(16385)
-            if len(data) > 16384:
-                issues.append({"path": key, "code": "oversize_module"})
-                continue
-            if git_blob(data) != dict(PINS)[key]:
+                data = handle.read(limit + 1)
+            if len(data) > limit:
+                issues.append({"path": key, "code": "oversize_module"}); continue
+            if key not in promoted and git_blob(data) != dict(PINS)[key]:
                 issues.append({"path": key, "code": "accepted_blob_changed"})
             try:
                 source = data.decode("utf-8")
             except UnicodeDecodeError:
-                issues.append({"path": key, "code": "invalid_utf8"})
-                continue
+                issues.append({"path": key, "code": "invalid_utf8"}); continue
             sources[key] = source
-            issues.extend({"path": key, "code": code}
-                          for code in layer_issues(key, source) + form_issues(key, source))
+            codes = live_issues(key, source) if key in promoted else layer_issues(key, source) + form_issues(key, source)
+            issues.extend({"path": key, "code": c} for c in codes)
     issues.extend({"path": p, "code": "missing_module"} for p in sorted(EXPECTED_PATHS - found))
-    issues.extend({"path": "src/" + PACKAGE, "code": code}
-                  for code in import_cycle_issues(sources))
-    # Reject additional source packages/modules, while permitting the conventional
-    # local build backend's metadata directory outside the installed package.
+    issues.extend({"path": "src/" + PACKAGE, "code": c} for c in import_cycle_issues(sources))
     for child in (root / "src").iterdir():
-        if child.name == PACKAGE:
-            continue
-        if child.name == "source_integrity_toolkit.egg-info" and child.is_dir() and not child.is_symlink():
+        if child.name == PACKAGE or (child.name == "source_integrity_toolkit.egg-info" and child.is_dir() and not child.is_symlink()):
             continue
         issues.append({"path": "src/" + child.name, "code": "unexpected_source_entry"})
-    issues.sort(key=lambda row: (row["path"], row["code"]))
+    issues.sort(key=lambda r: (r["path"], r["code"]))
     return {"ok": not issues, "checked_modules": len(sources), "issues": issues,
-            "scope": "accepted W02 module bytes, closed scaffold AST, software-import layers"}
+            "promoted_modules": sorted(promoted), "protected_modules": len(EXPECTED_PATHS - promoted),
+            "unit": f"P2-W{unit_number(unit):02}", "scope": "phase-aware developer checks; no analytical conformance claim"}
 
 
-def main(argv: list[str] | None = None) -> int:
+
+# These are the only executable historical assets this developer helper loads.
+# Complete source bytes are checked against the separately pinned entry record.
+HISTORICAL_TESTS = frozenset((
+    "tests/scaffold/test_imports.py", "tests/scaffold/test_module_manifest.py",
+    "tests/scaffold/test_no_runtime_implementation.py", "tests/scaffold/test_layer_boundaries.py",
+    "tests/scaffold/test_contract_catalogs.py", "tests/scaffold/test_ci_contract.py",
+))
+HISTORICAL_NODES_SHA256 = "3262e08ba9825a41ab78ba55845a9f45ccf3195d3f33dc030cc28ce772eedc83"
+
+
+def load_phase1_test(relative, namespace):
+    """Execute a named, hash-pinned historical test, never candidate input.
+
+    Full Git history is an explicit developer-test prerequisite. There is no
+    network fetch, mutable-ref fallback, user-selected asset or product import.
+    Keeping the actual old assertions avoids silently rewriting their meaning.
+    """
+    require(relative in HISTORICAL_TESTS, "unlisted_historical_test")
+    root = Path(namespace["__file__"]).resolve().parents[2]
+    entry = entry_manifest(root)
+    raw = subprocess.check_output(["git", "show", INTAKE + ":" + relative], cwd=root,
+                                  stderr=subprocess.PIPE, timeout=30)
+    require(hashlib.sha256(raw).hexdigest() == entry["files"][relative], "historical_test_changed")
+    name = namespace["__name__"]
+    if name == "__main__":
+        namespace["__name__"] = "__sit_frozen_test__"
+    try:
+        exec(compile(raw, str(root / relative), "exec", dont_inherit=True), namespace)
+    finally:
+        namespace["__name__"] = name
+
+
+def historical_nodes(root):
+    text = (root / "phase2/transition_ledger.md").read_text(encoding="utf-8")
+    nodes = re.findall(r"^\| `(tests/[^`]+::[^`]+)` \| (?:retained|adapted) \| (?:same|`[^`]+`) \|$", text, re.M)
+    require(len(nodes) == 194 and len(set(nodes)) == 194, "historical_identity_count")
+    raw = ("\n".join(sorted(nodes)) + "\n").encode()
+    require(hashlib.sha256(raw).hexdigest() == HISTORICAL_NODES_SHA256, "historical_identity_changed")
+    return frozenset(nodes)
+
+
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
-    result = check_repository(parser.parse_args(argv).root)
+    parser.add_argument("--unit", choices=[f"P2-W{i:02}" for i in range(1, 10)], default=None)
+    args = parser.parse_args(argv)
+    result = check_repository(args.root, unit=args.unit)
     print(json.dumps(result, sort_keys=True))
     return 0 if result["ok"] else 1
 

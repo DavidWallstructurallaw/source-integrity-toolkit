@@ -2,37 +2,25 @@
 
 A local, supplied-evidence toolkit for examining source lineage, evidence independence, external presence and corrective capacity in AI-native information systems.
 
-**Status: Phase 1 repository scaffold. No audit functionality is implemented.** The source package is installable as version `0.1.0.dev0`. Its 48 import-safe modules, static contract catalogs, fictional inputs and test-only logical expectations are present. Public audit calls immediately raise `NotImplementedError`. The CLI provides help/version and refuses audit execution with exit code 1; it reads no dossier and creates no report.
+**Status: Phase 1 accepted; Phase 2 P2-W01 developer controls under review. No audit functionality is implemented.** The source package remains installable as `0.1.0.dev0`. All 48 product modules retain their accepted scaffold bytes in this unit. Public audit calls immediately raise `NotImplementedError`; the CLI provides help/version and refuses audits with exit 1, without reading dossiers or producing reports.
 
 ## Intended purpose
 
-The planned v0.1 auditor will work from a caller-prepared local JSON dossier containing claims, evidence, origin and transformation records, evaluator relationships and correction history. Its outputs will distinguish supplied assertions, supported structural deductions and unresolved information.
+The planned v0.1 auditor consumes a caller-prepared local JSON dossier containing claims, evidence, origin and transformation records, evaluator relationships and correction history. It distinguishes supplied assertions, supported structural deductions and unresolved information. Different material counts and evidence roles remain distinct. Missing ancestry cannot become an independent source, and a structurally consistent dossier cannot certify its own authenticity.
 
-A typical question is whether several cited materials trace back to the same acquisition, whether evaluator roles share recorded ancestry, or whether a correction has a documented route and a linked downstream change. Different material counts and evidence roles remain distinct. Missing ancestry cannot become an independent source, and a structurally consistent dossier cannot certify its own authenticity.
+The adopted scope provides a multidimensional evidence profile. It excludes a universal truth or integrity score, live crawling, hidden-lineage discovery, an LLM judge, automatic source sanctions and automatic correction. Source locators and extensions remain inert. Source Integrity Toolkit is independent of Recursive Integrity Toolkit, with no shared internals or runtime dependency.
 
-The adopted scope provides a multidimensional evidence profile. It excludes a universal truth or integrity score, live crawling, hidden-lineage discovery, an LLM judge, automatic source sanctions and automatic correction. Source locators and extension fields remain inert data. These are design requirements whose implementation and tests remain ahead.
+## Accepted baseline and current work
 
-The project is independent of Recursive Integrity Toolkit. No shared internal package, runtime dependency or implicit schema compatibility is established.
+The eighteen Phase 0 specifications remain approved at `7d2e5fcaff591641b5cefce00e71e88941dd1f95`; [PHASE_0_APPROVAL.md](PHASE_0_APPROVAL.md) revision 1.1 preserves the authorized digest correction. [PHASE_1_COMPLETION.md](PHASE_1_COMPLETION.md) revision 1.0 was accepted with PR #8, merged at `d7d73a790a2a627d19307c9dd48281eff3017023`. Its historical pending header is read with that later acceptance event.
 
-## Current baseline and roadmap
+[PHASE_2_PLAN.md](PHASE_2_PLAN.md) revision 0.1 was approved and PR #9 merged at `eb730dda31d189c8487b5247a45bae47b678821b`. Only P2-W01 is currently authorized for execution. [PHASE_2_PROGRESS.md](PHASE_2_PROGRESS.md) records exact work, evidence and review stops. The entry manifest resolves all 125 intake file hashes from a pinned prior manifest plus four disjoint records; it has no self-reference.
 
-The eighteen Phase 0 specifications are approved at commit `7d2e5fcaff591641b5cefce00e71e88941dd1f95`. [PHASE_0_APPROVAL.md](PHASE_0_APPROVAL.md) records that approval and its corrected exact-byte manifest. Original approvals and the manifest correction retain their history.
-
-| Phase 1 work unit | Purpose |
-|---|---|
-| P1-W01 | Baseline verification, governance and Apache-2.0 application |
-| P1-W02 | Packaging, import-safe modules and explicitly unimplemented audit entry points |
-| P1-W03 | Static contract/trace catalogs and schema reservations |
-| P1-W04 | Fictional hero dossiers and separately identified logical expectations |
-| P1-W05 | Scaffold boundary, baseline and architecture guards |
-| P1-W06 | Reviewed, minimally privileged scaffold CI |
-| P1-W07 | Final scaffold audit and handoff |
-
-[PHASE_1_PLAN.md](PHASE_1_PLAN.md) controls the work-unit sequence and closed file allowlists. [PHASE_1_PROGRESS.md](PHASE_1_PROGRESS.md) records actual execution and review status. Each work unit has its own acceptance gate. Phase 1 does not implement source tracing, independence qualification, concentration, correction analysis, report rendering or native filesystem security.
+P2-W01 establishes the phase-aware module guard, the historical-to-current test transition and cumulative CI. It creates no product implementation or executable schema. Later authorized Phase 2 units may implement thirteen existing internal preparation modules; thirty-five other modules remain frozen. Public API/CLI auditing remains unavailable throughout Phase 2. No analysis result, source independence, HHI, correction finding, audit report, native filesystem implementation or release is delivered here.
 
 ## Developer installation and checks
 
-Use a clean CPython 3.11 or 3.13 development environment. From this source checkout, install the already reviewed development pins, then the scaffold without resolving new build/runtime dependencies:
+Use a complete Git checkout and a clean CPython 3.11 or 3.13 development environment. The six migrated test files load only their exact, SHA-256-checked historical source from the fixed intake commit, then adapt the named phase-specific assertions. Full Git history is required; no network or mutable-ref fallback occurs during test loading. This retains the original assertions and all 194 historical test identities instead of silently replacing them. See [phase2/transition_ledger.md](phase2/transition_ledger.md).
 
 ```sh
 python -m pip install -r requirements-dev.txt
@@ -40,46 +28,38 @@ python -m pip install --no-build-isolation --no-deps .
 sit --version
 sit --help
 python -B tools/check_phase0_baseline.py
-python -B tools/check_scaffold_boundary.py
-python -m pytest tests/scaffold tests/security -q
+python -B tools/check_scaffold_boundary.py --unit P2-W01
+python -m pytest tests -q
 ```
 
-Dependency installation is a developer operation that may access the package index. It does not enable source retrieval in the product. The installed product has zero third-party runtime dependencies. An invocation such as `sit audit input.json --output result` deliberately returns exit 1 and a fixed unimplemented message. This is a scaffold refusal, not an audit result or a final report-protocol exit code. No package-index release has been published.
+W01 is the conservative default developer unit. Later reviewed units supply the corresponding `SIT_PHASE_UNIT` context before running tests, independently of candidate policy files. It is a mechanical test context, not proof of owner approval. CI derives it from the exact `phase2/p2-wNN` review branch. A main-branch work-unit merge must include exactly one `SIT-Phase-Unit: P2-WNN` footer, preserving the separately authorized unit context after merge.
 
-Both test directories are explicit in the command above. The earlier pytest default covers only tests/scaffold and must not be mistaken for the entire security suite. Neither passing static fixture checks nor reading stored logical expectations establishes any of the 228 pending domain-test obligations.
+Dependency installation is a developer operation and may access the package index. The installed product has zero third-party runtime dependencies and never imports the developer guards, catalogs or historical tests. Source distributions retain the four permitted repository-context tests; running those tests requires the complete developer checkout. Building the sdist/wheel and using the installed package do not require this test loader or Git history.
 
-## CI scope and evidence
+The older pytest default covers only tests/scaffold. Use the explicit tests root or the cumulative CI driver to include all present security, contract, unit and integration tests. Static fixture checks and stored logical expectations do not execute any of the 228 pending domain obligations.
 
-[Phase 1 scaffold CI](.github/workflows/phase1-ci.yml) defines four required rows: Ubuntu 24.04 and Windows Server 2025, each with Python 3.11 and 3.13. It uses read-only repository permissions and full-commit action pins, checks the exact candidate head, runs both full-checkout guards, reviews and installs pinned developer wheels, collects and runs the accumulated tests, and checks source/wheel contents plus an offline clean installation. It uploads only verification records for fourteen days, with no package publication or automatic merge.
+## CI and evidence
 
-The workflow is expressed in JSON-form YAML so the standard library can inspect its complete permission/trigger/matrix structure without an extra parser dependency. Policy tests include deliberate unsafe mutations. Networked dependency setup is separate from the application's no-network probes. Runner images and Python patch releases are recorded at execution time.
+[Phase 2 cumulative CI](.github/workflows/phase1-ci.yml) retains four required rows: Ubuntu 24.04 and Windows Server 2025, each with Python 3.11 and 3.13. It retains read-only repository permissions, exact-head checkout, immutable action pins, no stored checkout credentials, finite timeouts, reviewed developer wheels and explicit verification-only artifact uploads. Full history supports pinned historical test loading and actual entry-commit byte checks. No source archive, user dossier, package or secret is uploaded.
 
-**P1-W01 through P1-W06 have been accepted and merged.** PR #7 merged at `6d7f7e3f54bebf5f7f3b680988b10cee096ae8ba` after owner authorization. Its exact reviewed head `c24b9b6ccc5ce178f52f989f80dfde1cc26a7e39` passed run `35365621100`: all 194 collected tests on each of the four rows, with zero failures, errors or skips and 420 separately counted successful subtest events per row. Both full-checkout guards and the packaging, clean-install and source-rebuild checks passed. The approved R01/R02 test repairs and earlier failed runs remain in the progress and PR histories. That evidence identifies the W06 snapshot; it does not automatically certify later commits.
+The driver validates the complete actual 124-file accepted Phase 1 commit and 125-file plan-merge intake, the current work-unit path delta, the actual twenty-file frozen baseline and all forty-eight product slots. It checks the old-to-new collection identity mapping, raw JUnit outcomes, tracked bytes before/after, packaging, clean offline installation and source-rebuild member contents. Tests and subtest events remain separate counts. Missing or failed evidence is not a successful result.
 
-P1-W07 is the final scaffold-audit and handoff unit. Its completion record must identify the audited snapshot, a non-circular delivery manifest and separately observed final-candidate CI. Owner acceptance of that handoff and authorization of a subsequent phase remain separate decisions. An installable scaffold and a green scaffold workflow do not imply usable source auditing, a deployed release or completed analytical tests.
+W01 execution results belong to its exact-head PR and progress record. The earlier four-row 194-test Phase 1 evidence remains historical and is not relabeled as a Phase 2 execution. The W01 candidate requires its own four-row run before technical completion and separate owner acceptance before merge.
 
-Windows Server scaffold checks do not certify the future Windows 11/NTFS file adapter, and no production platform support is asserted.
+Windows Server component tests do not certify the future Windows 11/NTFS native adapter. No production platform support or general security proof is asserted. Artifacts retain the existing fourteen-day retention.
 
-## Specifications
+## Specifications, security and rights
 
-Start with [V0.1_PRODUCT_SPEC.md](V0.1_PRODUCT_SPEC.md), [DEFINITIONS_AND_UNITS.md](DEFINITIONS_AND_UNITS.md) and [CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md](CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md). [OBSERVABILITY_AND_REPORTING.md](OBSERVABILITY_AND_REPORTING.md) defines result states and report meaning.
+Start with [V0.1_PRODUCT_SPEC.md](V0.1_PRODUCT_SPEC.md), [DEFINITIONS_AND_UNITS.md](DEFINITIONS_AND_UNITS.md), [CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md](CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md) and [OBSERVABILITY_AND_REPORTING.md](OBSERVABILITY_AND_REPORTING.md). [THEORY_SOURCE_MAP.md](THEORY_SOURCE_MAP.md), [THEORY_TO_CODE_TRACEABILITY.md](THEORY_TO_CODE_TRACEABILITY.md) and [VALIDATION_PLAN.md](VALIDATION_PLAN.md) preserve source interpretation, responsibilities and future behavior tests. Historical catalogs and the approved plans remain unchanged; implementation evidence is tracked separately.
 
-[THEORY_SOURCE_MAP.md](THEORY_SOURCE_MAP.md) preserves the theoretical source basis, and [THEORY_TO_CODE_TRACEABILITY.md](THEORY_TO_CODE_TRACEABILITY.md) links it to engineering responsibilities. [VALIDATION_PLAN.md](VALIDATION_PLAN.md) specifies future tests; its logical expectations are not executed product results.
-
-The frozen specifications and approved plan remain at their root paths. Their historical pending headers are interpreted through later approval records, rather than rewritten. [scaffold/baseline_manifest.json](scaffold/baseline_manifest.json) is a machine-readable copy of the freeze evidence. `.gitattributes` protects those paths against checkout text conversion; it does not prevent deliberate edits or replace hash verification.
-
-## Contributions, security and data
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for scoped changes, rights and review rules, and [SECURITY.md](SECURITY.md) for the present reporting limitations. Do not post private evidence, credentials, confidential identity maps or real protected-source dossiers in this public repository. Use fictional examples for development.
-
-The installed runtime has no required third-party Python dependencies. Build/test tools and their actual historical results are reviewed separately in [scaffold/toolchain_review.md](scaffold/toolchain_review.md). Current matrix/action choices are documented in [scaffold/ci_toolchain_review.md](scaffold/ci_toolchain_review.md). Developer tools retain their own rights and are excluded from the product wheel.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Do not post private evidence, credentials or protected-source identities in this public repository. Use fictional development examples. Private vulnerability reporting remains subject to the existing unverified-channel limitation. Build/test tools and their original reviews remain in [scaffold/toolchain_review.md](scaffold/toolchain_review.md) and [scaffold/ci_toolchain_review.md](scaffold/ci_toolchain_review.md); the scoped transition is recorded in [phase2/ci_review.md](phase2/ci_review.md).
 
 ## License
 
 Copyright 2026 Xiangyu Guo.
 
-The project's original engineering repository materials are licensed under the **Apache License, Version 2.0**, provided in [LICENSE](LICENSE). This includes original engineering specifications, documentation, and fictional examples as well as project code, schemas and tests when added. [NOTICE](NOTICE) supplies attribution.
+Original engineering repository materials are licensed under the **Apache License, Version 2.0**, in [LICENSE](LICENSE), with attribution in [NOTICE](NOTICE). This covers original engineering specifications, documentation, fictional examples, code, schemas and tests that the project has authority to license.
 
-The grant covers material the project has authority to license. It does not automatically cover the underlying theory papers, their extracts, page images, translations or adaptations; third-party materials; user-supplied evidence; confidential identity mappings; or input-derived portions of audit reports. The theory papers retain their own **CC BY-NC-ND 4.0** notices. Other excluded materials retain their applicable terms and permissions. References and successful processing do not transfer rights.
+The grant does not automatically cover theory papers or their extracts, page images, translations or adaptations; third-party material; user-supplied evidence; confidential identity maps; or input-derived report content. Theory papers retain their own **CC BY-NC-ND 4.0** notices. Excluded materials retain their own terms and permissions. Successful processing does not transfer rights.
 
-[LICENSING_NOTES.md](LICENSING_NOTES.md) describes these boundaries. Its historical statement that the root license had not yet been applied refers to Phase 0; P1-W01 supplies that file without changing the frozen specification. Contribution and project-governance rules govern changes accepted upstream and add no downstream conditions to Apache-2.0.
+[LICENSING_NOTES.md](LICENSING_NOTES.md) controls these boundaries. Its historical root-license statement refers to Phase 0; accepted P1-W01 applied the license without changing that frozen specification. Upstream contribution/governance rules add no downstream conditions to Apache-2.0. No package-index release has been published by this work.

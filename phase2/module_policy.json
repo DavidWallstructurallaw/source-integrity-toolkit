@@ -1,0 +1,21 @@
+{
+  "active_unit": "P2-W01",
+  "first_units": {
+    "contracts/bundle.py": 2,
+    "contracts/constants.py": 2,
+    "contracts/evidence.py": 2,
+    "contracts/execution.py": 2,
+    "contracts/report.py": 2,
+    "io/input_file.py": 4,
+    "runtime/boundary.py": 4,
+    "runtime/diagnostics.py": 3,
+    "runtime/resources.py": 3,
+    "validation/limits.py": 3,
+    "validation/references.py": 5,
+    "validation/semantics.py": 5,
+    "validation/structure.py": 4
+  },
+  "format": "sit-phase2-modules/0.1",
+  "plan_sha256": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
+  "promotions": []
+}
