@@ -1,5 +1,5 @@
 {
-  "name": "Phase 1 scaffold CI",
+  "name": "Phase 2 cumulative CI",
   "on": {
     "pull_request": {
       "branches": [
@@ -22,12 +22,12 @@
     "contents": "read"
   },
   "concurrency": {
-    "group": "phase1-${{ github.event.pull_request.number || github.ref }}",
+    "group": "phase2-${{ github.event.pull_request.number || github.ref }}",
     "cancel-in-progress": true
   },
   "jobs": {
     "scaffold": {
-      "name": "scaffold (${{ matrix.os }}, Python ${{ matrix.python }})",
+      "name": "preparation (${{ matrix.os }}, Python ${{ matrix.python }})",
       "runs-on": "${{ matrix.os }}",
       "timeout-minutes": 25,
       "strategy": {
@@ -64,7 +64,7 @@
           "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
           "with": {
             "ref": "${{ github.event.pull_request.head.sha || github.sha }}",
-            "fetch-depth": 1,
+            "fetch-depth": 0,
             "persist-credentials": false,
             "submodules": false,
             "lfs": false
@@ -89,7 +89,7 @@
           "run": "python -B tests/scaffold/test_ci_contract.py --ci-stage prepare"
         },
         {
-          "name": "Collect and run all scaffold and security tests",
+          "name": "Collect and run all cumulative tests",
           "run": "python -B tests/scaffold/test_ci_contract.py --ci-stage test"
         },
         {
@@ -102,8 +102,8 @@
           "if": "${{ always() }}",
           "uses": "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
           "with": {
-            "name": "phase1-${{ matrix.os }}-py${{ matrix.python }}-${{ github.run_id }}-${{ github.run_attempt }}",
-            "path": "${{ runner.temp }}/sit-w06/evidence/*.json\n${{ runner.temp }}/sit-w06/evidence/*.xml\n${{ runner.temp }}/sit-w06/evidence/*.log",
+            "name": "phase2-${{ matrix.os }}-py${{ matrix.python }}-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": "${{ runner.temp }}/sit-p2/evidence/*.json\n${{ runner.temp }}/sit-p2/evidence/*.xml\n${{ runner.temp }}/sit-p2/evidence/*.log",
             "if-no-files-found": "error",
             "include-hidden-files": false,
             "overwrite": false,

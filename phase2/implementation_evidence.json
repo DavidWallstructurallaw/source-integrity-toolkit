@@ -1,0 +1,101 @@
+{
+  "components": [
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 2,
+      "implementation": "pending",
+      "path": "contracts/bundle.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 2,
+      "implementation": "pending",
+      "path": "contracts/constants.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 2,
+      "implementation": "pending",
+      "path": "contracts/evidence.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 2,
+      "implementation": "pending",
+      "path": "contracts/execution.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 2,
+      "implementation": "pending",
+      "path": "contracts/report.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 4,
+      "implementation": "pending",
+      "path": "io/input_file.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 4,
+      "implementation": "pending",
+      "path": "runtime/boundary.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 3,
+      "implementation": "pending",
+      "path": "runtime/diagnostics.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 3,
+      "implementation": "pending",
+      "path": "runtime/resources.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 3,
+      "implementation": "pending",
+      "path": "validation/limits.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 5,
+      "implementation": "pending",
+      "path": "validation/references.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 5,
+      "implementation": "pending",
+      "path": "validation/semantics.py"
+    },
+    {
+      "behavior_tests": "pending",
+      "evidence": [],
+      "first_unit": 4,
+      "implementation": "pending",
+      "path": "validation/structure.py"
+    }
+  ],
+  "control_evidence": "W01 developer control execution is recorded in PHASE_2_PROGRESS.md and exact-head PR evidence; it does not implement any input or analytical component.",
+  "domain_traces_closed": [],
+  "format": "sit-phase2-evidence/0.1",
+  "product_implementation": "not_started",
+  "public_audit": "unchanged_refusal",
+  "unit": "P2-W01"
+}
