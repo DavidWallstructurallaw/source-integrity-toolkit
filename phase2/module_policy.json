@@ -59,6 +59,14 @@
       "unit": 3
     },
     {
+      "path": "validation/references.py",
+      "unit": 5
+    },
+    {
+      "path": "validation/semantics.py",
+      "unit": 5
+    },
+    {
       "path": "validation/structure.py",
       "unit": 4
     }

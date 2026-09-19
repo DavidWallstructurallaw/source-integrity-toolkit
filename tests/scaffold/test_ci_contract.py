@@ -41,6 +41,10 @@ P2_W05_R01_PATHS = frozenset((
     "phase2/transition_ledger.md",
 ))
 
+# Explicit owner-approved P2-W05-R02: the live W02 coverage-status assertion.
+# Only this one additional path is authorized; older exceptions stay separate.
+P2_W05_R02_PATHS = frozenset(("tests/contract/test_input_schema_mapping.py",))
+
 def effective_paths(paths, unit, *, cumulative=False):
     current = phase_guard.unit_number(unit)
     steps = range(1, current + 1) if cumulative else (current,)
@@ -53,6 +57,7 @@ def effective_paths(paths, unit, *, cumulative=False):
             allowed.update(P2_W04_R01_PATHS)
         if step == 5:
             allowed.update(P2_W05_R01_PATHS)
+            allowed.update(P2_W05_R02_PATHS)
     return frozenset(allowed)
 
 
@@ -156,7 +161,7 @@ def entry_and_scope(evidence):
         "changed_paths": sorted(changed), "tracked_files": len(actual), "historical_test_identities": len(old),
         "scope_exceptions": (["P2-W02-R01"] if phase_guard.unit_number(unit) >= 2 else []) +
             (["P2-W04-R01"] if phase_guard.unit_number(unit) >= 4 else []) +
-            (["P2-W05-R01"] if phase_guard.unit_number(unit) >= 5 else []),
+            (["P2-W05-R01", "P2-W05-R02"] if phase_guard.unit_number(unit) >= 5 else []),
         "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata"})
 
 

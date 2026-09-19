@@ -270,3 +270,47 @@ all structural/identity/reference/type/time/index/scope work before acceptance,
 and exercise all four unchanged H7 inputs. None of those future tests is marked
 executed here. The 724 predecessor identities remain the required cumulative
 baseline; local patch checks cannot replace their hosted execution.
+
+## P2-W05-R02 and full preparation integration
+
+The owner approved P2-W05-R02 and reiterated continuation of the already approved
+W05. The verified R01 migration is now remotely present at
+655f99e35052d56790f28d0c7971515c92b9ea6d, with run 35436261547 retaining all 724
+predecessor test identities. The earlier local/pending wording above records its
+historical preparation, not the current transport state.
+
+R02 adds exactly tests/contract/test_input_schema_mapping.py to W05 immediate
+scope. Its original test identity and source/schema/50-shape/242-field/30-rule
+assertions remain intact. Only the unconditional pending/empty status assertion
+is replaced by a strict check for the implemented private admission component,
+PC01 alone completed, and PC02-PC24 still pending. New mutation tests reject both
+stale pending metadata and inflated full-audit/analytical claims. A real sparse
+input, capturable empty input and dangling-reference input witness the distinction
+through the actual preparation functions. A pinned Git/AST regression protects
+all other original assertions. The original historical test name stays unchanged.
+
+The CI driver retains the old W02, W04 and W05-R01 exceptions and adds only the
+one R02 path. Two named scope-accounting bodies in test_bundle_contract.py and
+one in test_input_capture.py recognize that exact delta. Neither file loses a
+test identity. The original capture observer and real negative controls, along
+with the constant-only W04 diagnostic-repair checks, remain unchanged.
+
+_capture_value and _capture_utf8 continue to run pure capture conformance.
+_prepare_value and _prepare_utf8 now execute the complete W05 admission sequence
+under one fixed budget: capture, closed-shape mapping, identity/reference/endpoint
+and claim checks, time syntax, immutable normalization/indexing and finite
+explicit inquiry/anchor planning. Only its final boundary records acceptance.
+No component test is substituted for those full-preparation tests.
+
+New W05 cases reside in test_typed_records.py, test_assertion_contract.py,
+test_temporal_contract.py, test_reference_validation.py and
+test_prepared_hero_inputs.py. They exercise every kind/predicate/assessment, exact
+field presence and concrete type, valid sparse/protected/disputed/cyclic input,
+late defects, source-native states, both input modes for every unchanged H7 case,
+resource/cancellation/failure boundaries and real I/O/network/native controls.
+
+All 724 predecessor identities remain required in the cumulative hosted suite.
+Local component execution is separately recorded in PHASE_2_PROGRESS.md; it does
+not replace full repository history, frozen-file, packaging or four-profile CI.
+Acceptance and all new CI outcomes are recorded against the actual reviewed
+commit in PR #14. W06, public auditing and analytical Trace closure remain absent.
