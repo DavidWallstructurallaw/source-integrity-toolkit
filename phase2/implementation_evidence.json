@@ -1,7 +1,7 @@
 {
   "components": [
     {
-      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
+      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -12,7 +12,7 @@
       "path": "contracts/bundle.py"
     },
     {
-      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
+      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -23,7 +23,7 @@
       "path": "contracts/constants.py"
     },
     {
-      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
+      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -34,7 +34,7 @@
       "path": "contracts/evidence.py"
     },
     {
-      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
+      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -45,7 +45,7 @@
       "path": "contracts/execution.py"
     },
     {
-      "behavior_tests": "local_representation_and_declaration_tests_passed; cumulative_security_blocked",
+      "behavior_tests": "representation_and_declaration_tests_passed; repaired_cumulative_matrix_passed",
       "evidence": [
         "tests/contract/test_bundle_contract.py",
         "tests/contract/test_evidence_basis.py",
@@ -119,20 +119,24 @@
   "public_audit": "unchanged_refusal",
   "unit": "P2-W02",
   "verification": {
-    "tested_commit": "ff6c1eb401590454069e23bcdacaa7d4d627d2df",
-    "run_id": 35411233144,
+    "tested_commit": "405b16f1d8d713cd6776fe16793757eb313bbdf2",
+    "run_id": 35414689827,
     "matrix_rows": 4,
     "per_row": {
-      "collected": 367,
-      "passed": 360,
-      "failures": 7,
+      "collected": 374,
+      "passed": 374,
+      "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "new_w02_component_passes": 146,
+      "original_w02_component_passes": 146,
+      "new_repair_tests": 7,
       "separate_subtest_events": 428
     },
-    "overall": "blocked",
-    "blocker": "existing security probe does not preload dataclasses before restricting application-stack loader reads",
-    "proposed_repair": "P2-W02-R01; pending owner authorization"
+    "overall": "repair_code_passed; final_record_head_gate_pending_in_PR",
+    "blocker": null,
+    "approved_repair": "P2-W02-R01; owner instruction: 批准限定修复 P2-W02-R01",
+    "prior_failed_run": 35411233144,
+    "evidence_scope": "All four complete artifacts downloaded, size/SHA-256 checked, raw results and tracked hashes inspected; see PHASE_2_PROGRESS.md revision 0.5.",
+    "final_delivery_gate": "Exact successor-head four-row CI and inspected artifacts must be recorded in PR #11 before readiness. Owner acceptance/merge and W03 remain unauthorized."
   }
 }
