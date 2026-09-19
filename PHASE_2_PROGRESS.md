@@ -4,73 +4,88 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.2 |
-| Current work unit | P2-W01 |
-| Owner instruction | 批准，合并 PR #9，再开始 P2-W01 |
-| Accepted plan | PHASE_2_PLAN.md revision 0.1 |
-| Plan review head | 10e4ea2e20e9d9dfbefe656579e52d2fdffc67ae |
+| Revision | 0.5 |
+| Work unit | P2-W02; limited repair P2-W02-R01 |
+| Current owner instruction | 批准限定修复 P2-W02-R01 |
+| Approved plan | PHASE_2_PLAN.md revision 0.1 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
-| Actual PR #9 merge / W01 intake | eb730dda31d189c8487b5247a45bae47b678821b |
-| Intake tree | 48ee53f455e6ce4766a38de8c48141bac3dfc93b |
-| W01 branch | phase2/p2-w01 |
-| Current status | Technical checks PASS at 4d4f311; final record-head CI is the remaining delivery check |
-| Product implementation | Not started in W01 |
-| W01 acceptance/merge; W02 | Not authorized / not started |
+| Accepted W01 / PR #10 merge | 41e7ba2f8046b3791f860313ea3ad54dcd4cb25c |
+| Repair intake | 22d43e003eae9b84ed5868696ec3847216a8a16f |
+| Branch / review | phase2/p2-w02; PR #11 |
+| Tested repair code | 405b16f1d8d713cd6776fe16793757eb313bbdf2 |
+| Tested code tree | 527151ee97ca3f705379b0a7d5d5a65e37bee3b4 |
+| Status | Four-row repair-code verification PASS; exact successor-head check remains the final delivery gate |
+| W02 acceptance / merge | Not granted |
+| W03 and later | Not started |
 
-## 1. Actual intake and authority
+## 1. Authority and preserved history
 
-The owner approved the exact plan, requested PR #9 merger and authorized P2-W01. Before merge, the single-file diff, exact plan blob 17b91fd2851006d8bd5c14f6ff922a9d8abbeb0c and all four successful jobs in run 35406933040 were checked. Expected-head-protected merge succeeded at the intake above. The merge records approval; the original plan bytes and historical proposal header remain unchanged.
+The owner accepted W01 and requested W02 through `批准并合并 PR #10，再开始 P2-W02`. The actual expected-head-protected merge is recorded above. Its tree equals reviewed W01 tree ac8bb232d929d18fc56fc053be1b37fb354957ce. The later instruction `批准限定修复 P2-W02-R01` authorizes only the previously described test-harness repair, bounded CI path exception, associated regressions and necessary evidence records.
 
-The earlier accepted Phase 1 merge is d7d73a790a2a627d19307c9dd48281eff3017023. Its accepted tree is 837cb01265c22cb17bea66b2e7e1f8a7e1006924. This intake adds only the approved plan. The six source papers supplied in the conversation do not replace any frozen theory/specification version or change the current task.
+Unabridged W01 progress revision 0.2 remains at 8e3af5e5b5f4ca9879add9bdd934603e307e6abf. W02 candidate revision 0.3 remains at f7a1f9f69351951162142d4bf41a554de89dcb53. Blocked revision 0.4 remains at repair intake 22d43e003eae9b84ed5868696ec3847216a8a16f. These records preserve source checks, original design, local and hosted failures, diagnosis and the exact requested exception. This revision updates current status without rewriting that history or the approved plan.
 
-## 2. P2-W01 candidate
+## 2. W02 implementation scope remains unchanged
 
-Exactly the sixteen section-7 paths are prepared. Seven new files record progress, the composed 125-file entry identity, test transition, module policy, component-evidence status, CI review and transition tests. The other nine paths adapt the developer guard, six existing test modules, the existing workflow and README. No product module, executable schema, dependency pin, package configuration, fixture, oracle, historical catalog, Phase 0 specification or accepted Phase 1 document is changed.
+The original fifteen plan-section-8 paths contain five private contract modules, the local-reference input structural schema, coverage records and component tests. There are fifty closed shapes, 242 named field declarations, twelve record kinds, twenty-four relation predicates and nine assessment kinds. Local immutable representations preserve missing fields, explicit null, supplied attribution and unresolved context. Their constructors take bounded project-owned parts and do not establish whole-bundle acceptance.
 
-The entry manifest pins the existing 121-file delivery manifest and four disjoint additional hashes. The fully resolved set is exactly the 125-file actual plan-merge intake. It excludes itself and all future W01 records. The prior manifest was locally reconstructed from four independently checked W07 artifact maps and matched to its exact existing SHA-256 before use. CI must additionally recompute both the complete 124-file Phase 1 and 125-file intake commits from real local Git objects; historical artifact metadata alone is not claimed to satisfy that check.
+R01 does not change any product module or schema. Forty-three installed modules still retain their Phase 1 bytes. The same five W02 contract modules remain the only active implementation slots. Public API/CLI refusal, version 0.1.0.dev0, frozen specifications/plans, fixtures, logical oracles, original catalogs, dependency pins, package configuration, boundary checker and workflow remain unchanged by the repair.
 
-All 48 product modules remain at their Phase 1 bytes. Thirteen future candidates and their earliest units are independently enumerated and checked against the fixed plan. The current promotion list is empty. Candidate policy cannot change the plan pin, add a module, advance the externally supplied unit or bless a forbidden body by changing a checksum. Syntax/import/effect checks and behavioral tests remain separate from byte identity.
+Number conversion, J measurement, quotas, bounded parsing/capture, global validation and observability execution remain later work. All whole-prerequisite completions and analytical Trace closures remain empty. Thirty identified runtime validation duties and 228 domain behavior obligations remain pending. Structural-aid tests do not claim metaschema or complete-instance validation.
 
-The six adapted tests inherit their exact old source through a closed, hash-checked developer-only Git loader. Only named stage-sensitive assertions or driver behavior are replaced. The ledger maps every one of the 194 old collected identities to the same current identity. All baseline, owner, catalog, oracle, API refusal, negative-control, isolation, packaging and JUnit duties remain. Full Git history is an explicit developer-test prerequisite; it is never an installed-runtime requirement.
+## 3. Exact P2-W02-R01 changes
 
-The existing four-row CI becomes cumulative. It uses exact-head checkout, full history without stored credentials, read-only permissions, unchanged action/dependency pins and verification-only artifacts. It checks complete Git entry objects, current unit path deltas, actual frozen files, modules, old and new collection identities, raw results, installed wheels and unchanged tracked bytes. No workflow grants write permission or publishes software.
+Only three test files change in the repair-code commit:
 
-## 3. Authoring checks and evidence boundary
+| Path | Authorized change |
+|---|---|
+| tests/security/test_scaffold_inertness.py | Preload the specific dataclasses helper before the existing observer; add one isolated regression with positive and deliberately omitted-preload controls |
+| tests/scaffold/test_ci_contract.py | Add exactly these two existing-file exceptions to W02's immediate path allowance; retain them in cumulative accounting without granting later units new immediate edit permissions |
+| tests/contract/test_bundle_contract.py | Append six repair tests for exact scope, future-unit boundaries, unlisted paths, invalid contexts and preservation of the complete original observer/assertions |
 
-Local full Git access failed DNS resolution. No local partial workspace is described as a full checkout. Available original Phase 0 sources, the exact plan, the old artifact hash maps, new metadata, syntax and path tables were inspected locally. The full actual-checkout guards, inherited test execution, installation and four-row matrix remain the hosted acceptance gates.
+The entire existing security PROBE string is byte-identical after removing the two explicitly inserted comment/import lines. A regression loads the prior harness from its fixed Git commit, checks blob a7a876006eb75ab5c3542e01f4b72c8a7483519f, and compares the old/new syntax trees after accounting only for that preload and the one added test. Every existing observation rule, filesystem wrapper, API refusal, mutation probe and event-specific assertion remains intact. Original W02 contract tests remain an exact prefix of their repaired file.
 
-All new transition probes use fictional text or private temporary copies. No dossier parsing, ancestry traversal, independence qualification, HHI, correction analysis, report rendering, native bindings or source access is introduced. Actual test counts and run identities will be recorded after execution, without predeclaring success.
+The clean-interpreter regression uses -I -S -B, installs an all-open rejection hook after preloading, creates and freezes a synthetic dataclass, and requires success without a file-read event. Removing only the dataclasses preload must fail on the real post-preload read. This does not broaden the shared observer's read permission.
 
-## 4. Actual hosted execution and artifact inspection
+The two-file exception is fixed in developer code; neither evidence nor module-policy metadata can supply an extra path. Immediate allowances for all other units remain their exact approved-plan sets. Cumulative accounting remembers the accepted W02 exception, and does not itself authorize a later edit. The actual raw plan pin and runner-derived unit context remain controlling.
 
-Run 35408953009, attempt 1, executed exact candidate 4d4f31184c58b8d5f938194361f18116ee62cb50. All four jobs and their verification stages completed successfully. Complete artifact ZIPs were downloaded, matched to the Actions sizes/digests and inspected locally, including raw collection, JUnit, checkout/guard records, installed wheels and archive inventories.
+The repository delta for W02 is now exactly seventeen paths: the original fifteen plus the two expressly approved existing test paths. Necessary final records update only this file and phase2/implementation_evidence.json.
 
-| Matrix row | Actual CPython | Job ID | Top-level passed | Failures/errors/skips |
+## 4. Local checks and previous failures
+
+All three original test files were re-read and their locally reconstructed bytes matched to connected Git blob identities before editing. New outgoing blobs also matched locally calculated identities before the branch advanced. Local isolated preload and scope-helper checks passed in a partial workspace; no full local Git checkout, cumulative suite or selected-toolchain execution is claimed. Direct local Git access still failed DNS resolution. An authoring-only helper script had a quoting syntax error, corrected before any repository write; this was not a product or hosted-test failure.
+
+The earlier f7a1f9f run 35411043925 failed preflight because the transmitted policy JSON missed a closing brace. ff6c1eb restored the exact locally valid bytes, without changing the guard. Run 35411233144 then executed 367 tests per row with 360 passing and seven shared security failures. Those failures were caused by an unpreloaded dataclasses loader read under the application stack. All old artifacts and failure records remain preserved. They are superseded by the new execution below, not relabeled as passes.
+
+## 5. Actual repaired-code verification
+
+Run 35414689827, attempt 1, executed exact repair-code commit 405b16f1d8d713cd6776fe16793757eb313bbdf2. All four jobs and all required stages succeeded with the original selected toolchain.
+
+| Profile | Actual CPython | Job ID | Top-level passes | Failures / errors / skips |
 |---|---|---:|---:|---|
-| Ubuntu 24.04 | 3.11.16 | 105804471637 | 221 / 221 | 0 / 0 / 0 |
-| Ubuntu 24.04 | 3.13.15 | 105804471449 | 221 / 221 | 0 / 0 / 0 |
-| Windows Server 2025 | 3.11.9 | 105804471563 | 221 / 221 | 0 / 0 / 0 |
-| Windows Server 2025 | 3.13.15 | 105804471589 | 221 / 221 | 0 / 0 / 0 |
+| Ubuntu 24.04 | 3.11.16 | 105820875765 | 374 / 374 | 0 / 0 / 0 |
+| Ubuntu 24.04 | 3.13.15 | 105820875898 | 374 / 374 | 0 / 0 / 0 |
+| Windows Server 2025 | 3.11.9 | 105820875883 | 374 / 374 | 0 / 0 / 0 |
+| Windows Server 2025 | 3.13.15 | 105820875824 | 374 / 374 | 0 / 0 / 0 |
 
-Each row contains the same 194 retained test identities plus 27 new transition tests. Each also contains 428 successful subtest events, counted separately. Raw JUnit reports 221 top-level result elements and 649 total events. No existing test was deleted, renamed, skipped, xfailed or deselected. Runner images were 20260907.300.1 on Ubuntu and 20260907.229.1 on Windows.
+Every row retains the exact prior 367 collected identities and adds seven repair tests. This includes all 221 W01 identities and all 146 original W02 instances. Raw JUnit has 374 top-level testcase elements and 802 total reported events, including 428 separately counted successful subtests. No test is removed, renamed, deselected, skipped or xfailed. All seven previously failing security identities now pass with their original assertions.
 
-| Artifact row | Artifact ID | ZIP bytes | SHA-256 |
+Every row recomputed actual 124-file Phase 1 and 125-file intake Git archives, checked the seventeen-path delta and explicit R01 exception, and ran the twenty-file freeze and forty-eight-module guards before and after testing. All 137 tracked file hashes remained unchanged during execution and matched across rows. Three repair-file hashes matched local authoring bytes. All other file hashes agree with prior checked content except the previously recorded progress/evidence updates.
+
+Actual setuptools 84.0.0 and pytest 9.1.1 installation, reviewed development-wheel checks and dependency consistency passed. All packaging and clean offline-installation tests passed. Source distributions retain 65 regular members, wheels retain 55 members, and original/rebuilt wheel member names and content hashes agree. No full compressed-archive reproducibility claim or native file-interface certification follows.
+
+## 6. Inspected complete evidence
+
+All four full ZIP artifacts were downloaded and matched to Actions byte counts and SHA-256, then checked for head/run/environment, collection identities, raw JUnit, original failed identities, new repair tests, all guard logs, entry/scope records, tracked hashes, installed versions and build inventories.
+
+| Profile | Artifact ID | ZIP bytes | SHA-256 |
 |---|---:|---:|---|
-| Ubuntu 3.11 | 10572859300 | 39587 | a9b159d2987188ae61cd2d3bd8cb533927394ccd04cc4e86329cd41c39b252cc |
-| Ubuntu 3.13 | 10573019151 | 39477 | 6707ef6c344dc91319fb35a3bb7d1ac8cf7c5c855ac013ed017bb49f75eb70aa |
-| Windows 3.11 | 10573284037 | 45795 | 483156e3142ff5921bbfcc5f214fa8742b1362695c9a260aec33ddce9b9dc183 |
-| Windows 3.13 | 10573513651 | 45629 | 75d2592662bd89d5f01a809e46ad6a7aebb4d7a1b1bb917bfbf1a06cbef3a2cc |
+| Ubuntu 3.11 | 10574943187 | 44986 | 529abc4803a3d26509dcb34d708e705a2e7e394f5878747313ea136169e9f6c3 |
+| Ubuntu 3.13 | 10575586311 | 44816 | ae547e5aecf80ae86595fe38f3266e29a9771871a630b3b8ee47a202bdafde3e |
+| Windows 3.11 | 10574863299 | 51150 | 814a09b0657fa2b6f1210caa996cc1c7793db734a576088ab35832f71b2339e3 |
+| Windows 3.13 | 10575821087 | 50967 | 22d63def81af90b7a4fa7bd74f780678e25c72e9cfd1148278cb5c3a729fcf32 |
 
-Every row independently recomputed the complete accepted 124-file Phase 1 commit and 125-file intake from actual Git archives, checked their tree identities and current sixteen-path diff, and preserved every unaffected intake hash. Actual twenty-file frozen-baseline and forty-eight-module guards passed before and after testing. All 132 tracked hashes stayed unchanged during each run and matched across all four rows. All sixteen outgoing file hashes match the locally authored bytes.
+## 7. Final record-head gate and stop
 
-Pinned developer-wheel review, installation and dependency consistency passed in each row without a version change. Packaging retained 65 regular sdist members and 55 wheel members. The offline clean installation and source-distribution rebuild tests passed; original/rebuilt wheel member bytes agree. This is member-content equality, not a claim of byte-identical compressed archives.
+The successor containing this progress record and its implementation-evidence update changes only those two records. It must independently pass exact-head four-row CI before PR #11 is marked ready. Record that final successor, run and checked artifacts in the PR to avoid referring circularly to this file's own commit. A green precursor alone cannot satisfy this gate.
 
-The new adversarial controls reject premature or unlisted promotion, paired code/policy changes, paired code/entry-hash changes, self-revised plan digests, missing historical identities, unlisted or altered historical test source, unauthorized live file/native/network/evaluation operations and invalid CI unit context. These tests remain developer controls; no input preparation or analytical component has been implemented. The thirteen component rows and all domain Trace closures remain pending.
-
-There was one transient connector read disconnection during intake; retry succeeded before merge. No hosted test failure occurred in this W01 execution. Local authoring checks and the downloaded hosted evidence remain distinguished; no local full clone or local complete-suite run is claimed.
-
-## 5. Final delivery gate and stop
-
-The successor containing this execution record changes progress only. Its exact-head four-row CI must also pass before the W01 delivery is marked ready. Record that final head/run and inspected artifacts in PR #10 so this file does not refer circularly to its own commit. A prior green candidate cannot substitute for that final check.
-
-P2-W01 technical work is complete subject to that final-record-head gate. Owner acceptance and merger of PR #10 remain separate, unperformed actions. Keep the approved plan, all product modules, schemas, fixtures, oracles, versions, historical manifests/catalogs and Phase 1 records unchanged. P2-W02 is not started. When the owner later authorizes merge, use exactly one `SIT-Phase-Unit: P2-W01` footer for the main-push verification context.
+R01's code and cumulative tests now pass. Completion of the final gate establishes W02 technical readiness only. Owner acceptance and merger of PR #11 remain separate actions. Main stays at accepted W01 commit 41e7ba2f8046b3791f860313ea3ad54dcd4cb25c until separately authorized. A future authorized merge requires exactly one SIT-Phase-Unit: P2-W02 footer. Do not merge automatically or start W03.
