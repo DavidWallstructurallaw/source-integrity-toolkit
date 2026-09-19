@@ -1,6 +1,6 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Owner: INGESTION_CONTRACT / RUNTIME_BOUNDARY.
+"""Owner: RUNTIME_BOUNDARY.
 
 WU9-L01-L10 counting primitives only. The future capture/validator must call
 these for every occurrence, including extensions and unselected records.
