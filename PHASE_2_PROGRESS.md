@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.6 |
+| Revision | 0.7 |
 | Work unit | P2-W03 |
 | Owner instruction | 批准并合并 PR #11，再进入 P2-W03 |
 | Approved plan | PHASE_2_PLAN.md revision 0.1, section 9 |
@@ -12,7 +12,7 @@
 | Accepted W02 merge | d3e314c9da12ad886b09885bbc9b71166c24d10b |
 | Entry tree | d30f18a6f55cbe8aedebfb3b83e96ef8eae2ae8c |
 | Branch | phase2/p2-w03 |
-| Status | Candidate; exact-head cumulative verification pending |
+| Status | Code candidate passed; successor-record exact-head verification pending in review PR |
 | W03 acceptance / W04 execution | Not granted |
 
 ## 1. Accepted predecessor and preserved history
@@ -49,8 +49,38 @@ Primary Python documentation was checked for monotonic_ns and finite float integ
 
 New local tests: 163 passed on CPython 3.13.5 / pytest 9.0.2 in a partial workspace. They include exact scalar examples, independent Decimal/Fraction oracles and 180 fixed-seed finite numeric cases; hostile subclasses; giant exponents and exact float tails; control/multibyte byte accounting; each applicable counter threshold; nonresetting reserve/deadline behavior; before/after component-action interruption; independent cancellation; stable sorting and charged lookup; and canaries across fixed diagnostic surfaces. Loop iterations are not additional top-level tests. No old test or source expectation was changed.
 
-The first complete new-test run passed. Full local Git clone failed because github.com did not resolve. The local run is not a selected-toolchain or complete-repository verification. Hosted CI must check the actual entry archives, all 374 predecessor test identities, all new instances, exact file scope, original pins, full matrix, package contents, clean installation and unchanged checkout bytes before readiness is claimed.
+The first complete new-component local run passed. Full local Git clone failed because github.com did not resolve. That local run is not selected-toolchain or complete-repository evidence. The hosted evidence below supplies those checks. All eleven authored local files were matched to their remote Git blob identities before the initial tree was created.
 
-## 5. Stop
+## 5. Hosted checks, authoring correction and inspected evidence
 
-Keep the W03 review unmerged until its exact final-head matrix and full artifacts have been inspected and the owner accepts the delivery. No W04 capture, W05 acceptance, observability execution, graph analysis, report generation, native I/O, network/model runtime or release is enabled. All analytical Trace closures and 228 domain obligations remain pending.
+Initial head 9dd2d1050f9af1a35e03d2937e15503c1b441a53 ran in workflow 35418843995. Each of the four profiles collected 537 top-level instances, passed 536 and failed one, with no errors/skips. All 163 new component instances passed. The existing ModuleManifestTests.test_exact_paths_owners_forms_and_accepted_bytes check correctly rejected the extra INGESTION_CONTRACT owner annotation placed on validation/limits.py. Its accepted owner is RUNTIME_BOUNDARY alone. This was an authoring error, not an approved reassignment.
+
+Commit 0102ff8483250f9420b15f400eb60bc9fff5e627 restores only that one documentation line. Executable statements, tests, guard rules, permissions and expected values are unchanged. The correction stays within plan section 9. All four initial failure artifacts were downloaded, checked against service size/SHA-256, and their raw failure/collection evidence inspected; the failed run remains recorded as failed.
+
+Workflow 35418938131, attempt 1, executed the corrected code head 0102ff8483250f9420b15f400eb60bc9fff5e627 with the original selected toolchain:
+
+| Profile | Actual CPython | Collected / passed | Failures / errors / skips |
+|---|---|---:|---|
+| Ubuntu 24.04 | 3.11.16 | 537 / 537 | 0 / 0 / 0 |
+| Ubuntu 24.04 | 3.13.15 | 537 / 537 | 0 / 0 / 0 |
+| Windows Server 2025 | 3.11.9 | 537 / 537 | 0 / 0 / 0 |
+| Windows Server 2025 | 3.13.15 | 537 / 537 | 0 / 0 / 0 |
+
+Each row retains every prior 374 test identity and adds 163 new instances. Raw JUnit has 537 direct testcase elements and 428 separately reported successful subtest events, totaling 965 events. These are repeated environments, not 2,148 different test designs. No skip, xfail, test deletion, renamed identity or deselection was introduced. All collection identities were matched to raw JUnit independently of the CI summary.
+
+| Profile | Artifact ID | ZIP bytes | SHA-256 |
+|---|---:|---:|---|
+| Ubuntu 3.11 | 10576975979 | 51761 | 810062e8efdbc78f04541ece2d142e416ae4827de74688aa932e0317f711bfe2 |
+| Ubuntu 3.13 | 10577145816 | 51570 | 2548e6e9cc6397dd8dfa16ef39dbee47c1a4c2f0668da230a6154a20d2c44584 |
+| Windows 3.11 | 10576274745 | 57955 | da28ec09ad19b879c2052a5d6568a3bba51185a9e2fa1e48b6c5102096e027ca |
+| Windows 3.13 | 10576761147 | 57745 | c371a4496b2896392eb4356debd606b4731b358bf2ac1b110828e1dc2618af08 |
+
+All four complete passing artifacts were downloaded and size/digest-verified. Actual 124-file Phase 1 and 125-file Phase 2 entry archives, exact eleven-path scope, original R01 exception accounting, twenty-file baseline and forty-eight-module guards passed. Guard output identifies eight promoted and forty protected modules. All 140 tracked file hashes remain unchanged during each run and match across the four checkouts. The eleven authored files match actual hosted checkout bytes.
+
+Reviewed setuptools 84.0.0, pytest 9.1.1 and the other original dependency pins were installed and checked on all rows. Package tests passed: 65 regular source-distribution members, 55 wheel members, clean offline installation without developer dependencies, and equal original/rebuilt wheel member content. No whole compressed-archive reproducibility or native-file certification is asserted.
+
+## 6. Final record and stop
+
+This successor changes only PHASE_2_PROGRESS.md and phase2/implementation_evidence.json. Its own exact-head four-row execution and full inspected artifact identities must be recorded in the review PR before readiness. The code-head pass above does not predeclare that final-record gate. Recording the final run externally avoids a circular self-commit reference in these files.
+
+Keep the W03 review unmerged until its exact final-head matrix and full artifacts have been inspected and the owner accepts the delivery. No W04 capture, W05 acceptance, observability execution, graph analysis, report generation, native I/O, network/model runtime or release is enabled. All analytical Trace closures and 228 domain obligations remain pending. Private primitive checks and finite fault tests do not prove arbitrary Python isolation or scientific validity.
