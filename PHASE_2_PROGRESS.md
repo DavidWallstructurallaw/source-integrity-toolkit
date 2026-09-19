@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.1 |
+| Revision | 0.2 |
 | Current work unit | P2-W01 |
 | Owner instruction | 批准，合并 PR #9，再开始 P2-W01 |
 | Accepted plan | PHASE_2_PLAN.md revision 0.1 |
@@ -13,7 +13,7 @@
 | Actual PR #9 merge / W01 intake | eb730dda31d189c8487b5247a45bae47b678821b |
 | Intake tree | 48ee53f455e6ce4766a38de8c48141bac3dfc93b |
 | W01 branch | phase2/p2-w01 |
-| Current status | Candidate prepared; actual complete-checkout and final-head CI gates pending |
+| Current status | Technical checks PASS at 4d4f311; final record-head CI is the remaining delivery check |
 | Product implementation | Not started in W01 |
 | W01 acceptance/merge; W02 | Not authorized / not started |
 
@@ -41,6 +41,36 @@ Local full Git access failed DNS resolution. No local partial workspace is descr
 
 All new transition probes use fictional text or private temporary copies. No dossier parsing, ancestry traversal, independence qualification, HHI, correction analysis, report rendering, native bindings or source access is introduced. Actual test counts and run identities will be recorded after execution, without predeclaring success.
 
-## 4. Current stop
+## 4. Actual hosted execution and artifact inspection
 
-Submit the W01 candidate for its exact-head CI and inspect the complete evidence. Any failed or missing required test, missing historical assertion, unexpected file change or metadata-only permission bypass blocks completion. Keep failures and scoped repairs visible. Owner acceptance and W01 merge remain separate gates; do not start P2-W02.
+Run 35408953009, attempt 1, executed exact candidate 4d4f31184c58b8d5f938194361f18116ee62cb50. All four jobs and their verification stages completed successfully. Complete artifact ZIPs were downloaded, matched to the Actions sizes/digests and inspected locally, including raw collection, JUnit, checkout/guard records, installed wheels and archive inventories.
+
+| Matrix row | Actual CPython | Job ID | Top-level passed | Failures/errors/skips |
+|---|---|---:|---:|---|
+| Ubuntu 24.04 | 3.11.16 | 105804471637 | 221 / 221 | 0 / 0 / 0 |
+| Ubuntu 24.04 | 3.13.15 | 105804471449 | 221 / 221 | 0 / 0 / 0 |
+| Windows Server 2025 | 3.11.9 | 105804471563 | 221 / 221 | 0 / 0 / 0 |
+| Windows Server 2025 | 3.13.15 | 105804471589 | 221 / 221 | 0 / 0 / 0 |
+
+Each row contains the same 194 retained test identities plus 27 new transition tests. Each also contains 428 successful subtest events, counted separately. Raw JUnit reports 221 top-level result elements and 649 total events. No existing test was deleted, renamed, skipped, xfailed or deselected. Runner images were 20260907.300.1 on Ubuntu and 20260907.229.1 on Windows.
+
+| Artifact row | Artifact ID | ZIP bytes | SHA-256 |
+|---|---:|---:|---|
+| Ubuntu 3.11 | 10572859300 | 39587 | a9b159d2987188ae61cd2d3bd8cb533927394ccd04cc4e86329cd41c39b252cc |
+| Ubuntu 3.13 | 10573019151 | 39477 | 6707ef6c344dc91319fb35a3bb7d1ac8cf7c5c855ac013ed017bb49f75eb70aa |
+| Windows 3.11 | 10573284037 | 45795 | 483156e3142ff5921bbfcc5f214fa8742b1362695c9a260aec33ddce9b9dc183 |
+| Windows 3.13 | 10573513651 | 45629 | 75d2592662bd89d5f01a809e46ad6a7aebb4d7a1b1bb917bfbf1a06cbef3a2cc |
+
+Every row independently recomputed the complete accepted 124-file Phase 1 commit and 125-file intake from actual Git archives, checked their tree identities and current sixteen-path diff, and preserved every unaffected intake hash. Actual twenty-file frozen-baseline and forty-eight-module guards passed before and after testing. All 132 tracked hashes stayed unchanged during each run and matched across all four rows. All sixteen outgoing file hashes match the locally authored bytes.
+
+Pinned developer-wheel review, installation and dependency consistency passed in each row without a version change. Packaging retained 65 regular sdist members and 55 wheel members. The offline clean installation and source-distribution rebuild tests passed; original/rebuilt wheel member bytes agree. This is member-content equality, not a claim of byte-identical compressed archives.
+
+The new adversarial controls reject premature or unlisted promotion, paired code/policy changes, paired code/entry-hash changes, self-revised plan digests, missing historical identities, unlisted or altered historical test source, unauthorized live file/native/network/evaluation operations and invalid CI unit context. These tests remain developer controls; no input preparation or analytical component has been implemented. The thirteen component rows and all domain Trace closures remain pending.
+
+There was one transient connector read disconnection during intake; retry succeeded before merge. No hosted test failure occurred in this W01 execution. Local authoring checks and the downloaded hosted evidence remain distinguished; no local full clone or local complete-suite run is claimed.
+
+## 5. Final delivery gate and stop
+
+The successor containing this execution record changes progress only. Its exact-head four-row CI must also pass before the W01 delivery is marked ready. Record that final head/run and inspected artifacts in PR #10 so this file does not refer circularly to its own commit. A prior green candidate cannot substitute for that final check.
+
+P2-W01 technical work is complete subject to that final-record-head gate. Owner acceptance and merger of PR #10 remain separate, unperformed actions. Keep the approved plan, all product modules, schemas, fixtures, oracles, versions, historical manifests/catalogs and Phase 1 records unchanged. P2-W02 is not started. When the owner later authorizes merge, use exactly one `SIT-Phase-Unit: P2-W01` footer for the main-push verification context.
