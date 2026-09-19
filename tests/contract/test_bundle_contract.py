@@ -97,3 +97,110 @@ def test_hostile_metaclass_is_not_called_by_exact_type_rejection():
         pass
     with pytest.raises(TypeError,match="^invalid_private_representation$"):
         _Array((Custom(),))
+
+
+# P2-W02-R01 developer-only regression coverage. No product module imports CI.
+def _repair_driver():
+    import importlib.util
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[2]
+    spec = importlib.util.spec_from_file_location(
+        "sit_w02_repair_ci_driver", root / "tests/scaffold/test_ci_contract.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_repair_exception_names_exactly_two_paths():
+    ci = _repair_driver()
+    paths = ci.phase_guard.plan_paths(ci.ROOT)
+    expected = frozenset(("tests/security/test_scaffold_inertness.py",
+                          "tests/scaffold/test_ci_contract.py"))
+    assert ci.P2_W02_R01_PATHS == expected
+    assert len(paths["P2-W02"]) == 15
+    assert not expected & paths["P2-W02"]
+    assert ci.effective_paths(paths, "P2-W02") == paths["P2-W02"] | expected
+    ci.check_changed_paths(paths, "P2-W02", paths["P2-W02"] | expected)
+
+
+def test_repair_does_not_expand_another_units_immediate_diff():
+    ci = _repair_driver()
+    paths = ci.phase_guard.plan_paths(ci.ROOT)
+    for step in (1, 3, 4, 5, 6, 7, 8, 9):
+        unit = f"P2-W{step:02}"
+        assert ci.effective_paths(paths, unit) == paths[unit]
+        for path in ci.P2_W02_R01_PATHS - paths[unit]:
+            with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
+                ci.check_changed_paths(paths, unit, {path})
+
+
+def test_repair_cumulative_accounting_retains_only_authorized_extras():
+    ci = _repair_driver()
+    paths = ci.phase_guard.plan_paths(ci.ROOT)
+    for step in range(1, 10):
+        unit = f"P2-W{step:02}"
+        original = set().union(*(paths[f"P2-W{i:02}"] for i in range(1, step + 1)))
+        extras = ci.P2_W02_R01_PATHS if step >= 2 else frozenset()
+        assert ci.effective_paths(paths, unit, cumulative=True) == original | extras
+
+
+def test_repair_rejects_unlisted_and_similarly_named_paths():
+    ci = _repair_driver()
+    paths = ci.phase_guard.plan_paths(ci.ROOT)
+    valid = ci.effective_paths(paths, "P2-W02")
+    for path in ("tests/security/test_scaffold_no_network.py",
+                 "tests/security/test_scaffold_no_native_loading.py",
+                 "tests/security/test_scaffold_inertness.py.bak",
+                 "tests/security/../scaffold/test_ci_contract.py",
+                 "tests/security/TEST_scaffold_inertness.py",
+                 ".github/workflows/phase1-ci.yml",
+                 "tools/check_scaffold_boundary.py", "PHASE_2_PLAN.md"):
+        assert path not in valid
+        with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
+            ci.check_changed_paths(paths, "P2-W02", valid | {path})
+
+
+def test_repair_rejects_invalid_context_without_mutating_plan():
+    ci = _repair_driver()
+    paths = ci.phase_guard.plan_paths(ci.ROOT)
+    snapshot = dict(paths)
+    for unit in ("P2-W00", "P2-W10", "P3-W02", "P2-W02; injected", 2):
+        with pytest.raises(ValueError):
+            ci.effective_paths(paths, unit)
+    assert paths == snapshot
+    assert ci.phase_guard.plan_paths(ci.ROOT) == snapshot
+
+
+def test_repair_preserves_original_observer_and_every_old_assertion():
+    import ast
+    import hashlib
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[2]
+    relative = "tests/security/test_scaffold_inertness.py"
+    raw = subprocess.check_output([
+        "git", "show", "22d43e003eae9b84ed5868696ec3847216a8a16f:" + relative],
+        cwd=root, stderr=subprocess.PIPE, timeout=30)
+    assert hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest() == (
+        "a7a876006eb75ab5c3542e01f4b72c8a7483519f")
+    old, new = ast.parse(raw), ast.parse((root / relative).read_bytes())
+    def probe(tree):
+        return next(n.value.value for n in tree.body if isinstance(n, ast.Assign)
+                    and any(isinstance(t, ast.Name) and t.id == "PROBE" for t in n.targets))
+    inserted = ("# P2-W02-R01: load this approved declaration helper before observation.\n"
+                "import dataclasses\n")
+    assert probe(new).count(inserted) == 1
+    assert probe(new).replace(inserted, "") == probe(old)
+    # Only PROBE's explicit preload and the one new test differ at AST level.
+    for tree in (old, new):
+        for node in tree.body:
+            if isinstance(node, ast.Assign) and any(
+                    isinstance(t, ast.Name) and t.id == "PROBE" for t in node.targets):
+                node.value = ast.Constant(value="independently_checked_probe")
+    for node in new.body:
+        if isinstance(node, ast.ClassDef) and node.name == "ScaffoldInertnessTests":
+            added = [m for m in node.body if isinstance(m, ast.FunctionDef)
+                     and m.name == "test_dataclasses_preload_in_clean_interpreter"]
+            assert len(added) == 1
+            node.body.remove(added[0])
+    assert ast.dump(old, include_attributes=False) == ast.dump(new, include_attributes=False)

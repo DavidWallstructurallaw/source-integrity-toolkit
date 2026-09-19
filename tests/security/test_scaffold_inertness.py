@@ -28,6 +28,8 @@ import contextlib, ctypes, importlib, io, json, os, pathlib, socket, sys, typing
 # P1-W06-R01: preload cache and hostname helpers before the observer.
 import importlib.util
 import encodings.idna
+# P2-W02-R01: load this approved declaration helper before observation.
+import dataclasses
 request = json.loads(sys.stdin.read())
 package_dir = os.path.abspath(request["package"])
 source_dir = os.path.dirname(package_dir)
@@ -231,6 +233,53 @@ class ScaffoldInertnessTests(unittest.TestCase):
         self.assertEqual(process.returncode, 0, process.stderr)
         self.assertEqual(process.stdout, "CACHE_HELPER_READY\n")
         self.assertEqual(process.stderr, "")
+
+
+    def test_dataclasses_preload_in_clean_interpreter(self):
+        preload, delimiter, _ = PROBE.partition("\nrequest = json.loads(sys.stdin.read())\n")
+        self.assertTrue(delimiter)
+        imports = [alias.name for node in ast.parse(preload).body
+                   if isinstance(node, ast.Import) for alias in node.names]
+        self.assertEqual(imports.count("dataclasses"), 1)
+        self.assertEqual(preload.splitlines().count("import dataclasses"), 1)
+        exercise = r'''
+reads = []
+def reject_read(event, args):
+    if event == "open":
+        reads.append(event)
+        raise RuntimeError("post_preload_read")
+sys.addaudithook(reject_read)
+from dataclasses import dataclass, FrozenInstanceError
+@dataclass(frozen=True, slots=True)
+class Value:
+    label: str
+value = Value("FICTIONAL_DECLARATION")
+if value.label != "FICTIONAL_DECLARATION":
+    raise RuntimeError("dataclass_construction_failed")
+try:
+    value.label = "CHANGED"
+except FrozenInstanceError:
+    pass
+else:
+    raise RuntimeError("frozen_declaration_failed")
+if reads:
+    raise RuntimeError("post_preload_read_swallowed")
+print("DATACLASS_HELPER_READY")
+'''
+        with tempfile.TemporaryDirectory(prefix="sit-dataclass-regression-") as temp:
+            process = subprocess.run(
+                [sys.executable, "-I", "-S", "-B", "-c", preload + exercise],
+                cwd=temp, capture_output=True, text=True, encoding="utf-8", timeout=20)
+            self.assertEqual(process.returncode, 0, process.stderr)
+            self.assertEqual(process.stdout, "DATACLASS_HELPER_READY\n")
+            self.assertEqual(process.stderr, "")
+            missing = preload.replace("import dataclasses", "")
+            control = subprocess.run(
+                [sys.executable, "-I", "-S", "-B", "-c", missing + exercise],
+                cwd=temp, capture_output=True, text=True, encoding="utf-8", timeout=20)
+            self.assertNotEqual(control.returncode, 0)
+            self.assertEqual(control.stdout, "")
+            self.assertIn("post_preload_read", control.stderr)
 
     def test_imports_api_and_cli_are_inert(self):
         result = run_probe()

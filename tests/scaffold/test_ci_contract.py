@@ -13,6 +13,30 @@ _phase1_preflight = preflight
 ALL_SCOPES = ("tests/scaffold", "tests/security", "tests/contract", "tests/unit", "tests/integration")
 
 
+# Explicit owner-approved P2-W02-R01. These two paths supplement only W02's
+# immediate diff. Cumulative accounting retains them after W02, without giving
+# later units a new permission to edit either path. No metadata selects extras.
+P2_W02_R01_PATHS = frozenset((
+    "tests/security/test_scaffold_inertness.py",
+    "tests/scaffold/test_ci_contract.py",
+))
+
+
+def effective_paths(paths, unit, *, cumulative=False):
+    current = phase_guard.unit_number(unit)
+    steps = range(1, current + 1) if cumulative else (current,)
+    allowed = set()
+    for step in steps:
+        allowed.update(paths[f"P2-W{step:02}"])
+        if step == 2:
+            allowed.update(P2_W02_R01_PATHS)
+    return frozenset(allowed)
+
+
+def check_changed_paths(paths, unit, changed):
+    require(changed <= effective_paths(paths, unit), "work_unit_allowlist_exceeded")
+
+
 def policy(value):
     """Validate only enumerated migration deltas, then run every old rule."""
     try:
@@ -96,10 +120,10 @@ def entry_and_scope(evidence):
         require(actual == entry[key], "entry_tree_mismatch")
     changed = subprocess.check_output(["git", "diff", "--name-only", "-z", base, "HEAD"], cwd=ROOT).decode().split("\0")
     changed = {p for p in changed if p}
-    require(changed <= paths[unit], "work_unit_allowlist_exceeded")
+    check_changed_paths(paths, unit, changed)
     deleted = subprocess.check_output(["git", "diff", "--name-only", "--diff-filter=DR", base, "HEAD"], cwd=ROOT)
     require(not deleted, "deletion_or_rename_not_authorized")
-    cumulative = set().union(*(paths[f"P2-W{i:02}"] for i in range(1, phase_guard.unit_number(unit) + 1)))
+    cumulative = effective_paths(paths, unit, cumulative=True)
     actual = tracked_bytes()
     require(set(entry["files"]) <= set(actual) <= set(entry["files"]) | cumulative, "tracked_path_accounting")
     require(all(actual[p] == h for p, h in entry["files"].items() if p not in cumulative), "frozen_entry_byte_changed")
@@ -107,6 +131,7 @@ def entry_and_scope(evidence):
     save(evidence / "entry-and-scope.json", {"ok": True, "unit": unit, "base": base,
         "intake_commit": entry["intake_commit"], "actual_entry_files": 125, "actual_phase1_files": 124,
         "changed_paths": sorted(changed), "tracked_files": len(actual), "historical_test_identities": len(old),
+        "scope_exceptions": ["P2-W02-R01"] if phase_guard.unit_number(unit) >= 2 else [],
         "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata"})
 
 
