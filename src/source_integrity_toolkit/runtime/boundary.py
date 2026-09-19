@@ -47,3 +47,17 @@ def _prepare_value(value: object):
 def _prepare_utf8(raw: object):
     """W04: capture already supplied exact bytes; no file-open claim."""
     return _capture(raw, supplied_utf8=True)
+
+
+def _capture_value(value: object):
+    """Private capture-only seam retained for W04 component conformance.
+
+    This does not perform W05 dossier validation or establish input acceptance.
+    No options, validation bypass, public export or caller budget is introduced.
+    """
+    return _capture(value, supplied_utf8=False)
+
+
+def _capture_utf8(raw: object):
+    """Private capture of already supplied bytes; no complete-dossier claim."""
+    return _capture(raw, supplied_utf8=True)

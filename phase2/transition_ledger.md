@@ -236,3 +236,37 @@ The six adapted test modules load their original source from the fixed intake Gi
 Full Git history is therefore an explicit test prerequisite. CI uses the same pinned checkout action with fetch-depth 0 and persist-credentials false. Source/wheel build and installed-runtime behavior do not load historical tests. The four historical test files included in the sdist remain repository-context developer tests, not standalone tests promised for an unpacked source archive. All 48 installed product slots are independent of this machinery.
 
 No product object, source locator, input dossier, extension or user report can reach the historical loader. The fixed historical test sources are reviewed project code, not evidence being audited. The raw historical tests' original __main__ dispatcher is suppressed while loading; the current driver dispatches after the bounded adaptation.
+
+
+## P2-W05-R01 authorized capture-test transition
+
+Owner instruction: `批准 P2-W05-R01`. Accepted W04 merge is
+`a1f102d82b7321f47df98f2672b91491cbd7fc9f`; W05 intake record is
+`fb698272165303660092f02974a99ebbb2748a4c`.
+
+This append preserves every historical row and result above. The migration is
+an intermediate local candidate. Remote delivery, whole W05 implementation and
+cumulative four-profile verification are still pending; it does not certify W05.
+
+| Existing file / seam | Exact migration | Preserved obligations |
+|---|---|---|
+| tests/unit/test_input_decoding.py | Import `_capture_utf8` / `_capture_value` under the original local test aliases | All test names, parameter identities, payloads, byte/numeric oracles and failure classifications |
+| tests/unit/test_value_capture.py | Import the two capture-only seams under original aliases | Exact types, hostile methods, ancestry cycles, alias occurrence counting, immutable copies, quotas and mutation faults |
+| tests/security/test_input_capture.py | Retarget imports in the module and its isolated subprocess; extend only its named scope-accounting test for the five-path authorization | Audit-hook body, real negative-control events, safe diagnostic canaries, all test identities and constant-only R01 protection checks |
+| tests/scaffold/test_ci_contract.py | Add the exact five P2-W05-R01 paths for W05 immediate scope and later cumulative accounting | All earlier scopes, guards, collection, workflow and failure rules |
+| tests/contract/test_bundle_contract.py | Update its two named immediate/cumulative scope tests | All test identities and every other body; no additive W05 tests in this intermediate patch |
+
+`runtime/boundary.py` adds only `_capture_value` and `_capture_utf8`, delegating
+to the accepted `_capture` without options or public exports. Its existing
+`_prepare_value` and `_prepare_utf8` are deliberately unchanged in this
+intermediate migration. They still have W04-only behavior and must acquire the
+full W05 pipeline before the work unit can pass. No test-only bypass or
+successful full-dossier claim is introduced.
+
+The later full-preparation cases belong to the already authorized W05 contract,
+reference, temporal and hero integration test files. They must distinguish a
+capturable empty/generic object from an admissible canonical dossier, require
+all structural/identity/reference/type/time/index/scope work before acceptance,
+and exercise all four unchanged H7 inputs. None of those future tests is marked
+executed here. The 724 predecessor identities remain the required cumulative
+baseline; local patch checks cannot replace their hosted execution.

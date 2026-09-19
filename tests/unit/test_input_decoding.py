@@ -5,7 +5,7 @@ import json
 from dataclasses import fields
 from unittest.mock import patch
 import pytest
-from source_integrity_toolkit.runtime.boundary import _prepare_utf8, _prepare_value
+from source_integrity_toolkit.runtime.boundary import _capture_utf8 as _prepare_utf8, _capture_value as _prepare_value
 from source_integrity_toolkit.runtime.resources import _new_budget
 from source_integrity_toolkit.runtime.diagnostics import _SafeDiagnostic
 from source_integrity_toolkit.contracts.bundle import _CapturedBundle, _Array, _Object, _Number
