@@ -4,73 +4,54 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.2 |
-| Current work unit | P2-W01 |
-| Owner instruction | 批准，合并 PR #9，再开始 P2-W01 |
+| Revision | 0.3 |
+| Current work unit | P2-W02 |
+| Owner instruction | 批准并合并 PR #10，再开始 P2-W02 |
 | Accepted plan | PHASE_2_PLAN.md revision 0.1 |
-| Plan review head | 10e4ea2e20e9d9dfbefe656579e52d2fdffc67ae |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
-| Actual PR #9 merge / W01 intake | eb730dda31d189c8487b5247a45bae47b678821b |
-| Intake tree | 48ee53f455e6ce4766a38de8c48141bac3dfc93b |
-| W01 branch | phase2/p2-w01 |
-| Current status | Technical checks PASS at 4d4f311; final record-head CI is the remaining delivery check |
-| Product implementation | Not started in W01 |
-| W01 acceptance/merge; W02 | Not authorized / not started |
+| Accepted P2-W01 head | 8e3af5e5b5f4ca9879add9bdd934603e307e6abf |
+| Actual PR #10 merge / W02 intake | 41e7ba2f8046b3791f860313ea3ad54dcd4cb25c |
+| Intake tree | ac8bb232d929d18fc56fc053be1b37fb354957ce |
+| W02 branch | phase2/p2-w02 |
+| Status | Candidate; full hosted cumulative verification pending |
+| Product change | Five private contract modules; declarations and local invariants only |
+| W02 acceptance / merge | Not authorized by the execution instruction |
+| W03 and later | Not started |
 
-## 1. Actual intake and authority
+## 1. Acceptance history and exact intake
 
-The owner approved the exact plan, requested PR #9 merger and authorized P2-W01. Before merge, the single-file diff, exact plan blob 17b91fd2851006d8bd5c14f6ff922a9d8abbeb0c and all four successful jobs in run 35406933040 were checked. Expected-head-protected merge succeeded at the intake above. The merge records approval; the original plan bytes and historical proposal header remain unchanged.
+The W01 final head passed all four rows of run 35409171111. The subsequent ready-for-review run 35409335305 also passed. Before the authorized merge, PR #10's exact head, sixteen-path diff and current cumulative-run results were re-read. The expected-head-protected merge succeeded at the commit above. Its tree equals the reviewed W01 tree, and its single SIT-Phase-Unit: P2-W01 footer supplies the post-merge CI context.
 
-The earlier accepted Phase 1 merge is d7d73a790a2a627d19307c9dd48281eff3017023. Its accepted tree is 837cb01265c22cb17bea66b2e7e1f8a7e1006924. This intake adds only the approved plan. The six source papers supplied in the conversation do not replace any frozen theory/specification version or change the current task.
+That merge records W01 acceptance and authorizes only W02 under plan section 8. The original plan, frozen specifications and earlier Phase 1 documents remain unchanged. Unabridged W01 progress revision 0.2 and all its evidence remain at commit 8e3af5e5b5f4ca9879add9bdd934603e307e6abf. This current progress record does not rewrite that historical event.
 
-## 2. P2-W01 candidate
+The six paper attachments remain source background. No attachment replaces a frozen source or authorizes a theory, schema, metric or product-scope change.
 
-Exactly the sixteen section-7 paths are prepared. Seven new files record progress, the composed 125-file entry identity, test transition, module policy, component-evidence status, CI review and transition tests. The other nine paths adapt the developer guard, six existing test modules, the existing workflow and README. No product module, executable schema, dependency pin, package configuration, fixture, oracle, historical catalog, Phase 0 specification or accepted Phase 1 document is changed.
+## 2. W02 candidate and contract coverage
 
-The entry manifest pins the existing 121-file delivery manifest and four disjoint additional hashes. The fully resolved set is exactly the 125-file actual plan-merge intake. It excludes itself and all future W01 records. The prior manifest was locally reconstructed from four independently checked W07 artifact maps and matched to its exact existing SHA-256 before use. CI must additionally recompute both the complete 124-file Phase 1 and 125-file intake commits from real local Git objects; historical artifact metadata alone is not claimed to satisfy that check.
+The candidate is restricted to the fifteen allowed paths. Five existing contract modules gain immutable private representations, exact number-atom declarations, source-bound vocabulary/field tables and safe preparation/cancellation/observability declarations. Forty-three installed modules keep their accepted bytes, including all public API/CLI entry points, graph/analysis/rendering modules and native file/output adapters. No new installed module or dependency is added. Version remains 0.1.0.dev0.
 
-All 48 product modules remain at their Phase 1 bytes. Thirteen future candidates and their earliest units are independently enumerated and checked against the fixed plan. The current promotion list is empty. Candidate policy cannot change the plan pin, add a module, advance the externally supplied unit or bless a forbidden body by changing a checksum. Syntax/import/effect checks and behavioral tests remain separate from byte identity.
+The fifty closed shape declarations cover 242 named fields, Inquiry, twelve record kinds, twenty-four predicates, nine assessment kinds and shared support structures. Each shape uses its exact fields in an immutable _Object tagged by _Node. The tag and local constructors establish representation invariants only. They do not validate required source fields, parse a dossier or establish accepted input. Private constructors require bounded project-owned parts; the later public-facing boundary must enforce that precondition.
 
-The six adapted tests inherit their exact old source through a closed, hash-checked developer-only Git loader. Only named stage-sensitive assertions or driver behavior are replaced. The ledger maps every one of the 194 old collected identities to the same current identity. All baseline, owner, catalog, oracle, API refusal, negative-control, isolation, packaging and JUnit duties remain. Full Git history is an explicit developer-test prerequisite; it is never an installed-runtime requirement.
+The input Draft 2020-12 structural schema uses local references only. Required, optional and nullable branches retain their distinct meanings. There is no default insertion, truth/independence flag or coercion. Structural subject cardinalities are distinct from aggregate processing ceilings. The coverage record joins each field to its complete frozen-source section/range, immutable representation, schema location, validator owner and four-way declaration test bindings. Thirty remaining global/semantic/parser duties stay explicitly pending. The coverage case IDs do not represent executed full-admission or domain tests.
 
-The existing four-row CI becomes cumulative. It uses exact-head checkout, full history without stored credentials, read-only permissions, unchanged action/dependency pins and verification-only artifacts. It checks complete Git entry objects, current unit path deltas, actual frozen files, modules, old and new collection identities, raw results, installed wheels and unchanged tracked bytes. No workflow grants write permission or publishes software.
+Exact number atoms preserve sign, coefficient, exponent and source numeric category without implementing conversion, rounding, J measurement or resource admission. Preparation transport declarations separate rejection, resource interruption, execution failure and cancellation. Five domain declarations retain supplied selectors and pending PC references, with no available Result references, report ID or completed prerequisite outcome.
 
-## 3. Authoring checks and evidence boundary
+## 3. Actual authoring checks and their limits
 
-Local full Git access failed DNS resolution. No local partial workspace is described as a full checkout. Available original Phase 0 sources, the exact plan, the old artifact hash maps, new metadata, syntax and path tables were inspected locally. The full actual-checkout guards, inherited test execution, installation and four-row matrix remain the hosted acceptance gates.
+The complete local lineage source was recovered from the earlier delivery and matched to the connected repository's a08e94bee1e4c8aaa4a47fcdd79b1e8db0fe6911 blob and its 129967 bytes. SHA-256 is 32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374. Field/branch mapping follows sections 2-9 and preserves the later approved realization and error-classification rules.
 
-All new transition probes use fictional text or private temporary copies. No dossier parsing, ancestry traversal, independence qualification, HHI, correction analysis, report rendering, native bindings or source access is introduced. Actual test counts and run identities will be recorded after execution, without predeclaring success.
+The new three-file test set was executed locally on a partial candidate workspace using CPython 3.13.5 and pytest 9.0.2: 146 passed, zero failed or skipped. These are local immutable-model and finite source/schema/declaration checks. They include all fifty shape representations, all 242 field mappings, 968 deliberately altered field/type/presence/open-shape fragments, malformed private objects, hostile conversion and metaclass hooks, structural-null exceptions and declaration/status preservation. The repeated mutation cases are not counted as additional top-level tests.
 
-## 4. Actual hosted execution and artifact inspection
+An initial local run had 144 passed and one failure because a test incorrectly prohibited every maxItems occurrence. The corrected assertion permits only the explicitly specified exact one/two-subject cardinalities while still excluding resource-budget substitution. The coverage wording was made consistent with that distinction. A subsequent authoring review corrected the RelationData.dimension coverage classification to structural_or_conditional, as required by lineage section 8.1, and added an independent complete nullable-field classification check. Exact-type membership was hardened to identity comparisons, with a hostile-metaclass regression. No adopted input meaning or existing test was changed.
 
-Run 35408953009, attempt 1, executed exact candidate 4d4f31184c58b8d5f938194361f18116ee62cb50. All four jobs and their verification stages completed successfully. Complete artifact ZIPs were downloaded, matched to the Actions sizes/digests and inspected locally, including raw collection, JUnit, checkout/guard records, installed wheels and archive inventories.
+Local full clone failed DNS resolution. No full local baseline/cumulative suite or selected-toolchain validation is claimed. Full execution must use the unchanged hosted workflow, exact candidate head, reviewed developer pins and all four existing rows. The earlier local tool versions are supplemental evidence only, never a replacement for those checks.
 
-| Matrix row | Actual CPython | Job ID | Top-level passed | Failures/errors/skips |
-|---|---|---:|---:|---|
-| Ubuntu 24.04 | 3.11.16 | 105804471637 | 221 / 221 | 0 / 0 / 0 |
-| Ubuntu 24.04 | 3.13.15 | 105804471449 | 221 / 221 | 0 / 0 / 0 |
-| Windows Server 2025 | 3.11.9 | 105804471563 | 221 / 221 | 0 / 0 / 0 |
-| Windows Server 2025 | 3.13.15 | 105804471589 | 221 / 221 | 0 / 0 / 0 |
+Primary JSON Schema Core/Validation and CPython dataclass documentation were checked for format and representation facilities. They do not supply or replace the toolkit's field meanings. No generic schema evaluator, validator package or metaschema-conformance result is claimed.
 
-Each row contains the same 194 retained test identities plus 27 new transition tests. Each also contains 428 successful subtest events, counted separately. Raw JUnit reports 221 top-level result elements and 649 total events. No existing test was deleted, renamed, skipped, xfailed or deselected. Runner images were 20260907.300.1 on Ubuntu and 20260907.229.1 on Windows.
+## 4. Verification gate and stop
 
-| Artifact row | Artifact ID | ZIP bytes | SHA-256 |
-|---|---:|---:|---|
-| Ubuntu 3.11 | 10572859300 | 39587 | a9b159d2987188ae61cd2d3bd8cb533927394ccd04cc4e86329cd41c39b252cc |
-| Ubuntu 3.13 | 10573019151 | 39477 | 6707ef6c344dc91319fb35a3bb7d1ac8cf7c5c855ac013ed017bb49f75eb70aa |
-| Windows 3.11 | 10573284037 | 45795 | 483156e3142ff5921bbfcc5f214fa8742b1362695c9a260aec33ddce9b9dc183 |
-| Windows 3.13 | 10573513651 | 45629 | 75d2592662bd89d5f01a809e46ad6a7aebb4d7a1b1bb917bfbf1a06cbef3a2cc |
+Before W02 is ready, inspect the complete hosted evidence for the exact candidate: all old identities retained, the new tests collected, baseline/module/scope guards passing, no changed input/oracle bytes, clean packaging/install/rebuild results and unchanged tracked files before/after. Record actual outcomes, including any failed attempt, without weakening out-of-scope tests.
 
-Every row independently recomputed the complete accepted 124-file Phase 1 commit and 125-file intake from actual Git archives, checked their tree identities and current sixteen-path diff, and preserved every unaffected intake hash. Actual twenty-file frozen-baseline and forty-eight-module guards passed before and after testing. All 132 tracked hashes stayed unchanged during each run and matched across all four rows. All sixteen outgoing file hashes match the locally authored bytes.
+W02 creates neither bounded ingestion nor whole-bundle acceptance. W03 budgets/number conversion/J, W04 capture/decoding, W05 complete validation and W06 preparation remain future work. All analytical Trace closures and 228 domain obligations remain pending. The public API and CLI keep their exact refusal behavior.
 
-Pinned developer-wheel review, installation and dependency consistency passed in each row without a version change. Packaging retained 65 regular sdist members and 55 wheel members. The offline clean installation and source-distribution rebuild tests passed; original/rebuilt wheel member bytes agree. This is member-content equality, not a claim of byte-identical compressed archives.
-
-The new adversarial controls reject premature or unlisted promotion, paired code/policy changes, paired code/entry-hash changes, self-revised plan digests, missing historical identities, unlisted or altered historical test source, unauthorized live file/native/network/evaluation operations and invalid CI unit context. These tests remain developer controls; no input preparation or analytical component has been implemented. The thirteen component rows and all domain Trace closures remain pending.
-
-There was one transient connector read disconnection during intake; retry succeeded before merge. No hosted test failure occurred in this W01 execution. Local authoring checks and the downloaded hosted evidence remain distinguished; no local full clone or local complete-suite run is claimed.
-
-## 5. Final delivery gate and stop
-
-The successor containing this execution record changes progress only. Its exact-head four-row CI must also pass before the W01 delivery is marked ready. Record that final head/run and inspected artifacts in PR #10 so this file does not refer circularly to its own commit. A prior green candidate cannot substitute for that final check.
-
-P2-W01 technical work is complete subject to that final-record-head gate. Owner acceptance and merger of PR #10 remain separate, unperformed actions. Keep the approved plan, all product modules, schemas, fixtures, oracles, versions, historical manifests/catalogs and Phase 1 records unchanged. P2-W02 is not started. When the owner later authorizes merge, use exactly one `SIT-Phase-Unit: P2-W01` footer for the main-push verification context.
+W02 delivery acceptance and merge require the next owner instruction. No W03 work, native source access, output publication, package release or branch deletion occurs here. A later authorized W02 merge must include exactly one SIT-Phase-Unit: P2-W02 footer. Final head/run identities belong to PR evidence rather than a circular self-commit reference in this file.

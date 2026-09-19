@@ -1,38 +1,58 @@
 {
   "components": [
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "behavior_tests": "pending_execution",
+      "evidence": [
+        "tests/contract/test_bundle_contract.py",
+        "tests/contract/test_evidence_basis.py",
+        "tests/contract/test_input_schema_mapping.py"
+      ],
       "first_unit": 2,
-      "implementation": "pending",
+      "implementation": "declarations_and_local_invariants_only",
       "path": "contracts/bundle.py"
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "behavior_tests": "pending_execution",
+      "evidence": [
+        "tests/contract/test_bundle_contract.py",
+        "tests/contract/test_evidence_basis.py",
+        "tests/contract/test_input_schema_mapping.py"
+      ],
       "first_unit": 2,
-      "implementation": "pending",
+      "implementation": "declarations_and_local_invariants_only",
       "path": "contracts/constants.py"
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "behavior_tests": "pending_execution",
+      "evidence": [
+        "tests/contract/test_bundle_contract.py",
+        "tests/contract/test_evidence_basis.py",
+        "tests/contract/test_input_schema_mapping.py"
+      ],
       "first_unit": 2,
-      "implementation": "pending",
+      "implementation": "declarations_and_local_invariants_only",
       "path": "contracts/evidence.py"
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "behavior_tests": "pending_execution",
+      "evidence": [
+        "tests/contract/test_bundle_contract.py",
+        "tests/contract/test_evidence_basis.py",
+        "tests/contract/test_input_schema_mapping.py"
+      ],
       "first_unit": 2,
-      "implementation": "pending",
+      "implementation": "declarations_and_local_invariants_only",
       "path": "contracts/execution.py"
     },
     {
-      "behavior_tests": "pending",
-      "evidence": [],
+      "behavior_tests": "pending_execution",
+      "evidence": [
+        "tests/contract/test_bundle_contract.py",
+        "tests/contract/test_evidence_basis.py",
+        "tests/contract/test_input_schema_mapping.py"
+      ],
       "first_unit": 2,
-      "implementation": "pending",
+      "implementation": "declarations_and_local_invariants_only",
       "path": "contracts/report.py"
     },
     {
@@ -92,10 +112,10 @@
       "path": "validation/structure.py"
     }
   ],
-  "control_evidence": "W01 developer control execution is recorded in PHASE_2_PROGRESS.md and exact-head PR evidence; it does not implement any input or analytical component.",
+  "control_evidence": "W01 accepted through PR #10 merge 41e7ba2f8046b3791f860313ea3ad54dcd4cb25c. W02 model/schema evidence is component-level only; final-head execution is recorded in the review PR.",
   "domain_traces_closed": [],
   "format": "sit-phase2-evidence/0.1",
-  "product_implementation": "not_started",
+  "product_implementation": "private_models_and_declarations_only",
   "public_audit": "unchanged_refusal",
-  "unit": "P2-W01"
+  "unit": "P2-W02"
 }
