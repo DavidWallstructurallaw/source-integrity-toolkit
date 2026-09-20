@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.18 |
+| Revision | 0.19 |
 | Work unit | P2-W07: integration, counterexamples and isolation regression |
 | Owner instruction | 批准并合并 PR #15，再进入 P2-W07 |
 | Accepted W06 merge | 4f55252d98f9b57975c2bc241c9079ac259a53cd |
@@ -13,7 +13,7 @@
 | Approved plan | PHASE_2_PLAN.md revision 0.1, sections 13, 16 and 17 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
 | Branch | phase2/p2-w07 |
-| Status | Test-only candidate authored; exact-head cumulative execution pending |
+| Status | Four-profile preflight failed before test collection; proposed P2-W07-R01 blocks continuation |
 | W07 acceptance / W08 | Not granted / not started |
 
 ## 1. Acceptance and preserved history
@@ -102,3 +102,75 @@ out-of-scope product repair is a W07 stop under plan section 13, not permission
 to weaken the expected rule. After successful code-head verification, record
 its evidence and independently verify the final record head. Stop for owner
 acceptance without merging W07, starting W08 or publishing a release.
+
+## 6. Actual first CI failure and corrected transition assumption
+
+Run 35488938338, attempt 1, executed candidate
+b0128e542aec927f708a461dca1a92b98754f6e6. All four profiles stopped at the
+preflight package guard with invalid_phase_policy. The dependency-install and
+test-collection/execution steps were automatically not reached after this
+failure. No new test count, JUnit pass, package result or installed-toolchain
+validation is claimed. In particular, W06's 1,465 tests were not re-executed.
+
+| Profile | Actual selected CPython | Job | Artifact | Bytes |
+|---|---|---|---|---|
+| Ubuntu 24.04 | 3.11.16 | 106020344988 | 10598132878 | 10574 |
+| Ubuntu 24.04 | 3.13.15 | 106020345039 | 10598572138 | 10575 |
+| Windows Server 2025 | 3.11.9 | 106020345077 | 10597704759 | 10577 |
+| Windows Server 2025 | 3.13.15 | 106020345070 | 10598037793 | 10580 |
+
+All four complete failure archives were downloaded and their byte counts,
+SHA-256 and CRC checked. All eleven members per archive were inspected. Actual
+Phase 1/Phase 2 entry snapshots (124/125 files), four-path scope and twenty frozen
+files passed. The module guard checked zero module bodies because policy failed
+first. All 154 tracked hashes agreed across profiles and remained unchanged;
+comparison to the accepted W06 map independently confirms all 48 product files
+retain their accepted bytes. This byte comparison is not a new module-guard pass.
+
+The guard's policy_promotions function requires active_unit to equal the trusted
+review unit. Trusted branch resolution correctly produces P2-W07, whereas the
+unchanged policy still says P2-W06. The earlier section 2 assumption that retaining
+the previous active context would be sufficient was wrong. This is the author's
+plan/transition oversight, not an executed product-test failure. The frozen plan
+omits module_policy.json from W07's allowed paths, so it was not silently edited.
+
+An isolated reproduction of the inspected policy function rejects that exact
+mismatch with policy_cannot_select_unit. A hypothetical one-field update admits
+the same thirteen promotions; advancing the candidate under a trusted older unit
+or adding an analysis module still fails. The policy preimage was reconstructed
+and matched to its exact Git blob and accepted SHA-256. This was a local function
+probe only; no repository policy change or repaired full CI pass occurred.
+
+## 7. Proposed P2-W07-R01 and stop
+
+Request six additional immediate W07 paths:
+
+1. phase2/module_policy.json: change active_unit from P2-W06 to P2-W07 only.
+2. tests/scaffold/test_ci_contract.py: register exactly these six paths for W07
+   and retained cumulative accounting, preserving trusted context and all guards.
+3. tests/contract/test_bundle_contract.py: adjust only the two named immediate
+   and cumulative permission checks to recognize this separate authorization.
+4. tests/security/test_input_capture.py: adjust only the existing exact-scope
+   permission test, preserving every observer and capture assertion.
+5. tests/contract/test_input_schema_mapping.py: adjust only the R02 cross-unit
+   permission test, preserving all schema/status/runtime assertions.
+6. phase2/transition_ledger.md: append the four adapted permission-test mappings
+   required by plan section 5.2 without changing historical rows.
+
+New exact-policy, permission and AST-preservation regressions can use the already
+allowed tests/contract/test_phase2_transition.py. Necessary progress/evidence
+records remain within W07. No other work unit gains immediate permission. No
+product implementation, checker change, workflow/pin change, frozen source or
+oracle change, skip, downgrade of an expected result or public behavior is sought.
+
+These paths were checked together before requesting the repair: changing only
+the metadata would encounter the CI path check; adding only the CI exception
+would conflict with the three existing permission-test files. The sixth path
+preserves the required assertion-transition ledger. R01 is proposed, not granted,
+and none of its six files has been modified. Both new W07 test files remain
+exactly at the failed candidate's bytes.
+
+This successor changes only the two verification records. PR #16 carries the
+exact current-head status and any record-only rerun evidence. W07 remains draft
+and unaccepted. Wait for scoped authorization, then rerun the entire four-profile
+suite. Do not merge W07, start W08 or treat the preflight failure as passing tests.
