@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.16 |
+| Revision | 0.17 |
 | Work unit | P2-W06: non-cumulative observability preparation |
 | Owner instruction | 批准并合并 PR #14，再进入 P2-W06 |
 | Accepted W05 head | bf9d7152569495f3eca8fd6b514fe98f6a4bd1f4 |
@@ -13,7 +13,7 @@
 | Plan | PHASE_2_PLAN.md revision 0.1, sections 3.4 and 12 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
 | Branch | phase2/p2-w06 |
-| Status | Candidate authored; exact-head cumulative verification pending |
+| Status | Code-head four-profile evidence verified; final record-head gate pending |
 | W06 acceptance / W07 | Not granted / not started |
 
 ## 1. Acceptance and source boundary
@@ -106,3 +106,48 @@ exclusion or observation downgrade is permitted merely to obtain a green result.
 Record code-head evidence, then verify the final documentation successor on its own
 exact head. Keep the review draft until evidence is inspected. Stop for W06 owner
 acceptance; do not merge this work, start W07 or publish a release automatically.
+
+## 5. Inspected code-head execution and final record gate
+
+The exact code head 276fb8ac2d7377ab1c9fb8378224a90a418b1472, tree
+b6d6f3b66d88fb0afe34ec62b864864bca1278c7, completed run 35484254073, attempt 1.
+Every required step succeeded in all four jobs. No candidate code, test or assertion
+was changed to obtain this first complete pass. The prior W05 failures remain in
+history; no failed W06 run is invented or concealed. The retired W02-only workflow
+was inapplicable and skipped independently; no cumulative test was skipped.
+
+| Profile | Actual Python | Passed | Failure / error / skip | Artifact |
+|---|---|---:|---|---:|
+| Ubuntu 24.04 | 3.11.16 | 1465 | 0 / 0 / 0 | 10596637534 |
+| Ubuntu 24.04 | 3.13.15 | 1465 | 0 / 0 / 0 | 10596947803 |
+| Windows Server 2025 | 3.11.9 | 1465 | 0 / 0 / 0 | 10596783317 |
+| Windows Server 2025 | 3.13.15 | 1465 | 0 / 0 / 0 | 10596778401 |
+
+The complete four evidence ZIPs were downloaded. Their byte lengths and SHA-256
+match the service metadata; CRC checks pass. Each JUnit file has exactly 1,465
+direct testcase elements with no failure/error/skipped element. Classname/name
+identities independently match actual collection, and every one of the accepted
+1,320 predecessor identities remains. The 145 additions divide into 73 contract,
+31 input-domain and 41 integration instances. The 428 successful subtest events
+are separately confirmed by the original pytest logs and summary accounting.
+
+All 152 tracked hashes agree across profiles, match every authored candidate byte
+and remain unchanged during execution. Actual complete-checkout guards passed for
+twenty frozen files, forty-eight product modules, the 124-file Phase 1 snapshot and
+the 125-file Phase 2 entry. Exactly the ten authorized paths differ from accepted
+W05. No old test, workflow, schema, fixture/oracle, dependency or public interface
+changed. All eight H7 input/mode instances and real effects probes passed.
+
+The selected dependency installation and existing package/clean-install tests
+passed. Recorded source-distribution inventories contain 65 ordinary members;
+original and rebuilt wheels each contain 55 members with identical member names
+and hashes. Tracked package-member hashes match the exact checked source. These
+ZIPs provide executed test evidence and inventories, not package archive binaries;
+this inspection makes no independent reread or whole-archive reproducibility claim.
+
+This successor modifies only this progress record and implementation_evidence.json.
+The implementation and tests remain exact code-head bytes. Its final SHA must receive
+its own complete four-profile run and artifact inspection. PR #15 will carry that
+final-head evidence without another self-referential document commit. Keep draft
+until the final gate passes, then stop for owner acceptance. Main remains the accepted
+W05 merge; W07, public auditing, native I/O and release remain unstarted.

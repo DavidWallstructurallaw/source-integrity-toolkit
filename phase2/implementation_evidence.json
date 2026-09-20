@@ -23,79 +23,79 @@
       "path": "contracts/bundle.py",
       "first_unit": 2,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "contracts/constants.py",
       "first_unit": 2,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "contracts/evidence.py",
       "first_unit": 2,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "contracts/execution.py",
       "first_unit": 2,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "contracts/report.py",
       "first_unit": 2,
       "implementation": "W06_private_observation_navigation",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "io/input_file.py",
       "first_unit": 4,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "runtime/boundary.py",
       "first_unit": 4,
       "implementation": "W06_private_observation_navigation",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "runtime/diagnostics.py",
       "first_unit": 3,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "runtime/resources.py",
       "first_unit": 3,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "validation/limits.py",
       "first_unit": 3,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "validation/references.py",
       "first_unit": 5,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "validation/semantics.py",
       "first_unit": 5,
       "implementation": "W06_private_observation_navigation",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     },
     {
       "path": "validation/structure.py",
       "first_unit": 4,
       "implementation": "accepted_W05_bytes_unchanged",
-      "behavior_tests": "W06_exact_head_hosted_verification_pending"
+      "behavior_tests": "all_1465_code_head_instances_passed_in_four_profiles; final_record_head_gate_pending"
     }
   ],
   "whole_prerequisites_implemented": [
@@ -135,9 +135,9 @@
   "public_audit": "unchanged_refusal",
   "partition": "phase2/prerequisite_partition.json",
   "verification": {
-    "status": "syntax_and_source_scope_checked; hosted_execution_pending",
-    "tested_commit": null,
-    "run_id": null,
+    "status": "code_head_four_profile_verified; final_record_head_pending",
+    "tested_commit": "276fb8ac2d7377ab1c9fb8378224a90a418b1472",
+    "run_id": 35484254073,
     "required_predecessor_identities": 1320,
     "required_separate_subtest_events": 428,
     "matrix_rows_required": 4,
@@ -147,7 +147,61 @@
       "tests/contract/test_observability_preparation.py",
       "tests/unit/test_evidence_domain_index.py",
       "tests/integration/test_preparation_capability_boundary.py"
-    ]
+    ],
+    "prior_status": "syntax_and_source_scope_checked; hosted_execution_pending",
+    "tests_per_profile": 1465,
+    "passed_per_profile": 1465,
+    "failures_per_profile": 0,
+    "errors_per_profile": 0,
+    "skips_per_profile": 0,
+    "added_test_identities": 145,
+    "separate_subtest_events": 428,
+    "sorted_test_identity_sha256": "525a4516d146e4c71b2554bc2705144af45664f71b693163a25d5eb474cca41b",
+    "tracked_files": 152,
+    "changed_paths": 10,
+    "actual_frozen_files": 20,
+    "actual_phase1_entry_files": 124,
+    "actual_phase2_entry_files": 125,
+    "product_modules": 48,
+    "unchanged_protected_modules": 35,
+    "original_and_rebuilt_wheel_members": 55,
+    "sdist_regular_members": 65,
+    "matrix": [
+      {
+        "os": "ubuntu-24.04",
+        "python": "3.11.16",
+        "job_id": 106007552408,
+        "artifact_id": 10596637534,
+        "archive_bytes": 82559,
+        "archive_sha256": "009c95b1ac8e1fd440df5f756310427d4eeca72d97fa3ac1482f50f2c6d1d06e"
+      },
+      {
+        "os": "ubuntu-24.04",
+        "python": "3.13.15",
+        "job_id": 106007552533,
+        "artifact_id": 10596947803,
+        "archive_bytes": 82537,
+        "archive_sha256": "11f336c0226d31e92f471698bef800f732f31cbba86a297dc79cb6cb5993ac27"
+      },
+      {
+        "os": "windows-2025",
+        "python": "3.11.9",
+        "job_id": 106007552530,
+        "artifact_id": 10596783317,
+        "archive_bytes": 89065,
+        "archive_sha256": "8fb8ae00efa5e267b3a0a1ce9bf4f7440f3b139e35a2c1938a14c98a0a119c6e"
+      },
+      {
+        "os": "windows-2025",
+        "python": "3.13.15",
+        "job_id": 106007552562,
+        "artifact_id": 10596778401,
+        "archive_bytes": 89049,
+        "archive_sha256": "3c73629e41e2cf4a7e0c2613fbe1be4fee82b96f81c3fb9e70597783397bc8e7"
+      }
+    ],
+    "inspection": "All four complete ZIP bytes, SHA-256 and CRC checked; raw JUnit identities independently matched to collection and the accepted 1320-node predecessor; actual checkout/entry/frozen records and archive-member inventories inspected. Package binaries are not contained in the evidence ZIPs.",
+    "final_gate": "Commit these two verification records without product/test changes, then inspect the exact final-head four-profile evidence in PR #15. No W06 merge or W07 is authorized."
   },
   "deferred": [
     "PC02-PC24_whole_checks",
