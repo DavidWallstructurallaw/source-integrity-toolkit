@@ -1,5 +1,5 @@
 {
-  "active_unit": "P2-W04",
+  "active_unit": "P2-W05",
   "first_units": {
     "contracts/bundle.py": 2,
     "contracts/constants.py": 2,
@@ -57,6 +57,14 @@
     {
       "path": "validation/limits.py",
       "unit": 3
+    },
+    {
+      "path": "validation/references.py",
+      "unit": 5
+    },
+    {
+      "path": "validation/semantics.py",
+      "unit": 5
     },
     {
       "path": "validation/structure.py",

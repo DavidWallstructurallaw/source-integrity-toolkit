@@ -7,7 +7,7 @@ from decimal import Decimal
 from unittest.mock import patch
 import pytest
 from source_integrity_toolkit.contracts.bundle import _Number, _Object, _Array, _CapturedBundle
-from source_integrity_toolkit.runtime.boundary import _prepare_value, _prepare_utf8
+from source_integrity_toolkit.runtime.boundary import _capture_value as _prepare_value, _capture_utf8 as _prepare_utf8
 from source_integrity_toolkit.runtime.resources import _new_budget
 from source_integrity_toolkit.runtime.diagnostics import _SafeDiagnostic
 from source_integrity_toolkit.contracts.execution import _PreparationAborted

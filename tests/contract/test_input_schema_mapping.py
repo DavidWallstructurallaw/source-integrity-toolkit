@@ -180,7 +180,7 @@ def test_all_refs_resolve_locally_without_schema_lookup():
 def test_coverage_is_complete_per_field_and_preserves_pending_runtime():
     c=load("phase2/input_contract_coverage.json")
     assert c["source"]=={"path":SOURCE,"sha256":SOURCE_HASH}
-    assert c["runtime_checks"]=="pending" and c["whole_prerequisites_completed"]==[]
+    _assert_runtime_stage(c)  # P2-W05-R02: exact live status, no pending-or-pass alternative.
     assert c["analytical_traces_closed"]==[]
     assert len(c["shapes"])==len(SHAPES)
     seen=set(); source=(ROOT/SOURCE).read_text().splitlines()
@@ -232,3 +232,103 @@ def test_no_runtime_schema_or_source_reads():
 
 def test_duplicate_schema_key_is_not_silently_overwritten():
     with pytest.raises(ValueError):json.loads('{"x":1,"x":2}',object_pairs_hook=unique)
+
+
+# P2-W05-R02. This checks the completed input component throughout Phase 2;
+# future observability indexing cannot promote another whole PC or a Trace.
+def _assert_runtime_stage(c):
+    assert c["runtime_checks"] == "structural_preparation_implemented"
+    assert c["whole_prerequisites_completed"] == ["PC01"]
+    assert c["whole_prerequisites_pending"] == [f"PC{i:02}" for i in range(2, 25)]
+    assert c["runtime_scope"] == "private_input_admission_only"
+    assert c["analytical_traces_closed"] == []
+    rows = c["runtime_rule_coverage"]
+    assert [r["id"] for r in rows] == [f"R{i:02}" for i in range(1, 31)]
+    assert all(r["state"] == "input_checks_implemented" and r["tests"] for r in rows)
+    assert c["unimplemented_public_auditing"] is True
+
+
+@pytest.mark.parametrize("key,value", [
+    ("runtime_checks", "pending"), ("runtime_checks", "completed"),
+    ("whole_prerequisites_completed", []), ("whole_prerequisites_completed", ["PC01", "PC07"]),
+    ("whole_prerequisites_pending", []), ("runtime_scope", "full_audit"),
+    ("analytical_traces_closed", ["SIT-M001"]), ("unimplemented_public_auditing", False),
+])
+def test_r02_live_coverage_rejects_stale_or_overclaimed_status(key, value):
+    c = load("phase2/input_contract_coverage.json")
+    _assert_runtime_stage(c)
+    c[key] = value
+    with pytest.raises(AssertionError): _assert_runtime_stage(c)
+
+
+@pytest.mark.parametrize("mode", ["drop", "duplicate", "pending", "missing_tests"])
+def test_r02_live_rule_coverage_cannot_omit_a_required_input_obligation(mode):
+    c = load("phase2/input_contract_coverage.json")
+    if mode == "drop": c["runtime_rule_coverage"].pop()
+    elif mode == "duplicate": c["runtime_rule_coverage"][-1] = copy.deepcopy(c["runtime_rule_coverage"][0])
+    elif mode == "pending": c["runtime_rule_coverage"][-1]["state"] = "pending"
+    else: c["runtime_rule_coverage"][-1]["tests"] = []
+    with pytest.raises(AssertionError): _assert_runtime_stage(c)
+
+
+def test_r02_status_has_actual_capture_rejection_and_full_admission_witnesses():
+    import importlib.util
+    from source_integrity_toolkit.runtime.boundary import _capture_value, _prepare_value, _prepare_utf8
+    from source_integrity_toolkit.contracts.bundle import _CapturedBundle
+    from source_integrity_toolkit.contracts.evidence import _PreparedBundle
+    spec = importlib.util.spec_from_file_location("sit_r02_actual_witness", ROOT / "tests/contract/test_typed_records.py")
+    cases = importlib.util.module_from_spec(spec); spec.loader.exec_module(cases)
+    _assert_runtime_stage(load("phase2/input_contract_coverage.json"))
+    assert type(_capture_value({})) is _CapturedBundle
+    assert _prepare_value({}).input_state == "rejected"
+    valid = cases.sparse()
+    assert isinstance(_prepare_value(valid), _PreparedBundle)
+    assert isinstance(_prepare_utf8(json.dumps(valid).encode()), _PreparedBundle)
+    valid["inquiries"][0]["target_claim_refs"] = ["fictional-missing"]
+    assert _prepare_value(valid).code == "dangling_reference"
+
+
+def test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("sit_r02_scope", ROOT / "tests/scaffold/test_ci_contract.py")
+    ci = importlib.util.module_from_spec(spec); spec.loader.exec_module(ci)
+    paths = ci.phase_guard.plan_paths(ROOT)
+    extra = frozenset(("tests/contract/test_input_schema_mapping.py",))
+    assert ci.P2_W05_R02_PATHS == extra and not extra & paths["P2-W05"]
+    for i in range(1, 10):
+        unit = f"P2-W{i:02}"
+        authorized = ci.P2_W02_R01_PATHS if i == 2 else ci.P2_W04_R01_PATHS if i == 4 else (ci.P2_W05_R01_PATHS | extra) if i == 5 else frozenset()
+        assert ci.effective_paths(paths, unit) == paths[unit] | authorized
+        if not extra <= paths[unit] | authorized:
+            with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
+                ci.check_changed_paths(paths, unit, extra)
+    allowed = ci.effective_paths(paths, "P2-W05")
+    for path in ("tests/contract/test_input_schema_mapping.py.bak", "tests/contract/../contract/test_input_schema_mapping.py",
+                 "tests/security/test_scaffold_inertness.py", "PHASE_2_PLAN.md", ".github/workflows/phase1-ci.yml"):
+        assert path not in allowed
+        with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
+            ci.check_changed_paths(paths, "P2-W05", allowed | {path})
+
+
+def test_r02_preserves_every_old_schema_assertion_except_the_named_stage_check():
+    import ast
+    import subprocess
+    relative = "tests/contract/test_input_schema_mapping.py"
+    raw = subprocess.check_output(["git", "show", "655f99e35052d56790f28d0c7971515c92b9ea6d:" + relative], cwd=ROOT, timeout=30)
+    assert hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest() == "a0418a7e8f106a185704a336e2c46da2dfb446a6"
+    old, new = ast.parse(raw), ast.parse((ROOT / relative).read_bytes())
+    additions = {"_assert_runtime_stage", "test_r02_live_coverage_rejects_stale_or_overclaimed_status",
+        "test_r02_live_rule_coverage_cannot_omit_a_required_input_obligation",
+        "test_r02_status_has_actual_capture_rejection_and_full_admission_witnesses",
+        "test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope",
+        "test_r02_preserves_every_old_schema_assertion_except_the_named_stage_check"}
+    assert {n.name for n in new.body if isinstance(n, ast.FunctionDef)} - {n.name for n in old.body if isinstance(n, ast.FunctionDef)} == additions
+    new.body = [n for n in new.body if not isinstance(n, ast.FunctionDef) or n.name not in additions]
+    target = "test_coverage_is_complete_per_field_and_preserves_pending_runtime"
+    a = next(n for n in old.body if isinstance(n, ast.FunctionDef) and n.name == target)
+    b = next(n for n in new.body if isinstance(n, ast.FunctionDef) and n.name == target)
+    removed = a.body.pop(2)
+    assert isinstance(removed, ast.Assert) and "runtime_checks" in ast.dump(removed)
+    removed = b.body.pop(2)
+    assert isinstance(removed, ast.Expr) and isinstance(removed.value, ast.Call) and removed.value.func.id == "_assert_runtime_stage"
+    assert ast.dump(old, include_attributes=False) == ast.dump(new, include_attributes=False)

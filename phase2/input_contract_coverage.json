@@ -1,14 +1,19 @@
 {
   "format": "sit-input-contract-coverage/0.1",
-  "unit": "P2-W02",
+  "unit": "P2-W05",
   "contract": "sit-bundle/0.1",
   "source": {
     "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
     "sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374"
   },
-  "representation": "contracts/evidence.py::_Node(shape, fields); fields is contracts/bundle.py::_Object.items with explicit name/value pairs. Optional absence is absence of a pair; null is None. Tagging is not validation.",
+  "predecessor": {
+    "commit": "655f99e35052d56790f28d0c7971515c92b9ea6d",
+    "sha256": "81056698912c278363b46b67bb4cc686d1a0ff35d5e7bd8296a13c1e1ea3377b",
+    "scope": "Original W02 50-shape, 242-field and 30-rule correspondence remains inspectable in Git. This record adds executed input components, not analytical qualification."
+  },
+  "representation": "Captured immutable _Object/_Array input is retained as captured_tree, including original selector spelling. The normalized tree orders entity/reference/role sets and rebases role-indexed Gap selectors without changing their meaning or narrative. Sorted _Entity entries hold _Node(shape, fields); all original attribution remains accessible. No truth or independence certificate.",
   "schema": "schemas/bundle/sit-bundle-0.1.schema.json",
-  "join_rule": "For every shape and each field row, schema pointer is #/$defs/<shape>/properties/<field>. The section and line interval identify the complete controlling source. Ranges include qualifications; no clause is waived by an index.",
+  "join_rule": "Each field retains its SHAPES ordinal P2-F001..P2-F242, source section and #/$defs/<shape>/properties/<field> schema location. Required/null/endpoint conditions remain independent of a schema-only pass.",
   "field_columns": [
     "field",
     "declaration_type",
@@ -17,17 +22,38 @@
     "runtime_owner",
     "declaration_test_id"
   ],
-  "test_binding": {
-    "module": "tests/contract/test_input_schema_mapping.py",
-    "P": "test_shape_mapping_positive",
-    "N": "test_shape_mapping_mutations",
-    "M": "test_required_and_optional_presence",
-    "B": "test_nullable_and_boundary_branches",
-    "scope": "Finite source/declaration/schema correspondence tests only. These do not execute admission, reference resolution or analytical behavior. Each field inherits all four bindings and its recorded field-case ID."
-  },
-  "runtime_checks": "pending",
-  "whole_prerequisites_completed": [],
+  "runtime_checks": "structural_preparation_implemented",
+  "runtime_scope": "private_input_admission_only",
+  "whole_prerequisites_completed": [
+    "PC01"
+  ],
+  "whole_prerequisites_pending": [
+    "PC02",
+    "PC03",
+    "PC04",
+    "PC05",
+    "PC06",
+    "PC07",
+    "PC08",
+    "PC09",
+    "PC10",
+    "PC11",
+    "PC12",
+    "PC13",
+    "PC14",
+    "PC15",
+    "PC16",
+    "PC17",
+    "PC18",
+    "PC19",
+    "PC20",
+    "PC21",
+    "PC22",
+    "PC23",
+    "PC24"
+  ],
   "analytical_traces_closed": [],
+  "unimplemented_public_auditing": true,
   "branch_bindings": {
     "Record.kind": {
       "claim": "ClaimData",
@@ -86,64 +112,480 @@
       "change": "ChangeDetails"
     }
   },
-  "branch_schema_location": "#/$defs/<shape>/allOf. Tags select explicit local shapes; no empty unsupported branch. Endpoint-dependent dimension/subject compatibility remains a global-validator responsibility.",
   "mandatory_remaining_rules": [
-    ["R01","2.2","validation/references.py","snapshot-wide IDs, typed refs, predecessor isolation, distinct referenced IDs"],
-    ["R02","3.1","validation/semantics.py","date/instant syntax and offsets, date intervals, inconsistent windows retained; no format-only validation"],
-    ["R03","3.2","validation/structure.py","attribution Gap for null asserter; documentary label without support remains attributed and unsupported"],
-    ["R04","3.3","validation/structure.py","all required factual nulls need corresponding Gap except named structural-null branches; Gap field paths validated in containing owner"],
-    ["R05","3.4","validation/limits.py","inert namespaced data, Unicode/number/byte/node/depth resource rules including unselected input"],
-    ["R06","4.2","validation/references.py","excerpt artifact or location Gap; compatible protected attestor and inspectability remain distinct"],
-    ["R07","5","validation/references.py","Claim/Artifact/EvidenceItem seed bindings and boundary system endpoint kinds"],
-    ["R08","6.5","validation/structure.py","unknown empty performers require Gap; method null requires Gap"],
-    ["R09","6.7","validation/references.py","role-kind compatibility, human actor specialization, role gaps, review-only contribution rule"],
-    ["R10","6.8","validation/references.py","channel ownership/targets kinds and unknown empty target Gap; no route/grant inference"],
-    ["R11","6.9","validation/references.py","submission case references, before target membership, allowed explicit removal meaning and unknown after-state as unresolved record"],
-    ["R12","6.10","validation/references.py","PipelineRecord subject/output kinds, no missing-to-did_not_occur conversion"],
-    ["R13","6.11","validation/structure.py","protected anomaly context reference and Gap; unclassified/claim-free null exceptions"],
-    ["R14","6.12","validation/references.py","compatible expected endpoint kind and no automatic identity from protected key"],
-    ["R15","7","validation/references.py","scope target intersections, E bound-claim membership, nonactive lifecycle basis/qualification"],
-    ["R16","8.1","validation/references.py","every predicate endpoint kind, dimension conditional on E/A, same-kind transformations and same-Claim E links"],
-    ["R17","8.2","validation/references.py","supersedes-self rejects; other evidence cycles and parallel assertions preserved"],
-    ["R18","8.3","validation/references.py","predicate-detail endpoints and identity-level compatibility"],
-    ["R19","8.4","validation/structure.py","aliases observed_by/validated_by/corrects/appeals/observes_independently are not accepted predicates"],
-    ["R20","9.1","validation/references.py","origin-boundary subject and scoped coverage reference; qualification deferred"],
-    ["R21","9.2","validation/references.py","homogeneous pair/set kinds and finite subjects; no pairwise union or independence qualification"],
-    ["R22","9.3","validation/references.py","coverage subjects, member kinds and cohort anchors; declarations never certify coverage"],
-    ["R23","9.4","validation/references.py","classification subjects and verification refs; unsupported verified label stays valid input"],
-    ["R24","9.5","validation/references.py","verification subjects/evaluation refs; reported verified status is not authentication"],
-    ["R25","9.6","validation/references.py","boundary inquiry belongs to scope, required claim scope; no externality qualification"],
-    ["R26","9.7","validation/references.py","one channel subject, grant targets/assessor/coverage refs; no authority applicability"],
-    ["R27","9.8","validation/structure.py","capacity/load/unit are supplied strings/null, not computed quantities; Gap requirements"],
-    ["R28","9.9","validation/references.py","conflict subject assertion kinds and resolution evaluation; no automatic winning source"],
-    ["R29","13","io/input_file.py","bounded decoding, strict UTF-8, duplicate decoded keys and lexical numeric type"],
-    ["R30","14","validation/structure.py","rejection versus preserved semantic limitations; no invalid-bundle salvage"]
+    [
+      "R01",
+      "2.2",
+      "validation/references.py",
+      "snapshot-wide IDs, typed refs, predecessor isolation, distinct referenced IDs"
+    ],
+    [
+      "R02",
+      "3.1",
+      "validation/semantics.py",
+      "date/instant syntax and offsets, date intervals, inconsistent windows retained; no format-only validation"
+    ],
+    [
+      "R03",
+      "3.2",
+      "validation/structure.py",
+      "attribution Gap for null asserter; documentary label without support remains attributed and unsupported"
+    ],
+    [
+      "R04",
+      "3.3",
+      "validation/structure.py",
+      "all required factual nulls need corresponding Gap except named structural-null branches; Gap field paths validated in containing owner"
+    ],
+    [
+      "R05",
+      "3.4",
+      "validation/limits.py",
+      "inert namespaced data, Unicode/number/byte/node/depth resource rules including unselected input"
+    ],
+    [
+      "R06",
+      "4.2",
+      "validation/references.py",
+      "excerpt artifact or location Gap; compatible protected attestor and inspectability remain distinct"
+    ],
+    [
+      "R07",
+      "5",
+      "validation/references.py",
+      "Claim/Artifact/EvidenceItem seed bindings and boundary system endpoint kinds"
+    ],
+    [
+      "R08",
+      "6.5",
+      "validation/structure.py",
+      "unknown empty performers require Gap; method null requires Gap"
+    ],
+    [
+      "R09",
+      "6.7",
+      "validation/references.py",
+      "role-kind compatibility, human actor specialization, role gaps, review-only contribution rule"
+    ],
+    [
+      "R10",
+      "6.8",
+      "validation/references.py",
+      "channel ownership/targets kinds and unknown empty target Gap; no route/grant inference"
+    ],
+    [
+      "R11",
+      "6.9",
+      "validation/references.py",
+      "submission case references, before target membership, allowed explicit removal meaning and unknown after-state as unresolved record"
+    ],
+    [
+      "R12",
+      "6.10",
+      "validation/references.py",
+      "PipelineRecord subject/output kinds, no missing-to-did_not_occur conversion"
+    ],
+    [
+      "R13",
+      "6.11",
+      "validation/structure.py",
+      "protected anomaly context reference and Gap; unclassified/claim-free null exceptions"
+    ],
+    [
+      "R14",
+      "6.12",
+      "validation/references.py",
+      "compatible expected endpoint kind and no automatic identity from protected key"
+    ],
+    [
+      "R15",
+      "7",
+      "validation/references.py",
+      "scope target intersections, E bound-claim membership, nonactive lifecycle basis/qualification"
+    ],
+    [
+      "R16",
+      "8.1",
+      "validation/references.py",
+      "every predicate endpoint kind, dimension conditional on E/A, same-kind transformations and same-Claim E links"
+    ],
+    [
+      "R17",
+      "8.2",
+      "validation/references.py",
+      "supersedes-self rejects; other evidence cycles and parallel assertions preserved"
+    ],
+    [
+      "R18",
+      "8.3",
+      "validation/references.py",
+      "predicate-detail endpoints and identity-level compatibility"
+    ],
+    [
+      "R19",
+      "8.4",
+      "validation/structure.py",
+      "aliases observed_by/validated_by/corrects/appeals/observes_independently are not accepted predicates"
+    ],
+    [
+      "R20",
+      "9.1",
+      "validation/references.py",
+      "origin-boundary subject and scoped coverage reference; qualification deferred"
+    ],
+    [
+      "R21",
+      "9.2",
+      "validation/references.py",
+      "homogeneous pair/set kinds and finite subjects; no pairwise union or independence qualification"
+    ],
+    [
+      "R22",
+      "9.3",
+      "validation/references.py",
+      "coverage subjects, member kinds and cohort anchors; declarations never certify coverage"
+    ],
+    [
+      "R23",
+      "9.4",
+      "validation/references.py",
+      "classification subjects and verification refs; unsupported verified label stays valid input"
+    ],
+    [
+      "R24",
+      "9.5",
+      "validation/references.py",
+      "verification subjects/evaluation refs; reported verified status is not authentication"
+    ],
+    [
+      "R25",
+      "9.6",
+      "validation/references.py",
+      "boundary inquiry belongs to scope, required claim scope; no externality qualification"
+    ],
+    [
+      "R26",
+      "9.7",
+      "validation/references.py",
+      "one channel subject, grant targets/assessor/coverage refs; no authority applicability"
+    ],
+    [
+      "R27",
+      "9.8",
+      "validation/structure.py",
+      "capacity/load/unit are supplied strings/null, not computed quantities; Gap requirements"
+    ],
+    [
+      "R28",
+      "9.9",
+      "validation/references.py",
+      "conflict subject assertion kinds and resolution evaluation; no automatic winning source"
+    ],
+    [
+      "R29",
+      "13",
+      "io/input_file.py",
+      "bounded decoding, strict UTF-8, duplicate decoded keys and lexical numeric type"
+    ],
+    [
+      "R30",
+      "14",
+      "validation/structure.py",
+      "rejection versus preserved semantic limitations; no invalid-bundle salvage"
+    ]
   ],
+  "rule_index_meaning": "mandatory_remaining_rules retains the original W02 obligation identifiers and descriptions. Live implementation disposition is in runtime_rule_coverage; epistemic qualification named by those descriptions is explicitly deferred, not silently completed.",
+  "runtime_rule_coverage": [
+    {
+      "id": "R01",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/unit/test_reference_validation.py"
+      ]
+    },
+    {
+      "id": "R02",
+      "owner": "validation/semantics.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_temporal_contract.py"
+      ]
+    },
+    {
+      "id": "R03",
+      "owner": "validation/structure.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_typed_records.py"
+      ]
+    },
+    {
+      "id": "R04",
+      "owner": "validation/structure.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_typed_records.py"
+      ]
+    },
+    {
+      "id": "R05",
+      "owner": "validation/limits.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/integration/test_prepared_hero_inputs.py"
+      ]
+    },
+    {
+      "id": "R06",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_typed_records.py"
+      ]
+    },
+    {
+      "id": "R07",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/unit/test_reference_validation.py"
+      ]
+    },
+    {
+      "id": "R08",
+      "owner": "validation/structure.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_typed_records.py"
+      ]
+    },
+    {
+      "id": "R09",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/unit/test_reference_validation.py"
+      ]
+    },
+    {
+      "id": "R10",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_typed_records.py"
+      ]
+    },
+    {
+      "id": "R11",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/unit/test_reference_validation.py"
+      ]
+    },
+    {
+      "id": "R12",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/integration/test_prepared_hero_inputs.py"
+      ]
+    },
+    {
+      "id": "R13",
+      "owner": "validation/structure.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_typed_records.py"
+      ]
+    },
+    {
+      "id": "R14",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/unit/test_reference_validation.py"
+      ]
+    },
+    {
+      "id": "R15",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R16",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R17",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R18",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R19",
+      "owner": "validation/structure.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R20",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R21",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R22",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R23",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R24",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R25",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/unit/test_reference_validation.py"
+      ]
+    },
+    {
+      "id": "R26",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R27",
+      "owner": "validation/structure.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_typed_records.py"
+      ]
+    },
+    {
+      "id": "R28",
+      "owner": "validation/references.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/contract/test_assertion_contract.py"
+      ]
+    },
+    {
+      "id": "R29",
+      "owner": "io/input_file.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/unit/test_input_decoding.py"
+      ]
+    },
+    {
+      "id": "R30",
+      "owner": "validation/structure.py",
+      "state": "input_checks_implemented",
+      "tests": [
+        "tests/integration/test_prepared_hero_inputs.py"
+      ]
+    }
+  ],
+  "field_runtime_tests": {
+    "positive": "tests/contract/test_typed_records.py::test_hand_authored_witnesses_cover_fifty_shapes_and_all_record_kinds",
+    "negative": "tests/contract/test_typed_records.py::test_each_field_rejects_wrong_concrete_type_without_coercion",
+    "missing": "tests/contract/test_typed_records.py::test_each_required_field_is_enforced_at_the_real_preparation_boundary",
+    "nullable": "tests/contract/test_typed_records.py::test_each_nullable_field_has_an_admitted_explicit_unknown_or_structural_branch",
+    "enums": "tests/contract/test_typed_records.py::test_each_enum_field_rejects_a_string_outside_its_closed_vocabulary"
+  },
   "additional_controllers": [
-    ["REPOSITORY_ARCHITECTURE.md","17","exact scalar atoms and capture preconditions"],
-    ["DEPENDENCY_STRATEGY.md","16","numeric-token ceiling is resource interruption"],
-    ["GOVERNANCE_AND_HANDOFF.md","22","binding precision/cancellation rules"],
-    ["PHASE_2_PLAN.md","3-4,8","W02 declaration-only scope and mandatory later bounded boundary"]
+    [
+      "REPOSITORY_ARCHITECTURE.md",
+      "17",
+      "capture, exact scalar/J and semantic ordering"
+    ],
+    [
+      "DEPENDENCY_STRATEGY.md",
+      "16",
+      "numeric-token resource interruption"
+    ],
+    [
+      "GOVERNANCE_AND_HANDOFF.md",
+      "22",
+      "precision and cancellation"
+    ],
+    [
+      "PHASE_2_PLAN.md",
+      "3-4,11",
+      "private bounded admission, exact stage boundary"
+    ]
   ],
   "schema_limits": [
-    "No validator engine is installed or implemented. Static agreement and branch constraints do not claim Draft 2020-12 metaschema/exhaustive conformance testing.",
-    "No maxLength, aggregate maxItems budget or numeric resource ceiling substitutes for runtime resource categories. Exact one/two-subject maxItems constraints are structural cardinalities from sections 9.1, 9.2 and 9.7.",
-    "No format-only time validator; known date/instant text remains pending explicit syntax checks.",
-    "Unknown predicate and closed-key restrictions are represented. Referent kinds, cross-object equality and Gap correspondence need the later complete snapshot validator.",
-    "Deep immutable parts are a private constructor precondition; scalar conversion, bounded scanning, J and public ingestion remain absent.",
-    "Schema descriptions are original engineering text. The source theory papers and user evidence are not embedded or relicensed."
+    "The unchanged schema is a local structural aid. Runtime never reads it or a fixture/golden/catalog file.",
+    "No external schema lookup, generic schema engine or new dependency. Source/declaration tests remain independent of actual preparation tests.",
+    "Date precision stays a date interval; only same-precision known inversions are noted. Grant timing and mixed boundary conventions are deferred.",
+    "The private acceptance transport certifies input preparation only. No public audit, domain result, witness or report is generated.",
+    "Full source tuples and direct field links remain attributed. Unresolved/protected objects, conflicting assertions and unsupported documentary labels retain their limitations.",
+    "Resource bounds are the original WU9 limits. Valid large inputs can interrupt under an earlier independent limit; no maximum-size throughput guarantee."
   ],
+  "runtime_qualification_limits": "Only declared structural/input preservation obligations are implemented. Origin sufficiency, independence, grant applicability, assurance qualification, correction effects, and all analytical result calculations remain pending.",
   "shapes": [
-    {"shape":"Bundle","section":"2","source_lines":[47,85],"fields":[["contract_version","=sit-bundle/0.1",true,"not_nullable","validation/structure.py","P2-F001"],["bundle_id","id",true,"not_nullable","validation/structure.py","P2-F002"],["snapshot_id","id",true,"not_nullable","validation/structure.py","P2-F003"],["recorded_at","#TimeValue",true,"not_nullable","validation/structure.py","P2-F004"],["predecessor","#Predecessor|null",true,"structural_or_conditional","validation/structure.py","P2-F005"],["inquiries","+#Inquiry",true,"not_nullable","validation/structure.py","P2-F006"],["records","*#Record",true,"not_nullable","validation/structure.py","P2-F007"],["assertions","*#Assertion",true,"not_nullable","validation/structure.py","P2-F008"],["evidence_references","*#EvidenceReference",true,"not_nullable","validation/structure.py","P2-F009"],["extensions","extensions",false,"not_nullable","validation/structure.py","P2-F010"]]},
+    {"shape":"Bundle","section":"2","source_lines":[47,85],"fields":[["contract_version","=sit-bundle/0.1",true,"not_nullable","validation/structure.py","P2-F001"],["bundle_id","id",true,"not_nullable","validation/structure.py","P2-F002"],["snapshot_id","id",true,"not_nullable","validation/structure.py","P2-F003"],["recorded_at","#TimeValue",true,"not_nullable","validation/structure.py","P2-F004"],["predecessor","#Predecessor|null",true,"structural_or_conditional","validation/structure.py","P2-F005"],["inquiries","+#Inquiry",true,"not_nullable","validation/structure.py","P2-F006"],["records","*#Record",true,"not_nullable","validation/structure.py","P2-F007"],["assertions","*#Assertion",true,"not_nullable","validation/structure.py","P2-F008"],["evidence_references","*#EvidenceReference",true,"not_nullable","validation/structure.py","P2-F009"],["extensions","extensions",false,"not_nullable","validation/limits.py","P2-F010"]]},
     {"shape":"Predecessor","section":"2","source_lines":[47,85],"fields":[["bundle_id","id",true,"not_nullable","validation/structure.py","P2-F011"],["snapshot_id","id",true,"not_nullable","validation/structure.py","P2-F012"]]},
     {"shape":"TimeValue","section":"3.1","source_lines":[88,102],"fields":[["state","@time_state",true,"not_nullable","validation/semantics.py","P2-F013"],["value","str|null",true,"structural_or_conditional","validation/semantics.py","P2-F014"],["precision","@precision|null",true,"structural_or_conditional","validation/semantics.py","P2-F015"],["reason","str",false,"not_nullable","validation/semantics.py","P2-F016"]]},
     {"shape":"TimeWindow","section":"3.1","source_lines":[88,102],"fields":[["start","#TimeValue",true,"not_nullable","validation/semantics.py","P2-F017"],["end","#TimeValue",true,"not_nullable","validation/semantics.py","P2-F018"],["note","str",false,"not_nullable","validation/semantics.py","P2-F019"]]},
     {"shape":"Provenance","section":"3.2","source_lines":[103,118],"fields":[["attributed_to_ref","id|null",true,"factual_gap_required","validation/references.py","P2-F020"],["basis_kind","@basis_kind",true,"not_nullable","validation/structure.py","P2-F021"],["evidence_ref_ids","*&id",true,"not_nullable","validation/references.py","P2-F022"],["method","str|null",true,"factual_gap_required","validation/structure.py","P2-F023"],["qualifications","*str",true,"not_nullable","validation/structure.py","P2-F024"]]},
     {"shape":"Gap","section":"3.3","source_lines":[119,126],"fields":[["field","str",true,"not_nullable","validation/structure.py","P2-F025"],["reason","@gap_reason",true,"not_nullable","validation/structure.py","P2-F026"],["detail","text",true,"not_nullable","validation/structure.py","P2-F027"]]},
-    {"shape":"EvidenceReference","section":"4.1","source_lines":[135,152],"fields":[["id","id",true,"not_nullable","validation/structure.py","P2-F028"],["reference_kind","@reference_kind",true,"not_nullable","validation/structure.py","P2-F029"],["availability","@availability",true,"not_nullable","validation/structure.py","P2-F030"],["artifact_ref","id|null",true,"structural_or_conditional","validation/references.py","P2-F031"],["record_ref","id|null",true,"structural_or_conditional","validation/references.py","P2-F032"],["locator","str|null",true,"structural_or_conditional","validation/structure.py","P2-F033"],["excerpt","str|null",true,"structural_or_conditional","validation/structure.py","P2-F034"],["provided_by_ref","id|null",true,"factual_gap_required","validation/references.py","P2-F035"],["attestor_ref","id|null",true,"structural_or_conditional","validation/references.py","P2-F036"],["scope_note","text",true,"not_nullable","validation/structure.py","P2-F037"],["gaps","*#Gap",false,"not_nullable","validation/structure.py","P2-F038"],["extensions","extensions",false,"not_nullable","validation/structure.py","P2-F039"]]},
-    {"shape":"Inquiry","section":"5","source_lines":[163,186],"fields":[["id","id",true,"not_nullable","validation/structure.py","P2-F040"],["label","str",false,"not_nullable","validation/structure.py","P2-F041"],["target_claim_refs","+&id",true,"not_nullable","validation/references.py","P2-F042"],["target_object_refs","*&id",true,"not_nullable","validation/references.py","P2-F043"],["seed_artifact_refs","*&id",true,"not_nullable","validation/references.py","P2-F044"],["seed_evidence_refs","*&id",true,"not_nullable","validation/references.py","P2-F045"],["boundary","#Boundary",true,"not_nullable","validation/structure.py","P2-F046"],["time_window","#TimeWindow",true,"not_nullable","validation/structure.py","P2-F047"],["as_of","#TimeValue",true,"not_nullable","validation/structure.py","P2-F048"],["dependency_dimensions","*@dimension",true,"not_nullable","validation/structure.py","P2-F049"],["coverage_assertion_refs","*&id",true,"not_nullable","validation/references.py","P2-F050"],["provenance","#Provenance",true,"not_nullable","validation/structure.py","P2-F051"],["gaps","*#Gap",false,"not_nullable","validation/structure.py","P2-F052"],["extensions","extensions",false,"not_nullable","validation/structure.py","P2-F053"]]},
+    {"shape":"EvidenceReference","section":"4.1","source_lines":[135,152],"fields":[["id","id",true,"not_nullable","validation/structure.py","P2-F028"],["reference_kind","@reference_kind",true,"not_nullable","validation/structure.py","P2-F029"],["availability","@availability",true,"not_nullable","validation/structure.py","P2-F030"],["artifact_ref","id|null",true,"structural_or_conditional","validation/references.py","P2-F031"],["record_ref","id|null",true,"structural_or_conditional","validation/references.py","P2-F032"],["locator","str|null",true,"structural_or_conditional","validation/structure.py","P2-F033"],["excerpt","str|null",true,"structural_or_conditional","validation/structure.py","P2-F034"],["provided_by_ref","id|null",true,"factual_gap_required","validation/references.py","P2-F035"],["attestor_ref","id|null",true,"structural_or_conditional","validation/references.py","P2-F036"],["scope_note","text",true,"not_nullable","validation/structure.py","P2-F037"],["gaps","*#Gap",false,"not_nullable","validation/structure.py","P2-F038"],["extensions","extensions",false,"not_nullable","validation/limits.py","P2-F039"]]},
+    {"shape":"Inquiry","section":"5","source_lines":[163,186],"fields":[["id","id",true,"not_nullable","validation/structure.py","P2-F040"],["label","str",false,"not_nullable","validation/structure.py","P2-F041"],["target_claim_refs","+&id",true,"not_nullable","validation/references.py","P2-F042"],["target_object_refs","*&id",true,"not_nullable","validation/references.py","P2-F043"],["seed_artifact_refs","*&id",true,"not_nullable","validation/references.py","P2-F044"],["seed_evidence_refs","*&id",true,"not_nullable","validation/references.py","P2-F045"],["boundary","#Boundary",true,"not_nullable","validation/structure.py","P2-F046"],["time_window","#TimeWindow",true,"not_nullable","validation/structure.py","P2-F047"],["as_of","#TimeValue",true,"not_nullable","validation/structure.py","P2-F048"],["dependency_dimensions","*@dimension",true,"not_nullable","validation/structure.py","P2-F049"],["coverage_assertion_refs","*&id",true,"not_nullable","validation/references.py","P2-F050"],["provenance","#Provenance",true,"not_nullable","validation/structure.py","P2-F051"],["gaps","*#Gap",false,"not_nullable","validation/structure.py","P2-F052"],["extensions","extensions",false,"not_nullable","validation/limits.py","P2-F053"]]},
     {"shape":"Boundary","section":"5","source_lines":[163,186],"fields":[["description","text",true,"not_nullable","validation/structure.py","P2-F054"],["criterion","text",true,"not_nullable","validation/structure.py","P2-F055"],["system_refs","*&id",true,"not_nullable","validation/references.py","P2-F056"]]},
-    {"shape":"Record","section":"6","source_lines":[187,365],"fields":[["id","id",true,"not_nullable","validation/structure.py","P2-F057"],["kind","@record_kind",true,"not_nullable","validation/structure.py","P2-F058"],["data","#RecordData",true,"not_nullable","validation/structure.py","P2-F059"],["provenance","#Provenance",true,"not_nullable","validation/structure.py","P2-F060"],["label","str",false,"not_nullable","validation/structure.py","P2-F061"],["gaps","*#Gap",false,"not_nullable","validation/structure.py","P2-F062"],["extensions","extensions",false,"not_nullable","validation/structure.py","P2-F063"]]},
+    {"shape":"Record","section":"6","source_lines":[187,365],"fields":[["id","id",true,"not_nullable","validation/structure.py","P2-F057"],["kind","@record_kind",true,"not_nullable","validation/structure.py","P2-F058"],["data","#RecordData",true,"not_nullable","validation/structure.py","P2-F059"],["provenance","#Provenance",true,"not_nullable","validation/structure.py","P2-F060"],["label","str",false,"not_nullable","validation/structure.py","P2-F061"],["gaps","*#Gap",false,"not_nullable","validation/structure.py","P2-F062"],["extensions","extensions",false,"not_nullable","validation/limits.py","P2-F063"]]},
     {"shape":"ClaimData","section":"6.1","source_lines":[193,204],"fields":[["claim_key","str",true,"not_nullable","validation/structure.py","P2-F064"],["version_label","str|null",true,"factual_gap_required","validation/structure.py","P2-F065"],["text","text|null",true,"factual_gap_required","validation/structure.py","P2-F066"],["content_evidence_ref","id",false,"not_nullable","validation/references.py","P2-F067"],["context","str",true,"not_nullable","validation/structure.py","P2-F068"]]},
     {"shape":"ArtifactData","section":"6.2","source_lines":[205,219],"fields":[["artifact_kind","@artifact_kind",true,"not_nullable","validation/structure.py","P2-F069"],["work_key","str|null",true,"factual_gap_required","validation/structure.py","P2-F070"],["version_label","str|null",true,"factual_gap_required","validation/structure.py","P2-F071"],["locators","*str",true,"not_nullable","validation/structure.py","P2-F072"],["published_at","#TimeValue",true,"not_nullable","validation/structure.py","P2-F073"],["retrieved_at","#TimeValue",true,"not_nullable","validation/structure.py","P2-F074"],["content_evidence_refs","*&id",true,"not_nullable","validation/references.py","P2-F075"],["checksums","*#Checksum",false,"not_nullable","validation/structure.py","P2-F076"]]},
     {"shape":"Checksum","section":"6.2","source_lines":[205,219],"fields":[["algorithm","str",true,"not_nullable","validation/structure.py","P2-F077"],["value","str",true,"not_nullable","validation/structure.py","P2-F078"],["covered_material","str",true,"not_nullable","validation/structure.py","P2-F079"]]},
@@ -161,7 +603,7 @@
     {"shape":"PipelineRecordData","section":"6.10","source_lines":[322,339],"fields":[["subject_ref","id",true,"not_nullable","validation/references.py","P2-F129"],["run_key","text",true,"not_nullable","validation/structure.py","P2-F130"],["stage_key","text",true,"not_nullable","validation/structure.py","P2-F131"],["stage","@stage",true,"not_nullable","validation/structure.py","P2-F132"],["state","@pipeline_state",true,"not_nullable","validation/structure.py","P2-F133"],["output_refs","*&id",true,"not_nullable","validation/references.py","P2-F134"],["observed_at","#TimeValue",true,"not_nullable","validation/structure.py","P2-F135"],["linkage_kind","@linkage_kind",true,"not_nullable","validation/structure.py","P2-F136"],["detail","text",true,"not_nullable","validation/structure.py","P2-F137"]]},
     {"shape":"AnomalyData","section":"6.11","source_lines":[340,353],"fields":[["inquiry_refs","+&id",true,"not_nullable","validation/references.py","P2-F138"],["claim_ref","id|null",true,"structural_or_conditional","validation/references.py","P2-F139"],["original_context","text|null",true,"factual_gap_required","validation/structure.py","P2-F140"],["context_evidence_ref","id|null",true,"structural_or_conditional","validation/references.py","P2-F141"],["classification_state","@classification_state",true,"not_nullable","validation/structure.py","P2-F142"],["caller_label","str|null",true,"structural_or_conditional","validation/structure.py","P2-F143"],["comparison_note","str|null",true,"factual_gap_required","validation/structure.py","P2-F144"]]},
     {"shape":"UnresolvedReferenceData","section":"6.12","source_lines":[354,365],"fields":[["expected_kinds","+@resolved_kind",true,"not_nullable","validation/structure.py","P2-F145"],["reason","@endpoint_gap_reason",true,"not_nullable","validation/structure.py","P2-F146"],["description","text",true,"not_nullable","validation/structure.py","P2-F147"],["external_locator","str",false,"not_nullable","validation/structure.py","P2-F148"],["protected_key","str",false,"not_nullable","validation/structure.py","P2-F149"]]},
-    {"shape":"Assertion","section":"7","source_lines":[366,383],"fields":[["id","id",true,"not_nullable","validation/structure.py","P2-F150"],["assertion_kind","@assertion_kind",true,"not_nullable","validation/structure.py","P2-F151"],["scope","#Scope",true,"not_nullable","validation/structure.py","P2-F152"],["provenance","#Provenance",true,"not_nullable","validation/structure.py","P2-F153"],["asserted_at","#TimeValue",true,"not_nullable","validation/structure.py","P2-F154"],["lifecycle_state","@lifecycle_state",true,"not_nullable","validation/structure.py","P2-F155"],["lifecycle_basis_ref_ids","*&id",true,"not_nullable","validation/references.py","P2-F156"],["data","#AssertionData",true,"not_nullable","validation/structure.py","P2-F157"],["gaps","*#Gap",false,"not_nullable","validation/structure.py","P2-F158"],["extensions","extensions",false,"not_nullable","validation/structure.py","P2-F159"]]},
+    {"shape":"Assertion","section":"7","source_lines":[366,383],"fields":[["id","id",true,"not_nullable","validation/structure.py","P2-F150"],["assertion_kind","@assertion_kind",true,"not_nullable","validation/structure.py","P2-F151"],["scope","#Scope",true,"not_nullable","validation/structure.py","P2-F152"],["provenance","#Provenance",true,"not_nullable","validation/structure.py","P2-F153"],["asserted_at","#TimeValue",true,"not_nullable","validation/structure.py","P2-F154"],["lifecycle_state","@lifecycle_state",true,"not_nullable","validation/structure.py","P2-F155"],["lifecycle_basis_ref_ids","*&id",true,"not_nullable","validation/references.py","P2-F156"],["data","#AssertionData",true,"not_nullable","validation/structure.py","P2-F157"],["gaps","*#Gap",false,"not_nullable","validation/structure.py","P2-F158"],["extensions","extensions",false,"not_nullable","validation/limits.py","P2-F159"]]},
     {"shape":"Scope","section":"7","source_lines":[366,383],"fields":[["inquiry_refs","+&id",true,"not_nullable","validation/references.py","P2-F160"],["claim_refs","*&id",true,"not_nullable","validation/references.py","P2-F161"],["effective_window","#TimeWindow",true,"not_nullable","validation/structure.py","P2-F162"]]},
     {"shape":"RelationData","section":"8.1","source_lines":[386,426],"fields":[["predicate","@predicate",true,"not_nullable","validation/structure.py","P2-F163"],["from_ref","id",true,"not_nullable","validation/references.py","P2-F164"],["to_ref","id",true,"not_nullable","validation/references.py","P2-F165"],["polarity","@polarity",true,"not_nullable","validation/structure.py","P2-F166"],["dimension","@dimension|null",true,"structural_or_conditional","validation/structure.py","P2-F167"],["details","#RelationDetails",true,"not_nullable","validation/structure.py","P2-F168"]]},
     {"shape":"StanceDetails","section":"8.3","source_lines":[435,451],"fields":[["note","str",false,"not_nullable","validation/structure.py","P2-F169"]]},

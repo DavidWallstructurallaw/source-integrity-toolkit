@@ -236,3 +236,81 @@ The six adapted test modules load their original source from the fixed intake Gi
 Full Git history is therefore an explicit test prerequisite. CI uses the same pinned checkout action with fetch-depth 0 and persist-credentials false. Source/wheel build and installed-runtime behavior do not load historical tests. The four historical test files included in the sdist remain repository-context developer tests, not standalone tests promised for an unpacked source archive. All 48 installed product slots are independent of this machinery.
 
 No product object, source locator, input dossier, extension or user report can reach the historical loader. The fixed historical test sources are reviewed project code, not evidence being audited. The raw historical tests' original __main__ dispatcher is suppressed while loading; the current driver dispatches after the bounded adaptation.
+
+
+## P2-W05-R01 authorized capture-test transition
+
+Owner instruction: `批准 P2-W05-R01`. Accepted W04 merge is
+`a1f102d82b7321f47df98f2672b91491cbd7fc9f`; W05 intake record is
+`fb698272165303660092f02974a99ebbb2748a4c`.
+
+This append preserves every historical row and result above. The migration is
+an intermediate local candidate. Remote delivery, whole W05 implementation and
+cumulative four-profile verification are still pending; it does not certify W05.
+
+| Existing file / seam | Exact migration | Preserved obligations |
+|---|---|---|
+| tests/unit/test_input_decoding.py | Import `_capture_utf8` / `_capture_value` under the original local test aliases | All test names, parameter identities, payloads, byte/numeric oracles and failure classifications |
+| tests/unit/test_value_capture.py | Import the two capture-only seams under original aliases | Exact types, hostile methods, ancestry cycles, alias occurrence counting, immutable copies, quotas and mutation faults |
+| tests/security/test_input_capture.py | Retarget imports in the module and its isolated subprocess; extend only its named scope-accounting test for the five-path authorization | Audit-hook body, real negative-control events, safe diagnostic canaries, all test identities and constant-only R01 protection checks |
+| tests/scaffold/test_ci_contract.py | Add the exact five P2-W05-R01 paths for W05 immediate scope and later cumulative accounting | All earlier scopes, guards, collection, workflow and failure rules |
+| tests/contract/test_bundle_contract.py | Update its two named immediate/cumulative scope tests | All test identities and every other body; no additive W05 tests in this intermediate patch |
+
+`runtime/boundary.py` adds only `_capture_value` and `_capture_utf8`, delegating
+to the accepted `_capture` without options or public exports. Its existing
+`_prepare_value` and `_prepare_utf8` are deliberately unchanged in this
+intermediate migration. They still have W04-only behavior and must acquire the
+full W05 pipeline before the work unit can pass. No test-only bypass or
+successful full-dossier claim is introduced.
+
+The later full-preparation cases belong to the already authorized W05 contract,
+reference, temporal and hero integration test files. They must distinguish a
+capturable empty/generic object from an admissible canonical dossier, require
+all structural/identity/reference/type/time/index/scope work before acceptance,
+and exercise all four unchanged H7 inputs. None of those future tests is marked
+executed here. The 724 predecessor identities remain the required cumulative
+baseline; local patch checks cannot replace their hosted execution.
+
+## P2-W05-R02 and full preparation integration
+
+The owner approved P2-W05-R02 and reiterated continuation of the already approved
+W05. The verified R01 migration is now remotely present at
+655f99e35052d56790f28d0c7971515c92b9ea6d, with run 35436261547 retaining all 724
+predecessor test identities. The earlier local/pending wording above records its
+historical preparation, not the current transport state.
+
+R02 adds exactly tests/contract/test_input_schema_mapping.py to W05 immediate
+scope. Its original test identity and source/schema/50-shape/242-field/30-rule
+assertions remain intact. Only the unconditional pending/empty status assertion
+is replaced by a strict check for the implemented private admission component,
+PC01 alone completed, and PC02-PC24 still pending. New mutation tests reject both
+stale pending metadata and inflated full-audit/analytical claims. A real sparse
+input, capturable empty input and dangling-reference input witness the distinction
+through the actual preparation functions. A pinned Git/AST regression protects
+all other original assertions. The original historical test name stays unchanged.
+
+The CI driver retains the old W02, W04 and W05-R01 exceptions and adds only the
+one R02 path. Two named scope-accounting bodies in test_bundle_contract.py and
+one in test_input_capture.py recognize that exact delta. Neither file loses a
+test identity. The original capture observer and real negative controls, along
+with the constant-only W04 diagnostic-repair checks, remain unchanged.
+
+_capture_value and _capture_utf8 continue to run pure capture conformance.
+_prepare_value and _prepare_utf8 now execute the complete W05 admission sequence
+under one fixed budget: capture, closed-shape mapping, identity/reference/endpoint
+and claim checks, time syntax, immutable normalization/indexing and finite
+explicit inquiry/anchor planning. Only its final boundary records acceptance.
+No component test is substituted for those full-preparation tests.
+
+New W05 cases reside in test_typed_records.py, test_assertion_contract.py,
+test_temporal_contract.py, test_reference_validation.py and
+test_prepared_hero_inputs.py. They exercise every kind/predicate/assessment, exact
+field presence and concrete type, valid sparse/protected/disputed/cyclic input,
+late defects, source-native states, both input modes for every unchanged H7 case,
+resource/cancellation/failure boundaries and real I/O/network/native controls.
+
+All 724 predecessor identities remain required in the cumulative hosted suite.
+Local component execution is separately recorded in PHASE_2_PROGRESS.md; it does
+not replace full repository history, frozen-file, packaging or four-profile CI.
+Acceptance and all new CI outcomes are recorded against the actual reviewed
+commit in PR #14. W06, public auditing and analytical Trace closure remain absent.

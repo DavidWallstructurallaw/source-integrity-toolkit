@@ -11,7 +11,7 @@ import sys
 from dataclasses import fields
 from unittest.mock import patch
 import pytest
-from source_integrity_toolkit.runtime.boundary import _prepare_utf8, _prepare_value
+from source_integrity_toolkit.runtime.boundary import _capture_utf8 as _prepare_utf8, _capture_value as _prepare_value
 from source_integrity_toolkit.runtime.resources import _new_budget
 from source_integrity_toolkit.runtime.diagnostics import _diagnostic, _CONSTRAINT_BASIS
 from source_integrity_toolkit.contracts.execution import _PreparationAborted, _CONSTRAINT_CODES
@@ -108,7 +108,7 @@ ISOLATED=r'''
 import sys,json,dataclasses,typing,ctypes,socket
 import encodings.idna
 sys.path.insert(0,sys.argv[1])
-from source_integrity_toolkit.runtime.boundary import _prepare_value,_prepare_utf8
+from source_integrity_toolkit.runtime.boundary import _capture_value as _prepare_value,_capture_utf8 as _prepare_utf8
 from source_integrity_toolkit.contracts.bundle import _CapturedBundle
 mode=sys.argv[2]
 events=[]
@@ -188,7 +188,7 @@ def test_r01_exact_four_paths_and_no_other_unit_permission_expansion():
     assert not EXTRA & paths["P2-W04"]
     for step in range(1,10):
         unit=f"P2-W{step:02}"
-        extra=ci.P2_W02_R01_PATHS if step==2 else EXTRA if step==4 else frozenset()
+        extra=ci.P2_W02_R01_PATHS if step==2 else EXTRA if step==4 else (ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS) if step==5 else frozenset()
         assert ci.effective_paths(paths,unit)==paths[unit]|extra
         ci.check_changed_paths(paths,unit,paths[unit]|extra)
         for path in EXTRA-paths[unit]-extra:
@@ -197,6 +197,7 @@ def test_r01_exact_four_paths_and_no_other_unit_permission_expansion():
         cumulative=set().union(*(paths[f"P2-W{i:02}"] for i in range(1,step+1)))
         if step>=2: cumulative.update(ci.P2_W02_R01_PATHS)
         if step>=4: cumulative.update(EXTRA)
+        if step>=5: cumulative.update(ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS)
         assert ci.effective_paths(paths,unit,cumulative=True)==cumulative
 
 
