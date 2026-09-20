@@ -4,150 +4,151 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.17 |
-| Work unit | P2-W06: non-cumulative observability preparation |
-| Owner instruction | 批准并合并 PR #14，再进入 P2-W06 |
-| Accepted W05 head | bf9d7152569495f3eca8fd6b514fe98f6a4bd1f4 |
-| Accepted W05 merge | 913f0a3d56b6c0f969e8a36ef7aa909e8ecab470 |
-| Accepted tree | 3c3217607a7a26a13fe9f8fdea1fe60b0e50331c |
-| Plan | PHASE_2_PLAN.md revision 0.1, sections 3.4 and 12 |
+| Revision | 0.20 |
+| Work unit | P2-W07: integration, counterexamples and isolation regression |
+| Owner repair instruction | 批准 P2-W07-R01 继续 |
+| Accepted W06 merge | 4f55252d98f9b57975c2bc241c9079ac259a53cd |
+| Accepted W06 head | d02d32051c595ea1aa64652f536e497d93be2763 |
+| Approved plan | PHASE_2_PLAN.md revision 0.1, sections 13, 16 and 17 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
-| Branch | phase2/p2-w06 |
+| Repair | P2-W07-R01: six additional paths, expressly approved |
+| Branch / PR | phase2/p2-w07 / 16 |
+| Code head | f0b237d1c4f045110b495db1046a06383c848a02 |
+| Code-head tree | c151d8cc5c7d2f52d73c06e9356bfc72fa5a605f |
+| Code-head run | 35493411483, attempt 1 |
 | Status | Code-head four-profile evidence verified; final record-head gate pending |
-| W06 acceptance / W07 | Not granted / not started |
+| W07 acceptance / merge / W08 | Pending / not authorized / not started |
 
-## 1. Acceptance and source boundary
+## 1. Accepted implementation and preserved failures
 
-The owner accepted W05 and authorized PR #14 merge and W06. The connector merged
-the exact reviewed W05 head after checking the current PR and successful workflow.
-The merge tree equals the accepted final tree. W05 retains its 1,320-test, four-profile
-final run 35481024914 and the separate 428 subtest events. Its original failures and
-R01/R02 repairs remain in history. No W05 evidence is relabeled as W06 execution.
+The accepted implementation is W06 merge 4f55252d98f9b57975c2bc241c9079ac259a53cd.
+All 48 product modules keep those exact bytes. No input, analytical or public
+behavior was changed in this test-focused work unit.
 
-The source of the implementation is the frozen reporting, input and architecture
-contract and the approved Phase 2 plan. The six theory papers remain source context;
-this work does not replace a frozen specification, license or mathematical claim.
+The original W07 test candidate b0128e542aec927f708a461dca1a92b98754f6e6 and its
+record successor 067802f8df5b6958adde60bc7ced3ca8a06a7f33 remain in history.
+Runs 35488938338 and 35489414729 each failed in four profiles before test
+collection. Their module policy still said W06 while the trusted review branch
+resolved to W07. The earlier assumption that the old marker could be retained
+was incorrect. Those failures are preserved, including progress revision 0.19,
+the exact predecessor evidence ledger, PR #16 and eight failure archives.
+They provide no W07 product-test pass. Earlier W04/W05 repairs and W06 acceptance
+continue to be documented at their original commits and PRs.
 
-## 2. Exact scope
+The owner then explicitly approved P2-W07-R01. The repair commit above is a new
+execution candidate. All seven repaired blob identities matched independently
+prepared local bytes before tree construction. No failed run was overwritten,
+relabeled, skipped or made successful by weakening a guard.
 
-Only the ten paths in section 12 are used. Three existing product modules change:
-contracts/report.py, validation/semantics.py and runtime/boundary.py. Three test files
-and prerequisite_partition.json are introduced. Progress, module policy and the
-implementation evidence record are updated. No extra path authorization is needed.
-The thirteen promoted slots remain the same, and thirty-five protected slots retain
-Phase 1 bytes. Existing W05 validators, capture/scalar/limit/budget/diagnostic modules,
-old tests, schema, fixtures/oracles, source documents, pins, workflow and public
-refusal entry points are unchanged.
+## 2. Exact repair and scope
 
-The original three module preimages were reconstructed and matched against their
-remote Git blob identities before edits. The full local plan and reporting document
-match their approved fingerprints. This is a partial workspace, not a full Git clone;
-local Git still reports github.com DNS failure. Syntax checks and source mapping
-checks do not count as execution of the full candidate or a hosted CI pass.
+module_policy.json changes only active_unit from P2-W06 to P2-W07. Its thirteen
+promotions, earliest-unit map, format and plan digest are unchanged. The trusted
+unit still comes from the review event, independently of candidate metadata.
 
-## 3. Private evidence navigation
+The CI driver registers exactly the six approved W07 extra paths. The four named
+permission-test bodies recognize that exception through guarded insertions;
+all their original assertions remain. The append-only transition ledger retains
+every historical byte and all 194 original identity rows. Other units gain no
+new immediate modification authority. The checker itself remains unchanged.
 
-The existing W05 _prepare_value/_prepare_utf8 and W04 capture seams keep their
-outcome types. Two additional private seams, _prepare_evidence_value and
-_prepare_evidence_utf8, run the same admission sequence and then evidence indexing
-under the same context, budget and deadline. A tool-owned internal mode selects
-navigation, never skips validation and is not a public option. There is one copy of
-the admission implementation; its original AST is checked by the new tests after
-removing only the post-admission navigation branch and wrapper name.
+Nine additional W07R01Tests in the already allowed transition-test file verify
+exact pinned preimages and replacements, mismatch refusal, forbidden promotions,
+the six-path boundary, append-only history, all 48 unchanged product files and
+the unchanged checker, plus every statement in the original transition tests.
+These tests ran in the complete hosted Git checkouts; local syntax inspection
+was not substituted for their runtime result.
 
-contracts/report.py owns immutable declarations and source-bound bindings. The
-fifteen families and all 57 leaf keys remain visible in every Inquiry. Family-level
-question sets are relevance unions from reporting section 14.1, not conjunctive
-requirements imposed on every leaf. The five domain labels retain their exact
-non-cumulative meanings. No max level, quality score, Result, report-local identity,
-public PrerequisiteCheck or available_result_refs is constructed.
+The complete branch changes eleven paths: nine existing files and two new test
+files. The new files remain test_preparation_pipeline.py and
+test_preparation_inertness.py. The repair introduced no new installed module,
+product behavior, observer relaxation, fixture, schema, oracle, dependency pin,
+workflow permission, source-license or frozen-specification change.
 
-validation/semantics.py adds only bounded input observations. Every supplied entity
-has a snapshot record with exact selectors, immutable values and explicit field
-presence. Missing, null, empty and supplied content remain distinct. Source-native
-verified/denied/unknown/failed labels and Gaps are retained without qualification.
-No semantic interpretation, source authentication or corrective effect is computed.
+## 3. Executed W07 integration checks
 
-Inquiry bindings use a fixed finite sequence: explicit Inquiry/scoped Assertion/
-Anomaly anchors; their direct record links; direct subject/target backlinks; and one
-final direct-reference pass. Every inclusion preserves its source selector. There is
-no repeated reachability expansion, ancestry search, eligible graph, role-pair product
-or route/case inference. Other-Inquiry Assertions stay scoped separately. All material
-without a direct binding remains visible in the complete snapshot index; an empty
-family binding list describes only this finite scan and never real-world absence.
-Exact roles, Claims, dimensions, stage/cohort keys and correction tuples stay in the
-original source fields rather than being multiplied into hypothetical operations.
+The independently authored fictional two-Inquiry dossier checks the complete
+private admission and navigation pipeline. Distinct IDs survive identical
+labels, locators and protected keys. Selected or late-unbound structural defects
+reject the entire snapshot; lawful gaps, unsupported documentary assertions,
+protected references and source relation cycles remain preserved.
 
-runtime/boundary.py assembles those observations according to the compiled bindings.
-Only PC01 receives an executed whole-check answer after actual W05 acceptance.
-PC02-PC24 retain no whole-check answer and explicitly record their deferred logical
-owners and inspected constituent fields. Partial observations cannot certify a PC.
-Acquisition gaps do not erase independently supplied correction/process records.
+The independent projection oracle resolves retained facets against their actual
+normalized source fields. Deliberately removing a record or corrupting presence,
+value or collection must be detected. All four unchanged H7 fixtures run through
+both private input modes, preserving input populations and every retained facet.
+The 26/36 and 25/25 analytical expectations are not computed or passed to the
+product. Unknown and multiparent input distinctions remain source data.
 
-Any failure after admission preserves accepted input state but returns only a safe
-diagnostic, never partial navigation. The original emergency reserve, resource
-limits, cooperative deadline and cancellation distinctions remain unchanged.
+Permutation and repeat-call tests cover input immutability, cross-Inquiry
+isolation, normalization and absence of stale snapshots. Real nested extension
+depths and numeric token lengths exercise different structural/resource stops.
+Injected monotonic clocks test the actual shared deadline before and after
+admission without claiming a wall-clock performance benchmark.
 
-## 4. Verification gate
+Fresh subprocesses exercise actual open/io.open, directory enumeration, DNS,
+native loading and process-launch negative controls. Metadata access uses a
+separately named trap, not a fabricated open event. Source text, locators and
+forged control-looking metadata remain data. Fault injection includes opaque
+exceptions, MemoryError, cancellation and resource interruption; diagnostics
+preserve actual input state without exposing source canaries or partial output.
+Temporary package copies test forbidden analysis/report/native implementations
+with pristine positive controls. The actual checkout is not modified.
 
-New tests cover exact source/family/field/domain/PC coverage; stale or inflated
-metadata; source selector/value correspondence; null/missing/empty distinctions;
-all nine native assessment kinds; inactive/denied assertions; unknown pipeline and
-handling outcomes; scope separation; unbound-material retention; immutable ordering;
-all four frozen H7 inputs in both modes; per-stage safe stops; the single nonresetting
-budget; repeated calls; and genuine file/DNS/native negative controls. Tests do not
-pass golden metric answers into the product. Existing 1,320 test identities remain
-required and all 428 predecessor subtest events are counted separately.
+## 4. Code-head matrix and independently inspected evidence
 
-Commit the exact candidate, run the original four-profile cumulative workflow,
-download complete artifacts and inspect actual collection/JUnit, entry/frozen guards,
-tracked byte maps and package inventories. No code-path, skip, xfail, failed-platform
-exclusion or observation downgrade is permitted merely to obtain a green result.
-Record code-head evidence, then verify the final documentation successor on its own
-exact head. Keep the review draft until evidence is inspected. Stop for W06 owner
-acceptance; do not merge this work, start W07 or publish a release automatically.
+| Profile | Actual Python | Job | Artifact | Passed / failed / errors / skips |
+|---|---|---|---|---|
+| ubuntu-24.04-py3.11 | 3.11.16 | 106032099763 | 10599492725 | 1629 / 0 / 0 / 0 |
+| ubuntu-24.04-py3.13 | 3.13.15 | 106032099882 | 10600550118 | 1629 / 0 / 0 / 0 |
+| windows-2025-py3.11 | 3.11.9 | 106032099840 | 10600046516 | 1629 / 0 / 0 / 0 |
+| windows-2025-py3.13 | 3.13.15 | 106032099844 | 10600031557 | 1629 / 0 / 0 / 0 |
 
-## 5. Inspected code-head execution and final record gate
+Each profile collected and passed 1629 top-level instances with zero failures,
+errors or skips. All 1465 W06 predecessor identities remain. Additions total
+164: 116 pipeline instances, 39 integrated security instances and nine R01
+regressions. The 428 successful subtest events per profile are counted separately.
+The same suite ran four times; this does not create four times as many distinct
+test designs.
 
-The exact code head 276fb8ac2d7377ab1c9fb8378224a90a418b1472, tree
-b6d6f3b66d88fb0afe34ec62b864864bca1278c7, completed run 35484254073, attempt 1.
-Every required step succeeded in all four jobs. No candidate code, test or assertion
-was changed to obtain this first complete pass. The prior W05 failures remain in
-history; no failed W06 run is invented or concealed. The retired W02-only workflow
-was inapplicable and skipped independently; no cumulative test was skipped.
+All four complete ZIPs were downloaded and their lengths, SHA-256 and CRC
+verified. Raw JUnit identities independently equal the collection identities,
+with no failure/error/skipped element anywhere in the documents. Full source
+and test identity digests and exact artifact identities are in
+phase2/implementation_evidence.json and the review record.
 
-| Profile | Actual Python | Passed | Failure / error / skip | Artifact |
-|---|---|---:|---|---:|
-| Ubuntu 24.04 | 3.11.16 | 1465 | 0 / 0 / 0 | 10596637534 |
-| Ubuntu 24.04 | 3.13.15 | 1465 | 0 / 0 / 0 | 10596947803 |
-| Windows Server 2025 | 3.11.9 | 1465 | 0 / 0 / 0 | 10596783317 |
-| Windows Server 2025 | 3.13.15 | 1465 | 0 / 0 / 0 | 10596778401 |
+Each hosted checkout recomputed the real 124-file Phase 1 and 125-file Phase 2
+entry snapshots. Twenty frozen files and all 48 product modules passed before
+and after tests. All 154 tracked hashes agree across profiles and remain
+unchanged. All 48 product hashes match accepted W06, including 35 protected
+Phase 1 slots. Exactly the approved eleven branch paths are accounted for.
 
-The complete four evidence ZIPs were downloaded. Their byte lengths and SHA-256
-match the service metadata; CRC checks pass. Each JUnit file has exactly 1,465
-direct testcase elements with no failure/error/skipped element. Classname/name
-identities independently match actual collection, and every one of the accepted
-1,320 predecessor identities remains. The 145 additions divide into 73 contract,
-31 input-domain and 41 integration instances. The 428 successful subtest events
-are separately confirmed by the original pytest logs and summary accounting.
+Pinned development dependencies, including setuptools 84.0.0 and pytest 9.1.1,
+were actually installed. Existing offline clean-install and source-rebuild tests
+passed. The source distribution has 65 regular members; original and rebuilt
+wheels each have 55 members and equal member names/content hashes. The evidence
+ZIPs contain reports and inventories, not binary distribution archives; no
+independent reread of absent binaries or whole-archive reproducibility is claimed.
 
-All 152 tracked hashes agree across profiles, match every authored candidate byte
-and remain unchanged during execution. Actual complete-checkout guards passed for
-twenty frozen files, forty-eight product modules, the 124-file Phase 1 snapshot and
-the 125-file Phase 2 entry. Exactly the ten authorized paths differ from accepted
-W05. No old test, workflow, schema, fixture/oracle, dependency or public interface
-changed. All eight H7 input/mode instances and real effects probes passed.
+## 5. Coverage, limits and final gate
 
-The selected dependency installation and existing package/clean-install tests
-passed. Recorded source-distribution inventories contain 65 ordinary members;
-original and rebuilt wheels each contain 55 members with identical member names
-and hashes. Tracked package-member hashes match the exact checked source. These
-ZIPs provide executed test evidence and inventories, not package archive binaries;
-this inspection makes no independent reread or whole-archive reproducibility claim.
+The evidence ledger keeps all seven shared requirement families partial and
+identifies exact executed test entry points, source/fixture hashes, independent
+expected outcomes and accepted implementation commit. Only PC01 is implemented
+as a whole prerequisite. PC02-PC24, all fifteen analytical families, all 228
+analytical test obligations, reports, public auditing and native file I/O remain
+unimplemented. Passing preparation tests does not certify those operations.
 
-This successor modifies only this progress record and implementation_evidence.json.
-The implementation and tests remain exact code-head bytes. Its final SHA must receive
-its own complete four-profile run and artifact inspection. PR #15 will carry that
-final-head evidence without another self-referential document commit. Keep draft
-until the final gate passes, then stop for owner acceptance. Main remains the accepted
-W05 merge; W07, public auditing, native I/O and release remain unstarted.
+Local work used a partial workspace: exact source fingerprints, replacements,
+syntax and AST checks were executed. Git cloning failed DNS. Runtime claims here
+come from the hosted four-profile evidence, not an invented local full-suite run.
+The finite checks do not constitute scientific validation, a universal hostile
+same-process sandbox or native Windows 11/NTFS certification.
+
+This successor updates only PHASE_2_PROGRESS.md and
+phase2/implementation_evidence.json. Product and test bytes remain at the verified
+code head. The successor must have its own exact-head four-profile CI inspected.
+Record the resulting commit/run/job/artifact gate externally in PR #16 to avoid
+an endless self-referential documentation cycle. Keep the PR draft on any failure.
+After the final gate, request owner acceptance; do not merge PR #16, start W08,
+activate auditing or publish a release without separate authorization.

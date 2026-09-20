@@ -238,5 +238,139 @@ class Phase2TransitionTests(unittest.TestCase):
             ci.policy(value)
 
 
+class W07R01Tests(unittest.TestCase):
+    """Pinned repair regressions; no broad stage permission or product repair."""
+    ENTRY = "067802f8df5b6958adde60bc7ced3ca8a06a7f33"
+    ACCEPTED = "4f55252d98f9b57975c2bc241c9079ac259a53cd"
+    EXTRA = frozenset((
+        "phase2/module_policy.json", "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_bundle_contract.py", "tests/security/test_input_capture.py",
+        "tests/contract/test_input_schema_mapping.py", "phase2/transition_ledger.md",
+    ))
+
+    def old_bytes(self, path, expected_blob):
+        import subprocess
+        raw = subprocess.check_output(["git", "show", self.ENTRY + ":" + path],
+                                      cwd=ROOT, stderr=subprocess.PIPE, timeout=30)
+        self.assertEqual(guard.git_blob(raw), expected_blob)
+        return raw
+
+    def test_actual_policy_only_changes_the_trusted_active_context(self):
+        raw = self.old_bytes("phase2/module_policy.json", "6b2d5a0f14bd840c3a894805524fb98df4652ecd")
+        current = guard.unit_number()
+        self.assertIn(current, (7, 8, 9))
+        # Later trusted contexts still need their own path authorization.
+        expected = raw.replace(b'"active_unit": "P2-W06"',
+                               ('"active_unit": "P2-W%02d"' % current).encode())
+        self.assertEqual((ROOT / "phase2/module_policy.json").read_bytes(), expected)
+        value = json.loads(expected)
+        self.assertEqual(len(guard.policy_promotions(value)), 13)
+        self.assertEqual(value["promotions"], json.loads(raw)["promotions"])
+
+    def test_policy_mismatch_and_new_promotions_still_fail(self):
+        raw = self.old_bytes("phase2/module_policy.json", "6b2d5a0f14bd840c3a894805524fb98df4652ecd")
+        value = json.loads(raw)
+        with self.assertRaisesRegex(ValueError, "^policy_cannot_select_unit$"):
+            guard.policy_promotions(value, "P2-W07")
+        value["active_unit"] = "P2-W07"
+        self.assertEqual(guard.policy_promotions(value, "P2-W07"), frozenset(guard.FIRST_UNIT))
+        for trusted in ("P2-W06", "P2-W08", "P2-W09"):
+            with self.assertRaisesRegex(ValueError, "^policy_cannot_select_unit$"):
+                guard.policy_promotions(value, trusted)
+        value["promotions"].append({"path": "analysis/origins.py", "unit": 7})
+        with self.assertRaises(ValueError): guard.policy_promotions(value, "P2-W07")
+        value["first_units"]["analysis/origins.py"] = 7
+        with self.assertRaises(ValueError): guard.policy_promotions(value, "P2-W07")
+
+    def test_exact_six_paths_are_w07_only_and_history_is_cumulative(self):
+        ci = ci_driver(); paths = guard.plan_paths(ROOT)
+        self.assertEqual(ci.P2_W07_R01_PATHS, self.EXTRA)
+        self.assertEqual(len(paths["P2-W07"]), 12)
+        self.assertFalse(paths["P2-W07"] & self.EXTRA)
+        cumulative = set()
+        for step in range(1, 10):
+            unit = f"P2-W{step:02}"
+            extra = (ci.P2_W02_R01_PATHS if step == 2 else
+                     ci.P2_W04_R01_PATHS if step == 4 else
+                     ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS if step == 5 else
+                     self.EXTRA if step == 7 else frozenset())
+            expected = paths[unit] | extra
+            self.assertEqual(ci.effective_paths(paths, unit), expected)
+            ci.check_changed_paths(paths, unit, expected)
+            for path in self.EXTRA - expected:
+                with self.assertRaisesRegex(ValueError, "^work_unit_allowlist_exceeded$"):
+                    ci.check_changed_paths(paths, unit, {path})
+            cumulative.update(expected)
+            self.assertEqual(ci.effective_paths(paths, unit, cumulative=True), cumulative)
+
+    def test_similar_paths_and_product_repairs_have_no_w07_permission(self):
+        ci = ci_driver(); paths = guard.plan_paths(ROOT)
+        allowed = ci.effective_paths(paths, "P2-W07")
+        for path in ("phase2/module_policy.json.bak", "phase2/../phase2/module_policy.json",
+                     "tests/security/test_scaffold_inertness.py", "PHASE_2_PLAN.md",
+                     "src/source_integrity_toolkit/runtime/boundary.py",
+                     "src/source_integrity_toolkit/validation/structure.py",
+                     "tools/check_scaffold_boundary.py", ".github/workflows/phase1-ci.yml"):
+            with self.assertRaisesRegex(ValueError, "^work_unit_allowlist_exceeded$"):
+                ci.check_changed_paths(paths, "P2-W07", allowed | {path})
+
+    def test_only_four_named_permission_test_bodies_change(self):
+        changes = [('tests/contract/test_bundle_contract.py', '2d931416c63c25c80ee419901af1e4bd0022e768', [['        assert ci.effective_paths(paths, unit) == paths[unit] | extra\n', '        if step == 7:\n            extra = extra | ci.P2_W07_R01_PATHS\n        assert ci.effective_paths(paths, unit) == paths[unit] | extra\n'], ['        assert ci.effective_paths(paths, unit, cumulative=True) == original | extras\n', '        if step >= 7:\n            extras = extras | ci.P2_W07_R01_PATHS\n        assert ci.effective_paths(paths, unit, cumulative=True) == original | extras\n']]), ('tests/security/test_input_capture.py', 'dcc72efe086ac8a57e491d70f0cd6780344bcfb9', [['        assert ci.effective_paths(paths,unit)==paths[unit]|extra\n', '        if step==7: extra=extra | ci.P2_W07_R01_PATHS\n        assert ci.effective_paths(paths,unit)==paths[unit]|extra\n'], ['        assert ci.effective_paths(paths,unit,cumulative=True)==cumulative\n', '        if step>=7: cumulative.update(ci.P2_W07_R01_PATHS)\n        assert ci.effective_paths(paths,unit,cumulative=True)==cumulative\n']]), ('tests/contract/test_input_schema_mapping.py', '724f5f403f22dea6101305675b00212064227031', [['        assert ci.effective_paths(paths, unit) == paths[unit] | authorized\n', '        if i == 7:\n            authorized = authorized | ci.P2_W07_R01_PATHS\n        assert ci.effective_paths(paths, unit) == paths[unit] | authorized\n']])]
+        for path, pin, replacements in changes:
+            expected = self.old_bytes(path, pin)
+            for before, after in replacements:
+                self.assertEqual(expected.count(before.encode()), 1)
+                expected = expected.replace(before.encode(), after.encode())
+            self.assertEqual((ROOT / path).read_bytes(), expected)
+
+    def test_ci_context_collection_and_failure_controls_are_unchanged(self):
+        path = "tests/scaffold/test_ci_contract.py"
+        expected = self.old_bytes(path, "c7b5fc7338fa4c4e08d0ba54ce0a7e87b66901ab")
+        replacements = [['def effective_paths(paths, unit, *, cumulative=False):', '# Explicit owner-approved P2-W07-R01: phase-context metadata and scope tests.\n# Only W07 gains these immediate paths; later units retain cumulative history.\nP2_W07_R01_PATHS = frozenset((\n    "phase2/module_policy.json",\n    "tests/scaffold/test_ci_contract.py",\n    "tests/contract/test_bundle_contract.py",\n    "tests/security/test_input_capture.py",\n    "tests/contract/test_input_schema_mapping.py",\n    "phase2/transition_ledger.md",\n))\n\ndef effective_paths(paths, unit, *, cumulative=False):'], ['            allowed.update(P2_W05_R02_PATHS)\n', '            allowed.update(P2_W05_R02_PATHS)\n        if step == 7:\n            allowed.update(P2_W07_R01_PATHS)\n'], ['            (["P2-W05-R01", "P2-W05-R02"] if phase_guard.unit_number(unit) >= 5 else []),', '            (["P2-W05-R01", "P2-W05-R02"] if phase_guard.unit_number(unit) >= 5 else []) +\n            (["P2-W07-R01"] if phase_guard.unit_number(unit) >= 7 else []),']]
+        for before, after in replacements:
+            self.assertEqual(expected.count(before.encode()), 1)
+            expected = expected.replace(before.encode(), after.encode())
+        self.assertEqual((ROOT / path).read_bytes(), expected)
+        ci = ci_driver(); head, base = "a" * 40, "b" * 40
+        event = {"pull_request": {"head": {"sha": head, "ref": "phase2/p2-w07"}, "base": {"sha": base}}}
+        self.assertEqual(ci.resolve_unit("pull_request", event, head), ("P2-W07", base))
+        with self.assertRaises(ValueError): ci.resolve_unit("pull_request", event, base)
+
+    def test_ledger_is_append_only_with_all_four_permission_transitions(self):
+        raw = self.old_bytes("phase2/transition_ledger.md", "51f022d8df2d312329c2b65730e1bce38df3c17a")
+        current = (ROOT / "phase2/transition_ledger.md").read_bytes()
+        self.assertTrue(current.startswith(raw))
+        added = current[len(raw):].decode()
+        self.assertIn("## P2-W07-R01:", added)
+        for name in ("test_repair_does_not_expand_another_units_immediate_diff",
+                     "test_repair_cumulative_accounting_retains_only_authorized_extras",
+                     "test_r01_exact_four_paths_and_no_other_unit_permission_expansion",
+                     "test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope"):
+            self.assertIn(name, added)
+        self.assertEqual(len(guard.historical_nodes(ROOT)), 194)
+
+    def test_all_product_bytes_and_the_checker_remain_accepted(self):
+        import subprocess
+        raw = subprocess.check_output(["git", "ls-tree", "-r", "-z", self.ACCEPTED,
+                                       "src/source_integrity_toolkit", "tools/check_scaffold_boundary.py"],
+                                      cwd=ROOT, stderr=subprocess.PIPE, timeout=30)
+        entries = [row.split(b"\t", 1) for row in raw.split(b"\0") if row]
+        self.assertEqual(len(entries), 49)
+        for meta, path in entries:
+            mode, kind, sha = meta.decode().split()
+            self.assertEqual((mode, kind), ("100644", "blob"))
+            self.assertEqual(guard.git_blob((ROOT / path.decode()).read_bytes()), sha)
+
+    def test_prior_phase2_transition_tests_keep_every_statement(self):
+        import ast
+        path = "tests/contract/test_phase2_transition.py"
+        raw = self.old_bytes(path, "0ab96292e4a03cc5bc065374e5b1934d5ffce259")
+        old, new = ast.parse(raw), ast.parse((ROOT / path).read_bytes())
+        added = [n for n in new.body if isinstance(n, ast.ClassDef) and n.name == "W07R01Tests"]
+        self.assertEqual(len(added), 1)
+        new.body.remove(added[0])
+        self.assertEqual(ast.dump(old, include_attributes=False), ast.dump(new, include_attributes=False))
+
+
 if __name__ == "__main__":
     unittest.main()
