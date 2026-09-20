@@ -4,26 +4,28 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.3, W09 repair review |
-| Status | **W09 handoff pending W08 acceptance and final hosted matrix; Phase 2 completion is not declared** |
-| Owner start instruction | `P02-W09 开始` |
-| Repair approval | `批准 P2-W09-R01，继续 W09` |
-| Canonical unit | P2-W09 |
-| Adopted plan | PHASE_2_PLAN.md revision 0.1, sections 6, 15, 16, 17 and 18 |
-| Audited W08 candidate | `b870778b62b1a1713674701f110c276d386dcbf9` |
-| Latest accepted merge | `22bd51454e425cf9eca87adbebecb09191fb925d` (W07) |
-| W08 acceptance and merge | Pending; PR #17 remains draft and unmerged |
-| W09 transition | P2-W09-R01 approved and implemented |
-| Final W09 hosted matrix | Pending accepted W08 entry; local execution is recorded separately below |
+| Revision | 1.0, completion package for owner acceptance |
+| Scope | Bounded private preparation implementation in PHASE_2_PLAN.md |
+| Status | Implementation and named W09 four-profile matrix verified; final successor gate recorded in PR #18 after commit; owner acceptance pending |
+| Owner start | `P02-W09 开始` |
+| R01 approval | `批准 P2-W09-R01，继续 W09` |
+| W08 acceptance and continuation | `接受并合并 PR #17，继续完成 W09` |
+| Accepted W08 merge / W09 entry | `a189065d78a0256326a29b1c34a900b8673fc606` |
+| Hosted-verified W09 precursor | `0204ad8cf3557aa512746438b7207327d57b67f6` |
+| Precursor run | `35519369490`, attempt 1; all four required profiles pass |
+| Final documentation successor | Must have its own exact-head evidence in PR #18 |
+| W09 merge / Phase 3 / release | Not authorized |
 
-The owner approved the exact P2-W09-R01 proposal in PR #18 at `5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271`.
-The policy and dependent historical permission witnesses have been migrated
-within the seven additional paths. Together with the four original W09 document
-paths, the full immediate scope is eleven paths. The draft remains stacked on
-the verified W08 candidate until its acceptance and merge are authorized.
+All required preparation components in the approved Phase 2 slice are implemented
+and verified at the named precursor. No required component remains pending.
+This completion package is submitted for owner acceptance once its exact final
+documentation successor also passes the unchanged four-profile matrix. Formal
+Phase 2 acceptance and W09 merge are separate recorded decisions.
 
-No missing required W02-W08 preparation component was found. The accepted W08
-entry, final W09 matrix and owner acceptance remain necessary for Phase 2 completion.
+W08 PR #17 was accepted and merged at `a189065d78a0256326a29b1c34a900b8673fc606`. Its tree is identical to
+reviewed candidate `b870778b62b1a1713674701f110c276d386dcbf9`. W09 normally incorporated that accepted merge at
+`0204ad8cf3557aa512746438b7207327d57b67f6`, with no file changes, preserving the complete earlier draft and repair
+history. The old pending headers remain historical records of their creation time.
 
 ## Adopted specification and preserved sources
 
@@ -44,7 +46,7 @@ retains its accepted W02 bytes, SHA-256
 oracle, numerical meaning or input contract was changed for convenience. Later
 uploads do not replace the frozen operational definitions.
 
-The delivery manifest now pins every one of the 156 tracked blobs at the locally verified W09 repair precursor `86193f96a3948f34f37dfb748dfdc604b1d33814`. It also retains the complete W08 predecessor inventory. Each manifest/completion/progress/README row describes the earlier precursor version, so no current file hashes itself. The final review must record the accepted W08 merge and the exact final W09 hosted result.
+The delivery manifest pins all 156 tracked blobs at the hosted-verified W09 precursor `0204ad8cf3557aa512746438b7207327d57b67f6`, tree `da4db47042a0dc96f2513b1c199a4106dfe42403`. It retains the earlier W08 and local repair snapshots. Each manifest/completion/progress/README row hashes only its earlier precursor version. The four current successor documents have no circular self-hash. Their actual final commit, tree and exact-head four-profile evidence will be recorded in [PR #18](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/18) after commit creation; the named precursor's pass cannot certify a later head.
 
 ## Implemented preparation functions
 
@@ -88,8 +90,8 @@ clauses implemented. PC24 cannot certify an analytical population that has not r
 
 Every final and intermediate commit in W01-W08 was compared with its unit's
 frozen plan paths plus the named repairs. No unauthorized final or intermediate
-path was found. All seven accepted merge trees equal their reviewed candidate
-trees. W08 is separately recorded as an unaccepted candidate.
+path was found. All eight accepted merge trees equal their reviewed candidate
+trees. W08 owner acceptance and its actual merge are now recorded.
 
 | Unit / review | Reviewed candidate | Accepted merge | Actual changed paths |
 |---|---|---|---:|
@@ -100,7 +102,7 @@ trees. W08 is separately recorded as an unaccepted candidate.
 | P2-W05 / [#14](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/14) | `bf9d7152569495f3eca8fd6b514fe98f6a4bd1f4` | `913f0a3d56b6c0f969e8a36ef7aa909e8ecab470` | 21 |
 | P2-W06 / [#15](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/15) | `d02d32051c595ea1aa64652f536e497d93be2763` | `4f55252d98f9b57975c2bc241c9079ac259a53cd` | 10 |
 | P2-W07 / [#16](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/16) | `384615aeba3e48b3e22486065c5f5e21e092e368` | `22bd51454e425cf9eca87adbebecb09191fb925d` | 11 |
-| P2-W08 / [#17](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/17) | `b870778b62b1a1713674701f110c276d386dcbf9` | Pending | 12 |
+| P2-W08 / [#17](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/17) | `b870778b62b1a1713674701f110c276d386dcbf9` | `a189065d78a0256326a29b1c34a900b8673fc606` | 12 |
 
 The manifest records each actual path, its authority, every intermediate commit
 and the exact repair additions: W02-R01, W04-R01, W05-R01/R02, W07-R01 and W08-R01.
@@ -151,41 +153,69 @@ above and [PR #17](https://github.com/DavidWallstructurallaw/source-integrity-to
 remains unchanged in this W09 draft. Run 35500231752 certifies only the earlier
 W08 code head `9450b0decc5a02fbcee38beecfe6c4715741efef`.
 
-## Executed W09 work and remaining gates
+## Executed W09 verification
 
-The historical path, frozen/protected byte, component and coverage audits above
-remain valid. The initial W09 guard failure `invalid_phase_policy` is retained
-as a pre-repair observation at `5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271`. The repair changes only `active_unit`
-from W08 to W09 in the module policy, preserving all other bytes.
+[Run 35519369490, attempt 1](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35519369490)
+executes exactly `0204ad8cf3557aa512746438b7207327d57b67f6` against accepted W08 base `a189065d78a0256326a29b1c34a900b8673fc606`. All required
+steps pass: immutable checkout, actual guards, reviewed wheel installation,
+complete collection/execution, unchanged-byte checks, package inventories and
+verification-only artifact preservation.
 
-The complete local suite at `86193f96a3948f34f37dfb748dfdc604b1d33814` passed 1,650 collected tests with zero failures, errors or skips. All 1,640 W08 predecessor identities survive; 10 W09 regression identities were added. The 428 subtest events are counted separately. Actual local Python is 3.12.14; this local runtime is supplementary and does not satisfy the required Python 3.11/3.13 and Linux/Windows hosted matrix. Local packaging 26.3 and Pygments 2.21.0 also differ from the reviewed hosted pins 25.0 and 2.20.0; repository dependency pins remain unchanged.
+| Runner | Actual Python | Job | Artifact | Tests / failures / errors / skips |
+|---|---|---|---|---|
+| ubuntu-24.04 | 3.11.16 | `106100739973` | `10608012599` | 1,650 / 0 / 0 / 0 |
+| ubuntu-24.04 | 3.13.15 | `106100739794` | `10607413169` | 1,650 / 0 / 0 / 0 |
+| windows-2025 | 3.11.9 | `106100739927` | `10608107018` | 1,650 / 0 / 0 / 0 |
+| windows-2025 | 3.13.15 | `106100739967` | `10607249311` | 1,650 / 0 / 0 / 0 |
 
-The unchanged workflow triggers PR jobs only when the base is `main`. Current
-PR #18 has the W08 branch as its base. Retargeting before W08 merges would compare
-W07 to W09 and add three paths outside W09's immediate authority:
-`phase2/ci_review.md`, `phase2/implementation_evidence.json` and
-`tests/security/test_preparation_inertness.py`. The existing scope check must
-continue to reject that premature comparison. No workflow or permission widening
-is part of R01, and no synthetic Actions event is presented as hosted execution.
+Each profile executes 1,650 top-level tests with 428 separately counted successful
+subtest events. Every one of the 1,640 W08 identities survives, and the ten added
+W09 identities agree with the independently checked local collection. All 34 test
+files are collected. Sorted UTF-8 IDs joined by LF including final LF hash to
+`830e15538696b1ea9370bc30f88c23a63e4b348438772e55812a858ab34e9266`.
 
-The remaining owner decision is acceptance and authorization to merge PR #17 at
-`b870778b62b1a1713674701f110c276d386dcbf9`. After that decision:
+The independent audit checks all four original artifact ZIP lengths, service
+SHA-256 digests, CRCs, member scope and extracted bytes before reading collection
+JSON/log, JUnit, tool installation records, guards and runtime witnesses. It
+compares all 156 tracked-before hashes with the exact Git blobs and confirms the
+executed final unchanged-byte comparison. Required development pins are actually
+installed in each hosted profile, including packaging 25.0 and Pygments 2.20.0.
+Actual patch versions and runner image versions are retained per profile in the
+manifest's raw audit. Runner families are Ubuntu 24.04 and Windows Server 2025.
 
-1. Record the actual accepted W08 merge and normally merge updated main into the
-   W09 branch, preserving the committed draft and repair history.
-2. Retarget PR #18 to main, finalize the named precursor and delivery records,
-   and trigger the unchanged workflow using a supported PR event.
-3. Audit all four raw profiles for the exact final reviewed head and record
-   post-commit evidence in PR #18.
-4. Submit the W09 completion package for owner acceptance. W09 merge and later
-   work remain separately authorized actions.
+The inherited installed-runtime witness verifies all 48 installed module hashes,
+eight supplied-fixture preparation modes, two empty-input rejections, two public
+refusals, and finite file/DNS/native negative probes. Its retained verification
+JSON reports W09 and the exact head despite its historical W08 filename. Normal
+preparation probes report no effects. Source distribution/original wheel/rebuilt
+wheel contain 65/55/55 regular members; exact allowlists and source hashes pass,
+and original/rebuilt wheel member contents agree within each profile. Complete
+archive-byte reproducibility is not asserted.
 
-## Implemented but unverified items
+The local repair run at `86193f96a3948f34f37dfb748dfdc604b1d33814` remains separate
+supplementary evidence: 1,650 passing tests and 428 subtest events on Python 3.12.14,
+with different packaging/Pygments versions. It is superseded for the required
+environment gate by the genuine four-profile hosted run above. No dependency
+pin, workflow, checker or product module was altered to obtain that result.
 
-W02-W08 preparation components retain their cumulative W08 four-profile evidence.
-R01 is implemented, with its local execution status recorded above. Its required
-hosted matrix and the final documentation successor's own exact-head evidence
-remain pending. No analytical or public functionality is counted as complete.
+The earlier same-head Phase 2 run 35519322756 was cancelled when the subsequent
+ready-for-review run superseded it. Historical P1-W02 workflow runs 35519322781
+and 35519369516 were skipped and are outside the required Phase 2 matrix. None
+is counted as a pass. Earlier W07 failures also remain preserved.
+
+## Final successor and owner acceptance
+
+The remaining technical check is the exact final documentation successor's own
+four-profile matrix. Its SHA cannot appear inside its own committed content.
+PR #18 therefore records the real final head/tree, run, jobs, artifact digests,
+raw audit and final path check after the commit exists. Owner acceptance should
+refer to that exact successful head. The named precursor's evidence, local tests
+or a run on another commit cannot satisfy this gate.
+
+No implementation component remains unverified within the named precursor's
+bounded preparation slice. Final-successor verification and owner acceptance
+remain explicit gates. Public auditing, analytical results, native-file support,
+Phase 3 and release retain the separate future duties below.
 
 ## Pending analytical, public, native and release obligations
 
@@ -201,8 +231,8 @@ Private admission does not establish source authenticity, truth, independence or
 correction effect. Finite interception, resource and cancellation tests do not
 establish a hostile same-process sandbox or arbitrary concurrency detection.
 Installed interception begins after imports; separate import tests cover import
-behavior. The retained W08 hosted artifacts contain executed inventory hashes
-and records rather than binary distributions for independent rereading. For W08
+behavior. The retained W08 and W09 hosted artifacts contain executed inventory hashes
+and records rather than binary distributions for independent rereading. For W08 and W09
 hosted evidence, tracked-after equality is reported by the CI comparison without
 a separate tracked-after manifest. The W09 local review independently compared
 both 156-file tracked manifests with the exact repair commit and reread all three

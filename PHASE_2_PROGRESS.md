@@ -4,59 +4,59 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.24 |
+| Revision | 0.25 |
 | Current unit | P2-W09 |
 | Owner start | `P02-W09 开始` |
-| Repair approval | `批准 P2-W09-R01，继续 W09` |
-| Current status | R01 implemented; full local suite verified; accepted predecessor and hosted matrix pending |
-| Verified W08 candidate | `b870778b62b1a1713674701f110c276d386dcbf9` |
-| Latest accepted merge | `22bd51454e425cf9eca87adbebecb09191fb925d` (W07) |
-| W08 acceptance / merge | Pending / pending |
-| W09 hosted final matrix / Phase 2 acceptance | Pending / pending |
+| R01 approval | `批准 P2-W09-R01，继续 W09` |
+| Latest owner instruction | `接受并合并 PR #17，继续完成 W09` |
+| Accepted W08 merge / W09 entry | `a189065d78a0256326a29b1c34a900b8673fc606` |
+| Hosted-verified W09 precursor | `0204ad8cf3557aa512746438b7207327d57b67f6` |
+| Four-profile precursor matrix | Run `35519369490`, attempt 1, passed |
+| Final successor matrix | Required after this commit; evidence recorded in PR #18 |
+| Phase 2 owner acceptance / W09 merge | Pending / not authorized |
 
-## Approved continuation and actual work
+## Accepted predecessor and completed repair
 
-The owner approved the exact P2-W09-R01 scope proposed in PR #18 at `5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271`.
-The seven extra paths plus four original W09 documents define the eleven-path
-immediate scope. The policy changes only active_unit to W09. The CI permission
-delta is W09-specific; earlier units retain their original immediate scopes.
-Live candidate bytes are validated against pinned, counted transformations before
-historical W07/W08 source is returned. The original W08 accepted-tree assertion,
-preparation-inertness file, product code, checker and workflow remain unchanged.
-The transition ledger appends the real approval and exact method-level migrations.
+PR #17 was accepted and merged under the latest owner instruction. The actual
+merge tree equals reviewed W08 head `b870778b62b1a1713674701f110c276d386dcbf9`. W09 normally incorporated that
+merge, preserving its full draft and R01 history without changing any file in
+the integration commit. All eight accepted W01-W08 trees match their candidates.
 
-The complete local suite at `86193f96a3948f34f37dfb748dfdc604b1d33814` passed 1,650 collected tests with zero failures, errors or skips. All 1,640 W08 predecessor identities survive; 10 W09 regression identities were added. The 428 subtest events are counted separately. Actual local Python is 3.12.14; this local runtime is supplementary and does not satisfy the required Python 3.11/3.13 and Linux/Windows hosted matrix. Local packaging 26.3 and Pygments 2.21.0 also differ from the reviewed hosted pins 25.0 and 2.20.0; repository dependency pins remain unchanged.
+R01 changes exactly its seven approved paths, with the four original W09 documents
+making eleven immediate paths. The current policy is W09; thirteen promotions
+and thirty-five protected modules remain exact. Pinned transformations validate
+live bytes before returning historical source to earlier tests. All original
+assertions and identities survive. The existing W08 accepted-tree assertion,
+preparation-inertness file, product, checker and workflow remain unchanged.
 
-## Preserved audit and delivery evidence
+## Executed hosted evidence
 
-W01-W08 final and intermediate paths all have authority. Seven accepted merge
-trees equal their candidates. The twenty-file baseline, thirty protected entry
-records, thirteen implemented component hashes and thirty-five inert modules
-retain their required bytes. The accepted W02 schema is unchanged. All fifty
-input shapes, 242 field rows, thirty structural rules and coverage bindings align.
-Only PC01 completes; PC02-PC24 and all 228 analytical obligations remain pending.
+Run `35519369490` executes the exact precursor above on Ubuntu 24.04 and Windows Server
+2025, each with Python 3.11 and 3.13. Each profile passes 1,650 top-level tests with
+zero failures, errors or skips and 428 separately counted successful subtest
+events. All 1,640 W08 identities survive; the ten W09 identities match the local
+collection. The hosted environments use the actual pinned development tools.
 
-W08 final-head run 35504627143, attempt 1, passed all four required profiles with
-1,640 top-level tests and zero failures/errors/skips, plus 428 separate successful
-subtest events. This resolves W08's historical final-record pending text at its
-exact head. No W08 evidence is reused as a W09 hosted result.
+Independent raw evidence inspection verifies four artifact digests/lengths/CRCs,
+collection/JUnit identities, all 156 tracked-before hashes, before/after guards,
+scope, package members/rebuild equality and clean installed-runtime records.
+Twenty frozen files, thirty historical protected records, forty-eight product
+modules and the W02 schema retain their required bytes. Only PC01 is complete;
+PC02-PC24, all fifteen analytical families and all 228 analytical obligations
+remain pending. No required preparation component is missing or unverified at
+the named hosted-tested head.
 
-The delivery manifest now pins every one of the 156 tracked blobs at the locally verified W09 repair precursor `86193f96a3948f34f37dfb748dfdc604b1d33814`. It also retains the complete W08 predecessor inventory. Each manifest/completion/progress/README row describes the earlier precursor version, so no current file hashes itself. The final review must record the accepted W08 merge and the exact final W09 hosted result.
+## Delivery and final review
 
-[PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md) records the exact repair, audit,
-executed evidence, limits and future obligations. Earlier drafts and failures
-remain in Git; the initial invalid_phase_policy failure remains a pre-repair result.
+The delivery manifest pins every tracked blob at `0204ad8cf3557aa512746438b7207327d57b67f6` with mode, Git object,
+length and SHA-256. The prior W08 and local repair snapshots remain explicit.
+Document rows hash earlier precursor versions; current successor bytes do not
+hash themselves. [PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md) revision 1.0
+separates adopted specifications, implementation, executed tests and future duties.
 
-## Remaining acceptance gate
-
-PR #17 is still draft/unmerged. The current instruction approves R01 and W09
-continuation; it supplies no explicit acceptance/merge of that PR. Plan sections
-6 and 15 require an accepted predecessor. The unchanged workflow only runs for
-PRs based on main; premature retargeting adds three unapproved W08 paths to the
-W09 immediate delta. Do not widen the workflow or scope to bypass that gate.
-
-The owner decision needed is acceptance and authorization to merge PR #17 at
-`b870778b62b1a1713674701f110c276d386dcbf9`. Then record the actual accepted merge, normally merge updated main into
-W09, retarget PR #18, finalize delivery records and execute the exact final-head
-four-profile matrix. Submit completion for owner acceptance afterwards. No Phase 2
-completion, W09 automatic merge, Phase 3, public auditing or release is declared.
+This four-document successor must pass its own exact-head four-profile matrix.
+Record its actual head, tree, run, jobs, artifact digests and audit in PR #18 after
+commit creation, then submit the Phase 2 completion package for owner acceptance.
+Earlier cancelled/skipped runs and historical failures remain recorded without
+being counted as passes. No automatic W09 merge, Phase 3, public auditing or
+release follows from this work.
