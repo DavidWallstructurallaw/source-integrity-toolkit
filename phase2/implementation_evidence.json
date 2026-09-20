@@ -27,7 +27,7 @@
       "path": "contracts/bundle.py",
       "first_unit": 2,
       "implementation": "unchanged_exact_scalars_and_capture_values",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/unit/test_value_capture.py",
         "tests/unit/test_input_decoding.py"
@@ -37,7 +37,7 @@
       "path": "contracts/constants.py",
       "first_unit": 2,
       "implementation": "unchanged_closed_declarations",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/contract/test_input_schema_mapping.py"
       ]
@@ -46,7 +46,7 @@
       "path": "contracts/evidence.py",
       "first_unit": 2,
       "implementation": "private_immutable_entities_links_plan_observations_and_prepared_input",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/contract/test_typed_records.py",
         "tests/integration/test_prepared_hero_inputs.py"
@@ -56,7 +56,7 @@
       "path": "contracts/execution.py",
       "first_unit": 2,
       "implementation": "unchanged_authority_free_stopping_vocabulary",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/security/test_input_capture.py"
       ]
@@ -65,7 +65,7 @@
       "path": "contracts/report.py",
       "first_unit": 2,
       "implementation": "unchanged_declarations_only_no_observability_assembly",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/contract/test_evidence_basis.py"
       ]
@@ -74,7 +74,7 @@
       "path": "io/input_file.py",
       "first_unit": 4,
       "implementation": "unchanged_bounded_supplied_byte_decoder_no_file_open",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/unit/test_input_decoding.py",
         "tests/integration/test_prepared_hero_inputs.py"
@@ -84,7 +84,7 @@
       "path": "runtime/boundary.py",
       "first_unit": 4,
       "implementation": "complete_private_admission_and_separate_capture_components",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/integration/test_prepared_hero_inputs.py"
       ]
@@ -93,7 +93,7 @@
       "path": "runtime/diagnostics.py",
       "first_unit": 3,
       "implementation": "unchanged_fixed_safe_diagnostics",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/security/test_input_capture.py",
         "tests/integration/test_prepared_hero_inputs.py"
@@ -103,7 +103,7 @@
       "path": "runtime/resources.py",
       "first_unit": 3,
       "implementation": "unchanged_fixed_global_budget_and_deadline",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/security/test_input_resource_limits.py",
         "tests/integration/test_prepared_hero_inputs.py"
@@ -113,7 +113,7 @@
       "path": "validation/limits.py",
       "first_unit": 3,
       "implementation": "unchanged_counters_now_integrated_with_full_typed_input",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/integration/test_prepared_hero_inputs.py"
       ]
@@ -122,7 +122,7 @@
       "path": "validation/references.py",
       "first_unit": 5,
       "implementation": "full_snapshot_identity_endpoint_claim_normalization_and_explicit_scope_plan",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/unit/test_reference_validation.py",
         "tests/contract/test_assertion_contract.py",
@@ -133,7 +133,7 @@
       "path": "validation/semantics.py",
       "first_unit": 5,
       "implementation": "time_syntax_and_nonrejecting_known_window_observation",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/contract/test_temporal_contract.py"
       ]
@@ -142,7 +142,7 @@
       "path": "validation/structure.py",
       "first_unit": 4,
       "implementation": "retained_capture_plus_closed_shapes_factual_gaps_and_counting",
-      "behavior_tests": "locally_checked_where_selected; complete_hosted_candidate_verification_pending",
+      "behavior_tests": "four_profile_code_head_pass; final_record_head_gate_pending",
       "evidence": [
         "tests/contract/test_typed_records.py",
         "tests/integration/test_prepared_hero_inputs.py"
@@ -195,9 +195,9 @@
     "public_auditing_and_publication"
   ],
   "verification": {
-    "status": "594_new_selected_local_instances_passed; exact_head_hosted_gate_pending",
-    "tested_commit": null,
-    "run_id": null,
+    "status": "four_profile_code_head_pass; final_record_head_gate_pending",
+    "tested_commit": "8e6c3df38267b21db8d11b5d047c8883c430648c",
+    "run_id": 35473989542,
     "matrix_rows_required": 4,
     "required_predecessor_identities": 724,
     "required_separate_predecessor_subtest_events": 428,
@@ -225,6 +225,88 @@
       "expected_total_hosted_instances": 1320,
       "final_selected_junit_sha256": "6f41a455b01e8a1effb4ed851bddc1e14464e2fbecaa0c02948c0a1c1f8ca06e"
     },
-    "final_gate": "Exact code-head then final record-head CI and complete artifacts are inspected before readiness. Actual outcomes are recorded in PR #14 without circular self-commit references."
+    "final_gate": "Exact code-head then final record-head CI and complete artifacts are inspected before readiness. Actual outcomes are recorded in PR #14 without circular self-commit references.",
+    "hosted_code_head": {
+      "tree": "caf598a7b7fe00149f4ca1d5d85f984541e5ded4",
+      "attempt": 1,
+      "tests_per_profile": 1320,
+      "predecessor_identities_retained": 724,
+      "new_identities": 596,
+      "separate_successful_subtest_events_per_profile": 428,
+      "failures_errors_skips_per_profile": [
+        0,
+        0,
+        0
+      ],
+      "collection_sha256": "83400fa1c4a3cb9592630dc119167f9cd00936788d5803c64ed1f983bcb82f62",
+      "all_four_complete_artifacts_inspected": true,
+      "artifact_checks": [
+        "service_size",
+        "sha256",
+        "zip_crc",
+        "exact_head_and_run",
+        "raw_junit_identities",
+        "predecessor_identity_subset",
+        "before_after_guards",
+        "entry_scope",
+        "tracked_file_hashes",
+        "dependency_pins",
+        "package_member_inventories"
+      ],
+      "profiles": [
+        {
+          "profile": "ubuntu311",
+          "python": "3.11.16",
+          "runner_image": "20260907.300.1",
+          "artifact_id": 10593887639,
+          "zip_bytes": 77516,
+          "zip_sha256": "22a6b1a3c24e49170745fffc4e254e660881446009b7c4b83c966ca5a3486a3c"
+        },
+        {
+          "profile": "ubuntu313",
+          "python": "3.13.15",
+          "runner_image": "20260907.300.1",
+          "artifact_id": 10594027542,
+          "zip_bytes": 77397,
+          "zip_sha256": "7607c5e22f8079d868629364c82e5ba54a513623590ea43369add29020124699"
+        },
+        {
+          "profile": "windows311",
+          "python": "3.11.9",
+          "runner_image": "20260907.229.1",
+          "artifact_id": 10593192348,
+          "zip_bytes": 83835,
+          "zip_sha256": "eac5b8ff6e20ef88a61f88a3d91938b79388f439c32e516094e7495d4d38fc68"
+        },
+        {
+          "profile": "windows313",
+          "python": "3.13.15",
+          "runner_image": "20260907.229.1",
+          "artifact_id": 10593491885,
+          "zip_bytes": 83704,
+          "zip_sha256": "fa364c73a915e7aab6fd3dd64c9f3f07fcdf7e637132e11f18c0f0a06e2c6624"
+        }
+      ],
+      "frozen_files_checked_before_and_after": 20,
+      "installed_modules": 48,
+      "promoted_modules": 13,
+      "protected_modules": 35,
+      "phase1_snapshot_files": 124,
+      "phase2_entry_snapshot_files": 125,
+      "tracked_files": 148,
+      "changed_paths_from_w04": 21,
+      "new_test_files": 5,
+      "tracked_bytes_unchanged_during_tests": true,
+      "tracked_hash_maps_equal_across_profiles": true,
+      "sdist_regular_members": 65,
+      "wheel_members": 55,
+      "rebuilt_wheel_member_hashes_equal": true,
+      "package_binary_reread_by_resuming_assistant": false,
+      "local_limit": "This resumption independently inspected downloaded evidence ZIPs and connected source/PR records. The evidence includes executed package tests and inventories, not the package binaries. Full local clone failed DNS; no local full-checkout or new local product-test run is claimed.",
+      "record_successor_changes_only": [
+        "PHASE_2_PROGRESS.md",
+        "phase2/implementation_evidence.json"
+      ]
+    }
   }
 }
