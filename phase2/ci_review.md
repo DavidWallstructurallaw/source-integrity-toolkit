@@ -91,3 +91,47 @@ After approval, execute every one of the 1,629 predecessor identities plus actua
 R01 has not been approved and none of its seven paths has changed in this intake. Public API/CLI refusals remain intact. Only PC01 is complete; PC02-PC24, all fifteen analytical families and all 228 analytical obligations remain pending. No W09 work, public auditing, native file interface or release is authorized.
 
 Section 15 also omits the policy path from W09. That future handoff has a related maintenance dependency; noting it here neither executes W09 nor extends this proposed W08-only authorization. The full preceding review and all approval/failure history remain preserved.
+
+## P2-W08 authorized execution and evidence audit
+
+Review revision 0.3. The intake record above remains unchanged as a historical
+proposal. The subsequent owner instruction `批准 P2-W08-R01 继续已授权的 W08 工作`
+approved its exact seven-path repair. Commit 9450b0decc5a02fbcee38beecfe6c4715741efef
+implemented it and created draft PR #17. No proposed frozen-specification,
+product, checker, workflow or dependency change was required.
+
+The code-head run 35500231752, attempt 1, completed successfully in all four
+required profiles. Full evidence archive lengths, service digests and CRCs were
+verified; raw collection/JUnit identities match, with 1640 passing top-level
+tests and 428 separate successful subtest events per profile. All 1629 W07
+predecessor identities survive; eleven named W08 regressions are added. Actual
+frozen/module guards pass before and after execution, and all 154 tracked
+hashes agree with the tested commit. PHASE_2_PROGRESS.md revision 0.21 and
+phase2/implementation_evidence.json record the exact matrix, source identities,
+artifact hashes and limits.
+
+The new clean-runtime witness checks isolated offline installation, all 48
+installed module hashes, eight H7 preparation cases, two empty-input refusals,
+two public API refusals and three effective file/DNS/native negative probes.
+The unchanged packaging helper checks CLI behavior and package exclusions.
+Both inventory sets contain 65 regular sdist members and 55 wheel members;
+original and rebuilt wheel member hashes agree within each profile. The runtime
+has only the source-integrity-toolkit distribution. Its observer is armed after
+module imports; separate cumulative tests cover import inertness.
+
+All required steps retain the original action revisions, dependency versions,
+event-derived trusted context, read-only permissions and failure controls. The
+unrelated historical P1-W02 workflow is skipped by its inherited unit condition;
+it is not one of the four required W08 jobs and provides no W08 pass.
+
+Review evidence consists of executed records and inventories, not downloaded
+package binaries. No cross-platform whole-archive reproducibility, independent
+scientific validation or Windows 11 native-security support is claimed. The
+four final record edits require their own exact-head matrix, whose result is
+recorded in PR #17 after the successor exists. These commit-local records
+therefore retain an explicit final-record-head-pending state.
+
+R01 is executed and its code-head verification is complete. W08 owner
+acceptance/merge and W09 remain separate. Only PC01 is complete; the remaining
+23 prerequisites, fifteen analytical families and 228 analytical obligations
+remain pending. No release or public audit capability is enabled.
