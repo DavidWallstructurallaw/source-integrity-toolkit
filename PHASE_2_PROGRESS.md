@@ -4,173 +4,151 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.19 |
+| Revision | 0.20 |
 | Work unit | P2-W07: integration, counterexamples and isolation regression |
-| Owner instruction | 批准并合并 PR #15，再进入 P2-W07 |
+| Owner repair instruction | 批准 P2-W07-R01 继续 |
 | Accepted W06 merge | 4f55252d98f9b57975c2bc241c9079ac259a53cd |
 | Accepted W06 head | d02d32051c595ea1aa64652f536e497d93be2763 |
-| Accepted tree | c5be1ed9b974e8b35616c85ca8cebff008fe58ae |
 | Approved plan | PHASE_2_PLAN.md revision 0.1, sections 13, 16 and 17 |
 | Plan SHA-256 | bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918 |
-| Branch | phase2/p2-w07 |
-| Status | Four-profile preflight failed before test collection; proposed P2-W07-R01 blocks continuation |
-| W07 acceptance / W08 | Not granted / not started |
+| Repair | P2-W07-R01: six additional paths, expressly approved |
+| Branch / PR | phase2/p2-w07 / 16 |
+| Code head | f0b237d1c4f045110b495db1046a06383c848a02 |
+| Code-head tree | c151d8cc5c7d2f52d73c06e9356bfc72fa5a605f |
+| Code-head run | 35493411483, attempt 1 |
+| Status | Code-head four-profile evidence verified; final record-head gate pending |
+| W07 acceptance / merge / W08 | Pending / not authorized / not started |
 
-## 1. Acceptance and preserved history
+## 1. Accepted implementation and preserved failures
 
-PR #15 was merged with its exact approved head. Its merge tree is identical to
-the W06 accepted tree. The merge message records owner acceptance and the
-limited W07 authorization. W06's detailed 1,465-test/four-profile evidence
-remains in PR #15 and run 35484605351. The new work cannot borrow that pass.
-The original W04/W05 repairs and failures remain at their existing Git/PR/run
-identities; implementation_evidence.json points to its exact accepted predecessor.
+The accepted implementation is W06 merge 4f55252d98f9b57975c2bc241c9079ac259a53cd.
+All 48 product modules keep those exact bytes. No input, analytical or public
+behavior was changed in this test-focused work unit.
 
-The attached theory papers retain their source/licensing status. They do not
-replace the frozen engineering rules or authorize new analysis, a formula,
-source fetching, native I/O or a public audit interface.
+The original W07 test candidate b0128e542aec927f708a461dca1a92b98754f6e6 and its
+record successor 067802f8df5b6958adde60bc7ced3ca8a06a7f33 remain in history.
+Runs 35488938338 and 35489414729 each failed in four profiles before test
+collection. Their module policy still said W06 while the trusted review branch
+resolved to W07. The earlier assumption that the old marker could be retained
+was incorrect. Those failures are preserved, including progress revision 0.19,
+the exact predecessor evidence ledger, PR #16 and eight failure archives.
+They provide no W07 product-test pass. Earlier W04/W05 repairs and W06 acceptance
+continue to be documented at their original commits and PRs.
 
-## 2. Test-only scope
+The owner then explicitly approved P2-W07-R01. The repair commit above is a new
+execution candidate. All seven repaired blob identities matched independently
+prepared local bytes before tree construction. No failed run was overwritten,
+relabeled, skipped or made successful by weakening a guard.
 
-Four paths change: this progress record, phase2/implementation_evidence.json,
-tests/integration/test_preparation_pipeline.py and
-tests/security/test_preparation_inertness.py. The latter two are new. All four
-are on W07's twelve-path list. No product module, existing test, observer,
-fixture, schema, policy, partition, coverage map, dependency, workflow, pin,
-frozen source or public interface is modified. No repair exception is requested.
-The inherited policy stays at its accepted promotion state; trusted W07 context
-comes from the review branch, not an unapproved policy-file edit.
+## 2. Exact repair and scope
 
-## 3. Independent cases and preservation tests
+module_policy.json changes only active_unit from P2-W06 to P2-W07. Its thirteen
+promotions, earliest-unit map, format and plan digest are unchanged. The trusted
+unit still comes from the review event, independently of candidate metadata.
 
-A small hand-authored dossier has two separately bound Inquiries, two Claim
-versions, distinct Artifacts with identical labels/locators, and two unresolved
-records sharing a protected key. Its construction uses the frozen record tables,
-not generated schema declarations, validator answers or H7 analytical oracles.
-The source ledger identifies its factory file and canonical fixture hash.
+The CI driver registers exactly the six approved W07 extra paths. The four named
+permission-test bodies recognize that exception through guarded insertions;
+all their original assertions remain. The append-only transition ledger retains
+every historical byte and all 194 original identity rows. Other units gain no
+new immediate modification authority. The checker itself remains unchanged.
 
-The full admission and navigation seams face selected and late-unbound defects,
-missing fields, duplicate snapshot IDs/reference members, bad endpoint kinds,
-wrong Claim binding, unsupported contracts, malformed time and absent factual
-Gaps. Valid sparse/unsupported/protected records and a lawful evidence self-cycle
-must remain admitted without being qualified. Reused caller snapshot IDs do not
-authorize caching. Semantically irrelevant permutations cannot change navigation;
-original captured content remains independently checked.
+Nine additional W07R01Tests in the already allowed transition-test file verify
+exact pinned preimages and replacements, mismatch refusal, forbidden promotions,
+the six-path boundary, append-only history, all 48 unchanged product files and
+the unchanged checker, plus every statement in the original transition tests.
+These tests ran in the complete hosted Git checkouts; local syntax inspection
+was not substituted for their runtime result.
 
-An independent projection oracle resolves every retained facet against the
-normalized source tree. Deliberately corrupting record membership, facet presence,
-value or collection must make that oracle fail. Each unchanged H7 dossier also
-runs through it in both modes. Other-Claim changes cannot overwrite the first
-Inquiry's navigation. No HHI or independent-source value is computed.
+The complete branch changes eleven paths: nine existing files and two new test
+files. The new files remain test_preparation_pipeline.py and
+test_preparation_inertness.py. The repair introduced no new installed module,
+product behavior, observer relaxation, fixture, schema, oracle, dependency pin,
+workflow permission, source-license or frozen-specification change.
 
-## 4. Actual effects and failure boundaries
+## 3. Executed W07 integration checks
 
-Fresh subprocess probes accept fixture bytes on harness-owned stdin before
-observation. Product imports are completed before hooks are installed. Real open,
-io.open, directory-enumeration, DNS, native-load and process-launch negative
-controls must trigger their exact audit events. A separate os.stat/os.lstat trap
-covers metadata calls without falsely labeling them as open audit events.
-Source locators, checksums, code-looking strings, Unicode and forged result
-metadata stay inert; repeated success/rejection/success produces no source output.
+The independently authored fictional two-Inquiry dossier checks the complete
+private admission and navigation pipeline. Distinct IDs survive identical
+labels, locators and protected keys. Selected or late-unbound structural defects
+reject the entire snapshot; lawful gaps, unsupported documentary assertions,
+protected references and source relation cycles remain preserved.
 
-Integrated fault injection checks both sides of actual admission with opaque
-exceptions, MemoryError, cancellation and resource interruption. Diagnostic
-messages must not format original exceptions or leak a private canary. Actual
-full-input depth and numeric-token boundaries remain distinct from integer-range
-rejection. A controlled monotonic clock tests the actual shared 60-second
-boundary without claiming real elapsed-time performance. Temporary package copies
-exercise forbidden analysis/report/native modifications with pristine positive
-controls. No test modifies the actual product checkout.
+The independent projection oracle resolves retained facets against their actual
+normalized source fields. Deliberately removing a record or corrupting presence,
+value or collection must be detected. All four unchanged H7 fixtures run through
+both private input modes, preserving input populations and every retained facet.
+The 26/36 and 25/25 analytical expectations are not computed or passed to the
+product. Unknown and multiparent input distinctions remain source data.
 
-## 5. Evidence and current gate
+Permutation and repeat-call tests cover input immutability, cross-Inquiry
+isolation, normalization and absence of stale snapshots. Real nested extension
+depths and numeric token lengths exercise different structural/resource stops.
+Injected monotonic clocks test the actual shared deadline before and after
+admission without claiming a wall-clock performance benchmark.
 
-Local work checked Python syntax, the plan hash, the exact allowed paths and
-independent fixture construction. Full Git clone failed because github.com did
-not resolve in this runtime. No local product-suite pass or Windows execution
-is claimed. Hosted execution must retain all 1,465 predecessor identities plus
-actual newly collected cases, with 428 predecessor subtest events accounted for
-separately. Tests, counts, toolchain and completion may not be inferred from names.
+Fresh subprocesses exercise actual open/io.open, directory enumeration, DNS,
+native loading and process-launch negative controls. Metadata access uses a
+separately named trap, not a fabricated open event. Source text, locators and
+forged control-looking metadata remain data. Fault injection includes opaque
+exceptions, MemoryError, cancellation and resource interruption; diagnostics
+preserve actual input state without exposing source canaries or partial output.
+Temporary package copies test forbidden analysis/report/native implementations
+with pristine positive controls. The actual checkout is not modified.
 
-Shared requirement rows specify exact test entry points, frozen expected-rule
-sources, input identities, accepted implementation commit and pending execution.
-They remain partial wherever native, graph, qualification or reporting duties
-are deferred. All 228 analytical obligations stay pending. PC01 alone is complete.
+## 4. Code-head matrix and independently inspected evidence
 
-Run the existing cumulative CI on the exact candidate; inspect complete ZIP
-bytes/digests, raw collection/JUnit, actual checkout/frozen/entry checks and
-package inventories. Preserve any genuine failures. A failing test or a required
-out-of-scope product repair is a W07 stop under plan section 13, not permission
-to weaken the expected rule. After successful code-head verification, record
-its evidence and independently verify the final record head. Stop for owner
-acceptance without merging W07, starting W08 or publishing a release.
-
-## 6. Actual first CI failure and corrected transition assumption
-
-Run 35488938338, attempt 1, executed candidate
-b0128e542aec927f708a461dca1a92b98754f6e6. All four profiles stopped at the
-preflight package guard with invalid_phase_policy. The dependency-install and
-test-collection/execution steps were automatically not reached after this
-failure. No new test count, JUnit pass, package result or installed-toolchain
-validation is claimed. In particular, W06's 1,465 tests were not re-executed.
-
-| Profile | Actual selected CPython | Job | Artifact | Bytes |
+| Profile | Actual Python | Job | Artifact | Passed / failed / errors / skips |
 |---|---|---|---|---|
-| Ubuntu 24.04 | 3.11.16 | 106020344988 | 10598132878 | 10574 |
-| Ubuntu 24.04 | 3.13.15 | 106020345039 | 10598572138 | 10575 |
-| Windows Server 2025 | 3.11.9 | 106020345077 | 10597704759 | 10577 |
-| Windows Server 2025 | 3.13.15 | 106020345070 | 10598037793 | 10580 |
+| ubuntu-24.04-py3.11 | 3.11.16 | 106032099763 | 10599492725 | 1629 / 0 / 0 / 0 |
+| ubuntu-24.04-py3.13 | 3.13.15 | 106032099882 | 10600550118 | 1629 / 0 / 0 / 0 |
+| windows-2025-py3.11 | 3.11.9 | 106032099840 | 10600046516 | 1629 / 0 / 0 / 0 |
+| windows-2025-py3.13 | 3.13.15 | 106032099844 | 10600031557 | 1629 / 0 / 0 / 0 |
 
-All four complete failure archives were downloaded and their byte counts,
-SHA-256 and CRC checked. All eleven members per archive were inspected. Actual
-Phase 1/Phase 2 entry snapshots (124/125 files), four-path scope and twenty frozen
-files passed. The module guard checked zero module bodies because policy failed
-first. All 154 tracked hashes agreed across profiles and remained unchanged;
-comparison to the accepted W06 map independently confirms all 48 product files
-retain their accepted bytes. This byte comparison is not a new module-guard pass.
+Each profile collected and passed 1629 top-level instances with zero failures,
+errors or skips. All 1465 W06 predecessor identities remain. Additions total
+164: 116 pipeline instances, 39 integrated security instances and nine R01
+regressions. The 428 successful subtest events per profile are counted separately.
+The same suite ran four times; this does not create four times as many distinct
+test designs.
 
-The guard's policy_promotions function requires active_unit to equal the trusted
-review unit. Trusted branch resolution correctly produces P2-W07, whereas the
-unchanged policy still says P2-W06. The earlier section 2 assumption that retaining
-the previous active context would be sufficient was wrong. This is the author's
-plan/transition oversight, not an executed product-test failure. The frozen plan
-omits module_policy.json from W07's allowed paths, so it was not silently edited.
+All four complete ZIPs were downloaded and their lengths, SHA-256 and CRC
+verified. Raw JUnit identities independently equal the collection identities,
+with no failure/error/skipped element anywhere in the documents. Full source
+and test identity digests and exact artifact identities are in
+phase2/implementation_evidence.json and the review record.
 
-An isolated reproduction of the inspected policy function rejects that exact
-mismatch with policy_cannot_select_unit. A hypothetical one-field update admits
-the same thirteen promotions; advancing the candidate under a trusted older unit
-or adding an analysis module still fails. The policy preimage was reconstructed
-and matched to its exact Git blob and accepted SHA-256. This was a local function
-probe only; no repository policy change or repaired full CI pass occurred.
+Each hosted checkout recomputed the real 124-file Phase 1 and 125-file Phase 2
+entry snapshots. Twenty frozen files and all 48 product modules passed before
+and after tests. All 154 tracked hashes agree across profiles and remain
+unchanged. All 48 product hashes match accepted W06, including 35 protected
+Phase 1 slots. Exactly the approved eleven branch paths are accounted for.
 
-## 7. Proposed P2-W07-R01 and stop
+Pinned development dependencies, including setuptools 84.0.0 and pytest 9.1.1,
+were actually installed. Existing offline clean-install and source-rebuild tests
+passed. The source distribution has 65 regular members; original and rebuilt
+wheels each have 55 members and equal member names/content hashes. The evidence
+ZIPs contain reports and inventories, not binary distribution archives; no
+independent reread of absent binaries or whole-archive reproducibility is claimed.
 
-Request six additional immediate W07 paths:
+## 5. Coverage, limits and final gate
 
-1. phase2/module_policy.json: change active_unit from P2-W06 to P2-W07 only.
-2. tests/scaffold/test_ci_contract.py: register exactly these six paths for W07
-   and retained cumulative accounting, preserving trusted context and all guards.
-3. tests/contract/test_bundle_contract.py: adjust only the two named immediate
-   and cumulative permission checks to recognize this separate authorization.
-4. tests/security/test_input_capture.py: adjust only the existing exact-scope
-   permission test, preserving every observer and capture assertion.
-5. tests/contract/test_input_schema_mapping.py: adjust only the R02 cross-unit
-   permission test, preserving all schema/status/runtime assertions.
-6. phase2/transition_ledger.md: append the four adapted permission-test mappings
-   required by plan section 5.2 without changing historical rows.
+The evidence ledger keeps all seven shared requirement families partial and
+identifies exact executed test entry points, source/fixture hashes, independent
+expected outcomes and accepted implementation commit. Only PC01 is implemented
+as a whole prerequisite. PC02-PC24, all fifteen analytical families, all 228
+analytical test obligations, reports, public auditing and native file I/O remain
+unimplemented. Passing preparation tests does not certify those operations.
 
-New exact-policy, permission and AST-preservation regressions can use the already
-allowed tests/contract/test_phase2_transition.py. Necessary progress/evidence
-records remain within W07. No other work unit gains immediate permission. No
-product implementation, checker change, workflow/pin change, frozen source or
-oracle change, skip, downgrade of an expected result or public behavior is sought.
+Local work used a partial workspace: exact source fingerprints, replacements,
+syntax and AST checks were executed. Git cloning failed DNS. Runtime claims here
+come from the hosted four-profile evidence, not an invented local full-suite run.
+The finite checks do not constitute scientific validation, a universal hostile
+same-process sandbox or native Windows 11/NTFS certification.
 
-These paths were checked together before requesting the repair: changing only
-the metadata would encounter the CI path check; adding only the CI exception
-would conflict with the three existing permission-test files. The sixth path
-preserves the required assertion-transition ledger. R01 is proposed, not granted,
-and none of its six files has been modified. Both new W07 test files remain
-exactly at the failed candidate's bytes.
-
-This successor changes only the two verification records. PR #16 carries the
-exact current-head status and any record-only rerun evidence. W07 remains draft
-and unaccepted. Wait for scoped authorization, then rerun the entire four-profile
-suite. Do not merge W07, start W08 or treat the preflight failure as passing tests.
+This successor updates only PHASE_2_PROGRESS.md and
+phase2/implementation_evidence.json. Product and test bytes remain at the verified
+code head. The successor must have its own exact-head four-profile CI inspected.
+Record the resulting commit/run/job/artifact gate externally in PR #16 to avoid
+an endless self-referential documentation cycle. Keep the PR draft on any failure.
+After the final gate, request owner acceptance; do not merge PR #16, start W08,
+activate auditing or publish a release without separate authorization.
