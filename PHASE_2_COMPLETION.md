@@ -4,28 +4,26 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.1, W09 review draft |
-| Status | **BLOCKED BEFORE FINAL ACCEPTANCE; Phase 2 completion is not declared** |
+| Revision | 0.2, W09 repair review |
+| Status | **W09 handoff pending W08 acceptance and final hosted matrix; Phase 2 completion is not declared** |
 | Owner start instruction | `P02-W09 开始` |
+| Repair approval | `批准 P2-W09-R01，继续 W09` |
 | Canonical unit | P2-W09 |
 | Adopted plan | PHASE_2_PLAN.md revision 0.1, sections 6, 15, 16, 17 and 18 |
 | Audited W08 candidate | `b870778b62b1a1713674701f110c276d386dcbf9` |
-| Candidate tree | `950c94d94cf081f231aef2e2cb8089e4687e4745` |
 | Latest accepted merge | `22bd51454e425cf9eca87adbebecb09191fb925d` (W07) |
 | W08 acceptance and merge | Pending; PR #17 remains draft and unmerged |
-| W09 transition | P2-W09-R01 proposed below; no repair applied |
-| Final W09 matrix | Pending; predecessor evidence certifies only its exact head |
+| W09 transition | P2-W09-R01 approved and implemented |
+| Final W09 hosted matrix | Pending accepted W08 entry; local execution is recorded separately below |
 
-The owner has started W09. The four authorized document paths contain the
-component audit, historical path accounting, complete predecessor inventory and
-bounded repair proposal. This is a provisional stacked review draft based on the
-verified W08 candidate. It is not the final review branch based on an accepted
-W08 merge required by plan section 6. Once W08 is accepted and merged, record the
-actual merge as the W09 entry and update this draft before the final gate.
+The owner approved the exact P2-W09-R01 proposal in PR #18 at `5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271`.
+The policy and dependent historical permission witnesses have been migrated
+within the seven additional paths. Together with the four original W09 document
+paths, the full immediate scope is eleven paths. The draft remains stacked on
+the verified W08 candidate until its acceptance and merge are authorized.
 
-No missing required W02-W08 preparation component was found in the focused audit.
-W09's transition, final delivery snapshot, exact-head matrix and owner acceptance
-are still required. This draft cannot establish Phase 2 completion.
+No missing required W02-W08 preparation component was found. The accepted W08
+entry, final W09 matrix and owner acceptance remain necessary for Phase 2 completion.
 
 ## Adopted specification and preserved sources
 
@@ -46,13 +44,7 @@ retains its accepted W02 bytes, SHA-256
 oracle, numerical meaning or input contract was changed for convenience. Later
 uploads do not replace the frozen operational definitions.
 
-Exact paths, modes, blob IDs, lengths and SHA-256 values are in
-[phase2/delivery_manifest.json](phase2/delivery_manifest.json). The manifest
-includes every one of the 154 tracked blobs at the named W08 candidate. New W09
-completion/manifest files and successor README/progress bytes are outside that
-historical hash boundary. No self-hash or future commit hash is invented. After
-the authorized repair, the final handoff must repin a named precursor and verify
-its final documentation successor independently.
+The delivery manifest retains the complete 154-file W08 predecessor inventory while the W09 repair awaits execution. After successful local verification, pin the committed W09 repair precursor without a circular self-hash. Its final successor still requires the exact-head hosted matrix.
 
 ## Implemented preparation functions
 
@@ -159,33 +151,41 @@ above and [PR #17](https://github.com/DavidWallstructurallaw/source-integrity-to
 remains unchanged in this W09 draft. Run 35500231752 certifies only the earlier
 W08 code head `9450b0decc5a02fbcee38beecfe6c4715741efef`.
 
-## Executed W09 audit and remaining gates
+## Executed W09 work and remaining gates
 
-The read-only W09 audit recomputed historical paths, frozen/protected bytes,
-component hashes and coverage bindings. The live frozen guard passes twenty
-files, and the current W08 policy guard passes all forty-eight modules with
-thirteen promoted and thirty-five protected. With independently supplied W09
-context, the unchanged guard exits 1 with `invalid_phase_policy`, checks zero
-modules and reports `ok: false`. This is the reproduced transition blocker.
+The historical path, frozen/protected byte, component and coverage audits above
+remain valid. The initial W09 guard failure `invalid_phase_policy` is retained
+as a pre-repair observation at `5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271`. The repair changes only `active_unit`
+from W08 to W09 in the module policy, preserving all other bytes.
 
-No W09 runtime suite or final W09 hosted matrix has passed. The four-path draft
-does not change policy, tests, workflow or product code. The remaining sequence is:
+The bounded repair is implemented. Local execution results are pending; no test count or success is claimed for the W09 repair before actual collection and execution.
 
-1. Owner accepts and authorizes merge of the verified W08 PR #17.
-2. Owner grants the exact P2-W09-R01 repair below; record the real authorization.
-3. Apply the bounded repair against the accepted entry, preserving all 1,640
-   predecessor identities, and verify the complete current suite and controls.
-4. Pin the final delivery precursor, complete the handoff records, then execute
-   the unchanged four-profile matrix on the exact final reviewed W09 commit.
-5. Record post-commit evidence in the review PR and submit completion for owner
-   acceptance. W09 merge and later-phase work require their own authorization.
+The unchanged workflow triggers PR jobs only when the base is `main`. Current
+PR #18 has the W08 branch as its base. Retargeting before W08 merges would compare
+W07 to W09 and add three paths outside W09's immediate authority:
+`phase2/ci_review.md`, `phase2/implementation_evidence.json` and
+`tests/security/test_preparation_inertness.py`. The existing scope check must
+continue to reject that premature comparison. No workflow or permission widening
+is part of R01, and no synthetic Actions event is presented as hosted execution.
+
+The remaining owner decision is acceptance and authorization to merge PR #17 at
+`b870778b62b1a1713674701f110c276d386dcbf9`. After that decision:
+
+1. Record the actual accepted W08 merge and normally merge updated main into the
+   W09 branch, preserving the committed draft and repair history.
+2. Retarget PR #18 to main, finalize the named precursor and delivery records,
+   and trigger the unchanged workflow using a supported PR event.
+3. Audit all four raw profiles for the exact final reviewed head and record
+   post-commit evidence in PR #18.
+4. Submit the W09 completion package for owner acceptance. W09 merge and later
+   work remain separately authorized actions.
 
 ## Implemented but unverified items
 
-No implemented W02-W08 preparation component lacks the recorded cumulative W08
-evidence. This is a statement about the bounded preparation slice. The proposed
-W09 transition has not been implemented, and this documentation successor has
-not passed its own exact-head matrix. Neither is counted as complete.
+W02-W08 preparation components retain their cumulative W08 four-profile evidence.
+R01 is implemented, with its local execution status recorded above. Its required
+hosted matrix and the final documentation successor's own exact-head evidence
+remain pending. No analytical or public functionality is counted as complete.
 
 ## Pending analytical, public, native and release obligations
 
@@ -211,61 +211,45 @@ credential, identity map or theory PDF was added to the repository.
 No Phase 3 plan, release, package publication or public auditing activation is
 part of this draft.
 
-## P2-W09-R01 proposal for owner review
+## Approved P2-W09-R01 scope
 
-The following is a concrete authorization request, preserved separately from
-executed changes. Plan sections 6, 15 and 17 require the additional path authority.
+Approval: `批准 P2-W09-R01，继续 W09`. Proposal: PR #18 at `5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271`.
+The approved seven additional paths are:
 
-## Observed blocker
+- `phase2/module_policy.json`
+- `tests/scaffold/test_ci_contract.py`
+- `tests/contract/test_bundle_contract.py`
+- `tests/security/test_input_capture.py`
+- `tests/contract/test_input_schema_mapping.py`
+- `tests/contract/test_phase2_transition.py`
+- `phase2/transition_ledger.md`
 
-The frozen plan section 15 permits exactly four W09 paths: `PHASE_2_PROGRESS.md`, `PHASE_2_COMPLETION.md`, `phase2/delivery_manifest.json`, and `README.md`. The current policy still declares W08. A read-only invocation of `SIT_PHASE_UNIT=P2-W09 python -B tools/check_scaffold_boundary.py --unit P2-W09` exits 1 with `invalid_phase_policy`, `checked_modules: 0`, and `ok: false`. The checker independently requires policy and trusted context equality. Reusing the W08 environment would misrepresent a W09 candidate. The W08 exception grants no W09 immediate permission.
+`phase2/module_policy.json` changes only `active_unit`. The CI driver adds
+`P2_W09_R01_PATHS`, its step-9 accounting and the corresponding evidence label.
+The four existing permission-test entry points preserve their original scope
+assertions. Seven named transition-file methods use the validated predecessor
+bridge or account for W09's distinct permission. Exact entry points:
 
-## Exact additional path scope
-
-| Additional path | Bounded change |
+| File | Existing entry points |
 |---|---|
-| `phase2/module_policy.json` | Change only `active_unit` from `P2-W08` to `P2-W09`; preserve all other bytes, thirteen promotions, first-unit map, format and plan digest. |
-| `tests/scaffold/test_ci_contract.py` | Add exactly the seven paths in this table as `P2_W09_R01_PATHS`; include them only for step 9 in `effective_paths`; append the repair label to `entry_and_scope` for unit 9. Retain all context, collection, result, scope and failure logic. |
-| `tests/contract/test_bundle_contract.py` | Extend the two existing permission-accounting methods for the W09-specific exception. No behavior, observer or historical assertion changes. |
-| `tests/security/test_input_capture.py` | Extend its existing scope-accounting method for W09 immediate and cumulative permission. No capture, interception or canary changes. |
-| `tests/contract/test_input_schema_mapping.py` | Extend its existing R02 scope-accounting method only at step 9. Preserve source/schema/runtime checks. |
-| `tests/contract/test_phase2_transition.py` | Make the seven named existing method migrations below and add a W09 regression class with pinned live-first validation of every authorized delta. Preserve all predecessor test identities. |
-| `phase2/transition_ledger.md` | Append the actual future approval and exact migration ledger only after approval exists. All current bytes remain a literal prefix. |
+| `tests/scaffold/test_ci_contract.py` | `effective_paths`; `entry_and_scope` |
+| `tests/contract/test_bundle_contract.py` | `test_repair_does_not_expand_another_units_immediate_diff`; `test_repair_cumulative_accounting_retains_only_authorized_extras` |
+| `tests/security/test_input_capture.py` | `test_r01_exact_four_paths_and_no_other_unit_permission_expansion` |
+| `tests/contract/test_input_schema_mapping.py` | `test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope` |
+| `tests/contract/test_phase2_transition.py` | `W07R01Tests.test_exact_six_paths_are_w07_only_and_history_is_cumulative`; `W07R01Tests.test_prior_phase2_transition_tests_keep_every_statement`; `W08R01Tests.pre_w08_bytes`; `W08R01Tests.test_policy_delta_and_trusted_context_are_exact`; `W08R01Tests.test_mismatch_and_forbidden_promotion_still_fail`; `W08R01Tests.test_exact_seven_paths_and_all_other_immediate_scopes`; `W08R01Tests.test_w07_four_methods_only_and_all_original_identities_survive` |
 
-Seven extra paths plus the four plan paths give eleven total W09 paths. This scope does not include any other test file, the checker, workflow, product modules, schema, dependency/build files, frozen source/approval/specification files, fixtures, or oracles. `phase2/implementation_evidence.json` and `phase2/ci_review.md` remain W08 evidence and remain unchanged. W09 evidence belongs to the original W09 records and review PR.
+The new `W09R01Tests` class validates pinned W08 source at `b870778b62b1a1713674701f110c276d386dcbf9` using
+counted literal replacements. It compares live candidate bytes with those exact
+transformations before returning any historical source to W07/W08 assertions.
+The transition file retains every expected predecessor byte and the original
+unittest main footer, with exactly one inserted W09 class. No earlier test
+identity or historical assertion is removed. The full 1,640-node predecessor
+collection is the retention baseline; extra test counts depend on actual collection.
 
-## Exact existing entry points
-
-1. `test_bundle_contract.py::test_repair_does_not_expand_another_units_immediate_diff`: add `P2_W09_R01_PATHS` only when `step == 9`, preserving all existing denials.
-2. `test_bundle_contract.py::test_repair_cumulative_accounting_retains_only_authorized_extras`: add the same paths only when `step >= 9`.
-3. `test_input_capture.py::test_r01_exact_four_paths_and_no_other_unit_permission_expansion`: corresponding step-9 immediate and cumulative additions, retaining the original W04 four-path equality.
-4. `test_input_schema_mapping.py::test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope`: corresponding `i == 9` addition, retaining the original W05 one-path equality and negative controls.
-5. `W07R01Tests.test_exact_six_paths_are_w07_only_and_history_is_cumulative`: account for W09's distinct scope when checking all nine units; keep W07's exact six-path set.
-6. `W07R01Tests.test_prior_phase2_transition_tests_keep_every_statement`: feed its existing historical AST comparison the pinned predecessor source returned only after live W09 transition bytes have been validated. Its old class removals and final AST equality remain intact.
-7. `W08R01Tests.pre_w08_bytes`: validate the live candidate through the W09 predecessor bridge before comparing the pinned W08 transformation. It must never return history without first validating current bytes.
-8. `W08R01Tests.test_policy_delta_and_trusted_context_are_exact`: preserve the W07-to-W08 historical byte transformation against the live-validated W09 predecessor policy; evaluate that historical policy with explicit W08 context. The current trusted context check is migrated to permit W09, whose exact current policy/context is separately checked by the new W09 class. Preserve thirteen promoted and thirty-five protected module checks.
-9. `W08R01Tests.test_mismatch_and_forbidden_promotion_still_fail`: obtain the historical W08 policy through the same live-first bridge, retaining its rejection of W07/W09 mismatches and forbidden promotions. Add independent current-W09 mismatch/forbidden-promotion controls in the W09 class.
-10. `W08R01Tests.test_exact_seven_paths_and_all_other_immediate_scopes`: account for the separately authorized W09 exception in the cross-unit loop while retaining W08's exact seven paths.
-11. `W08R01Tests.test_w07_four_methods_only_and_all_original_identities_survive`: feed the existing historical AST comparison the live-validated pinned predecessor transition source. Preserve the existing W08 class removal and exact old AST comparison.
-
-The seven transition-file methods are items 5 through 11. The CI additions are restricted to its new constant and the two named functions above. The four original permission-test entry points are items 1 through 4.
-
-## Live-first pinned bridge requirements
-
-Use predecessor `b870778b62b1a1713674701f110c276d386dcbf9` and explicit Git-blob pins (also provided in `phase2/delivery_manifest.json` under `proposed_repair`). Check each original blob before applying exact literal replacements, each with an occurrence count of one. Compare each live non-transition file byte-for-byte to its exact expected transformation before returning any predecessor bytes to W07/W08 tests.
-
-For the transition file, preserve the original `if __name__ == "__main__": unittest.main()` footer. Place the new `W09R01Tests` class immediately before it. Validate the entire transformed predecessor prefix and original footer byte-for-byte; require the inserted segment to parse as exactly one new class named `W09R01Tests`, with no extra top-level statements. This avoids a circular self-hash while retaining exact checks for every preexisting byte. The class's predecessor extractor must not silently strip arbitrary new content or substitute historical files for live validation.
-
-The new W09 regressions should reject missing/duplicate/widened permission deltas; original bytes where a delta is required; arbitrary appended bytes; changed negative assertions; stale/mismatched contexts; unauthorized product/checker/workflow changes; similar/normalized-path tricks; and deletions/renames. Retain all original assertions and test entry-point identities. No test count is promised before actual collection.
-
-## Two guards that require no enlargement
-
-`tests/security/test_preparation_inertness.py` already obtains the trusted context once and uses it in all four positive/negative guard calls. Keep that complete file byte-identical, including blob `28e21d1413f071e7b141fb78985afe72eb8b0741`. The W09 bridge may validate this unchanged file as an identity transformation so that the existing W08 literal witness still checks the live bytes.
-
-`W08R01Tests.test_entry_bytes_outside_authorized_changes_remain_accepted` also requires no modification. Its 154-file accepted W07 tree contains neither `PHASE_2_COMPLETION.md` nor `phase2/delivery_manifest.json`. Its existing W08 scope already includes README and progress. Keep its accepted-tree check and unchanged-workflow check intact. Do not union the W09 allowlist into that old check. The original `scaffold/delivery_manifest.json` is a different file and remains frozen. W09's two new files are checked independently by W09 path accounting and the final manifest/audit.
-
-## Validation and acceptance boundaries
-
-Preserve all 1,640 predecessor top-level collection identities. Compare the actual raw W08 collection set with the actual W09 collection set, separately from the 194 pinned Phase 1 identities and 428 historical subtest events. Record any new tests only after collection. Require matching raw JUnit identities, no failures/errors/skips, all four required OS/Python profiles, exact final reviewed head, unchanged product/checker/workflow bytes, unchanged archive membership rules, and the existing installed-runtime witness.
-
-A W09 documentation draft or stacked PR can be prepared under the four original paths. It must state that the transition repair remains proposed, that W08 acceptance is pending, and that current W09 context fails before component verification. It must not claim Phase 2 completion, merge W08, apply this repair, or begin Phase 3 without the appropriate existing authorization being established.
+The complete `tests/security/test_preparation_inertness.py` file and
+`W08R01Tests.test_entry_bytes_outside_authorized_changes_remain_accepted` remain
+unchanged. All prior transition-ledger bytes remain a literal prefix. The new
+`phase2/delivery_manifest.json` is distinct from the frozen
+`scaffold/delivery_manifest.json`. Product, checker, workflow, schema, dependencies,
+build files, fixtures and oracles remain unchanged. Exact predecessor pins and
+repair details remain in the delivery manifest.

@@ -191,6 +191,7 @@ def test_r01_exact_four_paths_and_no_other_unit_permission_expansion():
         extra=ci.P2_W02_R01_PATHS if step==2 else EXTRA if step==4 else (ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS) if step==5 else frozenset()
         if step==7: extra=extra | ci.P2_W07_R01_PATHS
         if step==8: extra=extra | ci.P2_W08_R01_PATHS
+        if step==9: extra=extra | ci.P2_W09_R01_PATHS
         assert ci.effective_paths(paths,unit)==paths[unit]|extra
         ci.check_changed_paths(paths,unit,paths[unit]|extra)
         for path in EXTRA-paths[unit]-extra:
@@ -202,6 +203,7 @@ def test_r01_exact_four_paths_and_no_other_unit_permission_expansion():
         if step>=5: cumulative.update(ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS)
         if step>=7: cumulative.update(ci.P2_W07_R01_PATHS)
         if step>=8: cumulative.update(ci.P2_W08_R01_PATHS)
+        if step>=9: cumulative.update(ci.P2_W09_R01_PATHS)
         assert ci.effective_paths(paths,unit,cumulative=True)==cumulative
 
 

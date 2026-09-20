@@ -4,83 +4,59 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.22 |
+| Revision | 0.23 |
 | Current unit | P2-W09 |
-| Owner instruction | `P02-W09 开始` |
-| Current status | Authorized document/audit work prepared; final handoff blocked |
-| Plan authority | PHASE_2_PLAN.md revision 0.1, sections 6, 15, 16, 17 and 18 |
-| Latest accepted merge | `22bd51454e425cf9eca87adbebecb09191fb925d` (W07) |
+| Owner start | `P02-W09 开始` |
+| Repair approval | `批准 P2-W09-R01，继续 W09` |
+| Current status | R01 implemented; local execution pending; accepted predecessor and hosted matrix pending |
 | Verified W08 candidate | `b870778b62b1a1713674701f110c276d386dcbf9` |
-| W08 acceptance and merge | Pending; PR #17 draft/unmerged |
-| W09 scope repair | P2-W09-R01 proposed; not authorized or applied |
-| W09 final matrix / Phase 2 acceptance | Pending / pending |
+| Latest accepted merge | `22bd51454e425cf9eca87adbebecb09191fb925d` (W07) |
+| W08 acceptance / merge | Pending / pending |
+| W09 hosted final matrix / Phase 2 acceptance | Pending / pending |
 
-## Authorized work and actual entry
+## Approved continuation and actual work
 
-The owner's W09 start instruction authorizes the four paths in plan section 15:
-`PHASE_2_PROGRESS.md`, `PHASE_2_COMPLETION.md`,
-`phase2/delivery_manifest.json` and `README.md`. This provisional documentation
-branch starts at the verified W08 candidate `b870778b62b1a1713674701f110c276d386dcbf9`. It records no invented
-W08 acceptance or merge. The final W09 review must name the actual accepted W08
-entry after owner authorization. Plan section 6 does not authorize automatic merge.
+The owner approved the exact P2-W09-R01 scope proposed in PR #18 at `5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271`.
+The seven extra paths plus four original W09 documents define the eleven-path
+immediate scope. The policy changes only active_unit to W09. The CI permission
+delta is W09-specific; earlier units retain their original immediate scopes.
+Live candidate bytes are validated against pinned, counted transformations before
+historical W07/W08 source is returned. The original W08 accepted-tree assertion,
+preparation-inertness file, product code, checker and workflow remain unchanged.
+The transition ledger appends the real approval and exact method-level migrations.
 
-W08 progress revision 0.21 and its complete records remain pinned at that
-candidate. The earlier `final_record_head_pending` entry was followed by actual
-[run 35504627143](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35504627143), attempt 1, on exactly
-`b870778b62b1a1713674701f110c276d386dcbf9`. All four required profiles passed 1,640 top-level tests with zero
-failures, errors or skips, plus 428 separately counted successful subtest events.
-The full records remain in [PR #17](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/17).
+The bounded repair is implemented. Local execution results are pending; no test count or success is claimed for the W09 repair before actual collection and execution.
 
-## Completed read-only audit
+## Preserved audit and delivery evidence
 
-Every final and intermediate W01-W08 path matches its plan or named repair. All
-seven accepted merge trees equal the reviewed candidate trees. The twenty-file
-frozen baseline and thirty protected entry records match. All forty-eight module
-hashes match the accepted preparation implementation; only thirteen have acquired
-behavior, and thirty-five remain unchanged from entry. The W02 schema is unchanged.
+W01-W08 final and intermediate paths all have authority. Seven accepted merge
+trees equal their candidates. The twenty-file baseline, thirty protected entry
+records, thirteen implemented component hashes and thirty-five inert modules
+retain their required bytes. The accepted W02 schema is unchanged. All fifty
+input shapes, 242 field rows, thirty structural rules and coverage bindings align.
+Only PC01 completes; PC02-PC24 and all 228 analytical obligations remain pending.
 
-The focused component audit found no missing required W02-W08 component. Fifty
-input shapes, 242 field rows and thirty structural rules align with the coverage
-ledgers. Five domains, fifteen analytical families and fifty-seven future output
-fields remain declared. Only PC01 is complete; PC02-PC24 and all 228 analytical
-obligations remain pending. Twenty specific and fifteen file-level test bindings
-were found in the real W08 collection.
+W08 final-head run 35504627143, attempt 1, passed all four required profiles with
+1,640 top-level tests and zero failures/errors/skips, plus 428 separate successful
+subtest events. This resolves W08's historical final-record pending text at its
+exact head. No W08 evidence is reused as a W09 hosted result.
 
-[PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md) separates adopted specification,
-implemented functions, executed evidence and pending duties. The new
-[delivery manifest](phase2/delivery_manifest.json) inventories every tracked file
-at the named 154-file W08 candidate and records full path/component/evidence
-audits. It explicitly excludes current W09 successor bytes from that old hash
-claim. The final delivery needs a new post-repair precursor and its own final-head CI.
+The delivery manifest retains the complete 154-file W08 predecessor inventory while the W09 repair awaits execution. After successful local verification, pin the committed W09 repair precursor without a circular self-hash. Its final successor still requires the exact-head hosted matrix.
 
-## Reproduced transition stop and exact repair proposal
+[PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md) records the exact repair, audit,
+executed evidence, limits and future obligations. Earlier drafts and failures
+remain in Git; the initial invalid_phase_policy failure remains a pre-repair result.
 
-The frozen guard passes twenty files. The unchanged current-policy W08 guard
-passes forty-eight modules, thirteen promoted and thirty-five protected. The same
-guard with `SIT_PHASE_UNIT=P2-W09` and `--unit P2-W09` exits 1 with
-`invalid_phase_policy`, `checked_modules: 0`, `ok: false`.
+## Remaining acceptance gate
 
-The current policy still names W08. Plan section 15 omits the policy and dependent
-historical permission witnesses from W09's four paths. Sections 6 and 17 require
-a named narrow repair before editing them. P2-W09-R01 proposes exactly:
+PR #17 is still draft/unmerged. The current instruction approves R01 and W09
+continuation; it supplies no explicit acceptance/merge of that PR. Plan sections
+6 and 15 require an accepted predecessor. The unchanged workflow only runs for
+PRs based on main; premature retargeting adds three unapproved W08 paths to the
+W09 immediate delta. Do not widen the workflow or scope to bypass that gate.
 
-1. `phase2/module_policy.json`
-2. `tests/scaffold/test_ci_contract.py`
-3. `tests/contract/test_bundle_contract.py`
-4. `tests/security/test_input_capture.py`
-5. `tests/contract/test_input_schema_mapping.py`
-6. `tests/contract/test_phase2_transition.py`
-7. `phase2/transition_ledger.md`
-
-The completion draft gives the exact method-level changes and predecessor byte
-pins. The policy delta is only `active_unit`; all 1,640 test identities must
-survive. The new witness must validate live transformations before returning
-historical bytes. The existing W08 accepted-tree assertion and the complete
-preparation-inertness test file require no change. Product, checker, workflow,
-schema, dependency/build, fixtures and oracle files remain outside the proposal.
-
-No repair has been applied, no W09 matrix is represented as passing, and no
-Phase 2 completion is declared. The owner decision needed next is W08 acceptance
-and merge plus the exact P2-W09-R01 scope. Following that decision, finish the
-transition, final manifest and exact-head four-profile gate, then return the W09
-completion package for acceptance. No automatic W09 merge or Phase 3 work follows.
+The owner decision needed is acceptance and authorization to merge PR #17 at
+`b870778b62b1a1713674701f110c276d386dcbf9`. Then record the actual accepted merge, normally merge updated main into
+W09, retarget PR #18, finalize delivery records and execute the exact final-head
+four-profile matrix. Submit completion for owner acceptance afterwards. No Phase 2
+completion, W09 automatic merge, Phase 3, public auditing or release is declared.

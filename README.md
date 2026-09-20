@@ -2,7 +2,7 @@
 
 A local, supplied-evidence toolkit for examining source lineage, evidence independence, external presence and corrective capacity in AI-native information systems.
 
-**Status: Phase 2 P2-W07 accepted; W08 verification complete, awaiting owner acceptance and merge; P2-W09 audit draft prepared, transition repair pending. Public auditing remains unavailable.** The source package remains installable as `0.1.0.dev0`. Thirteen internal modules implement private preparation components; thirty-five other product modules remain frozen. Public audit calls immediately raise `NotImplementedError`; the CLI provides help/version and refuses audits with exit 1, without reading dossiers or producing reports. W08 owner acceptance and merge remain pending.
+**Status: Phase 2 P2-W07 accepted; W08 verification complete, awaiting owner acceptance and merge; P2-W09-R01 approved and implemented, final hosted matrix pending. Public auditing remains unavailable.** The source package remains installable as `0.1.0.dev0`. Thirteen internal modules implement private preparation components; thirty-five other product modules remain frozen. Public audit calls immediately raise `NotImplementedError`; the CLI provides help/version and refuses audits with exit 1, without reading dossiers or producing reports. W08 owner acceptance and merge remain pending.
 
 ## Intended purpose
 
@@ -14,24 +14,24 @@ The adopted scope provides a multidimensional evidence profile. It excludes a un
 
 The eighteen Phase 0 specifications remain approved at `7d2e5fcaff591641b5cefce00e71e88941dd1f95`; [PHASE_0_APPROVAL.md](PHASE_0_APPROVAL.md) revision 1.1 preserves the authorized digest correction. [PHASE_1_COMPLETION.md](PHASE_1_COMPLETION.md) revision 1.0 was accepted with PR #8, merged at `d7d73a790a2a627d19307c9dd48281eff3017023`. Its historical pending header is read with that later acceptance event.
 
-[PHASE_2_PLAN.md](PHASE_2_PLAN.md) revision 0.1 was approved and PR #9 merged at `eb730dda31d189c8487b5247a45bae47b678821b`. P2-W07 was accepted through PR #16, merged at `22bd51454e425cf9eca87adbebecb09191fb925d`; The verified W08 candidate is `b870778b62b1a1713674701f110c276d386dcbf9`; PR #17 awaits owner acceptance and merge. The owner has started P2-W09 with `P02-W09 开始`. Its authorized audit and document draft are prepared; the proposed P2-W09-R01 transition repair requires the additional scope recorded in [PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md). [PHASE_2_PROGRESS.md](PHASE_2_PROGRESS.md) records exact work, evidence and review stops. The entry manifest resolves all 125 intake file hashes from a pinned prior manifest plus four disjoint records; it has no self-reference.
+[PHASE_2_PLAN.md](PHASE_2_PLAN.md) revision 0.1 was approved and PR #9 merged at `eb730dda31d189c8487b5247a45bae47b678821b`. P2-W07 was accepted through PR #16, merged at `22bd51454e425cf9eca87adbebecb09191fb925d`; The verified W08 candidate is `b870778b62b1a1713674701f110c276d386dcbf9`; PR #17 awaits owner acceptance and merge. The owner has started P2-W09 with `P02-W09 开始`. The owner approved `批准 P2-W09-R01，继续 W09`; the seven-path transition repair is implemented as recorded in [PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md). [PHASE_2_PROGRESS.md](PHASE_2_PROGRESS.md) records exact work, evidence and review stops. The entry manifest resolves all 125 intake file hashes from a pinned prior manifest plus four disjoint records; it has no self-reference.
 
-P2-W01 established the phase-aware module guard, the historical-to-current test transition and cumulative CI. Subsequent accepted units implemented private supplied-value/UTF-8 preparation, bounded validation, reference and time checks, and evidence-domain navigation within the thirteen permitted modules. Only prerequisite PC01 completes after full input admission; PC02-PC24, all fifteen analytical families and all 228 analytical obligations remain pending. W08 verifies packaging, installed-runtime independence and the authorized phase transition. Public API/CLI auditing remains unavailable throughout Phase 2. No analysis result, source independence, HHI, correction finding, audit report, native filesystem implementation or release is delivered here. W09 completion remains pending its transition repair, final exact-head matrix and owner acceptance. [The delivery manifest](phase2/delivery_manifest.json) currently pins all 154 files of the named W08 predecessor; it does not certify this W09 successor.
+P2-W01 established the phase-aware module guard, the historical-to-current test transition and cumulative CI. Subsequent accepted units implemented private supplied-value/UTF-8 preparation, bounded validation, reference and time checks, and evidence-domain navigation within the thirteen permitted modules. Only prerequisite PC01 completes after full input admission; PC02-PC24, all fifteen analytical families and all 228 analytical obligations remain pending. W08 verifies packaging, installed-runtime independence and the authorized phase transition. Public API/CLI auditing remains unavailable throughout Phase 2. No analysis result, source independence, HHI, correction finding, audit report, native filesystem implementation or release is delivered here. W09 completion remains pending W08 acceptance/merge, its final exact-head hosted matrix and owner acceptance. [The delivery manifest](phase2/delivery_manifest.json) defines its named precursor and hash boundary; prior execution does not certify later successor bytes.
 
 ## Developer installation and checks
 
 Use a complete Git checkout and a clean CPython 3.11 or 3.13 development environment. The six migrated test files load only their exact, SHA-256-checked historical source from the fixed intake commit, then adapt the named phase-specific assertions. Full Git history is required; no network or mutable-ref fallback occurs during test loading. This retains the original assertions and all 194 historical test identities instead of silently replacing them. See [phase2/transition_ledger.md](phase2/transition_ledger.md).
 
-This W09 documentation draft retains the W08 policy while P2-W09-R01 is proposed. The commands below reproduce checks for that existing policy and do not satisfy a W09 gate. A W09 guard invocation currently fails with `invalid_phase_policy`; CI must use the independent W09 context after the scoped repair. For the current W08 policy, use a POSIX shell:
+P2-W09-R01 advances the policy to W09. Set the independently supplied W09 context for the commands below. Local execution is separate from the required exact-head four-profile hosted gate. In a POSIX shell:
 
 ```sh
-export SIT_PHASE_UNIT=P2-W08
+export SIT_PHASE_UNIT=P2-W09
 ```
 
 In PowerShell:
 
 ```powershell
-$env:SIT_PHASE_UNIT = 'P2-W08'
+$env:SIT_PHASE_UNIT = 'P2-W09'
 ```
 
 Then run:
@@ -42,11 +42,11 @@ python -m pip install --no-build-isolation --no-deps .
 sit --version
 sit --help
 python -B tools/check_phase0_baseline.py
-python -B tools/check_scaffold_boundary.py --unit P2-W08
+python -B tools/check_scaffold_boundary.py --unit P2-W09
 python -m pytest tests -q
 ```
 
-W01 remains the guard's conservative default when no context is supplied; that default cannot validate this W08 checkout. The explicit guard argument does not set the environment for the separate pytest command, so retain `SIT_PHASE_UNIT=P2-W08` for both. This context is independent of candidate policy files and does not authenticate owner approval. CI derives it from the exact `phase2/p2-wNN` review branch. A main-branch work-unit merge must include exactly one `SIT-Phase-Unit: P2-WNN` footer, preserving the separately authorized unit context after merge.
+W01 remains the guard's conservative default when no context is supplied; that default cannot validate this W09 checkout. The explicit guard argument does not set the environment for the separate pytest command, so retain `SIT_PHASE_UNIT=P2-W09` for both. This context is independent of candidate policy files and does not authenticate owner approval. CI derives it from the exact `phase2/p2-wNN` review branch. A main-branch work-unit merge must include exactly one `SIT-Phase-Unit: P2-WNN` footer, preserving the separately authorized unit context after merge.
 
 Dependency installation is a developer operation and may access the package index. The installed product has zero third-party runtime dependencies and never imports the developer guards, catalogs or historical tests. Source distributions retain the four permitted repository-context tests; running those tests requires the complete developer checkout. Building the sdist/wheel and using the installed package do not require this test loader or Git history.
 
@@ -60,7 +60,7 @@ The driver validates the complete actual 124-file accepted Phase 1 commit and 12
 
 W08 R01 code head `9450b0decc5a02fbcee38beecfe6c4715741efef` passed run `35500231752` in all four required profiles: 1,640 collected tests and 428 separately counted successful subtest events per profile. Its installed-runtime witness checks all 48 installed module bytes, eight private preparation instances, empty-input rejection, unchanged public refusals and file/DNS/native negative controls. It also records source-distribution and original/rebuilt wheel inventories. These engineering results do not complete analytical obligations. The earlier 194-test Phase 1 and 1,629-test accepted W07 results remain historical evidence.
 
-The final W08 documentation head `b870778b62b1a1713674701f110c276d386dcbf9` subsequently passed [run 35504627143, attempt 1](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35504627143) in all four profiles, with 1,640 top-level tests, zero failures/errors/skips and 428 separately counted successful subtest events per profile. [The W09 completion draft](PHASE_2_COMPLETION.md) records this final-head evidence and explains the historical pending text in [phase2/implementation_evidence.json](phase2/implementation_evidence.json). W08 owner acceptance and merge remain pending. The W09 draft has not passed its own exact-head matrix; Phase 2 completion is not declared.
+The final W08 documentation head `b870778b62b1a1713674701f110c276d386dcbf9` subsequently passed [run 35504627143, attempt 1](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35504627143) in all four profiles, with 1,640 top-level tests, zero failures/errors/skips and 428 separately counted successful subtest events per profile. [The W09 completion draft](PHASE_2_COMPLETION.md) records this final-head evidence and explains the historical pending text in [phase2/implementation_evidence.json](phase2/implementation_evidence.json). W08 owner acceptance and merge remain pending. The bounded repair is implemented. Local execution results are pending; no test count or success is claimed for the W09 repair before actual collection and execution. The W09 candidate has not passed its required hosted matrix; Phase 2 completion is not declared.
 
 Windows Server component tests do not certify the future Windows 11/NTFS native adapter. No production platform support or general security proof is asserted. Artifacts retain the existing fourteen-day retention.
 

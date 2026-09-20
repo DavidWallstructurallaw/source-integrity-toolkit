@@ -1,7 +1,7 @@
 {
   "format": "source-integrity-toolkit-phase2-delivery/1",
   "unit": "P2-W09",
-  "status": "DRAFT_BLOCKED_BEFORE_FINAL_ACCEPTANCE",
+  "status": "R01_IMPLEMENTED_LOCAL_EXECUTION_PENDING",
   "owner_start_instruction": "P02-W09 开始",
   "phase2_complete": false,
   "scope": {
@@ -11,11 +11,20 @@
       "phase2/delivery_manifest.json",
       "README.md"
     ],
-    "repair_authorized": false,
-    "repair_applied": false,
+    "repair_authorized": true,
+    "repair_applied": true,
     "w08_owner_acceptance_recorded": false,
     "w08_merged": false,
-    "w09_final_exact_head_ci": "pending_after_scoped_repair_and_final_candidate"
+    "w09_final_exact_head_ci": "pending_after_scoped_repair_and_final_candidate",
+    "authorized_repair_paths": [
+      "phase2/module_policy.json",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_bundle_contract.py",
+      "tests/security/test_input_capture.py",
+      "tests/contract/test_input_schema_mapping.py",
+      "tests/contract/test_phase2_transition.py",
+      "phase2/transition_ledger.md"
+    ]
   },
   "snapshot": {
     "kind": "complete_named_predecessor_inventory",
@@ -4236,7 +4245,7 @@
     ]
   },
   "proposed_repair": {
-    "status": "PROPOSAL_ONLY_AWAITING_EXPLICIT_SCOPED_AUTHORIZATION",
+    "status": "AUTHORIZED_AND_IMPLEMENTED_LOCAL_EXECUTION_PENDING",
     "repair_id": "P2-W09-R01",
     "predecessor": "b870778b62b1a1713674701f110c276d386dcbf9",
     "predecessor_acceptance": "PR #17 remains draft/unmerged; owner acceptance is separately unresolved",
@@ -4340,7 +4349,11 @@
         "git_blob": "28e21d1413f071e7b141fb78985afe72eb8b0741",
         "sha256": "310ce83c2234a7f0e08d15b2428c8b9bdd9c025735e6046cb7b26d2b1b78f910"
       }
-    }
+    },
+    "owner_approval_instruction": "批准 P2-W09-R01，继续 W09",
+    "approval_proposal_commit": "5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271",
+    "approval_proposal_pr": 18,
+    "implementation": "Exact seven-path repair; product, workflow and checker unchanged"
   },
   "current_gates": [
     {
@@ -4354,17 +4367,15 @@
     },
     {
       "gate": "current_W08_module_policy",
-      "status": "passed",
+      "status": "historical_W08_pass_before_repair",
       "checked_modules": 48,
       "promoted": 13,
       "protected": 35
     },
     {
       "gate": "W09_context",
-      "status": "blocked",
-      "actual_exit_code": 1,
-      "issue": "invalid_phase_policy",
-      "checked_modules": 0
+      "status": "implementation_pending_execution",
+      "expected_checked_modules": 48
     },
     {
       "gate": "W08_owner_acceptance_and_merge",
@@ -4372,7 +4383,7 @@
     },
     {
       "gate": "P2-W09-R01",
-      "status": "proposed_only"
+      "status": "implemented_pending_local_execution"
     },
     {
       "gate": "W09_final_precursor_inventory",
@@ -4385,6 +4396,11 @@
     {
       "gate": "Phase2_owner_acceptance",
       "status": "pending"
+    },
+    {
+      "gate": "W09_full_local_suite",
+      "status": "pending",
+      "required_hosted_matrix_satisfied": false
     }
   ],
   "future_obligations": [
@@ -4396,5 +4412,18 @@
     "Public API/CLI real audits, report envelopes and JSON/Markdown pair output",
     "Analytical per-scope work and witness/report quotas",
     "Release/publication and complete v0.1 conformance"
-  ]
+  ],
+  "repair_approval_instruction": "批准 P2-W09-R01，继续 W09",
+  "remaining_owner_decision": {
+    "action": "Accept and authorize merge of W08 PR #17",
+    "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+    "reason": "PHASE_2_PLAN.md sections 6 and 15 require accepted predecessor; the unchanged workflow triggers only PRs targeting main.",
+    "user_approval_recorded": false,
+    "premature_main_base_extra_paths": [
+      "phase2/ci_review.md",
+      "phase2/implementation_evidence.json",
+      "tests/security/test_preparation_inertness.py"
+    ],
+    "followup": "After W08 acceptance/merge, merge updated main into W09 normally, retarget PR #18, finish the final precursor records and trigger exact-head four-profile CI with a supported PR event."
+  }
 }
