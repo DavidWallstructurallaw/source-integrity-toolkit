@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.2, W09 repair review |
+| Revision | 0.3, W09 repair review |
 | Status | **W09 handoff pending W08 acceptance and final hosted matrix; Phase 2 completion is not declared** |
 | Owner start instruction | `P02-W09 开始` |
 | Repair approval | `批准 P2-W09-R01，继续 W09` |
@@ -44,7 +44,7 @@ retains its accepted W02 bytes, SHA-256
 oracle, numerical meaning or input contract was changed for convenience. Later
 uploads do not replace the frozen operational definitions.
 
-The delivery manifest retains the complete 154-file W08 predecessor inventory while the W09 repair awaits execution. After successful local verification, pin the committed W09 repair precursor without a circular self-hash. Its final successor still requires the exact-head hosted matrix.
+The delivery manifest now pins every one of the 156 tracked blobs at the locally verified W09 repair precursor `86193f96a3948f34f37dfb748dfdc604b1d33814`. It also retains the complete W08 predecessor inventory. Each manifest/completion/progress/README row describes the earlier precursor version, so no current file hashes itself. The final review must record the accepted W08 merge and the exact final W09 hosted result.
 
 ## Implemented preparation functions
 
@@ -158,7 +158,7 @@ remain valid. The initial W09 guard failure `invalid_phase_policy` is retained
 as a pre-repair observation at `5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271`. The repair changes only `active_unit`
 from W08 to W09 in the module policy, preserving all other bytes.
 
-The bounded repair is implemented. Local execution results are pending; no test count or success is claimed for the W09 repair before actual collection and execution.
+The complete local suite at `86193f96a3948f34f37dfb748dfdc604b1d33814` passed 1,650 collected tests with zero failures, errors or skips. All 1,640 W08 predecessor identities survive; 10 W09 regression identities were added. The 428 subtest events are counted separately. Actual local Python is 3.12.14; this local runtime is supplementary and does not satisfy the required Python 3.11/3.13 and Linux/Windows hosted matrix. Local packaging 26.3 and Pygments 2.21.0 also differ from the reviewed hosted pins 25.0 and 2.20.0; repository dependency pins remain unchanged.
 
 The unchanged workflow triggers PR jobs only when the base is `main`. Current
 PR #18 has the W08 branch as its base. Retargeting before W08 merges would compare
@@ -201,9 +201,15 @@ Private admission does not establish source authenticity, truth, independence or
 correction effect. Finite interception, resource and cancellation tests do not
 establish a hostile same-process sandbox or arbitrary concurrency detection.
 Installed interception begins after imports; separate import tests cover import
-behavior. The artifacts contain executed inventory hashes and records rather
-than binary distributions for independent rereading. Tracked-after equality is
-reported by the CI comparison without a separate tracked-after manifest.
+behavior. The retained W08 hosted artifacts contain executed inventory hashes
+and records rather than binary distributions for independent rereading. For W08
+hosted evidence, tracked-after equality is reported by the CI comparison without
+a separate tracked-after manifest. The W09 local review independently compared
+both 156-file tracked manifests with the exact repair commit and reread all three
+local archives: original wheel, source distribution and rebuilt wheel contain
+55, 65 and 55 regular members respectively, with matching source hashes and equal
+original/rebuilt wheel member contents. The local installed-runtime test passed;
+its temporary detailed JSON was cleaned up and is not claimed as a retained record.
 Windows Server 2025 execution does not establish Windows 11/NTFS native support.
 Only fictional fixtures and synthetic canaries were used; no private dossier,
 credential, identity map or theory PDF was added to the repository.

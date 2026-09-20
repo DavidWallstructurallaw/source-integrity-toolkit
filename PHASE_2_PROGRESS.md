@@ -4,11 +4,11 @@
 
 | Field | Value |
 |---|---|
-| Revision | 0.23 |
+| Revision | 0.24 |
 | Current unit | P2-W09 |
 | Owner start | `P02-W09 开始` |
 | Repair approval | `批准 P2-W09-R01，继续 W09` |
-| Current status | R01 implemented; local execution pending; accepted predecessor and hosted matrix pending |
+| Current status | R01 implemented; full local suite verified; accepted predecessor and hosted matrix pending |
 | Verified W08 candidate | `b870778b62b1a1713674701f110c276d386dcbf9` |
 | Latest accepted merge | `22bd51454e425cf9eca87adbebecb09191fb925d` (W07) |
 | W08 acceptance / merge | Pending / pending |
@@ -25,7 +25,7 @@ historical W07/W08 source is returned. The original W08 accepted-tree assertion,
 preparation-inertness file, product code, checker and workflow remain unchanged.
 The transition ledger appends the real approval and exact method-level migrations.
 
-The bounded repair is implemented. Local execution results are pending; no test count or success is claimed for the W09 repair before actual collection and execution.
+The complete local suite at `86193f96a3948f34f37dfb748dfdc604b1d33814` passed 1,650 collected tests with zero failures, errors or skips. All 1,640 W08 predecessor identities survive; 10 W09 regression identities were added. The 428 subtest events are counted separately. Actual local Python is 3.12.14; this local runtime is supplementary and does not satisfy the required Python 3.11/3.13 and Linux/Windows hosted matrix. Local packaging 26.3 and Pygments 2.21.0 also differ from the reviewed hosted pins 25.0 and 2.20.0; repository dependency pins remain unchanged.
 
 ## Preserved audit and delivery evidence
 
@@ -41,7 +41,7 @@ W08 final-head run 35504627143, attempt 1, passed all four required profiles wit
 subtest events. This resolves W08's historical final-record pending text at its
 exact head. No W08 evidence is reused as a W09 hosted result.
 
-The delivery manifest retains the complete 154-file W08 predecessor inventory while the W09 repair awaits execution. After successful local verification, pin the committed W09 repair precursor without a circular self-hash. Its final successor still requires the exact-head hosted matrix.
+The delivery manifest now pins every one of the 156 tracked blobs at the locally verified W09 repair precursor `86193f96a3948f34f37dfb748dfdc604b1d33814`. It also retains the complete W08 predecessor inventory. Each manifest/completion/progress/README row describes the earlier precursor version, so no current file hashes itself. The final review must record the accepted W08 merge and the exact final W09 hosted result.
 
 [PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md) records the exact repair, audit,
 executed evidence, limits and future obligations. Earlier drafts and failures
