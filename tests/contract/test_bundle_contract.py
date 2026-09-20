@@ -131,6 +131,8 @@ def test_repair_does_not_expand_another_units_immediate_diff():
         # W04 and W05 each have a separate, exact owner-approved exception.
         extra = (ci.P2_W04_R01_PATHS if step == 4 else
                  (ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS) if step == 5 else frozenset())
+        if step == 7:
+            extra = extra | ci.P2_W07_R01_PATHS
         assert ci.effective_paths(paths, unit) == paths[unit] | extra
         for path in ci.P2_W02_R01_PATHS - paths[unit] - extra:
             with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
@@ -148,6 +150,8 @@ def test_repair_cumulative_accounting_retains_only_authorized_extras():
             extras = extras | ci.P2_W04_R01_PATHS
         if step >= 5:
             extras = extras | ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS
+        if step >= 7:
+            extras = extras | ci.P2_W07_R01_PATHS
         assert ci.effective_paths(paths, unit, cumulative=True) == original | extras
 
 

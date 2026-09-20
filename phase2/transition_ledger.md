@@ -314,3 +314,36 @@ Local component execution is separately recorded in PHASE_2_PROGRESS.md; it does
 not replace full repository history, frozen-file, packaging or four-profile CI.
 Acceptance and all new CI outcomes are recorded against the actual reviewed
 commit in PR #14. W06, public auditing and analytical Trace closure remain absent.
+
+## P2-W07-R01: authorized phase-context and permission transition
+
+Owner instruction: `批准 P2-W07-R01 继续`. This approval implements the six-path
+repair proposed in PR #16 at 067802f8df5b6958adde60bc7ced3ca8a06a7f33.
+The accepted product remains W06 merge 4f55252d98f9b57975c2bc241c9079ac259a53cd.
+The earlier W07 preflight failures, runs 35488938338 and 35489414729, remain
+failures before test collection. Their evidence is not reused as a passing test.
+
+Only active_unit changes from P2-W06 to P2-W07 in module_policy.json. The thirteen
+promotions, earliest units, format and plan digest remain exact. Trusted review
+context is still resolved independently. The CI driver adds exactly six W07-only
+paths and retains them in cumulative accounting; it grants no other unit a new
+immediate permission. The frozen plan and the module checker remain unchanged.
+
+| File | Existing test entry point | Exact addition and retained requirement |
+|---|---|---|
+| tests/contract/test_bundle_contract.py | test_repair_does_not_expand_another_units_immediate_diff | Add W07's separate permission only at step 7; preserve every original assertion. |
+| tests/contract/test_bundle_contract.py | test_repair_cumulative_accounting_retains_only_authorized_extras | Retain the six paths only from step 7 onward in cumulative history. |
+| tests/security/test_input_capture.py | test_r01_exact_four_paths_and_no_other_unit_permission_expansion | Recognize W07 immediate/cumulative permissions; capture probes and effects assertions remain byte-identical. |
+| tests/contract/test_input_schema_mapping.py | test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope | Recognize step 7 only; schema, field, runtime-state and historical AST checks remain byte-identical. |
+
+No original test identity or expected product outcome changes. Added tests in
+W07R01Tests, within tests/contract/test_phase2_transition.py, verify exact old/new
+bytes from the pinned pre-repair commit, one-field policy change, rejection of
+mismatched trusted context and forbidden promotions, exact six-path scope,
+unlisted-path denial, append-only history and unchanged product/checker bytes.
+
+This append records authorization and intended assertions, not execution success.
+Actual collection, failures and four-profile results are recorded on the exact
+reviewed commit in PR #16 and phase2/implementation_evidence.json. All 1465 W06
+test identities remain required. W07 acceptance, merge, W08 and release remain
+separate gates; public auditing and analytical qualification remain unavailable.

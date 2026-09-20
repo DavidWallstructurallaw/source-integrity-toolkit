@@ -298,6 +298,8 @@ def test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope():
     for i in range(1, 10):
         unit = f"P2-W{i:02}"
         authorized = ci.P2_W02_R01_PATHS if i == 2 else ci.P2_W04_R01_PATHS if i == 4 else (ci.P2_W05_R01_PATHS | extra) if i == 5 else frozenset()
+        if i == 7:
+            authorized = authorized | ci.P2_W07_R01_PATHS
         assert ci.effective_paths(paths, unit) == paths[unit] | authorized
         if not extra <= paths[unit] | authorized:
             with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
