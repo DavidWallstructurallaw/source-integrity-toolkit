@@ -1,0 +1,4400 @@
+{
+  "format": "source-integrity-toolkit-phase2-delivery/1",
+  "unit": "P2-W09",
+  "status": "DRAFT_BLOCKED_BEFORE_FINAL_ACCEPTANCE",
+  "owner_start_instruction": "P02-W09 开始",
+  "phase2_complete": false,
+  "scope": {
+    "authorized_draft_paths": [
+      "PHASE_2_PROGRESS.md",
+      "PHASE_2_COMPLETION.md",
+      "phase2/delivery_manifest.json",
+      "README.md"
+    ],
+    "repair_authorized": false,
+    "repair_applied": false,
+    "w08_owner_acceptance_recorded": false,
+    "w08_merged": false,
+    "w09_final_exact_head_ci": "pending_after_scoped_repair_and_final_candidate"
+  },
+  "snapshot": {
+    "kind": "complete_named_predecessor_inventory",
+    "commit": "b870778b62b1a1713674701f110c276d386dcbf9",
+    "tree": "950c94d94cf081f231aef2e2cb8089e4687e4745",
+    "tracked_file_count": 154,
+    "observed_latest_accepted_predecessor": "22bd51454e425cf9eca87adbebecb09191fb925d",
+    "review_pr": 17,
+    "acceptance": "W08 candidate verified; owner acceptance and merge pending",
+    "hash_boundary": [
+      "Every tracked blob in the named W08 predecessor is listed, including its old README and progress bytes.",
+      "PHASE_2_COMPLETION.md and phase2/delivery_manifest.json do not exist in that predecessor; they are new W09 records.",
+      "No hash in this inventory certifies the current W09 README, progress, completion, manifest, or any future repair.",
+      "This document does not hash itself or claim a future commit SHA. Final delivery needs a newly named post-repair precursor and exact final-successor CI."
+    ],
+    "files": [
+      {
+        "path": ".gitattributes",
+        "mode": "100644",
+        "git_blob": "2308007e403a05d79a3cb94513c73561448ea57c",
+        "bytes": 1711,
+        "sha256": "df03ffb662c37e74fda41cdb0697e750f961dccd0f89c019912388d47bca60ff"
+      },
+      {
+        "path": ".github/workflows/p1-w02-verify.yml",
+        "mode": "100644",
+        "git_blob": "5d033b3adaba2c951bd56aa28a6b64926d83f450",
+        "bytes": 12612,
+        "sha256": "5b525f32fc313232b2ec8706092902a050e166841f34e72c57984c8607eb948e"
+      },
+      {
+        "path": ".github/workflows/phase1-ci.yml",
+        "mode": "100644",
+        "git_blob": "f5fd3ec98f64585a7a891aa3430891cb13a298a9",
+        "bytes": 3520,
+        "sha256": "dedbb573bf1a95ee93329efef9addd9d5f4221d04400f5299197729319aaf5fb"
+      },
+      {
+        "path": ".gitignore",
+        "mode": "100644",
+        "git_blob": "de1c1a8bea3c9403408949bbe3c5cd10bf8df853",
+        "bytes": 557,
+        "sha256": "b3bd0071e2758bbb7a28a5c41381e3730a035bee6c2c11140fb98fc8aaa38dd3"
+      },
+      {
+        "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+        "mode": "100644",
+        "git_blob": "a08e94bee1e4c8aaa4a47fcdd79b1e8db0fe6911",
+        "bytes": 129967,
+        "sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374"
+      },
+      {
+        "path": "CONTRIBUTING.md",
+        "mode": "100644",
+        "git_blob": "69309278a14e8ad7695b4c321136d528df8c9c21",
+        "bytes": 5136,
+        "sha256": "163abe466a4af4c1213e218eba25a4b069b3d399c772f562da47d2c849c7ae3d"
+      },
+      {
+        "path": "DEFINITIONS_AND_UNITS.md",
+        "mode": "100644",
+        "git_blob": "36fd49115cd7a3a85be93eeeb480042a1b74496f",
+        "bytes": 94436,
+        "sha256": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d"
+      },
+      {
+        "path": "DEPENDENCY_STRATEGY.md",
+        "mode": "100644",
+        "git_blob": "74849cc4b4ee3ab927e6de3a721ddc3edba10b15",
+        "bytes": 15029,
+        "sha256": "65b5c4f1f91be019e1fb09329ff5214980e5956579c1c8ccec7f4b6f7b4174ad"
+      },
+      {
+        "path": "GOVERNANCE_AND_HANDOFF.md",
+        "mode": "100644",
+        "git_blob": "81aed5fd6d8edb185ab30881f238aeb5fe8680a6",
+        "bytes": 26255,
+        "sha256": "13e535ded411a3ad5967226e07761d4e88615f5b04c0b5a64c6cbf738cbc9ee8"
+      },
+      {
+        "path": "LICENSE",
+        "mode": "100644",
+        "git_blob": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+        "bytes": 11358,
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      {
+        "path": "LICENSING_NOTES.md",
+        "mode": "100644",
+        "git_blob": "3468b44ec858ac1068f041affe94f8c183e3289a",
+        "bytes": 10911,
+        "sha256": "e544f6f38d4fa83faaba0da42d85bc4af4e3a86028f3a4ab78132d21b2ddb80f"
+      },
+      {
+        "path": "MANIFEST.in",
+        "mode": "100644",
+        "git_blob": "a5c0ec31bba588f10f39314ae7c481ce37c81344",
+        "bytes": 3495,
+        "sha256": "846f5ad18324b044fd431521f21b32aa157805dc33a95f1ec8b82a5677938066"
+      },
+      {
+        "path": "NOTICE",
+        "mode": "100644",
+        "git_blob": "0a6e820bafa1d5c0c21ced6e8567b7024a2c7f47",
+        "bytes": 680,
+        "sha256": "adcb7b8b088b04af20b095775215ca3668d5d5473affd280a63b651956f9f930"
+      },
+      {
+        "path": "OBSERVABILITY_AND_REPORTING.md",
+        "mode": "100644",
+        "git_blob": "cf6c1d0aeb069cf5b68c3ea37b490dd6f5912208",
+        "bytes": 111615,
+        "sha256": "44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a"
+      },
+      {
+        "path": "PHASE_0_APPROVAL.md",
+        "mode": "100644",
+        "git_blob": "3e61806e3df5afc7d88fae27db765c5e5eb4bdb9",
+        "bytes": 14670,
+        "sha256": "92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c"
+      },
+      {
+        "path": "PHASE_0_PLAN.md",
+        "mode": "100644",
+        "git_blob": "d5ea6f6dd79b5770dfe80a3677d76706c7e78db8",
+        "bytes": 45379,
+        "sha256": "2d97a820ae218c33cfd00dd96a762853e887f867973a2b2da0945fc4414495b1"
+      },
+      {
+        "path": "PHASE_1_COMPLETION.md",
+        "mode": "100644",
+        "git_blob": "ad04c47fdf35f388f8dd1121fceed0f62c1e7499",
+        "bytes": 19736,
+        "sha256": "3524fdc08eaf9d8b18468ea5838da696acb9790b7419d008f990d4c384a0dccd"
+      },
+      {
+        "path": "PHASE_1_PLAN.md",
+        "mode": "100644",
+        "git_blob": "27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb",
+        "bytes": 28837,
+        "sha256": "699cf95f81231e09949f81ec7c25096911f8c67e89e8a10bae4157ef8b49fb22"
+      },
+      {
+        "path": "PHASE_1_PROGRESS.md",
+        "mode": "100644",
+        "git_blob": "dd7fc68d9146741e4ae9013b6c31e282d285aa8a",
+        "bytes": 7090,
+        "sha256": "86f41a273434e399b667a8c9437a8ad54a242b03e7a790d90bd4748e98c3f8f9"
+      },
+      {
+        "path": "PHASE_2_PLAN.md",
+        "mode": "100644",
+        "git_blob": "17b91fd2851006d8bd5c14f6ff922a9d8abbeb0c",
+        "bytes": 50899,
+        "sha256": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918"
+      },
+      {
+        "path": "PHASE_2_PROGRESS.md",
+        "mode": "100644",
+        "git_blob": "6082045633217473b4f4625653fcb905fc94fe5e",
+        "bytes": 7071,
+        "sha256": "479bf551552c520a84750e39a441b0b606514ce5f365e8dbc5e9fa49a9faa00f"
+      },
+      {
+        "path": "PRIVACY_AND_DATA_HANDLING.md",
+        "mode": "100644",
+        "git_blob": "8e7f6a1835104af4714826311db3ba92d1dd1c0f",
+        "bytes": 28777,
+        "sha256": "3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8"
+      },
+      {
+        "path": "PROJECT_INSTRUCTIONS.md",
+        "mode": "100644",
+        "git_blob": "20c0b8fb6a870ccb21acbfc2024096e95cf317a4",
+        "bytes": 22037,
+        "sha256": "cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746"
+      },
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "git_blob": "f9cd2b8a0049efd476cc5f299e99ac4c829bcc49",
+        "bytes": 10277,
+        "sha256": "8c0b21ecd682edd1926fb4293592f70427b02a757731e629a3985691c846bc43"
+      },
+      {
+        "path": "REPOSITORY_ARCHITECTURE.md",
+        "mode": "100644",
+        "git_blob": "f9123f217e567b6aed34f876824c3dcd13dab467",
+        "bytes": 67030,
+        "sha256": "8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d"
+      },
+      {
+        "path": "SECURITY.md",
+        "mode": "100644",
+        "git_blob": "4fd65a639c50786cc1fc09b9f514bdfadc52a8e6",
+        "bytes": 2944,
+        "sha256": "e3e717e28f2efa6165b10c97784a0ee01de7336737f40030672f131c4a160df4"
+      },
+      {
+        "path": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+        "mode": "100644",
+        "git_blob": "7ba8945cf68e0069d42ad975d5a9ceaeb047d75e",
+        "bytes": 93871,
+        "sha256": "e74e1bd146acb3ece62dcc4c0096f5fae9f7b72950c5827956fff0398c1c374a"
+      },
+      {
+        "path": "SPEC_AUDIT.md",
+        "mode": "100644",
+        "git_blob": "67f6b4ccb33f6db2aca508a64993661b3e28f3a9",
+        "bytes": 42589,
+        "sha256": "3565ab8f1b08f30e06f4983ffd26adbe8bc977b655ebf410b634918a7ae7949a"
+      },
+      {
+        "path": "SUCCESS_CRITERIA.md",
+        "mode": "100644",
+        "git_blob": "63151e95af72d6aea224858bc356f1528a013661",
+        "bytes": 58182,
+        "sha256": "270eed959a08607e182ff5922d6cacdec3c3536c954f3f65d5e9b8d9bcfb5476"
+      },
+      {
+        "path": "THEORY_SOURCE_MAP.md",
+        "mode": "100644",
+        "git_blob": "9cc299535f71b57f8800f6406723a689a6ce2560",
+        "bytes": 56697,
+        "sha256": "015e65baf3fcad8ce78a2285df8f2de8d5b7b4cbdd347707ba3cc5d5ba46b627"
+      },
+      {
+        "path": "THEORY_TO_CODE_TRACEABILITY.md",
+        "mode": "100644",
+        "git_blob": "a6b6c716636bb15bb569b257e9b82086c18185ab",
+        "bytes": 65779,
+        "sha256": "73a69a56828b6ff416164b7bd6420521da1c635bd92f03b92e07231b552a7849"
+      },
+      {
+        "path": "UNRESOLVED_DECISIONS.md",
+        "mode": "100644",
+        "git_blob": "6a037328e6ccae48d13c272c0453bc8f43ca67c9",
+        "bytes": 15713,
+        "sha256": "4d79c732f31eefaad54fb53209e535a248d824e78673a31383442b5ebe74a59e"
+      },
+      {
+        "path": "V0.1_PRODUCT_SPEC.md",
+        "mode": "100644",
+        "git_blob": "ad896af3b749220b1f4adf979fbae4fa5f01b165",
+        "bytes": 62420,
+        "sha256": "70ab331662741c0177908ec5ccac09ff7538f98643567eb3066e0ed8c9cb84e1"
+      },
+      {
+        "path": "VALIDATION_PLAN.md",
+        "mode": "100644",
+        "git_blob": "701ec6a3e215638a02dd1eb82b2f503dd48d16e8",
+        "bytes": 148233,
+        "sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707"
+      },
+      {
+        "path": "phase2/ci_review.md",
+        "mode": "100644",
+        "git_blob": "941f01057face82fef9b0cac8847cdcafbcd6d76",
+        "bytes": 14985,
+        "sha256": "21883602ecbd83da871a94fa7a4daa6748da7a00e886e8fc4bf0a7517cade9e3"
+      },
+      {
+        "path": "phase2/entry_manifest.json",
+        "mode": "100644",
+        "git_blob": "1163dc136837374606647ba21bd566848239f95b",
+        "bytes": 1277,
+        "sha256": "bdec51c6499e080385140446eece9014144cf277c1651b05734f5166a831623f"
+      },
+      {
+        "path": "phase2/implementation_evidence.json",
+        "mode": "100644",
+        "git_blob": "454cf9f4ee5c723d247c5415da944b9f267618ba",
+        "bytes": 25623,
+        "sha256": "4b3923ad9eb755b93315fbf211f9c6e7bde0aef91e7ea55a4f51a82420e30b72"
+      },
+      {
+        "path": "phase2/input_contract_coverage.json",
+        "mode": "100644",
+        "git_blob": "5549f28d2d96f0fda5da0637eedd45399f54d0f1",
+        "bytes": 42410,
+        "sha256": "a91e9a45479c02ec5389868b10a9f7423837f0c5977296b05d301d60ed1dbd0a"
+      },
+      {
+        "path": "phase2/module_policy.json",
+        "mode": "100644",
+        "git_blob": "cb524425ace4d8c15581af7f52d9b84202350b70",
+        "bytes": 1492,
+        "sha256": "6979e0e749e20f783d60f9827b9f37d43c042ea7ced33eb8d88071968961191c"
+      },
+      {
+        "path": "phase2/prerequisite_partition.json",
+        "mode": "100644",
+        "git_blob": "a801859daab2b19e78041544268ac429a7bf96e5",
+        "bytes": 18714,
+        "sha256": "372147857babfac05b71d1856f95bab84b789cd3ddae1004ea6e44ea97ca5b26"
+      },
+      {
+        "path": "phase2/transition_ledger.md",
+        "mode": "100644",
+        "git_blob": "9b8b09aba670baec97392fef2b6f5babc1dd70c7",
+        "bytes": 40554,
+        "sha256": "8bd95f38a7dca788c5224865ee992cfb36c6904bc6cf347cf05b642b64ee0dd4"
+      },
+      {
+        "path": "pyproject.toml",
+        "mode": "100644",
+        "git_blob": "5fecf128c2d30a595c4ab3fc3516564c24540997",
+        "bytes": 1190,
+        "sha256": "46b48be6e50cd4cd412c1be21e50cba190de6c0cdfce9d67284f01c40fde788c"
+      },
+      {
+        "path": "requirements-dev.txt",
+        "mode": "100644",
+        "git_blob": "e037242d849f827a6c968a0f97830610a1718138",
+        "bytes": 373,
+        "sha256": "ad89dbacd5640dbc156cc922f3bc7ed314ec1eec0f7fcdfd8da822a9e2590f0b"
+      },
+      {
+        "path": "scaffold/baseline_manifest.json",
+        "mode": "100644",
+        "git_blob": "da48da62c4d1dd8e27af43daa0ecdc8e6c4698d8",
+        "bytes": 5777,
+        "sha256": "85cc224e9a948df1cc555821408ecbe31392357714926db4401405e28dd616ef"
+      },
+      {
+        "path": "scaffold/ci_toolchain_review.md",
+        "mode": "100644",
+        "git_blob": "4e0f57facc62aa59d7addf52b7bdd6013e8bb5aa",
+        "bytes": 5968,
+        "sha256": "028dce00ad3507b4a668bfa5261f30926589f41768dd271de176e2b77db1c3c7"
+      },
+      {
+        "path": "scaffold/delivery_manifest.json",
+        "mode": "100644",
+        "git_blob": "706db89ddb69fb8f0c8db80f27b4128c50afab54",
+        "bytes": 14676,
+        "sha256": "c354ec51acbe4ad90cb2f15037b3a3d043eec21e39cd348d8b5ecb2afae3fc5a"
+      },
+      {
+        "path": "scaffold/module_manifest.json",
+        "mode": "100644",
+        "git_blob": "fa0c0f87bd17b004a6cb4ed6a78591de4c24ccbb",
+        "bytes": 12584,
+        "sha256": "e16051e7b20d8159c4b972db76ac1fb2dfc5eb69712e78c7049d7a1060fc0c21"
+      },
+      {
+        "path": "scaffold/obligation_catalog.json",
+        "mode": "100644",
+        "git_blob": "62ec0c934aee408c5bd9e9e32d0c03bac3c806e4",
+        "bytes": 29506,
+        "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
+      },
+      {
+        "path": "scaffold/toolchain_review.md",
+        "mode": "100644",
+        "git_blob": "487a9610db7d4747f8c41d1b06180b5ae222ef5f",
+        "bytes": 9590,
+        "sha256": "62cf026726fafa92192749f92f6b5e0b6836a511117bb4a37827d4c0008f346b"
+      },
+      {
+        "path": "scaffold/trace_catalog.json",
+        "mode": "100644",
+        "git_blob": "b96c6f5acef48c95cdd1504672c8d9b59df5b912",
+        "bytes": 31211,
+        "sha256": "fd954e5cc7a0292d4fb68cc244289c2626b42cd6ec4417a38c35f987d7ec46d7"
+      },
+      {
+        "path": "schemas/README.md",
+        "mode": "100644",
+        "git_blob": "d7d8a311a6d5aab2514c14eb7252e4909ae83a97",
+        "bytes": 744,
+        "sha256": "572df630f420258300d5fd224680296ae4e69b6691ef00593c152ffd88a99ced"
+      },
+      {
+        "path": "schemas/bundle/README.md",
+        "mode": "100644",
+        "git_blob": "02a0181c371db3186a124773050f5a4f1b3bbac1",
+        "bytes": 3583,
+        "sha256": "8db1889f20d1a002eb068fb150fb9cf0d0038e010421a3ad8d7e5b52d12e807c"
+      },
+      {
+        "path": "schemas/bundle/sit-bundle-0.1.schema.json",
+        "mode": "100644",
+        "git_blob": "6149a9d6420ac370b19e21e21520ab48da73805f",
+        "bytes": 42799,
+        "sha256": "4a6d313c8c45c6dba29a8489c1ebbabb4c8dacbbc67b05a7042206fcc7d8c6db"
+      },
+      {
+        "path": "schemas/report/README.md",
+        "mode": "100644",
+        "git_blob": "40778c8dd7631fc5a953334d813bfdb06f1b5662",
+        "bytes": 1590,
+        "sha256": "603a60da4d77b7b8d74d6074c895b226c24fb74f6d24eb092d5136311eb6eefe"
+      },
+      {
+        "path": "src/source_integrity_toolkit/__init__.py",
+        "mode": "100644",
+        "git_blob": "7bea94e138804cbeea4048ef152dcb5726047f1f",
+        "bytes": 445,
+        "sha256": "0fdc19062761d6b718ff371557376483f7c8e7bbf7f3c347bcae576587513b97"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/__init__.py",
+        "mode": "100644",
+        "git_blob": "39f3b82fbbe9c331b5728e9366d08ad5b6750a0c",
+        "bytes": 446,
+        "sha256": "2bcd171bde6b0b6c92c3a048cff959780e2e0616f468158b4b97d8967bf7e956"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/context.py",
+        "mode": "100644",
+        "git_blob": "e45bc4485a1c7706c7c706af04c590732aef0f7a",
+        "bytes": 400,
+        "sha256": "b1498a1789135e3a3fdbe85853fcb1c92f948135fafe7490a76ea6e827257dab"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/contribution_profile.py",
+        "mode": "100644",
+        "git_blob": "1380f92bf538148065fb2ee85d637ff4930944b8",
+        "bytes": 413,
+        "sha256": "41de3c89c9a35f7d919791ee364bc0dbfe8e045d9cacce7123a6dd76d906ad0a"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/correction_outcomes.py",
+        "mode": "100644",
+        "git_blob": "125710879eafc46df6c1a62837fa4cabc65af56c",
+        "bytes": 411,
+        "sha256": "bb98ff70dc46d0a89f56184f81975c858123353e65a1e3171d494290aa679e5c"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/correction_routes.py",
+        "mode": "100644",
+        "git_blob": "601820c1974f054176f4fbb937e05663fc66299a",
+        "bytes": 407,
+        "sha256": "b2fd57b9b2f1a66baba5a859f17bcb65c4e27b3e0e7c76aae639b290d3925591"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/evaluator_lineage.py",
+        "mode": "100644",
+        "git_blob": "ad8e0d6a447aaa4dd9522a149a7492071ffc2d30",
+        "bytes": 407,
+        "sha256": "f7e7bb8d43cd958a8467cc0aa6ce03e2f778fdaab1ed595fae0a5e65a008a16d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/findings.py",
+        "mode": "100644",
+        "git_blob": "cf6fe8419f58428e59c3e825f056d35a416ac160",
+        "bytes": 397,
+        "sha256": "c3aa73647b68f5345092e78f09378ae7267f6c41f86b3e4b39052ecc27c62e56"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/human_review.py",
+        "mode": "100644",
+        "git_blob": "ee0359eca52f2df943ac8fff36ff71e06a887e69",
+        "bytes": 405,
+        "sha256": "e297b654b1b2f89425b4c81f237b8012bc393d08ada0cda662ed2870556b8a3a"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/inventory.py",
+        "mode": "100644",
+        "git_blob": "0270bc2176369b526900673eb12e41772374bb5a",
+        "bytes": 398,
+        "sha256": "20956684c4c980efe8f5c0062f382829b75e629e4202f4e44b9ec6ddc9d5e565"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/origins.py",
+        "mode": "100644",
+        "git_blob": "ff717183ec59983be24438a11a0ca8cc519d6108",
+        "bytes": 395,
+        "sha256": "82f63c9c4fb7b32c788a2b2a8f7bb6feef0a4842f88f8651f664f5f3faaf4a82"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/presence.py",
+        "mode": "100644",
+        "git_blob": "e4d562ba405ab835ea6f18491cee5799cfd11fd8",
+        "bytes": 397,
+        "sha256": "07b208fdcddc7cc91734311e3456462acc6d76da3c71565e8c13565baa7bcf42"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/process_comparison.py",
+        "mode": "100644",
+        "git_blob": "dca02534d562be02ffb43ef6142db7706471f73d",
+        "bytes": 409,
+        "sha256": "f9018a339bf9e19f36d620d2499bae47055c23d9cd0de05d34c8bd048cadc0d1"
+      },
+      {
+        "path": "src/source_integrity_toolkit/api.py",
+        "mode": "100644",
+        "git_blob": "0603b4de9888a51190eeeefc6186b47e2afd88bd",
+        "bytes": 906,
+        "sha256": "8808d7ef4a0db2f6e314c82fddd4b51cce164a165afaf43e6d626663f6f6768d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/cli.py",
+        "mode": "100644",
+        "git_blob": "f48f869385fbeb711458f0189ff55194f73fd050",
+        "bytes": 1390,
+        "sha256": "0c3ee9522fbdf1774a707ec14ed630ce34a901da1f83f63b8aee0f25393d26bc"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/__init__.py",
+        "mode": "100644",
+        "git_blob": "df81f7b32eee0e54a4606b3dd02332407cf53ec1",
+        "bytes": 447,
+        "sha256": "5a5c57d26930d12c3de59e180987f740b915e9eb17fd18a2daf29a6f91985432"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/bundle.py",
+        "mode": "100644",
+        "git_blob": "efa93ccb6f750a38fe6f426fa409aa52651f78bf",
+        "bytes": 17520,
+        "sha256": "7509a30f008de4ade02543bea26ccc4bd3d5843ae62f75b1841e2e61bcb903da"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/constants.py",
+        "mode": "100644",
+        "git_blob": "be7acf3d76d444fef2e124bd343d89005def33d4",
+        "bytes": 17761,
+        "sha256": "d4bee68c62ba495e6aca1fdba352b013f9cc4ed7c3583b61092af234827ad486"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/evidence.py",
+        "mode": "100644",
+        "git_blob": "5fb29e07b2a33fe89189339840ecb48aca53590f",
+        "bytes": 4860,
+        "sha256": "3edd9edeb670b2302d8b41eda28e158f782841ced5cc41230cce90fc8cf8db3b"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/execution.py",
+        "mode": "100644",
+        "git_blob": "9021b4d19ed27d4c5bfd552c87be5a967e6500a3",
+        "bytes": 4912,
+        "sha256": "625568507d31f13ca165bc89a37d99f221bc0a31f2d19059bcfad6367a7781d5"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/report.py",
+        "mode": "100644",
+        "git_blob": "2881021ac3c03668702eb678193ef5c446d27943",
+        "bytes": 18649,
+        "sha256": "d37affe49972c14d785babaf1e2bab5a8ad64e17fdd69748e1df9aacb73257d4"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/results.py",
+        "mode": "100644",
+        "git_blob": "728f573ed6540d943c3b8a40a0456cc482a160d9",
+        "bytes": 396,
+        "sha256": "7f6d5244991220d2c6e845ee1a2ed5ebff5f73dfe6f3df81f0b3b71470617123"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/__init__.py",
+        "mode": "100644",
+        "git_blob": "d5eff5c90ff209f6f3f6b3d53b1a38d292da413e",
+        "bytes": 397,
+        "sha256": "3db1c2c13cc1ae2bfb1a049894a04f7d27d7e6874d2079f1348d910aa0f5c943"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/cycles.py",
+        "mode": "100644",
+        "git_blob": "79148cf330f7e8a0da4bf99ac672308c05633419",
+        "bytes": 395,
+        "sha256": "99f243d5a93a06e6ad427527a84153f10897d236afdf78f2a66efd0b5eb603d6"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/projections.py",
+        "mode": "100644",
+        "git_blob": "ba97838466377f0db4a6b10bffe924dab0dea106",
+        "bytes": 400,
+        "sha256": "40e5d00654c91b516c479281620e3d6d21e7e0214a6ebcf0b1d1080b48ec0a47"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/traversal.py",
+        "mode": "100644",
+        "git_blob": "48a07d5e50f70f0fa9e6e9bcc84d6d83856973bf",
+        "bytes": 398,
+        "sha256": "5fe8af02018145fbb41512efec1201833adf8fd49263ff5aab2c462ee3890d1e"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/witnesses.py",
+        "mode": "100644",
+        "git_blob": "d0a47364b84326e74f0cd4e71aec780a4a4ba4d8",
+        "bytes": 398,
+        "sha256": "cb6d1b1c30272738e2db210b19671ed65ffb7a7b81163de44ca3fbb846369c91"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/__init__.py",
+        "mode": "100644",
+        "git_blob": "2714a56fb4d2ed55cf66934c8a336f0d5a51944e",
+        "bytes": 391,
+        "sha256": "252ed1b29bff2517bc3ce909f4695d0f67c4baf0f1d7707708124107fbba783b"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/input_file.py",
+        "mode": "100644",
+        "git_blob": "05714101f621cffda6108cecb67915488d0541f6",
+        "bytes": 8437,
+        "sha256": "5628507c0989e94a3b5b5401e570b19256c940204859da9e938178ea261dea1f"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/output_directory.py",
+        "mode": "100644",
+        "git_blob": "9e974acb4ae4afe96a2dfb090dfd459effc8f7cb",
+        "bytes": 399,
+        "sha256": "d27ae40d53b09355a0e3e137d490d1c2d1352edf67821c985bd0c79096b605ac"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/platform_linux.py",
+        "mode": "100644",
+        "git_blob": "6e7c6196ec22baa91a75ced2aba8de831d03f364",
+        "bytes": 397,
+        "sha256": "b63420614f26fc52ebe4e7d9af4d12782fd7374dc4780c420e0e4bdbe6091544"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/platform_windows.py",
+        "mode": "100644",
+        "git_blob": "b1023ff2d960f1a7b0374c46b57069957c807e2f",
+        "bytes": 399,
+        "sha256": "31e5f7b304d4455d5d60222f2077eefd284edce341c47524ac85de84f690b4c0"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/publication.py",
+        "mode": "100644",
+        "git_blob": "e86a93eedb87b56809977b1c038958c41e70a6a8",
+        "bytes": 394,
+        "sha256": "ec5124c4f8f1db6d0f8a0d83ad6a62c28646d34c47740f706d1b47871480661d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/__init__.py",
+        "mode": "100644",
+        "git_blob": "f3070404ece65e7eb26d4cfbc1ce11eb7f02d57c",
+        "bytes": 401,
+        "sha256": "f9db2edfae16c1062a74fcff49d6b5a68b25e35b108413cb1b2bab115ef9dcaa"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/assemble.py",
+        "mode": "100644",
+        "git_blob": "c90193c4aceba2ab971cc960fbf370a775beaa64",
+        "bytes": 401,
+        "sha256": "ebbc9d87df2283da9e055be5b2db79187791a95043faa2311961d95be17e890d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/escaping.py",
+        "mode": "100644",
+        "git_blob": "a33d2f6e6bc0840f3037f7a6376cabf581251c87",
+        "bytes": 401,
+        "sha256": "9b910e3cc9e6d3bdbb20824420d8a2a599e12f3a300e0dffb9674a8696db0ca8"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/json_report.py",
+        "mode": "100644",
+        "git_blob": "fa7905d6743818af64d7d61b0a5bfcf5be17159a",
+        "bytes": 404,
+        "sha256": "5e5b41e8e1a1f0c6d731a22d288905f8ad5d969e6904f374487be1d54bec26dc"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/markdown_report.py",
+        "mode": "100644",
+        "git_blob": "c6c31013559720421645b69c756e7cb137a28c33",
+        "bytes": 408,
+        "sha256": "e2af7736cc1254fd6f4ad4366ed24e6fc6163e2761c17c1cce8f48307a83ca7e"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/__init__.py",
+        "mode": "100644",
+        "git_blob": "830e640c62a1ce89f5425a17c9f225332d24a751",
+        "bytes": 396,
+        "sha256": "6bcbe18cb7295bd3339cf426931bdb29ed89edb348575d5deb070f008dec72c7"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/boundary.py",
+        "mode": "100644",
+        "git_blob": "1085dc9c3158dae72bcde4d59e198236dc8587e2",
+        "bytes": 9114,
+        "sha256": "a7e34fea2ad313062e85fbc92b59c30cbf9ffd826d16e64105cfec050b966bb4"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/diagnostics.py",
+        "mode": "100644",
+        "git_blob": "623a4949ab4495044a0ed3e6db0c80457cdcb97c",
+        "bytes": 5455,
+        "sha256": "258469b4580fb6761851daba412c5318e7677395c67e514502f5673501958f4d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/disclosure.py",
+        "mode": "100644",
+        "git_blob": "b543c75e314fc21b09799ed32ca913cf03d33157",
+        "bytes": 398,
+        "sha256": "a9cf0d4b24eb4ddaa239747fc487a91aaf2708f8bd9954035dd42536b1c15b11"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/resources.py",
+        "mode": "100644",
+        "git_blob": "f27b66d3a2e073aded7f31c6fb30ebff4db90d93",
+        "bytes": 4838,
+        "sha256": "ba17e38172307cdc1021d893977575b42f493145b0c797687407d3d2315699ec"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/__init__.py",
+        "mode": "100644",
+        "git_blob": "775fff4175affb1c95a682423fc9c06317321e8e",
+        "bytes": 448,
+        "sha256": "0688a44d77c520368899546cc30531aad2849443c12941b536539bab5aac218e"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/limits.py",
+        "mode": "100644",
+        "git_blob": "ddd8bf20b14db5775bb59ff3b5aad531c455a41f",
+        "bytes": 4187,
+        "sha256": "e1b24bf8aacc3ea25090ae5a5e0bcf839b3f0980d8832cb4dfc0f2dbc432e7fa"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/references.py",
+        "mode": "100644",
+        "git_blob": "25040fe157ec1cc939a0e742c7818d493f8992e7",
+        "bytes": 25300,
+        "sha256": "7ab63627c068b38364f5c47a6731903fc55bc9d86318bed4f182d9602418df7b"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/semantics.py",
+        "mode": "100644",
+        "git_blob": "c15eefa1b305b78de02687e9efb21d6d64dab5dd",
+        "bytes": 12732,
+        "sha256": "12fc6d7132279af0de76839e2fff11c887ebb0bd82d1c19e3013fb5c12a76f0d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/structure.py",
+        "mode": "100644",
+        "git_blob": "24eb56915d8bd561abdf64d4773d486db9fb18e7",
+        "bytes": 21084,
+        "sha256": "bf2e61a236539b4b8bada935b39c46203bb8ccad4102e79730e9f84ba52fa315"
+      },
+      {
+        "path": "tests/contract/README.md",
+        "mode": "100644",
+        "git_blob": "c6125c2a0be9277f150e6580f54ea0f1ee05f5ad",
+        "bytes": 1558,
+        "sha256": "2ae135e0af60280fdb9f52d4f1a523cb97f7f06d161b8b8735198ad52db38d5d"
+      },
+      {
+        "path": "tests/contract/test_assertion_contract.py",
+        "mode": "100644",
+        "git_blob": "e9211406040d7463690780af6dba87840931296b",
+        "bytes": 7508,
+        "sha256": "042ccafe57679ba35a89abea8a99623690090549b5fb3a2fc5236dba295c34ed"
+      },
+      {
+        "path": "tests/contract/test_bundle_contract.py",
+        "mode": "100644",
+        "git_blob": "f659eda27dbc59e13f4bb4e70d65dff85d4ef691",
+        "bytes": 9880,
+        "sha256": "2ccd78db163e1366fe689c09163fe2452f63513e5fa2a0de973a9ccb81a6fdf8"
+      },
+      {
+        "path": "tests/contract/test_evidence_basis.py",
+        "mode": "100644",
+        "git_blob": "39673c47cdca2888d2e37bd81e4b704cd04c9021",
+        "bytes": 4252,
+        "sha256": "c3ac52a65f4bdf92f10431d0c4838735f711d11887f05396688306848f698569"
+      },
+      {
+        "path": "tests/contract/test_input_schema_mapping.py",
+        "mode": "100644",
+        "git_blob": "8dd2295c73dce1cc54c488c3d13e2ecc6afe7fc7",
+        "bytes": 17721,
+        "sha256": "3efeba61075b88ee2146929017234f74d8c1738ba1840ea6c89b78beee494352"
+      },
+      {
+        "path": "tests/contract/test_normalization_profile.py",
+        "mode": "100644",
+        "git_blob": "eb871ee37de150e0f55d21a9353d8a8c9092d2d0",
+        "bytes": 10017,
+        "sha256": "26f01d230f349995334b6892285def1774dcd10051a3dc7a05d9a4cd424e4a8d"
+      },
+      {
+        "path": "tests/contract/test_observability_preparation.py",
+        "mode": "100644",
+        "git_blob": "adcfb11b0328861f0fd92cb1e62fbf01134c8794",
+        "bytes": 8908,
+        "sha256": "68397d1861968c5142d28ae7f09af01fb58beacc99df7f6d93e95b4568081f47"
+      },
+      {
+        "path": "tests/contract/test_phase2_transition.py",
+        "mode": "100644",
+        "git_blob": "aff72a8f3726f14c2a446b460312d56af8eb92e8",
+        "bytes": 43186,
+        "sha256": "1e49f1efdbe2fd8fdc26442167800871d06ac7b6f57e442920a48250c80d8f04"
+      },
+      {
+        "path": "tests/contract/test_temporal_contract.py",
+        "mode": "100644",
+        "git_blob": "514a7c68c797456a46fbabbb932c10e30bed552f",
+        "bytes": 5275,
+        "sha256": "a900f41109fd5688b636cad6cea7f2777a841ddf17a7c3b86fa0cc8d91efce10"
+      },
+      {
+        "path": "tests/contract/test_typed_records.py",
+        "mode": "100644",
+        "git_blob": "d8fb74118b403455ca269d541830ba256bdea05f",
+        "bytes": 22488,
+        "sha256": "be6ed6b73c6f936dcc774f88d11b29b038f75f33676f3b2225de64d9da06a83a"
+      },
+      {
+        "path": "tests/fixtures/README.md",
+        "mode": "100644",
+        "git_blob": "01ceda3ecd834b4aa52ab865658755822c2385fe",
+        "bytes": 5421,
+        "sha256": "98367561c6665e16a8cab1431323d5dab0946ee334928ff553f5b70a04e50921"
+      },
+      {
+        "path": "tests/fixtures/adversarial/case_index.json",
+        "mode": "100644",
+        "git_blob": "5116f0f27ed8a9c219c04a3a57203857737e1803",
+        "bytes": 23124,
+        "sha256": "2f50e90a8229dfe3613385fa80730fa049ae789fbce198a95323660980245cb2"
+      },
+      {
+        "path": "tests/fixtures/hero/H7-01.bundle.json",
+        "mode": "100644",
+        "git_blob": "7123325bdc8c63bf8378f954ab85ccfab0dec524",
+        "bytes": 163904,
+        "sha256": "06d342e4d12457dd186c48d917ed023a30e24f66e4226dd1ebf769a6365c47f7"
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V01.bundle.json",
+        "mode": "100644",
+        "git_blob": "f56951835bc73e08b0971fdcb5d733ffdb5393db",
+        "bytes": 163875,
+        "sha256": "98f3b5b1d8e1214211adbdbdaa5cdcb71e5bb1b226fb26c2615648bcd49e5d09"
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V02.bundle.json",
+        "mode": "100644",
+        "git_blob": "114ce7e38bbc9fb9271587e0e724e3e73bb54b8f",
+        "bytes": 173059,
+        "sha256": "043d7c3652035042ca2602d48efeed250d6599874b7ae7206cd74de23f596663"
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V03.bundle.json",
+        "mode": "100644",
+        "git_blob": "91315d6ef28103d560577d98b62a4d624c3c99fc",
+        "bytes": 171096,
+        "sha256": "213e84942b77e43291ffec5feed4628ef075ddeb9262224c3d326b9402eae013"
+      },
+      {
+        "path": "tests/fixtures/hero/fixture_manifest.json",
+        "mode": "100644",
+        "git_blob": "2d7d9392b95afb782490687ce3c48a54994a5a76",
+        "bytes": 2318,
+        "sha256": "607fad79a03d6388e15cc3384c738cea6a1757574af9d333aca34676d141b7a6"
+      },
+      {
+        "path": "tests/fixtures/micro/case_index.json",
+        "mode": "100644",
+        "git_blob": "2aa9dd6573a118f148a5fe882fc3e26fe3d21619",
+        "bytes": 19388,
+        "sha256": "580ca1560e69bb0b4583821eac3c554d7fd73d8d4cd07c131225de420d088ed9"
+      },
+      {
+        "path": "tests/golden/H7-01.logical.json",
+        "mode": "100644",
+        "git_blob": "26ec01fd6f2c52400560731e0c71753a74755513",
+        "bytes": 27056,
+        "sha256": "bec2d971ded08baeaeb85f3ca340e05e959381540adf944bb437eeef4bf640d5"
+      },
+      {
+        "path": "tests/golden/H7-V01.logical.json",
+        "mode": "100644",
+        "git_blob": "e8b9b01c7844f2b0de29c0acda391b0a946a0083",
+        "bytes": 28111,
+        "sha256": "7cfb2f5d09175e0f658dac6d5db09777eab2b57406312775b18c0796b147b9ac"
+      },
+      {
+        "path": "tests/golden/H7-V02.logical.json",
+        "mode": "100644",
+        "git_blob": "57f55dc447baf92b80795afed1ce48c47f644b01",
+        "bytes": 29361,
+        "sha256": "4bcd1bb23086e475d35830fe01487dde8d4740b5010f59b1da34e4f8445f4134"
+      },
+      {
+        "path": "tests/golden/H7-V03.logical.json",
+        "mode": "100644",
+        "git_blob": "9f74315e6f9efebb937022b1d927b3ba8031d924",
+        "bytes": 29215,
+        "sha256": "44f5315b7a6e50aae7a9f0d800b7c94f6b6a06425473c7982af100822150487d"
+      },
+      {
+        "path": "tests/golden/README.md",
+        "mode": "100644",
+        "git_blob": "583157cdbdab9c4dd29974b64443768c5f338adc",
+        "bytes": 3537,
+        "sha256": "df5a664f6ce0cba56bc61e4af303a7aa88ea96da57ca614bb46b55d50edcbe41"
+      },
+      {
+        "path": "tests/integration/README.md",
+        "mode": "100644",
+        "git_blob": "892d47be0138f21827f7c48a987546da815e0cfa",
+        "bytes": 1557,
+        "sha256": "e41ffc1c4c55d70e5a8d0a708311d97b349362c4a57bb960822091c19b0e7d82"
+      },
+      {
+        "path": "tests/integration/test_preparation_capability_boundary.py",
+        "mode": "100644",
+        "git_blob": "5f122be2c000884dcbd41a81b8ee65d54f84eef5",
+        "bytes": 10163,
+        "sha256": "aaa25f2a0fd256d116599e135d975ba7a77ffb6a6ae468495342ba4e358e74f6"
+      },
+      {
+        "path": "tests/integration/test_preparation_pipeline.py",
+        "mode": "100644",
+        "git_blob": "1cab829c30484663dbf8be0c24d8d4cc1110e4d8",
+        "bytes": 18006,
+        "sha256": "14161e83956f428f7219474da0c37203f32f3ed3591054f2b14a50881cabf0a7"
+      },
+      {
+        "path": "tests/integration/test_prepared_hero_inputs.py",
+        "mode": "100644",
+        "git_blob": "3b762855aa0f7c6b00d725435af3da3dabe1afdf",
+        "bytes": 18443,
+        "sha256": "60eb14b6e0942222721ebed083cb4a2328fef8d79dd9ab22c792666634f4e232"
+      },
+      {
+        "path": "tests/scaffold/test_api_stubs.py",
+        "mode": "100644",
+        "git_blob": "1139225d4e0ef396a4ebaecbc240e208875b28a9",
+        "bytes": 2822,
+        "sha256": "0441d0bbb735e70225331099c5c01688b24af1877eb63ef12796de00bab9974a"
+      },
+      {
+        "path": "tests/scaffold/test_baseline_integrity.py",
+        "mode": "100644",
+        "git_blob": "a3f74c5aa27a8ab53dc56fca56775cee63199473",
+        "bytes": 6561,
+        "sha256": "b345c30ed2775b54e70f51797ad1d4a670799303902d1a0b4a8f3d54329aa0b8"
+      },
+      {
+        "path": "tests/scaffold/test_ci_contract.py",
+        "mode": "100644",
+        "git_blob": "7d9ff60b4518e0afdd8a8af104542f38a6f10351",
+        "bytes": 16455,
+        "sha256": "fe0bab7fc4f99ef585871144aff40e7fd8f5220e50512c9e3e400922fbda575c"
+      },
+      {
+        "path": "tests/scaffold/test_cli_scaffold.py",
+        "mode": "100644",
+        "git_blob": "a2508a053f4a70330862856f22592a6eaca3b4ba",
+        "bytes": 2297,
+        "sha256": "8d69b2d20f8c2e1430ba78ab53076d46b28d9e2a54f2c1357e0cdaaa59164f22"
+      },
+      {
+        "path": "tests/scaffold/test_contract_catalogs.py",
+        "mode": "100644",
+        "git_blob": "47f95486e0eb8fd8c4da75a3576a6f8e5227219f",
+        "bytes": 1782,
+        "sha256": "e5fc45c83b0f7d32d28b127f662aafbd085ca76939aac24c2373d733c9f0cd04"
+      },
+      {
+        "path": "tests/scaffold/test_fixture_integrity.py",
+        "mode": "100644",
+        "git_blob": "a6a470dccc3de83cdd6e6c750d45daa1b378a6f8",
+        "bytes": 29795,
+        "sha256": "4c0de7dbc7e6a6e5c3cd0b9447aef7b96c7411cbc314a54daf773d9fdd3679db"
+      },
+      {
+        "path": "tests/scaffold/test_imports.py",
+        "mode": "100644",
+        "git_blob": "bee59e9a236d26aa333321df2cf7a739f76033ac",
+        "bytes": 1268,
+        "sha256": "3aa77c8d27012d30b4fd836a3697447a59a296874031a784a7b38ce99e44eba0"
+      },
+      {
+        "path": "tests/scaffold/test_layer_boundaries.py",
+        "mode": "100644",
+        "git_blob": "c646f9f1602f5dd15df619237d97561d1d616cc5",
+        "bytes": 844,
+        "sha256": "44e0693b53595466fbd5610d9513e357e935491b25498bab7c39f011ad47475c"
+      },
+      {
+        "path": "tests/scaffold/test_module_manifest.py",
+        "mode": "100644",
+        "git_blob": "9b3e6f3162b12202f0bd2140de5d949afa2b96ad",
+        "bytes": 1562,
+        "sha256": "21e9737638d822c53e71607972bd9b6a7f1fd757f3d7c3a762e6f40c377f8f96"
+      },
+      {
+        "path": "tests/scaffold/test_no_runtime_implementation.py",
+        "mode": "100644",
+        "git_blob": "4af04b90369f3b1af7c55ed80380b68b01f4960c",
+        "bytes": 893,
+        "sha256": "bfb199c7325e8a9b0c63d5dfb777dfb1b5f4bccd172f6da2733a1f1f0572bc7e"
+      },
+      {
+        "path": "tests/scaffold/test_packaging.py",
+        "mode": "100644",
+        "git_blob": "c872c4080d08e331b9253cd3cdd9467050d540a4",
+        "bytes": 11356,
+        "sha256": "cfc891098830d9adf1f2ee3a0c3bcc06e884fb00f356aa5a8e1822feb1aa5d93"
+      },
+      {
+        "path": "tests/security/test_input_capture.py",
+        "mode": "100644",
+        "git_blob": "b2fb018a7ee1b8d0e74b4856e54ccd062dce0d7f",
+        "bytes": 12328,
+        "sha256": "91e9dbaa3981692884cc7942efde32546c69a9e233172e6ed8c9e3796d2201e1"
+      },
+      {
+        "path": "tests/security/test_input_diagnostics.py",
+        "mode": "100644",
+        "git_blob": "143482eed7c904eb234a6346eed3b87cdd153ee3",
+        "bytes": 5982,
+        "sha256": "f03e0d91796d39fcc8d90f0ff87914bd45feab9ad219db56f3f9c59c6dd4dc56"
+      },
+      {
+        "path": "tests/security/test_input_resource_limits.py",
+        "mode": "100644",
+        "git_blob": "1e4ec484a739b41388d265bdf932ffa224557f71",
+        "bytes": 7639,
+        "sha256": "9df86868eb78c5f14ffd3e4977182e08a3785bfbb3f3d737396b2119ae05e466"
+      },
+      {
+        "path": "tests/security/test_preparation_inertness.py",
+        "mode": "100644",
+        "git_blob": "28e21d1413f071e7b141fb78985afe72eb8b0741",
+        "bytes": 10135,
+        "sha256": "310ce83c2234a7f0e08d15b2428c8b9bdd9c025735e6046cb7b26d2b1b78f910"
+      },
+      {
+        "path": "tests/security/test_scaffold_inertness.py",
+        "mode": "100644",
+        "git_blob": "5e1c7c60ac85a3ed91e2d4c6cee9aab5ed81614d",
+        "bytes": 14859,
+        "sha256": "7179bb00e004e833d7448172cae2068f912e25adb3860c7d5fba9d46396619ba"
+      },
+      {
+        "path": "tests/security/test_scaffold_no_native_loading.py",
+        "mode": "100644",
+        "git_blob": "69d06755fa425d8508369b744277b2f47e4694af",
+        "bytes": 1402,
+        "sha256": "add4a523f73deba8380a257a1846d8c044249996ec88ca56be1f4903563a96a6"
+      },
+      {
+        "path": "tests/security/test_scaffold_no_network.py",
+        "mode": "100644",
+        "git_blob": "0d9ee870c917aa332a81f13cad8d06d769b8b48a",
+        "bytes": 1253,
+        "sha256": "fafa792547d3e3a5b8800308a9b63869b063dd8baa1ef01ab044203760ca23b2"
+      },
+      {
+        "path": "tests/unit/README.md",
+        "mode": "100644",
+        "git_blob": "0872a045c62640d346533b419f762033119c5d29",
+        "bytes": 1520,
+        "sha256": "780ce188f9f9ae364008304bd844dd51c81bee01d607a27b457c1e54f6535078"
+      },
+      {
+        "path": "tests/unit/test_evidence_domain_index.py",
+        "mode": "100644",
+        "git_blob": "d05873f4417f87e87a87ec40a0a3487c20b79be8",
+        "bytes": 9990,
+        "sha256": "addc34a1d7252f0d2aabe34239b626ffa497982eb43bf09db6a75593600ec730"
+      },
+      {
+        "path": "tests/unit/test_input_decoding.py",
+        "mode": "100644",
+        "git_blob": "0cfdd5ae61605b598d2fe52d8fae7460ac4e410e",
+        "bytes": 8381,
+        "sha256": "7852ae877408b4f1e56e98235f8082553bb9a5a84f095712b776a1bd09977541"
+      },
+      {
+        "path": "tests/unit/test_reference_validation.py",
+        "mode": "100644",
+        "git_blob": "88dd1fed78eb3c30ce6a406e8509238206556b17",
+        "bytes": 7373,
+        "sha256": "9bc483127d8657ba8209789985f9d6cdc725ca98545ab49328a0c44b1145fd69"
+      },
+      {
+        "path": "tests/unit/test_value_capture.py",
+        "mode": "100644",
+        "git_blob": "77021bab9a31cea05231f60d492f47b128b011a9",
+        "bytes": 9176,
+        "sha256": "e42c870f28d0f8216ad365b306eb77acd9116297f986a37ca10a97f6a7d64137"
+      },
+      {
+        "path": "tools/check_phase0_baseline.py",
+        "mode": "100644",
+        "git_blob": "307919a24242e4a1743c0608d6f913610805e225",
+        "bytes": 5341,
+        "sha256": "3c125bf482203be5f385bbe146fb597f80b2610968d1923bff075f722224eb8e"
+      },
+      {
+        "path": "tools/check_scaffold_boundary.py",
+        "mode": "100644",
+        "git_blob": "09c5c63f84bcab90ea8fbeeb5d1dfbb99bd6832d",
+        "bytes": 23894,
+        "sha256": "770583727e33e1f10c87050f0cdcd6e641f9dd6676efb0087efcf82f07a98a74"
+      }
+    ]
+  },
+  "adopted_plan": {
+    "path": "PHASE_2_PLAN.md",
+    "revision": "0.1",
+    "acceptance_merge": "eb730dda31d189c8487b5247a45bae47b678821b",
+    "sha256": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
+    "current_sections": [
+      6,
+      15,
+      16,
+      17,
+      18
+    ]
+  },
+  "historical_path_audit": {
+    "method": "Read fixed Git objects for every unit base, candidate, intermediate commit and merge; parse approved path lists and inspect fixed named repair records. No repository writes or new runtime tests. Historical ledger statements are marked separately from newly recomputed byte/path checks.",
+    "units": [
+      {
+        "unit": "P2-W01",
+        "review_pr": 10,
+        "status": "accepted_and_merged",
+        "base": "eb730dda31d189c8487b5247a45bae47b678821b",
+        "candidate": "8e3af5e5b5f4ca9879add9bdd934603e307e6abf",
+        "candidate_tree": "ac8bb232d929d18fc56fc053be1b37fb354957ce",
+        "merge": "41e7ba2f8046b3791f860313ea3ad54dcd4cb25c",
+        "merge_tree_equals_candidate": true,
+        "plan_allowed_paths": [
+          ".github/workflows/phase1-ci.yml",
+          "PHASE_2_PROGRESS.md",
+          "README.md",
+          "phase2/ci_review.md",
+          "phase2/entry_manifest.json",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "tests/contract/test_phase2_transition.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/scaffold/test_contract_catalogs.py",
+          "tests/scaffold/test_imports.py",
+          "tests/scaffold/test_layer_boundaries.py",
+          "tests/scaffold/test_module_manifest.py",
+          "tests/scaffold/test_no_runtime_implementation.py",
+          "tools/check_scaffold_boundary.py"
+        ],
+        "named_repair_extra_paths": {},
+        "actual_changed_paths": [
+          ".github/workflows/phase1-ci.yml",
+          "PHASE_2_PROGRESS.md",
+          "README.md",
+          "phase2/ci_review.md",
+          "phase2/entry_manifest.json",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "tests/contract/test_phase2_transition.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/scaffold/test_contract_catalogs.py",
+          "tests/scaffold/test_imports.py",
+          "tests/scaffold/test_layer_boundaries.py",
+          "tests/scaffold/test_module_manifest.py",
+          "tests/scaffold/test_no_runtime_implementation.py",
+          "tools/check_scaffold_boundary.py"
+        ],
+        "actual_changed_path_count": 16,
+        "path_authority": {
+          ".github/workflows/phase1-ci.yml": "PHASE_2_PLAN.md",
+          "PHASE_2_PROGRESS.md": "PHASE_2_PLAN.md",
+          "README.md": "PHASE_2_PLAN.md",
+          "phase2/ci_review.md": "PHASE_2_PLAN.md",
+          "phase2/entry_manifest.json": "PHASE_2_PLAN.md",
+          "phase2/implementation_evidence.json": "PHASE_2_PLAN.md",
+          "phase2/module_policy.json": "PHASE_2_PLAN.md",
+          "phase2/transition_ledger.md": "PHASE_2_PLAN.md",
+          "tests/contract/test_phase2_transition.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_ci_contract.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_contract_catalogs.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_imports.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_layer_boundaries.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_module_manifest.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_no_runtime_implementation.py": "PHASE_2_PLAN.md",
+          "tools/check_scaffold_boundary.py": "PHASE_2_PLAN.md"
+        },
+        "unauthorized_final_paths": [],
+        "unauthorized_intermediate_paths": [],
+        "all_intermediate_changed_paths": [
+          ".github/workflows/phase1-ci.yml",
+          "PHASE_2_PROGRESS.md",
+          "README.md",
+          "phase2/ci_review.md",
+          "phase2/entry_manifest.json",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "tests/contract/test_phase2_transition.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/scaffold/test_contract_catalogs.py",
+          "tests/scaffold/test_imports.py",
+          "tests/scaffold/test_layer_boundaries.py",
+          "tests/scaffold/test_module_manifest.py",
+          "tests/scaffold/test_no_runtime_implementation.py",
+          "tools/check_scaffold_boundary.py"
+        ],
+        "commits": [
+          {
+            "commit": "4d4f31184c58b8d5f938194361f18116ee62cb50",
+            "subject": "P2-W01: preserve accepted baselines and introduce phase-aware cumulative controls",
+            "changed_paths": [
+              ".github/workflows/phase1-ci.yml",
+              "PHASE_2_PROGRESS.md",
+              "README.md",
+              "phase2/ci_review.md",
+              "phase2/entry_manifest.json",
+              "phase2/implementation_evidence.json",
+              "phase2/module_policy.json",
+              "phase2/transition_ledger.md",
+              "tests/contract/test_phase2_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/scaffold/test_contract_catalogs.py",
+              "tests/scaffold/test_imports.py",
+              "tests/scaffold/test_layer_boundaries.py",
+              "tests/scaffold/test_module_manifest.py",
+              "tests/scaffold/test_no_runtime_implementation.py",
+              "tools/check_scaffold_boundary.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "8e3af5e5b5f4ca9879add9bdd934603e307e6abf",
+            "subject": "docs: record verified four-row P2-W01 execution and final-head gate",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md"
+            ],
+            "unauthorized_paths": []
+          }
+        ]
+      },
+      {
+        "unit": "P2-W02",
+        "review_pr": 11,
+        "status": "accepted_and_merged",
+        "base": "41e7ba2f8046b3791f860313ea3ad54dcd4cb25c",
+        "candidate": "d6f6a42663f5857e99f90cec3fd88e923cd28790",
+        "candidate_tree": "d30f18a6f55cbe8aedebfb3b83e96ef8eae2ae8c",
+        "merge": "d3e314c9da12ad886b09885bbc9b71166c24d10b",
+        "merge_tree_equals_candidate": true,
+        "plan_allowed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/input_contract_coverage.json",
+          "phase2/module_policy.json",
+          "schemas/README.md",
+          "schemas/bundle/README.md",
+          "schemas/bundle/sit-bundle-0.1.schema.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/constants.py",
+          "src/source_integrity_toolkit/contracts/evidence.py",
+          "src/source_integrity_toolkit/contracts/execution.py",
+          "src/source_integrity_toolkit/contracts/report.py",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_evidence_basis.py",
+          "tests/contract/test_input_schema_mapping.py"
+        ],
+        "named_repair_extra_paths": {
+          "P2-W02-R01": [
+            "tests/scaffold/test_ci_contract.py",
+            "tests/security/test_scaffold_inertness.py"
+          ]
+        },
+        "actual_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/input_contract_coverage.json",
+          "phase2/module_policy.json",
+          "schemas/README.md",
+          "schemas/bundle/README.md",
+          "schemas/bundle/sit-bundle-0.1.schema.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/constants.py",
+          "src/source_integrity_toolkit/contracts/evidence.py",
+          "src/source_integrity_toolkit/contracts/execution.py",
+          "src/source_integrity_toolkit/contracts/report.py",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_evidence_basis.py",
+          "tests/contract/test_input_schema_mapping.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_scaffold_inertness.py"
+        ],
+        "actual_changed_path_count": 17,
+        "path_authority": {
+          "PHASE_2_PROGRESS.md": "PHASE_2_PLAN.md",
+          "phase2/implementation_evidence.json": "PHASE_2_PLAN.md",
+          "phase2/input_contract_coverage.json": "PHASE_2_PLAN.md",
+          "phase2/module_policy.json": "PHASE_2_PLAN.md",
+          "schemas/README.md": "PHASE_2_PLAN.md",
+          "schemas/bundle/README.md": "PHASE_2_PLAN.md",
+          "schemas/bundle/sit-bundle-0.1.schema.json": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/bundle.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/constants.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/evidence.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/execution.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/report.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_bundle_contract.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_evidence_basis.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_input_schema_mapping.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_ci_contract.py": "P2-W02-R01",
+          "tests/security/test_scaffold_inertness.py": "P2-W02-R01"
+        },
+        "unauthorized_final_paths": [],
+        "unauthorized_intermediate_paths": [],
+        "all_intermediate_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/input_contract_coverage.json",
+          "phase2/module_policy.json",
+          "schemas/README.md",
+          "schemas/bundle/README.md",
+          "schemas/bundle/sit-bundle-0.1.schema.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/constants.py",
+          "src/source_integrity_toolkit/contracts/evidence.py",
+          "src/source_integrity_toolkit/contracts/execution.py",
+          "src/source_integrity_toolkit/contracts/report.py",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_evidence_basis.py",
+          "tests/contract/test_input_schema_mapping.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_scaffold_inertness.py"
+        ],
+        "commits": [
+          {
+            "commit": "f7a1f9f69351951162142d4bf41a554de89dcb53",
+            "subject": "P2-W02: source-bound immutable representations and input structure schema",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json",
+              "phase2/input_contract_coverage.json",
+              "phase2/module_policy.json",
+              "schemas/README.md",
+              "schemas/bundle/README.md",
+              "schemas/bundle/sit-bundle-0.1.schema.json",
+              "src/source_integrity_toolkit/contracts/bundle.py",
+              "src/source_integrity_toolkit/contracts/constants.py",
+              "src/source_integrity_toolkit/contracts/evidence.py",
+              "src/source_integrity_toolkit/contracts/execution.py",
+              "src/source_integrity_toolkit/contracts/report.py",
+              "tests/contract/test_bundle_contract.py",
+              "tests/contract/test_evidence_basis.py",
+              "tests/contract/test_input_schema_mapping.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "ff6c1eb401590454069e23bcdacaa7d4d627d2df",
+            "subject": "P2-W02: restore omitted closing brace in transmitted module-policy JSON",
+            "changed_paths": [
+              "phase2/module_policy.json"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "22d43e003eae9b84ed5868696ec3847216a8a16f",
+            "subject": "P2-W02: record component passes and cumulative security-preload blocker",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "405b16f1d8d713cd6776fe16793757eb313bbdf2",
+            "subject": "P2-W02-R01: preload dataclasses and constrain the approved test-scope exception",
+            "changed_paths": [
+              "tests/contract/test_bundle_contract.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_scaffold_inertness.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "d6f6a42663f5857e99f90cec3fd88e923cd28790",
+            "subject": "P2-W02-R01: record four-row 374-test pass and retain final-head verification gate",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          }
+        ]
+      },
+      {
+        "unit": "P2-W03",
+        "review_pr": 12,
+        "status": "accepted_and_merged",
+        "base": "d3e314c9da12ad886b09885bbc9b71166c24d10b",
+        "candidate": "4189edc62a9c321dd6eed71c5106cea7311907e6",
+        "candidate_tree": "ad16a08dc2382b3d007038c4861d010f52a15e4b",
+        "merge": "e292bf6023a59d3019221a768d9f2d4ac5c4d4cf",
+        "merge_tree_equals_candidate": true,
+        "plan_allowed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/execution.py",
+          "src/source_integrity_toolkit/runtime/diagnostics.py",
+          "src/source_integrity_toolkit/runtime/resources.py",
+          "src/source_integrity_toolkit/validation/limits.py",
+          "tests/contract/test_normalization_profile.py",
+          "tests/security/test_input_diagnostics.py",
+          "tests/security/test_input_resource_limits.py"
+        ],
+        "named_repair_extra_paths": {},
+        "actual_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/execution.py",
+          "src/source_integrity_toolkit/runtime/diagnostics.py",
+          "src/source_integrity_toolkit/runtime/resources.py",
+          "src/source_integrity_toolkit/validation/limits.py",
+          "tests/contract/test_normalization_profile.py",
+          "tests/security/test_input_diagnostics.py",
+          "tests/security/test_input_resource_limits.py"
+        ],
+        "actual_changed_path_count": 11,
+        "path_authority": {
+          "PHASE_2_PROGRESS.md": "PHASE_2_PLAN.md",
+          "phase2/implementation_evidence.json": "PHASE_2_PLAN.md",
+          "phase2/module_policy.json": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/bundle.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/execution.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/runtime/diagnostics.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/runtime/resources.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/validation/limits.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_normalization_profile.py": "PHASE_2_PLAN.md",
+          "tests/security/test_input_diagnostics.py": "PHASE_2_PLAN.md",
+          "tests/security/test_input_resource_limits.py": "PHASE_2_PLAN.md"
+        },
+        "unauthorized_final_paths": [],
+        "unauthorized_intermediate_paths": [],
+        "all_intermediate_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/execution.py",
+          "src/source_integrity_toolkit/runtime/diagnostics.py",
+          "src/source_integrity_toolkit/runtime/resources.py",
+          "src/source_integrity_toolkit/validation/limits.py",
+          "tests/contract/test_normalization_profile.py",
+          "tests/security/test_input_diagnostics.py",
+          "tests/security/test_input_resource_limits.py"
+        ],
+        "commits": [
+          {
+            "commit": "9dd2d1050f9af1a35e03d2937e15503c1b441a53",
+            "subject": "P2-W03: bounded scalar measurement, preparation ledgers and safe stops",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json",
+              "phase2/module_policy.json",
+              "src/source_integrity_toolkit/contracts/bundle.py",
+              "src/source_integrity_toolkit/contracts/execution.py",
+              "src/source_integrity_toolkit/runtime/diagnostics.py",
+              "src/source_integrity_toolkit/runtime/resources.py",
+              "src/source_integrity_toolkit/validation/limits.py",
+              "tests/contract/test_normalization_profile.py",
+              "tests/security/test_input_diagnostics.py",
+              "tests/security/test_input_resource_limits.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "0102ff8483250f9420b15f400eb60bc9fff5e627",
+            "subject": "P2-W03: preserve the accepted RUNTIME_BOUNDARY owner of input limits",
+            "changed_paths": [
+              "src/source_integrity_toolkit/validation/limits.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "4189edc62a9c321dd6eed71c5106cea7311907e6",
+            "subject": "P2-W03: record inspected four-profile cumulative evidence and final gate",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          }
+        ]
+      },
+      {
+        "unit": "P2-W04",
+        "review_pr": 13,
+        "status": "accepted_and_merged",
+        "base": "e292bf6023a59d3019221a768d9f2d4ac5c4d4cf",
+        "candidate": "80ea8ab34f5881dcb8b6a307391464c752aa6310",
+        "candidate_tree": "351ac074ac2d988a59758b6584168fef9af989a6",
+        "merge": "a1f102d82b7321f47df98f2672b91491cbd7fc9f",
+        "merge_tree_equals_candidate": true,
+        "plan_allowed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/io/input_file.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/validation/limits.py",
+          "src/source_integrity_toolkit/validation/structure.py",
+          "tests/contract/test_normalization_profile.py",
+          "tests/security/test_input_capture.py",
+          "tests/unit/test_input_decoding.py",
+          "tests/unit/test_value_capture.py"
+        ],
+        "named_repair_extra_paths": {
+          "P2-W04-R01": [
+            "src/source_integrity_toolkit/contracts/execution.py",
+            "src/source_integrity_toolkit/runtime/diagnostics.py",
+            "tests/contract/test_bundle_contract.py",
+            "tests/scaffold/test_ci_contract.py"
+          ]
+        },
+        "actual_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/execution.py",
+          "src/source_integrity_toolkit/io/input_file.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/runtime/diagnostics.py",
+          "src/source_integrity_toolkit/validation/limits.py",
+          "src/source_integrity_toolkit/validation/structure.py",
+          "tests/contract/test_bundle_contract.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_input_capture.py",
+          "tests/unit/test_input_decoding.py",
+          "tests/unit/test_value_capture.py"
+        ],
+        "actual_changed_path_count": 15,
+        "path_authority": {
+          "PHASE_2_PROGRESS.md": "PHASE_2_PLAN.md",
+          "phase2/implementation_evidence.json": "PHASE_2_PLAN.md",
+          "phase2/module_policy.json": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/bundle.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/execution.py": "P2-W04-R01",
+          "src/source_integrity_toolkit/io/input_file.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/runtime/boundary.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/runtime/diagnostics.py": "P2-W04-R01",
+          "src/source_integrity_toolkit/validation/limits.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/validation/structure.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_bundle_contract.py": "P2-W04-R01",
+          "tests/scaffold/test_ci_contract.py": "P2-W04-R01",
+          "tests/security/test_input_capture.py": "PHASE_2_PLAN.md",
+          "tests/unit/test_input_decoding.py": "PHASE_2_PLAN.md",
+          "tests/unit/test_value_capture.py": "PHASE_2_PLAN.md"
+        },
+        "unauthorized_final_paths": [],
+        "unauthorized_intermediate_paths": [],
+        "all_intermediate_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/execution.py",
+          "src/source_integrity_toolkit/io/input_file.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/runtime/diagnostics.py",
+          "src/source_integrity_toolkit/validation/limits.py",
+          "src/source_integrity_toolkit/validation/structure.py",
+          "tests/contract/test_bundle_contract.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_input_capture.py",
+          "tests/unit/test_input_decoding.py",
+          "tests/unit/test_value_capture.py"
+        ],
+        "commits": [
+          {
+            "commit": "9333c4e8868bdd1209cb773904b1d2603f5b152f",
+            "subject": "docs: record W03 acceptance and bounded W04 cycle-diagnostic intake blocker",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "940c34f382fd46444f70e4fee64dad6e2ebc9ee1",
+            "subject": "P2-W04: implement bounded UTF-8 and caller capture with approved R01",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json",
+              "phase2/module_policy.json",
+              "src/source_integrity_toolkit/contracts/bundle.py",
+              "src/source_integrity_toolkit/contracts/execution.py",
+              "src/source_integrity_toolkit/io/input_file.py",
+              "src/source_integrity_toolkit/runtime/boundary.py",
+              "src/source_integrity_toolkit/runtime/diagnostics.py",
+              "src/source_integrity_toolkit/validation/limits.py",
+              "src/source_integrity_toolkit/validation/structure.py",
+              "tests/contract/test_bundle_contract.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py",
+              "tests/unit/test_input_decoding.py",
+              "tests/unit/test_value_capture.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "80ea8ab34f5881dcb8b6a307391464c752aa6310",
+            "subject": "docs: record P2-W04 four-profile code-head evidence and final gate",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          }
+        ]
+      },
+      {
+        "unit": "P2-W05",
+        "review_pr": 14,
+        "status": "accepted_and_merged",
+        "base": "a1f102d82b7321f47df98f2672b91491cbd7fc9f",
+        "candidate": "bf9d7152569495f3eca8fd6b514fe98f6a4bd1f4",
+        "candidate_tree": "3c3217607a7a26a13fe9f8fdea1fe60b0e50331c",
+        "merge": "913f0a3d56b6c0f969e8a36ef7aa909e8ecab470",
+        "merge_tree_equals_candidate": true,
+        "plan_allowed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/input_contract_coverage.json",
+          "phase2/module_policy.json",
+          "src/source_integrity_toolkit/contracts/bundle.py",
+          "src/source_integrity_toolkit/contracts/evidence.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/validation/references.py",
+          "src/source_integrity_toolkit/validation/semantics.py",
+          "src/source_integrity_toolkit/validation/structure.py",
+          "tests/contract/test_assertion_contract.py",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_evidence_basis.py",
+          "tests/contract/test_temporal_contract.py",
+          "tests/contract/test_typed_records.py",
+          "tests/integration/test_prepared_hero_inputs.py",
+          "tests/unit/test_reference_validation.py"
+        ],
+        "named_repair_extra_paths": {
+          "P2-W05-R01": [
+            "phase2/transition_ledger.md",
+            "tests/scaffold/test_ci_contract.py",
+            "tests/security/test_input_capture.py",
+            "tests/unit/test_input_decoding.py",
+            "tests/unit/test_value_capture.py"
+          ],
+          "P2-W05-R02": [
+            "tests/contract/test_input_schema_mapping.py"
+          ]
+        },
+        "actual_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/input_contract_coverage.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "src/source_integrity_toolkit/contracts/evidence.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/validation/references.py",
+          "src/source_integrity_toolkit/validation/semantics.py",
+          "src/source_integrity_toolkit/validation/structure.py",
+          "tests/contract/test_assertion_contract.py",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_input_schema_mapping.py",
+          "tests/contract/test_temporal_contract.py",
+          "tests/contract/test_typed_records.py",
+          "tests/integration/test_prepared_hero_inputs.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_input_capture.py",
+          "tests/unit/test_input_decoding.py",
+          "tests/unit/test_reference_validation.py",
+          "tests/unit/test_value_capture.py"
+        ],
+        "actual_changed_path_count": 21,
+        "path_authority": {
+          "PHASE_2_PROGRESS.md": "PHASE_2_PLAN.md",
+          "phase2/implementation_evidence.json": "PHASE_2_PLAN.md",
+          "phase2/input_contract_coverage.json": "PHASE_2_PLAN.md",
+          "phase2/module_policy.json": "PHASE_2_PLAN.md",
+          "phase2/transition_ledger.md": "P2-W05-R01",
+          "src/source_integrity_toolkit/contracts/evidence.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/runtime/boundary.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/validation/references.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/validation/semantics.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/validation/structure.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_assertion_contract.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_bundle_contract.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_input_schema_mapping.py": "P2-W05-R02",
+          "tests/contract/test_temporal_contract.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_typed_records.py": "PHASE_2_PLAN.md",
+          "tests/integration/test_prepared_hero_inputs.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_ci_contract.py": "P2-W05-R01",
+          "tests/security/test_input_capture.py": "P2-W05-R01",
+          "tests/unit/test_input_decoding.py": "P2-W05-R01",
+          "tests/unit/test_reference_validation.py": "PHASE_2_PLAN.md",
+          "tests/unit/test_value_capture.py": "P2-W05-R01"
+        },
+        "unauthorized_final_paths": [],
+        "unauthorized_intermediate_paths": [],
+        "all_intermediate_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/input_contract_coverage.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "src/source_integrity_toolkit/contracts/evidence.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/validation/references.py",
+          "src/source_integrity_toolkit/validation/semantics.py",
+          "src/source_integrity_toolkit/validation/structure.py",
+          "tests/contract/test_assertion_contract.py",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_input_schema_mapping.py",
+          "tests/contract/test_temporal_contract.py",
+          "tests/contract/test_typed_records.py",
+          "tests/integration/test_prepared_hero_inputs.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_input_capture.py",
+          "tests/unit/test_input_decoding.py",
+          "tests/unit/test_reference_validation.py",
+          "tests/unit/test_value_capture.py"
+        ],
+        "commits": [
+          {
+            "commit": "fb698272165303660092f02974a99ebbb2748a4c",
+            "subject": "docs: record W04 acceptance and W05 capture-test transition gate",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "59fa7ad5a97133c80e97d1f8f019b1e95343ee63",
+            "subject": "test: materialize approved P2-W05-R01 capture-test migration",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/transition_ledger.md",
+              "src/source_integrity_toolkit/runtime/boundary.py",
+              "tests/contract/test_bundle_contract.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py",
+              "tests/unit/test_input_decoding.py",
+              "tests/unit/test_value_capture.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "655f99e35052d56790f28d0c7971515c92b9ea6d",
+            "subject": "docs: verify remote R01 migration and record W05 coverage-status transition gate",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/module_policy.json"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "8e6c3df38267b21db8d11b5d047c8883c430648c",
+            "subject": "feat: implement bounded P2-W05 input preparation with approved R01 and R02",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json",
+              "phase2/input_contract_coverage.json",
+              "phase2/module_policy.json",
+              "phase2/transition_ledger.md",
+              "src/source_integrity_toolkit/contracts/evidence.py",
+              "src/source_integrity_toolkit/runtime/boundary.py",
+              "src/source_integrity_toolkit/validation/references.py",
+              "src/source_integrity_toolkit/validation/semantics.py",
+              "src/source_integrity_toolkit/validation/structure.py",
+              "tests/contract/test_assertion_contract.py",
+              "tests/contract/test_bundle_contract.py",
+              "tests/contract/test_input_schema_mapping.py",
+              "tests/contract/test_temporal_contract.py",
+              "tests/contract/test_typed_records.py",
+              "tests/integration/test_prepared_hero_inputs.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py",
+              "tests/unit/test_reference_validation.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "bf9d7152569495f3eca8fd6b514fe98f6a4bd1f4",
+            "subject": "docs: record inspected W05 four-profile code-head verification",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          }
+        ]
+      },
+      {
+        "unit": "P2-W06",
+        "review_pr": 15,
+        "status": "accepted_and_merged",
+        "base": "913f0a3d56b6c0f969e8a36ef7aa909e8ecab470",
+        "candidate": "d02d32051c595ea1aa64652f536e497d93be2763",
+        "candidate_tree": "c5be1ed9b974e8b35616c85ca8cebff008fe58ae",
+        "merge": "4f55252d98f9b57975c2bc241c9079ac259a53cd",
+        "merge_tree_equals_candidate": true,
+        "plan_allowed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/prerequisite_partition.json",
+          "src/source_integrity_toolkit/contracts/report.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/validation/semantics.py",
+          "tests/contract/test_observability_preparation.py",
+          "tests/integration/test_preparation_capability_boundary.py",
+          "tests/unit/test_evidence_domain_index.py"
+        ],
+        "named_repair_extra_paths": {},
+        "actual_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/prerequisite_partition.json",
+          "src/source_integrity_toolkit/contracts/report.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/validation/semantics.py",
+          "tests/contract/test_observability_preparation.py",
+          "tests/integration/test_preparation_capability_boundary.py",
+          "tests/unit/test_evidence_domain_index.py"
+        ],
+        "actual_changed_path_count": 10,
+        "path_authority": {
+          "PHASE_2_PROGRESS.md": "PHASE_2_PLAN.md",
+          "phase2/implementation_evidence.json": "PHASE_2_PLAN.md",
+          "phase2/module_policy.json": "PHASE_2_PLAN.md",
+          "phase2/prerequisite_partition.json": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/contracts/report.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/runtime/boundary.py": "PHASE_2_PLAN.md",
+          "src/source_integrity_toolkit/validation/semantics.py": "PHASE_2_PLAN.md",
+          "tests/contract/test_observability_preparation.py": "PHASE_2_PLAN.md",
+          "tests/integration/test_preparation_capability_boundary.py": "PHASE_2_PLAN.md",
+          "tests/unit/test_evidence_domain_index.py": "PHASE_2_PLAN.md"
+        },
+        "unauthorized_final_paths": [],
+        "unauthorized_intermediate_paths": [],
+        "all_intermediate_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/prerequisite_partition.json",
+          "src/source_integrity_toolkit/contracts/report.py",
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "src/source_integrity_toolkit/validation/semantics.py",
+          "tests/contract/test_observability_preparation.py",
+          "tests/integration/test_preparation_capability_boundary.py",
+          "tests/unit/test_evidence_domain_index.py"
+        ],
+        "commits": [
+          {
+            "commit": "276fb8ac2d7377ab1c9fb8378224a90a418b1472",
+            "subject": "feat: prepare non-cumulative evidence domains under P2-W06",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json",
+              "phase2/module_policy.json",
+              "phase2/prerequisite_partition.json",
+              "src/source_integrity_toolkit/contracts/report.py",
+              "src/source_integrity_toolkit/runtime/boundary.py",
+              "src/source_integrity_toolkit/validation/semantics.py",
+              "tests/contract/test_observability_preparation.py",
+              "tests/integration/test_preparation_capability_boundary.py",
+              "tests/unit/test_evidence_domain_index.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "d02d32051c595ea1aa64652f536e497d93be2763",
+            "subject": "docs: record inspected four-profile W06 code-head evidence",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          }
+        ]
+      },
+      {
+        "unit": "P2-W07",
+        "review_pr": 16,
+        "status": "accepted_and_merged",
+        "base": "4f55252d98f9b57975c2bc241c9079ac259a53cd",
+        "candidate": "384615aeba3e48b3e22486065c5f5e21e092e368",
+        "candidate_tree": "7b50c48453f99ed8fbaaf4faaf43b038e07e12da",
+        "merge": "22bd51454e425cf9eca87adbebecb09191fb925d",
+        "merge_tree_equals_candidate": true,
+        "plan_allowed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/input_contract_coverage.json",
+          "phase2/prerequisite_partition.json",
+          "tests/contract/test_normalization_profile.py",
+          "tests/contract/test_phase2_transition.py",
+          "tests/integration/test_preparation_capability_boundary.py",
+          "tests/integration/test_preparation_pipeline.py",
+          "tests/integration/test_prepared_hero_inputs.py",
+          "tests/security/test_input_diagnostics.py",
+          "tests/security/test_input_resource_limits.py",
+          "tests/security/test_preparation_inertness.py"
+        ],
+        "named_repair_extra_paths": {
+          "P2-W07-R01": [
+            "phase2/module_policy.json",
+            "phase2/transition_ledger.md",
+            "tests/contract/test_bundle_contract.py",
+            "tests/contract/test_input_schema_mapping.py",
+            "tests/scaffold/test_ci_contract.py",
+            "tests/security/test_input_capture.py"
+          ]
+        },
+        "actual_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_input_schema_mapping.py",
+          "tests/contract/test_phase2_transition.py",
+          "tests/integration/test_preparation_pipeline.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_input_capture.py",
+          "tests/security/test_preparation_inertness.py"
+        ],
+        "actual_changed_path_count": 11,
+        "path_authority": {
+          "PHASE_2_PROGRESS.md": "PHASE_2_PLAN.md",
+          "phase2/implementation_evidence.json": "PHASE_2_PLAN.md",
+          "phase2/module_policy.json": "P2-W07-R01",
+          "phase2/transition_ledger.md": "P2-W07-R01",
+          "tests/contract/test_bundle_contract.py": "P2-W07-R01",
+          "tests/contract/test_input_schema_mapping.py": "P2-W07-R01",
+          "tests/contract/test_phase2_transition.py": "PHASE_2_PLAN.md",
+          "tests/integration/test_preparation_pipeline.py": "PHASE_2_PLAN.md",
+          "tests/scaffold/test_ci_contract.py": "P2-W07-R01",
+          "tests/security/test_input_capture.py": "P2-W07-R01",
+          "tests/security/test_preparation_inertness.py": "PHASE_2_PLAN.md"
+        },
+        "unauthorized_final_paths": [],
+        "unauthorized_intermediate_paths": [],
+        "all_intermediate_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_input_schema_mapping.py",
+          "tests/contract/test_phase2_transition.py",
+          "tests/integration/test_preparation_pipeline.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_input_capture.py",
+          "tests/security/test_preparation_inertness.py"
+        ],
+        "commits": [
+          {
+            "commit": "b0128e542aec927f708a461dca1a92b98754f6e6",
+            "subject": "test: add W07 independent pipeline counterexamples and isolation regressions",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json",
+              "tests/integration/test_preparation_pipeline.py",
+              "tests/security/test_preparation_inertness.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "067802f8df5b6958adde60bc7ced3ca8a06a7f33",
+            "subject": "docs: record W07 preflight failure and propose scoped phase-context repair",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "f0b237d1c4f045110b495db1046a06383c848a02",
+            "subject": "test: apply owner-approved P2-W07-R01 phase-context repair",
+            "changed_paths": [
+              "phase2/module_policy.json",
+              "phase2/transition_ledger.md",
+              "tests/contract/test_bundle_contract.py",
+              "tests/contract/test_input_schema_mapping.py",
+              "tests/contract/test_phase2_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "384615aeba3e48b3e22486065c5f5e21e092e368",
+            "subject": "docs: record verified W07-R01 integration matrix and final gate",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          }
+        ]
+      },
+      {
+        "unit": "P2-W08",
+        "review_pr": 17,
+        "status": "verified_candidate_not_accepted_or_merged",
+        "base": "22bd51454e425cf9eca87adbebecb09191fb925d",
+        "candidate": "b870778b62b1a1713674701f110c276d386dcbf9",
+        "candidate_tree": "950c94d94cf081f231aef2e2cb8089e4687e4745",
+        "merge": null,
+        "merge_tree_equals_candidate": null,
+        "plan_allowed_paths": [
+          ".github/workflows/phase1-ci.yml",
+          "PHASE_2_PROGRESS.md",
+          "README.md",
+          "phase2/ci_review.md",
+          "phase2/implementation_evidence.json",
+          "tests/scaffold/test_ci_contract.py"
+        ],
+        "named_repair_extra_paths": {
+          "P2-W08-R01": [
+            "phase2/module_policy.json",
+            "phase2/transition_ledger.md",
+            "tests/contract/test_bundle_contract.py",
+            "tests/contract/test_input_schema_mapping.py",
+            "tests/contract/test_phase2_transition.py",
+            "tests/security/test_input_capture.py",
+            "tests/security/test_preparation_inertness.py"
+          ]
+        },
+        "actual_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "README.md",
+          "phase2/ci_review.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_input_schema_mapping.py",
+          "tests/contract/test_phase2_transition.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_input_capture.py",
+          "tests/security/test_preparation_inertness.py"
+        ],
+        "actual_changed_path_count": 12,
+        "path_authority": {
+          "PHASE_2_PROGRESS.md": "PHASE_2_PLAN.md",
+          "README.md": "PHASE_2_PLAN.md",
+          "phase2/ci_review.md": "PHASE_2_PLAN.md",
+          "phase2/implementation_evidence.json": "PHASE_2_PLAN.md",
+          "phase2/module_policy.json": "P2-W08-R01",
+          "phase2/transition_ledger.md": "P2-W08-R01",
+          "tests/contract/test_bundle_contract.py": "P2-W08-R01",
+          "tests/contract/test_input_schema_mapping.py": "P2-W08-R01",
+          "tests/contract/test_phase2_transition.py": "P2-W08-R01",
+          "tests/scaffold/test_ci_contract.py": "PHASE_2_PLAN.md",
+          "tests/security/test_input_capture.py": "P2-W08-R01",
+          "tests/security/test_preparation_inertness.py": "P2-W08-R01"
+        },
+        "unauthorized_final_paths": [],
+        "unauthorized_intermediate_paths": [],
+        "all_intermediate_changed_paths": [
+          "PHASE_2_PROGRESS.md",
+          "README.md",
+          "phase2/ci_review.md",
+          "phase2/implementation_evidence.json",
+          "phase2/module_policy.json",
+          "phase2/transition_ledger.md",
+          "tests/contract/test_bundle_contract.py",
+          "tests/contract/test_input_schema_mapping.py",
+          "tests/contract/test_phase2_transition.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/security/test_input_capture.py",
+          "tests/security/test_preparation_inertness.py"
+        ],
+        "commits": [
+          {
+            "commit": "a6847f90a32a4d478146f392acf83f49c84002c2",
+            "subject": "docs: record W08 intake and bounded phase-transition repair proposal",
+            "changed_paths": [
+              "phase2/ci_review.md"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "9450b0decc5a02fbcee38beecfe6c4715741efef",
+            "subject": "test: apply authorized P2-W08-R01 transition and clean-runtime witness",
+            "changed_paths": [
+              "phase2/module_policy.json",
+              "phase2/transition_ledger.md",
+              "tests/contract/test_bundle_contract.py",
+              "tests/contract/test_input_schema_mapping.py",
+              "tests/contract/test_phase2_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py",
+              "tests/security/test_preparation_inertness.py"
+            ],
+            "unauthorized_paths": []
+          },
+          {
+            "commit": "b870778b62b1a1713674701f110c276d386dcbf9",
+            "subject": "docs: record verified P2-W08 code-head matrix and installed runtime evidence",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "README.md",
+              "phase2/ci_review.md",
+              "phase2/implementation_evidence.json"
+            ],
+            "unauthorized_paths": []
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "tracked_files": 154,
+      "phase2_entry_files": 125,
+      "frozen_baseline_and_approval_count": 20,
+      "baseline_mismatches": [],
+      "protected_entry_count": 30,
+      "protected_entry_mismatches": [],
+      "installed_modules": 48,
+      "promoted_modules": 13,
+      "unchanged_unpromoted_modules": 35,
+      "unexpected_product_changes": [],
+      "plan_digest": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
+      "path_accounting_pass": true,
+      "schema_retains_w02_bytes": true,
+      "schema_sha256": "4a6d313c8c45c6dba29a8489c1ebbabb4c8dacbbc67b05a7042206fcc7d8c6db"
+    },
+    "frozen_baseline_and_approval": [
+      {
+        "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+        "sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
+        "expected_sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
+        "matches": true,
+        "bytes": 129967
+      },
+      {
+        "path": "DEFINITIONS_AND_UNITS.md",
+        "sha256": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d",
+        "expected_sha256": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d",
+        "matches": true,
+        "bytes": 94436
+      },
+      {
+        "path": "DEPENDENCY_STRATEGY.md",
+        "sha256": "65b5c4f1f91be019e1fb09329ff5214980e5956579c1c8ccec7f4b6f7b4174ad",
+        "expected_sha256": "65b5c4f1f91be019e1fb09329ff5214980e5956579c1c8ccec7f4b6f7b4174ad",
+        "matches": true,
+        "bytes": 15029
+      },
+      {
+        "path": "GOVERNANCE_AND_HANDOFF.md",
+        "sha256": "13e535ded411a3ad5967226e07761d4e88615f5b04c0b5a64c6cbf738cbc9ee8",
+        "expected_sha256": "13e535ded411a3ad5967226e07761d4e88615f5b04c0b5a64c6cbf738cbc9ee8",
+        "matches": true,
+        "bytes": 26255
+      },
+      {
+        "path": "LICENSING_NOTES.md",
+        "sha256": "e544f6f38d4fa83faaba0da42d85bc4af4e3a86028f3a4ab78132d21b2ddb80f",
+        "expected_sha256": "e544f6f38d4fa83faaba0da42d85bc4af4e3a86028f3a4ab78132d21b2ddb80f",
+        "matches": true,
+        "bytes": 10911
+      },
+      {
+        "path": "OBSERVABILITY_AND_REPORTING.md",
+        "sha256": "44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a",
+        "expected_sha256": "44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a",
+        "matches": true,
+        "bytes": 111615
+      },
+      {
+        "path": "PHASE_0_PLAN.md",
+        "sha256": "2d97a820ae218c33cfd00dd96a762853e887f867973a2b2da0945fc4414495b1",
+        "expected_sha256": "2d97a820ae218c33cfd00dd96a762853e887f867973a2b2da0945fc4414495b1",
+        "matches": true,
+        "bytes": 45379
+      },
+      {
+        "path": "PRIVACY_AND_DATA_HANDLING.md",
+        "sha256": "3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8",
+        "expected_sha256": "3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8",
+        "matches": true,
+        "bytes": 28777
+      },
+      {
+        "path": "PROJECT_INSTRUCTIONS.md",
+        "sha256": "cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746",
+        "expected_sha256": "cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746",
+        "matches": true,
+        "bytes": 22037
+      },
+      {
+        "path": "REPOSITORY_ARCHITECTURE.md",
+        "sha256": "8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d",
+        "expected_sha256": "8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d",
+        "matches": true,
+        "bytes": 67030
+      },
+      {
+        "path": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+        "sha256": "e74e1bd146acb3ece62dcc4c0096f5fae9f7b72950c5827956fff0398c1c374a",
+        "expected_sha256": "e74e1bd146acb3ece62dcc4c0096f5fae9f7b72950c5827956fff0398c1c374a",
+        "matches": true,
+        "bytes": 93871
+      },
+      {
+        "path": "SPEC_AUDIT.md",
+        "sha256": "3565ab8f1b08f30e06f4983ffd26adbe8bc977b655ebf410b634918a7ae7949a",
+        "expected_sha256": "3565ab8f1b08f30e06f4983ffd26adbe8bc977b655ebf410b634918a7ae7949a",
+        "matches": true,
+        "bytes": 42589
+      },
+      {
+        "path": "SUCCESS_CRITERIA.md",
+        "sha256": "270eed959a08607e182ff5922d6cacdec3c3536c954f3f65d5e9b8d9bcfb5476",
+        "expected_sha256": "270eed959a08607e182ff5922d6cacdec3c3536c954f3f65d5e9b8d9bcfb5476",
+        "matches": true,
+        "bytes": 58182
+      },
+      {
+        "path": "THEORY_SOURCE_MAP.md",
+        "sha256": "015e65baf3fcad8ce78a2285df8f2de8d5b7b4cbdd347707ba3cc5d5ba46b627",
+        "expected_sha256": "015e65baf3fcad8ce78a2285df8f2de8d5b7b4cbdd347707ba3cc5d5ba46b627",
+        "matches": true,
+        "bytes": 56697
+      },
+      {
+        "path": "THEORY_TO_CODE_TRACEABILITY.md",
+        "sha256": "73a69a56828b6ff416164b7bd6420521da1c635bd92f03b92e07231b552a7849",
+        "expected_sha256": "73a69a56828b6ff416164b7bd6420521da1c635bd92f03b92e07231b552a7849",
+        "matches": true,
+        "bytes": 65779
+      },
+      {
+        "path": "UNRESOLVED_DECISIONS.md",
+        "sha256": "4d79c732f31eefaad54fb53209e535a248d824e78673a31383442b5ebe74a59e",
+        "expected_sha256": "4d79c732f31eefaad54fb53209e535a248d824e78673a31383442b5ebe74a59e",
+        "matches": true,
+        "bytes": 15713
+      },
+      {
+        "path": "V0.1_PRODUCT_SPEC.md",
+        "sha256": "70ab331662741c0177908ec5ccac09ff7538f98643567eb3066e0ed8c9cb84e1",
+        "expected_sha256": "70ab331662741c0177908ec5ccac09ff7538f98643567eb3066e0ed8c9cb84e1",
+        "matches": true,
+        "bytes": 62420
+      },
+      {
+        "path": "VALIDATION_PLAN.md",
+        "sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "expected_sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
+        "matches": true,
+        "bytes": 148233
+      },
+      {
+        "path": "PHASE_0_APPROVAL.md",
+        "sha256": "92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c",
+        "expected_sha256": "92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c",
+        "matches": true,
+        "bytes": 14670
+      },
+      {
+        "path": "PHASE_1_PLAN.md",
+        "sha256": "699cf95f81231e09949f81ec7c25096911f8c67e89e8a10bae4157ef8b49fb22",
+        "expected_sha256": "699cf95f81231e09949f81ec7c25096911f8c67e89e8a10bae4157ef8b49fb22",
+        "matches": true,
+        "bytes": 28837,
+        "expected_source": "scaffold/delivery_manifest.json pinned by phase2/entry_manifest.json"
+      }
+    ],
+    "protected_entry_records": [
+      {
+        "path": "LICENSE",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "expected_entry_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "matches": true
+      },
+      {
+        "path": "MANIFEST.in",
+        "sha256": "846f5ad18324b044fd431521f21b32aa157805dc33a95f1ec8b82a5677938066",
+        "expected_entry_sha256": "846f5ad18324b044fd431521f21b32aa157805dc33a95f1ec8b82a5677938066",
+        "matches": true
+      },
+      {
+        "path": "NOTICE",
+        "sha256": "adcb7b8b088b04af20b095775215ca3668d5d5473affd280a63b651956f9f930",
+        "expected_entry_sha256": "adcb7b8b088b04af20b095775215ca3668d5d5473affd280a63b651956f9f930",
+        "matches": true
+      },
+      {
+        "path": "PHASE_0_APPROVAL.md",
+        "sha256": "92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c",
+        "expected_entry_sha256": "92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c",
+        "matches": true
+      },
+      {
+        "path": "PHASE_1_COMPLETION.md",
+        "sha256": "3524fdc08eaf9d8b18468ea5838da696acb9790b7419d008f990d4c384a0dccd",
+        "expected_entry_sha256": "3524fdc08eaf9d8b18468ea5838da696acb9790b7419d008f990d4c384a0dccd",
+        "matches": true
+      },
+      {
+        "path": "PHASE_1_PLAN.md",
+        "sha256": "699cf95f81231e09949f81ec7c25096911f8c67e89e8a10bae4157ef8b49fb22",
+        "expected_entry_sha256": "699cf95f81231e09949f81ec7c25096911f8c67e89e8a10bae4157ef8b49fb22",
+        "matches": true
+      },
+      {
+        "path": "PHASE_1_PROGRESS.md",
+        "sha256": "86f41a273434e399b667a8c9437a8ad54a242b03e7a790d90bd4748e98c3f8f9",
+        "expected_entry_sha256": "86f41a273434e399b667a8c9437a8ad54a242b03e7a790d90bd4748e98c3f8f9",
+        "matches": true
+      },
+      {
+        "path": "PHASE_2_PLAN.md",
+        "sha256": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
+        "expected_entry_sha256": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
+        "matches": true
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "46b48be6e50cd4cd412c1be21e50cba190de6c0cdfce9d67284f01c40fde788c",
+        "expected_entry_sha256": "46b48be6e50cd4cd412c1be21e50cba190de6c0cdfce9d67284f01c40fde788c",
+        "matches": true
+      },
+      {
+        "path": "requirements-dev.txt",
+        "sha256": "ad89dbacd5640dbc156cc922f3bc7ed314ec1eec0f7fcdfd8da822a9e2590f0b",
+        "expected_entry_sha256": "ad89dbacd5640dbc156cc922f3bc7ed314ec1eec0f7fcdfd8da822a9e2590f0b",
+        "matches": true
+      },
+      {
+        "path": "scaffold/baseline_manifest.json",
+        "sha256": "85cc224e9a948df1cc555821408ecbe31392357714926db4401405e28dd616ef",
+        "expected_entry_sha256": "85cc224e9a948df1cc555821408ecbe31392357714926db4401405e28dd616ef",
+        "matches": true
+      },
+      {
+        "path": "scaffold/ci_toolchain_review.md",
+        "sha256": "028dce00ad3507b4a668bfa5261f30926589f41768dd271de176e2b77db1c3c7",
+        "expected_entry_sha256": "028dce00ad3507b4a668bfa5261f30926589f41768dd271de176e2b77db1c3c7",
+        "matches": true
+      },
+      {
+        "path": "scaffold/delivery_manifest.json",
+        "sha256": "c354ec51acbe4ad90cb2f15037b3a3d043eec21e39cd348d8b5ecb2afae3fc5a",
+        "expected_entry_sha256": "c354ec51acbe4ad90cb2f15037b3a3d043eec21e39cd348d8b5ecb2afae3fc5a",
+        "matches": true
+      },
+      {
+        "path": "scaffold/module_manifest.json",
+        "sha256": "e16051e7b20d8159c4b972db76ac1fb2dfc5eb69712e78c7049d7a1060fc0c21",
+        "expected_entry_sha256": "e16051e7b20d8159c4b972db76ac1fb2dfc5eb69712e78c7049d7a1060fc0c21",
+        "matches": true
+      },
+      {
+        "path": "scaffold/obligation_catalog.json",
+        "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852",
+        "expected_entry_sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852",
+        "matches": true
+      },
+      {
+        "path": "scaffold/toolchain_review.md",
+        "sha256": "62cf026726fafa92192749f92f6b5e0b6836a511117bb4a37827d4c0008f346b",
+        "expected_entry_sha256": "62cf026726fafa92192749f92f6b5e0b6836a511117bb4a37827d4c0008f346b",
+        "matches": true
+      },
+      {
+        "path": "scaffold/trace_catalog.json",
+        "sha256": "fd954e5cc7a0292d4fb68cc244289c2626b42cd6ec4417a38c35f987d7ec46d7",
+        "expected_entry_sha256": "fd954e5cc7a0292d4fb68cc244289c2626b42cd6ec4417a38c35f987d7ec46d7",
+        "matches": true
+      },
+      {
+        "path": "tests/fixtures/README.md",
+        "sha256": "98367561c6665e16a8cab1431323d5dab0946ee334928ff553f5b70a04e50921",
+        "expected_entry_sha256": "98367561c6665e16a8cab1431323d5dab0946ee334928ff553f5b70a04e50921",
+        "matches": true
+      },
+      {
+        "path": "tests/fixtures/adversarial/case_index.json",
+        "sha256": "2f50e90a8229dfe3613385fa80730fa049ae789fbce198a95323660980245cb2",
+        "expected_entry_sha256": "2f50e90a8229dfe3613385fa80730fa049ae789fbce198a95323660980245cb2",
+        "matches": true
+      },
+      {
+        "path": "tests/fixtures/hero/H7-01.bundle.json",
+        "sha256": "06d342e4d12457dd186c48d917ed023a30e24f66e4226dd1ebf769a6365c47f7",
+        "expected_entry_sha256": "06d342e4d12457dd186c48d917ed023a30e24f66e4226dd1ebf769a6365c47f7",
+        "matches": true
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V01.bundle.json",
+        "sha256": "98f3b5b1d8e1214211adbdbdaa5cdcb71e5bb1b226fb26c2615648bcd49e5d09",
+        "expected_entry_sha256": "98f3b5b1d8e1214211adbdbdaa5cdcb71e5bb1b226fb26c2615648bcd49e5d09",
+        "matches": true
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V02.bundle.json",
+        "sha256": "043d7c3652035042ca2602d48efeed250d6599874b7ae7206cd74de23f596663",
+        "expected_entry_sha256": "043d7c3652035042ca2602d48efeed250d6599874b7ae7206cd74de23f596663",
+        "matches": true
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V03.bundle.json",
+        "sha256": "213e84942b77e43291ffec5feed4628ef075ddeb9262224c3d326b9402eae013",
+        "expected_entry_sha256": "213e84942b77e43291ffec5feed4628ef075ddeb9262224c3d326b9402eae013",
+        "matches": true
+      },
+      {
+        "path": "tests/fixtures/hero/fixture_manifest.json",
+        "sha256": "607fad79a03d6388e15cc3384c738cea6a1757574af9d333aca34676d141b7a6",
+        "expected_entry_sha256": "607fad79a03d6388e15cc3384c738cea6a1757574af9d333aca34676d141b7a6",
+        "matches": true
+      },
+      {
+        "path": "tests/fixtures/micro/case_index.json",
+        "sha256": "580ca1560e69bb0b4583821eac3c554d7fd73d8d4cd07c131225de420d088ed9",
+        "expected_entry_sha256": "580ca1560e69bb0b4583821eac3c554d7fd73d8d4cd07c131225de420d088ed9",
+        "matches": true
+      },
+      {
+        "path": "tests/golden/H7-01.logical.json",
+        "sha256": "bec2d971ded08baeaeb85f3ca340e05e959381540adf944bb437eeef4bf640d5",
+        "expected_entry_sha256": "bec2d971ded08baeaeb85f3ca340e05e959381540adf944bb437eeef4bf640d5",
+        "matches": true
+      },
+      {
+        "path": "tests/golden/H7-V01.logical.json",
+        "sha256": "7cfb2f5d09175e0f658dac6d5db09777eab2b57406312775b18c0796b147b9ac",
+        "expected_entry_sha256": "7cfb2f5d09175e0f658dac6d5db09777eab2b57406312775b18c0796b147b9ac",
+        "matches": true
+      },
+      {
+        "path": "tests/golden/H7-V02.logical.json",
+        "sha256": "4bcd1bb23086e475d35830fe01487dde8d4740b5010f59b1da34e4f8445f4134",
+        "expected_entry_sha256": "4bcd1bb23086e475d35830fe01487dde8d4740b5010f59b1da34e4f8445f4134",
+        "matches": true
+      },
+      {
+        "path": "tests/golden/H7-V03.logical.json",
+        "sha256": "44f5315b7a6e50aae7a9f0d800b7c94f6b6a06425473c7982af100822150487d",
+        "expected_entry_sha256": "44f5315b7a6e50aae7a9f0d800b7c94f6b6a06425473c7982af100822150487d",
+        "matches": true
+      },
+      {
+        "path": "tests/golden/README.md",
+        "sha256": "df5a664f6ce0cba56bc61e4af303a7aa88ea96da57ca614bb46b55d50edcbe41",
+        "expected_entry_sha256": "df5a664f6ce0cba56bc61e4af303a7aa88ea96da57ca614bb46b55d50edcbe41",
+        "matches": true
+      }
+    ],
+    "module_records": [
+      {
+        "path": "src/source_integrity_toolkit/__init__.py",
+        "promoted": false,
+        "sha256": "0fdc19062761d6b718ff371557376483f7c8e7bbf7f3c347bcae576587513b97",
+        "entry_sha256": "0fdc19062761d6b718ff371557376483f7c8e7bbf7f3c347bcae576587513b97",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/__init__.py",
+        "promoted": false,
+        "sha256": "2bcd171bde6b0b6c92c3a048cff959780e2e0616f468158b4b97d8967bf7e956",
+        "entry_sha256": "2bcd171bde6b0b6c92c3a048cff959780e2e0616f468158b4b97d8967bf7e956",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/context.py",
+        "promoted": false,
+        "sha256": "b1498a1789135e3a3fdbe85853fcb1c92f948135fafe7490a76ea6e827257dab",
+        "entry_sha256": "b1498a1789135e3a3fdbe85853fcb1c92f948135fafe7490a76ea6e827257dab",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/contribution_profile.py",
+        "promoted": false,
+        "sha256": "41de3c89c9a35f7d919791ee364bc0dbfe8e045d9cacce7123a6dd76d906ad0a",
+        "entry_sha256": "41de3c89c9a35f7d919791ee364bc0dbfe8e045d9cacce7123a6dd76d906ad0a",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/correction_outcomes.py",
+        "promoted": false,
+        "sha256": "bb98ff70dc46d0a89f56184f81975c858123353e65a1e3171d494290aa679e5c",
+        "entry_sha256": "bb98ff70dc46d0a89f56184f81975c858123353e65a1e3171d494290aa679e5c",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/correction_routes.py",
+        "promoted": false,
+        "sha256": "b2fd57b9b2f1a66baba5a859f17bcb65c4e27b3e0e7c76aae639b290d3925591",
+        "entry_sha256": "b2fd57b9b2f1a66baba5a859f17bcb65c4e27b3e0e7c76aae639b290d3925591",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/evaluator_lineage.py",
+        "promoted": false,
+        "sha256": "f7e7bb8d43cd958a8467cc0aa6ce03e2f778fdaab1ed595fae0a5e65a008a16d",
+        "entry_sha256": "f7e7bb8d43cd958a8467cc0aa6ce03e2f778fdaab1ed595fae0a5e65a008a16d",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/findings.py",
+        "promoted": false,
+        "sha256": "c3aa73647b68f5345092e78f09378ae7267f6c41f86b3e4b39052ecc27c62e56",
+        "entry_sha256": "c3aa73647b68f5345092e78f09378ae7267f6c41f86b3e4b39052ecc27c62e56",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/human_review.py",
+        "promoted": false,
+        "sha256": "e297b654b1b2f89425b4c81f237b8012bc393d08ada0cda662ed2870556b8a3a",
+        "entry_sha256": "e297b654b1b2f89425b4c81f237b8012bc393d08ada0cda662ed2870556b8a3a",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/inventory.py",
+        "promoted": false,
+        "sha256": "20956684c4c980efe8f5c0062f382829b75e629e4202f4e44b9ec6ddc9d5e565",
+        "entry_sha256": "20956684c4c980efe8f5c0062f382829b75e629e4202f4e44b9ec6ddc9d5e565",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/origins.py",
+        "promoted": false,
+        "sha256": "82f63c9c4fb7b32c788a2b2a8f7bb6feef0a4842f88f8651f664f5f3faaf4a82",
+        "entry_sha256": "82f63c9c4fb7b32c788a2b2a8f7bb6feef0a4842f88f8651f664f5f3faaf4a82",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/presence.py",
+        "promoted": false,
+        "sha256": "07b208fdcddc7cc91734311e3456462acc6d76da3c71565e8c13565baa7bcf42",
+        "entry_sha256": "07b208fdcddc7cc91734311e3456462acc6d76da3c71565e8c13565baa7bcf42",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/process_comparison.py",
+        "promoted": false,
+        "sha256": "f9018a339bf9e19f36d620d2499bae47055c23d9cd0de05d34c8bd048cadc0d1",
+        "entry_sha256": "f9018a339bf9e19f36d620d2499bae47055c23d9cd0de05d34c8bd048cadc0d1",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/api.py",
+        "promoted": false,
+        "sha256": "8808d7ef4a0db2f6e314c82fddd4b51cce164a165afaf43e6d626663f6f6768d",
+        "entry_sha256": "8808d7ef4a0db2f6e314c82fddd4b51cce164a165afaf43e6d626663f6f6768d",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/cli.py",
+        "promoted": false,
+        "sha256": "0c3ee9522fbdf1774a707ec14ed630ce34a901da1f83f63b8aee0f25393d26bc",
+        "entry_sha256": "0c3ee9522fbdf1774a707ec14ed630ce34a901da1f83f63b8aee0f25393d26bc",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/__init__.py",
+        "promoted": false,
+        "sha256": "5a5c57d26930d12c3de59e180987f740b915e9eb17fd18a2daf29a6f91985432",
+        "entry_sha256": "5a5c57d26930d12c3de59e180987f740b915e9eb17fd18a2daf29a6f91985432",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/bundle.py",
+        "promoted": true,
+        "sha256": "7509a30f008de4ade02543bea26ccc4bd3d5843ae62f75b1841e2e61bcb903da",
+        "entry_sha256": "906e9cac6070f911aa8a3fc903eec33b7090e959dcb130765fb69e2c4dd5b768",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/constants.py",
+        "promoted": true,
+        "sha256": "d4bee68c62ba495e6aca1fdba352b013f9cc4ed7c3583b61092af234827ad486",
+        "entry_sha256": "3aa207c6979a4b5c0f4a6cf3e12148c48c26d25a0d723fe2cf470f3f22c72b9b",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/evidence.py",
+        "promoted": true,
+        "sha256": "3edd9edeb670b2302d8b41eda28e158f782841ced5cc41230cce90fc8cf8db3b",
+        "entry_sha256": "0f3b9442c7fb51019edc0c93503000584f35371a8702145b0cfbd0b5240706ab",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/execution.py",
+        "promoted": true,
+        "sha256": "625568507d31f13ca165bc89a37d99f221bc0a31f2d19059bcfad6367a7781d5",
+        "entry_sha256": "7736e7486e1e948ecdc2e0ed54028ecbe77e91f9ee39489880bc1fbf71539cf9",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/report.py",
+        "promoted": true,
+        "sha256": "d37affe49972c14d785babaf1e2bab5a8ad64e17fdd69748e1df9aacb73257d4",
+        "entry_sha256": "d7973964d7b0038f69b50d9fd41da5c1feadf55e8ccf28fecbba95ba477f2284",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/results.py",
+        "promoted": false,
+        "sha256": "7f6d5244991220d2c6e845ee1a2ed5ebff5f73dfe6f3df81f0b3b71470617123",
+        "entry_sha256": "7f6d5244991220d2c6e845ee1a2ed5ebff5f73dfe6f3df81f0b3b71470617123",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/__init__.py",
+        "promoted": false,
+        "sha256": "3db1c2c13cc1ae2bfb1a049894a04f7d27d7e6874d2079f1348d910aa0f5c943",
+        "entry_sha256": "3db1c2c13cc1ae2bfb1a049894a04f7d27d7e6874d2079f1348d910aa0f5c943",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/cycles.py",
+        "promoted": false,
+        "sha256": "99f243d5a93a06e6ad427527a84153f10897d236afdf78f2a66efd0b5eb603d6",
+        "entry_sha256": "99f243d5a93a06e6ad427527a84153f10897d236afdf78f2a66efd0b5eb603d6",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/projections.py",
+        "promoted": false,
+        "sha256": "40e5d00654c91b516c479281620e3d6d21e7e0214a6ebcf0b1d1080b48ec0a47",
+        "entry_sha256": "40e5d00654c91b516c479281620e3d6d21e7e0214a6ebcf0b1d1080b48ec0a47",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/traversal.py",
+        "promoted": false,
+        "sha256": "5fe8af02018145fbb41512efec1201833adf8fd49263ff5aab2c462ee3890d1e",
+        "entry_sha256": "5fe8af02018145fbb41512efec1201833adf8fd49263ff5aab2c462ee3890d1e",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/witnesses.py",
+        "promoted": false,
+        "sha256": "cb6d1b1c30272738e2db210b19671ed65ffb7a7b81163de44ca3fbb846369c91",
+        "entry_sha256": "cb6d1b1c30272738e2db210b19671ed65ffb7a7b81163de44ca3fbb846369c91",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/__init__.py",
+        "promoted": false,
+        "sha256": "252ed1b29bff2517bc3ce909f4695d0f67c4baf0f1d7707708124107fbba783b",
+        "entry_sha256": "252ed1b29bff2517bc3ce909f4695d0f67c4baf0f1d7707708124107fbba783b",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/input_file.py",
+        "promoted": true,
+        "sha256": "5628507c0989e94a3b5b5401e570b19256c940204859da9e938178ea261dea1f",
+        "entry_sha256": "008ea3f2bcf57c12a2f026fb77bf67ec9cc50eb4279d799c78a05c7825815842",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/output_directory.py",
+        "promoted": false,
+        "sha256": "d27ae40d53b09355a0e3e137d490d1c2d1352edf67821c985bd0c79096b605ac",
+        "entry_sha256": "d27ae40d53b09355a0e3e137d490d1c2d1352edf67821c985bd0c79096b605ac",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/platform_linux.py",
+        "promoted": false,
+        "sha256": "b63420614f26fc52ebe4e7d9af4d12782fd7374dc4780c420e0e4bdbe6091544",
+        "entry_sha256": "b63420614f26fc52ebe4e7d9af4d12782fd7374dc4780c420e0e4bdbe6091544",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/platform_windows.py",
+        "promoted": false,
+        "sha256": "31e5f7b304d4455d5d60222f2077eefd284edce341c47524ac85de84f690b4c0",
+        "entry_sha256": "31e5f7b304d4455d5d60222f2077eefd284edce341c47524ac85de84f690b4c0",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/publication.py",
+        "promoted": false,
+        "sha256": "ec5124c4f8f1db6d0f8a0d83ad6a62c28646d34c47740f706d1b47871480661d",
+        "entry_sha256": "ec5124c4f8f1db6d0f8a0d83ad6a62c28646d34c47740f706d1b47871480661d",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/__init__.py",
+        "promoted": false,
+        "sha256": "f9db2edfae16c1062a74fcff49d6b5a68b25e35b108413cb1b2bab115ef9dcaa",
+        "entry_sha256": "f9db2edfae16c1062a74fcff49d6b5a68b25e35b108413cb1b2bab115ef9dcaa",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/assemble.py",
+        "promoted": false,
+        "sha256": "ebbc9d87df2283da9e055be5b2db79187791a95043faa2311961d95be17e890d",
+        "entry_sha256": "ebbc9d87df2283da9e055be5b2db79187791a95043faa2311961d95be17e890d",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/escaping.py",
+        "promoted": false,
+        "sha256": "9b910e3cc9e6d3bdbb20824420d8a2a599e12f3a300e0dffb9674a8696db0ca8",
+        "entry_sha256": "9b910e3cc9e6d3bdbb20824420d8a2a599e12f3a300e0dffb9674a8696db0ca8",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/json_report.py",
+        "promoted": false,
+        "sha256": "5e5b41e8e1a1f0c6d731a22d288905f8ad5d969e6904f374487be1d54bec26dc",
+        "entry_sha256": "5e5b41e8e1a1f0c6d731a22d288905f8ad5d969e6904f374487be1d54bec26dc",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/markdown_report.py",
+        "promoted": false,
+        "sha256": "e2af7736cc1254fd6f4ad4366ed24e6fc6163e2761c17c1cce8f48307a83ca7e",
+        "entry_sha256": "e2af7736cc1254fd6f4ad4366ed24e6fc6163e2761c17c1cce8f48307a83ca7e",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/__init__.py",
+        "promoted": false,
+        "sha256": "6bcbe18cb7295bd3339cf426931bdb29ed89edb348575d5deb070f008dec72c7",
+        "entry_sha256": "6bcbe18cb7295bd3339cf426931bdb29ed89edb348575d5deb070f008dec72c7",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/boundary.py",
+        "promoted": true,
+        "sha256": "a7e34fea2ad313062e85fbc92b59c30cbf9ffd826d16e64105cfec050b966bb4",
+        "entry_sha256": "de21aef27343ea8f336c3cfaed69c30a5a9f981bd9f4bee5d5b201d25333c8ec",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/diagnostics.py",
+        "promoted": true,
+        "sha256": "258469b4580fb6761851daba412c5318e7677395c67e514502f5673501958f4d",
+        "entry_sha256": "05f633393880afaf10e088f851a7dbce11bf2f21a055389a538a8f5fb9b585c2",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/disclosure.py",
+        "promoted": false,
+        "sha256": "a9cf0d4b24eb4ddaa239747fc487a91aaf2708f8bd9954035dd42536b1c15b11",
+        "entry_sha256": "a9cf0d4b24eb4ddaa239747fc487a91aaf2708f8bd9954035dd42536b1c15b11",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/resources.py",
+        "promoted": true,
+        "sha256": "ba17e38172307cdc1021d893977575b42f493145b0c797687407d3d2315699ec",
+        "entry_sha256": "c6a14293d880275fe1c0f2b5d4d6d3f412067413658afca657fea0437626803d",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/__init__.py",
+        "promoted": false,
+        "sha256": "0688a44d77c520368899546cc30531aad2849443c12941b536539bab5aac218e",
+        "entry_sha256": "0688a44d77c520368899546cc30531aad2849443c12941b536539bab5aac218e",
+        "unchanged_from_entry": true
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/limits.py",
+        "promoted": true,
+        "sha256": "e1b24bf8aacc3ea25090ae5a5e0bcf839b3f0980d8832cb4dfc0f2dbc432e7fa",
+        "entry_sha256": "76bcdd61e6eadaee5259ebf47919dc53183318069525f26b44705d3f82177a3e",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/references.py",
+        "promoted": true,
+        "sha256": "7ab63627c068b38364f5c47a6731903fc55bc9d86318bed4f182d9602418df7b",
+        "entry_sha256": "e2d7937e93c1fde0ba5789369ded0924ff7aced2a8719311e1ae78577b00b586",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/semantics.py",
+        "promoted": true,
+        "sha256": "12fc6d7132279af0de76839e2fff11c887ebb0bd82d1c19e3013fb5c12a76f0d",
+        "entry_sha256": "fd0ce3f3d6b497f0f55fc89dee71a49289bdd1f69fffcb38135d4af01a990c61",
+        "unchanged_from_entry": false
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/structure.py",
+        "promoted": true,
+        "sha256": "bf2e61a236539b4b8bada935b39c46203bb8ccad4102e79730e9f84ba52fa315",
+        "entry_sha256": "73577d485db4728d558354adb36169073381941c621edfee3ac54f88cdc5d4d7",
+        "unchanged_from_entry": false
+      }
+    ]
+  },
+  "component_and_coverage_audit": {
+    "audit": "P2-W09 final component and coverage scope review",
+    "reviewed_head": "b870778b62b1a1713674701f110c276d386dcbf9",
+    "method": "Read-only review of PHASE_2_PLAN W02-W08, actual 13 component bodies, coverage/partition ledgers, independent test witnesses, and existing raw W08 final-head artifacts. No entire suite rerun and no fresh complete security proof.",
+    "conclusion": "No required W02-W08 preparation component missing and no false full analytical closure found in this focused review. W09 documentation and its exact-head CI remain to be completed.",
+    "blocking_findings": [],
+    "statistics": {
+      "product_modules": 48,
+      "promoted_preparation_modules": 13,
+      "protected_remaining_modules": 35,
+      "input_shapes": 50,
+      "input_field_rows": 242,
+      "required_field_rows": 205,
+      "nullable_field_rows": 45,
+      "record_kinds": 12,
+      "relation_predicates": 24,
+      "assessment_kinds": 9,
+      "runtime_rule_rows": 30,
+      "implemented_runtime_rule_rows": 30,
+      "evidence_domains": 5,
+      "analytical_families_retained": 15,
+      "analytical_output_field_obligations_retained": 57,
+      "prerequisite_rows": 24,
+      "whole_prerequisites_implemented": [
+        "PC01"
+      ],
+      "whole_prerequisites_pending": 23,
+      "analytical_traces_closed": 0,
+      "analytical_test_obligations_pending": 228,
+      "collected_top_level_tests_per_profile": 1640,
+      "distinct_test_files": 34,
+      "raw_profiles": 4,
+      "all_ledger_specific_test_entry_points_found": 20,
+      "all_ledger_test_files_found": 15
+    },
+    "components": [
+      {
+        "path": "src/source_integrity_toolkit/contracts/bundle.py",
+        "sha256": "7509a30f008de4ade02543bea26ccc4bd3d5843ae62f75b1841e2e61bcb903da",
+        "first_unit": 2,
+        "responsibility": "Immutable exact numeric/tree atoms; finite-float exact ratios; numeric-token and J scalar/UTF-8 accounting; bounded paid ordering and freeze helpers.",
+        "top_level_classes": 5,
+        "top_level_functions": 14,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/constants.py",
+        "sha256": "d4bee68c62ba495e6aca1fdba352b013f9cc4ed7c3583b61092af234827ad486",
+        "first_unit": 2,
+        "responsibility": "Compiled immutable canonical vocabulary and 50 shape declarations; 12 record kinds, 24 predicates and 9 assessment kinds.",
+        "top_level_classes": 0,
+        "top_level_functions": 0,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/evidence.py",
+        "sha256": "3edd9edeb670b2302d8b41eda28e158f782841ced5cc41230cce90fc8cf8db3b",
+        "first_unit": 2,
+        "responsibility": "Private immutable typed nodes, attributed records, record-reference links, finite Inquiry plans, input observations and accepted prepared-input transport.",
+        "top_level_classes": 7,
+        "top_level_functions": 0,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/execution.py",
+        "sha256": "625568507d31f13ca165bc89a37d99f221bc0a31f2d19059bcfad6367a7781d5",
+        "first_unit": 2,
+        "responsibility": "Authority-free budget protocol and payload-free structural/resource/failure/cancellation transports, with fixed diagnostic/limit vocabulary.",
+        "top_level_classes": 4,
+        "top_level_functions": 2,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/report.py",
+        "sha256": "d37affe49972c14d785babaf1e2bab5a8ad64e17fdd69748e1df9aacb73257d4",
+        "first_unit": 2,
+        "responsibility": "Private five-domain, 15-family, 57-field, 24-prerequisite declarations and immutable navigation records; enforces PC01-only whole-check completion.",
+        "top_level_classes": 10,
+        "top_level_functions": 0,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/input_file.py",
+        "sha256": "5628507c0989e94a3b5b5401e570b19256c940204859da9e938178ea261dea1f",
+        "first_unit": 4,
+        "responsibility": "Exact immutable supplied-bytes admission, strict UTF-8, bounded lexical preflight, paid JSON decode, duplicate decoded-key rejection and capture; no file opening.",
+        "top_level_classes": 0,
+        "top_level_functions": 5,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/boundary.py",
+        "sha256": "a7e34fea2ad313062e85fbc92b59c30cbf9ffd826d16e64105cfec050b966bb4",
+        "first_unit": 4,
+        "responsibility": "One nonresetting budget across capture, whole-bundle validation, normalization, indexes and finite scope plan; optional post-admission evidence navigation; no public report.",
+        "top_level_classes": 0,
+        "top_level_functions": 10,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/diagnostics.py",
+        "sha256": "258469b4580fb6761851daba412c5318e7677395c67e514502f5673501958f4d",
+        "first_unit": 3,
+        "responsibility": "Fixed bounded redacted diagnostics and single prepaid emergency delivery, keeping rejection, interruption, failure and cancellation separate.",
+        "top_level_classes": 1,
+        "top_level_functions": 2,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/resources.py",
+        "sha256": "ba17e38172307cdc1021d893977575b42f493145b0c797687407d3d2315699ec",
+        "first_unit": 3,
+        "responsibility": "Project-owned monotonic 60-second processing guard, 10,000,000 work units including 1,024 emergency reserve, sticky stopping and acceptance state.",
+        "top_level_classes": 1,
+        "top_level_functions": 1,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/limits.py",
+        "sha256": "e1b24bf8aacc3ea25090ae5a5e0bcf839b3f0980d8832cb4dfc0f2dbc432e7fa",
+        "first_unit": 3,
+        "responsibility": "Preparation counters for supplied/J bytes, depth, records and reference/node occurrences; explicitly deferred analytical-scope/witness/report ceilings.",
+        "top_level_classes": 1,
+        "top_level_functions": 0,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/references.py",
+        "sha256": "7ab63627c068b38364f5c47a6731903fc55bc9d86318bed4f182d9602418df7b",
+        "first_unit": 5,
+        "responsibility": "Global identity and typed reference/Claim compatibility checks, immutable canonical index/link preservation and explicit Inquiry scope plans; no graph traversal or qualification.",
+        "top_level_classes": 0,
+        "top_level_functions": 16,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/semantics.py",
+        "sha256": "12fc6d7132279af0de76839e2fff11c887ebb0bd82d1c19e3013fb5c12a76f0d",
+        "first_unit": 5,
+        "responsibility": "Exact date/instant syntax, retained well-formed window inversion observations, and source-addressed supplied-field observations; no causal/grant/origin adjudication.",
+        "top_level_classes": 0,
+        "top_level_functions": 13,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/structure.py",
+        "sha256": "bf2e61a236539b4b8bada935b39c46203bb8ccad4102e79730e9f84ba52fa315",
+        "first_unit": 4,
+        "responsibility": "Exact-type bounded stack capture, alias-occurrence/cycle discipline, all declared shapes and local null/Gap/branch rules across selected and unselected records.",
+        "top_level_classes": 0,
+        "top_level_functions": 19,
+        "status": "implemented_preparation_component; cumulative_W08_final_head_evidence_present"
+      }
+    ],
+    "raw_matrix_summary": [
+      {
+        "profile": "phase2-ubuntu-24.04-py3.11-35504627143-1",
+        "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+        "run_id": "35504627143",
+        "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+        "collection": 1640,
+        "junit_testcases": 1640,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "category_counts": {
+          "scaffold": 181,
+          "security": 165,
+          "contract": 810,
+          "unit": 231,
+          "integration": 253
+        }
+      },
+      {
+        "profile": "phase2-ubuntu-24.04-py3.13-35504627143-1",
+        "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+        "run_id": "35504627143",
+        "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+        "collection": 1640,
+        "junit_testcases": 1640,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "category_counts": {
+          "scaffold": 181,
+          "security": 165,
+          "contract": 810,
+          "unit": 231,
+          "integration": 253
+        }
+      },
+      {
+        "profile": "phase2-windows-2025-py3.11-35504627143-1",
+        "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+        "run_id": "35504627143",
+        "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+        "collection": 1640,
+        "junit_testcases": 1640,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "category_counts": {
+          "scaffold": 181,
+          "security": 165,
+          "contract": 810,
+          "unit": 231,
+          "integration": 253
+        }
+      },
+      {
+        "profile": "phase2-windows-2025-py3.13-35504627143-1",
+        "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+        "run_id": "35504627143",
+        "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+        "collection": 1640,
+        "junit_testcases": 1640,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "category_counts": {
+          "scaffold": 181,
+          "security": 165,
+          "contract": 810,
+          "unit": 231,
+          "integration": 253
+        }
+      }
+    ],
+    "cross_checks": {
+      "component_source_hashes_match": true,
+      "source_identity_hashes_match": true,
+      "promotions_match_component_evidence": true,
+      "all_50_shape_fields_match_compiled_declarations": true,
+      "family_field_PC_domain_bindings_match": true,
+      "PC_and_no_analytical_closure_claims_consistent_across_three_ledgers": true,
+      "all_seven_integration_evidence_counts_match_raw_collection": true,
+      "public_API_AST_immediate_refusals_preserved": true
+    },
+    "ledger_specific_test_bindings": [
+      {
+        "entry_point": "tests/contract/test_typed_records.py::test_each_enum_field_rejects_a_string_outside_its_closed_vocabulary",
+        "collected_instances": 33
+      },
+      {
+        "entry_point": "tests/contract/test_typed_records.py::test_each_field_rejects_wrong_concrete_type_without_coercion",
+        "collected_instances": 50
+      },
+      {
+        "entry_point": "tests/contract/test_typed_records.py::test_each_nullable_field_has_an_admitted_explicit_unknown_or_structural_branch",
+        "collected_instances": 24
+      },
+      {
+        "entry_point": "tests/contract/test_typed_records.py::test_each_required_field_is_enforced_at_the_real_preparation_boundary",
+        "collected_instances": 50
+      },
+      {
+        "entry_point": "tests/contract/test_typed_records.py::test_hand_authored_witnesses_cover_fifty_shapes_and_all_record_kinds",
+        "collected_instances": 1
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_actual_full_pipeline_nested_extension_depth_boundary",
+        "collected_instances": 6
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_frozen_hero_every_retained_facet_matches_its_real_source_selector",
+        "collected_instances": 8
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_independent_projection_oracle_detects_deliberate_navigation_corruption",
+        "collected_instances": 4
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_independently_authored_two_inquiry_bundle_is_admitted_without_identity_merging",
+        "collected_instances": 4
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_late_or_selected_structural_defect_rejects_the_whole_snapshot",
+        "collected_instances": 60
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_lawful_incompleteness_is_not_repaired_filtered_or_certified",
+        "collected_instances": 20
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_numeric_token_boundary_is_separate_from_exact_integer_range",
+        "collected_instances": 3
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_other_claim_material_changes_cannot_rewrite_this_inquiry_navigation",
+        "collected_instances": 2
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_reused_snapshot_identifiers_never_reuse_previous_contents",
+        "collected_instances": 2
+      },
+      {
+        "entry_point": "tests/integration/test_preparation_pipeline.py::test_semantically_equivalent_permutations_preserve_complete_navigation",
+        "collected_instances": 6
+      },
+      {
+        "entry_point": "tests/security/test_preparation_inertness.py::test_actual_deadline_is_not_reset_between_admission_and_navigation",
+        "collected_instances": 6
+      },
+      {
+        "entry_point": "tests/security/test_preparation_inertness.py::test_fault_transport_never_formats_an_exception_or_returns_a_partial_snapshot",
+        "collected_instances": 16
+      },
+      {
+        "entry_point": "tests/security/test_preparation_inertness.py::test_integrated_source_strings_cannot_acquire_io_network_native_or_process_authority",
+        "collected_instances": 9
+      },
+      {
+        "entry_point": "tests/security/test_preparation_inertness.py::test_untrusted_python_protocols_remain_unused_through_full_navigation",
+        "collected_instances": 4
+      },
+      {
+        "entry_point": "tests/security/test_preparation_inertness.py::test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy",
+        "collected_instances": 4
+      }
+    ],
+    "ledger_file_test_bindings": [
+      {
+        "file": "tests/contract/test_assertion_contract.py",
+        "collected_instances": 146
+      },
+      {
+        "file": "tests/contract/test_bundle_contract.py",
+        "collected_instances": 34
+      },
+      {
+        "file": "tests/contract/test_input_schema_mapping.py",
+        "collected_instances": 77
+      },
+      {
+        "file": "tests/contract/test_observability_preparation.py",
+        "collected_instances": 73
+      },
+      {
+        "file": "tests/contract/test_phase2_transition.py",
+        "collected_instances": 47
+      },
+      {
+        "file": "tests/contract/test_temporal_contract.py",
+        "collected_instances": 57
+      },
+      {
+        "file": "tests/contract/test_typed_records.py",
+        "collected_instances": 225
+      },
+      {
+        "file": "tests/integration/test_preparation_capability_boundary.py",
+        "collected_instances": 41
+      },
+      {
+        "file": "tests/integration/test_prepared_hero_inputs.py",
+        "collected_instances": 96
+      },
+      {
+        "file": "tests/scaffold/test_ci_contract.py",
+        "collected_instances": 20
+      },
+      {
+        "file": "tests/security/test_input_capture.py",
+        "collected_instances": 44
+      },
+      {
+        "file": "tests/security/test_preparation_inertness.py",
+        "collected_instances": 39
+      },
+      {
+        "file": "tests/unit/test_evidence_domain_index.py",
+        "collected_instances": 31
+      },
+      {
+        "file": "tests/unit/test_input_decoding.py",
+        "collected_instances": 95
+      },
+      {
+        "file": "tests/unit/test_reference_validation.py",
+        "collected_instances": 57
+      }
+    ],
+    "completion_wording_notes": [
+      {
+        "severity": "historical_record_clarification",
+        "detail": "implementation_evidence.json at b870778 records successful code-head 9450b0d/run 35500231752 and final_record_head_pending. This is intentional commit-before-CI history. W09 completion should cite subsequent actual b870778/run 35504627143 and PR #17 final evidence to establish closure, while preserving out-of-scope ledger bytes."
+      },
+      {
+        "severity": "boundary_precision",
+        "detail": "_prepare_value/_prepare_utf8 deliver accepted W05 private prepared input; _prepare_evidence_value/_prepare_evidence_utf8 add W06 navigation. Neither pair is public auditing. Describe both accurately."
+      },
+      {
+        "severity": "coverage_precision",
+        "detail": "242 input field rows and 57 future analytical output fields are different catalogs. The 228 analytical test obligations remain pending. Shared trace/VG families are explicitly partially covered."
+      },
+      {
+        "severity": "historical_schema_readme",
+        "detail": "schemas/bundle/README.md retains W02 wording for mandatory parser/W03-W05 layers. Its layer limitation is still correct; the final README/completion should state these private layers are now implemented and tested without changing the frozen schema README."
+      }
+    ],
+    "future_obligations": [
+      "PC02-PC24 whole semantic prerequisites",
+      "M001-M015 results and all 228 analytical obligations",
+      "Graph projections, ancestry/cycles/witnesses and qualified origins/independence/HHI",
+      "Evaluator externality/correction grants and effects/human qualification",
+      "Native file opening and ACL/handle/path/publication guarantees",
+      "Public API/CLI real audits, report envelopes and JSON/Markdown pair output",
+      "Analytical per-scope work and witness/report quotas",
+      "Release/publication and complete v0.1 conformance"
+    ],
+    "limitations": [
+      "No runtime test rerun was necessary for this focused audit; it relies on existing verified final-head four-profile execution artifacts.",
+      "Successful private input preparation does not certify source authenticity, independence, truth, or correction effect.",
+      "Finite interception/cancellation/resource evidence is not a hostile same-process sandbox guarantee or arbitrary concurrency detection promise.",
+      "W08 package raw evidence contains executed inventory hashes and records; binary archive reinspection and whole-archive reproducibility are not claimed here."
+    ]
+  },
+  "executed_predecessor_evidence": {
+    "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+    "run_id": 35504627143,
+    "run_attempt": 1,
+    "run_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35504627143",
+    "pr_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/17",
+    "verification": "Retained raw W08 final-head artifacts reviewed; original download digest, length and ZIP checks retained, and ZIP SHA256/length recomputed while preparing this draft.",
+    "artifact_records": [
+      {
+        "os": "ubuntu-24.04",
+        "python": "3.11.16",
+        "job_id": 106062243046,
+        "artifact_id": 10603637373,
+        "bytes": 93899,
+        "sha256": "21d6ae337e412f04b0d774f9b8b4f133d8e15a85a7b9eb1411b2be51fd4c890a"
+      },
+      {
+        "os": "ubuntu-24.04",
+        "python": "3.13.15",
+        "job_id": 106062243033,
+        "artifact_id": 10602929170,
+        "bytes": 93667,
+        "sha256": "3d87ae515a8a3c3fe63e6098570137ad3b8e784ba0a5504b0d6ea82d5603b97f"
+      },
+      {
+        "os": "windows-2025",
+        "python": "3.11.9",
+        "job_id": 106062243015,
+        "artifact_id": 10603726690,
+        "bytes": 100202,
+        "sha256": "f220c4623efa630d1e1c3b9c127a581204f0238e84fc62c058e7dd04b3022f1a"
+      },
+      {
+        "os": "windows-2025",
+        "python": "3.13.15",
+        "job_id": 106062242971,
+        "artifact_id": 10603697163,
+        "bytes": 100110,
+        "sha256": "fff94fd8e3359fe2ae2aca5a08fd40a3bb6d5161f0ba112ddefef8f1192b2282"
+      }
+    ],
+    "independent_raw_audit": {
+      "audit": "Independent read-only W08 final-head raw evidence audit",
+      "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+      "run_id": 35504627143,
+      "run_attempt": 1,
+      "status": "pass",
+      "issues": [],
+      "predecessor": {
+        "accepted_merge": "22bd51454e425cf9eca87adbebecb09191fb925d",
+        "source": "w07-collection.json extracted by parent from digest/length/CRC-verified W07 final artifact 10600206895",
+        "run_id": 35493868977,
+        "head": "384615ae",
+        "count": 1629,
+        "sorted_test_identity_sha256": "24ae0b74787beee49af3abb9a6eae8fbd24f2aeb0686ddbd37d9220c0c44f1bf",
+        "encoding": "Sorted UTF-8 node IDs joined by LF, with final LF"
+      },
+      "profiles": [
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "environment": {
+            "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+            "image_version": "20260907.300.1",
+            "matrix_os": "ubuntu-24.04",
+            "matrix_python": "3.11",
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+            "run_attempt": "1",
+            "run_id": "35504627143",
+            "scope": "Phase 2 cumulative verification",
+            "unit": "P2-W08"
+          },
+          "service_artifact_id": 10603637373,
+          "collection_count": 1640,
+          "junit_testcase_count": 1640,
+          "unique_junit_identities": 1640,
+          "collection_junit_identity_equal": true,
+          "failure_error_skipped_elements": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0
+          },
+          "reported_test_events": 2068,
+          "separate_subtests_passed": 428,
+          "pytest_seconds": 277.81,
+          "predecessor_identities_retained": 1629,
+          "missing_predecessor_identities": [],
+          "added_test_identities": [
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_entry_bytes_outside_authorized_changes_remain_accepted",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_exact_seven_paths_and_all_other_immediate_scopes",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_literal_check_rejects_mutated_scope_and_weakened_probe",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_literal_permission_deltas_preserve_every_other_byte",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_mismatch_and_forbidden_promotion_still_fail",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_policy_delta_and_trusted_context_are_exact",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_similar_paths_and_product_repairs_are_refused",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_transition_record_is_append_only_and_names_all_migrations",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_trusted_event_resolution_does_not_read_candidate_policy",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_w07_four_methods_only_and_all_original_identities_survive"
+          ],
+          "sorted_test_identity_sha256": "70a5c598be8cb7198eade136504590a65b5e522ea40e443e9c7e05130b142426",
+          "tracked_before_git_blob_count": 154,
+          "tracked_before_equals_code_head": true,
+          "after_tracked_unchanged_as_reported": true,
+          "product_module_count": 48,
+          "product_modules_equal_accepted_w07_merge": true,
+          "guards": {
+            "check_phase0_baseline-before": {
+              "checked_files": 20,
+              "issues": [],
+              "ok": true,
+              "scope": "18 frozen specifications, approval and Phase 1 plan; stored bytes"
+            },
+            "check_phase0_baseline-after": {
+              "checked_files": 20,
+              "issues": [],
+              "ok": true,
+              "scope": "18 frozen specifications, approval and Phase 1 plan; stored bytes"
+            },
+            "check_scaffold_boundary-before": {
+              "checked_modules": 48,
+              "issues": [],
+              "ok": true,
+              "promoted_modules": [
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "io/input_file.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 35,
+              "scope": "phase-aware developer checks; no analytical conformance claim",
+              "unit": "P2-W08"
+            },
+            "check_scaffold_boundary-after": {
+              "checked_modules": 48,
+              "issues": [],
+              "ok": true,
+              "promoted_modules": [
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "io/input_file.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 35,
+              "scope": "phase-aware developer checks; no analytical conformance claim",
+              "unit": "P2-W08"
+            }
+          },
+          "preflight": {
+            "actual_entry_files_checked": 125,
+            "actual_frozen_files_checked": 20,
+            "actual_phase1_files_checked": 124,
+            "modules": 48,
+            "ok": true
+          },
+          "entry_and_scope": {
+            "actual_entry_files": 125,
+            "actual_phase1_files": 124,
+            "base": "22bd51454e425cf9eca87adbebecb09191fb925d",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "README.md",
+              "phase2/ci_review.md",
+              "phase2/implementation_evidence.json",
+              "phase2/module_policy.json",
+              "phase2/transition_ledger.md",
+              "tests/contract/test_bundle_contract.py",
+              "tests/contract/test_input_schema_mapping.py",
+              "tests/contract/test_phase2_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py",
+              "tests/security/test_preparation_inertness.py"
+            ],
+            "historical_test_identities": 194,
+            "intake_commit": "eb730dda31d189c8487b5247a45bae47b678821b",
+            "ok": true,
+            "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata",
+            "scope_exceptions": [
+              "P2-W02-R01",
+              "P2-W04-R01",
+              "P2-W05-R01",
+              "P2-W05-R02",
+              "P2-W07-R01",
+              "P2-W08-R01"
+            ],
+            "tracked_files": 154,
+            "unit": "P2-W08"
+          },
+          "build_inventories": [
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75420,
+              "sha256": "e4a5d201d52f8d9beb44dd46ed4fbe0073e860739cffb9947ed83da1c572e6f2",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 62717,
+              "sha256": "d53eaca1c3c0491fe384d213351eba2798e86ab29b2bfdb727a91ce212dee391",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75420,
+              "sha256": "55a1241c84fb6ff29204030126ac167a9bff142eacd3e9f9f774434902e47768",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "original_rebuilt_wheel_member_hashes_equal": true,
+          "installed_runtime": {
+            "admitted_fixture_modes": 8,
+            "rejected_empty_modes": 2,
+            "public_refusals": 2,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ],
+            "module_hash_count": 48,
+            "module_hashes_equal_code_head": true,
+            "record_sha256": "ae0c82b677bbfb377eeec4a598b22df90bcdbadd4f0c4fae751fff1bca79aee0"
+          },
+          "installed_distribution_inventories": [
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 62670,
+              "sha256": "d44576fc4f79790aba219915d990329ccf038a4dfacbbc37547783eea569ebd0",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75420,
+              "sha256": "5241b5083ea889c4efe85047345a4b0047014b78340afe9a9b1a020087db22a3",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75420,
+              "sha256": "88e15cb4d160828d3cef6ee05015833f9131e1541f53b70aaedc6960fbd3e151",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "suite_and_installed_distribution_member_hashes_equal": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "environment": {
+            "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+            "image_version": "20260907.300.1",
+            "matrix_os": "ubuntu-24.04",
+            "matrix_python": "3.13",
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+            "run_attempt": "1",
+            "run_id": "35504627143",
+            "scope": "Phase 2 cumulative verification",
+            "unit": "P2-W08"
+          },
+          "service_artifact_id": 10602929170,
+          "collection_count": 1640,
+          "junit_testcase_count": 1640,
+          "unique_junit_identities": 1640,
+          "collection_junit_identity_equal": true,
+          "failure_error_skipped_elements": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0
+          },
+          "reported_test_events": 2068,
+          "separate_subtests_passed": 428,
+          "pytest_seconds": 241.03,
+          "predecessor_identities_retained": 1629,
+          "missing_predecessor_identities": [],
+          "added_test_identities": [
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_entry_bytes_outside_authorized_changes_remain_accepted",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_exact_seven_paths_and_all_other_immediate_scopes",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_literal_check_rejects_mutated_scope_and_weakened_probe",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_literal_permission_deltas_preserve_every_other_byte",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_mismatch_and_forbidden_promotion_still_fail",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_policy_delta_and_trusted_context_are_exact",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_similar_paths_and_product_repairs_are_refused",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_transition_record_is_append_only_and_names_all_migrations",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_trusted_event_resolution_does_not_read_candidate_policy",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_w07_four_methods_only_and_all_original_identities_survive"
+          ],
+          "sorted_test_identity_sha256": "70a5c598be8cb7198eade136504590a65b5e522ea40e443e9c7e05130b142426",
+          "tracked_before_git_blob_count": 154,
+          "tracked_before_equals_code_head": true,
+          "after_tracked_unchanged_as_reported": true,
+          "product_module_count": 48,
+          "product_modules_equal_accepted_w07_merge": true,
+          "guards": {
+            "check_phase0_baseline-before": {
+              "checked_files": 20,
+              "issues": [],
+              "ok": true,
+              "scope": "18 frozen specifications, approval and Phase 1 plan; stored bytes"
+            },
+            "check_phase0_baseline-after": {
+              "checked_files": 20,
+              "issues": [],
+              "ok": true,
+              "scope": "18 frozen specifications, approval and Phase 1 plan; stored bytes"
+            },
+            "check_scaffold_boundary-before": {
+              "checked_modules": 48,
+              "issues": [],
+              "ok": true,
+              "promoted_modules": [
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "io/input_file.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 35,
+              "scope": "phase-aware developer checks; no analytical conformance claim",
+              "unit": "P2-W08"
+            },
+            "check_scaffold_boundary-after": {
+              "checked_modules": 48,
+              "issues": [],
+              "ok": true,
+              "promoted_modules": [
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "io/input_file.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 35,
+              "scope": "phase-aware developer checks; no analytical conformance claim",
+              "unit": "P2-W08"
+            }
+          },
+          "preflight": {
+            "actual_entry_files_checked": 125,
+            "actual_frozen_files_checked": 20,
+            "actual_phase1_files_checked": 124,
+            "modules": 48,
+            "ok": true
+          },
+          "entry_and_scope": {
+            "actual_entry_files": 125,
+            "actual_phase1_files": 124,
+            "base": "22bd51454e425cf9eca87adbebecb09191fb925d",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "README.md",
+              "phase2/ci_review.md",
+              "phase2/implementation_evidence.json",
+              "phase2/module_policy.json",
+              "phase2/transition_ledger.md",
+              "tests/contract/test_bundle_contract.py",
+              "tests/contract/test_input_schema_mapping.py",
+              "tests/contract/test_phase2_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py",
+              "tests/security/test_preparation_inertness.py"
+            ],
+            "historical_test_identities": 194,
+            "intake_commit": "eb730dda31d189c8487b5247a45bae47b678821b",
+            "ok": true,
+            "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata",
+            "scope_exceptions": [
+              "P2-W02-R01",
+              "P2-W04-R01",
+              "P2-W05-R01",
+              "P2-W05-R02",
+              "P2-W07-R01",
+              "P2-W08-R01"
+            ],
+            "tracked_files": 154,
+            "unit": "P2-W08"
+          },
+          "build_inventories": [
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75420,
+              "sha256": "594fa138702fe37d3d6309d581aedbf6637eb540c9db713aeef67793c76ada4f",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 62667,
+              "sha256": "e16ae6da63fc2d80cb8679644a67254ec9c173848eddf691fa95f071dda58e22",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75420,
+              "sha256": "5da0d3eef6b630329b219cda9044d609a6510dfa708bd5c4ce564b4d6ca03d59",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "original_rebuilt_wheel_member_hashes_equal": true,
+          "installed_runtime": {
+            "admitted_fixture_modes": 8,
+            "rejected_empty_modes": 2,
+            "public_refusals": 2,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ],
+            "module_hash_count": 48,
+            "module_hashes_equal_code_head": true,
+            "record_sha256": "6b527e59d0f6bef7b2e63189da9526487d090d67eb31290d1602d356be5aca91"
+          },
+          "installed_distribution_inventories": [
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 62671,
+              "sha256": "bde192c3e17d93343279066035072d643f470c8e35b4dfa024372bb8f6c8347c",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75420,
+              "sha256": "136e35901afe6dc608ebecf510e7a3687cb23c8ea4fe7c3e6f9251165ada0750",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75420,
+              "sha256": "c19c0aa398050003c033fbdafe8e3007d4291688b7ac934b6dde83c0249c3fb1",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "suite_and_installed_distribution_member_hashes_equal": true
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "environment": {
+            "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+            "image_version": "20260907.229.1",
+            "matrix_os": "windows-2025",
+            "matrix_python": "3.11",
+            "platform": "Windows-10-10.0.26100-SP0",
+            "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+            "run_attempt": "1",
+            "run_id": "35504627143",
+            "scope": "Phase 2 cumulative verification",
+            "unit": "P2-W08"
+          },
+          "service_artifact_id": 10603726690,
+          "collection_count": 1640,
+          "junit_testcase_count": 1640,
+          "unique_junit_identities": 1640,
+          "collection_junit_identity_equal": true,
+          "failure_error_skipped_elements": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0
+          },
+          "reported_test_events": 2068,
+          "separate_subtests_passed": 428,
+          "pytest_seconds": 312.66,
+          "predecessor_identities_retained": 1629,
+          "missing_predecessor_identities": [],
+          "added_test_identities": [
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_entry_bytes_outside_authorized_changes_remain_accepted",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_exact_seven_paths_and_all_other_immediate_scopes",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_literal_check_rejects_mutated_scope_and_weakened_probe",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_literal_permission_deltas_preserve_every_other_byte",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_mismatch_and_forbidden_promotion_still_fail",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_policy_delta_and_trusted_context_are_exact",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_similar_paths_and_product_repairs_are_refused",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_transition_record_is_append_only_and_names_all_migrations",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_trusted_event_resolution_does_not_read_candidate_policy",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_w07_four_methods_only_and_all_original_identities_survive"
+          ],
+          "sorted_test_identity_sha256": "70a5c598be8cb7198eade136504590a65b5e522ea40e443e9c7e05130b142426",
+          "tracked_before_git_blob_count": 154,
+          "tracked_before_equals_code_head": true,
+          "after_tracked_unchanged_as_reported": true,
+          "product_module_count": 48,
+          "product_modules_equal_accepted_w07_merge": true,
+          "guards": {
+            "check_phase0_baseline-before": {
+              "checked_files": 20,
+              "issues": [],
+              "ok": true,
+              "scope": "18 frozen specifications, approval and Phase 1 plan; stored bytes"
+            },
+            "check_phase0_baseline-after": {
+              "checked_files": 20,
+              "issues": [],
+              "ok": true,
+              "scope": "18 frozen specifications, approval and Phase 1 plan; stored bytes"
+            },
+            "check_scaffold_boundary-before": {
+              "checked_modules": 48,
+              "issues": [],
+              "ok": true,
+              "promoted_modules": [
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "io/input_file.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 35,
+              "scope": "phase-aware developer checks; no analytical conformance claim",
+              "unit": "P2-W08"
+            },
+            "check_scaffold_boundary-after": {
+              "checked_modules": 48,
+              "issues": [],
+              "ok": true,
+              "promoted_modules": [
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "io/input_file.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 35,
+              "scope": "phase-aware developer checks; no analytical conformance claim",
+              "unit": "P2-W08"
+            }
+          },
+          "preflight": {
+            "actual_entry_files_checked": 125,
+            "actual_frozen_files_checked": 20,
+            "actual_phase1_files_checked": 124,
+            "modules": 48,
+            "ok": true
+          },
+          "entry_and_scope": {
+            "actual_entry_files": 125,
+            "actual_phase1_files": 124,
+            "base": "22bd51454e425cf9eca87adbebecb09191fb925d",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "README.md",
+              "phase2/ci_review.md",
+              "phase2/implementation_evidence.json",
+              "phase2/module_policy.json",
+              "phase2/transition_ledger.md",
+              "tests/contract/test_bundle_contract.py",
+              "tests/contract/test_input_schema_mapping.py",
+              "tests/contract/test_phase2_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py",
+              "tests/security/test_preparation_inertness.py"
+            ],
+            "historical_test_identities": 194,
+            "intake_commit": "eb730dda31d189c8487b5247a45bae47b678821b",
+            "ok": true,
+            "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata",
+            "scope_exceptions": [
+              "P2-W02-R01",
+              "P2-W04-R01",
+              "P2-W05-R01",
+              "P2-W05-R02",
+              "P2-W07-R01",
+              "P2-W08-R01"
+            ],
+            "tracked_files": 154,
+            "unit": "P2-W08"
+          },
+          "build_inventories": [
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75436,
+              "sha256": "84badc40fa71da8d5be64743c9698d4b9793be4807932b6c009d74749c04385e",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 62894,
+              "sha256": "c3317e8f3e717d3df9b4b988a825a6ee64fb373aad21e2cb346df09524e1de55",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75436,
+              "sha256": "7d2bf2569d87bb8b5e528336a022bd241cdb303d20bfb9e48ced98f3221ed2d8",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "original_rebuilt_wheel_member_hashes_equal": true,
+          "installed_runtime": {
+            "admitted_fixture_modes": 8,
+            "rejected_empty_modes": 2,
+            "public_refusals": 2,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ],
+            "module_hash_count": 48,
+            "module_hashes_equal_code_head": true,
+            "record_sha256": "78c8fb046a7e564cde3094d4c17e81300f7c84ee9485ff986a7a54a3e4b9d411"
+          },
+          "installed_distribution_inventories": [
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 62934,
+              "sha256": "c545648325414db9977af9edd6e65ad26b8bbf72ffa6bd93ee711f8c37b62de3",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75436,
+              "sha256": "27c62ecc936a8bedbbc2ab1ed7a0e7ee21c9d62222712374c5528dde7e651d90",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75436,
+              "sha256": "133ebea2c28dc0273eff5f9a900d26eeff6abaa13f24c3693d33b8284e1f375d",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "suite_and_installed_distribution_member_hashes_equal": true
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "environment": {
+            "head": "b870778b62b1a1713674701f110c276d386dcbf9",
+            "image_version": "20260907.229.1",
+            "matrix_os": "windows-2025",
+            "matrix_python": "3.13",
+            "platform": "Windows-2025Server-10.0.26100-SP0",
+            "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+            "run_attempt": "1",
+            "run_id": "35504627143",
+            "scope": "Phase 2 cumulative verification",
+            "unit": "P2-W08"
+          },
+          "service_artifact_id": 10603697163,
+          "collection_count": 1640,
+          "junit_testcase_count": 1640,
+          "unique_junit_identities": 1640,
+          "collection_junit_identity_equal": true,
+          "failure_error_skipped_elements": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0
+          },
+          "reported_test_events": 2068,
+          "separate_subtests_passed": 428,
+          "pytest_seconds": 316.11,
+          "predecessor_identities_retained": 1629,
+          "missing_predecessor_identities": [],
+          "added_test_identities": [
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_entry_bytes_outside_authorized_changes_remain_accepted",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_exact_seven_paths_and_all_other_immediate_scopes",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_literal_check_rejects_mutated_scope_and_weakened_probe",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_literal_permission_deltas_preserve_every_other_byte",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_mismatch_and_forbidden_promotion_still_fail",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_policy_delta_and_trusted_context_are_exact",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_similar_paths_and_product_repairs_are_refused",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_transition_record_is_append_only_and_names_all_migrations",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_trusted_event_resolution_does_not_read_candidate_policy",
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_w07_four_methods_only_and_all_original_identities_survive"
+          ],
+          "sorted_test_identity_sha256": "70a5c598be8cb7198eade136504590a65b5e522ea40e443e9c7e05130b142426",
+          "tracked_before_git_blob_count": 154,
+          "tracked_before_equals_code_head": true,
+          "after_tracked_unchanged_as_reported": true,
+          "product_module_count": 48,
+          "product_modules_equal_accepted_w07_merge": true,
+          "guards": {
+            "check_phase0_baseline-before": {
+              "checked_files": 20,
+              "issues": [],
+              "ok": true,
+              "scope": "18 frozen specifications, approval and Phase 1 plan; stored bytes"
+            },
+            "check_phase0_baseline-after": {
+              "checked_files": 20,
+              "issues": [],
+              "ok": true,
+              "scope": "18 frozen specifications, approval and Phase 1 plan; stored bytes"
+            },
+            "check_scaffold_boundary-before": {
+              "checked_modules": 48,
+              "issues": [],
+              "ok": true,
+              "promoted_modules": [
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "io/input_file.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 35,
+              "scope": "phase-aware developer checks; no analytical conformance claim",
+              "unit": "P2-W08"
+            },
+            "check_scaffold_boundary-after": {
+              "checked_modules": 48,
+              "issues": [],
+              "ok": true,
+              "promoted_modules": [
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "io/input_file.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 35,
+              "scope": "phase-aware developer checks; no analytical conformance claim",
+              "unit": "P2-W08"
+            }
+          },
+          "preflight": {
+            "actual_entry_files_checked": 125,
+            "actual_frozen_files_checked": 20,
+            "actual_phase1_files_checked": 124,
+            "modules": 48,
+            "ok": true
+          },
+          "entry_and_scope": {
+            "actual_entry_files": 125,
+            "actual_phase1_files": 124,
+            "base": "22bd51454e425cf9eca87adbebecb09191fb925d",
+            "changed_paths": [
+              "PHASE_2_PROGRESS.md",
+              "README.md",
+              "phase2/ci_review.md",
+              "phase2/implementation_evidence.json",
+              "phase2/module_policy.json",
+              "phase2/transition_ledger.md",
+              "tests/contract/test_bundle_contract.py",
+              "tests/contract/test_input_schema_mapping.py",
+              "tests/contract/test_phase2_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/security/test_input_capture.py",
+              "tests/security/test_preparation_inertness.py"
+            ],
+            "historical_test_identities": 194,
+            "intake_commit": "eb730dda31d189c8487b5247a45bae47b678821b",
+            "ok": true,
+            "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata",
+            "scope_exceptions": [
+              "P2-W02-R01",
+              "P2-W04-R01",
+              "P2-W05-R01",
+              "P2-W05-R02",
+              "P2-W07-R01",
+              "P2-W08-R01"
+            ],
+            "tracked_files": 154,
+            "unit": "P2-W08"
+          },
+          "build_inventories": [
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75436,
+              "sha256": "710e1dc67da2e59fba8b83c8553103319a4b9d37eeebecb0a9c2ddd968424d52",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 62844,
+              "sha256": "9ba11618a890c01d8e474058565ce9f4f35f53cfdaacc27e2571dcf17cb49f53",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75436,
+              "sha256": "eab340b3db2d6e4f00d6bbd9cafab98ea3faeea25b17cc5ad793196e7c319e5d",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "original_rebuilt_wheel_member_hashes_equal": true,
+          "installed_runtime": {
+            "admitted_fixture_modes": 8,
+            "rejected_empty_modes": 2,
+            "public_refusals": 2,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ],
+            "module_hash_count": 48,
+            "module_hashes_equal_code_head": true,
+            "record_sha256": "e36b97d891446719103fe30e4580bf298feba99511cb9d99ebb32eb3170dd6c3"
+          },
+          "installed_distribution_inventories": [
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 62883,
+              "sha256": "a79e538dd6249fdc64d1c76529ee01b384ae8821401041a2d00b78ce384c4f25",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75436,
+              "sha256": "27c62ecc936a8bedbbc2ab1ed7a0e7ee21c9d62222712374c5528dde7e651d90",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 75436,
+              "sha256": "2c7e1424cd023470bdd14c3b262dc77fc78e93f8503d5d8aa9e8db0778efe96e",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "suite_and_installed_distribution_member_hashes_equal": true
+        }
+      ],
+      "limitations": [
+        "Evidence contains archive-member hashes and executed test records, not the package binary distributions. This audit independently compares recorded member sets/hashes and exact Git blobs; it does not reread absent wheel/sdist bytes or assert whole-archive reproducibility.",
+        "tracked-before.json is independently compared with every final-head Git blob. Unchanged final tracked bytes are reported by the CI driver; no standalone tracked-after manifest exists in the evidence ZIP.",
+        "Installed runtime behavioral outcomes are executed records corroborated by the corresponding successful JUnit test and inspected witness implementation. They are not a new execution in this scratch environment.",
+        "Installed side-effect witness observes warm-import open, socket and native loading events in a finite harness; no hostile same-process sandbox, arbitrary cold-import inertness, native input/output certification, or public analytical behavior is established.",
+        "W08 top-level collection has 1640 identities. The 428 successful subtests contribute to the declared 2068 event aggregate without adding top-level testcase identities.",
+        "Artifact ZIP length, SHA-256 and CRC checks were performed by the parent; this delegated audit reads extracted evidence and service metadata."
+      ]
+    },
+    "limits": [
+      "Predecessor execution evidence does not certify this W09 documentation successor.",
+      "Raw verification artifacts contain distribution inventories and execution records, not the binary distributions themselves.",
+      "Tracked-after equality is reported by the CI comparison; there is no standalone tracked-after manifest in the artifact.",
+      "Installed runtime interception starts after imports; separate import tests cover import behavior.",
+      "Runner Windows Server 2025 evidence does not certify future Windows 11/NTFS native behavior."
+    ]
+  },
+  "proposed_repair": {
+    "status": "PROPOSAL_ONLY_AWAITING_EXPLICIT_SCOPED_AUTHORIZATION",
+    "repair_id": "P2-W09-R01",
+    "predecessor": "b870778b62b1a1713674701f110c276d386dcbf9",
+    "predecessor_acceptance": "PR #17 remains draft/unmerged; owner acceptance is separately unresolved",
+    "plan_paths": [
+      "PHASE_2_PROGRESS.md",
+      "PHASE_2_COMPLETION.md",
+      "phase2/delivery_manifest.json",
+      "README.md"
+    ],
+    "additional_paths": [
+      "phase2/module_policy.json",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_bundle_contract.py",
+      "tests/security/test_input_capture.py",
+      "tests/contract/test_input_schema_mapping.py",
+      "tests/contract/test_phase2_transition.py",
+      "phase2/transition_ledger.md"
+    ],
+    "additional_path_count": 7,
+    "policy_change": {
+      "field": "active_unit",
+      "from": "P2-W08",
+      "to": "P2-W09",
+      "other_bytes": "unchanged"
+    },
+    "existing_methods_to_migrate": {
+      "tests/scaffold/test_ci_contract.py": [
+        "effective_paths",
+        "entry_and_scope"
+      ],
+      "tests/contract/test_bundle_contract.py": [
+        "test_repair_does_not_expand_another_units_immediate_diff",
+        "test_repair_cumulative_accounting_retains_only_authorized_extras"
+      ],
+      "tests/security/test_input_capture.py": [
+        "test_r01_exact_four_paths_and_no_other_unit_permission_expansion"
+      ],
+      "tests/contract/test_input_schema_mapping.py": [
+        "test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope"
+      ],
+      "tests/contract/test_phase2_transition.py": [
+        "W07R01Tests.test_exact_six_paths_are_w07_only_and_history_is_cumulative",
+        "W07R01Tests.test_prior_phase2_transition_tests_keep_every_statement",
+        "W08R01Tests.pre_w08_bytes",
+        "W08R01Tests.test_policy_delta_and_trusted_context_are_exact",
+        "W08R01Tests.test_mismatch_and_forbidden_promotion_still_fail",
+        "W08R01Tests.test_exact_seven_paths_and_all_other_immediate_scopes",
+        "W08R01Tests.test_w07_four_methods_only_and_all_original_identities_survive"
+      ]
+    },
+    "new_class": "tests/contract/test_phase2_transition.py::W09R01Tests",
+    "predecessor_test_identities_required": 1640,
+    "protected_no_edit": [
+      "PHASE_2_PLAN.md",
+      "PROJECT_INSTRUCTIONS.md",
+      "tools/",
+      "src/",
+      ".github/workflows/phase1-ci.yml",
+      "pyproject.toml",
+      "MANIFEST.in",
+      "requirements-dev.txt",
+      "phase2/entry_manifest.json",
+      "phase2/implementation_evidence.json",
+      "phase2/ci_review.md",
+      "tests/security/test_preparation_inertness.py",
+      "scaffold/delivery_manifest.json",
+      "schemas/",
+      "tests/fixtures/",
+      "tests/golden/"
+    ],
+    "predecessor_pins": {
+      "phase2/module_policy.json": {
+        "git_blob": "cb524425ace4d8c15581af7f52d9b84202350b70",
+        "sha256": "6979e0e749e20f783d60f9827b9f37d43c042ea7ced33eb8d88071968961191c"
+      },
+      "tests/scaffold/test_ci_contract.py": {
+        "git_blob": "7d9ff60b4518e0afdd8a8af104542f38a6f10351",
+        "sha256": "fe0bab7fc4f99ef585871144aff40e7fd8f5220e50512c9e3e400922fbda575c"
+      },
+      "tests/contract/test_bundle_contract.py": {
+        "git_blob": "f659eda27dbc59e13f4bb4e70d65dff85d4ef691",
+        "sha256": "2ccd78db163e1366fe689c09163fe2452f63513e5fa2a0de973a9ccb81a6fdf8"
+      },
+      "tests/security/test_input_capture.py": {
+        "git_blob": "b2fb018a7ee1b8d0e74b4856e54ccd062dce0d7f",
+        "sha256": "91e9dbaa3981692884cc7942efde32546c69a9e233172e6ed8c9e3796d2201e1"
+      },
+      "tests/contract/test_input_schema_mapping.py": {
+        "git_blob": "8dd2295c73dce1cc54c488c3d13e2ecc6afe7fc7",
+        "sha256": "3efeba61075b88ee2146929017234f74d8c1738ba1840ea6c89b78beee494352"
+      },
+      "tests/contract/test_phase2_transition.py": {
+        "git_blob": "aff72a8f3726f14c2a446b460312d56af8eb92e8",
+        "sha256": "1e49f1efdbe2fd8fdc26442167800871d06ac7b6f57e442920a48250c80d8f04"
+      },
+      "phase2/transition_ledger.md": {
+        "git_blob": "9b8b09aba670baec97392fef2b6f5babc1dd70c7",
+        "sha256": "8bd95f38a7dca788c5224865ee992cfb36c6904bc6cf347cf05b642b64ee0dd4"
+      },
+      "tests/security/test_preparation_inertness.py": {
+        "git_blob": "28e21d1413f071e7b141fb78985afe72eb8b0741",
+        "sha256": "310ce83c2234a7f0e08d15b2428c8b9bdd9c025735e6046cb7b26d2b1b78f910"
+      }
+    }
+  },
+  "current_gates": [
+    {
+      "gate": "historical_path_and_component_audit",
+      "status": "passed_for_named_W08_predecessor"
+    },
+    {
+      "gate": "frozen_baseline",
+      "status": "passed",
+      "checked_files": 20
+    },
+    {
+      "gate": "current_W08_module_policy",
+      "status": "passed",
+      "checked_modules": 48,
+      "promoted": 13,
+      "protected": 35
+    },
+    {
+      "gate": "W09_context",
+      "status": "blocked",
+      "actual_exit_code": 1,
+      "issue": "invalid_phase_policy",
+      "checked_modules": 0
+    },
+    {
+      "gate": "W08_owner_acceptance_and_merge",
+      "status": "pending_explicit_owner_decision"
+    },
+    {
+      "gate": "P2-W09-R01",
+      "status": "proposed_only"
+    },
+    {
+      "gate": "W09_final_precursor_inventory",
+      "status": "pending_after_repair"
+    },
+    {
+      "gate": "W09_final_exact_head_four_profile_matrix",
+      "status": "pending"
+    },
+    {
+      "gate": "Phase2_owner_acceptance",
+      "status": "pending"
+    }
+  ],
+  "future_obligations": [
+    "PC02-PC24 whole semantic prerequisites",
+    "M001-M015 results and all 228 analytical obligations",
+    "Graph projections, ancestry/cycles/witnesses and qualified origins/independence/HHI",
+    "Evaluator externality/correction grants and effects/human qualification",
+    "Native file opening and ACL/handle/path/publication guarantees",
+    "Public API/CLI real audits, report envelopes and JSON/Markdown pair output",
+    "Analytical per-scope work and witness/report quotas",
+    "Release/publication and complete v0.1 conformance"
+  ]
+}
