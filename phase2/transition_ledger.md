@@ -347,3 +347,43 @@ Actual collection, failures and four-profile results are recorded on the exact
 reviewed commit in PR #16 and phase2/implementation_evidence.json. All 1465 W06
 test identities remain required. W07 acceptance, merge, W08 and release remain
 separate gates; public auditing and analytical qualification remain unavailable.
+
+## P2-W08-R01: authorized exact-head transition and installed-runtime check
+
+Owner instruction: `批准 P2-W08-R01 继续已授权的 W08 工作`.
+The authorized intake is a6847f90a32a4d478146f392acf83f49c84002c2, after accepted
+W07 merge 22bd51454e425cf9eca87adbebecb09191fb925d. Historical entries above
+remain byte-identical. R01 adds exactly seven immediate W08 paths; its scope
+does not authorize W09. The module policy changes only active_unit to P2-W08.
+
+| Existing file / entry point | Bounded migration |
+|---|---|
+| test_bundle_contract.py / test_repair_does_not_expand_another_units_immediate_diff | Recognize the distinct W08 exception only at step 8. |
+| test_bundle_contract.py / test_repair_cumulative_accounting_retains_only_authorized_extras | Retain this exception from step 8 only in cumulative accounting. |
+| test_input_capture.py / test_r01_exact_four_paths_and_no_other_unit_permission_expansion | Recognize the same immediate/cumulative delta, preserving all capture observers. |
+| test_input_schema_mapping.py / test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope | Recognize step 8 only, preserving every source/schema/runtime assertion. |
+| W07R01Tests.test_exact_six_paths_are_w07_only_and_history_is_cumulative | Keep W07's six paths exact; add W08's separate authorization to the cross-unit comparison. |
+| W07R01Tests.test_only_four_named_permission_test_bodies_change | Validate live W08 bytes against a pinned exact delta before checking the historical W07 transformation. |
+| W07R01Tests.test_ci_context_collection_and_failure_controls_are_unchanged | Apply the same live-first exact validation to the CI driver; retain all context checks. |
+| W07R01Tests.test_prior_phase2_transition_tests_keep_every_statement | Remove only the two explicitly added regression classes before comparing original W01 statements. |
+| test_preparation_inertness.py / test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy | Resolve trusted developer context once and use it at four guard calls. All four target parameters, positive controls, mutations and rejection assertions remain. |
+
+The CI driver already belongs to W08's original path list. Its only changes are
+seven explicit repair paths, step-8 accounting and the repair evidence label.
+The checker, workflow, pins, original collection/failure logic, product modules,
+input schema, fixtures and oracles are unchanged. Eleven added W08R01Tests
+methods protect exact source deltas, original statements, scope and installed
+runtime independence. Their count and outcomes still require actual collection.
+
+The installed-runtime witness uses the existing pinned packaging helpers to
+build, inspect, install offline and rebuild outside the checkout. It verifies
+all 48 installed module bytes, eight H7 preparation instances, empty-input
+rejection, unchanged public refusals and real file/DNS/native negative controls.
+It exports only a fixed JSON verification record, never source inputs or package
+binaries. This is an additional engineering witness, not analytical closure.
+
+Execution and final acceptance are recorded in the exact-head W08 review PR.
+No test is removed, renamed or skipped; all 1629 predecessor identities remain
+required. The 428 historical subtest events remain a separate count. Earlier
+failed runs remain failures. W09, public auditing and releases remain separate
+authorization gates.

@@ -162,14 +162,15 @@ def test_untrusted_python_protocols_remain_unused_through_full_navigation(bad):
 def test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy(tmp_path, target):
     sys.path.insert(0, str(ROOT))
     from tools import check_scaffold_boundary as guard
-    assert guard.check_repository(ROOT, unit="P2-W07")["ok"]
+    unit = f"P2-W{guard.unit_number():02}"
+    assert guard.check_repository(ROOT, unit=unit)["ok"]
     root = tmp_path / "isolated-probe"
     shutil.copytree(ROOT / "src/source_integrity_toolkit", root / "src/source_integrity_toolkit")
     for name in ("PHASE_2_PLAN.md", "phase2/entry_manifest.json", "phase2/module_policy.json", "scaffold/delivery_manifest.json"):
         dest = root / name; dest.parent.mkdir(parents=True, exist_ok=True); shutil.copyfile(ROOT / name, dest)
-    assert guard.check_repository(root, unit="P2-W07")["ok"]
+    assert guard.check_repository(root, unit=unit)["ok"]
     changed = root / "src/source_integrity_toolkit" / target
     assert changed.is_file()
     changed.write_bytes(changed.read_bytes() + b'\nUNAUTHORIZED_RESULT = {"independent": True}\n')
-    assert not guard.check_repository(root, unit="P2-W07")["ok"]
-    assert guard.check_repository(ROOT, unit="P2-W07")["ok"]
+    assert not guard.check_repository(root, unit=unit)["ok"]
+    assert guard.check_repository(ROOT, unit=unit)["ok"]
