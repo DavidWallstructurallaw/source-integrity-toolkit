@@ -296,6 +296,8 @@ class W07R01Tests(unittest.TestCase):
                      self.EXTRA if step == 7 else frozenset())
             if step == 8:
                 extra = extra | ci.P2_W08_R01_PATHS
+            if step == 9:
+                extra = extra | ci.P2_W09_R01_PATHS
             expected = paths[unit] | extra
             self.assertEqual(ci.effective_paths(paths, unit), expected)
             ci.check_changed_paths(paths, unit, expected)
@@ -367,7 +369,7 @@ class W07R01Tests(unittest.TestCase):
         import ast
         path = "tests/contract/test_phase2_transition.py"
         raw = self.old_bytes(path, "0ab96292e4a03cc5bc065374e5b1934d5ffce259")
-        old, new = ast.parse(raw), ast.parse((ROOT / path).read_bytes())
+        old, new = ast.parse(raw), ast.parse(W09R01Tests().pre_w09_bytes(path))
         added = [n for n in new.body if isinstance(n, ast.ClassDef) and n.name == "W07R01Tests"]
         self.assertEqual(len(added), 1)
         new.body.remove(added[0])
@@ -403,20 +405,20 @@ class W08R01Tests(unittest.TestCase):
         # Validate the live file first. Returning history alone would bypass W08.
         original = self.original(path)
         expected = self.apply_exact(original, self.PATCHES[path])
-        self.assertEqual((ROOT / path).read_bytes(), expected)
+        self.assertEqual(W09R01Tests().pre_w09_bytes(path), expected)
         return original
 
     def test_policy_delta_and_trusted_context_are_exact(self):
         raw = self.original("phase2/module_policy.json", "524697001b70fc83f0ca11b7f0ccc0366bf692af")
         expected = self.apply_exact(raw, [('"active_unit": "P2-W07"', '"active_unit": "P2-W08"')])
-        self.assertEqual((ROOT / "phase2/module_policy.json").read_bytes(), expected)
-        self.assertEqual(guard.unit_number(), 8)
-        self.assertEqual(guard.policy_promotions(json.loads(expected)), frozenset(guard.FIRST_UNIT))
+        self.assertEqual(W09R01Tests().pre_w09_bytes("phase2/module_policy.json"), expected)
+        self.assertIn(guard.unit_number(), (8, 9))
+        self.assertEqual(guard.policy_promotions(json.loads(expected), "P2-W08"), frozenset(guard.FIRST_UNIT))
         self.assertEqual(len(guard.promotions(ROOT)), 13)
         self.assertEqual(guard.check_repository(ROOT)["protected_modules"], 35)
 
     def test_mismatch_and_forbidden_promotion_still_fail(self):
-        value = json.loads((ROOT / "phase2/module_policy.json").read_bytes())
+        value = json.loads(W09R01Tests().pre_w09_bytes("phase2/module_policy.json"))
         for unit in ("P2-W07", "P2-W09"):
             with self.assertRaisesRegex(ValueError, "^policy_cannot_select_unit$"):
                 guard.policy_promotions(value, unit)
@@ -437,7 +439,8 @@ class W08R01Tests(unittest.TestCase):
                      ci.P2_W04_R01_PATHS if step == 4 else
                      ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS if step == 5 else
                      ci.P2_W07_R01_PATHS if step == 7 else
-                     self.EXTRA if step == 8 else frozenset())
+                     self.EXTRA if step == 8 else
+                     ci.P2_W09_R01_PATHS if step == 9 else frozenset())
             expected = paths[unit] | extra
             self.assertEqual(ci.effective_paths(paths, unit), expected)
             ci.check_changed_paths(paths, unit, expected)
@@ -480,7 +483,7 @@ class W08R01Tests(unittest.TestCase):
         import ast
         path = "tests/contract/test_phase2_transition.py"
         expected = self.apply_exact(self.original(path), self.TRANSITION_EDITS)
-        live = ast.parse((ROOT / path).read_bytes())
+        live = ast.parse(W09R01Tests().pre_w09_bytes(path))
         additions = [n for n in live.body if isinstance(n, ast.ClassDef) and n.name == "W08R01Tests"]
         self.assertEqual(len(additions), 1)
         live.body.remove(additions[0])
@@ -630,6 +633,260 @@ print(json.dumps({'modules':loaded,'admitted_fixture_modes':8,'rejected_empty_mo
         destination = (Path(os.environ["RUNNER_TEMP"]) / "sit-p2/evidence" if os.environ.get("GITHUB_ACTIONS") == "true" else work)
         destination.mkdir(parents=True, exist_ok=True)
         (destination / "w08-installed-runtime.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+
+
+class W09R01Tests(unittest.TestCase):
+    """Exact approved W09 transition; preserve live and historical witnesses."""
+    ENTRY = 'b870778b62b1a1713674701f110c276d386dcbf9'
+    EXTRA = frozenset(('phase2/module_policy.json', 'tests/scaffold/test_ci_contract.py', 'tests/contract/test_bundle_contract.py', 'tests/security/test_input_capture.py', 'tests/contract/test_input_schema_mapping.py', 'tests/contract/test_phase2_transition.py', 'phase2/transition_ledger.md'))
+    PINS = {'phase2/module_policy.json': 'cb524425ace4d8c15581af7f52d9b84202350b70', 'tests/scaffold/test_ci_contract.py': '7d9ff60b4518e0afdd8a8af104542f38a6f10351', 'tests/contract/test_bundle_contract.py': 'f659eda27dbc59e13f4bb4e70d65dff85d4ef691', 'tests/security/test_input_capture.py': 'b2fb018a7ee1b8d0e74b4856e54ccd062dce0d7f', 'tests/contract/test_input_schema_mapping.py': '8dd2295c73dce1cc54c488c3d13e2ecc6afe7fc7', 'tests/contract/test_phase2_transition.py': 'aff72a8f3726f14c2a446b460312d56af8eb92e8', 'phase2/transition_ledger.md': '9b8b09aba670baec97392fef2b6f5babc1dd70c7', 'tests/security/test_preparation_inertness.py': '28e21d1413f071e7b141fb78985afe72eb8b0741'}
+    PATCHES = {'phase2/module_policy.json': [('"active_unit": "P2-W08"', '"active_unit": "P2-W09"')], 'tests/scaffold/test_ci_contract.py': [('def effective_paths(paths, unit, *, cumulative=False):', '# Explicit owner-approved P2-W09-R01: final handoff context only.\n# Only W09 gains these immediate paths; all earlier scopes remain exact.\nP2_W09_R01_PATHS = frozenset((\n    "phase2/module_policy.json",\n    "tests/scaffold/test_ci_contract.py",\n    "tests/contract/test_bundle_contract.py",\n    "tests/security/test_input_capture.py",\n    "tests/contract/test_input_schema_mapping.py",\n    "tests/contract/test_phase2_transition.py",\n    "phase2/transition_ledger.md",\n))\n\ndef effective_paths(paths, unit, *, cumulative=False):'), ('            allowed.update(P2_W08_R01_PATHS)\n', '            allowed.update(P2_W08_R01_PATHS)\n        if step == 9:\n            allowed.update(P2_W09_R01_PATHS)\n'), ('            (["P2-W08-R01"] if phase_guard.unit_number(unit) >= 8 else []),', '            (["P2-W08-R01"] if phase_guard.unit_number(unit) >= 8 else []) +\n            (["P2-W09-R01"] if phase_guard.unit_number(unit) >= 9 else []),')], 'tests/contract/test_bundle_contract.py': [('        assert ci.effective_paths(paths, unit) == paths[unit] | extra\n', '        if step == 9:\n            extra = extra | ci.P2_W09_R01_PATHS\n        assert ci.effective_paths(paths, unit) == paths[unit] | extra\n'), ('        assert ci.effective_paths(paths, unit, cumulative=True) == original | extras\n', '        if step >= 9:\n            extras = extras | ci.P2_W09_R01_PATHS\n        assert ci.effective_paths(paths, unit, cumulative=True) == original | extras\n')], 'tests/security/test_input_capture.py': [('        assert ci.effective_paths(paths,unit)==paths[unit]|extra\n', '        if step==9: extra=extra | ci.P2_W09_R01_PATHS\n        assert ci.effective_paths(paths,unit)==paths[unit]|extra\n'), ('        assert ci.effective_paths(paths,unit,cumulative=True)==cumulative\n', '        if step>=9: cumulative.update(ci.P2_W09_R01_PATHS)\n        assert ci.effective_paths(paths,unit,cumulative=True)==cumulative\n')], 'tests/contract/test_input_schema_mapping.py': [('        assert ci.effective_paths(paths, unit) == paths[unit] | authorized\n', '        if i == 9:\n            authorized = authorized | ci.P2_W09_R01_PATHS\n        assert ci.effective_paths(paths, unit) == paths[unit] | authorized\n')], 'tests/security/test_preparation_inertness.py': [], 'tests/contract/test_phase2_transition.py': [('            if step == 8:\n                extra = extra | ci.P2_W08_R01_PATHS\n            expected = paths[unit] | extra\n', '            if step == 8:\n                extra = extra | ci.P2_W08_R01_PATHS\n            if step == 9:\n                extra = extra | ci.P2_W09_R01_PATHS\n            expected = paths[unit] | extra\n'), ('        old, new = ast.parse(raw), ast.parse((ROOT / path).read_bytes())\n', '        old, new = ast.parse(raw), ast.parse(W09R01Tests().pre_w09_bytes(path))\n'), ('        expected = self.apply_exact(original, self.PATCHES[path])\n        self.assertEqual((ROOT / path).read_bytes(), expected)\n        return original\n', '        expected = self.apply_exact(original, self.PATCHES[path])\n        self.assertEqual(W09R01Tests().pre_w09_bytes(path), expected)\n        return original\n'), ('        expected = self.apply_exact(raw, [(\'"active_unit": "P2-W07"\', \'"active_unit": "P2-W08"\')])\n        self.assertEqual((ROOT / "phase2/module_policy.json").read_bytes(), expected)\n        self.assertEqual(guard.unit_number(), 8)\n        self.assertEqual(guard.policy_promotions(json.loads(expected)), frozenset(guard.FIRST_UNIT))\n', '        expected = self.apply_exact(raw, [(\'"active_unit": "P2-W07"\', \'"active_unit": "P2-W08"\')])\n        self.assertEqual(W09R01Tests().pre_w09_bytes("phase2/module_policy.json"), expected)\n        self.assertIn(guard.unit_number(), (8, 9))\n        self.assertEqual(guard.policy_promotions(json.loads(expected), "P2-W08"), frozenset(guard.FIRST_UNIT))\n'), ('    def test_mismatch_and_forbidden_promotion_still_fail(self):\n        value = json.loads((ROOT / "phase2/module_policy.json").read_bytes())\n', '    def test_mismatch_and_forbidden_promotion_still_fail(self):\n        value = json.loads(W09R01Tests().pre_w09_bytes("phase2/module_policy.json"))\n'), ('                     self.EXTRA if step == 8 else frozenset())\n', '                     self.EXTRA if step == 8 else\n                     ci.P2_W09_R01_PATHS if step == 9 else frozenset())\n'), ('        expected = self.apply_exact(self.original(path), self.TRANSITION_EDITS)\n        live = ast.parse((ROOT / path).read_bytes())\n', '        expected = self.apply_exact(self.original(path), self.TRANSITION_EDITS)\n        live = ast.parse(W09R01Tests().pre_w09_bytes(path))\n')]}
+    FOOTER = b'\n\nif __name__ == "__main__":\n    unittest.main()\n'
+
+    def original(self, path):
+        import subprocess
+        self.assertIn(path, self.PINS)
+        raw = subprocess.check_output(["git", "show", self.ENTRY + ":" + path],
+                                      cwd=ROOT, stderr=subprocess.PIPE, timeout=30)
+        self.assertEqual(guard.git_blob(raw), self.PINS[path])
+        return raw
+
+    def apply_exact(self, raw, edits):
+        for before, after in edits:
+            self.assertEqual(raw.count(before.encode()), 1)
+            raw = raw.replace(before.encode(), after.encode())
+        return raw
+
+    def pre_w09_bytes(self, path, candidate=None):
+        # Always validate live bytes before exposing a predecessor to older tests.
+        import ast
+        original = self.original(path)
+        self.assertIn(path, self.PATCHES)
+        expected = self.apply_exact(original, self.PATCHES[path])
+        live = (ROOT / path).read_bytes() if candidate is None else candidate
+        if path == "tests/contract/test_phase2_transition.py":
+            self.assertTrue(expected.endswith(self.FOOTER))
+            prefix = expected[:-len(self.FOOTER)]
+            self.assertTrue(live.startswith(prefix))
+            self.assertTrue(live.endswith(self.FOOTER))
+            inserted = live[len(prefix):-len(self.FOOTER)]
+            self.assertTrue(inserted.startswith(b"\n\nclass W09R01Tests(unittest.TestCase):\n"))
+            addition = ast.parse(inserted)
+            self.assertEqual(len(addition.body), 1)
+            self.assertIsInstance(addition.body[0], ast.ClassDef)
+            self.assertEqual(addition.body[0].name, "W09R01Tests")
+            self.assertEqual(addition.body[0].decorator_list, [])
+        else:
+            self.assertEqual(live, expected)
+        return original
+
+    def test_policy_delta_and_current_trusted_context_are_exact(self):
+        path = "phase2/module_policy.json"
+        original = self.pre_w09_bytes(path)
+        expected = self.apply_exact(original, self.PATCHES[path])
+        self.assertEqual(guard.unit_number(), 9)
+        self.assertEqual((ROOT / path).read_bytes(), expected)
+        self.assertEqual(json.loads(expected)["promotions"], json.loads(original)["promotions"])
+        self.assertEqual(guard.policy_promotions(json.loads(expected)), frozenset(guard.FIRST_UNIT))
+        outcome = guard.check_repository(ROOT)
+        self.assertTrue(outcome["ok"], outcome)
+        self.assertEqual(outcome["checked_modules"], 48)
+        self.assertEqual(outcome["protected_modules"], 35)
+
+    def test_current_policy_rejects_mismatch_and_forbidden_promotions(self):
+        value = json.loads((ROOT / "phase2/module_policy.json").read_bytes())
+        for step in range(1, 9):
+            with self.assertRaisesRegex(ValueError, "^policy_cannot_select_unit$"):
+                guard.policy_promotions(value, f"P2-W{step:02}")
+        for context in ("P2-W10", "P3-W01", "P2-W09; injected", 9):
+            with self.assertRaisesRegex(ValueError, "^invalid_trusted_unit$"):
+                guard.policy_promotions(value, context)
+        stale = copy.deepcopy(value); stale["active_unit"] = "P2-W08"
+        with self.assertRaisesRegex(ValueError, "^policy_cannot_select_unit$"):
+            guard.policy_promotions(stale, "P2-W09")
+        for mutation in ("promotion", "first_unit", "duplicate"):
+            changed = copy.deepcopy(value)
+            if mutation == "promotion":
+                changed["promotions"].append({"path": "analysis/origins.py", "unit": 9})
+            elif mutation == "first_unit":
+                changed["first_units"]["analysis/origins.py"] = 9
+            else:
+                changed["promotions"].append(changed["promotions"][0])
+            with self.assertRaises(ValueError): guard.policy_promotions(changed, "P2-W09")
+
+    def test_exact_seven_paths_apply_only_to_w09(self):
+        ci = ci_driver(); paths = guard.plan_paths(ROOT)
+        self.assertEqual(ci.P2_W09_R01_PATHS, self.EXTRA)
+        self.assertEqual(len(paths["P2-W09"]), 4)
+        self.assertFalse(self.EXTRA & paths["P2-W09"])
+        cumulative = set()
+        for step in range(1, 10):
+            unit = f"P2-W{step:02}"
+            extra = (ci.P2_W02_R01_PATHS if step == 2 else
+                     ci.P2_W04_R01_PATHS if step == 4 else
+                     ci.P2_W05_R01_PATHS | ci.P2_W05_R02_PATHS if step == 5 else
+                     ci.P2_W07_R01_PATHS if step == 7 else
+                     ci.P2_W08_R01_PATHS if step == 8 else
+                     self.EXTRA if step == 9 else frozenset())
+            expected = paths[unit] | extra
+            self.assertEqual(ci.effective_paths(paths, unit), expected)
+            ci.check_changed_paths(paths, unit, expected)
+            cumulative.update(expected)
+            self.assertEqual(ci.effective_paths(paths, unit, cumulative=True), cumulative)
+            for path in self.EXTRA - expected:
+                with self.assertRaisesRegex(ValueError, "^work_unit_allowlist_exceeded$"):
+                    ci.check_changed_paths(paths, unit, {path})
+
+    def test_unlisted_and_similar_paths_remain_denied(self):
+        ci = ci_driver(); paths = guard.plan_paths(ROOT)
+        allowed = ci.effective_paths(paths, "P2-W09")
+        for path in ("phase2/module_policy.json.bak", "phase2/../phase2/module_policy.json",
+                     "tests/security/test_preparation_inertness.py", "PHASE_2_PLAN.md",
+                     "phase2/implementation_evidence.json", "phase2/ci_review.md",
+                     "src/source_integrity_toolkit/runtime/boundary.py",
+                     "tools/check_scaffold_boundary.py", ".github/workflows/phase1-ci.yml",
+                     "scaffold/delivery_manifest.json", "pyproject.toml", "requirements-dev.txt"):
+            with self.assertRaisesRegex(ValueError, "^work_unit_allowlist_exceeded$"):
+                ci.check_changed_paths(paths, "P2-W09", allowed | {path})
+
+    def test_literal_deltas_validate_every_live_predecessor_byte(self):
+        for path in self.PATCHES:
+            self.pre_w09_bytes(path)
+
+    def test_live_first_bridge_rejects_missing_extra_and_weakened_bytes(self):
+        # Mutate local byte strings only; never alter an observed checkout file.
+        for path, edits in self.PATCHES.items():
+            original = self.original(path)
+            live = (ROOT / path).read_bytes()
+            candidates = [live + b"\nUNAPPROVED = True\n", live[:-1]]
+            if edits:
+                candidates.append(original)
+            for candidate in candidates:
+                with self.assertRaises(AssertionError): self.pre_w09_bytes(path, candidate)
+        path = "tests/scaffold/test_ci_contract.py"
+        live = (ROOT / path).read_bytes()
+        for before, after in ((b"if step == 9:", b"if step >= 8:"),
+                              (b"            allowed.update(P2_W09_R01_PATHS)",
+                               b"            allowed.update(P2_W09_R01_PATHS | {'src/new.py'})"),
+                              (b"    require(changed <= effective_paths(paths, unit),", b"    require(True,")):
+            self.assertEqual(live.count(before), 1)
+            with self.assertRaises(AssertionError):
+                self.pre_w09_bytes(path, live.replace(before, after))
+        path = "tests/security/test_preparation_inertness.py"
+        live = (ROOT / path).read_bytes()
+        before = b"assert not guard.check_repository"
+        self.assertIn(before, live)
+        with self.assertRaises(AssertionError):
+            self.pre_w09_bytes(path, live.replace(before, b"assert guard.check_repository", 1))
+        path = "tests/contract/test_phase2_transition.py"
+        live = (ROOT / path).read_bytes()
+        # New tests are additive; altered old assertions and added top-level
+        # code must still fail the exact predecessor-prefix/class/footer check.
+        prior_assertion = b'        self.assertEqual(' + b'entry["file_count"], 125)'
+        self.assertEqual(live.count(prior_assertion), 1)
+        with self.assertRaises(AssertionError):
+            self.pre_w09_bytes(path, live.replace(prior_assertion, b"        self.assertTrue(True)"))
+        with self.assertRaises(AssertionError):
+            self.pre_w09_bytes(path, live[:-len(self.FOOTER)] + b"\nUNAPPROVED = True\n" + self.FOOTER)
+        with self.assertRaises(AssertionError):
+            self.pre_w09_bytes(path, live[:-len(self.FOOTER)] + b"\nclass Extra: pass\n" + self.FOOTER)
+
+    def test_only_named_transition_methods_change_and_old_identities_survive(self):
+        import ast
+        path = "tests/contract/test_phase2_transition.py"
+        original = self.pre_w09_bytes(path)
+        expected = self.apply_exact(original, self.PATCHES[path])
+        old, changed = ast.parse(original), ast.parse(expected)
+        permitted = {
+            ("W07R01Tests", "test_exact_six_paths_are_w07_only_and_history_is_cumulative"),
+            ("W07R01Tests", "test_prior_phase2_transition_tests_keep_every_statement"),
+            ("W08R01Tests", "pre_w08_bytes"),
+            ("W08R01Tests", "test_policy_delta_and_trusted_context_are_exact"),
+            ("W08R01Tests", "test_mismatch_and_forbidden_promotion_still_fail"),
+            ("W08R01Tests", "test_exact_seven_paths_and_all_other_immediate_scopes"),
+            ("W08R01Tests", "test_w07_four_methods_only_and_all_original_identities_survive"),
+        }
+        def methods(tree):
+            return {(c.name, m.name): m for c in tree.body if isinstance(c, ast.ClassDef)
+                    for m in c.body if isinstance(m, ast.FunctionDef)}
+        before, after = methods(old), methods(changed)
+        self.assertEqual(set(before), set(after))
+        actual = {name for name in before if ast.dump(before[name], include_attributes=False)
+                  != ast.dump(after[name], include_attributes=False)}
+        self.assertEqual(actual, permitted)
+        for tree in (old, changed):
+            for name, method in methods(tree).items():
+                if name in permitted: method.body = [ast.Pass()]
+        self.assertEqual(ast.dump(old, include_attributes=False), ast.dump(changed, include_attributes=False))
+        # The new class is the only addition. All old method names stay live.
+        live = ast.parse((ROOT / path).read_bytes())
+        additions = [n for n in live.body if isinstance(n, ast.ClassDef) and n.name == "W09R01Tests"]
+        self.assertEqual(len(additions), 1)
+        live.body.remove(additions[0])
+        self.assertEqual(ast.dump(live, include_attributes=False),
+                         ast.dump(ast.parse(expected), include_attributes=False))
+
+    def test_transition_ledger_is_append_only_and_records_actual_approval(self):
+        original = self.original("phase2/transition_ledger.md")
+        live = (ROOT / "phase2/transition_ledger.md").read_bytes()
+        self.assertTrue(live.startswith(original))
+        added = live[len(original):].decode()
+        self.assertIn("## P2-W09-R01:", added)
+        self.assertIn("批准 P2-W09-R01，继续 W09", added)
+        for path in self.EXTRA:
+            self.assertIn(path, added)
+        for name in ("test_repair_does_not_expand_another_units_immediate_diff",
+                     "test_repair_cumulative_accounting_retains_only_authorized_extras",
+                     "test_r01_exact_four_paths_and_no_other_unit_permission_expansion",
+                     "test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope",
+                     "test_prior_phase2_transition_tests_keep_every_statement",
+                     "pre_w08_bytes", "test_policy_delta_and_trusted_context_are_exact",
+                     "test_mismatch_and_forbidden_promotion_still_fail",
+                     "test_exact_six_paths_are_w07_only_and_history_is_cumulative",
+                     "test_exact_seven_paths_and_all_other_immediate_scopes",
+                     "test_w07_four_methods_only_and_all_original_identities_survive"):
+            self.assertIn(name, added)
+        self.assertEqual(len(guard.historical_nodes(ROOT)), 194)
+
+    def test_files_outside_exact_w09_scope_keep_predecessor_bytes(self):
+        import subprocess
+        ci = ci_driver(); allowed = ci.effective_paths(guard.plan_paths(ROOT), "P2-W09")
+        raw = subprocess.check_output(["git", "ls-tree", "-r", "-z", self.ENTRY],
+                                      cwd=ROOT, stderr=subprocess.PIPE, timeout=30)
+        entries = [row.split(b"\t", 1) for row in raw.split(b"\0") if row]
+        self.assertEqual(len(entries), 154)
+        names = set()
+        for meta, name in entries:
+            path = name.decode(); names.add(path)
+            mode, kind, pin = meta.decode().split()
+            self.assertEqual((mode, kind), ("100644", "blob"))
+            self.assertTrue((ROOT / path).is_file(), path)
+            if path not in allowed:
+                self.assertEqual(guard.git_blob((ROOT / path).read_bytes()), pin, path)
+        tracked = set(subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT,
+                      timeout=30).decode().rstrip("\0").split("\0"))
+        self.assertTrue(names <= tracked <= names | allowed)
+        for path in ("PHASE_2_COMPLETION.md", "phase2/delivery_manifest.json"):
+            self.assertNotIn(path, names)
+            self.assertIn(path, allowed)
+            self.assertTrue((ROOT / path).is_file())
+        # Neither the W08 accepted-tree witness nor preparation inertness is
+        # enlarged. The exact prefix validation already protects that method.
+        self.assertEqual((ROOT / "tests/security/test_preparation_inertness.py").read_bytes(),
+                         self.original("tests/security/test_preparation_inertness.py"))
+
+    def test_w09_event_and_main_footer_resolve_independent_context(self):
+        ci = ci_driver(); head, base = "a" * 40, "b" * 40
+        event = {"pull_request": {"head": {"sha": head, "ref": "phase2/p2-w09"}, "base": {"sha": base}}}
+        self.assertEqual(ci.resolve_unit("pull_request", event, head), ("P2-W09", base))
+        with self.assertRaises(ValueError): ci.resolve_unit("pull_request", event, base)
+        event["pull_request"]["head"]["ref"] = "phase2/p2-w09; injected"
+        with self.assertRaises(ValueError): ci.resolve_unit("pull_request", event, head)
+        event = {"ref": "refs/heads/main", "before": base,
+                 "head_commit": {"id": head, "message": "Merge\n\nSIT-Phase-Unit: P2-W09"}}
+        self.assertEqual(ci.resolve_unit("push", event, head), ("P2-W09", base))
+        event["head_commit"]["message"] += "\nSIT-Phase-Unit: P2-W08"
+        with self.assertRaises(ValueError): ci.resolve_unit("push", event, head)
 
 
 if __name__ == "__main__":

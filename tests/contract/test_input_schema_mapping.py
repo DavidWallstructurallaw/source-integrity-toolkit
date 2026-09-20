@@ -302,6 +302,8 @@ def test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope():
             authorized = authorized | ci.P2_W07_R01_PATHS
         if i == 8:
             authorized = authorized | ci.P2_W08_R01_PATHS
+        if i == 9:
+            authorized = authorized | ci.P2_W09_R01_PATHS
         assert ci.effective_paths(paths, unit) == paths[unit] | authorized
         if not extra <= paths[unit] | authorized:
             with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):

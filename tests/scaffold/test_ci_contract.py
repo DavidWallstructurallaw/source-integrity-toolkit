@@ -68,6 +68,18 @@ P2_W08_R01_PATHS = frozenset((
     "phase2/transition_ledger.md",
 ))
 
+# Explicit owner-approved P2-W09-R01: final handoff context only.
+# Only W09 gains these immediate paths; all earlier scopes remain exact.
+P2_W09_R01_PATHS = frozenset((
+    "phase2/module_policy.json",
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_bundle_contract.py",
+    "tests/security/test_input_capture.py",
+    "tests/contract/test_input_schema_mapping.py",
+    "tests/contract/test_phase2_transition.py",
+    "phase2/transition_ledger.md",
+))
+
 def effective_paths(paths, unit, *, cumulative=False):
     current = phase_guard.unit_number(unit)
     steps = range(1, current + 1) if cumulative else (current,)
@@ -85,6 +97,8 @@ def effective_paths(paths, unit, *, cumulative=False):
             allowed.update(P2_W07_R01_PATHS)
         if step == 8:
             allowed.update(P2_W08_R01_PATHS)
+        if step == 9:
+            allowed.update(P2_W09_R01_PATHS)
     return frozenset(allowed)
 
 
@@ -190,7 +204,8 @@ def entry_and_scope(evidence):
             (["P2-W04-R01"] if phase_guard.unit_number(unit) >= 4 else []) +
             (["P2-W05-R01", "P2-W05-R02"] if phase_guard.unit_number(unit) >= 5 else []) +
             (["P2-W07-R01"] if phase_guard.unit_number(unit) >= 7 else []) +
-            (["P2-W08-R01"] if phase_guard.unit_number(unit) >= 8 else []),
+            (["P2-W08-R01"] if phase_guard.unit_number(unit) >= 8 else []) +
+            (["P2-W09-R01"] if phase_guard.unit_number(unit) >= 9 else []),
         "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata"})
 
 

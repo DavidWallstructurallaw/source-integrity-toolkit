@@ -387,3 +387,57 @@ No test is removed, renamed or skipped; all 1629 predecessor identities remain
 required. The 428 historical subtest events remain a separate count. Earlier
 failed runs remain failures. W09, public auditing and releases remain separate
 authorization gates.
+
+## P2-W09-R01: authorized final preparation phase transition
+
+Owner instruction: `批准 P2-W09-R01，继续 W09`.
+This approves the exact seven-path repair proposed in PR #18 at
+5ed4d8d10f5f7a0c53dbde9fd0f124549e0ae271. The pinned W08 source is
+b870778b62b1a1713674701f110c276d386dcbf9. PR #17 remains unmerged at this
+recording; its owner acceptance and merge are still separate pending gates.
+All preceding ledger bytes remain a literal prefix.
+
+The seven additional paths are phase2/module_policy.json,
+tests/scaffold/test_ci_contract.py, tests/contract/test_bundle_contract.py,
+tests/security/test_input_capture.py, tests/contract/test_input_schema_mapping.py,
+tests/contract/test_phase2_transition.py and phase2/transition_ledger.md.
+Together with the four original W09 document paths, these are eleven paths.
+Only active_unit changes from P2-W08 to P2-W09 in the module policy; the thirteen
+promotions, earliest units, format and plan digest remain exact.
+
+| Existing file / entry point | Bounded migration |
+|---|---|
+| test_ci_contract.py / effective_paths, entry_and_scope | Add the exact P2_W09_R01_PATHS constant, step-9 immediate/cumulative scope and repair label. Preserve all context, collection, result and failure logic. |
+| test_bundle_contract.py / test_repair_does_not_expand_another_units_immediate_diff | Recognize the distinct W09 exception only at step 9. |
+| test_bundle_contract.py / test_repair_cumulative_accounting_retains_only_authorized_extras | Retain the W09 exception from step 9 in cumulative accounting. |
+| test_input_capture.py / test_r01_exact_four_paths_and_no_other_unit_permission_expansion | Recognize W09 immediate/cumulative scope while preserving the original W04 scope, observers and canaries. |
+| test_input_schema_mapping.py / test_r02_exact_extra_path_and_other_units_keep_their_immediate_scope | Recognize step 9 only while preserving source/schema/runtime checks and the original R02 scope. |
+| W07R01Tests.test_exact_six_paths_are_w07_only_and_history_is_cumulative | Account for the distinct W09 exception; preserve the exact W07 six-path set. |
+| W07R01Tests.test_prior_phase2_transition_tests_keep_every_statement | Use the pinned W08 transition source only after exact current W09 source validation, then retain the original historical AST comparison. |
+| W08R01Tests.pre_w08_bytes | Validate live W09 bytes against pinned, counted literal deltas before checking the existing historical W08 transformation. |
+| W08R01Tests.test_policy_delta_and_trusted_context_are_exact | Preserve the W07-to-W08 historical byte witness under explicit W08 context after live W09 validation. The new W09 class separately checks the current policy and context. |
+| W08R01Tests.test_mismatch_and_forbidden_promotion_still_fail | Preserve historical mismatch/promotion controls on the live-validated W08 predecessor and add independent current-W09 negative controls. |
+| W08R01Tests.test_exact_seven_paths_and_all_other_immediate_scopes | Recognize W09's distinct exception while preserving W08's exact seven paths. |
+| W08R01Tests.test_w07_four_methods_only_and_all_original_identities_survive | Validate the live W09 source first, then retain the exact W08-to-W07 AST comparison. |
+
+The W09R01Tests class is inserted immediately before the unchanged unittest main
+footer. Its bridge verifies every preexisting transformed byte and the exact
+footer, and allows exactly one inserted W09R01Tests class with no other top-level
+statement. Historical bytes are never returned without validating the live
+candidate first. Negative controls cover altered/missing/duplicate/widened
+deltas, stale contexts, weakened assertions and out-of-scope changes.
+
+The complete tests/security/test_preparation_inertness.py file and
+W08R01Tests.test_entry_bytes_outside_authorized_changes_remain_accepted remain
+unchanged. The original scaffold/delivery_manifest.json also remains unchanged;
+the new phase2/delivery_manifest.json is a separate W09 record. Product modules,
+checker, workflow, dependency/build controls, schema, fixtures and oracles are
+outside this repair. No test is removed, renamed or skipped; all 1,640 W08
+top-level identities remain required, with 428 historical subtest events counted
+separately. Actual local and hosted outcomes are recorded only after execution.
+
+This append records the real repair authorization and bounded migration. It does
+not supply W08 acceptance, a final W09 matrix result or Phase 2 completion.
+The final accepted predecessor, delivery precursor and exact-head four-profile
+results remain required before the W09 completion package can be accepted.
+W09 merge, Phase 3, public auditing and release remain separate authorization gates.

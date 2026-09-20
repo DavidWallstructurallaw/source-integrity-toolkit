@@ -135,6 +135,8 @@ def test_repair_does_not_expand_another_units_immediate_diff():
             extra = extra | ci.P2_W07_R01_PATHS
         if step == 8:
             extra = extra | ci.P2_W08_R01_PATHS
+        if step == 9:
+            extra = extra | ci.P2_W09_R01_PATHS
         assert ci.effective_paths(paths, unit) == paths[unit] | extra
         for path in ci.P2_W02_R01_PATHS - paths[unit] - extra:
             with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
@@ -156,6 +158,8 @@ def test_repair_cumulative_accounting_retains_only_authorized_extras():
             extras = extras | ci.P2_W07_R01_PATHS
         if step >= 8:
             extras = extras | ci.P2_W08_R01_PATHS
+        if step >= 9:
+            extras = extras | ci.P2_W09_R01_PATHS
         assert ci.effective_paths(paths, unit, cumulative=True) == original | extras
 
 
