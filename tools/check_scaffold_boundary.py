@@ -1,6 +1,6 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Developer-only Phase 2 boundary checks; never imported by the product.
+"""Developer-only Phase 2 and Phase 3 boundary checks; never imported by the product.
 
 The accepted plan, entry manifest, fixed module inventory, external work-unit
 context, static checks and behavioral tests are separate controls. A candidate
@@ -213,7 +213,7 @@ def policy_promotions(value, unit=None):
     return frozenset(promoted)
 
 
-def promotions(root, unit=None):
+def _phase2_promotions(root, unit=None):
     unit_number(unit)
     p = root / "phase2/module_policy.json"
     if not (root / "PHASE_2_PLAN.md").exists():
@@ -269,7 +269,7 @@ def import_targets(path, tree):
     return targets, issues
 
 
-def layer_issues(path, source, *, live=False):
+def _phase2_layer_issues(path, source, *, live=False):
     try:
         tree = ast.parse(source)
     except (SyntaxError, ValueError, RecursionError):
@@ -304,10 +304,10 @@ def form_issues(path, source):
     return [] if ast.dump(tree, include_attributes=False) == ast.dump(expected, include_attributes=False) else ["non_scaffold_body"]
 
 
-def live_issues(path, source):
+def _phase2_live_issues(path, source):
     if path not in FIRST_UNIT:
         return ["unapproved_live_module"]
-    issues = layer_issues(path, source, live=True)
+    issues = _phase2_layer_issues(path, source, live=True)
     try:
         tree = ast.parse(source)
     except (SyntaxError, ValueError, RecursionError):
@@ -374,10 +374,10 @@ def import_cycle_issues(sources):
     return []
 
 
-def check_repository(root, *, unit=None):
+def _check_phase2_repository(root, *, unit=None):
     issues, found, sources = [], set(), {}
     try:
-        promoted = promotions(root, unit)
+        promoted = _phase2_promotions(root, unit)
     except (ValueError, OSError, KeyError, TypeError):
         return {"ok": False, "checked_modules": 0, "issues": [{"path": "phase2", "code": "invalid_phase_policy"}]}
     package = root / "src" / PACKAGE
@@ -416,7 +416,7 @@ def check_repository(root, *, unit=None):
             except UnicodeDecodeError:
                 issues.append({"path": key, "code": "invalid_utf8"}); continue
             sources[key] = source
-            codes = live_issues(key, source) if key in promoted else layer_issues(key, source) + form_issues(key, source)
+            codes = _phase2_live_issues(key, source) if key in promoted else _phase2_layer_issues(key, source) + form_issues(key, source)
             issues.extend({"path": key, "code": c} for c in codes)
     issues.extend({"path": p, "code": "missing_module"} for p in sorted(EXPECTED_PATHS - found))
     issues.extend({"path": "src/" + PACKAGE, "code": c} for c in import_cycle_issues(sources))
@@ -472,10 +472,377 @@ def historical_nodes(root):
     return frozenset(nodes)
 
 
+
+# Phase 3 has its own pinned authority and schedule. The Phase 2 constants and
+# explicit APIs above remain historical controls with their original meaning.
+PHASE3_PLAN_SHA256 = "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae"
+PHASE3_INTAKE = "80aa943f577f4a7deaeb8a0f3253c62d1263ca62"
+PHASE3_INTAKE_TREE = "66ba4b112554ee227bf536e0716b51d555c10747"
+PHASE3_PHASE2_COMMIT = "3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547"
+PHASE3_PHASE2_TREE = "8e07404371fc9128ebdfcd85aab64936b15f7201"
+PHASE3_ENTRY_SHA256 = "dfe96f57a222937131e8e4fafd13098f76d134cd88a50ffa9fa82891b9b9659b"
+PHASE3_HISTORICAL_NODES_SHA256 = "830e15538696b1ea9370bc30f88c23a63e4b348438772e55812a858ab34e9266"
+PHASE3_FIRST_UNIT = {
+    "contracts/results.py": 2,
+    "graph/projections.py": 4, "graph/traversal.py": 4,
+    "graph/cycles.py": 4, "graph/witnesses.py": 4,
+    "analysis/inventory.py": 5, "analysis/origins.py": 5,
+    "analysis/process_comparison.py": 6,
+    "analysis/contribution_profile.py": 7,
+    "analysis/evaluator_lineage.py": 8, "analysis/human_review.py": 8,
+    "analysis/presence.py": 9, "analysis/correction_routes.py": 10,
+    "analysis/correction_outcomes.py": 11,
+    "analysis/context.py": 12, "analysis/findings.py": 12,
+}
+PHASE3_EXTENSION_FIRST_UNIT = {
+    "contracts/evidence.py": 3, "contracts/execution.py": 2,
+    "contracts/report.py": 2, "validation/semantics.py": 3,
+    "validation/limits.py": 2, "runtime/resources.py": 2,
+    "runtime/diagnostics.py": 2, "runtime/boundary.py": 13,
+}
+PHASE3_INHERITED = frozenset(FIRST_UNIT)
+PHASE3_FROZEN_PREPARATION = PHASE3_INHERITED - frozenset(PHASE3_EXTENSION_FIRST_UNIT)
+PHASE3_PERMANENT_INERT = EXPECTED_PATHS - PHASE3_INHERITED - frozenset(PHASE3_FIRST_UNIT)
+PHASE3_COMMON_PATHS = frozenset((
+    "PHASE_3_PROGRESS.md", "phase3/module_policy.json",
+    "phase3/implementation_evidence.json", "phase3/obligation_coverage.json",
+))
+
+
+def trusted_unit(unit=None):
+    """Resolve a fixed context grammar without reading candidate metadata."""
+    value = os.environ.get("SIT_PHASE_UNIT", "P2-W01") if unit is None else unit
+    require(isinstance(value, str) and re.fullmatch(r"(?:P2-W0[1-9]|P3-W(?:0[1-9]|1[0-5]))", value),
+            "invalid_trusted_unit")
+    return value
+
+
+def phase3_unit_number(unit=None):
+    value = trusted_unit(unit)
+    require(re.fullmatch(r"P3-W(?:0[1-9]|1[0-5])", value) is not None, "invalid_trusted_unit")
+    return int(value[-2:])
+
+
+def phase3_plan_paths(root):
+    raw = (root / "PHASE_3_PLAN.md").read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == PHASE3_PLAN_SHA256, "approved_phase3_plan_changed")
+    text = raw.decode("utf-8")
+    common = re.findall(r"^The exact common record paths for W01-W15 are:\n\n```text\n(.*?)\n```", text, re.M | re.S)
+    require(len(common) == 1 and frozenset(common[0].splitlines()) == PHASE3_COMMON_PATHS,
+            "phase3_common_path_table")
+    found = re.findall(r"^## \d+\. (P3-W(?:0[1-9]|1[0-5])):[^\n]*\n\nAdditional allowed paths:\n\n```text\n(.*?)\n```",
+                       text, re.M | re.S)
+    require([u for u, _ in found] == [f"P3-W{i:02}" for i in range(1, 16)], "phase3_unit_path_table")
+    paths = {}
+    product_first = {}
+    prefix = "src/" + PACKAGE + "/"
+    for unit, body in found:
+        names = body.splitlines()
+        require(len(names) == len(set(names)) and not (set(names) & PHASE3_COMMON_PATHS),
+                "duplicate_phase3_path")
+        for name in names:
+            require(name and not name.startswith("/") and not any(p in ("", ".", "..") for p in name.split("/"))
+                    and not any(c in name for c in ("\\", "\x00", "*", "?", "[", "]")), "invalid_phase3_path")
+            if name.startswith(prefix):
+                product_first.setdefault(name[len(prefix):], phase3_unit_number(unit))
+        paths[unit] = frozenset(names) | PHASE3_COMMON_PATHS
+    require(product_first == {**PHASE3_FIRST_UNIT, **PHASE3_EXTENSION_FIRST_UNIT},
+            "phase3_product_schedule_mismatch")
+    return paths
+
+
+def phase3_entry_manifest(root):
+    raw = (root / "phase3/entry_manifest.json").read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == PHASE3_ENTRY_SHA256, "phase3_entry_manifest_changed")
+    entry = json.loads(raw, object_pairs_hook=unique)
+    require(entry["format"] == "sit-phase3-entry/0.1" and entry["intake_commit"] == PHASE3_INTAKE
+            and entry["intake_tree"] == PHASE3_INTAKE_TREE, "phase3_entry_identity")
+    require(entry["phase2_commit"] == PHASE3_PHASE2_COMMIT and entry["phase2_tree"] == PHASE3_PHASE2_TREE,
+            "phase3_accepted_predecessor_identity")
+    require(entry["file_count"] == 157 and entry["plan_sha256"] == PHASE3_PLAN_SHA256,
+            "phase3_entry_count_or_plan")
+    files = entry["files"]
+    require(type(files) is dict and len(files) == 157, "phase3_entry_file_count")
+    require(all(type(p) is str and type(h) is str and re.fullmatch(r"[0-9a-f]{64}", h)
+                for p, h in files.items()), "phase3_entry_file_identity")
+    require(files.get("PHASE_3_PLAN.md") == PHASE3_PLAN_SHA256
+            and "phase3/entry_manifest.json" not in files, "phase3_entry_boundary")
+    prefix = "src/" + PACKAGE + "/"
+    require({p[len(prefix):] for p in files if p.startswith(prefix)} == EXPECTED_PATHS,
+            "phase3_entry_module_inventory")
+    return entry
+
+
+def phase3_policy_promotions(value, unit=None):
+    current = phase3_unit_number(unit)
+    require(type(value) is dict and set(value) == {
+        "format", "plan_sha256", "active_unit", "first_units", "extension_first_units", "promotions"
+    }, "phase3_policy_keys")
+    require(value["format"] == "sit-phase3-modules/0.1" and value["plan_sha256"] == PHASE3_PLAN_SHA256,
+            "phase3_policy_identity")
+    require(value["active_unit"] == f"P3-W{current:02}", "policy_cannot_select_unit")
+    require(value["first_units"] == PHASE3_FIRST_UNIT
+            and value["extension_first_units"] == PHASE3_EXTENSION_FIRST_UNIT,
+            "phase3_policy_cannot_expand_modules")
+    rows = value["promotions"]
+    require(type(rows) is list, "promotion_type")
+    promoted = set()
+    for row in rows:
+        require(type(row) is dict and set(row) == {"path", "unit"}, "promotion_keys")
+        path, step = row["path"], row["unit"]
+        require(type(path) is str and path in PHASE3_FIRST_UNIT and path not in promoted,
+                "unknown_or_duplicate_promotion")
+        require(type(step) is int and PHASE3_FIRST_UNIT[path] == step <= current, "premature_promotion")
+        promoted.add(path)
+    require(promoted == {p for p, step in PHASE3_FIRST_UNIT.items() if step <= current},
+            "phase3_scheduled_promotion_missing")
+    return PHASE3_INHERITED | frozenset(promoted)
+
+
+def phase3_promotions(root, unit=None):
+    context = f"P3-W{phase3_unit_number(unit):02}"
+    phase3_plan_paths(root)
+    phase3_entry_manifest(root)
+    value = json.loads((root / "phase3/module_policy.json").read_bytes(), object_pairs_hook=unique)
+    return phase3_policy_promotions(value, context)
+
+
+def phase3_mutable_modules(unit=None):
+    current = phase3_unit_number(unit)
+    return frozenset(p for p, step in {**PHASE3_FIRST_UNIT, **PHASE3_EXTENSION_FIRST_UNIT}.items()
+                     if step <= current)
+
+
+def promotions(root, unit=None):
+    context = trusted_unit(unit)
+    return phase3_promotions(root, context) if context.startswith("P3-") else _phase2_promotions(root, context)
+
+
+def phase3_import_targets(path, tree):
+    """Resolve real module aliases, including from package import future_slot."""
+    targets, issues = import_targets(path, tree)
+    known = {module_name(p) for p in EXPECTED_PATHS}
+    module = module_name(path)
+    parent = module if path.endswith("__init__.py") else module.rpartition(".")[0]
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.ImportFrom):
+            continue
+        if node.level:
+            parts = parent.split(".")
+            if node.level > len(parts):
+                continue
+            target = ".".join(parts[:len(parts) - node.level + 1] + ([node.module] if node.module else []))
+        else:
+            target = node.module or ""
+        for alias in node.names:
+            child = target + "." + alias.name
+            if child in known:
+                targets.append(child)
+    return targets, issues
+
+
+def phase3_layer_issues(path, source, *, unit=None, promoted=None):
+    current = phase3_unit_number(unit)
+    expected = PHASE3_INHERITED | frozenset(p for p, step in PHASE3_FIRST_UNIT.items() if step <= current)
+    require(promoted is None or frozenset(promoted) == expected, "phase3_dependency_policy_mismatch")
+    try:
+        tree = ast.parse(source)
+    except (SyntaxError, ValueError, RecursionError):
+        return ["invalid_python"]
+    targets, issues = phase3_import_targets(path, tree)
+    by_name = {module_name(p): p for p in EXPECTED_PATHS}
+    for target in targets:
+        if target in SAFE_IMPORTS or (path == "runtime/resources.py" and target == "time"):
+            continue
+        if target not in by_name:
+            issues.append("unapproved_import")
+            continue
+        dependency = by_name[target]
+        if layer(dependency) not in LAYER_PERMISSIONS[layer(path)]:
+            issues.append("layer_violation")
+        if dependency.startswith("reporting/") or dependency in (
+                "runtime/disclosure.py", "io/output_directory.py", "io/publication.py",
+                "io/platform_linux.py", "io/platform_windows.py", "api.py", "cli.py", "__init__.py"):
+            issues.append("phase3_forbidden_dependency")
+        elif dependency not in expected and not dependency.endswith("/__init__.py"):
+            issues.append("phase3_unpromoted_dependency")
+    return sorted(set(issues))
+
+
+def phase3_import_cycle_issues(sources):
+    by_name = {module_name(p): p for p in sources}
+    dependencies = {}
+    for path, source in sources.items():
+        try:
+            targets, _ = phase3_import_targets(path, ast.parse(source))
+        except (SyntaxError, ValueError, RecursionError):
+            return ["invalid_python"]
+        dependencies[path] = {by_name[t] for t in targets if t in by_name}
+    try:
+        tuple(TopologicalSorter(dependencies).static_order())
+    except CycleError:
+        return ["import_cycle"]
+    return []
+
+
+def phase3_live_issues(path, source, *, unit=None, promoted=None):
+    current = phase3_unit_number(unit)
+    active = PHASE3_INHERITED | frozenset(p for p, step in PHASE3_FIRST_UNIT.items() if step <= current)
+    require(promoted is None or frozenset(promoted) == active, "phase3_dependency_policy_mismatch")
+    if path not in active:
+        return ["unapproved_live_module"]
+    issues = phase3_layer_issues(path, source, unit=unit, promoted=active)
+    try:
+        tree = ast.parse(source)
+    except (SyntaxError, ValueError, RecursionError):
+        return ["invalid_python"]
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Name) and node.id in FORBIDDEN_NAMES:
+            issues.append("forbidden_effect")
+        if isinstance(node, ast.Attribute) and (node.attr in FORBIDDEN_ATTRS or node.attr.startswith("__")):
+            issues.append("forbidden_effect")
+        if isinstance(node, (ast.AsyncFunctionDef, ast.Await)):
+            issues.append("async_execution_not_selected")
+        if isinstance(node, ast.ClassDef) and node.keywords:
+            issues.append("custom_metaclass")
+        if isinstance(node, ast.Constant) and isinstance(node.value, str) and any(s in node.value for s in ("tests/golden/", "tests/fixtures/", "schemas/", "scaffold/", "phase2/", "phase3/", "module_manifest.json", "trace_catalog.json", "obligation_catalog.json")):
+            issues.append("runtime_catalog_or_oracle_reference")
+    for node in tree.body:
+        if not isinstance(node, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.ClassDef, ast.Assign, ast.AnnAssign, ast.Expr)):
+            issues.append("import_time_execution")
+        if isinstance(node, ast.Expr) and not (isinstance(node.value, ast.Constant) and isinstance(node.value.value, str)):
+            issues.append("import_time_execution")
+    # Only named pure declaration helpers may run at module definition time.
+    # This intentionally conservative whitelist does not certify helper semantics.
+    definitions = (ast.FunctionDef, ast.AsyncFunctionDef)
+    roots = []
+    for node in tree.body:
+        if isinstance(node, definitions):
+            roots.extend(node.decorator_list)
+            roots.extend(node.args.defaults)
+            roots.extend(d for d in node.args.kw_defaults if d is not None)
+            roots.extend(a.annotation for a in node.args.args + node.args.kwonlyargs if a.annotation is not None)
+            if node.returns is not None:
+                roots.append(node.returns)
+        elif isinstance(node, ast.ClassDef):
+            roots.extend(node.bases + node.decorator_list)
+            roots.extend(n for n in node.body if not isinstance(n, definitions))
+        elif isinstance(node, (ast.Assign, ast.AnnAssign)):
+            roots.append(node)
+    for root in roots:
+        for node in ast.walk(root):
+            if isinstance(node, ast.Call) and not (isinstance(node.func, ast.Name) and node.func.id in
+                    {"dataclass", "field", "frozenset", "tuple", "MappingProxyType", "NamedTuple"}):
+                issues.append("import_time_execution")
+    if path == "contracts/constants.py":
+        values = [n.value.value for n in tree.body if isinstance(n, ast.Assign) and isinstance(n.value, ast.Constant)
+                  and any(isinstance(t, ast.Name) and t.id == "SCAFFOLD_VERSION" for t in n.targets)]
+        if values != ["0.1.0.dev0"]:
+            issues.append("scaffold_version_changed")
+    return sorted(set(issues))
+
+
+def layer_issues(path, source, *, live=False, unit=None):
+    context = trusted_unit(unit)
+    if context.startswith("P3-") and live:
+        return phase3_layer_issues(path, source, unit=context)
+    return _phase2_layer_issues(path, source, live=live)
+
+
+def live_issues(path, source, *, unit=None):
+    context = trusted_unit(unit)
+    return (phase3_live_issues(path, source, unit=context) if context.startswith("P3-")
+            else _phase2_live_issues(path, source))
+
+
+def phase3_check_repository(root, *, unit=None):
+    issues, found, sources = [], set(), {}
+    try:
+        context = f"P3-W{phase3_unit_number(unit):02}"
+        promoted = phase3_promotions(root, context)
+        mutable = phase3_mutable_modules(context)
+        entry = phase3_entry_manifest(root)
+    except (ValueError, OSError, KeyError, TypeError):
+        return {"ok": False, "checked_modules": 0, "issues": [{"path": "phase3", "code": "invalid_phase_policy"}]}
+    package = root / "src" / PACKAGE
+    if (root / "src").is_symlink() or package.is_symlink() or not package.is_dir():
+        return {"ok": False, "checked_modules": 0, "issues": [{"path": "src/" + PACKAGE, "code": "missing_or_linked_package"}]}
+    expected_dirs = {p.split("/")[0] for p in EXPECTED_PATHS if "/" in p}
+    for directory, dirs, files in os.walk(package, followlinks=False):
+        current = Path(directory)
+        for name in list(dirs):
+            child = current / name
+            key = child.relative_to(package).as_posix()
+            if child.is_symlink():
+                issues.append({"path": key, "code": "linked_directory"}); dirs.remove(name)
+            elif name == "__pycache__":
+                if any(c.is_symlink() or not c.is_file() or c.suffix != ".pyc" for c in child.iterdir()):
+                    issues.append({"path": key, "code": "unexpected_cache_entry"})
+                dirs.remove(name)
+            elif key not in expected_dirs:
+                issues.append({"path": key, "code": "unexpected_directory"}); dirs.remove(name)
+        for name in files:
+            path = current / name
+            key = path.relative_to(package).as_posix(); found.add(key)
+            if path.is_symlink() or not path.is_file():
+                issues.append({"path": key, "code": "not_regular_module"}); continue
+            if key not in EXPECTED_PATHS:
+                issues.append({"path": key, "code": "unexpected_package_file"}); continue
+            limit = 262144 if key in promoted else 16384
+            with path.open("rb") as handle:
+                data = handle.read(limit + 1)
+            if len(data) > limit:
+                issues.append({"path": key, "code": "oversize_module"}); continue
+            if key not in mutable and hashlib.sha256(data).hexdigest() != entry["files"]["src/" + PACKAGE + "/" + key]:
+                issues.append({"path": key, "code": "accepted_blob_changed"})
+            try:
+                source = data.decode("utf-8")
+            except UnicodeDecodeError:
+                issues.append({"path": key, "code": "invalid_utf8"}); continue
+            sources[key] = source
+            codes = (phase3_live_issues(key, source, unit=context, promoted=promoted) if key in promoted
+                     else _phase2_layer_issues(key, source) + form_issues(key, source))
+            issues.extend({"path": key, "code": c} for c in codes)
+    issues.extend({"path": p, "code": "missing_module"} for p in sorted(EXPECTED_PATHS - found))
+    issues.extend({"path": "src/" + PACKAGE, "code": c} for c in phase3_import_cycle_issues(sources))
+    for child in (root / "src").iterdir():
+        if child.name == PACKAGE or (child.name == "source_integrity_toolkit.egg-info" and child.is_dir() and not child.is_symlink()):
+            continue
+        issues.append({"path": "src/" + child.name, "code": "unexpected_source_entry"})
+    issues.sort(key=lambda row: (row["path"], row["code"]))
+    return {"ok": not issues, "checked_modules": len(sources), "issues": issues,
+            "promoted_modules": sorted(promoted), "protected_modules": len(EXPECTED_PATHS - promoted),
+            "new_promoted_modules": sorted(promoted - PHASE3_INHERITED),
+            "entry_byte_protected_modules": len(EXPECTED_PATHS - mutable),
+            "unit": context, "scope": "phase-aware developer checks; no analytical conformance claim"}
+
+
+def check_repository(root, *, unit=None):
+    try:
+        context = trusted_unit(unit)
+    except ValueError:
+        return {"ok": False, "checked_modules": 0, "issues": [{"path": "phase", "code": "invalid_phase_policy"}]}
+    return phase3_check_repository(root, unit=context) if context.startswith("P3-") else _check_phase2_repository(root, unit=context)
+
+
+def phase3_historical_nodes(root):
+    text = (root / "phase3/transition_ledger.md").read_text(encoding="utf-8")
+    nodes = re.findall(r"^\| `(tests/[^`]+::[^`]+)` \| (?:retained|adapted) \| (?:same|`[^`]+`) \|$", text, re.M)
+    require(len(nodes) == 1650 and len(set(nodes)) == 1650, "phase3_historical_identity_count")
+    raw = ("\n".join(sorted(nodes)) + "\n").encode()
+    require(hashlib.sha256(raw).hexdigest() == PHASE3_HISTORICAL_NODES_SHA256, "phase3_historical_identity_changed")
+    evidence = phase3_entry_manifest(root)["predecessor_tests"]
+    require(evidence["count"] == 1650 and evidence["sorted_test_identity_sha256"] == PHASE3_HISTORICAL_NODES_SHA256,
+            "phase3_predecessor_collection_identity")
+    require(type(evidence["nodes"]) is list and len(evidence["nodes"]) == 1650
+            and frozenset(evidence["nodes"]) == frozenset(nodes), "phase3_predecessor_collection_mismatch")
+    return frozenset(nodes)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--unit", choices=[f"P2-W{i:02}" for i in range(1, 10)], default=None)
+    parser.add_argument("--unit", choices=[f"P2-W{i:02}" for i in range(1, 10)] + [f"P3-W{i:02}" for i in range(1, 16)], default=None)
     args = parser.parse_args(argv)
     result = check_repository(args.root, unit=args.unit)
     print(json.dumps(result, sort_keys=True))

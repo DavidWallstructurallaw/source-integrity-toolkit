@@ -162,15 +162,19 @@ def test_untrusted_python_protocols_remain_unused_through_full_navigation(bad):
 def test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy(tmp_path, target):
     sys.path.insert(0, str(ROOT))
     from tools import check_scaffold_boundary as guard
-    unit = f"P2-W{guard.unit_number():02}"
+    unit = f"P3-W{guard.phase3_unit_number():02}"
     assert guard.check_repository(ROOT, unit=unit)["ok"]
     root = tmp_path / "isolated-probe"
     shutil.copytree(ROOT / "src/source_integrity_toolkit", root / "src/source_integrity_toolkit")
-    for name in ("PHASE_2_PLAN.md", "phase2/entry_manifest.json", "phase2/module_policy.json", "scaffold/delivery_manifest.json"):
+    for name in ("PHASE_3_PLAN.md", "phase3/entry_manifest.json", "phase3/module_policy.json"):
         dest = root / name; dest.parent.mkdir(parents=True, exist_ok=True); shutil.copyfile(ROOT / name, dest)
     assert guard.check_repository(root, unit=unit)["ok"]
     changed = root / "src/source_integrity_toolkit" / target
     assert changed.is_file()
-    changed.write_bytes(changed.read_bytes() + b'\nUNAUTHORIZED_RESULT = {"independent": True}\n')
+    payload = b'\nUNAUTHORIZED_RESULT = {"independent": True}\n'
+    if target in guard.phase3_promotions(ROOT, unit=unit):
+        # Later authorized analytical bodies still cannot acquire network authority.
+        payload += b'import socket\n'
+    changed.write_bytes(changed.read_bytes() + payload)
     assert not guard.check_repository(root, unit=unit)["ok"]
     assert guard.check_repository(ROOT, unit=unit)["ok"]

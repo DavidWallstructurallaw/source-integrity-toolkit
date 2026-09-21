@@ -9,15 +9,16 @@ phase_guard.load_phase1_test("tests/scaffold/test_no_runtime_implementation.py",
 _phase1_set_up = NoRuntimeImplementationTests.setUp
 
 
-def _phase2_set_up(self):
+def _current_set_up(self):
     _phase1_set_up(self)
-    for relative in ("PHASE_2_PLAN.md", "phase2/entry_manifest.json", "phase2/module_policy.json", "scaffold/delivery_manifest.json"):
+    for relative in ("PHASE_2_PLAN.md", "phase2/entry_manifest.json", "phase2/module_policy.json", "scaffold/delivery_manifest.json",
+                     "PHASE_3_PLAN.md", "phase3/entry_manifest.json", "phase3/module_policy.json"):
         destination = self.root / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / relative, destination)
 
 
-NoRuntimeImplementationTests.setUp = _phase2_set_up
+NoRuntimeImplementationTests.setUp = _current_set_up
 
 if __name__ == "__main__":
     unittest.main()
