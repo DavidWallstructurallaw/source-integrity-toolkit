@@ -1,6 +1,6 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Cumulative Phase 2 CI, retaining the complete pinned Phase 1 control suite."""
+"""Cumulative Phase 3 CI, retaining the complete accepted predecessor suite."""
 from pathlib import Path
 import sys
 import io
@@ -106,16 +106,33 @@ def check_changed_paths(paths, unit, changed):
     require(changed <= effective_paths(paths, unit), "work_unit_allowlist_exceeded")
 
 
+def phase3_effective_paths(paths, unit, *, cumulative=False):
+    """Phase 3 scopes are separate from the unchanged historical P2 API."""
+    current = phase_guard.phase3_unit_number(unit)
+    steps = range(1, current + 1) if cumulative else (current,)
+    return frozenset(p for step in steps for p in paths[f"P3-W{step:02}"])
+
+
+def phase3_check_changed_paths(paths, unit, changed):
+    require(changed <= phase3_effective_paths(paths, unit), "work_unit_allowlist_exceeded")
+
+
+def check_entry_bytes(entry_files, actual, allowed):
+    """Check every entry byte outside scope and account for every added path."""
+    require(set(entry_files) <= set(actual) <= set(entry_files) | set(allowed), "tracked_path_accounting")
+    require(all(actual[p] == h for p, h in entry_files.items() if p not in allowed), "frozen_entry_byte_changed")
+
+
 def policy(value):
     """Validate only enumerated migration deltas, then run every old rule."""
     try:
         v = copy.deepcopy(value)
-        require(v["name"] == "Phase 2 cumulative CI", "phase_name")
+        require(v["name"] == "Phase 3 cumulative CI", "phase_name")
         v["name"] = "Phase 1 scaffold CI"
-        require(v["concurrency"]["group"] == "phase2-${{ github.event.pull_request.number || github.ref }}", "phase_concurrency")
+        require(v["concurrency"]["group"] == "phase3-${{ github.event.pull_request.number || github.ref }}", "phase_concurrency")
         v["concurrency"]["group"] = "phase1-${{ github.event.pull_request.number || github.ref }}"
         job = v["jobs"]["scaffold"]
-        require(job["name"] == "preparation (${{ matrix.os }}, Python ${{ matrix.python }})", "phase_job")
+        require(job["name"] == "analytical core (${{ matrix.os }}, Python ${{ matrix.python }})", "phase_job")
         job["name"] = "scaffold (${{ matrix.os }}, Python ${{ matrix.python }})"
         steps = job["steps"]
         require(len(steps) == 7, "step_count")
@@ -123,11 +140,11 @@ def policy(value):
         steps[0]["with"]["fetch-depth"] = 1
         require(steps[4]["name"] == "Collect and run all cumulative tests", "cumulative_test_stage")
         steps[4]["name"] = "Collect and run all scaffold and security tests"
-        require(steps[6]["with"]["name"] == "phase2-${{ matrix.os }}-py${{ matrix.python }}-${{ github.run_id }}-${{ github.run_attempt }}", "artifact_identity")
+        require(steps[6]["with"]["name"] == "phase3-${{ matrix.os }}-py${{ matrix.python }}-${{ github.run_id }}-${{ github.run_attempt }}", "artifact_identity")
         steps[6]["with"]["name"] = "phase1-${{ matrix.os }}-py${{ matrix.python }}-${{ github.run_id }}-${{ github.run_attempt }}"
-        expected = "${{ runner.temp }}/sit-p2/evidence/*.json\n${{ runner.temp }}/sit-p2/evidence/*.xml\n${{ runner.temp }}/sit-p2/evidence/*.log"
+        expected = "${{ runner.temp }}/sit-p3/evidence/*.json\n${{ runner.temp }}/sit-p3/evidence/*.xml\n${{ runner.temp }}/sit-p3/evidence/*.log"
         require(steps[6]["with"]["path"] == expected, "artifact_scope")
-        steps[6]["with"]["path"] = expected.replace("sit-p2", "sit-w06")
+        steps[6]["with"]["path"] = expected.replace("sit-p3", "sit-w06")
         _phase1_policy(v)
     except (KeyError, TypeError, IndexError) as exc:
         raise ValueError("malformed_workflow") from exc
@@ -138,30 +155,32 @@ def resolve_unit(event_name, event, head):
     if event_name == "pull_request":
         pr = event["pull_request"]
         require(pr["head"]["sha"] == head, "event_head_mismatch")
-        match = re.fullmatch(r"phase2/p2-w0([1-9])", pr["head"]["ref"])
+        match = re.fullmatch(r"(?:phase2/(p2-w0[1-9])|phase3/(p3-w(?:0[1-9]|1[0-5])))", pr["head"]["ref"])
         require(match is not None, "review_branch_requires_explicit_unit")
-        unit = "P2-W0" + match[1]
+        unit = (match[1] or match[2]).upper()
         base = pr["base"]["sha"]
     else:
         require(event_name == "push" and event["ref"] == "refs/heads/main", "unsupported_event")
         require(event["head_commit"]["id"] == head, "event_head_mismatch")
-        marks = re.findall(r"^SIT-Phase-Unit: (P2-W0[1-9])$", event["head_commit"]["message"], re.M)
-        require(len(marks) == 1, "main_merge_requires_unit_footer")
-        unit, base = marks[0], event["before"]
-    require(re.fullmatch(r"[0-9a-f]{40}", base) is not None, "invalid_base_sha")
+        marks = re.findall(r"^SIT-Phase-Unit:([^\n]*)$", event["head_commit"]["message"], re.M)
+        require(len(marks) == 1 and re.fullmatch(r" (?:P2-W0[1-9]|P3-W(?:0[1-9]|1[0-5]))", marks[0]) is not None,
+                "main_merge_requires_unit_footer")
+        unit, base = marks[0][1:], event["before"]
+    require(isinstance(base, str) and re.fullmatch(r"[0-9a-f]{40}", base) is not None, "invalid_base_sha")
     return unit, base
 
 
 def configure_context():
     event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes(), object_pairs_hook=unique)
     unit, base = resolve_unit(os.environ["GITHUB_EVENT_NAME"], event, os.environ["SIT_REVIEW_HEAD"])
+    require(unit.startswith("P3-"), "current_workflow_requires_phase3_context")
     os.environ["SIT_PHASE_UNIT"] = unit
     return unit, base
 
 
 def ci_paths():
     require(os.environ.get("GITHUB_ACTIONS") == "true", "explicit Actions invocation required")
-    base = Path(os.environ["RUNNER_TEMP"]) / "sit-p2"
+    base = Path(os.environ["RUNNER_TEMP"]) / "sit-p3"
     evidence = base / "evidence"
     evidence.mkdir(parents=True, exist_ok=True)
     return base, evidence
@@ -179,6 +198,8 @@ def commit_hashes(commit):
 
 def entry_and_scope(evidence):
     unit, base = configure_context()
+    if unit.startswith("P3-"):
+        return phase3_entry_and_scope(evidence, unit, base)
     entry = phase_guard.entry_manifest(ROOT)
     paths = phase_guard.plan_paths(ROOT)
     require(commit_hashes(entry["intake_commit"]) == entry["files"], "actual_intake_hash_mismatch")
@@ -209,6 +230,106 @@ def entry_and_scope(evidence):
         "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata"})
 
 
+def git_text(*args):
+    return subprocess.check_output(["git", *args], cwd=ROOT, text=True, encoding="utf-8", timeout=60).strip()
+
+
+def changed_between(base, head):
+    names = subprocess.check_output(["git", "diff", "--no-renames", "--name-only", "-z", base, head],
+                                    cwd=ROOT, timeout=60).decode("utf-8").split("\0")
+    deleted = subprocess.check_output(["git", "diff", "--no-renames", "--name-only", "--diff-filter=D", base, head],
+                                      cwd=ROOT, timeout=60)
+    require(not deleted, "deletion_or_rename_not_authorized")
+    return frozenset(name for name in names if name)
+
+
+def require_ancestor(ancestor, descendant):
+    result = subprocess.run(["git", "merge-base", "--is-ancestor", ancestor, descendant],
+                            cwd=ROOT, capture_output=True, timeout=60)
+    require(result.returncode == 0, "entry_or_predecessor_ancestry_mismatch")
+
+
+def phase3_history(entry, base, head, paths, unit):
+    """Check each accepted unit's entire DAG against that unit's own scope.
+
+    The runner supplies the actual main predecessor. Its first-parent merge
+    chain supplies historical boundaries; candidate policy cannot relabel an
+    earlier commit using a later unit's cumulative permissions.
+    """
+    intake = entry["intake_commit"]
+    require_ancestor(intake, base)
+    require_ancestor(base, head)
+    current = phase_guard.phase3_unit_number(unit)
+    accepted = git_text("rev-list", "--reverse", "--first-parent", intake + ".." + base).splitlines()
+    require(len(accepted) == current - 1, "wrong_phase3_predecessor")
+    previous, segments = intake, []
+    for step, merge in enumerate(accepted, 1):
+        parents = git_text("show", "-s", "--format=%P", merge).split()
+        require(len(parents) == 2 and parents[0] == previous, "invalid_accepted_merge_chain")
+        message = subprocess.check_output(["git", "show", "-s", "--format=%B", merge],
+                                          cwd=ROOT, text=True, encoding="utf-8", timeout=60)
+        marks = re.findall(r"^SIT-Phase-Unit:([^\n]*)$", message, re.M)
+        require(marks == [f" P3-W{step:02}"], "wrong_phase3_predecessor")
+        segments.append((previous, merge, f"P3-W{step:02}", False))
+        previous = merge
+    require(previous == base, "wrong_phase3_predecessor")
+    segments.append((base, head, unit, True))
+    records = []
+    seen = set()
+    for predecessor, successor, owner, current_segment in segments:
+        immediate = phase3_effective_paths(paths, owner)
+        cumulative = phase3_effective_paths(paths, owner, cumulative=True)
+        commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()
+        for commit in commits:
+            require(commit not in seen, "duplicate_history_commit")
+            seen.add(commit)
+            require_ancestor(intake, commit)
+            parents = git_text("show", "-s", "--format=%P", commit).split()
+            require(bool(parents), "unexpected_root_commit")
+            changed = changed_between(parents[0], commit)
+            require(changed <= immediate, "intermediate_work_unit_allowlist_exceeded")
+            actual = commit_hashes(commit)
+            check_entry_bytes(entry["files"], actual, cumulative)
+            records.append({"commit": commit, "tree": git_text("rev-parse", commit + "^{tree}"),
+                            "parents": parents, "unit": owner, "accepted_predecessor": predecessor,
+                            "segment_successor": successor, "current_unit_segment": current_segment,
+                            "changed_paths": sorted(changed), "tracked_files": len(actual)})
+    all_commits = set(git_text("rev-list", intake + ".." + head).splitlines())
+    require(seen == all_commits, "incomplete_history_accounting")
+    return records
+
+
+def phase3_entry_and_scope(evidence, unit, base):
+    entry = phase_guard.phase3_entry_manifest(ROOT)
+    paths = phase_guard.phase3_plan_paths(ROOT)
+    require(len(entry["files"]) == 157 and commit_hashes(entry["intake_commit"]) == entry["files"],
+            "actual_phase3_intake_hash_mismatch")
+    original = {p: h for p, h in entry["files"].items() if p != "PHASE_3_PLAN.md"}
+    require(len(original) == 156 and commit_hashes(entry["phase2_commit"]) == original,
+            "actual_phase2_hash_mismatch")
+    for key, commit_key in (("intake_tree", "intake_commit"), ("phase2_tree", "phase2_commit")):
+        require(git_text("rev-parse", entry[commit_key] + "^{tree}") == entry[key], "entry_tree_mismatch")
+    head = git_text("rev-parse", "HEAD")
+    require(head == os.environ["SIT_REVIEW_HEAD"], "wrong_checked_commit")
+    history = phase3_history(entry, base, head, paths, unit)
+    changed = changed_between(base, head)
+    phase3_check_changed_paths(paths, unit, changed)
+    actual = tracked_bytes()
+    require(actual == commit_hashes(head), "checkout_differs_from_reviewed_commit")
+    cumulative = phase3_effective_paths(paths, unit, cumulative=True)
+    check_entry_bytes(entry["files"], actual, cumulative)
+    old = phase_guard.phase3_historical_nodes(ROOT)
+    save(evidence / "entry-and-scope.json", {"ok": True, "unit": unit, "base": base, "head": head,
+        "intake_commit": entry["intake_commit"], "intake_tree": entry["intake_tree"],
+        "phase2_commit": entry["phase2_commit"], "phase2_tree": entry["phase2_tree"],
+        "actual_entry_files": 157, "actual_phase2_files": 156,
+        "changed_paths": sorted(changed), "tracked_files": len(actual),
+        "frozen_entry_files": len(set(entry["files"]) - cumulative),
+        "historical_test_identities": len(old), "phase1_historical_test_identities": len(phase_guard.historical_nodes(ROOT)),
+        "predecessor_subtest_events": 428, "scope_exceptions": [], "intermediate_commits": history,
+        "provenance": "Full local Git commit archives, all intermediate first-parent changes and actual checkout"})
+
+
 def preflight(base, evidence):
     entry_and_scope(evidence)
     policy(read_workflow())
@@ -218,13 +339,13 @@ def preflight(base, evidence):
     save(evidence / "environment.json", {"head": head, "python": sys.version, "platform": platform.platform(),
         "matrix_os": os.environ["SIT_MATRIX_OS"], "matrix_python": os.environ["SIT_MATRIX_PYTHON"],
         "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
-        "image_version": os.environ.get("ImageVersion"), "scope": "Phase 2 cumulative verification",
+        "image_version": os.environ.get("ImageVersion"), "scope": "Phase 3 cumulative verification",
         "unit": os.environ["SIT_PHASE_UNIT"]})
     save(evidence / "tracked-before.json", tracked_bytes())
     for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
         run([sys.executable, "-B", "tools/" + tool + ".py"], evidence, tool + "-before")
     save(evidence / "preflight.json", {"ok": True, "actual_frozen_files_checked": 20,
-        "actual_entry_files_checked": 125, "actual_phase1_files_checked": 124, "modules": 48})
+        "actual_entry_files_checked": 157, "actual_phase2_files_checked": 156, "modules": 48})
 
 
 def suite_paths():
@@ -233,9 +354,15 @@ def suite_paths():
     return scopes
 
 
-def collection_check(nodes, expected_files):
+def collection_check(nodes, expected_files, *, unit=None):
     require(len(nodes) == len(set(nodes)) and nodes, "incomplete_or_duplicate_collection")
     require({n.split("::", 1)[0] for n in nodes} == expected_files, "test_file_omitted")
+    context = os.environ.get("SIT_PHASE_UNIT", "P3-W01") if unit is None else unit
+    if context.startswith("P3-"):
+        phase_guard.phase3_unit_number(context)
+        require(phase_guard.phase3_historical_nodes(ROOT) <= set(nodes), "phase3_historical_test_identity_omitted")
+    else:
+        phase_guard.unit_number(context)
     require(phase_guard.historical_nodes(ROOT) <= set(nodes), "historical_test_identity_omitted")
 
 
@@ -253,7 +380,9 @@ def run_suite(base, evidence):
     nodes = [line.strip() for line in collected.stdout.splitlines() if line.startswith("tests/") and "::" in line]
     collection_check(nodes, files)
     save(evidence / "collection.json", {"count": len(nodes), "nodes": nodes, "test_files": sorted(files),
-        "historical_retained": 194, "scope": "all present scaffold/security/contract/unit/integration directories"})
+        "historical_retained": 1650, "phase1_historical_retained": 194,
+        "predecessor_subtest_events": 428,
+        "scope": "all present scaffold/security/contract/unit/integration directories"})
     result = run([python, "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",
                   "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=900, check=False)
     save(evidence / "pytest-exit.json", {"exit_code": result.returncode})
@@ -261,7 +390,7 @@ def run_suite(base, evidence):
 
 
 def evidence_report(base, evidence):
-    summary = {"scope": "Phase 2 cumulative verification; W01 does not implement product behavior",
+    summary = {"scope": "Phase 3 cumulative verification",
                "unit": os.environ["SIT_PHASE_UNIT"], "pass": False}
     archives = []
     for path in sorted((base / "pytest").rglob("*")):
@@ -281,7 +410,16 @@ def evidence_report(base, evidence):
     if xml.exists() and collection.exists():
         summary.update(junit_counts(xml.read_bytes(), json.loads(collection.read_bytes())["nodes"]))
     before_file = evidence / "tracked-before.json"
-    unchanged = before_file.exists() and json.loads(before_file.read_bytes()) == tracked_bytes()
+    after = tracked_bytes()
+    save(evidence / "tracked-after.json", after)
+    unchanged = before_file.exists() and json.loads(before_file.read_bytes()) == after
+    pytest_log = evidence / "pytest.log"
+    subtests = re.findall(r"\b(\d+) subtests passed\b", pytest_log.read_text(encoding="utf-8")) if pytest_log.exists() else []
+    subtest_events = int(subtests[-1]) if subtests else None
+    summary["successful_subtest_events"] = subtest_events
+    summary["predecessor_subtest_events"] = 428
+    summary["predecessor_subtests_retained"] = bool(subtest_events is not None and subtest_events >= 428 and
+        subtest_events == summary.get("additional_reported_events"))
     summary["tracked_bytes_unchanged"] = unchanged
     guards_ok = True
     for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
@@ -289,15 +427,16 @@ def evidence_report(base, evidence):
         guards_ok = guards_ok and outcome.returncode == 0
     entry_and_scope(evidence)
     exit_record = evidence / "pytest-exit.json"
-    summary.update(guards_pass=guards_ok, archive_count=len(archives), historical_retained=194)
-    summary["pass"] = bool(unchanged and guards_ok and collection.exists() and exit_record.exists() and
+    summary.update(guards_pass=guards_ok, archive_count=len(archives), historical_retained=1650, phase1_historical_retained=194)
+    summary["pass"] = bool(unchanged and guards_ok and summary["predecessor_subtests_retained"] and
+        collection.exists() and exit_record.exists() and
         summary.get("tests") == json.loads(collection.read_bytes())["count"] and
         all(summary.get(k) == 0 for k in ("failures", "errors", "skipped")) and
         json.loads(exit_record.read_bytes())["exit_code"] == 0 and len(archives) >= 3)
     save(evidence / "summary.json", summary)
-    print("P2_SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
+    print("P3_SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
-        output.write("## Phase 2 cumulative verification\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
+        output.write("## Phase 3 cumulative verification\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
     require(summary["pass"], "required_CI_evidence_failed_or_incomplete")
 
 

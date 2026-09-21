@@ -2,7 +2,8 @@
 
 A local, supplied-evidence toolkit for examining source lineage, evidence independence, external presence and corrective capacity in AI-native information systems.
 
-**Status: W08 accepted; W09 preparation completion package submitted for final exact-head verification and owner acceptance. Public auditing remains unavailable.** The source package remains installable as `0.1.0.dev0`. Thirteen internal modules implement private preparation components; thirty-five other product modules remain frozen. Public audit calls immediately raise `NotImplementedError`; the CLI provides help/version and refuses audits with exit 1, without reading dossiers or producing reports. W08 merged at `a189065d78a0256326a29b1c34a900b8673fc606`.
+**Status: Phase 2 accepted; Phase 3 plan approved and P3-W01 transition in verification. Public auditing remains unavailable.** The package remains installable as `0.1.0.dev0`. W01 preserves all 48 product-module bytes: thirteen preparation implementations and thirty-five protected modules. Public audit calls raise `NotImplementedError`; CLI auditing refuses with exit 1 without reading dossiers or producing reports.
+
 
 ## Intended purpose
 
@@ -14,24 +15,24 @@ The adopted scope provides a multidimensional evidence profile. It excludes a un
 
 The eighteen Phase 0 specifications remain approved at `7d2e5fcaff591641b5cefce00e71e88941dd1f95`; [PHASE_0_APPROVAL.md](PHASE_0_APPROVAL.md) revision 1.1 preserves the authorized digest correction. [PHASE_1_COMPLETION.md](PHASE_1_COMPLETION.md) revision 1.0 was accepted with PR #8, merged at `d7d73a790a2a627d19307c9dd48281eff3017023`. Its historical pending header is read with that later acceptance event.
 
-[PHASE_2_PLAN.md](PHASE_2_PLAN.md) revision 0.1 was approved and PR #9 merged at `eb730dda31d189c8487b5247a45bae47b678821b`. P2-W08 was accepted through PR #17 and merged at `a189065d78a0256326a29b1c34a900b8673fc606`, preserving reviewed candidate `b870778b62b1a1713674701f110c276d386dcbf9`. The owner has started P2-W09 with `P02-W09 开始`. The owner approved `批准 P2-W09-R01，继续 W09`; the seven-path transition repair is implemented as recorded in [PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md). [PHASE_2_PROGRESS.md](PHASE_2_PROGRESS.md) records exact work, evidence and review stops. The entry manifest resolves all 125 intake file hashes from a pinned prior manifest plus four disjoint records; it has no self-reference.
+[PHASE_2_PLAN.md](PHASE_2_PLAN.md) and [PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md) were accepted through PR #18 at `3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547`. The accepted preparation supports supplied values and UTF-8 bytes, bounded validation, references, time syntax and evidence navigation. Only PC01 whole-check admission completes; analytical checks and all 228 analytical obligations remain pending.
 
-P2-W01 established the phase-aware module guard, the historical-to-current test transition and cumulative CI. Subsequent accepted units implemented private supplied-value/UTF-8 preparation, bounded validation, reference and time checks, and evidence-domain navigation within the thirteen permitted modules. Only prerequisite PC01 completes after full input admission; PC02-PC24, all fifteen analytical families and all 228 analytical obligations remain pending. W08 verifies packaging, installed-runtime independence and the authorized phase transition. Public API/CLI auditing remains unavailable throughout Phase 2. No analysis result, source independence, HHI, correction finding, audit report, native filesystem implementation or release is delivered here. All required preparation components are implemented and verified at the named W09 precursor. The final documentation successor requires its own exact-head matrix and owner acceptance. [The delivery manifest](phase2/delivery_manifest.json) defines its named precursor and hash boundary; prior execution does not certify later successor bytes.
+The owner approved [PHASE_3_PLAN.md](PHASE_3_PLAN.md) revision 0.1 with `批准，启动 P3-W01`; PR #19 merged at `80aa943f577f4a7deaeb8a0f3253c62d1263ca62`. [PHASE_3_PROGRESS.md](PHASE_3_PROGRESS.md) records subsequent authority and evidence while prior reviewed documents remain byte-identical. W01 establishes the actual 157-file entry, independent phase context, exact scopes and cumulative verification. It adds no analytical implementation. Later authorized units will implement the private analytical core; public API, CLI audit, reporting, native capture and release remain deferred.
 
 ## Developer installation and checks
 
 Use a complete Git checkout and a clean CPython 3.11 or 3.13 development environment. The six migrated test files load only their exact, SHA-256-checked historical source from the fixed intake commit, then adapt the named phase-specific assertions. Full Git history is required; no network or mutable-ref fallback occurs during test loading. This retains the original assertions and all 194 historical test identities instead of silently replacing them. See [phase2/transition_ledger.md](phase2/transition_ledger.md).
 
-P2-W09-R01 advances the policy to W09. Set the independently supplied W09 context for the commands below. Local execution is separate from the required exact-head four-profile hosted gate. In a POSIX shell:
+P3-W01 establishes the new independent context. Set it for the commands below. Local execution is separate from the required exact-head four-profile hosted gate. In a POSIX shell:
 
 ```sh
-export SIT_PHASE_UNIT=P2-W09
+export SIT_PHASE_UNIT=P3-W01
 ```
 
 In PowerShell:
 
 ```powershell
-$env:SIT_PHASE_UNIT = 'P2-W09'
+$env:SIT_PHASE_UNIT = 'P3-W01'
 ```
 
 Then run:
@@ -42,11 +43,11 @@ python -m pip install --no-build-isolation --no-deps .
 sit --version
 sit --help
 python -B tools/check_phase0_baseline.py
-python -B tools/check_scaffold_boundary.py --unit P2-W09
+python -B tools/check_scaffold_boundary.py --unit P3-W01
 python -m pytest tests -q
 ```
 
-W01 remains the guard's conservative default when no context is supplied; that default cannot validate this W09 checkout. The explicit guard argument does not set the environment for the separate pytest command, so retain `SIT_PHASE_UNIT=P2-W09` for both. This context is independent of candidate policy files and does not authenticate owner approval. CI derives it from the exact `phase2/p2-wNN` review branch. A main-branch work-unit merge must include exactly one `SIT-Phase-Unit: P2-WNN` footer, preserving the separately authorized unit context after merge.
+A missing context retains the conservative Phase 2 W01 default and cannot validate this Phase 3 checkout. Keep `SIT_PHASE_UNIT=P3-W01` set for both guard and pytest. CI derives Phase 3 context from the actual `phase3/p3-wNN` branch or a single `SIT-Phase-Unit: P3-WNN` main merge footer. Metadata cannot authorize a unit. The exact 1,650 predecessor identities and method-level adaptations are recorded in [phase3/transition_ledger.md](phase3/transition_ledger.md).
 
 Dependency installation is a developer operation and may access the package index. The installed product has zero third-party runtime dependencies and never imports the developer guards, catalogs or historical tests. Source distributions retain the four permitted repository-context tests; running those tests requires the complete developer checkout. Building the sdist/wheel and using the installed package do not require this test loader or Git history.
 
@@ -54,15 +55,11 @@ The older pytest default covers only tests/scaffold. Use the explicit tests root
 
 ## CI and evidence
 
-[Phase 2 cumulative CI](.github/workflows/phase1-ci.yml) retains four required rows: Ubuntu 24.04 and Windows Server 2025, each with Python 3.11 and 3.13. It retains read-only repository permissions, exact-head checkout, immutable action pins, no stored checkout credentials, finite timeouts, reviewed developer wheels and explicit verification-only artifact uploads. Full history supports pinned historical test loading and actual entry-commit byte checks. No source archive, user dossier, package or secret is uploaded.
+[Phase 3 cumulative CI](.github/workflows/phase1-ci.yml) retains Ubuntu 24.04 and Windows Server 2025, each with Python 3.11 and 3.13, immutable action pins, read-only permissions, no stored checkout credentials and finite timeouts. It validates actual entry trees, history and current-unit scope, frozen artifacts, module boundaries and the retained test collection. Raw JUnit outcomes, separately counted subtests, tracked bytes before/after, packaging and offline installed-runtime witnesses remain required.
 
-The driver validates the complete actual 124-file accepted Phase 1 commit and 125-file plan-merge intake, the current work-unit path delta, the actual twenty-file frozen baseline and all forty-eight product slots. It checks the old-to-new collection identity mapping, raw JUnit outcomes, tracked bytes before/after, packaging, clean offline installation and source-rebuild member contents. Tests and subtest events remain separate counts. Missing or failed evidence is not a successful result.
+Reviewed W09 head `652ec2f434197ce657bc30c16927a9be66d8378e` passed [run 35519939650](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35519939650), attempt 1, in all four profiles with 1,650 tests and 428 subtest events separately counted, zero failures/errors/skips. Its accepted merge also passed service run `35544450516`. These are predecessor evidence. W01 and its final documentation successor require their own exact-head matrices; current results are recorded in [phase3/implementation_evidence.json](phase3/implementation_evidence.json) and the review PR.
 
-W08 R01 code head `9450b0decc5a02fbcee38beecfe6c4715741efef` passed run `35500231752` in all four required profiles: 1,640 collected tests and 428 separately counted successful subtest events per profile. Its installed-runtime witness checks all 48 installed module bytes, eight private preparation instances, empty-input rejection, unchanged public refusals and file/DNS/native negative controls. It also records source-distribution and original/rebuilt wheel inventories. These engineering results do not complete analytical obligations. The earlier 194-test Phase 1 and 1,629-test accepted W07 results remain historical evidence.
-
-W08 final head `b870778b62b1a1713674701f110c276d386dcbf9` passed [run 35504627143](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35504627143) before its accepted merge. W09 precursor `0204ad8cf3557aa512746438b7207327d57b67f6` passed [run 35519369490, attempt 1](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35519369490) in all four required profiles: 1,650 top-level tests, zero failures/errors/skips and 428 separately counted successful subtest events each. All 1,640 W08 identities survive; ten W09 regressions are added. Actual development pins, original artifacts, frozen bytes, archive inventories and installed-runtime records were audited. The earlier Python 3.12 local run remains supplementary.
-
-[PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md) and [the delivery manifest](phase2/delivery_manifest.json) identify the complete 156-file precursor and exact evidence boundary. The final documentation successor must pass its own four-profile matrix. [PR #18](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/18) records its actual commit/tree and post-commit results, followed by the owner acceptance decision. W09 merge, Phase 3 and release remain separately authorized actions.
+The planning PR's inherited-driver failure remains disclosed in [PHASE_3_PLAN.md](PHASE_3_PLAN.md) section 1.2; it is not relabeled as a successful Phase 3 execution.
 
 Windows Server component tests do not certify the future Windows 11/NTFS native adapter. No production platform support or general security proof is asserted. Artifacts retain the existing fourteen-day retention.
 
@@ -70,7 +67,7 @@ Windows Server component tests do not certify the future Windows 11/NTFS native 
 
 Start with [V0.1_PRODUCT_SPEC.md](V0.1_PRODUCT_SPEC.md), [DEFINITIONS_AND_UNITS.md](DEFINITIONS_AND_UNITS.md), [CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md](CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md) and [OBSERVABILITY_AND_REPORTING.md](OBSERVABILITY_AND_REPORTING.md). [THEORY_SOURCE_MAP.md](THEORY_SOURCE_MAP.md), [THEORY_TO_CODE_TRACEABILITY.md](THEORY_TO_CODE_TRACEABILITY.md) and [VALIDATION_PLAN.md](VALIDATION_PLAN.md) preserve source interpretation, responsibilities and future behavior tests. Historical catalogs and the approved plans remain unchanged; implementation evidence is tracked separately.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Do not post private evidence, credentials or protected-source identities in this public repository. Use fictional development examples. Private vulnerability reporting remains subject to the existing unverified-channel limitation. Build/test tools and their original reviews remain in [scaffold/toolchain_review.md](scaffold/toolchain_review.md) and [scaffold/ci_toolchain_review.md](scaffold/ci_toolchain_review.md); the scoped transition is recorded in [phase2/ci_review.md](phase2/ci_review.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Do not post private evidence, credentials or protected-source identities in this public repository. Use fictional development examples. Private vulnerability reporting remains subject to the existing unverified-channel limitation. Build/test tools and their original reviews remain in [scaffold/toolchain_review.md](scaffold/toolchain_review.md) and [scaffold/ci_toolchain_review.md](scaffold/ci_toolchain_review.md); the current scoped transition is recorded in [phase3/ci_review.md](phase3/ci_review.md).
 
 ## License
 

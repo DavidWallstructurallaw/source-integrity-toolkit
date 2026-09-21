@@ -1,0 +1,34 @@
+{
+  "active_unit": "P3-W01",
+  "extension_first_units": {
+    "contracts/evidence.py": 3,
+    "contracts/execution.py": 2,
+    "contracts/report.py": 2,
+    "runtime/boundary.py": 13,
+    "runtime/diagnostics.py": 2,
+    "runtime/resources.py": 2,
+    "validation/limits.py": 2,
+    "validation/semantics.py": 3
+  },
+  "first_units": {
+    "analysis/context.py": 12,
+    "analysis/contribution_profile.py": 7,
+    "analysis/correction_outcomes.py": 11,
+    "analysis/correction_routes.py": 10,
+    "analysis/evaluator_lineage.py": 8,
+    "analysis/findings.py": 12,
+    "analysis/human_review.py": 8,
+    "analysis/inventory.py": 5,
+    "analysis/origins.py": 5,
+    "analysis/presence.py": 9,
+    "analysis/process_comparison.py": 6,
+    "contracts/results.py": 2,
+    "graph/cycles.py": 4,
+    "graph/projections.py": 4,
+    "graph/traversal.py": 4,
+    "graph/witnesses.py": 4
+  },
+  "format": "sit-phase3-modules/0.1",
+  "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
+  "promotions": []
+}

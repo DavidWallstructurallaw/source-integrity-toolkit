@@ -1,0 +1,40 @@
+{
+  "format": "sit-phase3-evidence/0.1",
+  "unit": "P3-W01",
+  "authority": {
+    "owner_instruction": "批准，启动 P3-W01",
+    "plan_pr": 19,
+    "plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
+    "plan_tree": "66ba4b112554ee227bf536e0716b51d555c10747",
+    "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
+    "accepted_phase2_merge": "3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547",
+    "w01_acceptance": "pending_owner_review",
+    "next_unit": "P3-W02_not_authorized_or_started"
+  },
+  "entry": {
+    "file_count": 157,
+    "manifest_sha256": "dfe96f57a222937131e8e4fafd13098f76d134cd88a50ffa9fa82891b9b9659b",
+    "predecessor_files": 156,
+    "predecessor_top_level_tests": 1650,
+    "predecessor_test_files": 34,
+    "predecessor_subtests": 428
+  },
+  "product_boundary": {
+    "total_modules": 48,
+    "inherited_implemented": 13,
+    "new_promotions": 0,
+    "protected_current": 35,
+    "product_byte_changes": 0,
+    "phase_end_implementation_ceiling": 29,
+    "phase_end_protected": 19,
+    "public_auditing": "refusal_unchanged",
+    "runtime_dependencies": 0
+  },
+  "validation": {
+    "local": "pending",
+    "hosted_four_profile": "pending",
+    "final_documentation_successor": "pending"
+  },
+  "analytical_obligations_completed": 0,
+  "phase3_complete": false
+}

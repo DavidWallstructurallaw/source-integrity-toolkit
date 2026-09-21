@@ -24,19 +24,78 @@ def ci_driver():
     return module
 
 
+PHASE2_ACCEPTED = "3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547"
+PHASE3_ENTRY = "80aa943f577f4a7deaeb8a0f3253c62d1263ca62"
+
+
+def phase2_bytes(path):
+    """Actual accepted bytes for historical comparisons; never execute them."""
+    import subprocess
+    return subprocess.check_output(["git", "show", PHASE2_ACCEPTED + ":" + path],
+                                   cwd=ROOT, stderr=subprocess.PIPE, timeout=30)
+
+
+def current_phase3_guard():
+    """Check the live tree independently of every historical byte assertion."""
+    import subprocess
+    unit = f"P3-W{guard.phase3_unit_number():02}"
+    outcome = guard.check_repository(ROOT, unit=unit)
+    assert outcome["ok"], outcome
+    assert outcome["checked_modules"] == 48
+    ci = ci_driver()
+    paths = guard.phase3_plan_paths(ROOT)
+    allowed = ci.phase3_effective_paths(paths, unit, cumulative=True)
+    immediate = ci.phase3_effective_paths(paths, unit)
+    ci.phase3_check_changed_paths(paths, unit, immediate)
+    for forbidden in ("PHASE_2_PLAN.md", "src/source_integrity_toolkit/api.py",
+                      "tests/contract/../contract/test_phase2_transition.py",
+                      "phase3/module_policy.json.bak"):
+        assert forbidden not in allowed
+        try:
+            ci.phase3_check_changed_paths(paths, unit, immediate | {forbidden})
+        except ValueError as error:
+            assert str(error) == "work_unit_allowlist_exceeded"
+        else:
+            raise AssertionError("phase3_scope_control_failed")
+    # Include committed, staged and unstaged candidate changes. The pinned
+    # planning entry is not inferred from mutable candidate metadata.
+    changed = set(subprocess.check_output(
+        ["git", "diff", "--name-only", PHASE3_ENTRY], cwd=ROOT,
+        text=True, timeout=30).splitlines())
+    changed.update(subprocess.check_output(
+        ["git", "ls-files", "--others", "--exclude-standard"], cwd=ROOT,
+        text=True, timeout=30).splitlines())
+    assert changed <= allowed, sorted(changed - allowed)
+    return outcome
+
+
 class Phase2TransitionTests(unittest.TestCase):
     def setUp(self):
         self.policy = json.loads((ROOT / "phase2/module_policy.json").read_bytes())
 
     def workspace(self):
+        import io
+        import subprocess
+        import tarfile
+        current_phase3_guard()
         temp = tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
         root = Path(temp.name)
-        shutil.copytree(ROOT / "src/source_integrity_toolkit", root / "src/source_integrity_toolkit")
-        for name in ("PHASE_2_PLAN.md", "phase2/entry_manifest.json", "phase2/module_policy.json", "scaffold/delivery_manifest.json"):
-            target = root / name
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(ROOT / name, target)
+        names = ("PHASE_2_PLAN.md", "phase2/entry_manifest.json",
+                 "phase2/module_policy.json", "scaffold/delivery_manifest.json")
+        raw = subprocess.check_output(["git", "archive", PHASE2_ACCEPTED,
+            "src/source_integrity_toolkit", *names], cwd=ROOT, timeout=30)
+        with tarfile.open(fileobj=io.BytesIO(raw)) as archive:
+            for member in archive:
+                if member.isdir():
+                    continue
+                self.assertTrue(member.isfile())
+                self.assertTrue(member.name in names or member.name in {
+                    "src/source_integrity_toolkit/" + path for path in guard.EXPECTED_PATHS})
+                target = root / member.name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(archive.extractfile(member).read())
+        self.assertTrue(guard.check_repository(root, unit="P2-W09")["ok"])
         return root
 
     def test_independent_plan_and_entry_pins(self):
@@ -57,13 +116,13 @@ class Phase2TransitionTests(unittest.TestCase):
         self.assertFalse(any(p.startswith("src/") or p.endswith(".schema.json") for p in paths["P2-W01"]))
 
     def test_actual_module_policy_and_remaining_protection(self):
-        active = guard.promotions(ROOT)
+        active = guard.promotions(ROOT, unit="P2-W09")
         self.assertLessEqual(active, set(guard.FIRST_UNIT))
         self.assertEqual(len(guard.EXPECTED_PATHS - set(guard.FIRST_UNIT)), 35)
-        outcome = guard.check_repository(ROOT)
+        outcome = current_phase3_guard()
         self.assertTrue(outcome["ok"], outcome)
         self.assertEqual(outcome["checked_modules"], 48)
-        self.assertEqual(outcome["protected_modules"], 48 - len(active))
+        self.assertEqual(outcome["protected_modules"], 48 - len(guard.phase3_promotions(ROOT)))
 
     def test_w01_has_no_product_promotion(self):
         value = copy.deepcopy(self.policy)
@@ -117,7 +176,7 @@ class Phase2TransitionTests(unittest.TestCase):
         entry = json.loads((root / "phase2/entry_manifest.json").read_bytes())
         entry["additional_files"]["src/source_integrity_toolkit/analysis/origins.py"] = hashlib.sha256(raw).hexdigest()
         (root / "phase2/entry_manifest.json").write_text(json.dumps(entry))
-        self.assertFalse(guard.check_repository(root)["ok"])
+        self.assertFalse(guard.check_repository(root, unit="P2-W09")["ok"])
 
     def test_changed_plan_cannot_authorize_itself(self):
         root = self.workspace()
@@ -126,12 +185,12 @@ class Phase2TransitionTests(unittest.TestCase):
         value = copy.deepcopy(self.policy)
         value["plan_sha256"] = hashlib.sha256((root / "PHASE_2_PLAN.md").read_bytes()).hexdigest()
         (root / "phase2/module_policy.json").write_text(json.dumps(value))
-        self.assertFalse(guard.check_repository(root)["ok"])
+        self.assertFalse(guard.check_repository(root, unit="P2-W09")["ok"])
 
     def test_extra_package_file_still_fails(self):
         root = self.workspace()
         (root / "src/source_integrity_toolkit/answer_cache.json").write_text("{}")
-        self.assertFalse(guard.check_repository(root)["ok"])
+        self.assertFalse(guard.check_repository(root, unit="P2-W09")["ok"])
 
     def test_protected_fake_report_return_still_fails(self):
         self.assertIn("non_scaffold_body", guard.form_issues("api.py", 'def audit_bundle(x):\n    return {"report_kind": "audit_report"}\n'))
@@ -141,7 +200,13 @@ class Phase2TransitionTests(unittest.TestCase):
                        'from pathlib import Path\n', 'import subprocess\n', 'def f():\n    return eval("1")\n',
                        'import recursive_integrity_toolkit\n', 'from ..analysis import origins\n'):
             with self.subTest(source=source):
-                self.assertTrue(guard.live_issues("runtime/boundary.py", source))
+                # P3 authorizes composition imports; the original P2 prohibition
+                # remains an explicit historical rule, while effect probes stay live.
+                unit = "P2-W09" if source == 'from ..analysis import origins\n' else None
+                self.assertTrue(guard.live_issues("runtime/boundary.py", source, unit=unit))
+        composition = 'from ..analysis import origins\n'
+        self.assertIn("phase3_unpromoted_dependency", guard.live_issues("runtime/boundary.py", composition, unit="P3-W01"))
+        self.assertEqual(guard.live_issues("runtime/boundary.py", composition, unit="P3-W05"), [])
 
     def test_live_import_time_call_is_rejected(self):
         self.assertIn("import_time_execution", guard.live_issues("contracts/bundle.py", 'def f():\n    return 1\nX = f()\n'))
@@ -194,7 +259,7 @@ class Phase2TransitionTests(unittest.TestCase):
         self.assertEqual({r["path"] for r in value["components"]}, set(guard.FIRST_UNIT))
         for row in value["components"]:
             self.assertEqual(row["first_unit"], guard.FIRST_UNIT[row["path"]])
-        active = guard.promotions(ROOT)
+        active = guard.promotions(ROOT, unit="P2-W09")
         for row in value["components"]:
             if row["path"] not in active:
                 self.assertEqual((row["implementation"], row["behavior_tests"], row["evidence"]), ("pending", "pending", []))
@@ -222,11 +287,19 @@ class Phase2TransitionTests(unittest.TestCase):
         nodes = sorted(guard.historical_nodes(ROOT))
         nodes.append("tests/contract/test_phase2_transition.py::Phase2TransitionTests::test_historical_identity_ledger_is_complete")
         files = {n.split("::")[0] for n in nodes}
-        ci.collection_check(nodes, files)
+        ci.collection_check(nodes, files, unit="P2-W09")
         with self.assertRaises(ValueError):
-            ci.collection_check(nodes[1:], files)
+            ci.collection_check(nodes[1:], files, unit="P2-W09")
         with self.assertRaises(ValueError):
-            ci.collection_check(nodes + nodes[:1], files)
+            ci.collection_check(nodes + nodes[:1], files, unit="P2-W09")
+        current_phase3_guard()
+        current = sorted(guard.phase3_historical_nodes(ROOT))
+        current_files = {node.split("::")[0] for node in current}
+        ci.collection_check(current, current_files)
+        with self.assertRaises(ValueError):
+            ci.collection_check(current[1:], current_files)
+        with self.assertRaises(ValueError):
+            ci.collection_check(current + current[:1], current_files)
 
     def test_cumulative_scope_and_workflow_are_closed(self):
         ci = ci_driver()
@@ -257,14 +330,15 @@ class W07R01Tests(unittest.TestCase):
 
     def test_actual_policy_only_changes_the_trusted_active_context(self):
         raw = self.old_bytes("phase2/module_policy.json", "6b2d5a0f14bd840c3a894805524fb98df4652ecd")
-        current = guard.unit_number()
+        current_phase3_guard()
+        current = guard.unit_number("P2-W09")
         self.assertIn(current, (7, 8, 9))
         # Later trusted contexts still need their own path authorization.
         expected = raw.replace(b'"active_unit": "P2-W06"',
                                ('"active_unit": "P2-W%02d"' % current).encode())
         self.assertEqual((ROOT / "phase2/module_policy.json").read_bytes(), expected)
         value = json.loads(expected)
-        self.assertEqual(len(guard.policy_promotions(value)), 13)
+        self.assertEqual(len(guard.policy_promotions(value, "P2-W09")), 13)
         self.assertEqual(value["promotions"], json.loads(raw)["promotions"])
 
     def test_policy_mismatch_and_new_promotions_still_fail(self):
@@ -363,7 +437,8 @@ class W07R01Tests(unittest.TestCase):
         for meta, path in entries:
             mode, kind, sha = meta.decode().split()
             self.assertEqual((mode, kind), ("100644", "blob"))
-            self.assertEqual(guard.git_blob((ROOT / path.decode()).read_bytes()), sha)
+            self.assertEqual(guard.git_blob(phase2_bytes(path.decode())), sha)
+        current_phase3_guard()
 
     def test_prior_phase2_transition_tests_keep_every_statement(self):
         import ast
@@ -412,10 +487,11 @@ class W08R01Tests(unittest.TestCase):
         raw = self.original("phase2/module_policy.json", "524697001b70fc83f0ca11b7f0ccc0366bf692af")
         expected = self.apply_exact(raw, [('"active_unit": "P2-W07"', '"active_unit": "P2-W08"')])
         self.assertEqual(W09R01Tests().pre_w09_bytes("phase2/module_policy.json"), expected)
-        self.assertIn(guard.unit_number(), (8, 9))
+        self.assertIn(guard.unit_number("P2-W09"), (8, 9))
         self.assertEqual(guard.policy_promotions(json.loads(expected), "P2-W08"), frozenset(guard.FIRST_UNIT))
-        self.assertEqual(len(guard.promotions(ROOT)), 13)
-        self.assertEqual(guard.check_repository(ROOT)["protected_modules"], 35)
+        self.assertEqual(len(guard.promotions(ROOT, unit="P2-W09")), 13)
+        outcome = current_phase3_guard()
+        self.assertEqual(outcome["protected_modules"], 48 - len(guard.phase3_promotions(ROOT)))
 
     def test_mismatch_and_forbidden_promotion_still_fail(self):
         value = json.loads(W09R01Tests().pre_w09_bytes("phase2/module_policy.json"))
@@ -519,11 +595,12 @@ class W08R01Tests(unittest.TestCase):
             path = name.decode(); mode, kind, pin = meta.decode().split()
             self.assertEqual((mode, kind), ("100644", "blob"))
             if path not in allowed:
-                self.assertEqual(guard.git_blob((ROOT / path).read_bytes()), pin)
+                self.assertEqual(guard.git_blob(phase2_bytes(path)), pin)
         # The permitted workflow path is intentionally unchanged by this repair.
         path = ".github/workflows/phase1-ci.yml"
         original = subprocess.check_output(["git", "show", self.ACCEPTED + ":" + path], cwd=ROOT, timeout=30)
-        self.assertEqual((ROOT / path).read_bytes(), original)
+        self.assertEqual(phase2_bytes(path), original)
+        current_phase3_guard()
 
     def test_trusted_event_resolution_does_not_read_candidate_policy(self):
         ci = ci_driver(); head, base = "a" * 40, "b" * 40
@@ -628,9 +705,9 @@ print(json.dumps({'modules':loaded,'admitted_fixture_modes':8,'rejected_empty_mo
         self.assertEqual(inventory[1]["members"], inventory[2]["members"])
         record = {"head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                   "scope": "W08 clean installed preparation; no public audit or native-file certification",
-                  "unit": f"P2-W{guard.unit_number():02}", "ok": True, "runtime": result, "distributions": inventory}
+                  "unit": f"P3-W{guard.phase3_unit_number():02}", "ok": True, "runtime": result, "distributions": inventory}
         # Fixed developer evidence destination; no source payload or binary upload.
-        destination = (Path(os.environ["RUNNER_TEMP"]) / "sit-p2/evidence" if os.environ.get("GITHUB_ACTIONS") == "true" else work)
+        destination = (Path(os.environ["RUNNER_TEMP"]) / "sit-p3/evidence" if os.environ.get("GITHUB_ACTIONS") == "true" else work)
         destination.mkdir(parents=True, exist_ok=True)
         (destination / "w08-installed-runtime.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
 
@@ -658,12 +735,13 @@ class W09R01Tests(unittest.TestCase):
         return raw
 
     def pre_w09_bytes(self, path, candidate=None):
-        # Always validate live bytes before exposing a predecessor to older tests.
+        # Validate the actual accepted P2 segment and independently guard live P3.
+        current_phase3_guard()
         import ast
         original = self.original(path)
         self.assertIn(path, self.PATCHES)
         expected = self.apply_exact(original, self.PATCHES[path])
-        live = (ROOT / path).read_bytes() if candidate is None else candidate
+        live = phase2_bytes(path) if candidate is None else candidate
         if path == "tests/contract/test_phase2_transition.py":
             self.assertTrue(expected.endswith(self.FOOTER))
             prefix = expected[:-len(self.FOOTER)]
@@ -684,14 +762,14 @@ class W09R01Tests(unittest.TestCase):
         path = "phase2/module_policy.json"
         original = self.pre_w09_bytes(path)
         expected = self.apply_exact(original, self.PATCHES[path])
-        self.assertEqual(guard.unit_number(), 9)
+        self.assertEqual(guard.unit_number("P2-W09"), 9)
         self.assertEqual((ROOT / path).read_bytes(), expected)
         self.assertEqual(json.loads(expected)["promotions"], json.loads(original)["promotions"])
-        self.assertEqual(guard.policy_promotions(json.loads(expected)), frozenset(guard.FIRST_UNIT))
-        outcome = guard.check_repository(ROOT)
+        self.assertEqual(guard.policy_promotions(json.loads(expected), "P2-W09"), frozenset(guard.FIRST_UNIT))
+        outcome = current_phase3_guard()
         self.assertTrue(outcome["ok"], outcome)
         self.assertEqual(outcome["checked_modules"], 48)
-        self.assertEqual(outcome["protected_modules"], 35)
+        self.assertEqual(outcome["protected_modules"], 48 - len(guard.phase3_promotions(ROOT)))
 
     def test_current_policy_rejects_mismatch_and_forbidden_promotions(self):
         value = json.loads((ROOT / "phase2/module_policy.json").read_bytes())
@@ -754,17 +832,17 @@ class W09R01Tests(unittest.TestCase):
             self.pre_w09_bytes(path)
 
     def test_live_first_bridge_rejects_missing_extra_and_weakened_bytes(self):
-        # Mutate local byte strings only; never alter an observed checkout file.
+        # Mutate actual historical segment bytes; the live P3 guard remains separate.
         for path, edits in self.PATCHES.items():
             original = self.original(path)
-            live = (ROOT / path).read_bytes()
+            live = phase2_bytes(path)
             candidates = [live + b"\nUNAPPROVED = True\n", live[:-1]]
             if edits:
                 candidates.append(original)
             for candidate in candidates:
                 with self.assertRaises(AssertionError): self.pre_w09_bytes(path, candidate)
         path = "tests/scaffold/test_ci_contract.py"
-        live = (ROOT / path).read_bytes()
+        live = phase2_bytes(path)
         for before, after in ((b"if step == 9:", b"if step >= 8:"),
                               (b"            allowed.update(P2_W09_R01_PATHS)",
                                b"            allowed.update(P2_W09_R01_PATHS | {'src/new.py'})"),
@@ -773,13 +851,13 @@ class W09R01Tests(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 self.pre_w09_bytes(path, live.replace(before, after))
         path = "tests/security/test_preparation_inertness.py"
-        live = (ROOT / path).read_bytes()
+        live = phase2_bytes(path)
         before = b"assert not guard.check_repository"
         self.assertIn(before, live)
         with self.assertRaises(AssertionError):
             self.pre_w09_bytes(path, live.replace(before, b"assert guard.check_repository", 1))
         path = "tests/contract/test_phase2_transition.py"
-        live = (ROOT / path).read_bytes()
+        live = phase2_bytes(path)
         # New tests are additive; altered old assertions and added top-level
         # code must still fail the exact predecessor-prefix/class/footer check.
         prior_assertion = b'        self.assertEqual(' + b'entry["file_count"], 125)'
@@ -819,7 +897,7 @@ class W09R01Tests(unittest.TestCase):
                 if name in permitted: method.body = [ast.Pass()]
         self.assertEqual(ast.dump(old, include_attributes=False), ast.dump(changed, include_attributes=False))
         # The new class is the only addition. All old method names stay live.
-        live = ast.parse((ROOT / path).read_bytes())
+        live = ast.parse(phase2_bytes(path))
         additions = [n for n in live.body if isinstance(n, ast.ClassDef) and n.name == "W09R01Tests"]
         self.assertEqual(len(additions), 1)
         live.body.remove(additions[0])
@@ -862,8 +940,8 @@ class W09R01Tests(unittest.TestCase):
             self.assertEqual((mode, kind), ("100644", "blob"))
             self.assertTrue((ROOT / path).is_file(), path)
             if path not in allowed:
-                self.assertEqual(guard.git_blob((ROOT / path).read_bytes()), pin, path)
-        tracked = set(subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT,
+                self.assertEqual(guard.git_blob(phase2_bytes(path)), pin, path)
+        tracked = set(subprocess.check_output(["git", "ls-tree", "-r", "--name-only", "-z", PHASE2_ACCEPTED], cwd=ROOT,
                       timeout=30).decode().rstrip("\0").split("\0"))
         self.assertTrue(names <= tracked <= names | allowed)
         for path in ("PHASE_2_COMPLETION.md", "phase2/delivery_manifest.json"):
@@ -872,8 +950,9 @@ class W09R01Tests(unittest.TestCase):
             self.assertTrue((ROOT / path).is_file())
         # Neither the W08 accepted-tree witness nor preparation inertness is
         # enlarged. The exact prefix validation already protects that method.
-        self.assertEqual((ROOT / "tests/security/test_preparation_inertness.py").read_bytes(),
+        self.assertEqual(phase2_bytes("tests/security/test_preparation_inertness.py"),
                          self.original("tests/security/test_preparation_inertness.py"))
+        current_phase3_guard()
 
     def test_w09_event_and_main_footer_resolve_independent_context(self):
         ci = ci_driver(); head, base = "a" * 40, "b" * 40
