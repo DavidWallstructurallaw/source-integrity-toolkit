@@ -2,7 +2,7 @@
 
 A local, supplied-evidence toolkit for examining source lineage, evidence independence, external presence and corrective capacity in AI-native information systems.
 
-**Status: Phase 2 accepted; Phase 3 plan approved and P3-W01 transition in verification. Public auditing remains unavailable.** The package remains installable as `0.1.0.dev0`. W01 preserves all 48 product-module bytes: thirteen preparation implementations and thirty-five protected modules. Public audit calls raise `NotImplementedError`; CLI auditing refuses with exit 1 without reading dossiers or producing reports.
+**Status: Phase 2 accepted; Phase 3 plan approved; P3-W01 code verified and review package awaiting acceptance. Public auditing remains unavailable.** The package remains installable as `0.1.0.dev0`. W01 preserves all 48 product-module bytes: thirteen preparation implementations and thirty-five protected modules. Public audit calls raise `NotImplementedError`; CLI auditing refuses with exit 1 without reading dossiers or producing reports.
 
 
 ## Intended purpose
@@ -78,3 +78,7 @@ Original engineering repository materials are licensed under the **Apache Licens
 The grant does not automatically cover theory papers or their extracts, page images, translations or adaptations; third-party material; user-supplied evidence; confidential identity maps; or input-derived report content. Theory papers retain their own **CC BY-NC-ND 4.0** notices. Excluded materials retain their own terms and permissions. Successful processing does not transfer rights.
 
 [LICENSING_NOTES.md](LICENSING_NOTES.md) controls these boundaries. Its historical root-license statement refers to Phase 0; accepted P1-W01 applied the license without changing that frozen specification. Upstream contribution/governance rules add no downstream conditions to Apache-2.0. No package-index release has been published by this work.
+
+## P3-W01 review evidence
+
+W01 code head `ec221258e3a43fa28f4e9d1c5aeb8bc214b1ae15` passed [run 35548424303](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35548424303) in all four required profiles: 1,786 top-level tests, 428 successful subtest events counted separately, and zero failures/errors/skips. All 1,650 predecessor identities survive. Original evidence, package inventories and installed-runtime records were independently audited. The final documentation successor requires its own exact-head matrix; [PR #20](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/20) records that post-commit gate and the next owner decision. W01 acceptance and W02 remain pending.

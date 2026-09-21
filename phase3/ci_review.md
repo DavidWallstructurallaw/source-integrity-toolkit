@@ -12,7 +12,7 @@ The retained suite maps all 1,650 accepted W09 identities against actual collect
 
 ## Execution and applicability
 
-The fixed-pin applicability review below is complete as of 2026-09-21; exact-head four-profile execution remains pending. No dependency replacement or relaxed check is authorized. The disclosed plan-context failure is historical, not a passing W01 run.
+The fixed-pin applicability review below is complete as of 2026-09-21; the code-head four-profile run `35548424303` has passed with independently audited raw evidence. No dependency replacement or relaxed check is authorized. The disclosed plan-context failure is historical, not a passing W01 run.
 
 The planning head failed run `35545499745` with `review_branch_requires_explicit_unit`. Its accepted merge failed inherited run `35546955084` in all four profiles before collection; decoded job `106174464579` confirms `main_merge_requires_unit_footer`. Neither result is reported as a W01 pass. The plan-merge message carries `SIT-Phase-Plan: P3`, not a fictitious work-unit footer.
 
@@ -34,3 +34,11 @@ The [setuptools history](https://setuptools.pypa.io/en/latest/history.html) stil
 The [PSF version status](https://devguide.python.org/versions/) and [Python 3.11.9 release page](https://www.python.org/downloads/release/python-3119/) distinguish the last bugfix binaries from subsequent security releases. Hosted evidence records actual patch and image versions. It does not label Windows 3.11.9 the latest security patch or certify production native-platform support.
 
 The exact action definitions reviewed were [checkout](https://github.com/actions/checkout/blob/3d3c42e5aac5ba805825da76410c181273ba90b1/action.yml), [setup-python](https://github.com/actions/setup-python/blob/5fda3b95a4ea91299a34e894583c3862153e4b97/action.yml) and [upload-artifact](https://github.com/actions/upload-artifact/blob/043fb46d1a93c77aae656e7c1c64a875d1fc6a0a/action.yml); their source blobs are respectively `5b0524f730db83f9513c18ab31a6c086c7239076`, `df6c8235b476652b6402d31d92a2a89cdea74bb9` and `7cb4d1e81db55320b41217e1a78a1a46e3d2baef`. [GitHub's secure-use guidance](https://docs.github.com/en/actions/reference/security/secure-use) supports full commit pins and least privileges. Search non-results are not treated as proof of absence of vulnerabilities.
+
+## Actual W01 code-head execution
+
+Head `ec221258e3a43fa28f4e9d1c5aeb8bc214b1ae15`, tree `1aa6a55eefedec72b32c22a6274fcec14e969786`, passed run `35548424303`, attempt 1, in all four required profiles. Every profile retained the exact selected developer distributions, collected 1,786 top-level nodes across 35 files, passed 428 separate subtest events and reported zero failures/errors/skips. Raw service ZIP identities, tracked before/after hashes, guards, actual commit history,55-member wheel and 65-regular-member sdist inventories, rebuilt wheel member equality and installed 48-module/eight-mode witness were independently audited.
+
+Initial hosted run `35547854833` remains failed with three temporary Git-fixture failures on each Windows profile; the later fixed-head pass does not relabel that history. The transition ledger records the CRLF reproduction and narrow fixture repair.
+
+The final documentation successor's separate exact-head matrix is pending at record creation and must be recorded on PR #20 after commit. These are finite development verification results; no analytical field, full report, native security or release qualification is claimed.
