@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W05",
-  "status": "W05_implemented_pending_exact_head_core_verification",
+  "status": "W05_portability_corrected_pending_exact_head_core_verification",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The sixteen accepted M015 owner-local rows remain exact. Forty-eight implemented W05 source-bound rows await exact-head full verification; no additional core closure is claimed at code-commit creation. All 228 integration and release cells remain pending.",
+  "meaning": "Sixteen accepted M015 owner-local rows remain exact. Forty-eight W05 mapped rows await the corrected code head complete gate after the original implementation matrix exposed Python 3.13 AST serialization differences. All 228 integration and release cells remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",

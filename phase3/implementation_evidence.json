@@ -10229,7 +10229,208 @@
         "bytes": 21481
       }
     ],
-    "mapping_status": "48 source-bound rows supplied; collection/JUnit/exact-head matrices must be verified before core promotion."
+    "mapping_status": "48 source-bound rows supplied; collection/JUnit/exact-head matrices must be verified before core promotion.",
+    "amendment_review_source_head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+    "portability_review": {
+      "status": "pass",
+      "unit": "P3-W05",
+      "amendment": "P3-W05-R01",
+      "predecessor_review_sha256": "0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07",
+      "predecessor_review": {
+        "path": "/workspace/scratch/5e401153f47f/p3w05-r01-independent-review.json",
+        "bytes": 4971,
+        "sha256": "0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07"
+      },
+      "original_code_head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+      "original_code_tree": "f7eea09e27095207baf827e304ecfd37333b73cb",
+      "approved_proposal_sha256": "ec1e54522b05f0b1a5b1340a4917ad4477017cdfe80218e91a90d75c990bec87",
+      "approval_sha256": "ab0bde2117b05dc4cf39a8c84e556c87a1c1a4d08a55db483b98ac506105e9b2",
+      "pre_amendment_head": "a2aa2112231ba7595070216e659798130127dc3c",
+      "pre_amendment_tree": "d468e02fa40a5014e838937486fa49185bc1e72d",
+      "accepted_predecessor": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+      "source_sha256": {
+        "tests/scaffold/test_module_manifest.py": "40bbc1d4e2671cbcfd5b1aeeacbfa8531332239f0b543fa46073a4a018d23cb1",
+        "tests/scaffold/test_ci_contract.py": "f011914dee89c92782e7f1dc1c1a3580b1adab945913460f7c02ae889de40d7b",
+        "tests/contract/test_phase3_transition.py": "9875d989cf3dfaa7fa3e34b5f940a8c75eba09b86225c1ae3d378f6a6c2334e5"
+      },
+      "first_code_failure_audit_sha256": "cd5f67c9ade1adb1c6679ace4cd307706f6e8e11937ee782118b901d73c4451c",
+      "original_failure": {
+        "run_id": 35656696771,
+        "attempt": 1,
+        "overall_acceptance_gate_passed": false,
+        "audit": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/failed-code-audit.json",
+          "bytes": 74482,
+          "sha256": "cd5f67c9ade1adb1c6679ace4cd307706f6e8e11937ee782118b901d73c4451c"
+        },
+        "profiles": [
+          {
+            "profile": "ubuntu-24.04-py3.11",
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-ubuntu-24.04-py3.11-35656696771-1.zip",
+              "bytes": 166024,
+              "sha256": "59209362c8251efe236e5d984691c05f4462096ed26142191c4e207ec66ad992"
+            },
+            "top_level": 3171,
+            "passed": 3171,
+            "failed": 0,
+            "successful_subtests": 428,
+            "service_conclusion": "success",
+            "new_component_cases_passed": 119
+          },
+          {
+            "profile": "ubuntu-24.04-py3.13",
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-ubuntu-24.04-py3.13-35656696771-1.zip",
+              "bytes": 171476,
+              "sha256": "992aab29b09a2c74f675b70275ba4925e77660de7e7ec243f640231f1d53acba"
+            },
+            "top_level": 3171,
+            "passed": 3153,
+            "failed": 18,
+            "successful_subtests": 428,
+            "service_conclusion": "failure",
+            "new_component_cases_passed": 119
+          },
+          {
+            "profile": "windows-2025-py3.11",
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-windows-2025-py3.11-35656696771-1.zip",
+              "bytes": 172832,
+              "sha256": "ba6be43ca72263422c57b884db7f31ab4cf213f4f0eb1a5ce92866e7d83336b0"
+            },
+            "top_level": 3171,
+            "passed": 3171,
+            "failed": 0,
+            "successful_subtests": 428,
+            "service_conclusion": "success",
+            "new_component_cases_passed": 119
+          },
+          {
+            "profile": "windows-2025-py3.13",
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-windows-2025-py3.13-35656696771-1.zip",
+              "bytes": 178056,
+              "sha256": "95647d8d55cd62e2a09d4d9800c111c78b1acdfcc091254ccc3b112f748e71aa"
+            },
+            "top_level": 3171,
+            "passed": 3153,
+            "failed": 18,
+            "successful_subtests": 428,
+            "service_conclusion": "failure",
+            "new_component_cases_passed": 119
+          }
+        ],
+        "cause": "CPython 3.13 ast.dump omits empty list fields by default. All 18 failures occur at the unchanged live-class positive baseline before the mutation-specific rejection control. The original native failure remains failed."
+      },
+      "checks": {
+        "original_review_0f_bytes_unchanged": true,
+        "original_review_three_source_pins_match_actual_add6_git": true,
+        "wrapper_and_ci_driver_bytes_equal_original_review_and_add6": true,
+        "only_existing_transition_definition_changed_is_w05_portable_ast_dump": true,
+        "exactly_three_new_test_definitions_and_eight_parameterized_instances": true,
+        "all_other_old_top_level_ast_and_old_test_assertions_unchanged": true,
+        "all_six_live_migration_pin_literals_and_actual_source_bytes_unchanged": true,
+        "reviewed_live_class_pin_615ffa_unchanged": true,
+        "independent_85_empty_field_omission_reproduces_exact_native_313_failure_hash": true,
+        "new_helper_deepcopies_and_only_normalizes_empty_type_params": true,
+        "native313_branch_explicitly_requests_show_empty_true": true,
+        "nonempty_generic_parameters_arguments_keywords_calls_decorators_and_statement_types_remain_distinguishable": true,
+        "all_17_original_weakened_observer_mutants_pass_rejection_controls_locally": true,
+        "original_before_negative_after_positive_controls_preserved": true,
+        "actual_original_four_zips_crc_identity_junit_and_failure_messages_rechecked": true,
+        "approval_proposal_preboundary_and_scope_unchanged": true,
+        "no_product_runtime_budget_policy_or_public_surface_change": true
+      },
+      "focused_evidence": {
+        "python": "3.12.14 supplementary local",
+        "actual_targeted_top_level_passed": 76,
+        "deselected_outside_target": 180,
+        "original_weakened_manifest_mutants_passed": 17,
+        "new_portability_test_instances": [
+          "test_w05_r01_portable_ast_keeps_semantic_differences[@decorator\\ndef f():\\n    return g()\\n]",
+          "test_w05_r01_portable_ast_keeps_semantic_differences[def f():\\n    g()\\n]",
+          "test_w05_r01_portable_ast_keeps_semantic_differences[def f():\\n    return g(1)\\n]",
+          "test_w05_r01_portable_ast_keeps_semantic_differences[def f():\\n    return g(flag=True)\\n]",
+          "test_w05_r01_portable_ast_keeps_semantic_differences[def f():\\n    return h()\\n]",
+          "test_w05_r01_portable_ast_keeps_semantic_differences[def f(x):\\n    return g()\\n]",
+          "test_w05_r01_portable_ast_only_normalizes_empty_generic_parameters",
+          "test_w05_r01_portable_ast_preserves_explicit_empty_lists"
+        ],
+        "log": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-targeted.log",
+          "bytes": 196,
+          "sha256": "c84966da70d2f3f87a01f9cd652ffb75a6fee36dfa25adae16e8f6258a865c21"
+        },
+        "junit": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-targeted.xml",
+          "bytes": 12923,
+          "sha256": "868495b614699a2ddc15a13ca1eeafed0cb7fe92c260d2608e86705a83c2e7fe"
+        },
+        "independent_format_probe": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-r01-portability-independent-format-probe.json",
+          "bytes": 712,
+          "sha256": "db4cb5d62f351f86c7a1f809b61b2b6767802bf3761f2ba32c3f5b2d0157538f"
+        },
+        "independent_helper_review": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-r01-portability-independent-helper-review.json",
+          "bytes": 1813,
+          "sha256": "3cf47ae069ca67d9e9b9944ec76af93915d0e2707db3aa943595dcf4ebc524c8"
+        },
+        "upstream_formatter_diagnosis": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-diagnosis.json",
+          "bytes": 2957,
+          "sha256": "2e47c62c83cb141a679de7012f6c67103ec0cda8bdee3155366a620177a97e71"
+        },
+        "upstream_sources": [
+          {
+            "version": "3.11",
+            "upstream_url": "https://raw.githubusercontent.com/python/cpython/v3.11.13/Lib/ast.py",
+            "source": "/workspace/scratch/5e401153f47f/p3w05-cpython-v3.11.13-ast.py",
+            "source_sha256": "c513073798bdbf3cdef09327d0d2d381a53213a13a4ba3f02729695327539406",
+            "original_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+            "repaired_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+            "baseline_then_weakened_live_method_rejected_then_baseline": "pass"
+          },
+          {
+            "version": "3.12",
+            "upstream_url": "https://raw.githubusercontent.com/python/cpython/v3.12.14/Lib/ast.py",
+            "source": "/workspace/scratch/5e401153f47f/p3w05-cpython-v3.12.14-ast.py",
+            "source_sha256": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d",
+            "original_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+            "repaired_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+            "baseline_then_weakened_live_method_rejected_then_baseline": "pass"
+          },
+          {
+            "version": "3.13",
+            "upstream_url": "https://raw.githubusercontent.com/python/cpython/v3.13.15/Lib/ast.py",
+            "source": "/workspace/scratch/5e401153f47f/p3w05-cpython-v3.13.15-ast.py",
+            "source_sha256": "7514eb7df98b1b76eab160ca2a83e6e9a9f3219a4659808cd9fd278b524ede1b",
+            "original_formatter_sha256": "02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+            "repaired_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+            "baseline_then_weakened_live_method_rejected_then_baseline": "pass"
+          }
+        ]
+      },
+      "findings_and_closure": [
+        {
+          "finding": "The initial generic-parameter-only normalization left CPython 3.13 empty-list display differences, causing the pinned live-class baseline to reject unchanged source.",
+          "closure": "The existing helper now explicitly requests show_empty=True on 3.13+, retaining the original legacy representation and fixed pin. New positive/negative tests retain explicit empty lists, nonempty generics and meaningful semantic differences; no assertion or pin is replaced."
+        }
+      ],
+      "remaining_blocking_findings": [],
+      "limitations": [
+        "Pass is source/targeted-review acceptance of this exact narrow compatibility change, not a full suite or native supported-profile pass of a future corrected commit.",
+        "Exact upstream formatter functions and independent branch simulation ran under local CPython 3.12; neither is native CPython 3.11/3.13 execution. The new exact-head four-profile gate remains required.",
+        "The original add6 mixed matrix, all original ZIPs, the original 0f review and pre-amendment failed matrix remain separate immutable history.",
+        "No merge, owner acceptance, W06 start, complete analytical field closure or release is authorized or asserted."
+      ]
+    },
+    "portability_review_file": {
+      "path": "/workspace/scratch/5e401153f47f/p3w05-r01-portability-review.json",
+      "sha256": "d679a9961bd3ccc8999c81faf14ef1c1dbf5491141ea1355df876663e02962f1",
+      "bytes": 10543
+    }
   },
   "validation": {
     "diagnostic_scope": "Isolated clone of accepted W04; policy-only W05 transition. No committed W05 candidate or complete suite is represented by these targeted probes.",
@@ -10362,6 +10563,1690 @@
       "path": "p3w05-r01-independent-review.json",
       "sha256": "0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07",
       "bytes": 4971
+    },
+    "first_code_portability_failure": {
+      "head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+      "tree": "f7eea09e27095207baf827e304ecfd37333b73cb",
+      "run_id": 35656696771,
+      "attempt": 1,
+      "status": "failed",
+      "forensic_audit": {
+        "audit": "Independent forensics of mixed-profile FAILED P3-W05 first code run; not acceptance evidence",
+        "status": "verified_failed_run",
+        "integrity_issues": [],
+        "run_conclusion": "failure",
+        "overall_acceptance_gate_passed": false,
+        "head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+        "tree": "f7eea09e27095207baf827e304ecfd37333b73cb",
+        "entry": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+        "run_id": 35656696771,
+        "run_attempt": 1,
+        "service_metadata": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/service-metadata.json",
+          "bytes": 38904,
+          "sha256": "b3951c169582faeb02186d76264012e226de161fa431ec0b126d3226d95b554e"
+        },
+        "service_metadata_shape": "actual run object and jobs/artifacts lists; original ordered run/jobs/artifacts raw JSON string array separately retained without rewriting",
+        "source": {
+          "tracked_files": 180,
+          "test_files": 50,
+          "changed_paths": [
+            "PHASE_3_PROGRESS.md",
+            "phase3/implementation_evidence.json",
+            "phase3/module_policy.json",
+            "phase3/obligation_coverage.json",
+            "phase3/transition_ledger.md",
+            "src/source_integrity_toolkit/analysis/inventory.py",
+            "src/source_integrity_toolkit/analysis/origins.py",
+            "tests/contract/test_phase3_transition.py",
+            "tests/scaffold/test_ci_contract.py",
+            "tests/scaffold/test_module_manifest.py",
+            "tests/unit/test_ancestry_frontiers.py",
+            "tests/unit/test_inventory.py",
+            "tests/unit/test_origins.py"
+          ],
+          "old_test_files_byte_preserved": 44,
+          "authorized_old_test_migrations": [
+            "tests/contract/test_phase3_transition.py",
+            "tests/scaffold/test_ci_contract.py",
+            "tests/scaffold/test_module_manifest.py"
+          ],
+          "frozen_product_modules_byte_preserved": 46,
+          "original_git_audit": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/tooling-at-first-code/p3w05-candidate-git-audit.json",
+            "bytes": 101895,
+            "sha256": "d6dc8df767751282ee21ca30acb787394b28ab68bfb145e843effa142fdf9f0d"
+          }
+        },
+        "collection": {
+          "count": 3171,
+          "identity_sha256": "c8b171369881b7d7724e657c04087767110179fb821bbded6e39123b675d56e2",
+          "new_w05_instances": 192,
+          "new_component_instances": 119,
+          "new_r01_instances": 73,
+          "local_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/tooling-at-first-code/p3w05-code-collection.json",
+            "bytes": 448272,
+            "sha256": "02616495d8ce8a6f4655020cb2db76a2f3868033f94d8d183fb31d51bf4538bf"
+          },
+          "meaning": "All 2979 accepted W04 identities and 119 new component cases passed on all profiles; 18 newly added R01 observer checks failed on both Python 3.13 profiles. The full four-profile gate failed."
+        },
+        "profiles": [
+          {
+            "profile": "ubuntu-24.04-py3.11",
+            "job_id": 106522019731,
+            "artifact_id": 10665727193,
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-ubuntu-24.04-py3.11-35656696771-1.zip",
+              "bytes": 166024,
+              "sha256": "59209362c8251efe236e5d984691c05f4462096ed26142191c4e207ec66ad992"
+            },
+            "zip_crc_safe_paths_and_service_identity_verified": true,
+            "record_count": 26,
+            "records": {
+              "build-inventories.json": {
+                "bytes": 32433,
+                "sha256": "3c7b912ce9488d74ebc5b140791471ed044df5dfc8434a4a124220cf45745f86"
+              },
+              "check_phase0_baseline-after.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_phase0_baseline-before.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_scaffold_boundary-after.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "check_scaffold_boundary-before.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "collection.json": {
+                "bytes": 407409,
+                "sha256": "4746886056d6c37d7a8f887c1ceab682f5af95ff11a144f0796c6d402296223a"
+              },
+              "collection.log": {
+                "bytes": 382340,
+                "sha256": "d475520430cbded282a3e24beb9498a05cbbe86b45247b28266b1776f955f0b9"
+              },
+              "download.log": {
+                "bytes": 2505,
+                "sha256": "184a18aaf7edf7a8c6fd768a30dd8ce2649cd6467407ba58a2681d036c5e8f45"
+              },
+              "entry-and-scope.json": {
+                "bytes": 17047,
+                "sha256": "0358b56c3dda9d225f6106315b7872b6d78bd7b1aa8c3cb69b5c32bdb600bc00"
+              },
+              "environment.json": {
+                "bytes": 396,
+                "sha256": "87b571306af53810f775058cd4bce4d666e9a85851825e39d5e615090fab1f83"
+              },
+              "install-report.json": {
+                "bytes": 32816,
+                "sha256": "273f5bbcb598613a69b0423650d116baacfeedb4b18971646d4ef91346f2c111"
+              },
+              "install.log": {
+                "bytes": 1268,
+                "sha256": "9e33a56bd684b1336c1e4bd17ba589738d19a1ffeb6b5e29e8f0def434a99dd5"
+              },
+              "installed.json": {
+                "bytes": 159,
+                "sha256": "0b90722108474fe7e9ce6c39227d71704c4b3eb7068c6918d95542aa4d1b19d6"
+              },
+              "installed.log": {
+                "bytes": 411,
+                "sha256": "345a808b216c1682e6175eaf1994b58c213f5faebf6b6aee6b5f76ae62dfca9c"
+              },
+              "junit.xml": {
+                "bytes": 510091,
+                "sha256": "1ad81736f121ba701df4ff0edfe40369a0a4e20534367e4fc0a18da086c97f55"
+              },
+              "pip-check.log": {
+                "bytes": 30,
+                "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+              },
+              "pip-version.log": {
+                "bytes": 98,
+                "sha256": "ceb89eeabca48017e410409171ac47221cc8827e99bc0f1ee35f3a179a13247d"
+              },
+              "preflight.json": {
+                "bytes": 146,
+                "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+              },
+              "pytest-exit.json": {
+                "bytes": 21,
+                "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2"
+              },
+              "pytest.log": {
+                "bytes": 3578,
+                "sha256": "b1769e476b57dc2996229bc3b89028fc960e13604e80704687b225a76afbb61f"
+              },
+              "reviewed-wheels.json": {
+                "bytes": 12070,
+                "sha256": "078bed4529df5e11656eeef00c1c6e9a119d5a8423c590a836e20bbdf9c5aa5e"
+              },
+              "summary.json": {
+                "bytes": 598,
+                "sha256": "2ef089f8f7d085c68b42c5b3cee58d7abd8cb43d84bb91546e916eab6630534b"
+              },
+              "tracked-after.json": {
+                "bytes": 19712,
+                "sha256": "54528878f6f3bd078cf1bb1aa03e42475dbff66a1d1228dda2e2c551a513b91c"
+              },
+              "tracked-before.json": {
+                "bytes": 19712,
+                "sha256": "54528878f6f3bd078cf1bb1aa03e42475dbff66a1d1228dda2e2c551a513b91c"
+              },
+              "venv.log": {
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "w08-installed-runtime.json": {
+                "bytes": 31256,
+                "sha256": "a18ea8ad8979ce08a704f744937c7b8070de3493d3137915bf51f41f74dfdcb2"
+              }
+            },
+            "environment": {
+              "head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+              "image_version": "20260907.300.1",
+              "matrix_os": "ubuntu-24.04",
+              "matrix_python": "3.11",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+              "run_attempt": "1",
+              "run_id": "35656696771",
+              "scope": "Phase 3 cumulative verification",
+              "unit": "P3-W05"
+            },
+            "tests": {
+              "collected_top_level": 3171,
+              "passed_top_level": 3171,
+              "failed_top_level": 0,
+              "errors": 0,
+              "skipped": 0,
+              "reported_events": 3599,
+              "successful_subtest_events": 428,
+              "failure_cases": [],
+              "identity_sha256": "c8b171369881b7d7724e657c04087767110179fb821bbded6e39123b675d56e2",
+              "seconds": 564.6
+            },
+            "retention": {
+              "w04": {
+                "collected": 2979,
+                "passed": 2979,
+                "failed": 0
+              },
+              "w03": {
+                "collected": 2364,
+                "passed": 2364,
+                "failed": 0
+              },
+              "w02": {
+                "collected": 2089,
+                "passed": 2089,
+                "failed": 0
+              },
+              "w01": {
+                "collected": 1786,
+                "passed": 1786,
+                "failed": 0
+              },
+              "phase2": {
+                "collected": 1650,
+                "passed": 1650,
+                "failed": 0
+              }
+            },
+            "new_w05_cases": 192,
+            "new_component_cases_passed": 119,
+            "new_r01_cases_passed": 73,
+            "tracked_before_after_git_hashes_equal": true,
+            "tracked_file_count": 180,
+            "actual_guards_before_after_pass": true,
+            "developer_tools": {
+              "iniconfig": "2.3.0",
+              "packaging": "25.0",
+              "pip": "24.0",
+              "pluggy": "1.6.0",
+              "pygments": "2.20.0",
+              "pytest": "9.1.1",
+              "setuptools": "84.0.0"
+            },
+            "packaging": {
+              "status": "executed_and_component_cases_passed",
+              "junit_cases_passed": [
+                "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+                "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+                "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+                "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+                "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+                "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+              ],
+              "build_inventories": [
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128836,
+                  "sha256": "85b672915733888798d0846188fe8e478d44768a571fb7d3d9ede8e022662345",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 113428,
+                  "sha256": "4fe07b926505d20b30cf99afbf8e43ecb379941fde5ecb99f55058218b3b4f99",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128836,
+                  "sha256": "f9fedcd4d73e7e376438220854e2f1a8e4a7446c5c88b52469a2ec14dea286da",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "installed_distribution_inventories": [
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 113434,
+                  "sha256": "325fce60fe39539cf617a34c458369c70aa5298a964198c8ed009ac54570e4ee",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128836,
+                  "sha256": "6e4548c677599139cd4fca7cb8e02c5fc7e329d55256828b2ef36c6ad9a36336",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128836,
+                  "sha256": "ecc16b1dd820fc96a5755eca406b2436aa709d673b8e45206db7d4f11e061840",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "suite_installed_and_rebuilt_member_hashes_equal": true
+            },
+            "installed_runtime": {
+              "status": "executed_and_component_case_passed",
+              "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+              "module_hash_count": 48,
+              "module_hashes_match_named_code": true,
+              "record_sha256": "a18ea8ad8979ce08a704f744937c7b8070de3493d3137915bf51f41f74dfdcb2",
+              "admitted_modes": 8,
+              "empty_refusals": 2,
+              "public_refusals": 2,
+              "negative_events": [
+                "open",
+                "socket.getaddrinfo",
+                "ctypes.dlopen"
+              ]
+            },
+            "failed_stage_records": {},
+            "service_step_conclusions": {
+              "Set up job": "success",
+              "Checkout exact candidate without stored credentials": "success",
+              "Select reviewed CPython minor": "success",
+              "Check actual checkout and guards": "success",
+              "Review and install pinned development wheels": "success",
+              "Collect and run all cumulative tests": "success",
+              "Record results, archives and unchanged checkout": "success",
+              "Preserve verification records only": "success",
+              "Post Select reviewed CPython minor": "success",
+              "Post Checkout exact candidate without stored credentials": "success",
+              "Complete job": "success"
+            },
+            "not_executed_service_steps": [],
+            "profile_service_conclusion": "success",
+            "profile_gate_passed": true,
+            "overall_acceptance_gate_passed": false
+          },
+          {
+            "profile": "ubuntu-24.04-py3.13",
+            "job_id": 106522019571,
+            "artifact_id": 10665242406,
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-ubuntu-24.04-py3.13-35656696771-1.zip",
+              "bytes": 171476,
+              "sha256": "992aab29b09a2c74f675b70275ba4925e77660de7e7ec243f640231f1d53acba"
+            },
+            "zip_crc_safe_paths_and_service_identity_verified": true,
+            "record_count": 28,
+            "records": {
+              "build-inventories.json": {
+                "bytes": 32433,
+                "sha256": "f8a0329097d08adff5c183428ca0cf82d732e3ee0f1c4486486df4d41b187bc8"
+              },
+              "check_phase0_baseline-after.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_phase0_baseline-before.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_scaffold_boundary-after.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "check_scaffold_boundary-before.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "collection.json": {
+                "bytes": 407409,
+                "sha256": "4746886056d6c37d7a8f887c1ceab682f5af95ff11a144f0796c6d402296223a"
+              },
+              "collection.log": {
+                "bytes": 382340,
+                "sha256": "d8a887165315321a28a551e3fe596bcbd3b844e74832277f8d262036ca90cd4b"
+              },
+              "download.log": {
+                "bytes": 2059,
+                "sha256": "5a02b0f6d9f75cf78ed0d2890a7a7f12e0b85e3716f8ef3fa63314033584d76f"
+              },
+              "entry-and-scope.json": {
+                "bytes": 17047,
+                "sha256": "0358b56c3dda9d225f6106315b7872b6d78bd7b1aa8c3cb69b5c32bdb600bc00"
+              },
+              "environment.json": {
+                "bytes": 396,
+                "sha256": "9b955714a2924156d4b9919975a16debf44ff810776b7c5c163fe56761505edd"
+              },
+              "evidence-failure.json": {
+                "bytes": 114,
+                "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+              },
+              "install-report.json": {
+                "bytes": 33391,
+                "sha256": "508d4798943bc6fb61ed55c7ecd0c9c270274bd593f29ae58f7301d89de09c0d"
+              },
+              "install.log": {
+                "bytes": 1098,
+                "sha256": "98d699f81a05b33495adb15233fd08eb9be4f5842728f4224918e0f2e9c3cd33"
+              },
+              "installed.json": {
+                "bytes": 161,
+                "sha256": "0a0d3552010093d986087b09b83ed2239caeaee29d16617ef8cc5d742bd2d79d"
+              },
+              "installed.log": {
+                "bytes": 292,
+                "sha256": "120061c6416dd49dcc728de728bcbe218a78f44d8065e557208a43645a991fd9"
+              },
+              "junit.xml": {
+                "bytes": 588208,
+                "sha256": "63c0e77a6a8243dd59b6b20346c359573532495dda4cfe3d59f30639f92c7d95"
+              },
+              "pip-check.log": {
+                "bytes": 30,
+                "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+              },
+              "pip-version.log": {
+                "bytes": 100,
+                "sha256": "86a2c143704638f8e94a855ed34b7ff387fc7268e64d75c0863ae7f9164a8391"
+              },
+              "preflight.json": {
+                "bytes": 146,
+                "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+              },
+              "pytest-exit.json": {
+                "bytes": 21,
+                "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+              },
+              "pytest.log": {
+                "bytes": 85052,
+                "sha256": "b6552055379686837bd6c93b603492f126ab6e64d31c746cb4e496c81d886ff9"
+              },
+              "reviewed-wheels.json": {
+                "bytes": 12070,
+                "sha256": "078bed4529df5e11656eeef00c1c6e9a119d5a8423c590a836e20bbdf9c5aa5e"
+              },
+              "summary.json": {
+                "bytes": 601,
+                "sha256": "1af3b5f5a2188c536c50515d58dc40bd031301e7c577bded2b8269f9469f3c7a"
+              },
+              "test-failure.json": {
+                "bytes": 93,
+                "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+              },
+              "tracked-after.json": {
+                "bytes": 19712,
+                "sha256": "54528878f6f3bd078cf1bb1aa03e42475dbff66a1d1228dda2e2c551a513b91c"
+              },
+              "tracked-before.json": {
+                "bytes": 19712,
+                "sha256": "54528878f6f3bd078cf1bb1aa03e42475dbff66a1d1228dda2e2c551a513b91c"
+              },
+              "venv.log": {
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "w08-installed-runtime.json": {
+                "bytes": 31256,
+                "sha256": "b21482ab6e4edd1a24bfebc6486da0774a83127716a01364194adf804b279b07"
+              }
+            },
+            "environment": {
+              "head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+              "image_version": "20260907.300.1",
+              "matrix_os": "ubuntu-24.04",
+              "matrix_python": "3.13",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+              "run_attempt": "1",
+              "run_id": "35656696771",
+              "scope": "Phase 3 cumulative verification",
+              "unit": "P3-W05"
+            },
+            "tests": {
+              "collected_top_level": 3171,
+              "passed_top_level": 3153,
+              "failed_top_level": 18,
+              "errors": 0,
+              "skipped": 0,
+              "reported_events": 3599,
+              "successful_subtest_events": 428,
+              "failure_cases": [
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[changed_payload]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "24e92a04465e68209e410169007208dda311a537f61fe8f95680fc8eb2c3d8f8"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[changed_verifier_call]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "5706ded370b0fee0b7af6527d1e24e014d70af86211f99c0d42ba72fa14be8b3"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[duplicate_old_tests]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "71049a4b1bdc9d4ba2a6400873fd2fcc60fee13cd33aa0b87001f4e3099c7c06"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[generic_exception]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "40bfe2eb9cf6b96435d98f374848cd28320cee9aeca54dfe81e6c45d7bf66d43"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[historical_snapshot]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "d926e700172c9a8b2fbb4b4d5e9246e7cdd1ac03ad36bfbd0a69d35f37e3a470"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_binding]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "2c9b8071dcd6c6621f232efc64d47b7f9f1ccf51e83ea2d5dfcf074a29339db3"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_effect_observer]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "decbda2f161ab29669e945fef881ee31d0c0df80564425920005b267b2364a99"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_legal_positive]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "ea4f2d877e75bff34b7bca473f05d6a93eee6cf82ea5f7c118bcafc510a64bb0"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_live_class]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "1f84038dcfa05c63e75e79d185f37be4a4163d9dd02d387a32247254094fbd7d"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_loader]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "e77a3279d2de81eff383d04a044b900fd251de883be3848e42cf6c1d0a6bb260"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_original]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "7c681b65b58a0dbed9708ed0d81d24c8dec040028bc7bc7e1566081fb9755a92"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_postpositive]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "b46ef1580a28c19eb5af58d3994717f90fc85a63ff160ae398884e37bef0fc4e"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[removed_assertion]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "738809a6224df2608e43c1547b59f71947993b410554bc973f9c740ee5d46f01"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[reordered_binding]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "993632bdb329edb717492fec552591daa7753aed54ee30014ad3ae3b859501fd"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[stale_target]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "9a141d105334e495e4a090e8904c7df777ea3b925e578afe675b7ceefdfd9340"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[verifier_weakened]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "22cb0f47ff5059dc5834d748695412016eaffbcd18355a6293defcf9ef4df0ff"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[weakened_owner_observer]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "70041826077c5b5cc8be014ca223c3880a29c3483366b39b79b9c0e8e19ddf27"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_method_and_live_observers_preserve_original_identity",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "bea1e56ded83cf18f21acb46e1f9bdf48ca17724ecf55c0057c308841c1a9261"
+                }
+              ],
+              "identity_sha256": "c8b171369881b7d7724e657c04087767110179fb821bbded6e39123b675d56e2",
+              "seconds": 549.93
+            },
+            "retention": {
+              "w04": {
+                "collected": 2979,
+                "passed": 2979,
+                "failed": 0
+              },
+              "w03": {
+                "collected": 2364,
+                "passed": 2364,
+                "failed": 0
+              },
+              "w02": {
+                "collected": 2089,
+                "passed": 2089,
+                "failed": 0
+              },
+              "w01": {
+                "collected": 1786,
+                "passed": 1786,
+                "failed": 0
+              },
+              "phase2": {
+                "collected": 1650,
+                "passed": 1650,
+                "failed": 0
+              }
+            },
+            "new_w05_cases": 192,
+            "new_component_cases_passed": 119,
+            "new_r01_cases_passed": 55,
+            "tracked_before_after_git_hashes_equal": true,
+            "tracked_file_count": 180,
+            "actual_guards_before_after_pass": true,
+            "developer_tools": {
+              "iniconfig": "2.3.0",
+              "packaging": "25.0",
+              "pip": "26.2.1",
+              "pluggy": "1.6.0",
+              "pygments": "2.20.0",
+              "pytest": "9.1.1",
+              "setuptools": "84.0.0"
+            },
+            "packaging": {
+              "status": "executed_and_component_cases_passed",
+              "junit_cases_passed": [
+                "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+                "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+                "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+                "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+                "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+                "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+              ],
+              "build_inventories": [
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128836,
+                  "sha256": "849676e1358304abb230ed29e08ad5c76b4b5685691908b76955195a2aaf7fcd",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 113451,
+                  "sha256": "6720f189d51e2df6264b0d4e49a1399bcdbb63d3c1dcdb9f11efaacc18a7bf15",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128836,
+                  "sha256": "f9fedcd4d73e7e376438220854e2f1a8e4a7446c5c88b52469a2ec14dea286da",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "installed_distribution_inventories": [
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 113439,
+                  "sha256": "bf2000df6ac9f5b9161a4aa3ac3eb131b9e71495c383ae6e57d4bbbfc94454d6",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128836,
+                  "sha256": "f03fc49d86a6fffcd4f45c87472f6580b00b1954518513f6c4a74f963bde023e",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128836,
+                  "sha256": "be057a7171ef4566c302bce1fcfe24e57124eb51d3c8f9f853846e3721257a4e",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "suite_installed_and_rebuilt_member_hashes_equal": true
+            },
+            "installed_runtime": {
+              "status": "executed_and_component_case_passed",
+              "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+              "module_hash_count": 48,
+              "module_hashes_match_named_code": true,
+              "record_sha256": "b21482ab6e4edd1a24bfebc6486da0774a83127716a01364194adf804b279b07",
+              "admitted_modes": 8,
+              "empty_refusals": 2,
+              "public_refusals": 2,
+              "negative_events": [
+                "open",
+                "socket.getaddrinfo",
+                "ctypes.dlopen"
+              ]
+            },
+            "failed_stage_records": {
+              "test": {
+                "error_type": "ValueError",
+                "message": "accumulated_suite_failed",
+                "stage": "test"
+              },
+              "evidence": {
+                "error_type": "ValueError",
+                "message": "required_CI_evidence_failed_or_incomplete",
+                "stage": "evidence"
+              }
+            },
+            "service_step_conclusions": {
+              "Set up job": "success",
+              "Checkout exact candidate without stored credentials": "success",
+              "Select reviewed CPython minor": "success",
+              "Check actual checkout and guards": "success",
+              "Review and install pinned development wheels": "success",
+              "Collect and run all cumulative tests": "failure",
+              "Record results, archives and unchanged checkout": "failure",
+              "Preserve verification records only": "success",
+              "Post Select reviewed CPython minor": "skipped",
+              "Post Checkout exact candidate without stored credentials": "success",
+              "Complete job": "success"
+            },
+            "not_executed_service_steps": [
+              "Post Select reviewed CPython minor"
+            ],
+            "profile_service_conclusion": "failure",
+            "profile_gate_passed": false,
+            "overall_acceptance_gate_passed": false
+          },
+          {
+            "profile": "windows-2025-py3.11",
+            "job_id": 106522019588,
+            "artifact_id": 10664868179,
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-windows-2025-py3.11-35656696771-1.zip",
+              "bytes": 172832,
+              "sha256": "ba6be43ca72263422c57b884db7f31ab4cf213f4f0eb1a5ce92866e7d83336b0"
+            },
+            "zip_crc_safe_paths_and_service_identity_verified": true,
+            "record_count": 26,
+            "records": {
+              "build-inventories.json": {
+                "bytes": 32433,
+                "sha256": "b8f30a2eb7371d4f4c830a505d17be6372de20971ee7164e4ee2eb45cc08071c"
+              },
+              "check_phase0_baseline-after.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_phase0_baseline-before.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_scaffold_boundary-after.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "check_scaffold_boundary-before.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "collection.json": {
+                "bytes": 407409,
+                "sha256": "4746886056d6c37d7a8f887c1ceab682f5af95ff11a144f0796c6d402296223a"
+              },
+              "collection.log": {
+                "bytes": 382340,
+                "sha256": "3b9d2c6c80fa8080abae93e703ca631ae933ebf6e04352bf8ad2e35aa97d334c"
+              },
+              "download.log": {
+                "bytes": 2322,
+                "sha256": "52f8a77111e31d208b5d8e533b5652c36581ad06f676c4a8b7b0dd40f9ec2255"
+              },
+              "entry-and-scope.json": {
+                "bytes": 17047,
+                "sha256": "0358b56c3dda9d225f6106315b7872b6d78bd7b1aa8c3cb69b5c32bdb600bc00"
+              },
+              "environment.json": {
+                "bytes": 406,
+                "sha256": "c93fed57f080740d5e88eac3f30d967932cf0a8b09dccfbc93b4f5d1e8caf0b3"
+              },
+              "install-report.json": {
+                "bytes": 51537,
+                "sha256": "4ed084f4320d8edc0b272ef8a0673ebaefd862392b04ffc966e7090aeaab9e32"
+              },
+              "install.log": {
+                "bytes": 1237,
+                "sha256": "36b3a5d274085a0cec3146ca641ac792a3bb7aedfac23feb7281b5bf7c356089"
+              },
+              "installed.json": {
+                "bytes": 182,
+                "sha256": "4071d04e83f11ceff778b82e3e9836498dad040b887a59397c9af5306d374c26"
+              },
+              "installed.log": {
+                "bytes": 489,
+                "sha256": "f57bf0d17717397b9920109736a1fc2ccef746ac9f830b931cd24f06cf71d147"
+              },
+              "junit.xml": {
+                "bytes": 510091,
+                "sha256": "1ea2092d7e083c3332e887b9a849d26caa4c6cc26c5e4a179392db1a1a3ae92f"
+              },
+              "pip-check.log": {
+                "bytes": 30,
+                "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+              },
+              "pip-version.log": {
+                "bytes": 75,
+                "sha256": "7cfa4c2281b58f71710362aa99a0d8527e1d2626ce028fa04b6c5089ab6e9303"
+              },
+              "preflight.json": {
+                "bytes": 146,
+                "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+              },
+              "pytest-exit.json": {
+                "bytes": 21,
+                "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2"
+              },
+              "pytest.log": {
+                "bytes": 3578,
+                "sha256": "39ba4d453054a8cefcc7233ea17f3c7328548fe26604e54c5028019adbae396c"
+              },
+              "reviewed-wheels.json": {
+                "bytes": 12697,
+                "sha256": "10f80797b0a7895c5b23773f8a22fec17abe506b23b93270f395c1fce2587824"
+              },
+              "summary.json": {
+                "bytes": 598,
+                "sha256": "2ef089f8f7d085c68b42c5b3cee58d7abd8cb43d84bb91546e916eab6630534b"
+              },
+              "tracked-after.json": {
+                "bytes": 19712,
+                "sha256": "54528878f6f3bd078cf1bb1aa03e42475dbff66a1d1228dda2e2c551a513b91c"
+              },
+              "tracked-before.json": {
+                "bytes": 19712,
+                "sha256": "54528878f6f3bd078cf1bb1aa03e42475dbff66a1d1228dda2e2c551a513b91c"
+              },
+              "venv.log": {
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "w08-installed-runtime.json": {
+                "bytes": 31524,
+                "sha256": "fa2161f022bac086c6e3a2b453e5e2a350f70eaa128abc3de74c3e6c893899f7"
+              }
+            },
+            "environment": {
+              "head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+              "image_version": "20260907.229.1",
+              "matrix_os": "windows-2025",
+              "matrix_python": "3.11",
+              "platform": "Windows-10-10.0.26100-SP0",
+              "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+              "run_attempt": "1",
+              "run_id": "35656696771",
+              "scope": "Phase 3 cumulative verification",
+              "unit": "P3-W05"
+            },
+            "tests": {
+              "collected_top_level": 3171,
+              "passed_top_level": 3171,
+              "failed_top_level": 0,
+              "errors": 0,
+              "skipped": 0,
+              "reported_events": 3599,
+              "successful_subtest_events": 428,
+              "failure_cases": [],
+              "identity_sha256": "c8b171369881b7d7724e657c04087767110179fb821bbded6e39123b675d56e2",
+              "seconds": 763.84
+            },
+            "retention": {
+              "w04": {
+                "collected": 2979,
+                "passed": 2979,
+                "failed": 0
+              },
+              "w03": {
+                "collected": 2364,
+                "passed": 2364,
+                "failed": 0
+              },
+              "w02": {
+                "collected": 2089,
+                "passed": 2089,
+                "failed": 0
+              },
+              "w01": {
+                "collected": 1786,
+                "passed": 1786,
+                "failed": 0
+              },
+              "phase2": {
+                "collected": 1650,
+                "passed": 1650,
+                "failed": 0
+              }
+            },
+            "new_w05_cases": 192,
+            "new_component_cases_passed": 119,
+            "new_r01_cases_passed": 73,
+            "tracked_before_after_git_hashes_equal": true,
+            "tracked_file_count": 180,
+            "actual_guards_before_after_pass": true,
+            "developer_tools": {
+              "colorama": "0.4.6",
+              "iniconfig": "2.3.0",
+              "packaging": "25.0",
+              "pip": "24.0",
+              "pluggy": "1.6.0",
+              "pygments": "2.20.0",
+              "pytest": "9.1.1",
+              "setuptools": "84.0.0"
+            },
+            "packaging": {
+              "status": "executed_and_component_cases_passed",
+              "junit_cases_passed": [
+                "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+                "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+                "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+                "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+                "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+                "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+              ],
+              "build_inventories": [
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128853,
+                  "sha256": "d94aa5bc6c3ad0bb4132ac715b51f34e6d31e9b3a2998969e4b911ddd386c23b",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 113549,
+                  "sha256": "63d3c4e8a766eeb3527455c5d2b95a35ad51f3a887f3777579a0569368cae48b",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128853,
+                  "sha256": "19cda3fe9ff1d616895bc6901dd32b6ce85ecf1b047f9c23e74289cef9b6b783",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "installed_distribution_inventories": [
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 113563,
+                  "sha256": "88ddc5c462e0db25567211f6e552f6042f11e2333cc029533750a68589f88ec0",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128853,
+                  "sha256": "15844fe6df43bfd27b9e1c6bab9395876fd00a306707e0f723e4dcf561c0d109",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128853,
+                  "sha256": "dca7ff31ae6b8428442a311d00fff4bd5f40812c8f8edd0a6f4137acf896dab1",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "suite_installed_and_rebuilt_member_hashes_equal": true
+            },
+            "installed_runtime": {
+              "status": "executed_and_component_case_passed",
+              "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+              "module_hash_count": 48,
+              "module_hashes_match_named_code": true,
+              "record_sha256": "fa2161f022bac086c6e3a2b453e5e2a350f70eaa128abc3de74c3e6c893899f7",
+              "admitted_modes": 8,
+              "empty_refusals": 2,
+              "public_refusals": 2,
+              "negative_events": [
+                "open",
+                "socket.getaddrinfo",
+                "ctypes.dlopen"
+              ]
+            },
+            "failed_stage_records": {},
+            "service_step_conclusions": {
+              "Set up job": "success",
+              "Checkout exact candidate without stored credentials": "success",
+              "Select reviewed CPython minor": "success",
+              "Check actual checkout and guards": "success",
+              "Review and install pinned development wheels": "success",
+              "Collect and run all cumulative tests": "success",
+              "Record results, archives and unchanged checkout": "success",
+              "Preserve verification records only": "success",
+              "Post Select reviewed CPython minor": "success",
+              "Post Checkout exact candidate without stored credentials": "success",
+              "Complete job": "success"
+            },
+            "not_executed_service_steps": [],
+            "profile_service_conclusion": "success",
+            "profile_gate_passed": true,
+            "overall_acceptance_gate_passed": false
+          },
+          {
+            "profile": "windows-2025-py3.13",
+            "job_id": 106522019390,
+            "artifact_id": 10665737171,
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-windows-2025-py3.13-35656696771-1.zip",
+              "bytes": 178056,
+              "sha256": "95647d8d55cd62e2a09d4d9800c111c78b1acdfcc091254ccc3b112f748e71aa"
+            },
+            "zip_crc_safe_paths_and_service_identity_verified": true,
+            "record_count": 28,
+            "records": {
+              "build-inventories.json": {
+                "bytes": 32433,
+                "sha256": "cfe2341a2f584e6257150d69f15850290812e57cca38fd5a5d29d75e195ef7f5"
+              },
+              "check_phase0_baseline-after.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_phase0_baseline-before.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_scaffold_boundary-after.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "check_scaffold_boundary-before.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "collection.json": {
+                "bytes": 407409,
+                "sha256": "4746886056d6c37d7a8f887c1ceab682f5af95ff11a144f0796c6d402296223a"
+              },
+              "collection.log": {
+                "bytes": 382340,
+                "sha256": "24647bde6f093fd229483e45f30cac6f80b6ac54c8a4c0c623261e266a65506a"
+              },
+              "download.log": {
+                "bytes": 2010,
+                "sha256": "25e79cb3a64c96742fec580314f5e85b02b9248f7dca0119e2a8ebbf2bd90057"
+              },
+              "entry-and-scope.json": {
+                "bytes": 17047,
+                "sha256": "0358b56c3dda9d225f6106315b7872b6d78bd7b1aa8c3cb69b5c32bdb600bc00"
+              },
+              "environment.json": {
+                "bytes": 416,
+                "sha256": "55379b79c9969ac521b69bd163f189682b374e9419751e656f650dfbbd22e5b7"
+              },
+              "evidence-failure.json": {
+                "bytes": 114,
+                "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+              },
+              "install-report.json": {
+                "bytes": 52211,
+                "sha256": "7fb7b472ac281c6de1524c7c0b29a5e08b96da6007acfceb2e68eb2d5a1c1308"
+              },
+              "install.log": {
+                "bytes": 1067,
+                "sha256": "eb4b657a06ac7ab3474d276949291de44026266a3f97578fe342f6fa406ac0f7"
+              },
+              "installed.json": {
+                "bytes": 184,
+                "sha256": "99c1a0779e6968a946fd5ff32025b7a9aed155878382f6e3a27cd2463f1b6df0"
+              },
+              "installed.log": {
+                "bytes": 334,
+                "sha256": "39b611e3708470417aa45a755f6525d13a4bfc9976ed7e9ad22df6507f34a121"
+              },
+              "junit.xml": {
+                "bytes": 589226,
+                "sha256": "47fa19b16d2ba9b4b1db2b2f39cadde0ed28754f8e036c46f71fde2905223c54"
+              },
+              "pip-check.log": {
+                "bytes": 30,
+                "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+              },
+              "pip-version.log": {
+                "bytes": 77,
+                "sha256": "ca24d5116b3334ef27a7e296c738fa27479febd42897574f7f9461745eaec2af"
+              },
+              "preflight.json": {
+                "bytes": 146,
+                "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+              },
+              "pytest-exit.json": {
+                "bytes": 21,
+                "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+              },
+              "pytest.log": {
+                "bytes": 85031,
+                "sha256": "c19f2331cee5c1921154f5163c955e67db96550ba5156d815623687d0f318228"
+              },
+              "reviewed-wheels.json": {
+                "bytes": 12697,
+                "sha256": "10f80797b0a7895c5b23773f8a22fec17abe506b23b93270f395c1fce2587824"
+              },
+              "summary.json": {
+                "bytes": 601,
+                "sha256": "1af3b5f5a2188c536c50515d58dc40bd031301e7c577bded2b8269f9469f3c7a"
+              },
+              "test-failure.json": {
+                "bytes": 93,
+                "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+              },
+              "tracked-after.json": {
+                "bytes": 19712,
+                "sha256": "54528878f6f3bd078cf1bb1aa03e42475dbff66a1d1228dda2e2c551a513b91c"
+              },
+              "tracked-before.json": {
+                "bytes": 19712,
+                "sha256": "54528878f6f3bd078cf1bb1aa03e42475dbff66a1d1228dda2e2c551a513b91c"
+              },
+              "venv.log": {
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "w08-installed-runtime.json": {
+                "bytes": 31524,
+                "sha256": "3c064f53d1b59d8a4169d38282a113cbbe721191bfce5b43add1fc74b79869d4"
+              }
+            },
+            "environment": {
+              "head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+              "image_version": "20260907.229.1",
+              "matrix_os": "windows-2025",
+              "matrix_python": "3.13",
+              "platform": "Windows-2025Server-10.0.26100-SP0",
+              "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+              "run_attempt": "1",
+              "run_id": "35656696771",
+              "scope": "Phase 3 cumulative verification",
+              "unit": "P3-W05"
+            },
+            "tests": {
+              "collected_top_level": 3171,
+              "passed_top_level": 3153,
+              "failed_top_level": 18,
+              "errors": 0,
+              "skipped": 0,
+              "reported_events": 3599,
+              "successful_subtest_events": 428,
+              "failure_cases": [
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[changed_payload]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "05b13c8bd58e6a048c9c55f352d4d0ce7f25a02cee63aafe35cdf32a52ab42e8"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[changed_verifier_call]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "f6c907a7a34fff9c536b56bd212ae5c3b830356da5952166ccc8d661bd37bccd"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[duplicate_old_tests]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "f7e93215995c2d474bf7a5579a65ee45f17409cd60f7e11b916aeb4c682efe07"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[generic_exception]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "cb4061b48119a8ef62eb4ed6abf06c5b93455af2db0b1a77eaba2afbb9f52ee2"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[historical_snapshot]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "fa8d62c41c5911d69334cbbd1799a76465c30d7b8fcee880500f57e5d296b216"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_binding]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "87c15e842f36a245757fbe6fd583912976c1413dd3540c35458bacb0859b4614"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_effect_observer]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "efd6d543256585a5ba347fc1948fa06bfa25b8670fba8586855591c1b62986a6"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_legal_positive]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "64d08635b3662859846da89f8a2e4e5e0a32fedce797cd1ea27f1fad63ed4770"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_live_class]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "ee9d6ad2cfa3d849bc938ecd50fe5a1cdfd3d314381b5093b4837bfde7995602"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_loader]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "641c2946bf7184ac03d4f2da6f0156cf03cdfc394b8b21b4cabf9fdcdbf987bd"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_original]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "24b393d52e0ebd16f1e49fcbe1cfe7c02c3a9785856a97db5369b8bf5be2f5e8"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_postpositive]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "80643de82e6381f6056bfdc613a594e2e4235726d3effaf7349aaae2b093cae1"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[removed_assertion]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "1f61ea6271e309eb902ebe44f6a4c0112377469aeefdc6d614035b79142314c5"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[reordered_binding]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "5df6f1f732fc5da20ec42b2403566e22cde70c1726cb44469c483c1fa7c5588a"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[stale_target]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "f4a5eef62ee0303e50290e2749a525f1ce3c4fe5e832cfceb80e673314d84f84"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[verifier_weakened]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "e4c56e812387a3a8b57ea8efc81e4a301ab4b1c5f950a626626326e28c74385e"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[weakened_owner_observer]",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "1cdd5d79d7b4d8911d54103abe2b70282f3774e4d66dcb460ba9f1027fe5de78"
+                },
+                {
+                  "node": "tests/contract/test_phase3_transition.py::test_w05_r01_method_and_live_observers_preserve_original_identity",
+                  "message": "AssertionError: live_manifest_observers_changed\nassert '02995bb9a980...6e0c2e828fc31' == '615ffa1cda02...074c39ed44563'\n  \n  - 615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563\n  + 02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+                  "failure_text_sha256": "12d6d821267611d1a8d2c5afbc305607de85934f3e339ec2e2ee85e4e9ef4ab7"
+                }
+              ],
+              "identity_sha256": "c8b171369881b7d7724e657c04087767110179fb821bbded6e39123b675d56e2",
+              "seconds": 529.92
+            },
+            "retention": {
+              "w04": {
+                "collected": 2979,
+                "passed": 2979,
+                "failed": 0
+              },
+              "w03": {
+                "collected": 2364,
+                "passed": 2364,
+                "failed": 0
+              },
+              "w02": {
+                "collected": 2089,
+                "passed": 2089,
+                "failed": 0
+              },
+              "w01": {
+                "collected": 1786,
+                "passed": 1786,
+                "failed": 0
+              },
+              "phase2": {
+                "collected": 1650,
+                "passed": 1650,
+                "failed": 0
+              }
+            },
+            "new_w05_cases": 192,
+            "new_component_cases_passed": 119,
+            "new_r01_cases_passed": 55,
+            "tracked_before_after_git_hashes_equal": true,
+            "tracked_file_count": 180,
+            "actual_guards_before_after_pass": true,
+            "developer_tools": {
+              "colorama": "0.4.6",
+              "iniconfig": "2.3.0",
+              "packaging": "25.0",
+              "pip": "26.2.1",
+              "pluggy": "1.6.0",
+              "pygments": "2.20.0",
+              "pytest": "9.1.1",
+              "setuptools": "84.0.0"
+            },
+            "packaging": {
+              "status": "executed_and_component_cases_passed",
+              "junit_cases_passed": [
+                "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+                "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+                "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+                "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+                "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+                "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+              ],
+              "build_inventories": [
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128853,
+                  "sha256": "7551b7bb8637fc368ba6c89baa5dbc50294a7d9fad1bbec1b98a2fe9f48c0367",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 113523,
+                  "sha256": "9ca3415d4f7c555f0a2b0d15bdfc17c429215496fd33a10ea20ba187bb1be797",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128853,
+                  "sha256": "271c530d8620eeee6b56a6d2f067d5d06dde313c6133f595ba25cb9b78079b2f",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "installed_distribution_inventories": [
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 113590,
+                  "sha256": "054b2b5eddde8b9f157bc7826c51584dc213ad386ec31e798f736a5f20fd883a",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128853,
+                  "sha256": "1ed2821a92a4d925366e96a146aa93cc3dda12f4902dcb099b6b96a3131eb15b",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 128853,
+                  "sha256": "1bfc64a13eec8864029a3a1839e29e6b0369ac2b5978a1cc489269aa27427821",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "suite_installed_and_rebuilt_member_hashes_equal": true
+            },
+            "installed_runtime": {
+              "status": "executed_and_component_case_passed",
+              "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+              "module_hash_count": 48,
+              "module_hashes_match_named_code": true,
+              "record_sha256": "3c064f53d1b59d8a4169d38282a113cbbe721191bfce5b43add1fc74b79869d4",
+              "admitted_modes": 8,
+              "empty_refusals": 2,
+              "public_refusals": 2,
+              "negative_events": [
+                "open",
+                "socket.getaddrinfo",
+                "ctypes.dlopen"
+              ]
+            },
+            "failed_stage_records": {
+              "test": {
+                "error_type": "ValueError",
+                "message": "accumulated_suite_failed",
+                "stage": "test"
+              },
+              "evidence": {
+                "error_type": "ValueError",
+                "message": "required_CI_evidence_failed_or_incomplete",
+                "stage": "evidence"
+              }
+            },
+            "service_step_conclusions": {
+              "Set up job": "success",
+              "Checkout exact candidate without stored credentials": "success",
+              "Select reviewed CPython minor": "success",
+              "Check actual checkout and guards": "success",
+              "Review and install pinned development wheels": "success",
+              "Collect and run all cumulative tests": "failure",
+              "Record results, archives and unchanged checkout": "failure",
+              "Preserve verification records only": "success",
+              "Post Select reviewed CPython minor": "skipped",
+              "Post Checkout exact candidate without stored credentials": "success",
+              "Complete job": "success"
+            },
+            "not_executed_service_steps": [
+              "Post Select reviewed CPython minor"
+            ],
+            "profile_service_conclusion": "failure",
+            "profile_gate_passed": false,
+            "overall_acceptance_gate_passed": false
+          }
+        ],
+        "same_observer_failures_both_python313_profiles": [
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[changed_payload]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[changed_verifier_call]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[duplicate_old_tests]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[generic_exception]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[historical_snapshot]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_binding]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_effect_observer]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_legal_positive]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_live_class]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_loader]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_original]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[missing_postpositive]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[removed_assertion]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[reordered_binding]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[stale_target]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[verifier_weakened]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_manifest_oracle_rejects_weakened_assertions_and_observers[weakened_owner_observer]",
+          "tests/contract/test_phase3_transition.py::test_w05_r01_method_and_live_observers_preserve_original_identity"
+        ],
+        "original_service_api_responses": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/service-api-responses.json",
+          "bytes": 33770,
+          "sha256": "f95dbe02c6f9a0986dd3f725df4731924a26cc2b84693af6213aad2d1e78623b"
+        },
+        "normalized_metadata_matches_original_api_responses": true,
+        "local_evidence": "The actual first-code local invocation, when retained by root, is supplementary separate evidence. This report does not infer its outcome from hosted profiles.",
+        "post_gate_finding": "Packaging and clean-installed runtime cases executed and passed in every profile, including the two failed Python 3.13 suites. The always-run evidence step retained package inventories, after-state, guards and summary, then failed for those two unsuccessful cumulative suites. Both Python 3.11 profiles completed successfully, but the overall supported matrix gate remains failed.",
+        "normal_success_auditor_unchanged_sha256": "aff33ad1f41f4e2092231c3d23fe616f0f0c62c5939ac8793a1501ed22df0a54",
+        "forensic_script_sha256": "bce07ea3d90acaa036dab9f0fa1ddcc28fef084dd48c9687a8eb1257097e6b60",
+        "limitations": [
+          "Failed whole-run evidence cannot qualify W05 or any later successor. No repair authorization or fix is inferred.",
+          "Parsing and Git comparisons only; no product/test/runtime re-execution was performed.",
+          "Package binaries are absent; only retained executed member inventories, source hashes and JUnit/runtime records are rechecked. No whole-archive reproducibility is claimed.",
+          "Installed open/DNS/native probes are finite warm-import evidence, not a hostile same-process or native security certification.",
+          "Assertion locations and messages identify observed failures; fixture-repair scope and any amendment remain a separate review decision.",
+          "Shared assistant environment/tool provenance; not external certification."
+        ]
+      },
+      "forensic_packet": {
+        "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/failed-code-audit.json",
+        "sha256": "cd5f67c9ade1adb1c6679ace4cd307706f6e8e11937ee782118b901d73c4451c",
+        "bytes": 74482
+      },
+      "meaning": "Both Python 3.11 profiles passed 3171 top-level tests. Both Python 3.13 profiles failed the same 18 new R01 observer checks and passed 3153. All 2979 inherited identities, 119 new component cases and 428 separate subtests passed in all profiles. No full-gate pass is claimed for this head."
+    },
+    "portability_correction": {
+      "status": "independently_reviewed_pending_corrected_exact_head_full_gate",
+      "original_code_head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+      "change": "Preserve explicit empty AST list fields on Python 3.13 using show_empty=True; retain the original class digest, all prior assertions, six old source pins and product/component-test bytes. Eight additive test instances exercise empty-list normalization and preserved semantic differences.",
+      "review": {
+        "status": "pass",
+        "unit": "P3-W05",
+        "amendment": "P3-W05-R01",
+        "predecessor_review_sha256": "0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07",
+        "predecessor_review": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-r01-independent-review.json",
+          "bytes": 4971,
+          "sha256": "0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07"
+        },
+        "original_code_head": "add6a329b8873002fa5c2bf56c4768d9ca160cff",
+        "original_code_tree": "f7eea09e27095207baf827e304ecfd37333b73cb",
+        "approved_proposal_sha256": "ec1e54522b05f0b1a5b1340a4917ad4477017cdfe80218e91a90d75c990bec87",
+        "approval_sha256": "ab0bde2117b05dc4cf39a8c84e556c87a1c1a4d08a55db483b98ac506105e9b2",
+        "pre_amendment_head": "a2aa2112231ba7595070216e659798130127dc3c",
+        "pre_amendment_tree": "d468e02fa40a5014e838937486fa49185bc1e72d",
+        "accepted_predecessor": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+        "source_sha256": {
+          "tests/scaffold/test_module_manifest.py": "40bbc1d4e2671cbcfd5b1aeeacbfa8531332239f0b543fa46073a4a018d23cb1",
+          "tests/scaffold/test_ci_contract.py": "f011914dee89c92782e7f1dc1c1a3580b1adab945913460f7c02ae889de40d7b",
+          "tests/contract/test_phase3_transition.py": "9875d989cf3dfaa7fa3e34b5f940a8c75eba09b86225c1ae3d378f6a6c2334e5"
+        },
+        "first_code_failure_audit_sha256": "cd5f67c9ade1adb1c6679ace4cd307706f6e8e11937ee782118b901d73c4451c",
+        "original_failure": {
+          "run_id": 35656696771,
+          "attempt": 1,
+          "overall_acceptance_gate_passed": false,
+          "audit": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/failed-code-audit.json",
+            "bytes": 74482,
+            "sha256": "cd5f67c9ade1adb1c6679ace4cd307706f6e8e11937ee782118b901d73c4451c"
+          },
+          "profiles": [
+            {
+              "profile": "ubuntu-24.04-py3.11",
+              "zip": {
+                "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-ubuntu-24.04-py3.11-35656696771-1.zip",
+                "bytes": 166024,
+                "sha256": "59209362c8251efe236e5d984691c05f4462096ed26142191c4e207ec66ad992"
+              },
+              "top_level": 3171,
+              "passed": 3171,
+              "failed": 0,
+              "successful_subtests": 428,
+              "service_conclusion": "success",
+              "new_component_cases_passed": 119
+            },
+            {
+              "profile": "ubuntu-24.04-py3.13",
+              "zip": {
+                "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-ubuntu-24.04-py3.13-35656696771-1.zip",
+                "bytes": 171476,
+                "sha256": "992aab29b09a2c74f675b70275ba4925e77660de7e7ec243f640231f1d53acba"
+              },
+              "top_level": 3171,
+              "passed": 3153,
+              "failed": 18,
+              "successful_subtests": 428,
+              "service_conclusion": "failure",
+              "new_component_cases_passed": 119
+            },
+            {
+              "profile": "windows-2025-py3.11",
+              "zip": {
+                "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-windows-2025-py3.11-35656696771-1.zip",
+                "bytes": 172832,
+                "sha256": "ba6be43ca72263422c57b884db7f31ab4cf213f4f0eb1a5ce92866e7d83336b0"
+              },
+              "top_level": 3171,
+              "passed": 3171,
+              "failed": 0,
+              "successful_subtests": 428,
+              "service_conclusion": "success",
+              "new_component_cases_passed": 119
+            },
+            {
+              "profile": "windows-2025-py3.13",
+              "zip": {
+                "path": "/workspace/scratch/5e401153f47f/p3w05-code-first-evidence/phase3-windows-2025-py3.13-35656696771-1.zip",
+                "bytes": 178056,
+                "sha256": "95647d8d55cd62e2a09d4d9800c111c78b1acdfcc091254ccc3b112f748e71aa"
+              },
+              "top_level": 3171,
+              "passed": 3153,
+              "failed": 18,
+              "successful_subtests": 428,
+              "service_conclusion": "failure",
+              "new_component_cases_passed": 119
+            }
+          ],
+          "cause": "CPython 3.13 ast.dump omits empty list fields by default. All 18 failures occur at the unchanged live-class positive baseline before the mutation-specific rejection control. The original native failure remains failed."
+        },
+        "checks": {
+          "original_review_0f_bytes_unchanged": true,
+          "original_review_three_source_pins_match_actual_add6_git": true,
+          "wrapper_and_ci_driver_bytes_equal_original_review_and_add6": true,
+          "only_existing_transition_definition_changed_is_w05_portable_ast_dump": true,
+          "exactly_three_new_test_definitions_and_eight_parameterized_instances": true,
+          "all_other_old_top_level_ast_and_old_test_assertions_unchanged": true,
+          "all_six_live_migration_pin_literals_and_actual_source_bytes_unchanged": true,
+          "reviewed_live_class_pin_615ffa_unchanged": true,
+          "independent_85_empty_field_omission_reproduces_exact_native_313_failure_hash": true,
+          "new_helper_deepcopies_and_only_normalizes_empty_type_params": true,
+          "native313_branch_explicitly_requests_show_empty_true": true,
+          "nonempty_generic_parameters_arguments_keywords_calls_decorators_and_statement_types_remain_distinguishable": true,
+          "all_17_original_weakened_observer_mutants_pass_rejection_controls_locally": true,
+          "original_before_negative_after_positive_controls_preserved": true,
+          "actual_original_four_zips_crc_identity_junit_and_failure_messages_rechecked": true,
+          "approval_proposal_preboundary_and_scope_unchanged": true,
+          "no_product_runtime_budget_policy_or_public_surface_change": true
+        },
+        "focused_evidence": {
+          "python": "3.12.14 supplementary local",
+          "actual_targeted_top_level_passed": 76,
+          "deselected_outside_target": 180,
+          "original_weakened_manifest_mutants_passed": 17,
+          "new_portability_test_instances": [
+            "test_w05_r01_portable_ast_keeps_semantic_differences[@decorator\\ndef f():\\n    return g()\\n]",
+            "test_w05_r01_portable_ast_keeps_semantic_differences[def f():\\n    g()\\n]",
+            "test_w05_r01_portable_ast_keeps_semantic_differences[def f():\\n    return g(1)\\n]",
+            "test_w05_r01_portable_ast_keeps_semantic_differences[def f():\\n    return g(flag=True)\\n]",
+            "test_w05_r01_portable_ast_keeps_semantic_differences[def f():\\n    return h()\\n]",
+            "test_w05_r01_portable_ast_keeps_semantic_differences[def f(x):\\n    return g()\\n]",
+            "test_w05_r01_portable_ast_only_normalizes_empty_generic_parameters",
+            "test_w05_r01_portable_ast_preserves_explicit_empty_lists"
+          ],
+          "log": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-targeted.log",
+            "bytes": 196,
+            "sha256": "c84966da70d2f3f87a01f9cd652ffb75a6fee36dfa25adae16e8f6258a865c21"
+          },
+          "junit": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-targeted.xml",
+            "bytes": 12923,
+            "sha256": "868495b614699a2ddc15a13ca1eeafed0cb7fe92c260d2608e86705a83c2e7fe"
+          },
+          "independent_format_probe": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-r01-portability-independent-format-probe.json",
+            "bytes": 712,
+            "sha256": "db4cb5d62f351f86c7a1f809b61b2b6767802bf3761f2ba32c3f5b2d0157538f"
+          },
+          "independent_helper_review": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-r01-portability-independent-helper-review.json",
+            "bytes": 1813,
+            "sha256": "3cf47ae069ca67d9e9b9944ec76af93915d0e2707db3aa943595dcf4ebc524c8"
+          },
+          "upstream_formatter_diagnosis": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-diagnosis.json",
+            "bytes": 2957,
+            "sha256": "2e47c62c83cb141a679de7012f6c67103ec0cda8bdee3155366a620177a97e71"
+          },
+          "upstream_sources": [
+            {
+              "version": "3.11",
+              "upstream_url": "https://raw.githubusercontent.com/python/cpython/v3.11.13/Lib/ast.py",
+              "source": "/workspace/scratch/5e401153f47f/p3w05-cpython-v3.11.13-ast.py",
+              "source_sha256": "c513073798bdbf3cdef09327d0d2d381a53213a13a4ba3f02729695327539406",
+              "original_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+              "repaired_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+              "baseline_then_weakened_live_method_rejected_then_baseline": "pass"
+            },
+            {
+              "version": "3.12",
+              "upstream_url": "https://raw.githubusercontent.com/python/cpython/v3.12.14/Lib/ast.py",
+              "source": "/workspace/scratch/5e401153f47f/p3w05-cpython-v3.12.14-ast.py",
+              "source_sha256": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d",
+              "original_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+              "repaired_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+              "baseline_then_weakened_live_method_rejected_then_baseline": "pass"
+            },
+            {
+              "version": "3.13",
+              "upstream_url": "https://raw.githubusercontent.com/python/cpython/v3.13.15/Lib/ast.py",
+              "source": "/workspace/scratch/5e401153f47f/p3w05-cpython-v3.13.15-ast.py",
+              "source_sha256": "7514eb7df98b1b76eab160ca2a83e6e9a9f3219a4659808cd9fd278b524ede1b",
+              "original_formatter_sha256": "02995bb9a9806a6519f8d3515e50c3484b5038965b8e21478ce6e0c2e828fc31",
+              "repaired_formatter_sha256": "615ffa1cda025db7c9bf9d44d070492936aa4a3708d544ae54c074c39ed44563",
+              "baseline_then_weakened_live_method_rejected_then_baseline": "pass"
+            }
+          ]
+        },
+        "findings_and_closure": [
+          {
+            "finding": "The initial generic-parameter-only normalization left CPython 3.13 empty-list display differences, causing the pinned live-class baseline to reject unchanged source.",
+            "closure": "The existing helper now explicitly requests show_empty=True on 3.13+, retaining the original legacy representation and fixed pin. New positive/negative tests retain explicit empty lists, nonempty generics and meaningful semantic differences; no assertion or pin is replaced."
+          }
+        ],
+        "remaining_blocking_findings": [],
+        "limitations": [
+          "Pass is source/targeted-review acceptance of this exact narrow compatibility change, not a full suite or native supported-profile pass of a future corrected commit.",
+          "Exact upstream formatter functions and independent branch simulation ran under local CPython 3.12; neither is native CPython 3.11/3.13 execution. The new exact-head four-profile gate remains required.",
+          "The original add6 mixed matrix, all original ZIPs, the original 0f review and pre-amendment failed matrix remain separate immutable history.",
+          "No merge, owner acceptance, W06 start, complete analytical field closure or release is authorized or asserted."
+        ]
+      },
+      "review_packet": {
+        "path": "/workspace/scratch/5e401153f47f/p3w05-r01-portability-review.json",
+        "sha256": "d679a9961bd3ccc8999c81faf14ef1c1dbf5491141ea1355df876663e02962f1",
+        "bytes": 10543
+      },
+      "diagnosis_packet": {
+        "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-diagnosis.json",
+        "sha256": "2e47c62c83cb141a679de7012f6c67103ec0cda8bdee3155366a620177a97e71",
+        "bytes": 2957
+      },
+      "focused_log": {
+        "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-targeted.log",
+        "sha256": "c84966da70d2f3f87a01f9cd652ffb75a6fee36dfa25adae16e8f6258a865c21",
+        "bytes": 196
+      },
+      "focused_junit": {
+        "path": "/workspace/scratch/5e401153f47f/p3w05-ast-portability-targeted.xml",
+        "sha256": "868495b614699a2ddc15a13ca1eeafed0cb7fe92c260d2608e86705a83c2e7fe",
+        "bytes": 12923
+      },
+      "focused_top_level_passed": 76,
+      "focused_deselected": 180,
+      "native_python_313_gate": "pending_new_hosted_matrix"
     }
   },
   "preservation": {
@@ -10389,5 +12274,5 @@
   "owner_local_core_obligations_verified": 16,
   "analytical_obligations_completed": 0,
   "phase3_complete": false,
-  "w05_status": "implemented_pending_code_head_verification"
+  "w05_status": "portability_corrected_pending_exact_head_verification"
 }

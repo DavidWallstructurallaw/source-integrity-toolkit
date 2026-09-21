@@ -1170,12 +1170,57 @@ def test_w05_r01_driver_oracle_rejects_unrelated_or_self_selected_changes(mutati
 
 
 def _w05_portable_ast_dump(node):
-    """Empty generic parameter fields differ between CPython 3.11 and 3.13."""
+    """Keep the reviewed empty-list representation across CPython versions."""
     tree = copy.deepcopy(node)
     for child in ast.walk(tree):
         if getattr(child, "type_params", None) == []:
             child._fields = tuple(field for field in child._fields if field != "type_params")
+    # CPython 3.13 defaults to omitting empty lists; the reviewed pin includes
+    # them. Keep every other field, including nonempty generic parameters.
+    if sys.version_info >= (3, 13):
+        return ast.dump(tree, show_empty=True)
     return ast.dump(tree)
+
+
+def test_w05_r01_portable_ast_preserves_explicit_empty_lists():
+    node = ast.parse("def f():\n    return g()\n").body[0]
+    original = ast.dump(node, include_attributes=True)
+    assert _w05_portable_ast_dump(node) == (
+        "FunctionDef(name='f', args=arguments(posonlyargs=[], args=[], "
+        "kwonlyargs=[], kw_defaults=[], defaults=[]), body=[Return(value="
+        "Call(func=Name(id='g', ctx=Load()), args=[], keywords=[]))], "
+        "decorator_list=[])"
+    )
+    assert ast.dump(node, include_attributes=True) == original
+
+
+@pytest.mark.parametrize("source", (
+    "def f(x):\n    return g()\n",
+    "def f():\n    return h()\n",
+    "def f():\n    return g(1)\n",
+    "def f():\n    return g(flag=True)\n",
+    "@decorator\ndef f():\n    return g()\n",
+    "def f():\n    g()\n",
+))
+def test_w05_r01_portable_ast_keeps_semantic_differences(source):
+    baseline = ast.parse("def f():\n    return g()\n").body[0]
+    expected = _w05_portable_ast_dump(baseline)
+    reformatted = ast.parse("def f( ):\n    return (g( ))\n").body[0]
+    assert _w05_portable_ast_dump(reformatted) == expected
+    assert _w05_portable_ast_dump(ast.parse(source).body[0]) != expected
+    assert _w05_portable_ast_dump(baseline) == expected
+
+
+def test_w05_r01_portable_ast_only_normalizes_empty_generic_parameters():
+    baseline = ast.parse("def f():\n    return g()\n").body[0]
+    expected = _w05_portable_ast_dump(baseline)
+    generic = copy.deepcopy(baseline)
+    generic._fields = tuple(field for field in generic._fields if field != "type_params") + ("type_params",)
+    generic.type_params = []
+    assert _w05_portable_ast_dump(generic) == expected
+    generic.type_params = [ast.Name(id="T", ctx=ast.Load())]
+    assert _w05_portable_ast_dump(generic) != expected
+    assert _w05_portable_ast_dump(baseline) == expected
 
 
 def _assert_w05_r01_migrated_source(raw):
