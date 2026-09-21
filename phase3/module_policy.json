@@ -1,5 +1,5 @@
 {
-  "active_unit": "P3-W03",
+  "active_unit": "P3-W04",
   "extension_first_units": {
     "contracts/evidence.py": 3,
     "contracts/execution.py": 2,
@@ -34,6 +34,22 @@
     {
       "path": "contracts/results.py",
       "unit": 2
+    },
+    {
+      "path": "graph/cycles.py",
+      "unit": 4
+    },
+    {
+      "path": "graph/projections.py",
+      "unit": 4
+    },
+    {
+      "path": "graph/traversal.py",
+      "unit": 4
+    },
+    {
+      "path": "graph/witnesses.py",
+      "unit": 4
     }
   ]
 }
