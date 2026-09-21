@@ -1,14 +1,14 @@
 {
   "format": "sit-phase3-evidence/0.1",
-  "unit": "P3-W02",
+  "unit": "P3-W03",
   "authority": {
-    "owner_instruction": "P3-W02 继续",
+    "owner_instruction": "P3-W03 启动",
     "approved_plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
     "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
-    "actual_unit_entry": "4105f840ef3eaaa98da5d9e21c1ed7742bbaa1d6",
-    "w01_acceptance": "accepted_and_normally_merged",
-    "w02_acceptance": "pending_owner_review",
-    "next_unit": "P3-W03_not_authorized_or_started"
+    "actual_unit_entry": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+    "w02_acceptance": "accepted_and_normally_merged",
+    "w03_acceptance": "pending_owner_review",
+    "next_unit": "P3-W04_not_authorized_or_started"
   },
   "entry": {
     "file_count": 157,
@@ -18,671 +18,200 @@
     "predecessor_test_files": 34,
     "predecessor_subtests": 428
   },
-  "accepted_w01": {
-    "owner_instruction": "P3-W02 继续",
-    "pr": 20,
-    "head": "ca028b0616a3d345032e0a9d667bf55c56759534",
-    "tree": "82bd2ab8578a6780aada16f7a5c71b9485f5a255",
-    "merge": "4105f840ef3eaaa98da5d9e21c1ed7742bbaa1d6",
-    "run_id": 35548885459,
+  "accepted_w02": {
+    "owner_instruction": "P3-W03 启动",
+    "pr": 21,
+    "head": "df670e36b8e0df46ad6d7f66bc03c57932089d6e",
+    "tree": "15730002b774e64e9c6fe2ed74323ef1598a1afd",
+    "merge": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+    "run_id": 35553348806,
     "run_attempt": 1,
     "profiles_passed": 4,
-    "tests_per_profile": 1786,
+    "tests_per_profile": 2089,
     "subtests_per_profile": 428,
-    "test_files": 35,
-    "identity_sha256": "c6798a416875be8a764787fe68f8beef4bf7a0b0ea3451cea17d862b765756c8",
-    "raw_audit_sha256": "81906ccaa55327232d0e124febb7a26c5b548c56231586878d472578cc75a8fd",
-    "git_audit_sha256": "73c741b282a23fb399323b51dc48641ddce9c831986d4745a8291e35e115db0d",
+    "test_files": 39,
+    "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
+    "raw_audit_sha256": "e4ee73ff6e449498052c904c67f08e68dc37d6442a1154839d9f827bd8fd7033",
+    "raw_service_metadata_sha256": "e528d8ec3fc631a0debb2670c50467b77664aa31c66a6749065acad53e324f52",
+    "final_git_audit_sha256": "bf8b2b2b0f7a3ae6b87e4a3a72da0eb6006eec1b7d505b53a35db2b8110a9639",
     "postmerge_service_run": {
-      "id": 35551657196,
+      "id": 35580676218,
       "status": "success",
-      "meaning": "GitHub service reports successful postmerge run; accepted final-head raw audit remains the independently reconstructed acceptance evidence."
+      "meaning": "Previously checked GitHub service result for the accepted merge; no new independent raw-artifact reconstruction of this postmerge run is claimed."
     }
+  },
+  "historical_evidence": {
+    "accepted_w02_records": {
+      "commit": "df670e36b8e0df46ad6d7f66bc03c57932089d6e",
+      "path": "phase3/implementation_evidence.json",
+      "sha256": "c37cb0172ae1c2bb0e5d6360f9b4423df7ff8fba2b14bba1d34c721fafd3001a"
+    },
+    "accepted_w02_progress": {
+      "commit": "df670e36b8e0df46ad6d7f66bc03c57932089d6e",
+      "path": "PHASE_3_PROGRESS.md",
+      "sha256": "8efd2fb81cee9647d00156b9e3ccd64248e9d3fffa0f2aa7e662a81f3a37ae68"
+    },
+    "accepted_w02_obligations": {
+      "commit": "df670e36b8e0df46ad6d7f66bc03c57932089d6e",
+      "path": "phase3/obligation_coverage.json",
+      "sha256": "9c4f6081e5587eb7a25155be6f6a7b1e9c4bbb3cd11fc66fe731ea98f969cc47"
+    },
+    "accepted_w01_records": {
+      "commit": "ca028b0616a3d345032e0a9d667bf55c56759534",
+      "path": "phase3/implementation_evidence.json",
+      "sha256": "303343291cfb658e0b0ae32879fc2a8391d145f11ce8f3b8639d59719df021f3"
+    },
+    "entry_manifest": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "phase3/entry_manifest.json",
+      "sha256": "dfe96f57a222937131e8e4fafd13098f76d134cd88a50ffa9fa82891b9b9659b"
+    },
+    "transition_ledger": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "phase3/transition_ledger.md",
+      "sha256": "1177564fbc2296e50cddaf4b9b484447039f5b7424fcdb47de22a642ac6d0e59"
+    },
+    "ci_applicability_review": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "phase3/ci_review.md",
+      "sha256": "680517232317e71cbb43026d0c582c996d0f922e60123fd740744340a2e28f58"
+    },
+    "meaning": "Immutable accepted commits retain the full named snapshots, predecessor lineage, local failures, W01 Windows fixture failures and inherited planning-context failures. Historical creation-time pending headers are interpreted with the later recorded acceptance; they are not rewritten."
+  },
+  "source_snapshots": {
+    "PHASE_3_PLAN.md": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "PHASE_3_PLAN.md",
+      "sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae"
+    },
+    "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+      "sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374"
+    },
+    "DEFINITIONS_AND_UNITS.md": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "DEFINITIONS_AND_UNITS.md",
+      "sha256": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d"
+    },
+    "OBSERVABILITY_AND_REPORTING.md": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "OBSERVABILITY_AND_REPORTING.md",
+      "sha256": "44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a"
+    },
+    "VALIDATION_PLAN.md": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "VALIDATION_PLAN.md",
+      "sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707"
+    },
+    "REPOSITORY_ARCHITECTURE.md": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "REPOSITORY_ARCHITECTURE.md",
+      "sha256": "8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d"
+    },
+    "PRIVACY_AND_DATA_HANDLING.md": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "PRIVACY_AND_DATA_HANDLING.md",
+      "sha256": "3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8"
+    },
+    "GOVERNANCE_AND_HANDOFF.md": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "GOVERNANCE_AND_HANDOFF.md",
+      "sha256": "13e535ded411a3ad5967226e07761d4e88615f5b04c0b5a64c6cbf738cbc9ee8"
+    },
+    "scaffold/obligation_catalog.json": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "scaffold/obligation_catalog.json",
+      "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
+    },
+    "requirements-dev.txt": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": "requirements-dev.txt",
+      "sha256": "ad89dbacd5640dbc156cc922f3bc7ed314ec1eec0f7fcdfd8da822a9e2590f0b"
+    },
+    ".github/workflows/phase1-ci.yml": {
+      "commit": "f5208ac8df7d6e137741a53b7738e66149de34f1",
+      "path": ".github/workflows/phase1-ci.yml",
+      "sha256": "841c39f7d3c596eafd767355a4a30f5111d6a73c8752229108708fcb39c4539e"
+    }
+  },
+  "scope": {
+    "authorized_paths": 9,
+    "common_records": 4,
+    "mutable_product_files": [
+      "src/source_integrity_toolkit/contracts/evidence.py",
+      "src/source_integrity_toolkit/validation/semantics.py"
+    ],
+    "new_test_files": [
+      "tests/contract/test_analytical_basis.py",
+      "tests/contract/test_analytical_temporal.py",
+      "tests/unit/test_provenance_profile.py"
+    ],
+    "deletion_or_rename_authorized": false
   },
   "product_boundary": {
     "total_modules": 48,
-    "inherited_implemented": 13,
-    "new_promotions": 1,
+    "inherited_implemented": 14,
+    "new_promotions": 0,
     "implemented_current": 14,
     "protected_current": 34,
-    "mutable_product_paths": 6,
-    "byte_preserved_product_paths": 42,
+    "mutable_product_paths": 2,
+    "immediate_predecessor_byte_preserved_product_paths": 46,
+    "guard_plan_entry_byte_protected_modules": 40,
+    "meaning": "46 is the immediate W03 freeze against accepted W02. The guard reports 40 cumulatively unopened module paths against the original plan entry. These are different inventories.",
     "phase_end_implementation_ceiling": 29,
     "phase_end_protected": 19,
     "public_auditing": "refusal_unchanged",
     "runtime_dependencies": 0
   },
+  "implementation": {
+    "status": "in_progress_not_yet_verified",
+    "authorized_work": [
+      "Private shared documentary qualification and typed component facts",
+      "Paid time, support, coverage, identity and relevant-conflict helpers",
+      "M015 owner-local coverage/basis/availability leaves"
+    ],
+    "provider_boundary": "PC03 remains SOURCE_INVENTORY in W05 and PC04 remains GRAPH_VIEW_CONTRACT in W04. Explicit trusted component facts do not claim either provider or W13 integration ran."
+  },
   "validation": {
-    "status": "verified_code_precursor_final_evidence_successor_pending",
+    "status": "pending_W03_local_and_exact_head_hosted_evidence",
     "supplementary_local": {
-      "python": "3.12.14",
-      "meaning": "Supplementary only; does not replace the required four hosted profiles.",
-      "uncommitted_contract_integration": {
-        "failed": 10,
-        "passed": 178,
-        "log": "p3w02-contract-integration.log",
-        "cause": "Four positive fixtures still constructed separate scope objects after strict reference consistency changed; six new assertions demanded an unsupported reason for an unfinished PC24 fact. No pre-existing test was edited.",
-        "repair": "Use the actual same immutable scope/population objects in positive fixtures; assert non-met unfinished PC24 with its note and no fabricated execution reason. Matched representation and atomicity negative controls were added."
-      },
-      "targeted_security_passed": 89,
-      "targeted_contract_passed_before_final_job_port_review": 198,
-      "cumulative_integration": {
-        "tests_passed": 2063,
-        "subtests_passed": 428,
-        "test_files": 39,
-        "failures_errors_skips": 0,
-        "elapsed_seconds": 293.24,
-        "w01_identities_retained": 1786,
-        "local_junit_identity_match": true,
-        "meaning": "Uncommitted integration pass before final atomicity and analysis-job-port review changes settled. It is not substituted for an exact final candidate run; final added controls receive targeted execution and the actual committed four-profile gate."
-      },
-      "final_components": {
-        "passed": 303,
-        "contract": 214,
-        "security": 89,
-        "failed_errors_skips": 0,
-        "scope": "All four new test files executed together after all final code changes; no full analytical family claim."
-      },
-      "final_collection": {
-        "count": 2089,
-        "w01_retained": 1786,
-        "w01_missing": [],
-        "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
-        "test_files": 39
-      }
+      "status": "pending",
+      "meaning": "No W03 full or targeted test pass is claimed by this initial record."
     },
     "hosted_code_head": {
-      "status": "pass",
-      "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-      "tree": "e33b73fe41dff46a148456b0af2f05504bfd64e0",
-      "run_id": 35552824387,
-      "run_attempt": 1,
-      "run_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35552824387",
-      "profiles": [
-        {
-          "profile": "ubuntu-24.04-py3.11",
-          "job_id": 106190629899,
-          "artifact_id": 10619282029,
-          "zip_bytes": 121867,
-          "zip_sha256": "6b6d8fcac38b7db608c3f1334503405b8cdc93aec0115863a22f2b2ce5cc38c5",
-          "environment": {
-            "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-            "image_version": "20260907.300.1",
-            "matrix_os": "ubuntu-24.04",
-            "matrix_python": "3.11",
-            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
-            "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
-            "run_attempt": "1",
-            "run_id": "35552824387",
-            "scope": "Phase 3 cumulative verification",
-            "unit": "P3-W02"
-          },
-          "tests": 2089,
-          "subtests_passed": 428,
-          "failure_error_skipped_elements": {
-            "failure": 0,
-            "error": 0,
-            "skipped": 0
-          },
-          "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
-          "tracked_before_after_files": 169,
-          "actual_developer_versions": {
-            "iniconfig": "2.3.0",
-            "packaging": "25.0",
-            "pip": "24.0",
-            "pluggy": "1.6.0",
-            "pygments": "2.20.0",
-            "pytest": "9.1.1",
-            "setuptools": "84.0.0"
-          },
-          "build_inventories": [
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 87065,
-              "sha256": "95567e794760f78eef62c2a8e6aab8b035bacae6f6f7f347e1bf4c46427b587f",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
-              "bytes": 73109,
-              "sha256": "a895ad3d7c19f8ccd82ecfbd26285d8c2d7d84e8584f985a302d7b3ca252a054",
-              "regular_member_count": 65,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 58,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 87065,
-              "sha256": "aa2d7b558f4680986242a7c9c65378e287a74627c69324c3cdf18705b05db5f3",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            }
-          ],
-          "installed_runtime": {
-            "admitted_fixture_modes": 8,
-            "rejected_empty_modes": 2,
-            "public_refusals": 2,
-            "normal_effects": [],
-            "negative_events": [
-              "open",
-              "socket.getaddrinfo",
-              "ctypes.dlopen"
-            ],
-            "runtime_distributions": [
-              "source-integrity-toolkit"
-            ],
-            "module_hash_count": 48,
-            "module_hashes_equal_code_head": true,
-            "record_sha256": "da1d1b45cd65b882bfd5eafc56eb95f411f8ca7699d28fbe8a1a68e4bd55c05a"
-          }
-        },
-        {
-          "profile": "ubuntu-24.04-py3.13",
-          "job_id": 106190630019,
-          "artifact_id": 10619161671,
-          "zip_bytes": 121790,
-          "zip_sha256": "10571787253bc4250d35e299f0aa456ff59e2674e9f01361c24e48a0aa178793",
-          "environment": {
-            "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-            "image_version": "20260907.300.1",
-            "matrix_os": "ubuntu-24.04",
-            "matrix_python": "3.13",
-            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
-            "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
-            "run_attempt": "1",
-            "run_id": "35552824387",
-            "scope": "Phase 3 cumulative verification",
-            "unit": "P3-W02"
-          },
-          "tests": 2089,
-          "subtests_passed": 428,
-          "failure_error_skipped_elements": {
-            "failure": 0,
-            "error": 0,
-            "skipped": 0
-          },
-          "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
-          "tracked_before_after_files": 169,
-          "actual_developer_versions": {
-            "iniconfig": "2.3.0",
-            "packaging": "25.0",
-            "pip": "26.2.1",
-            "pluggy": "1.6.0",
-            "pygments": "2.20.0",
-            "pytest": "9.1.1",
-            "setuptools": "84.0.0"
-          },
-          "build_inventories": [
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 87065,
-              "sha256": "d79b16b20074bd3bc89bbb1f1f493bf9c63cea24814cf291796346914a76b796",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
-              "bytes": 73039,
-              "sha256": "e927818ebed71d7f475cbae05794a291db023f606e44f67c8a0d5ac370e105aa",
-              "regular_member_count": 65,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 58,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 87065,
-              "sha256": "b52955f1a43e45e52690f14c7467f24943b69b902364a5ce4646f6a76b1118e4",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            }
-          ],
-          "installed_runtime": {
-            "admitted_fixture_modes": 8,
-            "rejected_empty_modes": 2,
-            "public_refusals": 2,
-            "normal_effects": [],
-            "negative_events": [
-              "open",
-              "socket.getaddrinfo",
-              "ctypes.dlopen"
-            ],
-            "runtime_distributions": [
-              "source-integrity-toolkit"
-            ],
-            "module_hash_count": 48,
-            "module_hashes_equal_code_head": true,
-            "record_sha256": "fd79201187a317e7d0d8cfa98a140235a877a9d6830e571871ef0d31c5b693af"
-          }
-        },
-        {
-          "profile": "windows-2025-py3.11",
-          "job_id": 106190630015,
-          "artifact_id": 10619435953,
-          "zip_bytes": 128464,
-          "zip_sha256": "ab97928699fcdd04912a0063efc88b33806528ac1cb7cb80e32212ec55e744fc",
-          "environment": {
-            "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-            "image_version": "20260907.229.1",
-            "matrix_os": "windows-2025",
-            "matrix_python": "3.11",
-            "platform": "Windows-10-10.0.26100-SP0",
-            "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
-            "run_attempt": "1",
-            "run_id": "35552824387",
-            "scope": "Phase 3 cumulative verification",
-            "unit": "P3-W02"
-          },
-          "tests": 2089,
-          "subtests_passed": 428,
-          "failure_error_skipped_elements": {
-            "failure": 0,
-            "error": 0,
-            "skipped": 0
-          },
-          "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
-          "tracked_before_after_files": 169,
-          "actual_developer_versions": {
-            "colorama": "0.4.6",
-            "iniconfig": "2.3.0",
-            "packaging": "25.0",
-            "pip": "24.0",
-            "pluggy": "1.6.0",
-            "pygments": "2.20.0",
-            "pytest": "9.1.1",
-            "setuptools": "84.0.0"
-          },
-          "build_inventories": [
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 87084,
-              "sha256": "e6fedccab2f5ff5268b72d37f08b4de714b78a563b07fa78df79e379ca03d61c",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
-              "bytes": 73219,
-              "sha256": "fa1c85d64cc9e6506f48c11493cfcd0a64ed11ced3bc65dea91e085735ccd930",
-              "regular_member_count": 65,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 58,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 87084,
-              "sha256": "099a846b1c64b43ce95b8862862484d78bd7c2e37d01a02e186dad8c735e46c0",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            }
-          ],
-          "installed_runtime": {
-            "admitted_fixture_modes": 8,
-            "rejected_empty_modes": 2,
-            "public_refusals": 2,
-            "normal_effects": [],
-            "negative_events": [
-              "open",
-              "socket.getaddrinfo",
-              "ctypes.dlopen"
-            ],
-            "runtime_distributions": [
-              "source-integrity-toolkit"
-            ],
-            "module_hash_count": 48,
-            "module_hashes_equal_code_head": true,
-            "record_sha256": "90f229a93d6513c081cb1ed3c4b220f5c9b2b06e483db676b9ce097379c81a67"
-          }
-        },
-        {
-          "profile": "windows-2025-py3.13",
-          "job_id": 106190629952,
-          "artifact_id": 10618977081,
-          "zip_bytes": 128225,
-          "zip_sha256": "02d9c6b806bb7504ffe5db98215f9c7da2cc9ce7240f49da33f63fceebea6703",
-          "environment": {
-            "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-            "image_version": "20260907.229.1",
-            "matrix_os": "windows-2025",
-            "matrix_python": "3.13",
-            "platform": "Windows-2025Server-10.0.26100-SP0",
-            "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
-            "run_attempt": "1",
-            "run_id": "35552824387",
-            "scope": "Phase 3 cumulative verification",
-            "unit": "P3-W02"
-          },
-          "tests": 2089,
-          "subtests_passed": 428,
-          "failure_error_skipped_elements": {
-            "failure": 0,
-            "error": 0,
-            "skipped": 0
-          },
-          "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
-          "tracked_before_after_files": 169,
-          "actual_developer_versions": {
-            "colorama": "0.4.6",
-            "iniconfig": "2.3.0",
-            "packaging": "25.0",
-            "pip": "26.2.1",
-            "pluggy": "1.6.0",
-            "pygments": "2.20.0",
-            "pytest": "9.1.1",
-            "setuptools": "84.0.0"
-          },
-          "build_inventories": [
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 87084,
-              "sha256": "c61f3c7276139b176ddcf5473e40588f4ca13f4e88de49b39ef48e5eab531626",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
-              "bytes": 73229,
-              "sha256": "38a7bc5456bb19e9a64879ff85e30e5a604a0fa7b1c46e17df27105b6813117d",
-              "regular_member_count": 65,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 58,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 87084,
-              "sha256": "ca66a611c65b2b5d1ff8edcf232811b43201e48c7ff3776044ab8a5c8fa6e687",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            }
-          ],
-          "installed_runtime": {
-            "admitted_fixture_modes": 8,
-            "rejected_empty_modes": 2,
-            "public_refusals": 2,
-            "normal_effects": [],
-            "negative_events": [
-              "open",
-              "socket.getaddrinfo",
-              "ctypes.dlopen"
-            ],
-            "runtime_distributions": [
-              "source-integrity-toolkit"
-            ],
-            "module_hash_count": 48,
-            "module_hashes_equal_code_head": true,
-            "record_sha256": "943427550f3f9a59b9800fcf7707b8c432338a5966db8961758ca02a119d0187"
-          }
-        }
-      ],
-      "raw_audit_sha256": "6aa39336b19220585fed2165f3ed5bf9753c836cff1bdb7970e00b477100e479",
-      "audit_checks": [
-        "Original ZIP service digests, lengths, CRC, member scope and extracted bytes",
-        "Exact 2089 collection/JUnit identities, retained1786 W01 identities and separate428 subtest events",
-        "All169 before/after tracked hashes equal the named Git tree",
-        "Actual157-file plan entry and165-file W01 predecessor; both W01 and W02 intermediate commit scopes",
-        "All 35 predecessor test files unchanged; exactly four new test files; all 42 protected product modules unchanged",
-        "Exact fixed developer wheels, actual interpreter patches/images and unchanged workflow/toolchain source",
-        "Wheel55/sdist65 member inventories and rebuilt wheel member equality",
-        "All48 installed module hashes, eight preparation modes, refusal behavior and finite open/DNS/native negative controls"
+      "status": "pending",
+      "required_profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
       ]
     },
     "final_documentation_successor": {
-      "status": "pending_at_document_creation",
-      "review_pr": 21,
-      "rule": "This file records the named verified precursor. The actual successor SHA/tree and its own four-profile raw audit are recorded on PR21 after that commit exists. A precursor run does not certify successor bytes."
+      "status": "pending",
+      "rule": "A named code precursor cannot certify later evidence bytes. The eventual final successor requires its own exact-head matrix and independent raw audit attached to its review PR after commit."
     }
   },
+  "preservation": {
+    "accepted_predecessor_tracked_files": 169,
+    "existing_test_files": 39,
+    "required_w02_identities": 2089,
+    "required_w01_identities": 1786,
+    "required_phase2_identities": 1650,
+    "required_subtest_events": 428,
+    "existing_test_bytes": "All 39 accepted W02 test files must remain byte-identical and collected.",
+    "preparation": "Earlier shape declarations, time syntax validation, known-window observations and observation-only evidence seams retain their accepted behavior.",
+    "toolchain": "Pins, workflow and the accepted same-day applicability review remain unchanged; actual W03 installations and patch/image identities still require hosted evidence."
+  },
+  "limitations": [
+    "Missing, withheld, unknown or uninspectable data remain their specified evidence limitations, not malformed input or an invented specification ambiguity.",
+    "No unstated inclusive/exclusive TimeWindow endpoint convention or fabricated midnight/timezone may be chosen; work that truly depends on an unresolved specification convention remains affected-work pending.",
+    "All 228 field obligations remain pending at initial record creation. Later updates require exact source-bound owner-local evidence; downstream provider and end-to-end clauses stay pending until actually executed.",
+    "No external authentication, support fetching, automatic identity merger, public analysis/report output, native capture or release is claimed.",
+    "Assistant-assisted independent review shares environment and tools and is not external certification."
+  ],
   "analytical_obligations_completed": 0,
   "phase3_complete": false,
-  "historical_w01_evidence": {
-    "commit": "ca028b0616a3d345032e0a9d667bf55c56759534",
-    "path": "phase3/implementation_evidence.json",
-    "meaning": "The immutable accepted commit preserves the entire precursor evidence, named inventory and disclosed W01 failures. Final-head post-commit gate was settled on PR20 before acceptance."
-  },
-  "failed_hosted_runs": [],
-  "implemented_primitives": [
-    "57 closed field bindings, six legal execution/result pairs, seven immutable value kinds and typed links",
-    "Original finite fraction denominators and classified completion intervals, exact integers and duplicate semantic slots",
-    "Separately paid PC02 scope and PC24 finite completion facts; constructing facts is not executing a family",
-    "One 10,000,000-unit ledger including one 1,024-unit emergency reserve; current-job 1,000,000-unit quotas and one 60-second deadline",
-    "20,000 retained witnesses / 100,000 retained member occurrences with prospective atomic reservation and no work refunds",
-    "Sticky first safe cause, separate analysis/finalization ports, one terminal emergency delivery and independent payload-free cancellation"
-  ],
-  "preservation": {
-    "existing_test_files": 35,
-    "required_w01_identities": 1786,
-    "required_subtest_events": 428,
-    "preparation_definitions": "Existing definitions unchanged; new analysis factory and types are separate.",
-    "protected_files": "All files outside the exact 14-path W02 allowance remain unchanged from actual W01 merge; 42 product-module bytes remain fixed.",
-    "existing_preparation": "Existing entry points, return types, refusal surfaces and PC01-only whole-check completion remain unchanged.",
-    "developer_toolchain": "Exact W01 reviewed pins and workflow remain byte-identical; actual installed wheels and platform/Python patch identities are rechecked by this candidate CI. Applicability review is recorded at the accepted W01 phase3/ci_review.md."
-  },
-  "independent_review": {
-    "status": "pass_for_private_W02_scope",
-    "provenance": "Separately reconstructed assistant-assisted source review sharing the same environment and tools; not external certification.",
-    "checks": [
-      "Scope14/product6/test4 and all35 predecessor test files untouched",
-      "42 product modules retain accepted bytes; preparation APIs and old definitions preserved",
-      "Result population identity and classified intervals retained; explicit PC02/24 contradictions rejected",
-      "Saved witness ledger requires a current job; terminal emergency cannot resume delivery",
-      "PC02/24 factories cannot use finalization ports; original sticky cause and construct-before/after cooperative checks preserved"
-    ],
-    "hosted_raw_audit": "pass_at_named_code_precursor",
-    "actual_git_candidate_audit": {
-      "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-      "status": "pass",
-      "sha256": "3bf4cfd7e1727d93c943f6dc51dfa74988fe68c578e090d716f4b4a643eaee53",
-      "source": "Separate read-only actual Git reconstruction; no additional test or runtime execution."
-    }
-  },
-  "named_code_snapshot": {
-    "commit": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-    "tree": "e33b73fe41dff46a148456b0af2f05504bfd64e0",
-    "tracked_file_count": 169,
-    "files": {
-      ".gitattributes": "df03ffb662c37e74fda41cdb0697e750f961dccd0f89c019912388d47bca60ff",
-      ".github/workflows/p1-w02-verify.yml": "5b525f32fc313232b2ec8706092902a050e166841f34e72c57984c8607eb948e",
-      ".github/workflows/phase1-ci.yml": "841c39f7d3c596eafd767355a4a30f5111d6a73c8752229108708fcb39c4539e",
-      ".gitignore": "b3bd0071e2758bbb7a28a5c41381e3730a035bee6c2c11140fb98fc8aaa38dd3",
-      "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374",
-      "CONTRIBUTING.md": "163abe466a4af4c1213e218eba25a4b069b3d399c772f562da47d2c849c7ae3d",
-      "DEFINITIONS_AND_UNITS.md": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d",
-      "DEPENDENCY_STRATEGY.md": "65b5c4f1f91be019e1fb09329ff5214980e5956579c1c8ccec7f4b6f7b4174ad",
-      "GOVERNANCE_AND_HANDOFF.md": "13e535ded411a3ad5967226e07761d4e88615f5b04c0b5a64c6cbf738cbc9ee8",
-      "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-      "LICENSING_NOTES.md": "e544f6f38d4fa83faaba0da42d85bc4af4e3a86028f3a4ab78132d21b2ddb80f",
-      "MANIFEST.in": "846f5ad18324b044fd431521f21b32aa157805dc33a95f1ec8b82a5677938066",
-      "NOTICE": "adcb7b8b088b04af20b095775215ca3668d5d5473affd280a63b651956f9f930",
-      "OBSERVABILITY_AND_REPORTING.md": "44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a",
-      "PHASE_0_APPROVAL.md": "92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c",
-      "PHASE_0_PLAN.md": "2d97a820ae218c33cfd00dd96a762853e887f867973a2b2da0945fc4414495b1",
-      "PHASE_1_COMPLETION.md": "3524fdc08eaf9d8b18468ea5838da696acb9790b7419d008f990d4c384a0dccd",
-      "PHASE_1_PLAN.md": "699cf95f81231e09949f81ec7c25096911f8c67e89e8a10bae4157ef8b49fb22",
-      "PHASE_1_PROGRESS.md": "86f41a273434e399b667a8c9437a8ad54a242b03e7a790d90bd4748e98c3f8f9",
-      "PHASE_2_COMPLETION.md": "bb26c82262826526e1b2877bee2b659fe857f686ce654553cce79fac69163ff7",
-      "PHASE_2_PLAN.md": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
-      "PHASE_2_PROGRESS.md": "f889bb7bedd8fc7dadeddbe4b3e87c606e7c1cc14127ccc7b79aee8d4a214203",
-      "PHASE_3_PLAN.md": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
-      "PHASE_3_PROGRESS.md": "0e48bde71f850aed891360707e5f610e39aca85522458243d68adabba29ee979",
-      "PRIVACY_AND_DATA_HANDLING.md": "3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8",
-      "PROJECT_INSTRUCTIONS.md": "cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746",
-      "README.md": "089238c6f5ce4a3a5b42f863d0d6ae256bc80e3511307852dc98c2ae18026ad8",
-      "REPOSITORY_ARCHITECTURE.md": "8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d",
-      "SECURITY.md": "e3e717e28f2efa6165b10c97784a0ee01de7336737f40030672f131c4a160df4",
-      "SOURCE_INTEGRITY_THREAT_MODEL.md": "e74e1bd146acb3ece62dcc4c0096f5fae9f7b72950c5827956fff0398c1c374a",
-      "SPEC_AUDIT.md": "3565ab8f1b08f30e06f4983ffd26adbe8bc977b655ebf410b634918a7ae7949a",
-      "SUCCESS_CRITERIA.md": "270eed959a08607e182ff5922d6cacdec3c3536c954f3f65d5e9b8d9bcfb5476",
-      "THEORY_SOURCE_MAP.md": "015e65baf3fcad8ce78a2285df8f2de8d5b7b4cbdd347707ba3cc5d5ba46b627",
-      "THEORY_TO_CODE_TRACEABILITY.md": "73a69a56828b6ff416164b7bd6420521da1c635bd92f03b92e07231b552a7849",
-      "UNRESOLVED_DECISIONS.md": "4d79c732f31eefaad54fb53209e535a248d824e78673a31383442b5ebe74a59e",
-      "V0.1_PRODUCT_SPEC.md": "70ab331662741c0177908ec5ccac09ff7538f98643567eb3066e0ed8c9cb84e1",
-      "VALIDATION_PLAN.md": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707",
-      "phase2/ci_review.md": "21883602ecbd83da871a94fa7a4daa6748da7a00e886e8fc4bf0a7517cade9e3",
-      "phase2/delivery_manifest.json": "61bee9add00120cf24e708c492fa5cc0a8754456aa2949f01b6d109e7cc02b31",
-      "phase2/entry_manifest.json": "bdec51c6499e080385140446eece9014144cf277c1651b05734f5166a831623f",
-      "phase2/implementation_evidence.json": "4b3923ad9eb755b93315fbf211f9c6e7bde0aef91e7ea55a4f51a82420e30b72",
-      "phase2/input_contract_coverage.json": "a91e9a45479c02ec5389868b10a9f7423837f0c5977296b05d301d60ed1dbd0a",
-      "phase2/module_policy.json": "817c682dc902f177b3b916bad9833f56e59dea5eefb1870e89ab39671eaf2187",
-      "phase2/prerequisite_partition.json": "372147857babfac05b71d1856f95bab84b789cd3ddae1004ea6e44ea97ca5b26",
-      "phase2/transition_ledger.md": "83bb9007ec92aa1963085dd22f06ea8a157dd016f5cf7f2fd216d0c112a8ae4f",
-      "phase3/ci_review.md": "680517232317e71cbb43026d0c582c996d0f922e60123fd740744340a2e28f58",
-      "phase3/entry_manifest.json": "dfe96f57a222937131e8e4fafd13098f76d134cd88a50ffa9fa82891b9b9659b",
-      "phase3/implementation_evidence.json": "5c7230b57b4d7d43ca21db3d8669d0f1563ccc58a4ee7e0486aac2d2bde55ad9",
-      "phase3/module_policy.json": "83e3ca575eb5673067dd64480bcfc45603a20ea8415e7dd3e623b2474564edc1",
-      "phase3/obligation_coverage.json": "6151b7191db5cc5da7ae9f73b6334f8768b8680e286fb89a536e08f837dfe6c9",
-      "phase3/transition_ledger.md": "1177564fbc2296e50cddaf4b9b484447039f5b7424fcdb47de22a642ac6d0e59",
-      "pyproject.toml": "46b48be6e50cd4cd412c1be21e50cba190de6c0cdfce9d67284f01c40fde788c",
-      "requirements-dev.txt": "ad89dbacd5640dbc156cc922f3bc7ed314ec1eec0f7fcdfd8da822a9e2590f0b",
-      "scaffold/baseline_manifest.json": "85cc224e9a948df1cc555821408ecbe31392357714926db4401405e28dd616ef",
-      "scaffold/ci_toolchain_review.md": "028dce00ad3507b4a668bfa5261f30926589f41768dd271de176e2b77db1c3c7",
-      "scaffold/delivery_manifest.json": "c354ec51acbe4ad90cb2f15037b3a3d043eec21e39cd348d8b5ecb2afae3fc5a",
-      "scaffold/module_manifest.json": "e16051e7b20d8159c4b972db76ac1fb2dfc5eb69712e78c7049d7a1060fc0c21",
-      "scaffold/obligation_catalog.json": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852",
-      "scaffold/toolchain_review.md": "62cf026726fafa92192749f92f6b5e0b6836a511117bb4a37827d4c0008f346b",
-      "scaffold/trace_catalog.json": "fd954e5cc7a0292d4fb68cc244289c2626b42cd6ec4417a38c35f987d7ec46d7",
-      "schemas/README.md": "572df630f420258300d5fd224680296ae4e69b6691ef00593c152ffd88a99ced",
-      "schemas/bundle/README.md": "8db1889f20d1a002eb068fb150fb9cf0d0038e010421a3ad8d7e5b52d12e807c",
-      "schemas/bundle/sit-bundle-0.1.schema.json": "4a6d313c8c45c6dba29a8489c1ebbabb4c8dacbbc67b05a7042206fcc7d8c6db",
-      "schemas/report/README.md": "603a60da4d77b7b8d74d6074c895b226c24fb74f6d24eb092d5136311eb6eefe",
-      "src/source_integrity_toolkit/__init__.py": "0fdc19062761d6b718ff371557376483f7c8e7bbf7f3c347bcae576587513b97",
-      "src/source_integrity_toolkit/analysis/__init__.py": "2bcd171bde6b0b6c92c3a048cff959780e2e0616f468158b4b97d8967bf7e956",
-      "src/source_integrity_toolkit/analysis/context.py": "b1498a1789135e3a3fdbe85853fcb1c92f948135fafe7490a76ea6e827257dab",
-      "src/source_integrity_toolkit/analysis/contribution_profile.py": "41de3c89c9a35f7d919791ee364bc0dbfe8e045d9cacce7123a6dd76d906ad0a",
-      "src/source_integrity_toolkit/analysis/correction_outcomes.py": "bb98ff70dc46d0a89f56184f81975c858123353e65a1e3171d494290aa679e5c",
-      "src/source_integrity_toolkit/analysis/correction_routes.py": "b2fd57b9b2f1a66baba5a859f17bcb65c4e27b3e0e7c76aae639b290d3925591",
-      "src/source_integrity_toolkit/analysis/evaluator_lineage.py": "f7e7bb8d43cd958a8467cc0aa6ce03e2f778fdaab1ed595fae0a5e65a008a16d",
-      "src/source_integrity_toolkit/analysis/findings.py": "c3aa73647b68f5345092e78f09378ae7267f6c41f86b3e4b39052ecc27c62e56",
-      "src/source_integrity_toolkit/analysis/human_review.py": "e297b654b1b2f89425b4c81f237b8012bc393d08ada0cda662ed2870556b8a3a",
-      "src/source_integrity_toolkit/analysis/inventory.py": "20956684c4c980efe8f5c0062f382829b75e629e4202f4e44b9ec6ddc9d5e565",
-      "src/source_integrity_toolkit/analysis/origins.py": "82f63c9c4fb7b32c788a2b2a8f7bb6feef0a4842f88f8651f664f5f3faaf4a82",
-      "src/source_integrity_toolkit/analysis/presence.py": "07b208fdcddc7cc91734311e3456462acc6d76da3c71565e8c13565baa7bcf42",
-      "src/source_integrity_toolkit/analysis/process_comparison.py": "f9018a339bf9e19f36d620d2499bae47055c23d9cd0de05d34c8bd048cadc0d1",
-      "src/source_integrity_toolkit/api.py": "8808d7ef4a0db2f6e314c82fddd4b51cce164a165afaf43e6d626663f6f6768d",
-      "src/source_integrity_toolkit/cli.py": "0c3ee9522fbdf1774a707ec14ed630ce34a901da1f83f63b8aee0f25393d26bc",
-      "src/source_integrity_toolkit/contracts/__init__.py": "5a5c57d26930d12c3de59e180987f740b915e9eb17fd18a2daf29a6f91985432",
-      "src/source_integrity_toolkit/contracts/bundle.py": "7509a30f008de4ade02543bea26ccc4bd3d5843ae62f75b1841e2e61bcb903da",
-      "src/source_integrity_toolkit/contracts/constants.py": "d4bee68c62ba495e6aca1fdba352b013f9cc4ed7c3583b61092af234827ad486",
-      "src/source_integrity_toolkit/contracts/evidence.py": "3edd9edeb670b2302d8b41eda28e158f782841ced5cc41230cce90fc8cf8db3b",
-      "src/source_integrity_toolkit/contracts/execution.py": "212101c332201eda064d0a45140e922cbf24b7d9bcf36f14a9dc89c2b1790fa3",
-      "src/source_integrity_toolkit/contracts/report.py": "ab345c1229d683826626d552d4a9a2b2231ca36875f7e92a79df4a99d54980d0",
-      "src/source_integrity_toolkit/contracts/results.py": "9951b584025cd5b30ed4310c0f019b12d13e3eb51ad54be8b148f0fc3d52429b",
-      "src/source_integrity_toolkit/graph/__init__.py": "3db1c2c13cc1ae2bfb1a049894a04f7d27d7e6874d2079f1348d910aa0f5c943",
-      "src/source_integrity_toolkit/graph/cycles.py": "99f243d5a93a06e6ad427527a84153f10897d236afdf78f2a66efd0b5eb603d6",
-      "src/source_integrity_toolkit/graph/projections.py": "40e5d00654c91b516c479281620e3d6d21e7e0214a6ebcf0b1d1080b48ec0a47",
-      "src/source_integrity_toolkit/graph/traversal.py": "5fe8af02018145fbb41512efec1201833adf8fd49263ff5aab2c462ee3890d1e",
-      "src/source_integrity_toolkit/graph/witnesses.py": "cb6d1b1c30272738e2db210b19671ed65ffb7a7b81163de44ca3fbb846369c91",
-      "src/source_integrity_toolkit/io/__init__.py": "252ed1b29bff2517bc3ce909f4695d0f67c4baf0f1d7707708124107fbba783b",
-      "src/source_integrity_toolkit/io/input_file.py": "5628507c0989e94a3b5b5401e570b19256c940204859da9e938178ea261dea1f",
-      "src/source_integrity_toolkit/io/output_directory.py": "d27ae40d53b09355a0e3e137d490d1c2d1352edf67821c985bd0c79096b605ac",
-      "src/source_integrity_toolkit/io/platform_linux.py": "b63420614f26fc52ebe4e7d9af4d12782fd7374dc4780c420e0e4bdbe6091544",
-      "src/source_integrity_toolkit/io/platform_windows.py": "31e5f7b304d4455d5d60222f2077eefd284edce341c47524ac85de84f690b4c0",
-      "src/source_integrity_toolkit/io/publication.py": "ec5124c4f8f1db6d0f8a0d83ad6a62c28646d34c47740f706d1b47871480661d",
-      "src/source_integrity_toolkit/reporting/__init__.py": "f9db2edfae16c1062a74fcff49d6b5a68b25e35b108413cb1b2bab115ef9dcaa",
-      "src/source_integrity_toolkit/reporting/assemble.py": "ebbc9d87df2283da9e055be5b2db79187791a95043faa2311961d95be17e890d",
-      "src/source_integrity_toolkit/reporting/escaping.py": "9b910e3cc9e6d3bdbb20824420d8a2a599e12f3a300e0dffb9674a8696db0ca8",
-      "src/source_integrity_toolkit/reporting/json_report.py": "5e5b41e8e1a1f0c6d731a22d288905f8ad5d969e6904f374487be1d54bec26dc",
-      "src/source_integrity_toolkit/reporting/markdown_report.py": "e2af7736cc1254fd6f4ad4366ed24e6fc6163e2761c17c1cce8f48307a83ca7e",
-      "src/source_integrity_toolkit/runtime/__init__.py": "6bcbe18cb7295bd3339cf426931bdb29ed89edb348575d5deb070f008dec72c7",
-      "src/source_integrity_toolkit/runtime/boundary.py": "a7e34fea2ad313062e85fbc92b59c30cbf9ffd826d16e64105cfec050b966bb4",
-      "src/source_integrity_toolkit/runtime/diagnostics.py": "2763dd36343ad5e60aca3d5c244d6c94a288b09ebf268f045dcc3d5f01445814",
-      "src/source_integrity_toolkit/runtime/disclosure.py": "a9cf0d4b24eb4ddaa239747fc487a91aaf2708f8bd9954035dd42536b1c15b11",
-      "src/source_integrity_toolkit/runtime/resources.py": "9e48df5fa5613da72656134a328d81b6f238be4f699069db8208df7da7187be5",
-      "src/source_integrity_toolkit/validation/__init__.py": "0688a44d77c520368899546cc30531aad2849443c12941b536539bab5aac218e",
-      "src/source_integrity_toolkit/validation/limits.py": "f01e4e5cbc076b07440df19ed2524db549849fcc6cd9834648437ee61a5e53c8",
-      "src/source_integrity_toolkit/validation/references.py": "7ab63627c068b38364f5c47a6731903fc55bc9d86318bed4f182d9602418df7b",
-      "src/source_integrity_toolkit/validation/semantics.py": "12fc6d7132279af0de76839e2fff11c887ebb0bd82d1c19e3013fb5c12a76f0d",
-      "src/source_integrity_toolkit/validation/structure.py": "bf2e61a236539b4b8bada935b39c46203bb8ccad4102e79730e9f84ba52fa315",
-      "tests/contract/README.md": "2ae135e0af60280fdb9f52d4f1a523cb97f7f06d161b8b8735198ad52db38d5d",
-      "tests/contract/test_assertion_contract.py": "042ccafe57679ba35a89abea8a99623690090549b5fb3a2fc5236dba295c34ed",
-      "tests/contract/test_bundle_contract.py": "53ff31b641652074e1c7d516ab7a9d714bc4d33a065cef27d6f275d92fdd584b",
-      "tests/contract/test_evidence_basis.py": "c3ac52a65f4bdf92f10431d0c4838735f711d11887f05396688306848f698569",
-      "tests/contract/test_input_schema_mapping.py": "31ea82cb0a96754424a58c1b106341f0d4891a05bb7b949957402bd820925c94",
-      "tests/contract/test_normalization_profile.py": "26f01d230f349995334b6892285def1774dcd10051a3dc7a05d9a4cd424e4a8d",
-      "tests/contract/test_observability_preparation.py": "5d6ecf880e5e77bc606670c9e2bc232df662ac026ddb51c145f86fd7fb6b54b8",
-      "tests/contract/test_phase2_transition.py": "ddfe98d62cf13aec936a44a4fb970c03ee04ae187cacdcd54f31565b0be17bee",
-      "tests/contract/test_phase3_transition.py": "c71b670616b2c2e3e3e424b7722d13ad28d25433561e34b1f96ac140c15b7dc5",
-      "tests/contract/test_prerequisite_contract.py": "88ff508c2de74118344bdd47dc8cc4da09ee9d5cee16cace2243ab16cf2974f7",
-      "tests/contract/test_result_contract.py": "f378232238789284732791b770655ba550748545a36f1ba6eef63240b90303d4",
-      "tests/contract/test_temporal_contract.py": "a900f41109fd5688b636cad6cea7f2777a841ddf17a7c3b86fa0cc8d91efce10",
-      "tests/contract/test_typed_records.py": "be6ed6b73c6f936dcc774f88d11b29b038f75f33676f3b2225de64d9da06a83a",
-      "tests/fixtures/README.md": "98367561c6665e16a8cab1431323d5dab0946ee334928ff553f5b70a04e50921",
-      "tests/fixtures/adversarial/case_index.json": "2f50e90a8229dfe3613385fa80730fa049ae789fbce198a95323660980245cb2",
-      "tests/fixtures/hero/H7-01.bundle.json": "06d342e4d12457dd186c48d917ed023a30e24f66e4226dd1ebf769a6365c47f7",
-      "tests/fixtures/hero/H7-V01.bundle.json": "98f3b5b1d8e1214211adbdbdaa5cdcb71e5bb1b226fb26c2615648bcd49e5d09",
-      "tests/fixtures/hero/H7-V02.bundle.json": "043d7c3652035042ca2602d48efeed250d6599874b7ae7206cd74de23f596663",
-      "tests/fixtures/hero/H7-V03.bundle.json": "213e84942b77e43291ffec5feed4628ef075ddeb9262224c3d326b9402eae013",
-      "tests/fixtures/hero/fixture_manifest.json": "607fad79a03d6388e15cc3384c738cea6a1757574af9d333aca34676d141b7a6",
-      "tests/fixtures/micro/case_index.json": "580ca1560e69bb0b4583821eac3c554d7fd73d8d4cd07c131225de420d088ed9",
-      "tests/golden/H7-01.logical.json": "bec2d971ded08baeaeb85f3ca340e05e959381540adf944bb437eeef4bf640d5",
-      "tests/golden/H7-V01.logical.json": "7cfb2f5d09175e0f658dac6d5db09777eab2b57406312775b18c0796b147b9ac",
-      "tests/golden/H7-V02.logical.json": "4bcd1bb23086e475d35830fe01487dde8d4740b5010f59b1da34e4f8445f4134",
-      "tests/golden/H7-V03.logical.json": "44f5315b7a6e50aae7a9f0d800b7c94f6b6a06425473c7982af100822150487d",
-      "tests/golden/README.md": "df5a664f6ce0cba56bc61e4af303a7aa88ea96da57ca614bb46b55d50edcbe41",
-      "tests/integration/README.md": "e41ffc1c4c55d70e5a8d0a708311d97b349362c4a57bb960822091c19b0e7d82",
-      "tests/integration/test_preparation_capability_boundary.py": "aaa25f2a0fd256d116599e135d975ba7a77ffb6a6ae468495342ba4e358e74f6",
-      "tests/integration/test_preparation_pipeline.py": "14161e83956f428f7219474da0c37203f32f3ed3591054f2b14a50881cabf0a7",
-      "tests/integration/test_prepared_hero_inputs.py": "60eb14b6e0942222721ebed083cb4a2328fef8d79dd9ab22c792666634f4e232",
-      "tests/scaffold/test_api_stubs.py": "0441d0bbb735e70225331099c5c01688b24af1877eb63ef12796de00bab9974a",
-      "tests/scaffold/test_baseline_integrity.py": "b345c30ed2775b54e70f51797ad1d4a670799303902d1a0b4a8f3d54329aa0b8",
-      "tests/scaffold/test_ci_contract.py": "f9936064805bf820bdb8ce12954f8b7389ac6ce67328ad802c4cd137524503b6",
-      "tests/scaffold/test_cli_scaffold.py": "8d69b2d20f8c2e1430ba78ab53076d46b28d9e2a54f2c1357e0cdaaa59164f22",
-      "tests/scaffold/test_contract_catalogs.py": "b75ab18c2df94e8f62eb8132fba09046fa885202202090b49b47c57807a53618",
-      "tests/scaffold/test_fixture_integrity.py": "4c0de7dbc7e6a6e5c3cd0b9447aef7b96c7411cbc314a54daf773d9fdd3679db",
-      "tests/scaffold/test_imports.py": "3aa77c8d27012d30b4fd836a3697447a59a296874031a784a7b38ce99e44eba0",
-      "tests/scaffold/test_layer_boundaries.py": "44e0693b53595466fbd5610d9513e357e935491b25498bab7c39f011ad47475c",
-      "tests/scaffold/test_module_manifest.py": "21e9737638d822c53e71607972bd9b6a7f1fd757f3d7c3a762e6f40c377f8f96",
-      "tests/scaffold/test_no_runtime_implementation.py": "aa670dc29ac290f9b68b056a580851eca57bc93e7ed899e84a0136d2e6af45f8",
-      "tests/scaffold/test_packaging.py": "cfc891098830d9adf1f2ee3a0c3bcc06e884fb00f356aa5a8e1822feb1aa5d93",
-      "tests/security/test_analytical_diagnostics.py": "c05a2b798cf0e7fcc8051d31485f96f490cd187439f4cc45d8c80cd546339dfa",
-      "tests/security/test_analytical_resource_limits.py": "c47860822db6e49c8444af1e489ad66f4aa6587fb2f24d93ad6008fb523dc14d",
-      "tests/security/test_input_capture.py": "e8bfab38536db60d6ec5a44412f77f2b522bfebd39c1f861dfe212a1e91784ff",
-      "tests/security/test_input_diagnostics.py": "f03e0d91796d39fcc8d90f0ff87914bd45feab9ad219db56f3f9c59c6dd4dc56",
-      "tests/security/test_input_resource_limits.py": "9df86868eb78c5f14ffd3e4977182e08a3785bfbb3f3d737396b2119ae05e466",
-      "tests/security/test_preparation_inertness.py": "0a6ff2d62f8d5dca61d37fda2a12edce4bcaa428954f7b7042fc1f7a03fe33fa",
-      "tests/security/test_scaffold_inertness.py": "7179bb00e004e833d7448172cae2068f912e25adb3860c7d5fba9d46396619ba",
-      "tests/security/test_scaffold_no_native_loading.py": "add4a523f73deba8380a257a1846d8c044249996ec88ca56be1f4903563a96a6",
-      "tests/security/test_scaffold_no_network.py": "fafa792547d3e3a5b8800308a9b63869b063dd8baa1ef01ab044203760ca23b2",
-      "tests/unit/README.md": "780ce188f9f9ae364008304bd844dd51c81bee01d607a27b457c1e54f6535078",
-      "tests/unit/test_evidence_domain_index.py": "addc34a1d7252f0d2aabe34239b626ffa497982eb43bf09db6a75593600ec730",
-      "tests/unit/test_input_decoding.py": "7852ae877408b4f1e56e98235f8082553bb9a5a84f095712b776a1bd09977541",
-      "tests/unit/test_reference_validation.py": "9bc483127d8657ba8209789985f9d6cdc725ca98545ab49328a0c44b1145fd69",
-      "tests/unit/test_value_capture.py": "e42c870f28d0f8216ad365b306eb77acd9116297f986a37ca10a97f6a7d64137",
-      "tools/check_phase0_baseline.py": "3c125bf482203be5f385bbe146fb597f80b2610968d1923bff075f722224eb8e",
-      "tools/check_scaffold_boundary.py": "fc9885337b4973a084c4c7326370a7962b898c14f6a0858e09ee6ccbeb97071a"
-    },
-    "meaning": "Git blob SHA-256 values at the named prior code commit; not a recursive claim about the current evidence-file bytes."
-  },
-  "w02_status": "technically_complete_at_named_precursor_final_successor_gate_and_owner_acceptance_pending"
+  "w03_status": "authorized_implementation_and_verification_in_progress"
 }

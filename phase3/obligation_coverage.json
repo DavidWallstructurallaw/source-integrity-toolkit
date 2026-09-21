@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W02",
-  "status": "private_primitives_implemented_field_execution_pending",
+  "unit": "P3-W03",
+  "status": "documentary_components_in_progress_field_evidence_pending",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "W02 private contract, prerequisite-fact and accounting primitives do not establish that any analytical operation ran. All original field obligations and surrounding binding clauses remain controlling; all 228 field obligations remain pending.",
+  "meaning": "Initial W03 record: all 228 exact field obligations retain their pending statuses. The 16 P/N/M/B rows for SIT-VF054 through SIT-VF057 may receive only later proven owner-local core evidence. PC03/PC04-dependent and W13 end-to-end clauses, integration and release remain separately pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -2539,40 +2539,22 @@
   },
   "phase3_complete": false,
   "release_complete": false,
-  "primitive_evidence": [
-    {
-      "source": "OBSERVABILITY_AND_REPORTING.md sections 12.3-12.5, 13, 16.2-16.6, 17",
-      "implementation": [
-        "contracts/results.py",
-        "contracts/report.py"
-      ],
-      "tests": [
-        "tests/contract/test_result_contract.py",
-        "tests/contract/test_prerequisite_contract.py"
-      ],
-      "scope": "Representation, exact scope consistency and finite completion facts only; no actual family execution or full output conformance."
-    },
-    {
-      "source": "REPOSITORY_ARCHITECTURE.md sections 19.1-19.3; PRIVACY_AND_DATA_HANDLING.md section 8; GOVERNANCE_AND_HANDOFF.md section 22.3",
-      "implementation": [
-        "contracts/execution.py",
-        "runtime/resources.py",
-        "runtime/diagnostics.py",
-        "validation/limits.py"
-      ],
-      "tests": [
-        "tests/security/test_analytical_resource_limits.py",
-        "tests/security/test_analytical_diagnostics.py"
-      ],
-      "scope": "Fixed shared accounting, retained witness occurrences, bounded finalization and safe transports. W13 end-to-end invocation and later output/native obligations remain pending."
-    }
-  ],
-  "validated_primitive_code": {
-    "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-    "run_id": 35552824387,
-    "profiles": 4,
-    "tests_each": 2089,
-    "subtests_each": 428,
-    "scope": "Private W02 component evidence only. All 228 field obligations, full analytical execution, final output and release remain pending."
+  "historical_primitive_evidence": {
+    "commit": "df670e36b8e0df46ad6d7f66bc03c57932089d6e",
+    "path": "phase3/obligation_coverage.json",
+    "sha256": "9c4f6081e5587eb7a25155be6f6a7b1e9c4bbb3cd11fc66fe731ea98f969cc47"
+  },
+  "w03_owner_local_scope": {
+    "field_ids": [
+      "SIT-VF054",
+      "SIT-VF055",
+      "SIT-VF056",
+      "SIT-VF057"
+    ],
+    "catalog_row_count": 16,
+    "status": "pending_independent_tests_and_exact_head_verification",
+    "semantic_owner": "EVIDENCE_BASIS",
+    "source": "PHASE_3_PLAN.md section 8; VALIDATION_PLAN.md section 12.15",
+    "provider_limits": "PC03 SOURCE_INVENTORY and PC04 GRAPH_VIEW_CONTRACT execution are not provided by W03; owner-local trusted facts are not end-to-end completion evidence."
   }
 }
