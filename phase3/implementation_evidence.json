@@ -8,7 +8,20 @@
     "actual_unit_entry": "b932bef422b4ec67b1b313ecae51b0f7e48d72a2",
     "w03_acceptance": "accepted_and_normally_merged",
     "w04_acceptance": "pending_owner_review",
-    "next_unit": "P3-W05_not_authorized_or_started"
+    "next_unit": "P3-W05_not_authorized_or_started",
+    "amendment": {
+      "id": "P3-W04-R01",
+      "owner_instruction": "\u6279\u51c6 **P3-W04-R01**",
+      "proposal_sha256": "32c4372d886d98280cb389bc8912610ec2628e3c477ac7057785e304001cf42f",
+      "pre_amendment_head": "879b67b7066690ab0bee8cef569aa8869f78af03",
+      "additional_paths": [
+        "tests/scaffold/test_no_runtime_implementation.py",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py",
+        "phase3/transition_ledger.md"
+      ],
+      "status": "implemented_targeted_checks_passed_full_gates_pending"
+    }
   },
   "entry": {
     "file_count": 157,
@@ -163,18 +176,22 @@
   "scope": {
     "authorized_paths": [
       "PHASE_3_PROGRESS.md",
-      "phase3/module_policy.json",
       "phase3/implementation_evidence.json",
+      "phase3/module_policy.json",
       "phase3/obligation_coverage.json",
+      "phase3/transition_ledger.md",
+      "src/source_integrity_toolkit/graph/cycles.py",
       "src/source_integrity_toolkit/graph/projections.py",
       "src/source_integrity_toolkit/graph/traversal.py",
-      "src/source_integrity_toolkit/graph/cycles.py",
       "src/source_integrity_toolkit/graph/witnesses.py",
       "tests/contract/test_graph_views.py",
-      "tests/unit/test_graph_traversal.py",
+      "tests/contract/test_phase3_transition.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/scaffold/test_no_runtime_implementation.py",
+      "tests/security/test_graph_limits.py",
       "tests/unit/test_graph_cycles.py",
-      "tests/unit/test_graph_witnesses.py",
-      "tests/security/test_graph_limits.py"
+      "tests/unit/test_graph_traversal.py",
+      "tests/unit/test_graph_witnesses.py"
     ],
     "mutable_product_files": [
       "src/source_integrity_toolkit/graph/projections.py",
@@ -189,7 +206,31 @@
       "tests/unit/test_graph_witnesses.py",
       "tests/security/test_graph_limits.py"
     ],
-    "deletion_or_rename_authorized": false
+    "deletion_or_rename_authorized": false,
+    "plan_paths": [
+      "PHASE_3_PROGRESS.md",
+      "phase3/module_policy.json",
+      "phase3/implementation_evidence.json",
+      "phase3/obligation_coverage.json",
+      "src/source_integrity_toolkit/graph/projections.py",
+      "src/source_integrity_toolkit/graph/traversal.py",
+      "src/source_integrity_toolkit/graph/cycles.py",
+      "src/source_integrity_toolkit/graph/witnesses.py",
+      "tests/contract/test_graph_views.py",
+      "tests/unit/test_graph_traversal.py",
+      "tests/unit/test_graph_cycles.py",
+      "tests/unit/test_graph_witnesses.py",
+      "tests/security/test_graph_limits.py"
+    ],
+    "r01_additional_paths": [
+      "tests/scaffold/test_no_runtime_implementation.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py",
+      "phase3/transition_ledger.md"
+    ],
+    "scope_exceptions": [
+      "P3-W04-R01"
+    ]
   },
   "product_boundary": {
     "total_modules": 48,
@@ -204,7 +245,7 @@
     "runtime_dependencies": 0
   },
   "implementation": {
-    "status": "authorized_in_progress_unverified",
+    "status": "graph_code_submitted_R01_test_migration_in_progress",
     "authorized_work": [
       "Eleven exact typed projections and canonical record links",
       "Bounded deterministic traversal and complete-path tie ranking",
@@ -213,7 +254,7 @@
     "provider_boundary": "W04 owns GRAPH_VIEW_CONTRACT PC04 mechanics; domain conclusions and W13 whole invocation remain pending."
   },
   "validation": {
-    "status": "pending_W04_actual_execution",
+    "status": "pre_amendment_cumulative_failed_R01_authorized",
     "supplementary_local": {
       "status": "pending"
     },
@@ -223,6 +264,1759 @@
     "final_documentation_successor": {
       "status": "pending",
       "rule": "Every final successor requires its own four-profile exact-head matrix and original-artifact audit settled after commit on its review PR."
+    },
+    "failed_pre_amendment": {
+      "audit": "Independent forensics of FAILED P3-W04 code run; not acceptance evidence",
+      "status": "verified_failed_run",
+      "integrity_issues": [],
+      "run_conclusion": "failure",
+      "overall_acceptance_gate_passed": false,
+      "head": "879b67b7066690ab0bee8cef569aa8869f78af03",
+      "tree": "f7c92b34537b8fc089c8624af9da6ec9dea74a68",
+      "entry": "b932bef422b4ec67b1b313ecae51b0f7e48d72a2",
+      "run_id": 35596533702,
+      "run_attempt": 1,
+      "service_metadata": {
+        "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/service.json",
+        "bytes": 40287,
+        "sha256": "c3581b37bf33a6eab7d198cde4054429bdd82dfe23db0da300bc46085eede89a"
+      },
+      "service_metadata_shape": "original GitHub API run + jobs/artifacts envelopes; preserved without normalization",
+      "source": {
+        "tracked_files": 177,
+        "test_files": 47,
+        "changed_paths": [
+          "PHASE_3_PROGRESS.md",
+          "phase3/implementation_evidence.json",
+          "phase3/module_policy.json",
+          "phase3/obligation_coverage.json",
+          "src/source_integrity_toolkit/graph/cycles.py",
+          "src/source_integrity_toolkit/graph/projections.py",
+          "src/source_integrity_toolkit/graph/traversal.py",
+          "src/source_integrity_toolkit/graph/witnesses.py",
+          "tests/contract/test_graph_views.py",
+          "tests/security/test_graph_limits.py",
+          "tests/unit/test_graph_cycles.py",
+          "tests/unit/test_graph_traversal.py",
+          "tests/unit/test_graph_witnesses.py"
+        ],
+        "old_test_files_byte_preserved": 42,
+        "frozen_product_modules_byte_preserved": 44
+      },
+      "collection": {
+        "count": 2930,
+        "identity_sha256": "c628a6e623876df8d7375b73bd5f48c99f891f3c7aaebb50ee9d7206a2ce893d",
+        "new_graph_instances": 566,
+        "new_graph_instances_passed": 566,
+        "meaning": "All predecessor identities are collected; the same two inherited cases failed, so predecessor pass retention is not claimed."
+      },
+      "profiles": [
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "job_id": 106322526150,
+          "artifact_id": 10637196663,
+          "zip": {
+            "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/phase3-ubuntu-24.04-py3.11-35596533702-1.zip",
+            "bytes": 154720,
+            "sha256": "83dca1fcd20357c653be4b1ecff9d198496e9bda9c1a1ce6dc89ddd533ec148d"
+          },
+          "zip_crc_safe_paths_and_service_identity_verified": true,
+          "record_count": 28,
+          "records": {
+            "build-inventories.json": {
+              "bytes": 32432,
+              "sha256": "cd89d2a419436c9426da1582189712a784dc37fbd3089adf260cd2a6acab3bbd"
+            },
+            "check_phase0_baseline-after.log": {
+              "bytes": 126,
+              "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+            },
+            "check_phase0_baseline-before.log": {
+              "bytes": 126,
+              "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+            },
+            "check_scaffold_boundary-after.log": {
+              "bytes": 795,
+              "sha256": "f22715a2c80bad5bfe6fe590ec2bc87c1f6fb02336467c3df65cea52112213ac"
+            },
+            "check_scaffold_boundary-before.log": {
+              "bytes": 795,
+              "sha256": "f22715a2c80bad5bfe6fe590ec2bc87c1f6fb02336467c3df65cea52112213ac"
+            },
+            "collection.json": {
+              "bytes": 377561,
+              "sha256": "58cd3a82113a7adf1e9641a3aaea1cf22e6145e84dab784446180543bccb5745"
+            },
+            "collection.log": {
+              "bytes": 354294,
+              "sha256": "5cc159cac1c69414efc95a41f10ced56b4e1b27a528623fd9d3d75993cca5655"
+            },
+            "download.log": {
+              "bytes": 2503,
+              "sha256": "75bad31d4be2944e4123d176cf16fcdd18177d82dd10b13515ead7ad6be910fd"
+            },
+            "entry-and-scope.json": {
+              "bytes": 11924,
+              "sha256": "ceaddb10cca62ba1f75c9d52db90abb96c83b1e4533257fe5c0079ad79b54b8e"
+            },
+            "environment.json": {
+              "bytes": 396,
+              "sha256": "524097a5c5d80eb11c5499f9f9164eccac27b7823bc731012669743ad8442a15"
+            },
+            "evidence-failure.json": {
+              "bytes": 114,
+              "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+            },
+            "install-report.json": {
+              "bytes": 32816,
+              "sha256": "273f5bbcb598613a69b0423650d116baacfeedb4b18971646d4ef91346f2c111"
+            },
+            "install.log": {
+              "bytes": 1268,
+              "sha256": "9e33a56bd684b1336c1e4bd17ba589738d19a1ffeb6b5e29e8f0def434a99dd5"
+            },
+            "installed.json": {
+              "bytes": 159,
+              "sha256": "0b90722108474fe7e9ce6c39227d71704c4b3eb7068c6918d95542aa4d1b19d6"
+            },
+            "installed.log": {
+              "bytes": 411,
+              "sha256": "345a808b216c1682e6175eaf1994b58c213f5faebf6b6aee6b5f76ae62dfca9c"
+            },
+            "junit.xml": {
+              "bytes": 473054,
+              "sha256": "6b11cf9a61c74282848848d7dba5e4c72deff2863929cb74931ccc4f203d35b5"
+            },
+            "pip-check.log": {
+              "bytes": 30,
+              "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            "pip-version.log": {
+              "bytes": 98,
+              "sha256": "ceb89eeabca48017e410409171ac47221cc8827e99bc0f1ee35f3a179a13247d"
+            },
+            "preflight.json": {
+              "bytes": 146,
+              "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+            },
+            "pytest-exit.json": {
+              "bytes": 21,
+              "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+            },
+            "pytest.log": {
+              "bytes": 4511,
+              "sha256": "e5a12d9aa5d8ffd6d08e181e7d7a13ec0b6a4a1a42ea55b7397cdcf5db3d6d70"
+            },
+            "reviewed-wheels.json": {
+              "bytes": 12070,
+              "sha256": "078bed4529df5e11656eeef00c1c6e9a119d5a8423c590a836e20bbdf9c5aa5e"
+            },
+            "summary.json": {
+              "bytes": 599,
+              "sha256": "30bf483c83bbc64818415ac7b70dbf0637b83ba9e7265dcd35e64f1d91714f12"
+            },
+            "test-failure.json": {
+              "bytes": 93,
+              "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+            },
+            "tracked-after.json": {
+              "bytes": 19399,
+              "sha256": "07dacc68de93f4a3fb8db41aa1c9bc14a235c6b6bf5399463fd9ba85b0ed3ab0"
+            },
+            "tracked-before.json": {
+              "bytes": 19399,
+              "sha256": "07dacc68de93f4a3fb8db41aa1c9bc14a235c6b6bf5399463fd9ba85b0ed3ab0"
+            },
+            "venv.log": {
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "w08-installed-runtime.json": {
+              "bytes": 31255,
+              "sha256": "845d42795abc983dcee529d88ec561f37a15cbe0614680b359326010ea6b005b"
+            }
+          },
+          "environment": {
+            "head": "879b67b7066690ab0bee8cef569aa8869f78af03",
+            "image_version": "20260907.300.1",
+            "matrix_os": "ubuntu-24.04",
+            "matrix_python": "3.11",
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+            "run_attempt": "1",
+            "run_id": "35596533702",
+            "scope": "Phase 3 cumulative verification",
+            "unit": "P3-W04"
+          },
+          "tests": {
+            "collected_top_level": 2930,
+            "passed_top_level": 2928,
+            "failed_top_level": 2,
+            "errors": 0,
+            "skipped": 0,
+            "reported_events": 3358,
+            "successful_subtest_events": 428,
+            "failure_cases": [
+              {
+                "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_real_guard_cli_is_not_removed_by_python_optimization",
+                "message": "AssertionError: 0 != 1",
+                "failure_text_sha256": "40c0e25c0df7bdb396173da225bbbe1100b7353ab84f26911b2993c953c5b9ea"
+              },
+              {
+                "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_syntax_error_and_oversize_do_not_crash_guard",
+                "message": "AssertionError: True is not false",
+                "failure_text_sha256": "930e3238e8ce7d5a3c3158cf063f55793950866a397dfa1110be97a2b9eb17cf"
+              }
+            ],
+            "identity_sha256": "c628a6e623876df8d7375b73bd5f48c99f891f3c7aaebb50ee9d7206a2ce893d",
+            "seconds": 345.46
+          },
+          "retention": {
+            "w03": {
+              "collected": 2364,
+              "passed": 2362,
+              "failed": 2
+            },
+            "w02": {
+              "collected": 2089,
+              "passed": 2087,
+              "failed": 2
+            },
+            "w01": {
+              "collected": 1786,
+              "passed": 1784,
+              "failed": 2
+            },
+            "phase2": {
+              "collected": 1650,
+              "passed": 1648,
+              "failed": 2
+            }
+          },
+          "new_graph_cases_passed": 566,
+          "tracked_before_after_git_hashes_equal": true,
+          "tracked_file_count": 177,
+          "actual_guards_before_after_pass": true,
+          "developer_tools": {
+            "iniconfig": "2.3.0",
+            "packaging": "25.0",
+            "pip": "24.0",
+            "pluggy": "1.6.0",
+            "pygments": "2.20.0",
+            "pytest": "9.1.1",
+            "setuptools": "84.0.0"
+          },
+          "packaging": {
+            "status": "executed_and_component_cases_passed_despite_failed_full_gate",
+            "junit_cases_passed": [
+              "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+              "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+              "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+              "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+              "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+              "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+            ],
+            "build_inventories": [
+              {
+                "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113082,
+                "sha256": "db7f77f32488a01252e41d10d2aa986fbe13b38564328550340574b5cd9ffc2e",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              },
+              {
+                "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                "bytes": 97881,
+                "sha256": "640b73f008eb93c0c8f0b154a7ff4b81b5891d63b6212557ab48d9a926604424",
+                "regular_member_count": 65,
+                "source_hashes_compared": 58
+              },
+              {
+                "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113082,
+                "sha256": "f601a823ae30d085b67afc14301bbaf836dc4164a8870aab050fd24333e93c4d",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              }
+            ],
+            "installed_distribution_inventories": [
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                "bytes": 97874,
+                "sha256": "45013ca9a6c9bb842fe60a40d93df351b879d64db5ad2bc05d6a3b275b9dbbbc",
+                "regular_member_count": 65,
+                "source_hashes_compared": 58
+              },
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113082,
+                "sha256": "83e993d1c160aac682cbac1384eae0df6362a165e4ea90718b88ed7edb2fd7a0",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              },
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113082,
+                "sha256": "6048546f9cfa9b19379e54a6530f326c7068beae71b86387d617bec66f93f8a8",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              }
+            ],
+            "suite_installed_and_rebuilt_member_hashes_equal": true
+          },
+          "installed_runtime": {
+            "status": "executed_and_component_case_passed",
+            "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "module_hash_count": 48,
+            "module_hashes_match_named_code": true,
+            "record_sha256": "845d42795abc983dcee529d88ec561f37a15cbe0614680b359326010ea6b005b",
+            "admitted_modes": 8,
+            "empty_refusals": 2,
+            "public_refusals": 2,
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ]
+          },
+          "failed_stage_records": {
+            "test": {
+              "error_type": "ValueError",
+              "message": "accumulated_suite_failed",
+              "stage": "test"
+            },
+            "evidence": {
+              "error_type": "ValueError",
+              "message": "required_CI_evidence_failed_or_incomplete",
+              "stage": "evidence"
+            }
+          },
+          "service_step_conclusions": {
+            "Set up job": "success",
+            "Checkout exact candidate without stored credentials": "success",
+            "Select reviewed CPython minor": "success",
+            "Check actual checkout and guards": "success",
+            "Review and install pinned development wheels": "success",
+            "Collect and run all cumulative tests": "failure",
+            "Record results, archives and unchanged checkout": "failure",
+            "Preserve verification records only": "success",
+            "Post Select reviewed CPython minor": "skipped",
+            "Post Checkout exact candidate without stored credentials": "success",
+            "Complete job": "success"
+          },
+          "not_executed_service_steps": [
+            "Post Select reviewed CPython minor"
+          ],
+          "overall_acceptance_gate_passed": false
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "job_id": 106322526315,
+          "artifact_id": 10637426486,
+          "zip": {
+            "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/phase3-ubuntu-24.04-py3.13-35596533702-1.zip",
+            "bytes": 154890,
+            "sha256": "a5aec6ef5ddac91492592f0819ea7a3552c9db924fd6712327f5acb1d9f52d58"
+          },
+          "zip_crc_safe_paths_and_service_identity_verified": true,
+          "record_count": 28,
+          "records": {
+            "build-inventories.json": {
+              "bytes": 32432,
+              "sha256": "298ae72040c1ae1df43292a265db750b0d3107c60e805e0bd3b3e5278a1012cc"
+            },
+            "check_phase0_baseline-after.log": {
+              "bytes": 126,
+              "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+            },
+            "check_phase0_baseline-before.log": {
+              "bytes": 126,
+              "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+            },
+            "check_scaffold_boundary-after.log": {
+              "bytes": 795,
+              "sha256": "f22715a2c80bad5bfe6fe590ec2bc87c1f6fb02336467c3df65cea52112213ac"
+            },
+            "check_scaffold_boundary-before.log": {
+              "bytes": 795,
+              "sha256": "f22715a2c80bad5bfe6fe590ec2bc87c1f6fb02336467c3df65cea52112213ac"
+            },
+            "collection.json": {
+              "bytes": 377561,
+              "sha256": "58cd3a82113a7adf1e9641a3aaea1cf22e6145e84dab784446180543bccb5745"
+            },
+            "collection.log": {
+              "bytes": 354294,
+              "sha256": "d3e6847b91d88ec1544da49bc7657e6509db2e6b3f32a42bed3684062a68a476"
+            },
+            "download.log": {
+              "bytes": 2058,
+              "sha256": "d4b104578c3dc67b6b2c443a3834f4f07ae4cca7772efe86ec1c07f8bfe87183"
+            },
+            "entry-and-scope.json": {
+              "bytes": 11924,
+              "sha256": "ceaddb10cca62ba1f75c9d52db90abb96c83b1e4533257fe5c0079ad79b54b8e"
+            },
+            "environment.json": {
+              "bytes": 396,
+              "sha256": "1f615608d8b544141b9b6e70ad6e18084e471bec63d5f88b3f4f46e2714bd180"
+            },
+            "evidence-failure.json": {
+              "bytes": 114,
+              "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+            },
+            "install-report.json": {
+              "bytes": 33391,
+              "sha256": "508d4798943bc6fb61ed55c7ecd0c9c270274bd593f29ae58f7301d89de09c0d"
+            },
+            "install.log": {
+              "bytes": 1098,
+              "sha256": "98d699f81a05b33495adb15233fd08eb9be4f5842728f4224918e0f2e9c3cd33"
+            },
+            "installed.json": {
+              "bytes": 161,
+              "sha256": "0a0d3552010093d986087b09b83ed2239caeaee29d16617ef8cc5d742bd2d79d"
+            },
+            "installed.log": {
+              "bytes": 292,
+              "sha256": "120061c6416dd49dcc728de728bcbe218a78f44d8065e557208a43645a991fd9"
+            },
+            "junit.xml": {
+              "bytes": 473054,
+              "sha256": "59049c698c15380810ea9ef4ee61da4c519e13f50fef7dd3002865b6a297ef19"
+            },
+            "pip-check.log": {
+              "bytes": 30,
+              "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            "pip-version.log": {
+              "bytes": 100,
+              "sha256": "86a2c143704638f8e94a855ed34b7ff387fc7268e64d75c0863ae7f9164a8391"
+            },
+            "preflight.json": {
+              "bytes": 146,
+              "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+            },
+            "pytest-exit.json": {
+              "bytes": 21,
+              "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+            },
+            "pytest.log": {
+              "bytes": 4511,
+              "sha256": "dd0c222e3bcf2e6fb7f44243091028cffa01e7b2cf64cac1993be33c2c5c20ab"
+            },
+            "reviewed-wheels.json": {
+              "bytes": 12070,
+              "sha256": "078bed4529df5e11656eeef00c1c6e9a119d5a8423c590a836e20bbdf9c5aa5e"
+            },
+            "summary.json": {
+              "bytes": 599,
+              "sha256": "30bf483c83bbc64818415ac7b70dbf0637b83ba9e7265dcd35e64f1d91714f12"
+            },
+            "test-failure.json": {
+              "bytes": 93,
+              "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+            },
+            "tracked-after.json": {
+              "bytes": 19399,
+              "sha256": "07dacc68de93f4a3fb8db41aa1c9bc14a235c6b6bf5399463fd9ba85b0ed3ab0"
+            },
+            "tracked-before.json": {
+              "bytes": 19399,
+              "sha256": "07dacc68de93f4a3fb8db41aa1c9bc14a235c6b6bf5399463fd9ba85b0ed3ab0"
+            },
+            "venv.log": {
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "w08-installed-runtime.json": {
+              "bytes": 31255,
+              "sha256": "f6d19e630b21510f28c027964e1f72402251f36accc5a870918f0f4654ac1cbd"
+            }
+          },
+          "environment": {
+            "head": "879b67b7066690ab0bee8cef569aa8869f78af03",
+            "image_version": "20260907.300.1",
+            "matrix_os": "ubuntu-24.04",
+            "matrix_python": "3.13",
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+            "run_attempt": "1",
+            "run_id": "35596533702",
+            "scope": "Phase 3 cumulative verification",
+            "unit": "P3-W04"
+          },
+          "tests": {
+            "collected_top_level": 2930,
+            "passed_top_level": 2928,
+            "failed_top_level": 2,
+            "errors": 0,
+            "skipped": 0,
+            "reported_events": 3358,
+            "successful_subtest_events": 428,
+            "failure_cases": [
+              {
+                "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_real_guard_cli_is_not_removed_by_python_optimization",
+                "message": "AssertionError: 0 != 1",
+                "failure_text_sha256": "40c0e25c0df7bdb396173da225bbbe1100b7353ab84f26911b2993c953c5b9ea"
+              },
+              {
+                "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_syntax_error_and_oversize_do_not_crash_guard",
+                "message": "AssertionError: True is not false",
+                "failure_text_sha256": "930e3238e8ce7d5a3c3158cf063f55793950866a397dfa1110be97a2b9eb17cf"
+              }
+            ],
+            "identity_sha256": "c628a6e623876df8d7375b73bd5f48c99f891f3c7aaebb50ee9d7206a2ce893d",
+            "seconds": 449.47
+          },
+          "retention": {
+            "w03": {
+              "collected": 2364,
+              "passed": 2362,
+              "failed": 2
+            },
+            "w02": {
+              "collected": 2089,
+              "passed": 2087,
+              "failed": 2
+            },
+            "w01": {
+              "collected": 1786,
+              "passed": 1784,
+              "failed": 2
+            },
+            "phase2": {
+              "collected": 1650,
+              "passed": 1648,
+              "failed": 2
+            }
+          },
+          "new_graph_cases_passed": 566,
+          "tracked_before_after_git_hashes_equal": true,
+          "tracked_file_count": 177,
+          "actual_guards_before_after_pass": true,
+          "developer_tools": {
+            "iniconfig": "2.3.0",
+            "packaging": "25.0",
+            "pip": "26.2.1",
+            "pluggy": "1.6.0",
+            "pygments": "2.20.0",
+            "pytest": "9.1.1",
+            "setuptools": "84.0.0"
+          },
+          "packaging": {
+            "status": "executed_and_component_cases_passed_despite_failed_full_gate",
+            "junit_cases_passed": [
+              "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+              "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+              "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+              "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+              "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+              "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+            ],
+            "build_inventories": [
+              {
+                "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113082,
+                "sha256": "47a7183b1a9e8f93f98eedfef33b4de87148baf8cc88197e8e5e2dafbf6eabd7",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              },
+              {
+                "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                "bytes": 97900,
+                "sha256": "c342c50c5f04ebdcfa08f798c8a1e3ed10f607ef3ef0a7a69d67d37ee4c6ebf8",
+                "regular_member_count": 65,
+                "source_hashes_compared": 58
+              },
+              {
+                "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113082,
+                "sha256": "74dc6b22f646a853d795f0be30eea76e4946253a8a621076bb165483fd2d1cb9",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              }
+            ],
+            "installed_distribution_inventories": [
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                "bytes": 97868,
+                "sha256": "e2f3b8e673c00f5915e9987ccf8359bcd8bcefd42ba4527bd53287ee19229804",
+                "regular_member_count": 65,
+                "source_hashes_compared": 58
+              },
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113082,
+                "sha256": "a5bba3dff8194c8ae38c5168d636f19fc759924fdb6b4328ad1fa9d0b3be087a",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              },
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113082,
+                "sha256": "8e6c05129e23f283b25d17940bafb3c40dc9d10075a44cb865d1c48f94648656",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              }
+            ],
+            "suite_installed_and_rebuilt_member_hashes_equal": true
+          },
+          "installed_runtime": {
+            "status": "executed_and_component_case_passed",
+            "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "module_hash_count": 48,
+            "module_hashes_match_named_code": true,
+            "record_sha256": "f6d19e630b21510f28c027964e1f72402251f36accc5a870918f0f4654ac1cbd",
+            "admitted_modes": 8,
+            "empty_refusals": 2,
+            "public_refusals": 2,
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ]
+          },
+          "failed_stage_records": {
+            "test": {
+              "error_type": "ValueError",
+              "message": "accumulated_suite_failed",
+              "stage": "test"
+            },
+            "evidence": {
+              "error_type": "ValueError",
+              "message": "required_CI_evidence_failed_or_incomplete",
+              "stage": "evidence"
+            }
+          },
+          "service_step_conclusions": {
+            "Set up job": "success",
+            "Checkout exact candidate without stored credentials": "success",
+            "Select reviewed CPython minor": "success",
+            "Check actual checkout and guards": "success",
+            "Review and install pinned development wheels": "success",
+            "Collect and run all cumulative tests": "failure",
+            "Record results, archives and unchanged checkout": "failure",
+            "Preserve verification records only": "success",
+            "Post Select reviewed CPython minor": "skipped",
+            "Post Checkout exact candidate without stored credentials": "success",
+            "Complete job": "success"
+          },
+          "not_executed_service_steps": [
+            "Post Select reviewed CPython minor"
+          ],
+          "overall_acceptance_gate_passed": false
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "job_id": 106322525908,
+          "artifact_id": 10636988024,
+          "zip": {
+            "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/phase3-windows-2025-py3.11-35596533702-1.zip",
+            "bytes": 160967,
+            "sha256": "139928578b434f5ef47c6b0c55c67e2bddb80a2991111f614abb2cdff809fb33"
+          },
+          "zip_crc_safe_paths_and_service_identity_verified": true,
+          "record_count": 28,
+          "records": {
+            "build-inventories.json": {
+              "bytes": 32432,
+              "sha256": "1da102f70f7100b02fd94cf5fe5b822c012ff2d3c7eff208e3a6d6cf60b610e0"
+            },
+            "check_phase0_baseline-after.log": {
+              "bytes": 126,
+              "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+            },
+            "check_phase0_baseline-before.log": {
+              "bytes": 126,
+              "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+            },
+            "check_scaffold_boundary-after.log": {
+              "bytes": 795,
+              "sha256": "f22715a2c80bad5bfe6fe590ec2bc87c1f6fb02336467c3df65cea52112213ac"
+            },
+            "check_scaffold_boundary-before.log": {
+              "bytes": 795,
+              "sha256": "f22715a2c80bad5bfe6fe590ec2bc87c1f6fb02336467c3df65cea52112213ac"
+            },
+            "collection.json": {
+              "bytes": 377561,
+              "sha256": "58cd3a82113a7adf1e9641a3aaea1cf22e6145e84dab784446180543bccb5745"
+            },
+            "collection.log": {
+              "bytes": 354294,
+              "sha256": "3babaf0f1b02a43aed326b849b192a14598c8580bf991fd59396bb9360015cee"
+            },
+            "download.log": {
+              "bytes": 2322,
+              "sha256": "1f9692b9fcd1a61bed19ca48ed55cfc58c91dd1a4d60dfa2d53715ba34463eac"
+            },
+            "entry-and-scope.json": {
+              "bytes": 11924,
+              "sha256": "ceaddb10cca62ba1f75c9d52db90abb96c83b1e4533257fe5c0079ad79b54b8e"
+            },
+            "environment.json": {
+              "bytes": 406,
+              "sha256": "e354932af126a344dcaf0ae84874e706fef0d2e63912c62769cac622a0caf915"
+            },
+            "evidence-failure.json": {
+              "bytes": 114,
+              "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+            },
+            "install-report.json": {
+              "bytes": 51537,
+              "sha256": "4ed084f4320d8edc0b272ef8a0673ebaefd862392b04ffc966e7090aeaab9e32"
+            },
+            "install.log": {
+              "bytes": 1237,
+              "sha256": "36b3a5d274085a0cec3146ca641ac792a3bb7aedfac23feb7281b5bf7c356089"
+            },
+            "installed.json": {
+              "bytes": 182,
+              "sha256": "4071d04e83f11ceff778b82e3e9836498dad040b887a59397c9af5306d374c26"
+            },
+            "installed.log": {
+              "bytes": 489,
+              "sha256": "f57bf0d17717397b9920109736a1fc2ccef746ac9f830b931cd24f06cf71d147"
+            },
+            "junit.xml": {
+              "bytes": 473064,
+              "sha256": "c7697f906a4382f720a1c1452c2f9b765a966bae3b5df3d36f430c91292e87ff"
+            },
+            "pip-check.log": {
+              "bytes": 30,
+              "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            "pip-version.log": {
+              "bytes": 75,
+              "sha256": "7cfa4c2281b58f71710362aa99a0d8527e1d2626ce028fa04b6c5089ab6e9303"
+            },
+            "preflight.json": {
+              "bytes": 146,
+              "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+            },
+            "pytest-exit.json": {
+              "bytes": 21,
+              "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+            },
+            "pytest.log": {
+              "bytes": 4509,
+              "sha256": "fab832863bd741ebc39b3968d9ec5ef7f7a1062674c276e5f41c2466aee96a61"
+            },
+            "reviewed-wheels.json": {
+              "bytes": 12697,
+              "sha256": "10f80797b0a7895c5b23773f8a22fec17abe506b23b93270f395c1fce2587824"
+            },
+            "summary.json": {
+              "bytes": 599,
+              "sha256": "30bf483c83bbc64818415ac7b70dbf0637b83ba9e7265dcd35e64f1d91714f12"
+            },
+            "test-failure.json": {
+              "bytes": 93,
+              "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+            },
+            "tracked-after.json": {
+              "bytes": 19399,
+              "sha256": "07dacc68de93f4a3fb8db41aa1c9bc14a235c6b6bf5399463fd9ba85b0ed3ab0"
+            },
+            "tracked-before.json": {
+              "bytes": 19399,
+              "sha256": "07dacc68de93f4a3fb8db41aa1c9bc14a235c6b6bf5399463fd9ba85b0ed3ab0"
+            },
+            "venv.log": {
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "w08-installed-runtime.json": {
+              "bytes": 31523,
+              "sha256": "3fa608473e265da626f9c6a32dfc41fb74b6d468759ad9e2347d1996b1b89038"
+            }
+          },
+          "environment": {
+            "head": "879b67b7066690ab0bee8cef569aa8869f78af03",
+            "image_version": "20260907.229.1",
+            "matrix_os": "windows-2025",
+            "matrix_python": "3.11",
+            "platform": "Windows-10-10.0.26100-SP0",
+            "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+            "run_attempt": "1",
+            "run_id": "35596533702",
+            "scope": "Phase 3 cumulative verification",
+            "unit": "P3-W04"
+          },
+          "tests": {
+            "collected_top_level": 2930,
+            "passed_top_level": 2928,
+            "failed_top_level": 2,
+            "errors": 0,
+            "skipped": 0,
+            "reported_events": 3358,
+            "successful_subtest_events": 428,
+            "failure_cases": [
+              {
+                "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_real_guard_cli_is_not_removed_by_python_optimization",
+                "message": "AssertionError: 0 != 1",
+                "failure_text_sha256": "45281cbb29d3ff92b7003120613b35e828c3093011854d7136609f0734ca2c70"
+              },
+              {
+                "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_syntax_error_and_oversize_do_not_crash_guard",
+                "message": "AssertionError: True is not false",
+                "failure_text_sha256": "2da7e671ad3431913bdf24ce0861bd05c963a54a8efce114a5e26d8eda79ba66"
+              }
+            ],
+            "identity_sha256": "c628a6e623876df8d7375b73bd5f48c99f891f3c7aaebb50ee9d7206a2ce893d",
+            "seconds": 285.2
+          },
+          "retention": {
+            "w03": {
+              "collected": 2364,
+              "passed": 2362,
+              "failed": 2
+            },
+            "w02": {
+              "collected": 2089,
+              "passed": 2087,
+              "failed": 2
+            },
+            "w01": {
+              "collected": 1786,
+              "passed": 1784,
+              "failed": 2
+            },
+            "phase2": {
+              "collected": 1650,
+              "passed": 1648,
+              "failed": 2
+            }
+          },
+          "new_graph_cases_passed": 566,
+          "tracked_before_after_git_hashes_equal": true,
+          "tracked_file_count": 177,
+          "actual_guards_before_after_pass": true,
+          "developer_tools": {
+            "colorama": "0.4.6",
+            "iniconfig": "2.3.0",
+            "packaging": "25.0",
+            "pip": "24.0",
+            "pluggy": "1.6.0",
+            "pygments": "2.20.0",
+            "pytest": "9.1.1",
+            "setuptools": "84.0.0"
+          },
+          "packaging": {
+            "status": "executed_and_component_cases_passed_despite_failed_full_gate",
+            "junit_cases_passed": [
+              "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+              "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+              "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+              "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+              "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+              "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+            ],
+            "build_inventories": [
+              {
+                "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113100,
+                "sha256": "aa81942c55a58991a2b390d53f7058d4550dbb3b0afb761040deea6fbad07576",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              },
+              {
+                "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                "bytes": 97959,
+                "sha256": "a2c440cdacbcfb76c22c318ce1849a538712e344169926f6c306b3538db6f040",
+                "regular_member_count": 65,
+                "source_hashes_compared": 58
+              },
+              {
+                "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113100,
+                "sha256": "9f24c9c2a759aec9c3ee81d9f0e13be6585f19f5bae504c5abda03b740d4f7b9",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              }
+            ],
+            "installed_distribution_inventories": [
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                "bytes": 98024,
+                "sha256": "955cc4caf93aba319a1f1f1271545a940083a42321a9d32c1ea7689277ded9e2",
+                "regular_member_count": 65,
+                "source_hashes_compared": 58
+              },
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113100,
+                "sha256": "6c053a4b599ff806ffe08630455602809cdd5fdd164543faa9888c17f6552e4c",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              },
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113100,
+                "sha256": "ca59958a2a31a0c85cc83edcd884da5da0b10adb175046fff6e016ae8814b780",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              }
+            ],
+            "suite_installed_and_rebuilt_member_hashes_equal": true
+          },
+          "installed_runtime": {
+            "status": "executed_and_component_case_passed",
+            "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "module_hash_count": 48,
+            "module_hashes_match_named_code": true,
+            "record_sha256": "3fa608473e265da626f9c6a32dfc41fb74b6d468759ad9e2347d1996b1b89038",
+            "admitted_modes": 8,
+            "empty_refusals": 2,
+            "public_refusals": 2,
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ]
+          },
+          "failed_stage_records": {
+            "test": {
+              "error_type": "ValueError",
+              "message": "accumulated_suite_failed",
+              "stage": "test"
+            },
+            "evidence": {
+              "error_type": "ValueError",
+              "message": "required_CI_evidence_failed_or_incomplete",
+              "stage": "evidence"
+            }
+          },
+          "service_step_conclusions": {
+            "Set up job": "success",
+            "Checkout exact candidate without stored credentials": "success",
+            "Select reviewed CPython minor": "success",
+            "Check actual checkout and guards": "success",
+            "Review and install pinned development wheels": "success",
+            "Collect and run all cumulative tests": "failure",
+            "Record results, archives and unchanged checkout": "failure",
+            "Preserve verification records only": "success",
+            "Post Select reviewed CPython minor": "skipped",
+            "Post Checkout exact candidate without stored credentials": "success",
+            "Complete job": "success"
+          },
+          "not_executed_service_steps": [
+            "Post Select reviewed CPython minor"
+          ],
+          "overall_acceptance_gate_passed": false
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "job_id": 106322526041,
+          "artifact_id": 10636529704,
+          "zip": {
+            "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/phase3-windows-2025-py3.13-35596533702-1.zip",
+            "bytes": 161418,
+            "sha256": "9deddd66f3e45fe12e27790f08c95ce33216ee39223f3f955b8e1b8d07c2e644"
+          },
+          "zip_crc_safe_paths_and_service_identity_verified": true,
+          "record_count": 28,
+          "records": {
+            "build-inventories.json": {
+              "bytes": 32432,
+              "sha256": "2870490ee541149f36ac66ef603c2780235aea5a72641c16fb8481de717edb74"
+            },
+            "check_phase0_baseline-after.log": {
+              "bytes": 126,
+              "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+            },
+            "check_phase0_baseline-before.log": {
+              "bytes": 126,
+              "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+            },
+            "check_scaffold_boundary-after.log": {
+              "bytes": 795,
+              "sha256": "f22715a2c80bad5bfe6fe590ec2bc87c1f6fb02336467c3df65cea52112213ac"
+            },
+            "check_scaffold_boundary-before.log": {
+              "bytes": 795,
+              "sha256": "f22715a2c80bad5bfe6fe590ec2bc87c1f6fb02336467c3df65cea52112213ac"
+            },
+            "collection.json": {
+              "bytes": 377561,
+              "sha256": "58cd3a82113a7adf1e9641a3aaea1cf22e6145e84dab784446180543bccb5745"
+            },
+            "collection.log": {
+              "bytes": 354294,
+              "sha256": "bf65ec95626e503e8d0d5a9a2808f1768637f30cc40e2736689a7161a0ff805c"
+            },
+            "download.log": {
+              "bytes": 2010,
+              "sha256": "cd4de03f0ee22d5adc2e9bff2ef236e4f6da24e806749931a2a6dd2e05db79d5"
+            },
+            "entry-and-scope.json": {
+              "bytes": 11924,
+              "sha256": "ceaddb10cca62ba1f75c9d52db90abb96c83b1e4533257fe5c0079ad79b54b8e"
+            },
+            "environment.json": {
+              "bytes": 416,
+              "sha256": "1f5d0cf44508a096682f9300afafcec7e3f535d3f9ffd3469cd649a0ae41b557"
+            },
+            "evidence-failure.json": {
+              "bytes": 114,
+              "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+            },
+            "install-report.json": {
+              "bytes": 52211,
+              "sha256": "7fb7b472ac281c6de1524c7c0b29a5e08b96da6007acfceb2e68eb2d5a1c1308"
+            },
+            "install.log": {
+              "bytes": 1067,
+              "sha256": "eb4b657a06ac7ab3474d276949291de44026266a3f97578fe342f6fa406ac0f7"
+            },
+            "installed.json": {
+              "bytes": 184,
+              "sha256": "99c1a0779e6968a946fd5ff32025b7a9aed155878382f6e3a27cd2463f1b6df0"
+            },
+            "installed.log": {
+              "bytes": 334,
+              "sha256": "39b611e3708470417aa45a755f6525d13a4bfc9976ed7e9ad22df6507f34a121"
+            },
+            "junit.xml": {
+              "bytes": 473064,
+              "sha256": "8f5b892232255a3fce1a629b90466aa1ef5d074d34a63c7a1d53fc2d243f85fc"
+            },
+            "pip-check.log": {
+              "bytes": 30,
+              "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            "pip-version.log": {
+              "bytes": 77,
+              "sha256": "ca24d5116b3334ef27a7e296c738fa27479febd42897574f7f9461745eaec2af"
+            },
+            "preflight.json": {
+              "bytes": 146,
+              "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+            },
+            "pytest-exit.json": {
+              "bytes": 21,
+              "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+            },
+            "pytest.log": {
+              "bytes": 4509,
+              "sha256": "32844c68d363e852b11e01ac82f2b10222b55c55921f7ea52077f5f01c2076ee"
+            },
+            "reviewed-wheels.json": {
+              "bytes": 12697,
+              "sha256": "10f80797b0a7895c5b23773f8a22fec17abe506b23b93270f395c1fce2587824"
+            },
+            "summary.json": {
+              "bytes": 599,
+              "sha256": "30bf483c83bbc64818415ac7b70dbf0637b83ba9e7265dcd35e64f1d91714f12"
+            },
+            "test-failure.json": {
+              "bytes": 93,
+              "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+            },
+            "tracked-after.json": {
+              "bytes": 19399,
+              "sha256": "07dacc68de93f4a3fb8db41aa1c9bc14a235c6b6bf5399463fd9ba85b0ed3ab0"
+            },
+            "tracked-before.json": {
+              "bytes": 19399,
+              "sha256": "07dacc68de93f4a3fb8db41aa1c9bc14a235c6b6bf5399463fd9ba85b0ed3ab0"
+            },
+            "venv.log": {
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "w08-installed-runtime.json": {
+              "bytes": 31523,
+              "sha256": "014b4b4484e64d88a5a944331261887f769fa282a8577c09646e37217f51d7dc"
+            }
+          },
+          "environment": {
+            "head": "879b67b7066690ab0bee8cef569aa8869f78af03",
+            "image_version": "20260907.229.1",
+            "matrix_os": "windows-2025",
+            "matrix_python": "3.13",
+            "platform": "Windows-2025Server-10.0.26100-SP0",
+            "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+            "run_attempt": "1",
+            "run_id": "35596533702",
+            "scope": "Phase 3 cumulative verification",
+            "unit": "P3-W04"
+          },
+          "tests": {
+            "collected_top_level": 2930,
+            "passed_top_level": 2928,
+            "failed_top_level": 2,
+            "errors": 0,
+            "skipped": 0,
+            "reported_events": 3358,
+            "successful_subtest_events": 428,
+            "failure_cases": [
+              {
+                "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_real_guard_cli_is_not_removed_by_python_optimization",
+                "message": "AssertionError: 0 != 1",
+                "failure_text_sha256": "45281cbb29d3ff92b7003120613b35e828c3093011854d7136609f0734ca2c70"
+              },
+              {
+                "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_syntax_error_and_oversize_do_not_crash_guard",
+                "message": "AssertionError: True is not false",
+                "failure_text_sha256": "2da7e671ad3431913bdf24ce0861bd05c963a54a8efce114a5e26d8eda79ba66"
+              }
+            ],
+            "identity_sha256": "c628a6e623876df8d7375b73bd5f48c99f891f3c7aaebb50ee9d7206a2ce893d",
+            "seconds": 533.99
+          },
+          "retention": {
+            "w03": {
+              "collected": 2364,
+              "passed": 2362,
+              "failed": 2
+            },
+            "w02": {
+              "collected": 2089,
+              "passed": 2087,
+              "failed": 2
+            },
+            "w01": {
+              "collected": 1786,
+              "passed": 1784,
+              "failed": 2
+            },
+            "phase2": {
+              "collected": 1650,
+              "passed": 1648,
+              "failed": 2
+            }
+          },
+          "new_graph_cases_passed": 566,
+          "tracked_before_after_git_hashes_equal": true,
+          "tracked_file_count": 177,
+          "actual_guards_before_after_pass": true,
+          "developer_tools": {
+            "colorama": "0.4.6",
+            "iniconfig": "2.3.0",
+            "packaging": "25.0",
+            "pip": "26.2.1",
+            "pluggy": "1.6.0",
+            "pygments": "2.20.0",
+            "pytest": "9.1.1",
+            "setuptools": "84.0.0"
+          },
+          "packaging": {
+            "status": "executed_and_component_cases_passed_despite_failed_full_gate",
+            "junit_cases_passed": [
+              "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+              "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+              "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+              "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+              "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+              "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+              "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+            ],
+            "build_inventories": [
+              {
+                "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113100,
+                "sha256": "e1bddb6aee61f74d6474f2e53a586fa8587f0924fe5d1251800aea0aa218e08a",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              },
+              {
+                "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                "bytes": 98043,
+                "sha256": "413cf7fb297818b155378557fbfd85594157a505cbedfb5b7cd1fb144c4078a3",
+                "regular_member_count": 65,
+                "source_hashes_compared": 58
+              },
+              {
+                "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113100,
+                "sha256": "87ec5229715f40c6ee124ab5e36e72350bc364b5480b803f907d425ad5e61c49",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              }
+            ],
+            "installed_distribution_inventories": [
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                "bytes": 98079,
+                "sha256": "7b75ddfe921a8ddef58622b51f79d06bd745abbc508d0535f2741913e8d53a79",
+                "regular_member_count": 65,
+                "source_hashes_compared": 58
+              },
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113100,
+                "sha256": "28a03b7d516c16887b20e6b901c977b22ae56c9a2efbc3f8085c73a889b89e9d",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              },
+              {
+                "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                "bytes": 113100,
+                "sha256": "86faf7dbe3e12900624785c29d7b80b914676e7188d8ae30579149d1b5f3d3eb",
+                "regular_member_count": 55,
+                "source_hashes_compared": 48
+              }
+            ],
+            "suite_installed_and_rebuilt_member_hashes_equal": true
+          },
+          "installed_runtime": {
+            "status": "executed_and_component_case_passed",
+            "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "module_hash_count": 48,
+            "module_hashes_match_named_code": true,
+            "record_sha256": "014b4b4484e64d88a5a944331261887f769fa282a8577c09646e37217f51d7dc",
+            "admitted_modes": 8,
+            "empty_refusals": 2,
+            "public_refusals": 2,
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ]
+          },
+          "failed_stage_records": {
+            "test": {
+              "error_type": "ValueError",
+              "message": "accumulated_suite_failed",
+              "stage": "test"
+            },
+            "evidence": {
+              "error_type": "ValueError",
+              "message": "required_CI_evidence_failed_or_incomplete",
+              "stage": "evidence"
+            }
+          },
+          "service_step_conclusions": {
+            "Set up job": "success",
+            "Checkout exact candidate without stored credentials": "success",
+            "Select reviewed CPython minor": "success",
+            "Check actual checkout and guards": "success",
+            "Review and install pinned development wheels": "success",
+            "Collect and run all cumulative tests": "failure",
+            "Record results, archives and unchanged checkout": "failure",
+            "Preserve verification records only": "success",
+            "Post Select reviewed CPython minor": "skipped",
+            "Post Checkout exact candidate without stored credentials": "success",
+            "Complete job": "success"
+          },
+          "not_executed_service_steps": [
+            "Post Select reviewed CPython minor"
+          ],
+          "overall_acceptance_gate_passed": false
+        }
+      ],
+      "same_two_failures_all_four_profiles": [
+        "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_real_guard_cli_is_not_removed_by_python_optimization",
+        "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_syntax_error_and_oversize_do_not_crash_guard"
+      ],
+      "local_failed_invocation": {
+        "records": {
+          "p3w04-local-junit.xml": {
+            "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/local/p3w04-local-junit.xml",
+            "bytes": 473050,
+            "sha256": "79e047c052139a7d21d4d8d3fdb36f9862dc54bb299e10b0f23ada17a4d9b70a"
+          },
+          "p3w04-local-pytest.log": {
+            "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/local/p3w04-local-pytest.log",
+            "bytes": 4458,
+            "sha256": "8b72b82e9fae2aff1fd357d50ba3155bbf70ffecc0f6de021d7eaa82a8e6fcbe"
+          },
+          "p3w04-local-commit-byte-check.json": {
+            "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/local/p3w04-local-commit-byte-check.json",
+            "bytes": 40271,
+            "sha256": "a3010c84f1f6103929a4578e82737d64cffd17dd11c0880ac196d063fb32854e"
+          },
+          "p3w04-code-collection.json": {
+            "path": "/workspace/scratch/5e401153f47f/p3w04-failed-code-evidence/local/p3w04-code-collection.json",
+            "bytes": 375393,
+            "sha256": "3f262179f8247f7df46eaae46748458d7e3cedba92f606ea781d4f0d5c160f6e"
+          }
+        },
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+        "result": {
+          "collected_top_level": 2930,
+          "passed_top_level": 2928,
+          "failed_top_level": 2,
+          "errors": 0,
+          "skipped": 0,
+          "reported_events": 3358,
+          "successful_subtest_events": 428,
+          "failure_cases": [
+            {
+              "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_real_guard_cli_is_not_removed_by_python_optimization",
+              "message": "AssertionError: 0 != 1",
+              "failure_text_sha256": "40c0e25c0df7bdb396173da225bbbe1100b7353ab84f26911b2993c953c5b9ea"
+            },
+            {
+              "node": "tests/scaffold/test_no_runtime_implementation.py::NoRuntimeImplementationTests::test_syntax_error_and_oversize_do_not_crash_guard",
+              "message": "AssertionError: True is not false",
+              "failure_text_sha256": "930e3238e8ce7d5a3c3158cf063f55793950866a397dfa1110be97a2b9eb17cf"
+            }
+          ],
+          "identity_sha256": "c628a6e623876df8d7375b73bd5f48c99f891f3c7aaebb50ee9d7206a2ce893d",
+          "seconds": 664.23
+        },
+        "before_after_all_177_equal_named_git": true,
+        "exit_code": 1
+      },
+      "post_gate_finding": "Packaging and clean-installed runtime cases executed and passed inside the cumulative suite. The always-run evidence step collected archives, checked after-state and guards, wrote summary.json, then deliberately failed the overall acceptance condition. There is no missing packaging/installed execution in these artifacts. The only service-skipped step in each job is Post Select reviewed CPython minor; the successful full-suite/overall gate remains unmet.",
+      "normal_success_auditor_unchanged_sha256": "9eb5e18cd8782449ddab0a12f2c836b18b92764369f17939ba40fc35da9d52b9",
+      "forensic_script_sha256": "bf4699819006df876bf8865e5e4b6456fa4910a03e19d3170cf57d5666684f6a",
+      "limitations": [
+        "Failed whole-run evidence cannot qualify W04 or any later successor. No repair authorization or fix is inferred.",
+        "Parsing and Git comparisons only; no product/test/runtime re-execution was performed.",
+        "Package binaries are absent; only retained executed member inventories, source hashes and JUnit/runtime records are rechecked. No whole-archive reproducibility is claimed.",
+        "Installed open/DNS/native probes are finite warm-import evidence, not a hostile same-process or native security certification.",
+        "Assertion locations and messages identify observed failures; fixture-repair scope and any amendment remain a separate review decision.",
+        "Shared assistant environment/tool provenance; not external certification."
+      ]
+    },
+    "repaired_code_head": {
+      "status": "pending_actual_commit_and_execution"
+    },
+    "R01_targeted_runs": [
+      {
+        "label": "p3w04-r01-scaffold-first",
+        "passed": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 23.558,
+        "junit_sha256": "9d0a6a680a41ce7d8c5d588549bacb7f964264f3c8747e0d03b03a0fc83d2965",
+        "log_sha256": "93911b41a64710754cf7a4e2503e386dcc941663311a231e57524228f961dfe8"
+      },
+      {
+        "label": "p3w04-r01-transition-first",
+        "passed": 180,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 18.738,
+        "junit_sha256": "27102ea15b0209a792eae936db85e26f23e467c879f9c6665de52a4f8ad774e5",
+        "log_sha256": "9e3741d96380bb8ff55a223e6266d41173d6b3da9c65d5d6a51be5fae7d10ad2"
+      },
+      {
+        "label": "p3w04-r01-ci-contract",
+        "passed": 20,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.332,
+        "junit_sha256": "c192722a2c39a71c395166734739800e3667e84dd462cd2171eeb22f0f299495",
+        "log_sha256": "e9718ffe7c41d4259851d1ffeaeb883d49e0dfc939118f195bea60d44b774ef7"
+      }
+    ],
+    "R01_independent_review": {
+      "sha256": "a3e15269f304c36a9f2a62f5f1853e8dc329010e0630cc63ccd1cfcad289d2c5",
+      "record": {
+        "format": "sit-independent-r01-review/0.1",
+        "unit": "P3-W04-R01",
+        "status": "pass",
+        "pre_amendment_head": "879b67b7066690ab0bee8cef569aa8869f78af03",
+        "pre_amendment_tree": "f7c92b34537b8fc089c8624af9da6ec9dea74a68",
+        "proposal_sha256": "32c4372d886d98280cb389bc8912610ec2628e3c477ac7057785e304001cf42f",
+        "approval_sha256": "6baf4c15ab3f6e22ff23a6458b0d4a0d3704fe00e434b975eae10f691229907a",
+        "source_sha256": {
+          "tests/scaffold/test_no_runtime_implementation.py": "a0b2d0413952ec4db177967c3f54a83e01795cf207d3e33abd0a941a58b0051e",
+          "tests/scaffold/test_ci_contract.py": "18b1db14373ace5523062f41e48977d5b170c5b238b3a04c65bd42e11a03e6a4",
+          "tests/contract/test_phase3_transition.py": "6d04e15cdf30e3a832af1d50fdfa1bec85577710910817100aaa110fd7021169"
+        },
+        "checks": [
+          {
+            "check": "exact_approved_proposal",
+            "status": "pass"
+          },
+          {
+            "check": "actual_approval_record",
+            "status": "pass"
+          },
+          {
+            "check": "approval_exact_scope_no_merge_or_W05",
+            "status": "pass"
+          },
+          {
+            "check": "whole_old_wrapper_prefix_footer_preserved",
+            "status": "pass"
+          },
+          {
+            "check": "original_method_source_pin_test_syntax_error_and_oversize_do_not_crash_guard",
+            "status": "pass"
+          },
+          {
+            "check": "exact_only_name_target_AST_migration_test_syntax_error_and_oversize_do_not_crash_guard",
+            "status": "pass"
+          },
+          {
+            "check": "original_method_source_pin_test_real_guard_cli_is_not_removed_by_python_optimization",
+            "status": "pass"
+          },
+          {
+            "check": "exact_only_name_target_AST_migration_test_real_guard_cli_is_not_removed_by_python_optimization",
+            "status": "pass"
+          },
+          {
+            "check": "live_collected_method_is_new_helper_test_syntax_error_and_oversize_do_not_crash_guard",
+            "status": "pass"
+          },
+          {
+            "check": "live_collected_method_is_new_helper_test_real_guard_cli_is_not_removed_by_python_optimization",
+            "status": "pass"
+          },
+          {
+            "check": "literal_exception_exact_four",
+            "status": "pass"
+          },
+          {
+            "check": "fixed_boundary_literals",
+            "status": "pass"
+          },
+          {
+            "check": "raw_plan_13_w01_23",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W01",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W01",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W02",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W02",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W03",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W03",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W04",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W04",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W05",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W05",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W06",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W06",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W07",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W07",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W08",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W08",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W09",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W09",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W10",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W10",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W11",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W11",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W12",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W12",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W13",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W13",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W14",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W14",
+            "status": "pass"
+          },
+          {
+            "check": "exact_scope_P3-W15",
+            "status": "pass"
+          },
+          {
+            "check": "named_scope_exception_P3-W15",
+            "status": "pass"
+          },
+          {
+            "check": "effective_W04_17",
+            "status": "pass"
+          },
+          {
+            "check": "actual_history_rejection_work_unit_allowlist_exceeded",
+            "status": "pass"
+          },
+          {
+            "check": "actual_history_rejection_work_unit_allowlist_exceeded",
+            "status": "pass"
+          },
+          {
+            "check": "actual_history_rejection_work_unit_allowlist_exceeded",
+            "status": "pass"
+          },
+          {
+            "check": "actual_history_rejection_work_unit_allowlist_exceeded",
+            "status": "pass"
+          },
+          {
+            "check": "only_authorized_driver_functions_change",
+            "status": "pass",
+            "changed": [
+              "phase3_effective_paths",
+              "phase3_entry_and_scope",
+              "phase3_history"
+            ]
+          },
+          {
+            "check": "all_old_driver_definitions_retained",
+            "status": "pass"
+          },
+          {
+            "check": "all_other_driver_top_level_AST_preserved",
+            "status": "pass"
+          },
+          {
+            "check": "only_old_scope_test_adapted",
+            "status": "pass",
+            "changed": [
+              "test_each_unit_has_exact_four_common_records_and_approved_paths"
+            ]
+          },
+          {
+            "check": "all_old_transition_test_definitions_retained",
+            "status": "pass"
+          },
+          {
+            "check": "177_tracked_no_inventory_change",
+            "status": "pass"
+          },
+          {
+            "check": "47_test_files_unchanged_inventory",
+            "status": "pass"
+          },
+          {
+            "check": "repair_changes_only_four_extras_and_common",
+            "status": "pass",
+            "changed_paths": [
+              "PHASE_3_PROGRESS.md",
+              "phase3/implementation_evidence.json",
+              "phase3/transition_ledger.md",
+              "tests/contract/test_phase3_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/scaffold/test_no_runtime_implementation.py"
+            ]
+          },
+          {
+            "check": "whole_W04_diff_exact17",
+            "status": "pass",
+            "changed_paths": [
+              "PHASE_3_PROGRESS.md",
+              "phase3/implementation_evidence.json",
+              "phase3/module_policy.json",
+              "phase3/obligation_coverage.json",
+              "phase3/transition_ledger.md",
+              "src/source_integrity_toolkit/graph/cycles.py",
+              "src/source_integrity_toolkit/graph/projections.py",
+              "src/source_integrity_toolkit/graph/traversal.py",
+              "src/source_integrity_toolkit/graph/witnesses.py",
+              "tests/contract/test_graph_views.py",
+              "tests/contract/test_phase3_transition.py",
+              "tests/scaffold/test_ci_contract.py",
+              "tests/scaffold/test_no_runtime_implementation.py",
+              "tests/security/test_graph_limits.py",
+              "tests/unit/test_graph_cycles.py",
+              "tests/unit/test_graph_traversal.py",
+              "tests/unit/test_graph_witnesses.py"
+            ]
+          },
+          {
+            "check": "all_48_product_files_unchanged",
+            "status": "pass"
+          },
+          {
+            "check": "all_other_old_test_bytes_unchanged",
+            "status": "pass",
+            "paths_checked": 60
+          },
+          {
+            "check": "ledger_entire_old_bytes_prefix",
+            "status": "pass"
+          },
+          {
+            "check": "frozen_path_tools/check_scaffold_boundary.py",
+            "status": "pass"
+          },
+          {
+            "check": "frozen_path_PHASE_3_PLAN.md",
+            "status": "pass"
+          },
+          {
+            "check": "frozen_path_.github/workflows/phase1-ci.yml",
+            "status": "pass"
+          },
+          {
+            "check": "frozen_path_phase3/entry_manifest.json",
+            "status": "pass"
+          },
+          {
+            "check": "frozen_path_phase3/module_policy.json",
+            "status": "pass"
+          },
+          {
+            "check": "actual_pre_amendment_complete_DAG",
+            "status": "pass"
+          },
+          {
+            "check": "actual_879_original13_only",
+            "status": "pass"
+          },
+          {
+            "check": "synthetic_clean_post_boundary_positive",
+            "status": "pass"
+          },
+          {
+            "check": "side_excursion_final_bytes_hidden",
+            "status": "pass"
+          },
+          {
+            "check": "actual_history_rejection_entry_or_predecessor_ancestry_mismatch",
+            "status": "pass"
+          },
+          {
+            "check": "actual_history_rejection_intermediate_work_unit_allowlist_exceeded",
+            "status": "pass"
+          },
+          {
+            "check": "audited_sources_stable_during_review",
+            "status": "pass"
+          }
+        ],
+        "checks_count": 72,
+        "remaining_blocking_findings": [],
+        "repo_edits_by_reviewer": false,
+        "conclusions": [
+          "The historical loader and metadata adapter remain intact. Exactly two inherited bodies retain all old statements/assertions while changing only helper names and graph/cycles.py to the permanently inert reporting/json_report.py.",
+          "Live replacement methods bind to the original collected identities; preserved original method objects remain separately available. No copied historical snapshot replaces the live helpers.",
+          "Only W04 immediate scope grows from the raw-plan 13 to 17. W01 stays 23; other immediate scopes and every explicit Phase2 API are unchanged. Later evidence retains the amendment name without granting later immediate edits.",
+          "The literal failed boundary commit/tree/parent are independent of candidate policy records. Its complete pre-amendment DAG uses original 13-path permissions; all successor DAG nodes must descend from that boundary.",
+          "Real temporary Git fixtures independently reject a premature repair and a pre-boundary side branch whose forbidden edit was restored before merge; the completed clean authorized history passes.",
+          "Source retention tests use fixed historical bytes and narrowly normalized ASTs; their mutants alter actual assertion statements, CLI flags, target/threshold, method binding and loader. They do not infer expected permissions from driver output.",
+          "No graph product, guard, plan, workflow, entry manifest, module schedule, dependency or other old test bytes changed. The transition ledger preserves its entire previous content as a prefix."
+        ],
+        "limits": [
+          "Read-only source/scope review of named working-tree bytes, not a claim of hosted CI acceptance.",
+          "No cumulative test suite rerun by reviewer; actual CI and collection gates remain separate.",
+          "The synthetic Git fixtures use explicit test-only patched anchors; the real driver anchor literals are independently checked.",
+          "Prior graph technical review remains applicable only because all 48 product files match the original reviewed code head byte-for-byte.",
+          "Full 2,930 predecessor collection retention and separately counted 428 subtests must be checked by the subsequent cumulative and hosted gates; targeted JUnit is not substituted for those gates."
+        ],
+        "targeted_evidence_review": [
+          {
+            "artifact": "p3w04-r01-scaffold-first",
+            "log_sha256": "93911b41a64710754cf7a4e2503e386dcc941663311a231e57524228f961dfe8",
+            "xml_sha256": "9d0a6a680a41ce7d8c5d588549bacb7f964264f3c8747e0d03b03a0fc83d2965",
+            "xml_testcase_records": 17,
+            "pre_repair_top_level_identities_retained": 12,
+            "failures_errors_skips": 0,
+            "evidence_provenance": "Original targeted logs and JUnit generated by implementation agents; independently parsed by reviewer. Not a reviewer suite rerun."
+          },
+          {
+            "artifact": "p3w04-r01-transition-first",
+            "log_sha256": "9e3741d96380bb8ff55a223e6266d41173d6b3da9c65d5d6a51be5fae7d10ad2",
+            "xml_sha256": "27102ea15b0209a792eae936db85e26f23e467c879f9c6665de52a4f8ad774e5",
+            "xml_testcase_records": 180,
+            "pre_repair_top_level_identities_retained": 136,
+            "failures_errors_skips": 0,
+            "evidence_provenance": "Original targeted logs and JUnit generated by implementation agents; independently parsed by reviewer. Not a reviewer suite rerun."
+          },
+          {
+            "artifact": "p3w04-r01-transition-driver",
+            "log_sha256": "22d16909bb9cb74a42c226188c6992b148a70f2b1c5b6b545b394e2266eedfcb",
+            "xml_sha256": "d1464268d101f68fb83a9b1e44fd63ac120e665c1f5e8abfb798b791437a6a47",
+            "xml_testcase_records": 20,
+            "pre_repair_top_level_identities_retained": 20,
+            "failures_errors_skips": 0,
+            "evidence_provenance": "Original targeted logs and JUnit generated by implementation agents; independently parsed by reviewer. Not a reviewer suite rerun."
+          }
+        ]
+      }
     }
   },
   "preservation": {
@@ -235,8 +2029,9 @@
     "required_subtest_events": 428,
     "expected_final_tracked_files": 177,
     "expected_final_test_files": 47,
-    "previous_tests": "All 42 accepted files retain their exact bytes and are collected.",
-    "frozen": "Plan, specifications, old tests, fixtures/oracles, preparation and W03 implementations, guard, CI, pins, public APIs and package membership remain unchanged."
+    "previous_tests": "All 42 accepted test files remain collected. The exact three test/driver files named by approved P3-W04-R01 may receive only the documented migration and its controls; the other 39 retain accepted W03 bytes.",
+    "frozen": "Plan, specifications, fixtures/oracles, preparation and W03 product implementations, guard, workflow, pins, public APIs and package membership remain unchanged. R01 alters only its three named test/driver files and appends its transition ledger, with original test identities and assertions retained.",
+    "required_pre_amendment_w04_identities": 2930
   },
   "limitations": [
     "Graph completion is no epistemic, independent-source or documentary-boundary conclusion.",
