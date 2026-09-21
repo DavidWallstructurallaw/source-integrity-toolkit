@@ -6,7 +6,32 @@
     "date": "2026-09-21",
     "approved_plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
     "start_record_sha256": "3bd0df1024c27092256145ae687e00c6548e229f63a2e3bf54388db91c5f3801",
-    "authorization": "W05 original nine paths only; P3-W05-R01 is proposed and unapproved."
+    "authorization": "W05 original nine paths plus exactly four approved P3-W05-R01 paths.",
+    "amendment": "P3-W05-R01",
+    "amendment_owner_instruction": "批准 **P3-W05-R01**",
+    "amendment_approval": {
+      "unit": "P3-W05",
+      "amendment": "P3-W05-R01",
+      "owner_instruction": "批准 **P3-W05-R01**",
+      "date": "2026-09-21",
+      "proposal_sha256": "ec1e54522b05f0b1a5b1340a4917ad4477017cdfe80218e91a90d75c990bec87",
+      "pre_amendment_head": "a2aa2112231ba7595070216e659798130127dc3c",
+      "pre_amendment_tree": "d468e02fa40a5014e838937486fa49185bc1e72d",
+      "accepted_predecessor": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+      "ledger_before_sha256": "9e2b1f212f4e6b561860588cff3631e5e4b37cd83aab62be7eb59a4aeca0597d",
+      "additional_paths": [
+        "tests/scaffold/test_module_manifest.py",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py",
+        "phase3/transition_ledger.md"
+      ],
+      "original_scope_count": 9,
+      "effective_scope_count": 13,
+      "w05_merge_authorized": false,
+      "w06_authorized": false
+    },
+    "approval_record_sha256": "ab0bde2117b05dc4cf39a8c84e556c87a1c1a4d08a55db483b98ac506105e9b2",
+    "reviewed_proposal_sha256": "ec1e54522b05f0b1a5b1340a4917ad4477017cdfe80218e91a90d75c990bec87"
   },
   "entry": {
     "file_count": 157,
@@ -7779,7 +7804,1291 @@
         "meaning": "SHA-256 of every actual Git blob at the named prior code commit. This does not hash or certify the later evidence successor."
       }
     },
-    "accepted_w04_record_sha256": "8731f98dd5b65c018e4c9b0f454948af7c3d72bfdb62f6e3d50036c929b7c5c6"
+    "accepted_w04_record_sha256": "8731f98dd5b65c018e4c9b0f454948af7c3d72bfdb62f6e3d50036c929b7c5c6",
+    "w05_failed_start": {
+      "head": "a2aa2112231ba7595070216e659798130127dc3c",
+      "tree": "d468e02fa40a5014e838937486fa49185bc1e72d",
+      "record_path": "phase3/implementation_evidence.json",
+      "record_sha256": "c9b5db448184e5e2ec2dea1c48134ab9233223c5fcfd0c18c319afe7e07b2409",
+      "forensic_audit": {
+        "audit": "Independent forensics of FAILED P3-W05 records-only start run; not acceptance evidence",
+        "status": "verified_failed_run",
+        "integrity_issues": [],
+        "run_conclusion": "failure",
+        "overall_acceptance_gate_passed": false,
+        "head": "a2aa2112231ba7595070216e659798130127dc3c",
+        "tree": "d468e02fa40a5014e838937486fa49185bc1e72d",
+        "entry": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+        "run_id": 35646270499,
+        "run_attempt": 1,
+        "service_metadata": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-failed-start-evidence/service-metadata.json",
+          "bytes": 38947,
+          "sha256": "59231597ce148eb133ec53a1acbb1d95d34fce9e89ef97b665cb953950b65da7"
+        },
+        "service_metadata_shape": "actual run object and jobs/artifacts lists; original raw API response strings separately retained",
+        "source": {
+          "tracked_files": 177,
+          "test_files": 47,
+          "changed_paths": [
+            "PHASE_3_PROGRESS.md",
+            "phase3/implementation_evidence.json",
+            "phase3/module_policy.json",
+            "phase3/obligation_coverage.json"
+          ],
+          "old_test_files_byte_preserved": 47,
+          "frozen_product_modules_byte_preserved": 48
+        },
+        "collection": {
+          "count": 2979,
+          "identity_sha256": "954da101161ff7bdb2022ad8221295a104c91b978a36d93a60fe800366d9626c",
+          "new_w05_instances": 0,
+          "meaning": "All 2979 accepted W04 identities are collected unchanged; the same inherited manifest case failed, so full predecessor pass retention and W05 implementation are not claimed."
+        },
+        "profiles": [
+          {
+            "profile": "ubuntu-24.04-py3.11",
+            "job_id": 106487391108,
+            "artifact_id": 10660860384,
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-failed-start-evidence/phase3-ubuntu-24.04-py3.11-35646270499-1.zip",
+              "bytes": 157085,
+              "sha256": "65e7d8103d3635895169f574756b9da2f7ac1c396dc0d6940293bc83a902bfd0"
+            },
+            "zip_crc_safe_paths_and_service_identity_verified": true,
+            "record_count": 28,
+            "records": {
+              "build-inventories.json": {
+                "bytes": 32432,
+                "sha256": "3f74a82712c48a6862ce747a5c8e6d4ede9899374dd98b15850c1444637d7400"
+              },
+              "check_phase0_baseline-after.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_phase0_baseline-before.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_scaffold_boundary-after.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "check_scaffold_boundary-before.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "collection.json": {
+                "bytes": 383991,
+                "sha256": "3ecaae5ac9b872216a71abd8d1bc427fb9515f7c53dd5d8356445e15bba5035b"
+              },
+              "collection.log": {
+                "bytes": 360381,
+                "sha256": "90ff84ba3c5dd87102ea10ced220f23de13350f137eb0c1e90274fc0a92bbac9"
+              },
+              "download.log": {
+                "bytes": 2507,
+                "sha256": "4875bdc93505ed6acc36cce47d32a13c4be95efd02afe5bca26c3a63b0061d2c"
+              },
+              "entry-and-scope.json": {
+                "bytes": 15529,
+                "sha256": "0b1c43319139801ed9ffb81f3ca5c74095181e60f2bb071bf42168113500a078"
+              },
+              "environment.json": {
+                "bytes": 396,
+                "sha256": "f5a62efcbfe136d6478446d403f1570274c95d35a8024b7f8edaf6c013526a34"
+              },
+              "evidence-failure.json": {
+                "bytes": 114,
+                "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+              },
+              "install-report.json": {
+                "bytes": 32816,
+                "sha256": "273f5bbcb598613a69b0423650d116baacfeedb4b18971646d4ef91346f2c111"
+              },
+              "install.log": {
+                "bytes": 1268,
+                "sha256": "9e33a56bd684b1336c1e4bd17ba589738d19a1ffeb6b5e29e8f0def434a99dd5"
+              },
+              "installed.json": {
+                "bytes": 159,
+                "sha256": "0b90722108474fe7e9ce6c39227d71704c4b3eb7068c6918d95542aa4d1b19d6"
+              },
+              "installed.log": {
+                "bytes": 411,
+                "sha256": "345a808b216c1682e6175eaf1994b58c213f5faebf6b6aee6b5f76ae62dfca9c"
+              },
+              "junit.xml": {
+                "bytes": 480761,
+                "sha256": "434f60be1bddd42b6a058fc64ccb7951dc92e74dbb1deacc73fdb03afefadaa4"
+              },
+              "pip-check.log": {
+                "bytes": 30,
+                "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+              },
+              "pip-version.log": {
+                "bytes": 98,
+                "sha256": "ceb89eeabca48017e410409171ac47221cc8827e99bc0f1ee35f3a179a13247d"
+              },
+              "preflight.json": {
+                "bytes": 146,
+                "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+              },
+              "pytest-exit.json": {
+                "bytes": 21,
+                "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+              },
+              "pytest.log": {
+                "bytes": 4032,
+                "sha256": "0ae2c0f4cba3a5f1b2a160f171667e5da9719541968298295d4aa8a31059bbfd"
+              },
+              "reviewed-wheels.json": {
+                "bytes": 12070,
+                "sha256": "078bed4529df5e11656eeef00c1c6e9a119d5a8423c590a836e20bbdf9c5aa5e"
+              },
+              "summary.json": {
+                "bytes": 599,
+                "sha256": "7a3939d904e6b2815bdf7db798ce56aa5e56d4e7dbee244c0943e69d3773ae8d"
+              },
+              "test-failure.json": {
+                "bytes": 93,
+                "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+              },
+              "tracked-after.json": {
+                "bytes": 19399,
+                "sha256": "da65ac54dff1fd2885a7dacb7f95a9a07cffefbb5f9a5d6fddac766c0003bccf"
+              },
+              "tracked-before.json": {
+                "bytes": 19399,
+                "sha256": "da65ac54dff1fd2885a7dacb7f95a9a07cffefbb5f9a5d6fddac766c0003bccf"
+              },
+              "venv.log": {
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "w08-installed-runtime.json": {
+                "bytes": 31255,
+                "sha256": "fc61e8742cb81fa0c44a673fcfa718749fc99bf53fab3b2249cb2b7ee9050e29"
+              }
+            },
+            "environment": {
+              "head": "a2aa2112231ba7595070216e659798130127dc3c",
+              "image_version": "20260907.300.1",
+              "matrix_os": "ubuntu-24.04",
+              "matrix_python": "3.11",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+              "run_attempt": "1",
+              "run_id": "35646270499",
+              "scope": "Phase 3 cumulative verification",
+              "unit": "P3-W05"
+            },
+            "tests": {
+              "collected_top_level": 2979,
+              "passed_top_level": 2978,
+              "failed_top_level": 1,
+              "errors": 0,
+              "skipped": 0,
+              "reported_events": 3407,
+              "successful_subtest_events": 428,
+              "failure_cases": [
+                {
+                  "node": "tests/scaffold/test_module_manifest.py::ModuleManifestTests::test_mutated_product_bytes_are_rejected",
+                  "message": "AssertionError: AssertionError not raised",
+                  "failure_text_sha256": "258b484268438bee0094544d7f14424b71f57a72cae1793aef3ed0e976538e9b"
+                }
+              ],
+              "identity_sha256": "954da101161ff7bdb2022ad8221295a104c91b978a36d93a60fe800366d9626c",
+              "seconds": 465.15
+            },
+            "retention": {
+              "w04": {
+                "collected": 2979,
+                "passed": 2978,
+                "failed": 1
+              },
+              "w03": {
+                "collected": 2364,
+                "passed": 2363,
+                "failed": 1
+              },
+              "w02": {
+                "collected": 2089,
+                "passed": 2088,
+                "failed": 1
+              },
+              "w01": {
+                "collected": 1786,
+                "passed": 1785,
+                "failed": 1
+              },
+              "phase2": {
+                "collected": 1650,
+                "passed": 1649,
+                "failed": 1
+              }
+            },
+            "new_w05_cases": 0,
+            "tracked_before_after_git_hashes_equal": true,
+            "tracked_file_count": 177,
+            "actual_guards_before_after_pass": true,
+            "developer_tools": {
+              "iniconfig": "2.3.0",
+              "packaging": "25.0",
+              "pip": "24.0",
+              "pluggy": "1.6.0",
+              "pygments": "2.20.0",
+              "pytest": "9.1.1",
+              "setuptools": "84.0.0"
+            },
+            "packaging": {
+              "status": "executed_and_component_cases_passed_despite_failed_full_gate",
+              "junit_cases_passed": [
+                "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+                "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+                "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+                "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+                "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+                "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+              ],
+              "build_inventories": [
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113082,
+                  "sha256": "ceeaf8fb141ad213ae1dcfc51f581ac700dcd140cc6204797cc7f17f47e0436a",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 97887,
+                  "sha256": "86a92a6068fe3d0691a031bd771c875d06d8732a8971e9928b5def36f786ae1e",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113082,
+                  "sha256": "2807999e3dc4940777a02b3bb4d649c9c3d6750ff95b09d12460d3c0456b37b0",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "installed_distribution_inventories": [
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 97889,
+                  "sha256": "b337c79da0dcbcfb52b02aa97fe4bad6898791472dfdbbb3592c7f7dbd4a0c69",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113082,
+                  "sha256": "0f0ab0455eda713495d7bbfcbdf8d6fffd9ea2b33e27f722024df0bf9b73ab94",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113082,
+                  "sha256": "ec0f3a17077a79f2dd8550a9512f8cf8841dad60f1b864b385e672b6fc652531",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "suite_installed_and_rebuilt_member_hashes_equal": true
+            },
+            "installed_runtime": {
+              "status": "executed_and_component_case_passed",
+              "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+              "module_hash_count": 48,
+              "module_hashes_match_named_code": true,
+              "record_sha256": "fc61e8742cb81fa0c44a673fcfa718749fc99bf53fab3b2249cb2b7ee9050e29",
+              "admitted_modes": 8,
+              "empty_refusals": 2,
+              "public_refusals": 2,
+              "negative_events": [
+                "open",
+                "socket.getaddrinfo",
+                "ctypes.dlopen"
+              ]
+            },
+            "failed_stage_records": {
+              "test": {
+                "error_type": "ValueError",
+                "message": "accumulated_suite_failed",
+                "stage": "test"
+              },
+              "evidence": {
+                "error_type": "ValueError",
+                "message": "required_CI_evidence_failed_or_incomplete",
+                "stage": "evidence"
+              }
+            },
+            "service_step_conclusions": {
+              "Set up job": "success",
+              "Checkout exact candidate without stored credentials": "success",
+              "Select reviewed CPython minor": "success",
+              "Check actual checkout and guards": "success",
+              "Review and install pinned development wheels": "success",
+              "Collect and run all cumulative tests": "failure",
+              "Record results, archives and unchanged checkout": "failure",
+              "Preserve verification records only": "success",
+              "Post Select reviewed CPython minor": "skipped",
+              "Post Checkout exact candidate without stored credentials": "success",
+              "Complete job": "success"
+            },
+            "not_executed_service_steps": [
+              "Post Select reviewed CPython minor"
+            ],
+            "overall_acceptance_gate_passed": false
+          },
+          {
+            "profile": "ubuntu-24.04-py3.13",
+            "job_id": 106487391383,
+            "artifact_id": 10660324214,
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-failed-start-evidence/phase3-ubuntu-24.04-py3.13-35646270499-1.zip",
+              "bytes": 157679,
+              "sha256": "a5e51f868d739c0e8af793897bc83966e9f688921e8669cdf23a37f58daaa68e"
+            },
+            "zip_crc_safe_paths_and_service_identity_verified": true,
+            "record_count": 28,
+            "records": {
+              "build-inventories.json": {
+                "bytes": 32432,
+                "sha256": "286f6b90979a0b720fa2df359c16c89ce6a8d4466f63a33f25792fe4bf10e121"
+              },
+              "check_phase0_baseline-after.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_phase0_baseline-before.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_scaffold_boundary-after.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "check_scaffold_boundary-before.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "collection.json": {
+                "bytes": 383991,
+                "sha256": "3ecaae5ac9b872216a71abd8d1bc427fb9515f7c53dd5d8356445e15bba5035b"
+              },
+              "collection.log": {
+                "bytes": 360381,
+                "sha256": "332a6b18c2e2344f70f46e04787f663ee99acb0c9769f2f80f163894a99003fe"
+              },
+              "download.log": {
+                "bytes": 2059,
+                "sha256": "b6a048c7d75830209e0eb355f95608b9cbb64f6df386e60d8b62fc7515d3ee35"
+              },
+              "entry-and-scope.json": {
+                "bytes": 15529,
+                "sha256": "0b1c43319139801ed9ffb81f3ca5c74095181e60f2bb071bf42168113500a078"
+              },
+              "environment.json": {
+                "bytes": 396,
+                "sha256": "39b59aeb2c918a8f20ea19723477b20ebcb5ebc92affe79bd158cd527a1e5f94"
+              },
+              "evidence-failure.json": {
+                "bytes": 114,
+                "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+              },
+              "install-report.json": {
+                "bytes": 33391,
+                "sha256": "508d4798943bc6fb61ed55c7ecd0c9c270274bd593f29ae58f7301d89de09c0d"
+              },
+              "install.log": {
+                "bytes": 1098,
+                "sha256": "98d699f81a05b33495adb15233fd08eb9be4f5842728f4224918e0f2e9c3cd33"
+              },
+              "installed.json": {
+                "bytes": 161,
+                "sha256": "0a0d3552010093d986087b09b83ed2239caeaee29d16617ef8cc5d742bd2d79d"
+              },
+              "installed.log": {
+                "bytes": 292,
+                "sha256": "120061c6416dd49dcc728de728bcbe218a78f44d8065e557208a43645a991fd9"
+              },
+              "junit.xml": {
+                "bytes": 480761,
+                "sha256": "5b5218280c9647ead1c692ffa97aa136826b9e8e7a078fd0011c096b9ac84da4"
+              },
+              "pip-check.log": {
+                "bytes": 30,
+                "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+              },
+              "pip-version.log": {
+                "bytes": 100,
+                "sha256": "86a2c143704638f8e94a855ed34b7ff387fc7268e64d75c0863ae7f9164a8391"
+              },
+              "preflight.json": {
+                "bytes": 146,
+                "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+              },
+              "pytest-exit.json": {
+                "bytes": 21,
+                "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+              },
+              "pytest.log": {
+                "bytes": 4032,
+                "sha256": "fa2fbc076b629bd85c60d0dbbb43b4d43cb799fb8394874e58ad9e1359dc1956"
+              },
+              "reviewed-wheels.json": {
+                "bytes": 12070,
+                "sha256": "078bed4529df5e11656eeef00c1c6e9a119d5a8423c590a836e20bbdf9c5aa5e"
+              },
+              "summary.json": {
+                "bytes": 599,
+                "sha256": "7a3939d904e6b2815bdf7db798ce56aa5e56d4e7dbee244c0943e69d3773ae8d"
+              },
+              "test-failure.json": {
+                "bytes": 93,
+                "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+              },
+              "tracked-after.json": {
+                "bytes": 19399,
+                "sha256": "da65ac54dff1fd2885a7dacb7f95a9a07cffefbb5f9a5d6fddac766c0003bccf"
+              },
+              "tracked-before.json": {
+                "bytes": 19399,
+                "sha256": "da65ac54dff1fd2885a7dacb7f95a9a07cffefbb5f9a5d6fddac766c0003bccf"
+              },
+              "venv.log": {
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "w08-installed-runtime.json": {
+                "bytes": 31255,
+                "sha256": "0b111385d12b9e84b80c637f61a9aa0071b5691535825e00a723240bfa6fc42f"
+              }
+            },
+            "environment": {
+              "head": "a2aa2112231ba7595070216e659798130127dc3c",
+              "image_version": "20260907.300.1",
+              "matrix_os": "ubuntu-24.04",
+              "matrix_python": "3.13",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+              "run_attempt": "1",
+              "run_id": "35646270499",
+              "scope": "Phase 3 cumulative verification",
+              "unit": "P3-W05"
+            },
+            "tests": {
+              "collected_top_level": 2979,
+              "passed_top_level": 2978,
+              "failed_top_level": 1,
+              "errors": 0,
+              "skipped": 0,
+              "reported_events": 3407,
+              "successful_subtest_events": 428,
+              "failure_cases": [
+                {
+                  "node": "tests/scaffold/test_module_manifest.py::ModuleManifestTests::test_mutated_product_bytes_are_rejected",
+                  "message": "AssertionError: AssertionError not raised",
+                  "failure_text_sha256": "258b484268438bee0094544d7f14424b71f57a72cae1793aef3ed0e976538e9b"
+                }
+              ],
+              "identity_sha256": "954da101161ff7bdb2022ad8221295a104c91b978a36d93a60fe800366d9626c",
+              "seconds": 397.32
+            },
+            "retention": {
+              "w04": {
+                "collected": 2979,
+                "passed": 2978,
+                "failed": 1
+              },
+              "w03": {
+                "collected": 2364,
+                "passed": 2363,
+                "failed": 1
+              },
+              "w02": {
+                "collected": 2089,
+                "passed": 2088,
+                "failed": 1
+              },
+              "w01": {
+                "collected": 1786,
+                "passed": 1785,
+                "failed": 1
+              },
+              "phase2": {
+                "collected": 1650,
+                "passed": 1649,
+                "failed": 1
+              }
+            },
+            "new_w05_cases": 0,
+            "tracked_before_after_git_hashes_equal": true,
+            "tracked_file_count": 177,
+            "actual_guards_before_after_pass": true,
+            "developer_tools": {
+              "iniconfig": "2.3.0",
+              "packaging": "25.0",
+              "pip": "26.2.1",
+              "pluggy": "1.6.0",
+              "pygments": "2.20.0",
+              "pytest": "9.1.1",
+              "setuptools": "84.0.0"
+            },
+            "packaging": {
+              "status": "executed_and_component_cases_passed_despite_failed_full_gate",
+              "junit_cases_passed": [
+                "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+                "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+                "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+                "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+                "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+                "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+              ],
+              "build_inventories": [
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113082,
+                  "sha256": "854bd9778d8e688b524bc8ea753b5817d1b9216e032339d67fdef75f2518e403",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 97894,
+                  "sha256": "184145c8ef726713eb8d2f6f0ad4ea24d5a6d9b0c67e53ffd5a3dc221f555f93",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113082,
+                  "sha256": "76c71c2e45fe810078019b3e4a2799b72158e682af55cee889a61438102e7430",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "installed_distribution_inventories": [
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 97896,
+                  "sha256": "4c77fdf767d9f57e5ed4e6c234e642709441dacd9ae117eba5c1011557457bec",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113082,
+                  "sha256": "03c5bd6ecf14a76b3d0b1fde1a89ae8dbdcebd3e989f47e8efbea7b3a2fbb460",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113082,
+                  "sha256": "918fc8f38da52751c26fa5e104c0b71d481a47f4870d01c1160c806990288293",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "suite_installed_and_rebuilt_member_hashes_equal": true
+            },
+            "installed_runtime": {
+              "status": "executed_and_component_case_passed",
+              "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+              "module_hash_count": 48,
+              "module_hashes_match_named_code": true,
+              "record_sha256": "0b111385d12b9e84b80c637f61a9aa0071b5691535825e00a723240bfa6fc42f",
+              "admitted_modes": 8,
+              "empty_refusals": 2,
+              "public_refusals": 2,
+              "negative_events": [
+                "open",
+                "socket.getaddrinfo",
+                "ctypes.dlopen"
+              ]
+            },
+            "failed_stage_records": {
+              "test": {
+                "error_type": "ValueError",
+                "message": "accumulated_suite_failed",
+                "stage": "test"
+              },
+              "evidence": {
+                "error_type": "ValueError",
+                "message": "required_CI_evidence_failed_or_incomplete",
+                "stage": "evidence"
+              }
+            },
+            "service_step_conclusions": {
+              "Set up job": "success",
+              "Checkout exact candidate without stored credentials": "success",
+              "Select reviewed CPython minor": "success",
+              "Check actual checkout and guards": "success",
+              "Review and install pinned development wheels": "success",
+              "Collect and run all cumulative tests": "failure",
+              "Record results, archives and unchanged checkout": "failure",
+              "Preserve verification records only": "success",
+              "Post Select reviewed CPython minor": "skipped",
+              "Post Checkout exact candidate without stored credentials": "success",
+              "Complete job": "success"
+            },
+            "not_executed_service_steps": [
+              "Post Select reviewed CPython minor"
+            ],
+            "overall_acceptance_gate_passed": false
+          },
+          {
+            "profile": "windows-2025-py3.11",
+            "job_id": 106487391339,
+            "artifact_id": 10660676523,
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-failed-start-evidence/phase3-windows-2025-py3.11-35646270499-1.zip",
+              "bytes": 163703,
+              "sha256": "71fd40c3bc3ec3a5a0b294e08b09b1c1dec9443f656edefe3363365b8410c78b"
+            },
+            "zip_crc_safe_paths_and_service_identity_verified": true,
+            "record_count": 28,
+            "records": {
+              "build-inventories.json": {
+                "bytes": 32432,
+                "sha256": "31722a4098e71b6e62ef7b2eb016658bacb3ff5151a0be953bba6ed515c15544"
+              },
+              "check_phase0_baseline-after.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_phase0_baseline-before.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_scaffold_boundary-after.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "check_scaffold_boundary-before.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "collection.json": {
+                "bytes": 383991,
+                "sha256": "3ecaae5ac9b872216a71abd8d1bc427fb9515f7c53dd5d8356445e15bba5035b"
+              },
+              "collection.log": {
+                "bytes": 360381,
+                "sha256": "21e3fbbb5f8b4511edbd2e78a5ff8efd5bd14d071fb916cca1b58649293c61c1"
+              },
+              "download.log": {
+                "bytes": 2322,
+                "sha256": "7b5a4a6429a9e5bf8b86518e98e80f78d1c8c47981dd91d7cfb45fb6c2eb96f6"
+              },
+              "entry-and-scope.json": {
+                "bytes": 15529,
+                "sha256": "0b1c43319139801ed9ffb81f3ca5c74095181e60f2bb071bf42168113500a078"
+              },
+              "environment.json": {
+                "bytes": 406,
+                "sha256": "190e5c83445131fe3027717234ddf980cf3bf26f849e28dee9ce71ac2bbc20e2"
+              },
+              "evidence-failure.json": {
+                "bytes": 114,
+                "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+              },
+              "install-report.json": {
+                "bytes": 51537,
+                "sha256": "4ed084f4320d8edc0b272ef8a0673ebaefd862392b04ffc966e7090aeaab9e32"
+              },
+              "install.log": {
+                "bytes": 1237,
+                "sha256": "36b3a5d274085a0cec3146ca641ac792a3bb7aedfac23feb7281b5bf7c356089"
+              },
+              "installed.json": {
+                "bytes": 182,
+                "sha256": "4071d04e83f11ceff778b82e3e9836498dad040b887a59397c9af5306d374c26"
+              },
+              "installed.log": {
+                "bytes": 489,
+                "sha256": "f57bf0d17717397b9920109736a1fc2ccef746ac9f830b931cd24f06cf71d147"
+              },
+              "junit.xml": {
+                "bytes": 480766,
+                "sha256": "cce439291b249bfee95137e8f0aa52658b301c204e7555bdbb9bcb9681d65454"
+              },
+              "pip-check.log": {
+                "bytes": 30,
+                "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+              },
+              "pip-version.log": {
+                "bytes": 75,
+                "sha256": "7cfa4c2281b58f71710362aa99a0d8527e1d2626ce028fa04b6c5089ab6e9303"
+              },
+              "preflight.json": {
+                "bytes": 146,
+                "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+              },
+              "pytest-exit.json": {
+                "bytes": 21,
+                "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+              },
+              "pytest.log": {
+                "bytes": 4029,
+                "sha256": "227389b592090566253b18cdc1e5018a98b94919389d6ada12dbfa5a73e996f3"
+              },
+              "reviewed-wheels.json": {
+                "bytes": 12697,
+                "sha256": "10f80797b0a7895c5b23773f8a22fec17abe506b23b93270f395c1fce2587824"
+              },
+              "summary.json": {
+                "bytes": 599,
+                "sha256": "7a3939d904e6b2815bdf7db798ce56aa5e56d4e7dbee244c0943e69d3773ae8d"
+              },
+              "test-failure.json": {
+                "bytes": 93,
+                "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+              },
+              "tracked-after.json": {
+                "bytes": 19399,
+                "sha256": "da65ac54dff1fd2885a7dacb7f95a9a07cffefbb5f9a5d6fddac766c0003bccf"
+              },
+              "tracked-before.json": {
+                "bytes": 19399,
+                "sha256": "da65ac54dff1fd2885a7dacb7f95a9a07cffefbb5f9a5d6fddac766c0003bccf"
+              },
+              "venv.log": {
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "w08-installed-runtime.json": {
+                "bytes": 31523,
+                "sha256": "82b9984aeea2e17896faa805999af13ec81a15a454a04daca1e81ba779820bba"
+              }
+            },
+            "environment": {
+              "head": "a2aa2112231ba7595070216e659798130127dc3c",
+              "image_version": "20260907.229.1",
+              "matrix_os": "windows-2025",
+              "matrix_python": "3.11",
+              "platform": "Windows-10-10.0.26100-SP0",
+              "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+              "run_attempt": "1",
+              "run_id": "35646270499",
+              "scope": "Phase 3 cumulative verification",
+              "unit": "P3-W05"
+            },
+            "tests": {
+              "collected_top_level": 2979,
+              "passed_top_level": 2978,
+              "failed_top_level": 1,
+              "errors": 0,
+              "skipped": 0,
+              "reported_events": 3407,
+              "successful_subtest_events": 428,
+              "failure_cases": [
+                {
+                  "node": "tests/scaffold/test_module_manifest.py::ModuleManifestTests::test_mutated_product_bytes_are_rejected",
+                  "message": "AssertionError: AssertionError not raised",
+                  "failure_text_sha256": "97968c1f836864d1d27ce434ce825598f3374d8605cefb8cc67a23b1815680b8"
+                }
+              ],
+              "identity_sha256": "954da101161ff7bdb2022ad8221295a104c91b978a36d93a60fe800366d9626c",
+              "seconds": 569.82
+            },
+            "retention": {
+              "w04": {
+                "collected": 2979,
+                "passed": 2978,
+                "failed": 1
+              },
+              "w03": {
+                "collected": 2364,
+                "passed": 2363,
+                "failed": 1
+              },
+              "w02": {
+                "collected": 2089,
+                "passed": 2088,
+                "failed": 1
+              },
+              "w01": {
+                "collected": 1786,
+                "passed": 1785,
+                "failed": 1
+              },
+              "phase2": {
+                "collected": 1650,
+                "passed": 1649,
+                "failed": 1
+              }
+            },
+            "new_w05_cases": 0,
+            "tracked_before_after_git_hashes_equal": true,
+            "tracked_file_count": 177,
+            "actual_guards_before_after_pass": true,
+            "developer_tools": {
+              "colorama": "0.4.6",
+              "iniconfig": "2.3.0",
+              "packaging": "25.0",
+              "pip": "24.0",
+              "pluggy": "1.6.0",
+              "pygments": "2.20.0",
+              "pytest": "9.1.1",
+              "setuptools": "84.0.0"
+            },
+            "packaging": {
+              "status": "executed_and_component_cases_passed_despite_failed_full_gate",
+              "junit_cases_passed": [
+                "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+                "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+                "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+                "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+                "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+                "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+              ],
+              "build_inventories": [
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113100,
+                  "sha256": "7acf7b489086d0f743e6e2cf5a3360324f64df85c39ae7bd55a805a4de965e7b",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 98017,
+                  "sha256": "caad6e6a3a44483b0c036acdc55948e41d5456c70b2cd20b68b96d2e693deb31",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113100,
+                  "sha256": "a4ece0c33c145306c6e9e8495c2742146d586faa3cd6767d7e93f7a492fc39e2",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "installed_distribution_inventories": [
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 98049,
+                  "sha256": "d41f7452500bae0155bdac82756e7e931d270483e136dc498af08de7dbb560d8",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113100,
+                  "sha256": "1b7e2631b776b221ae47229008e95b3f6a0c5cd34501fc110d91edeb2a9b62da",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113100,
+                  "sha256": "4b35d05ab45872202d40c29765f3af2ef4d237be3a4dd825836b11a9ef732124",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "suite_installed_and_rebuilt_member_hashes_equal": true
+            },
+            "installed_runtime": {
+              "status": "executed_and_component_case_passed",
+              "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+              "module_hash_count": 48,
+              "module_hashes_match_named_code": true,
+              "record_sha256": "82b9984aeea2e17896faa805999af13ec81a15a454a04daca1e81ba779820bba",
+              "admitted_modes": 8,
+              "empty_refusals": 2,
+              "public_refusals": 2,
+              "negative_events": [
+                "open",
+                "socket.getaddrinfo",
+                "ctypes.dlopen"
+              ]
+            },
+            "failed_stage_records": {
+              "test": {
+                "error_type": "ValueError",
+                "message": "accumulated_suite_failed",
+                "stage": "test"
+              },
+              "evidence": {
+                "error_type": "ValueError",
+                "message": "required_CI_evidence_failed_or_incomplete",
+                "stage": "evidence"
+              }
+            },
+            "service_step_conclusions": {
+              "Set up job": "success",
+              "Checkout exact candidate without stored credentials": "success",
+              "Select reviewed CPython minor": "success",
+              "Check actual checkout and guards": "success",
+              "Review and install pinned development wheels": "success",
+              "Collect and run all cumulative tests": "failure",
+              "Record results, archives and unchanged checkout": "failure",
+              "Preserve verification records only": "success",
+              "Post Select reviewed CPython minor": "skipped",
+              "Post Checkout exact candidate without stored credentials": "success",
+              "Complete job": "success"
+            },
+            "not_executed_service_steps": [
+              "Post Select reviewed CPython minor"
+            ],
+            "overall_acceptance_gate_passed": false
+          },
+          {
+            "profile": "windows-2025-py3.13",
+            "job_id": 106487391397,
+            "artifact_id": 10660761110,
+            "zip": {
+              "path": "/workspace/scratch/5e401153f47f/p3w05-failed-start-evidence/phase3-windows-2025-py3.13-35646270499-1.zip",
+              "bytes": 163502,
+              "sha256": "dc70c7b501f89837101512843453f328649fba3a50d137a5c99318fd4d75ae60"
+            },
+            "zip_crc_safe_paths_and_service_identity_verified": true,
+            "record_count": 28,
+            "records": {
+              "build-inventories.json": {
+                "bytes": 32432,
+                "sha256": "c774ef676f202b9b04ff021cc4e5118ca8c52417edfdfd6a7798d6bb13e846de"
+              },
+              "check_phase0_baseline-after.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_phase0_baseline-before.log": {
+                "bytes": 126,
+                "sha256": "22d8c5cba2d6e344cc3d77356df69de9cfbae3d8a697ebe6f3422c2c1b8e7ce1"
+              },
+              "check_scaffold_boundary-after.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "check_scaffold_boundary-before.log": {
+                "bytes": 891,
+                "sha256": "efedf83f1abc862ebc349b3560b2585cf8de5a601a866b5a53da1769b61fe24e"
+              },
+              "collection.json": {
+                "bytes": 383991,
+                "sha256": "3ecaae5ac9b872216a71abd8d1bc427fb9515f7c53dd5d8356445e15bba5035b"
+              },
+              "collection.log": {
+                "bytes": 360381,
+                "sha256": "f113866f07a35c3e4e0f353765679c9c26daddf8664943c0e6b9f86da5148f36"
+              },
+              "download.log": {
+                "bytes": 2009,
+                "sha256": "5e99e69cb27bc8e4d8b6158e0f60beb7943b330ef26628d7edad8e3489598a74"
+              },
+              "entry-and-scope.json": {
+                "bytes": 15529,
+                "sha256": "0b1c43319139801ed9ffb81f3ca5c74095181e60f2bb071bf42168113500a078"
+              },
+              "environment.json": {
+                "bytes": 416,
+                "sha256": "aacc12775eabef52f00974baa04404cb8df6e96075f53047dea9595601f4d853"
+              },
+              "evidence-failure.json": {
+                "bytes": 114,
+                "sha256": "853c01e54c99eeb723abf5249f1756d6b0ec0e98d8183660577fa129e236d00b"
+              },
+              "install-report.json": {
+                "bytes": 52211,
+                "sha256": "7fb7b472ac281c6de1524c7c0b29a5e08b96da6007acfceb2e68eb2d5a1c1308"
+              },
+              "install.log": {
+                "bytes": 1067,
+                "sha256": "eb4b657a06ac7ab3474d276949291de44026266a3f97578fe342f6fa406ac0f7"
+              },
+              "installed.json": {
+                "bytes": 184,
+                "sha256": "99c1a0779e6968a946fd5ff32025b7a9aed155878382f6e3a27cd2463f1b6df0"
+              },
+              "installed.log": {
+                "bytes": 334,
+                "sha256": "39b611e3708470417aa45a755f6525d13a4bfc9976ed7e9ad22df6507f34a121"
+              },
+              "junit.xml": {
+                "bytes": 480766,
+                "sha256": "c4b1636dffb804836231ac6e434328882ec438c81537ec1032a1415b27bab49a"
+              },
+              "pip-check.log": {
+                "bytes": 30,
+                "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+              },
+              "pip-version.log": {
+                "bytes": 77,
+                "sha256": "ca24d5116b3334ef27a7e296c738fa27479febd42897574f7f9461745eaec2af"
+              },
+              "preflight.json": {
+                "bytes": 146,
+                "sha256": "c4f626460d50a059126f01fbc6b437ba9a8cc89bb5a41ff0a46495b98acd9fa2"
+              },
+              "pytest-exit.json": {
+                "bytes": 21,
+                "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+              },
+              "pytest.log": {
+                "bytes": 4029,
+                "sha256": "2feb03accc781afa7d21de396f9f64301c1216e16399ec888721692d84415da1"
+              },
+              "reviewed-wheels.json": {
+                "bytes": 12697,
+                "sha256": "10f80797b0a7895c5b23773f8a22fec17abe506b23b93270f395c1fce2587824"
+              },
+              "summary.json": {
+                "bytes": 599,
+                "sha256": "7a3939d904e6b2815bdf7db798ce56aa5e56d4e7dbee244c0943e69d3773ae8d"
+              },
+              "test-failure.json": {
+                "bytes": 93,
+                "sha256": "171176f8f4e6ffba2f5b277b96f82cec6768c7e06756ce0b58cb5147fff21973"
+              },
+              "tracked-after.json": {
+                "bytes": 19399,
+                "sha256": "da65ac54dff1fd2885a7dacb7f95a9a07cffefbb5f9a5d6fddac766c0003bccf"
+              },
+              "tracked-before.json": {
+                "bytes": 19399,
+                "sha256": "da65ac54dff1fd2885a7dacb7f95a9a07cffefbb5f9a5d6fddac766c0003bccf"
+              },
+              "venv.log": {
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "w08-installed-runtime.json": {
+                "bytes": 31523,
+                "sha256": "8ec5b152513c3aeb8646ffcaa609b956d63c529a38f23e9bc86b63a0c1a9eda8"
+              }
+            },
+            "environment": {
+              "head": "a2aa2112231ba7595070216e659798130127dc3c",
+              "image_version": "20260907.229.1",
+              "matrix_os": "windows-2025",
+              "matrix_python": "3.13",
+              "platform": "Windows-2025Server-10.0.26100-SP0",
+              "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+              "run_attempt": "1",
+              "run_id": "35646270499",
+              "scope": "Phase 3 cumulative verification",
+              "unit": "P3-W05"
+            },
+            "tests": {
+              "collected_top_level": 2979,
+              "passed_top_level": 2978,
+              "failed_top_level": 1,
+              "errors": 0,
+              "skipped": 0,
+              "reported_events": 3407,
+              "successful_subtest_events": 428,
+              "failure_cases": [
+                {
+                  "node": "tests/scaffold/test_module_manifest.py::ModuleManifestTests::test_mutated_product_bytes_are_rejected",
+                  "message": "AssertionError: AssertionError not raised",
+                  "failure_text_sha256": "97968c1f836864d1d27ce434ce825598f3374d8605cefb8cc67a23b1815680b8"
+                }
+              ],
+              "identity_sha256": "954da101161ff7bdb2022ad8221295a104c91b978a36d93a60fe800366d9626c",
+              "seconds": 554.01
+            },
+            "retention": {
+              "w04": {
+                "collected": 2979,
+                "passed": 2978,
+                "failed": 1
+              },
+              "w03": {
+                "collected": 2364,
+                "passed": 2363,
+                "failed": 1
+              },
+              "w02": {
+                "collected": 2089,
+                "passed": 2088,
+                "failed": 1
+              },
+              "w01": {
+                "collected": 1786,
+                "passed": 1785,
+                "failed": 1
+              },
+              "phase2": {
+                "collected": 1650,
+                "passed": 1649,
+                "failed": 1
+              }
+            },
+            "new_w05_cases": 0,
+            "tracked_before_after_git_hashes_equal": true,
+            "tracked_file_count": 177,
+            "actual_guards_before_after_pass": true,
+            "developer_tools": {
+              "colorama": "0.4.6",
+              "iniconfig": "2.3.0",
+              "packaging": "25.0",
+              "pip": "26.2.1",
+              "pluggy": "1.6.0",
+              "pygments": "2.20.0",
+              "pytest": "9.1.1",
+              "setuptools": "84.0.0"
+            },
+            "packaging": {
+              "status": "executed_and_component_cases_passed_despite_failed_full_gate",
+              "junit_cases_passed": [
+                "tests/scaffold/test_packaging.py::test_declared_toolchain_is_actually_available",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[nt-[egg_info]\\r\\ntag_build = \\r\\ntag_date = 0\\r\\n\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_exact_platform_bytes[posix-[egg_info]\\ntag_build = \\ntag_date = 0\\n\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[nt-\\r\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_extra_or_malformed_content[posix-\\n]",
+                "tests/scaffold/test_packaging.py::test_generated_setup_cfg_rejects_unreviewed_platform",
+                "tests/scaffold/test_packaging.py::test_project_metadata_and_runtime_dependency_boundary",
+                "tests/scaffold/test_packaging.py::test_source_distribution_inventory",
+                "tests/scaffold/test_packaging.py::test_source_distribution_rebuilds_same_package",
+                "tests/scaffold/test_packaging.py::test_wheel_installs_without_developer_tools",
+                "tests/scaffold/test_packaging.py::test_wheel_inventory_and_metadata"
+              ],
+              "build_inventories": [
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113100,
+                  "sha256": "8ef3b0372c392149d159574830028827fd42e6093573ce7a6d152131c52b33fc",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 98054,
+                  "sha256": "45c5d1051f8b3640be8b72b2beb4f93df2e3dfa3d527bbc33701016a123cf762",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113100,
+                  "sha256": "28523eba9fa1ac7dca9de73259b0d5db2a2dbb6d8302b114206f4d8057bfb219",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "installed_distribution_inventories": [
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+                  "bytes": 98055,
+                  "sha256": "08ef477a7b8587a112cae7a5d368b289b5a7f43bb16bee4f23aab728391cdaae",
+                  "regular_member_count": 65,
+                  "source_hashes_compared": 58
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113100,
+                  "sha256": "6ea82e85550f30c629258413e2aa9bdb361e80265358e25cce591c8bc4fdf909",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                },
+                {
+                  "path": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+                  "bytes": 113100,
+                  "sha256": "b2219bb7f571eb454326800f411c9b5336362b1f1cd909dc98355c91b53ccc45",
+                  "regular_member_count": 55,
+                  "source_hashes_compared": 48
+                }
+              ],
+              "suite_installed_and_rebuilt_member_hashes_equal": true
+            },
+            "installed_runtime": {
+              "status": "executed_and_component_case_passed",
+              "junit_node": "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+              "module_hash_count": 48,
+              "module_hashes_match_named_code": true,
+              "record_sha256": "8ec5b152513c3aeb8646ffcaa609b956d63c529a38f23e9bc86b63a0c1a9eda8",
+              "admitted_modes": 8,
+              "empty_refusals": 2,
+              "public_refusals": 2,
+              "negative_events": [
+                "open",
+                "socket.getaddrinfo",
+                "ctypes.dlopen"
+              ]
+            },
+            "failed_stage_records": {
+              "test": {
+                "error_type": "ValueError",
+                "message": "accumulated_suite_failed",
+                "stage": "test"
+              },
+              "evidence": {
+                "error_type": "ValueError",
+                "message": "required_CI_evidence_failed_or_incomplete",
+                "stage": "evidence"
+              }
+            },
+            "service_step_conclusions": {
+              "Set up job": "success",
+              "Checkout exact candidate without stored credentials": "success",
+              "Select reviewed CPython minor": "success",
+              "Check actual checkout and guards": "success",
+              "Review and install pinned development wheels": "success",
+              "Collect and run all cumulative tests": "failure",
+              "Record results, archives and unchanged checkout": "failure",
+              "Preserve verification records only": "success",
+              "Post Select reviewed CPython minor": "skipped",
+              "Post Checkout exact candidate without stored credentials": "success",
+              "Complete job": "success"
+            },
+            "not_executed_service_steps": [
+              "Post Select reviewed CPython minor"
+            ],
+            "overall_acceptance_gate_passed": false
+          }
+        ],
+        "same_manifest_failure_all_four_profiles": [
+          "tests/scaffold/test_module_manifest.py::ModuleManifestTests::test_mutated_product_bytes_are_rejected"
+        ],
+        "original_service_api_responses": {
+          "path": "/workspace/scratch/5e401153f47f/p3w05-failed-start-evidence/service-api-responses.json",
+          "bytes": 33841,
+          "sha256": "6d065cb14bede5a1ffe4422cb00814f444e7a22e0e9432b00f29b434b6cfd48d"
+        },
+        "normalized_metadata_matches_original_api_responses": true,
+        "local_evidence": "Earlier isolated policy-only probes are separately identified diagnostic runs; no full local invocation at this hosted checkpoint is invented or substituted.",
+        "post_gate_finding": "Packaging and clean-installed runtime cases executed and passed inside the cumulative suite. The always-run evidence step collected archives, checked after-state and guards, wrote summary.json, then deliberately failed the overall acceptance condition. There is no missing packaging/installed execution in these artifacts. The only service-skipped step in each job is Post Select reviewed CPython minor; the successful full-suite/overall gate remains unmet.",
+        "normal_success_auditor_unchanged_sha256": "f6db7bb8a8120c5fb6d2a0d4b664565e57d0318d1f03de780af260f2b7648e21",
+        "forensic_script_sha256": "36b1064a010bdf3143dcde5ad238e6b6bc8eb0ab217d4f4bf971b48fd1eeda7c",
+        "limitations": [
+          "Failed whole-run evidence cannot qualify W05 or any later successor. No repair authorization or fix is inferred.",
+          "Parsing and Git comparisons only; no product/test/runtime re-execution was performed.",
+          "Package binaries are absent; only retained executed member inventories, source hashes and JUnit/runtime records are rechecked. No whole-archive reproducibility is claimed.",
+          "Installed open/DNS/native probes are finite warm-import evidence, not a hostile same-process or native security certification.",
+          "Assertion locations and messages identify observed failures; fixture-repair scope and any amendment remain a separate review decision.",
+          "Shared assistant environment/tool provenance; not external certification."
+        ]
+      },
+      "forensic_audit_file": {
+        "path": "p3w05-failed-start-evidence/failed-code-audit.json",
+        "sha256": "ac91b4aea0f6943b6e54da00f513aec88abd1719e62821684ce1a7a050944338",
+        "bytes": 52392
+      }
+    }
   },
   "scope": {
     "raw_plan_paths": [
@@ -7802,40 +9111,1125 @@
       "src/source_integrity_toolkit/analysis/origins.py",
       "tests/unit/test_inventory.py",
       "tests/unit/test_origins.py",
-      "tests/unit/test_ancestry_frontiers.py"
-    ],
-    "proposed_amendment": "P3-W05-R01",
-    "proposed_additional_paths": [
+      "tests/unit/test_ancestry_frontiers.py",
       "tests/scaffold/test_module_manifest.py",
       "tests/scaffold/test_ci_contract.py",
       "tests/contract/test_phase3_transition.py",
       "phase3/transition_ledger.md"
     ],
-    "proposed_additional_paths_authorized": false
+    "amendment": "P3-W05-R01",
+    "approved_additional_paths": [
+      "tests/scaffold/test_module_manifest.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py",
+      "phase3/transition_ledger.md"
+    ],
+    "amendment_approved": true,
+    "pre_amendment_head": "a2aa2112231ba7595070216e659798130127dc3c",
+    "pre_amendment_tree": "d468e02fa40a5014e838937486fa49185bc1e72d",
+    "pre_amendment_parent": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+    "temporal_rule": "Original nine paths through fixed pre-boundary DAG; only subsequent W05 descendants have thirteen. Other units retain their own immediate scopes."
   },
   "product_boundary": {
-    "status": "all_48_product_modules_unchanged_at_stop",
+    "status": "two_scheduled_private_analysis_modules_implemented",
     "scheduled_live_slots": 20,
     "scheduled_inert_slots": 28,
-    "new_w05_implementation_completed": false,
-    "existing_implementation_modules": 18,
-    "w05_modules_still_scaffold": [
-      "analysis/inventory.py",
-      "analysis/origins.py"
-    ],
+    "existing_implementation_modules": 20,
+    "new_w05_implementation_completed": true,
+    "accepted_w04_product_files_frozen": 46,
+    "planning_entry_files_protected": 34,
     "public_report_and_native_release_implemented": false
   },
   "implementation": {
-    "status": "paused_before_product_implementation",
-    "planned_families": [
+    "status": "implemented_pending_exact_head_acceptance",
+    "families": [
       "SIT-M001",
       "SIT-M002",
       "SIT-M007"
     ],
-    "planned_field_count": 12,
+    "field_count": 12,
     "planned_core_obligations": 48,
     "new_core_obligations_verified": 0,
-    "new_tests_committed": 0
+    "new_test_files": 3,
+    "scope": "Private owner-local components with actual preparation, job budgets, qualified graph primitives and the shared witness ledger. Whole invocation integration remains W13.",
+    "technical_review": {
+      "status": "pass",
+      "unit": "P3-W05",
+      "review_scope": "Independent source/spec review, actual admitted paired probes, and readback of final focused raw test evidence; no cumulative-suite or hosted-CI assertion.",
+      "source_sha256": {
+        "src/source_integrity_toolkit/analysis/inventory.py": "a79e22224ed5ce60c1c38dc68d737bcaa7e832fa404484a53ddde32961631b08",
+        "src/source_integrity_toolkit/analysis/origins.py": "de77914facb7cfabc7390dcd84cbbc80c8c9823f67d3e2bcb8e826ec21b7fac0"
+      },
+      "test_sha256": {
+        "tests/unit/test_inventory.py": "c84ae72fa7f56f728bc3830936e18e46944358610e475c8af320bc3db195f2ab",
+        "tests/unit/test_origins.py": "4b529c0950a4874fcec7ea18139a5b1ab0369d6bd6cfd36c8eb9896eb3726915",
+        "tests/unit/test_ancestry_frontiers.py": "53669615bf8eb7f183d71dfac16e1e744cc58010877e339d81c34d6ca8bd845b"
+      },
+      "accepted_predecessor": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+      "pre_amendment_head": "a2aa2112231ba7595070216e659798130127dc3c",
+      "approved_r01_proposal_sha256": "ec1e54522b05f0b1a5b1340a4917ad4477017cdfe80218e91a90d75c990bec87",
+      "approval_sha256": "ab0bde2117b05dc4cf39a8c84e556c87a1c1a4d08a55db483b98ac506105e9b2",
+      "remaining_blocking_findings": [],
+      "checks": {
+        "two_final_product_hashes_match": true,
+        "final_80_origin_cases_before_after_hashes_stable": true,
+        "final_inventory_39_cases_pass": true,
+        "all_48_literal_core_cells_have_actual_passing_nodes": true,
+        "vf007_negative_is_real_input_support_removal": true,
+        "other_11_negative_cells_use_positive_baseline_then_source_defined_output_mutants": true,
+        "exact_13_authorized_changed_paths": true,
+        "other_46_product_files_byte_identical": true,
+        "other_44_old_test_files_byte_identical": true,
+        "all_frozen_source_catalog_plan_guard_workflow_outside_scope_byte_identical": true,
+        "r01_three_hashes_match_separate_pass_review": true,
+        "exact_inquiry_claim_version_seed_and_artifact_sets": true,
+        "inquirywide_and_claimlocal_gap_scopes_distinct": true,
+        "all_eight_origin_parent_predicates_explicit": true,
+        "all_reachable_branches_separate_from_canonical_path_choice": true,
+        "reached_origins_distinct_from_qualified_boundary_inventory": true,
+        "native_boundary_labels_and_source_fields_retained": true,
+        "frontier_terminal_and_affected_seed_units_distinct": true,
+        "known_paths_survive_additional_gap_branch": true,
+        "coverage_origin_only_not_parent_evidence_universe": true,
+        "same_dimension_parent_overrides_termination_label": true,
+        "actual_prerequisite_states_support_conflict_and_time_sources_retained": true,
+        "missing_coverage_unknown_existing_partial_unmet": true,
+        "event_time_does_not_infer_from_publication_or_asserted_recorded_dates": true,
+        "fixed_shared_budget_current_job_sole_witness_ledger_no_reset": true,
+        "prospective_work_paid_before_scans_copies_string_blocks_and_constructors": true,
+        "all_complete_witness_payloads_remain_retained_no_clipping": true,
+        "late_stop_returns_no_partial_completed_count": true,
+        "compact_witness_refs_resolve_to_actual_complete_payloads": true,
+        "final_structured_gap_oracles_preserve_endpoint_branch_and_coverage_links": true,
+        "no_public_pipeline_or_m004_or_release_completion_claim": true
+      },
+      "actual_focused_evidence": {
+        "inventory": {
+          "tests": 39,
+          "passed": 39,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "origins_and_frontiers": {
+          "tests": 80,
+          "passed": 80,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "new_test_instances": 119,
+        "new_successful_subtests": 0,
+        "supplemental_profile": "Local CPython 3.12; required hosted 3.11/3.13 profiles remain root-owned pending gates."
+      },
+      "scope_accounting": {
+        "changed_paths": [
+          "PHASE_3_PROGRESS.md",
+          "phase3/implementation_evidence.json",
+          "phase3/module_policy.json",
+          "phase3/obligation_coverage.json",
+          "phase3/transition_ledger.md",
+          "src/source_integrity_toolkit/analysis/inventory.py",
+          "src/source_integrity_toolkit/analysis/origins.py",
+          "tests/contract/test_phase3_transition.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/scaffold/test_module_manifest.py",
+          "tests/unit/test_ancestry_frontiers.py",
+          "tests/unit/test_inventory.py",
+          "tests/unit/test_origins.py"
+        ],
+        "product_files_total": 48,
+        "modified_products": 2,
+        "unchanged_products": 46,
+        "accepted_old_test_files": 47,
+        "authorized_migrated_old_test_files": 3,
+        "unchanged_old_test_files": 44,
+        "new_test_files": 3,
+        "scheduled_live_modules": 20,
+        "scheduled_inert_modules": 28
+      },
+      "core_mapping": [
+        {
+          "test_id": "SIT-VF001-P",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-P]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF001",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "H7-01 has exact Artifact IDs H7-A through H7-F, count 6, artifact_record unit and Inquiry-only scope.",
+          "rejecting_mutation_or_boundary": "An added invented-source member is rejected after the accepted source-bound positive."
+        },
+        {
+          "test_id": "SIT-VF001-N",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-N]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF001",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "H7-01 remains exactly A-F; H7-ANSWER does not enter the source-position union.",
+          "rejecting_mutation_or_boundary": "A representationally valid count/population with added nonseed H7-ANSWER is rejected."
+        },
+        {
+          "test_id": "SIT-VF001-M",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-M]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF001",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "The admitted sparse Inquiry has an explicitly enumerated empty Artifact inventory, available count 0 and retained empty witness.",
+          "rejecting_mutation_or_boundary": "An invented-source member is rejected; no actual-source zero is asserted."
+        },
+        {
+          "test_id": "SIT-VF001-B",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-B]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF001",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "Two Claim-bound contributions share artifact; A(I) contains artifact exactly once.",
+          "rejecting_mutation_or_boundary": "Adding artifact2 despite absent seed binding is rejected."
+        },
+        {
+          "test_id": "SIT-VF002-P",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-P]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF002",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "One explicitly seeded unresolved reference gives U_A=(unresolved), count 1, unresolved_reference unit.",
+          "rejecting_mutation_or_boundary": "Removing the explicitly supplied unresolved endpoint is rejected."
+        },
+        {
+          "test_id": "SIT-VF002-N",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-N]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF002",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "H7-V02 U_A is empty even though upstream EvidenceItem H7-UX is unknown.",
+          "rejecting_mutation_or_boundary": "A valid output mutant counting H7-UX as a seed Artifact endpoint is rejected."
+        },
+        {
+          "test_id": "SIT-VF002-M",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-M]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF002",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "H7-01 U_A is explicitly empty and available 0 despite unrelated model-history uncertainty.",
+          "rejecting_mutation_or_boundary": "Adding an invented endpoint is rejected."
+        },
+        {
+          "test_id": "SIT-VF002-B",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-B]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF002",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "Two seed contributions and the explicit seed position share unresolved; the endpoint occurs once in U_A.",
+          "rejecting_mutation_or_boundary": "Adding resolved artifact to the unresolved endpoint set is rejected."
+        },
+        {
+          "test_id": "SIT-VF003-P",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-P]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF003",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "H7-01 exact Claim-bound seed IDs are H7-EA, H7-EB, H7-EC, H7-ED, H7-EE, H7-EF, count 6.",
+          "rejecting_mutation_or_boundary": "Adding an invented contribution is rejected."
+        },
+        {
+          "test_id": "SIT-VF003-N",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-N]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF003",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "H7-01 E(I,C) remains the exact six explicit seeds.",
+          "rejecting_mutation_or_boundary": "Adding nonseed ancestor H7-ER1 is rejected."
+        },
+        {
+          "test_id": "SIT-VF003-M",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-M]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF003",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "Empty explicit seed_evidence_refs gives selected Claim an enumerated count 0, with no_seed_contributions reason.",
+          "rejecting_mutation_or_boundary": "Adding an invented contribution is rejected."
+        },
+        {
+          "test_id": "SIT-VF003-B",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-B]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF003",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "Three distinct explicit contributions e/e2/e3 from two Artifacts remain three IDs.",
+          "rejecting_mutation_or_boundary": "Collapsing e3 because it shares e artifact is rejected."
+        },
+        {
+          "test_id": "SIT-VF004-P",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-P]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF004",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "H7-01/C1 has exact resolved Artifact IDs H7-A through H7-F, count 6, Claim-bound scope.",
+          "rejecting_mutation_or_boundary": "Adding an invented resolved Artifact is rejected."
+        },
+        {
+          "test_id": "SIT-VF004-N",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-N]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF004",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "artifact and artifact2 have the same locator and different versions; both exact IDs remain in A(I,C).",
+          "rejecting_mutation_or_boundary": "A valid output mutant collapsing the second version to one Artifact is rejected."
+        },
+        {
+          "test_id": "SIT-VF004-M",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-M]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF004",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "A Claim seed bound to typed unresolved has empty resolved Artifact population and unknown_endpoint disclosure.",
+          "rejecting_mutation_or_boundary": "Promoting unresolved itself to a resolved Artifact member is rejected."
+        },
+        {
+          "test_id": "SIT-VF004-B",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-B]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF004",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "Shared artifact appears in both separately evaluated Claim populations and once in the Inquiry-wide union.",
+          "rejecting_mutation_or_boundary": "Adding an invented Artifact to a Claim population is rejected; exact other-Claim and Inquiry sets are also asserted."
+        },
+        {
+          "test_id": "SIT-VF005-P",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF005-P]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF005",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "Explicit artifact/artifact2 seeds with no seed EvidenceItem bindings give Inquiry-wide unassigned count 2.",
+          "rejecting_mutation_or_boundary": "Replacing that complete member set with empty is rejected."
+        },
+        {
+          "test_id": "SIT-VF005-N",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF005-N]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF005",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "H7-01 has zero unassigned explicit seeds; nonseed H7-ANSWER does not enter this population.",
+          "rejecting_mutation_or_boundary": "An output mutant including nonseed H7-ANSWER as unassigned is rejected."
+        },
+        {
+          "test_id": "SIT-VF005-M",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF005-M]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF005",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "No explicit Artifact seeds gives an enumerated empty unassigned population and available 0.",
+          "rejecting_mutation_or_boundary": "An invented unassigned source is rejected."
+        },
+        {
+          "test_id": "SIT-VF005-B",
+          "nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF005-B]"
+          ],
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF005",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "assertion": "The sole artifact seed is bound only by claim2 contribution e2, so it is assigned throughout Inquiry while selected claim has no seed.",
+          "rejecting_mutation_or_boundary": "Calling artifact unassigned merely because selected Claim lacks a contribution is rejected."
+        },
+        {
+          "test_id": "SIT-VF006-P",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf006_p_h7_exact_reached_origins_and_six_finite_source_paths"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md §2.2"
+          ],
+          "assertion": "Actual completed origin count 2, exactly H7-O1/H7-O2; six literal source paths and actual scoped witness links.",
+          "rejecting_mutation_or_boundary": "All six seed paths preserve their assertion identities; no ancestor-only ER1 becomes a seed."
+        },
+        {
+          "test_id": "SIT-VF006-N",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf006_n_parentless_evidence_and_unresolved_expected_origin_are_not_origins"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "assertion": "Each real parentless/unknown expected-Origin baseline first yields an exact empty reached-Origin inventory.",
+          "rejecting_mutation_or_boundary": "Only counted selection is changed in a copy of the actual baseline count DTO, falsely adding E or UnresolvedReference; literal oracle rejects."
+        },
+        {
+          "test_id": "SIT-VF006-M",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf006_m_and_vf021_p_shared_unknown_is_one_frontier_and_zero_reached_origins"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md W7-03"
+          ],
+          "assertion": "Completed supplied view reaches zero OriginEvents while retaining one represented frontier and two affected seeds.",
+          "rejecting_mutation_or_boundary": "Zero record inventory never converts the unknown object to an OriginEvent or yields a hidden-root total."
+        },
+        {
+          "test_id": "SIT-VF006-B",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf006_b_diamond_counts_one_origin_after_examining_both_branches",
+            "tests/unit/test_origins.py::test_vf006_b_cycle_exit_preserves_origin_and_unresolved_affected_seeds"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md W7-04/W7-14"
+          ],
+          "assertion": "Diamond counts O once after all four edges; acquisition cycle preserves O exit and both unresolved seeds.",
+          "rejecting_mutation_or_boundary": "Path multiplicity cannot duplicate roots; canonical positive exit cannot erase cyclic branch."
+        },
+        {
+          "test_id": "SIT-VF007-P",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf007_p_h7_qualified_count_and_vf008_p_attributed_boundaries"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md §2.3"
+          ],
+          "assertion": "Actual qualified origin inventory exactly H7-O1/H7-O2 with native OB1/OB2 scope, data and provenance.",
+          "rejecting_mutation_or_boundary": "Native source boundary, coverage and supporting reference IDs are independently compared to frozen H7 input."
+        },
+        {
+          "test_id": "SIT-VF007-N",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf007_n_support_removal_is_an_input_delta_not_boundary_relabeling[locator_only]",
+            "tests/unit/test_origins.py::test_vf007_n_support_removal_is_an_input_delta_not_boundary_relabeling[withheld]",
+            "tests/unit/test_origins.py::test_vf007_n_support_removal_is_an_input_delta_not_boundary_relabeling[unavailable]"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md W7-25"
+          ],
+          "assertion": "After real H7 baseline count 2, changing only ACQ support availability/content leaves reached2 but qualified0.",
+          "rejecting_mutation_or_boundary": "This is input delta, not an output mutant; original documented_origin labels and source basis remain in disclosures with support_uninspectable."
+        },
+        {
+          "test_id": "SIT-VF007-M",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf007_m_documentary_label_without_basis_has_explicit_zero_examined_count"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "assertion": "Actual unqualified documentary-label case retains reached origin, native documented_origin role and qualification gap, qualified count0.",
+          "rejecting_mutation_or_boundary": "Missing documentary basis cannot be filled by the label or relabeled as no real origins."
+        },
+        {
+          "test_id": "SIT-VF007-B",
+          "nodes": [
+            "tests/unit/test_origins.py::test_w7_17_all_four_boundary_roles_coexist_without_becoming_unresolved_roots",
+            "tests/unit/test_origins.py::test_vf007_b_protected_attestation_qualifies_one_opaque_origin_with_native_limits",
+            "tests/unit/test_origins.py::test_boundary_checks_follow_required_coverage_basis_and_conflict_without_poisoning_other_premises[basis]",
+            "tests/unit/test_origins.py::test_boundary_checks_follow_required_coverage_basis_and_conflict_without_poisoning_other_premises[conflict]",
+            "tests/unit/test_origins.py::test_documentary_boundary_inventory_keeps_its_own_basis_when_reaching_path_support_is_missing"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md W7-17/W7-18"
+          ],
+          "assertion": "Four native roles coexist with reached4/documentary1; visible protected attestation can qualify one shared opaque origin. Required coverage basis/conflict participates in qualification; unrelated reaching-path basis does not erase a qualified boundary inventory.",
+          "rejecting_mutation_or_boundary": "Withheld attestation negative loses documentary qualification; baseline/scope/declared roles never become documentary origins."
+        },
+        {
+          "test_id": "SIT-VF008-P",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf007_p_h7_qualified_count_and_vf008_p_attributed_boundaries"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "assertion": "OB1/OB2 source identifiers, subjects, roles, dimension, coverage, scope and provenance exactly match frozen H7 records.",
+          "rejecting_mutation_or_boundary": "Result scope/check/basis/witness/reason references validated on actual results."
+        },
+        {
+          "test_id": "SIT-VF008-N",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf008_n_output_mutant_cannot_rename_a_native_boundary[declared_origin]",
+            "tests/unit/test_origins.py::test_vf008_n_output_mutant_cannot_rename_a_native_boundary[reference_baseline]"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "assertion": "Actual baseline disclosure passes native-field equality first.",
+          "rejecting_mutation_or_boundary": "Only native boundary_role changed to documented_origin in copied actual disclosure; source-field oracle rejects."
+        },
+        {
+          "test_id": "SIT-VF008-M",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf008_m_no_boundary_assessment_is_an_explicit_empty_inventory"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "assertion": "No boundary assessments gives explicit empty disclosure, reached1 and documentary0.",
+          "rejecting_mutation_or_boundary": "No automatic boundary or root is fabricated at a parentless OriginEvent."
+        },
+        {
+          "test_id": "SIT-VF008-B",
+          "nodes": [
+            "tests/unit/test_origins.py::test_vf008_b_termination_label_cannot_hide_a_known_same_dimension_parent[documented_origin]",
+            "tests/unit/test_origins.py::test_vf008_b_termination_label_cannot_hide_a_known_same_dimension_parent[scope_cut]",
+            "tests/unit/test_origins.py::test_vf008_b_termination_label_cannot_hide_a_known_same_dimension_parent[reference_baseline]"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "assertion": "Known O→O2 parent stays visible: reached O/O2 and only O2 documentary terminal, original assessments retained.",
+          "rejecting_mutation_or_boundary": "Termination labels cannot stop same-dimension in-scope parent traversal."
+        },
+        {
+          "test_id": "SIT-VF021-P",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf006_m_and_vf021_p_shared_unknown_is_one_frontier_and_zero_reached_origins"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md W7-03"
+          ],
+          "assertion": "Two seeds share one actual unresolved endpoint with two actual witness paths; frontier1/affected2.",
+          "rejecting_mutation_or_boundary": "Member identity controls distinct frontier cardinality; not number of paths/seeds."
+        },
+        {
+          "test_id": "SIT-VF021-N",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf021_n_output_mutant_cannot_count_one_shared_unknown_twice"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "assertion": "Actual frontier baseline count1 and member UX passes first.",
+          "rejecting_mutation_or_boundary": "Only count changed to2 in copied actual count DTO; oracle rejects."
+        },
+        {
+          "test_id": "SIT-VF021-M",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf021_m_h7_complete_acquisition_frontier_inventory_is_explicit_zero"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md §2.3"
+          ],
+          "assertion": "H7 acquisition frontier, terminal and affected-seed counts are explicit0 with all6 processed seeds.",
+          "rejecting_mutation_or_boundary": "Partial model coverage remains in source and cannot contaminate or be erased by acquisition0."
+        },
+        {
+          "test_id": "SIT-VF021-B",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf021_b_typed_unknown_origin_is_one_reference_not_an_origin_record"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "assertion": "An UnresolvedReference expected OriginEvent stays one frontier, zero reached origins, two affected seeds.",
+          "rejecting_mutation_or_boundary": "Expected kind is never instantiated as resolved origin or concealed-root multiplicity."
+        },
+        {
+          "test_id": "SIT-VF022-P",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_p_and_m_missing_qualification_leaves_one_visible_terminal"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "assertion": "Complete represented trace to one unqualified OriginEvent counts exactly that terminal, with one affected seed.",
+          "rejecting_mutation_or_boundary": "Reaching a resolved terminal does not qualify its boundary."
+        },
+        {
+          "test_id": "SIT-VF022-N",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_n_output_mutant_cannot_promote_a_parentless_terminal_to_documentary_root"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "assertion": "Actual reached terminal1/documentary0 baseline passes.",
+          "rejecting_mutation_or_boundary": "Only selected documentary-origin membership/count is changed in actual baseline DTO to promote terminal; rejected."
+        },
+        {
+          "test_id": "SIT-VF022-M",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_p_and_m_missing_qualification_leaves_one_visible_terminal"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "assertion": "Missing applicable boundary keeps terminal visible, documentary count0 and unqualified_origin_boundary gap.",
+          "rejecting_mutation_or_boundary": "No hidden-origin count, nonexistent boundary or unknown upper bound is introduced."
+        },
+        {
+          "test_id": "SIT-VF022-B",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_b_shared_terminal_is_one_record_with_two_affected_seeds",
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_b_explicit_scope_cut_is_separate_from_an_unqualified_terminal",
+            "tests/unit/test_origins.py::test_vf006_b_cycle_exit_preserves_origin_and_unresolved_affected_seeds"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "assertion": "Shared terminal1/affected2; explicit supported scope cut is separate from unqualified terminal; cyclic exit remains visible.",
+          "rejecting_mutation_or_boundary": "Terminal, chosen cut and cycle are not reduced to one root category."
+        },
+        {
+          "test_id": "SIT-VF023-P",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf023_p_h7_v02_only_added_seed_is_affected_and_original_origins_survive",
+            "tests/unit/test_ancestry_frontiers.py::test_vf006_m_and_vf021_p_shared_unknown_is_one_frontier_and_zero_reached_origins"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md §3.2/W7-03"
+          ],
+          "assertion": "H7-V02 only EU affected while original six fixed paths and O1/O2 survive; shared UX case has affected2.",
+          "rejecting_mutation_or_boundary": "No dossier-wide suppression or frontier-count substitution."
+        },
+        {
+          "test_id": "SIT-VF023-N",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf023_n_output_mutant_cannot_copy_frontier_count_into_affected_seed_count"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "assertion": "Actual shared-UX affected count2 baseline passes.",
+          "rejecting_mutation_or_boundary": "Only count changed to frontier count1 in copied actual affected-count DTO; rejected."
+        },
+        {
+          "test_id": "SIT-VF023-M",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf023_m_all_selected_ancestry_unknown_keeps_the_completed_seed_population",
+            "tests/unit/test_origins.py::test_origin_profile_resource_stop_is_sticky_and_never_returns_partial_counts[200]",
+            "tests/unit/test_origins.py::test_pc06_distinguishes_absent_coverage_from_supplied_incomplete_coverage[missing-SIT-M007]",
+            "tests/unit/test_origins.py::test_pc06_distinguishes_absent_coverage_from_supplied_incomplete_coverage[partial-SIT-M007]"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "OBSERVABILITY_AND_REPORTING.md §12.4",
+            "OBSERVABILITY_AND_REPORTING.md §13.1"
+          ],
+          "assertion": "Fully processed all-unknown source retains two affected seeds; interrupted processing raises sticky real AnalysisAborted. Actual PC06 distinguishes missing coverage unknown from explicitly partial coverage unmet, with affected seed retained.",
+          "rejecting_mutation_or_boundary": "Incomplete traversal cannot return a completed zero or partial exact count; W13 delivery remains outside this component test."
+        },
+        {
+          "test_id": "SIT-VF023-B",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf023_b_distant_unknown_does_not_erase_the_known_immediate_copy"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md W7-15"
+          ],
+          "assertion": "One selected seed is unresolved through distant UX, while its immediate E→E copy remains actual typed edge.",
+          "rejecting_mutation_or_boundary": "No M006 result is fabricated here; retained immediate evidence supports later owner without removing ancestry gap."
+        },
+        {
+          "test_id": "SIT-VF024-P",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_p_h7_v02_keeps_gap_reason_expected_kind_branch_and_coverage"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md §3.2"
+          ],
+          "assertion": "EU disclosure preserves UX, not_recorded, expected evidence_item, acquisition scope, COV-ACQ and exact LU branch.",
+          "rejecting_mutation_or_boundary": "Gap source identities and finite path witness remain attributable."
+        },
+        {
+          "test_id": "SIT-VF024-N",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_n_output_mutants_cannot_split_opaque_identity_or_erase_the_gap",
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_n_output_mutant_cannot_move_required_expected_kind_into_free_text"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "assertion": "Actual shared-gap disclosure passes source-derived identity/kind/reason/scope oracle first.",
+          "rejecting_mutation_or_boundary": "Copies mutate only shared endpoint identity into per-seed pseudonyms, or remove required gap rows; both rejected. Required expected-kind structure cannot be replaced by free text containing the same token."
+        },
+        {
+          "test_id": "SIT-VF024-M",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_m_gap_only_locator_stays_inert_and_preserves_shared_unknown"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md W7-03/W7-25"
+          ],
+          "assertion": "Gap-only upstream case remains admitted, frontier1/affected2; locator remains inert under network tripwires.",
+          "rejecting_mutation_or_boundary": "No source fetch or inferred ancestry fills missing history."
+        },
+        {
+          "test_id": "SIT-VF024-B",
+          "nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_b_protected_shared_endpoint_preserves_opaque_commonality",
+            "tests/unit/test_origins.py::test_vf007_b_protected_attestation_qualifies_one_opaque_origin_with_native_limits"
+          ],
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md W7-18"
+          ],
+          "assertion": "One known shared opaque identity retained across two seed disclosures; visible scoped attestation and withheld underlying identity stay distinct.",
+          "rejecting_mutation_or_boundary": "No pseudonym multiplication, public identity verification, independent-source claim or hidden-root bound."
+        }
+      ],
+      "source_clauses": {
+        "inventory": [
+          "Definitions 20.1,21.1",
+          "Lineage 5",
+          "Validation VF001-VF005"
+        ],
+        "origins": [
+          "Definitions 20.3-20.6,21.2,22.1-22.4",
+          "Lineage 9.1,10.2-10.4,10.7,12,14",
+          "Reporting 13.1,16.4,16.7",
+          "Validation VF006-VF008,VF021-VF024,W7-17,W7-18"
+        ],
+        "resource": [
+          "Phase3 plan 3.4,10",
+          "Architecture 19",
+          "Governance 22.3,22.5"
+        ]
+      },
+      "findings_and_closure": [
+        {
+          "finding": "VF004 inherited an unresolved Artifact reason from a different Claim.",
+          "original": "p3w05-inventory-claim-gap-probe.json",
+          "closure": "Paid selected-Claim unknown inventory. Three actual admitted all-resolved/other-Claim/current-Claim controls pass on final inventory hash.",
+          "evidence": "p3w05-inventory-claim-gap-closure.json"
+        },
+        {
+          "finding": "PC10 omitted required coverage timing and rewrote relation unknown to unmet.",
+          "original": "p3w05-origin-pc10-probe.json",
+          "closure": "Actual temporal-owner facts retain original state/source; coverage-only and relation-only unknowns propagate as unknown and keep reason inputs.",
+          "evidence": "p3w05-origin-qualification-final-closure.json"
+        },
+        {
+          "finding": "Required coverage support/conflict did not propagate to PC05/PC09 and actual contrary links.",
+          "original": "p3w05-origin-coverage-prerequisites-probe.json",
+          "closure": "Same-job actual coverage basis/conflict facts, exact PC source groups, contrary references and reason inputs; unrelated coverage conflict leaves positive boundary qualified.",
+          "evidence": "p3w05-origin-qualification-final-closure.json"
+        },
+        {
+          "finding": "Missing coverage had PC06 unmet rather than unknown.",
+          "source": "Reporting 13.1",
+          "closure": "Independent complete/partial/missing admitted controls yield met/unmet/unknown with finite counts and limitations preserved.",
+          "evidence": "p3w05-origin-pc06-probe.json"
+        },
+        {
+          "finding": "Early oracle review found weak atomic link and token-bag disclosure assertions.",
+          "closure": "Final tests check typed result origin/population/check/witness/reason links, resolve actual complete witnesses, and assert structured per-seed endpoint, expected kind, coverage and path. Valid baseline then corrupted-field/link controls reject."
+        }
+      ],
+      "independent_probes": {
+        "final_origins_qualification_and_pc06": 13,
+        "final_inventory_claim_scope": 3,
+        "earlier_event_time_controls": 5,
+        "event_time_evidence_hash_scope": "Earlier exact 45e9075b candidate facts; final source review confirms explicit OriginEvent occurred_at ordering, with no claim the earlier run used final bytes."
+      },
+      "failure_history": {
+        "p3w05-inventory-first.xml": {
+          "tests": 37,
+          "passed": 36,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "39c829c0795f800bbc21b27774027b08ecd3ec0a9424df1d3d2ebd9e646f0956"
+        },
+        "p3w05-inventory-second.xml": {
+          "tests": 37,
+          "passed": 37,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "8f8478d6432a000a6e436b3e3ba3e04d721a3edb0d5961857277d98f7b3c0338"
+        },
+        "p3w05-inventory-third.xml": {
+          "tests": 39,
+          "passed": 39,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "8de76ca92abbba0797e44e61da7904c9f18f3e48501be56b2536025429b213c1"
+        },
+        "p3w05-origin-tests-controls-first.xml": {
+          "tests": 14,
+          "passed": 13,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "ae2b104bb08b344af4494655518f75a698d7396b97641aa22fd0136ae029a0ac"
+        },
+        "p3w05-origin-tests-coverage-controls-first.xml": {
+          "tests": 9,
+          "passed": 6,
+          "failed": 3,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "0f688cefe8533384b2f62ee829e1ce22be48a5e87b7c678f353a8a89760d56d9"
+        },
+        "p3w05-origin-tests-coverage-controls-second.xml": {
+          "tests": 3,
+          "passed": 2,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "b945f17fb0996d213c8c69c0a593e4e7313e642d79783b058fabe9370b98c235"
+        },
+        "p3w05-origin-tests-coverage-controls-third.xml": {
+          "tests": 1,
+          "passed": 1,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "a1ee196086e4339e1b72a65fc43b82c139cfccd3f671bae2528ad4f6395b6760"
+        },
+        "p3w05-origin-tests-final.xml": {
+          "tests": 80,
+          "passed": 80,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "18932ec32570c1c3ac044673ac0318c47735203ea8543bddf55436bc26e68cf1"
+        },
+        "p3w05-origin-tests-full-first.xml": {
+          "tests": 66,
+          "passed": 66,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "8733f29f3366a309bda9adc5ed195cde7c07f48ce5a859fea3c9a8a29346c466"
+        },
+        "p3w05-origin-tests-full-second.xml": {
+          "tests": 76,
+          "passed": 76,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "cae2722f736e7b48ac95a02a15d4f007eba8f28526908b336966fcfcbd2fcb8c"
+        },
+        "p3w05-origin-tests-pc06.xml": {
+          "tests": 4,
+          "passed": 4,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "c8425a9fadc8ef2cd21ee12e2bd3768f90cbee53febbccfd462a6c43c489f602"
+        },
+        "p3w05-origin-tests-semantics-first.xml": {
+          "tests": 57,
+          "passed": 57,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "sha256": "8a2cc38caa47bc11d3ee02a7bb4616ab194fdfbf22e117367ad9a87f9634b62b"
+        }
+      },
+      "retained_budget_attempt_history": [
+        {
+          "file": "p3w05-origins-probe-02.log",
+          "result": "All four complete profiles hit WU9-L11 after initial successful facts-only H7 probe"
+        },
+        {
+          "file": "p3w05-origins-probe-03.log",
+          "result": "Both H7 profiles pass; both H7-V02 profiles hit WU9-L11"
+        },
+        {
+          "file": "p3w05-origins-probe-04.log",
+          "result": "Both H7 profiles pass; both H7-V02 profiles still hit WU9-L11"
+        },
+        {
+          "file": "p3w05-origins-probe-06.log",
+          "result": "PC05-PC10 representation added; H7-V02 M007 hits WU9-L11; other three profiles pass"
+        }
+      ],
+      "evidence_sha256": {
+        "p3w05-inventory-third.log": "e4086760a58af412b1e0bac8df144d1b180afd4a254ebf3422c82a7e662013e7",
+        "p3w05-inventory-third.xml": "8de76ca92abbba0797e44e61da7904c9f18f3e48501be56b2536025429b213c1",
+        "p3w05-origin-tests-final.log": "36fb019ab8e65324f8563593dfc709ea0acd1fbceaf435f3fa25cfd245ace829",
+        "p3w05-origin-tests-final.xml": "18932ec32570c1c3ac044673ac0318c47735203ea8543bddf55436bc26e68cf1",
+        "p3w05-origin-tests-final-metadata.json": "18c4c4636b16b95f481a83739a8174961ee4d7e19e532c1ec07d0c5cf805556a",
+        "p3w05-independent-review-plan.json": "837101e5bc26aac79c4260e58978642f3351bf909fcf620fb89b1e61bd29d5be",
+        "p3w05-inventory-core-evidence-map.json": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5",
+        "p3w05-origins-core-evidence-map.json": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed",
+        "p3w05-origin-qualification-final-closure.json": "2dc2da384865a1bd1deebd41dc5073f08671dbdf8ff8b211842f48f26cbee6a9",
+        "p3w05-origin-pc06-probe.json": "5d4555e0d8b22ef297bf76226864dadc83b6851ad00ce044c84555b0ff8f464f",
+        "p3w05-inventory-claim-gap-probe.json": "beeba1dc70bba51ddd5d336f8c8e25847150cc7b141313e57ebf6e64edce0337",
+        "p3w05-inventory-claim-gap-closure.json": "7142ec4cc36af4274cf64411767f8ccb2f4e64e36a5876318c263e42defee729",
+        "p3w05-origin-pc10-probe.json": "be9acc370145dbc59a18d5074839d439f0f76a30fb3eeb99a873e1578c077dc7",
+        "p3w05-origin-coverage-prerequisites-probe.json": "55ed63e68cf577c7552813ba9c93838d257b2859f489523fefd7f9fa73591436",
+        "p3w05-origin-qualification-closure.json": "c3785b9d040e64ba52c047b76498e9404645ac274a2cefa221a4791a5fcca7b5",
+        "p3w05-origin-time-probes.json": "a3835d34506e06619592ed527f9176ffb1385d70c811917b04a6a1e65d15b014",
+        "p3w05-origins-implementation-evidence.json": "458b17248b6dd22510be201aab34ad033f2b4dc57b0963fefb59ad8a0003a8fe",
+        "p3w05-r01-independent-review.json": "0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07"
+      },
+      "limitations": [
+        "This is private component correctness evidence on the named frozen bytes, not the deferred public admission-to-report pipeline, M004 capability selection, W13 integration, or release readiness.",
+        "The 48 W05 cells concern only core obligations; all integration/release obligations remain pending. Prior accepted M015 core coverage is inherited separately.",
+        "Finite available counts may coexist with unmet or unknown candidate prerequisites; no all-PC-met gate or real-world root/independence inference is introduced.",
+        "The cumulative suite and required hosted profiles are root-owned and are not replaced by these focused results.",
+        "Real post-amendment committed Git segment must be checked after root creates the candidate commit.",
+        "Shared specification, fixture and implementation provenance remains; independent review cannot remove correlated interpretation risk."
+      ]
+    },
+    "technical_review_file": {
+      "path": "p3w05-independent-technical-review.json",
+      "sha256": "a7e7cb2e35eb4a14f15d4fde1809bbba6cb0d5b5085936ed44325eda15fe8c08",
+      "bytes": 47967
+    },
+    "amendment_review": {
+      "status": "pass",
+      "unit": "P3-W05",
+      "amendment": "P3-W05-R01",
+      "source_sha256": {
+        "tests/scaffold/test_module_manifest.py": "40bbc1d4e2671cbcfd5b1aeeacbfa8531332239f0b543fa46073a4a018d23cb1",
+        "tests/scaffold/test_ci_contract.py": "f011914dee89c92782e7f1dc1c1a3580b1adab945913460f7c02ae889de40d7b",
+        "tests/contract/test_phase3_transition.py": "68f6ccd39b84301d28757ed13b2c960658b901b50b9fa855da7f25e94fb99b7c"
+      },
+      "approved_proposal_sha256": "ec1e54522b05f0b1a5b1340a4917ad4477017cdfe80218e91a90d75c990bec87",
+      "approval_sha256": "ab0bde2117b05dc4cf39a8c84e556c87a1c1a4d08a55db483b98ac506105e9b2",
+      "pre_amendment_head": "a2aa2112231ba7595070216e659798130127dc3c",
+      "pre_amendment_tree": "d468e02fa40a5014e838937486fa49185bc1e72d",
+      "accepted_predecessor": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+      "checks": {
+        "final_three_source_hashes_match_freeze": true,
+        "proposal_exact_approved_hash": true,
+        "approval_exact_record_hash": true,
+        "approval_and_preceding_append_observed_before_test_edits": true,
+        "ledger_accepted_prefix_exact": true,
+        "wrapper_accepted_prefix_and_footer_exact": true,
+        "original_method_exact_name_and_one_target_substitution_only": true,
+        "wrapper_all_old_definitions_unchanged": true,
+        "saved_original_and_live_same_identity_binding": true,
+        "no_duplicate_inherited_class_nodes": true,
+        "live_effect_owner_positive_negative_postpositive_controls": true,
+        "driver_no_removed_definitions": true,
+        "driver_exact_additions": true,
+        "driver_exact_three_changed_functions": true,
+        "unchanged_p2_and_w04_apis_and_context_workflow_rules": true,
+        "all_45_old_transition_functions_retained": true,
+        "exact_three_old_transition_adaptations": true,
+        "old_six_pins_exact_and_actual_bytes_match": true,
+        "new_literal_scope_oracles_independent_of_driver": true,
+        "live_source_oracles_reject_method_observer_binding_weakening": true,
+        "portable_ast_class_pin_does_not_change_old_source_pins": true,
+        "real_git_actual_fifteen_commit_chain_pass": true,
+        "independent_real_git_seven_paired_probes_pass": true,
+        "actual_independent_probe_driver_matches_reviewed_bytes": true,
+        "focused_driver_transition_268_unique_passed": true,
+        "focused_wrapper_13_unique_plus8_subtests_passed": true,
+        "accepted_208_nodes_in_three_affected_files_retained": true,
+        "actual_73_new_nodes_no_old_replacement": true,
+        "raw_target_evidence_hashes_match": true,
+        "no_approval_for_merge_or_w06": true,
+        "original_failed_diagnostic_preserved": true,
+        "no_fullsuite_or_hosted_pass_inferred_from_focused_checks": true
+      },
+      "remaining_blocking_findings": [],
+      "focused_evidence": {
+        "driver_and_transition_top_level_passed": 268,
+        "manifest_top_level_passed": 13,
+        "manifest_successful_subtests_separate": 8,
+        "retained_nodes_in_affected_files": 208,
+        "new_nodes_in_affected_files": 73,
+        "python_profile": "Supplemental local CPython 3.12.14; required hosted 3.11/3.13 still pending"
+      },
+      "evidence_sha256": {
+        "p3w05-r01-transition-targeted.json": "dddb813a7444c7bbf0990b6cb23a981307d672a3e09731cbed1e81e2971f67ce",
+        "p3w05-r01-transition-first.log": "5ca27af45b6b708f0ba121974a9f73d56cfb2e10235b614e01de84ccbc44e389",
+        "p3w05-r01-transition-first.xml": "7d1488007eca3cc75aafdc22c9a98f25baba702e54183fc140cc45470c3c699d",
+        "p3w05-r01-manifest-first.log": "6369ec2fd554ba15b9e65cdd7e8deb8ee3686cbe7d041a472863358f2ade4c81",
+        "p3w05-r01-manifest-first.xml": "d3296aeada0d08ae6c3295be78e22bf9f145ea3b4d18674763eb3ded34f66b9d",
+        "p3w05-r01-independent-history-probe.json": "7b93b910273cc31a51924309a76a7b47fbb6a9e2e7822c1bc09f8b041287d669",
+        "p3w05-r01-actual-preboundary-history.json": "cb92569aeb33f08e72cbcf276a67d2c0464b9c0e736d393ac5613eeb95f56166",
+        "p3w05-r01-independent-diagnosis.json": "3b998b945b7a14f0ec78485abb7fe844816b7784c7acd849f6da5f8d470b115c"
+      },
+      "findings_and_closure": [
+        {
+          "finding": "Inherited inert-slot premise became invalid when origins was scheduled live.",
+          "original_evidence": "Isolated W04-positive/W05-policy-only failure remains preserved.",
+          "closure": "Same original collected method now exercises permanently inert reporting/json_report.py with exact assertion payload; added independent live-body/effect/owner paired controls preserve live semantics."
+        }
+      ],
+      "limitations": [
+        "This pass covers the exact three frozen R01 test/driver files and append-only authority record, not W05 product correctness or completed release.",
+        "Root must run full cumulative suite and both exact code/final-successor hosted matrices with complete old identity/subtest retention.",
+        "Actual committed post-amendment W05 segment will be independently checked after root supplies its code commit.",
+        "Shared specification, fixture and implementation provenance remains; independent review reduces but cannot eliminate correlated interpretation errors."
+      ]
+    },
+    "amendment_review_file": {
+      "path": "p3w05-r01-independent-review.json",
+      "sha256": "0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07",
+      "bytes": 4971
+    },
+    "core_mapping_inputs": [
+      {
+        "path": "p3w05-inventory-core-evidence-map.json",
+        "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5",
+        "bytes": 13476
+      },
+      {
+        "path": "p3w05-origins-core-evidence-map.json",
+        "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed",
+        "bytes": 21481
+      }
+    ],
+    "mapping_status": "48 source-bound rows supplied; collection/JUnit/exact-head matrices must be verified before core promotion."
   },
   "validation": {
     "diagnostic_scope": "Isolated clone of accepted W04; policy-only W05 transition. No committed W05 candidate or complete suite is represented by these targeted probes.",
@@ -7956,29 +10350,44 @@
       ],
       "scope": "Verified binary development wheels and repository direct backend; exact bounded regular-member archive inspection. No archive_util extraction of externally supplied untrusted archives, no new runtime dependencies, no pin/workflow change. Actual package versions, hashes, Python patches and runner images are required hosted evidence, not inferred. No general vulnerability absence or production certification claim."
     },
-    "full_local_suite": "not_run",
-    "required_four_profile_candidate_ci": "not_run_at_record_creation",
-    "hosted_results_rule": "Any workflow on the subsequent blocked-record commit must be reported by its actual status; none is a W05 acceptance pass."
+    "full_local_suite": "pending_on_this_code_commit",
+    "required_four_profile_candidate_ci": "pending_on_this_code_commit",
+    "hosted_results_rule": "Actual failed-start run remains failed. A later success qualifies only its exact audited commit.",
+    "technical_review": {
+      "path": "p3w05-independent-technical-review.json",
+      "sha256": "a7e7cb2e35eb4a14f15d4fde1809bbba6cb0d5b5085936ed44325eda15fe8c08",
+      "bytes": 47967
+    },
+    "repair_review": {
+      "path": "p3w05-r01-independent-review.json",
+      "sha256": "0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07",
+      "bytes": 4971
+    }
   },
   "preservation": {
     "baseline_tracked_files": 177,
     "baseline_test_files": 47,
     "baseline_unique_tests": 2979,
     "baseline_successful_subtests": 428,
-    "accepted_w04_tests_and_product_bytes": "unchanged",
+    "accepted_w04_tests_and_product_bytes": "44 unchanged old test files, 46 unchanged product files; three named test adaptations are independently reviewed.",
     "field_obligations": 228,
     "accepted_w03_core_rows_retained": 16,
     "integration_pending": 228,
-    "release_pending": 228
+    "release_pending": 228,
+    "accepted_top_level_identities_required": 2979,
+    "historical_subtest_events_required": 428,
+    "current_test_files": 50,
+    "new_core_status": "pending_exact_head_full_gate"
   },
   "limitations": [
-    "P3-W05-R01 is a proposal only; no historical test, driver, ledger, guard or plan has been changed.",
-    "W05 implementation and field-core verification remain pending.",
+    "Exact code-head local and four-profile execution plus raw/Git audits remain pending at this commit creation.",
+    "Final three-record successor requires its own four-profile execution and raw/Git audits.",
     "Private whole-invocation integration, public report, native platform and release duties remain with their planned later owners.",
-    "Agent-assisted shared-environment review is not external certification."
+    "Assistant review in the shared environment is not external certification.",
+    "W05 acceptance and merge remain pending; W06 has not been authorized."
   ],
   "owner_local_core_obligations_verified": 16,
   "analytical_obligations_completed": 0,
   "phase3_complete": false,
-  "w05_status": "blocked_pending_P3-W05-R01_scope_approval"
+  "w05_status": "implemented_pending_code_head_verification"
 }

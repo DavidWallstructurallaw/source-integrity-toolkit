@@ -1812,3 +1812,51 @@ The explicit wrapper migration and its five new live controls passed 17 top-leve
 Independent read-only R01 review passed 72 checks with no remaining blocking findings. Report SHA-256: `a3e15269f304c36a9f2a62f5f1853e8dc329010e0630cc63ccd1cfcad289d2c5`. It verified the exact two method AST migrations and actual live bindings, all unchanged old definitions outside the named scope adaptation, raw plan13/effective W04 scope17, all fifteen immediate contexts, fixed pre-amendment Git identity, the actual old DAG and additional independent side-branch/reverted-excursion counterexamples. All 48 product modules, guard, plan, workflow, entry and policy match the failed head. This shared-environment assistant review is supplementary to the still-required exact-head matrix.
 
 Reviewed code-file SHA-256 values: wrapper `a0b2d0413952ec4db177967c3f54a83e01795cf207d3e33abd0a941a58b0051e`; CI driver `18b1db14373ace5523062f41e48977d5b170c5b238b3a04c65bd42e11a03e6a4`; transition tests `6d04e15cdf30e3a832af1d50fdfa1bec85577710910817100aaa110fd7021169`. Exact committed-head cumulative validation and the final documentation successor remain pending at this ledger revision.
+
+
+## P3-W05-R01: approved manifest-test migration at the W05 promotion boundary
+
+### Actual authority and fixed history boundary
+
+Owner instruction `批准 **P3-W05-R01**` on 2026-09-21 approves the exact reviewed proposal SHA-256 `ec1e54522b05f0b1a5b1340a4917ad4477017cdfe80218e91a90d75c990bec87`. Approval-record SHA-256: `ab0bde2117b05dc4cf39a8c84e556c87a1c1a4d08a55db483b98ac506105e9b2`. Original proposal wording remains a historical proposal snapshot; this entry records its subsequent actual approval.
+
+The fixed pre-amendment head is `a2aa2112231ba7595070216e659798130127dc3c`, tree `d468e02fa40a5014e838937486fa49185bc1e72d`, with the single parent and accepted W04 predecessor `a175d6d4b4153ddc9147301f9db8d247d12e4852`. That head changes only the four common records. All forty-eight product modules and forty-seven old test files remain unchanged there. W05's complete pre-amendment Git segment stays under its original nine paths. Only descendants after this fixed boundary may use the thirteen-path W05 scope. W04's independent R01 boundary and all other immediate-unit permissions remain intact.
+
+Exactly four additional W05 paths are approved: `tests/scaffold/test_module_manifest.py`, `tests/scaffold/test_ci_contract.py`, `tests/contract/test_phase3_transition.py`, and append-only `phase3/transition_ledger.md`. Raw plan permissions, guard, entry, workflow, catalogs, locks, schema, H7 inputs/oracles, earlier phase records and six fixed migration-source pins remain unchanged. Cumulative membership of these paths since W01 does not confer immediate edit rights on W06 or later units. Approval continues W05 work; it grants neither W05 merge nor W06 start.
+
+### Preserved real failure and pre-adaptation method record
+
+The original node is `tests/scaffold/test_module_manifest.py::ModuleManifestTests::test_mutated_product_bytes_are_rejected`. A clone of accepted W04 passed it, then failed it after changing only the policy to W05 with the scheduled inventory/origins promotions. The focused diagnostic reported 180 passed, one failed and 91 separate successful subtest events. Diagnostic SHA-256 `a77ef16d224158c34a1cfcba801f522608bc5b4cc311083c61c28a84e922d084` and independent paired-control report `3b998b945b7a14f0ec78485abb7fe844816b7784c7acd849f6da5f8d470b115c` remain immutable. These are isolated local diagnostic results.
+
+The records-only head subsequently ran hosted cumulative CI `35646270499`, attempt 1. At this approval entry, the actual service reports failure for all four required profiles. Original artifacts and detailed test outcomes will be independently preserved and audited separately; this sentence does not invent JUnit counts or imply a successful run.
+
+Original hash-pinned P1 intake: `eb730dda31d189c8487b5247a45bae47b678821b`; original manifest-test file SHA-256 `7b4062ac0fe2cbf8ce931f472dd22ca7a9c0fe802cdf14bfc69407bb47897f96`; original method source-slice SHA-256 `3376047b6e44a6af70c9697331555b523f380b497a3bf641b84f2f019ab1f30b`; normalized original AST SHA-256 `f76f0114802b432b7a99abb22992851c212dfb38dd5060e674b8fa49935ac2d9`. Accepted W04 wrapper SHA-256 `21e9737638d822c53e71607972bd9b6a7f1fd757f3d7c3a762e6f40c377f8f96`.
+
+The original loaded method will be saved explicitly before rebinding the same collected class-method identity. Its adapter may change only its helper definition name and mutation target `analysis/origins.py` to permanently inert `reporting/json_report.py`. It retains the exact appended pure-function bytes, copied mapping, `assertRaises(AssertionError)`, and verifier call. The wrapper prefix, `verify_manifest` implementation, loader, all other original methods and final unittest entry stay live and unchanged. Separate tests add unchanged/legal-live positives, forbidden-effect negatives, owner-annotation negatives and postpositives for each newly promoted path, without new subTest loops or duplicate old identities.
+
+Exactly three existing transition methods require documented amendment awareness: `test_each_unit_has_exact_four_common_records_and_approved_paths`; `test_w04_r01_name_is_cumulative_but_immediate_permissions_are_not`; and `test_w04_r01_driver_keeps_original_p2_and_unrelated_ci_ast`. Their raw-plan/W04 historical evidence remains anchored, with explicit current W05 permissions and current live driver AST controls. Other old transition bodies retain their assertions. New tests must verify exact wrapper AST/binding preservation, thirteen-versus-nine scopes, all fifteen units, unchanged P2 controls and real Git pre-boundary/side-branch/reverted-excursion negatives. No blanket old-test replacement or historical-only execution is authorized.
+
+Implementation and validation at creation of this appendix: authorized and pending. All 2,979 accepted W04 top-level test identities and 428 historical subtest events must remain. Actual additions are collected mechanically. Full local code-head execution, both exact code/final-successor four-profile matrices and original-artifact/Git audits remain required before W05 acceptance. W05's twelve new fields and forty-eight core obligations have not been marked complete by this approval.
+
+
+### Actual original hosted failure: raw artifacts preserved
+
+Independent forensic audit of run `35646270499`, attempt 1, at exact head `a2aa2112231ba7595070216e659798130127dc3c` completed with status `verified_failed_run` and no evidence-integrity issues. Audit SHA-256: `ac91b4aea0f6943b6e54da00f513aec88abd1719e62821684ce1a7a050944338`. Each of the four original ZIPs contains 28 records. The service metadata, raw API records, ZIP size/digest/CRC and safe member structure agree.
+
+Every profile collected all 2,979 original top-level identities: 2,978 passed and the same manifest method failed, with 428 separate successful historical subtest events and zero errors/skips. All 177 tracked before/after hashes match the exact head. Its 47 old test files and 48 product modules match accepted W04. The 11 packaging cases and installed-runtime case actually passed, including 55 wheel, 65 source-distribution and 55 rebuilt-wheel member maps, all 48 installed module hashes and eight admission modes. Those passing components do not change the failed cumulative result. No complete local suite is asserted for this head.
+
+| Profile | Artifact ID | Original ZIP SHA-256 |
+|---|---|---|
+| Ubuntu 24.04 / Python 3.11 | `10660860384` | `65e7d8103d3635895169f574756b9da2f7ac1c396dc0d6940293bc83a902bfd0` |
+| Ubuntu 24.04 / Python 3.13 | `10660324214` | `a5e51f868d739c0e8af793897bc83966e9f688921e8669cdf23a37f58daaa68e` |
+| Windows 2025 / Python 3.11 | `10660676523` | `71fd40c3bc3ec3a5a0b294e08b09b1c1dec9443f656edefe3363365b8410c78b` |
+| Windows 2025 / Python 3.13 | `10660761110` | `dc70c7b501f89837101512843453f328649fba3a50d137a5c99318fd4d75ae60` |
+
+
+### Approved R01 targeted execution and independent review
+
+The migrated manifest wrapper passed 13 top-level tests with its original eight separate subtest events. The CI driver and transition file passed 268 top-level tests, comprising the original 20 CI cases, all 180 prior transition cases and 68 new amendment controls. Across the three affected files all 208 accepted W04 identities remain and 73 separately named instances are added. No new subTest loops or inherited-identity replacement is used.
+
+Independent R01 review passed 32 checks with no remaining blocking findings. Report SHA-256: `0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07`. It verifies the exact two AST substitutions in the manifest adapter, original live method binding, unchanged verifier/prefix/footer and other methods, exact three approved old transition adaptations, all six fixed migration pins, original P2 APIs and historical W04 authority. Actual pre-boundary history contains fifteen valid commits. Seven independent real Git positive/negative fixtures verify the fixed boundary, pre-amendment original scope, side branches, restored unauthorized excursions, wrong tree/parent and nonauthoritative metadata.
+
+Reviewed source SHA-256 values: manifest wrapper `40bbc1d4e2671cbcfd5b1aeeacbfa8531332239f0b543fa46073a4a018d23cb1`; CI driver `f011914dee89c92782e7f1dc1c1a3580b1adab945913460f7c02ae889de40d7b`; transition tests `68f6ccd39b84301d28757ed13b2c960658b901b50b9fa855da7f25e94fb99b7c`. Targeted execution is supplementary local CPython 3.12.14 evidence. Product correctness, the actual committed post-amendment segment, the full cumulative suite and both exact code/final-successor hosted matrices still require their separate evidence. No W05 acceptance or W06 authorization is inferred.

@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W05",
-  "status": "W05_start_blocked_pending_named_stage_test_migration",
+  "status": "W05_implemented_pending_exact_head_core_verification",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "Sixteen accepted M015 owner-local cores are preserved exactly. All forty-eight planned W05 core cells remain pending; the other inherited pending cells and all 228 integration/release cells remain pending.",
+  "meaning": "The sixteen accepted M015 owner-local rows remain exact. Forty-eight implemented W05 source-bound rows await exact-head full verification; no additional core closure is claimed at code-commit creation. All 228 integration and release cells remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -3158,11 +3158,24 @@
   "w05_start": {
     "owner_instruction": "P3-W05 启动",
     "accepted_predecessor": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
-    "status": "paused_before_product_implementation",
+    "status": "implementation_complete_pending_exact_head_validation",
     "planned_core_obligations": 48,
     "new_core_obligations_verified": 0,
-    "pending_amendment": "P3-W05-R01",
-    "amendment_approved": false,
-    "diagnostic_evidence_sha256": "3b998b945b7a14f0ec78485abb7fe844816b7784c7acd849f6da5f8d470b115c"
-  }
+    "amendment_approved": true,
+    "diagnostic_evidence_sha256": "3b998b945b7a14f0ec78485abb7fe844816b7784c7acd849f6da5f8d470b115c",
+    "amendment": "P3-W05-R01",
+    "actual_approval": "批准 **P3-W05-R01**"
+  },
+  "w05_core_mapping_inputs": [
+    {
+      "path": "p3w05-inventory-core-evidence-map.json",
+      "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5",
+      "bytes": 13476
+    },
+    {
+      "path": "p3w05-origins-core-evidence-map.json",
+      "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed",
+      "bytes": 21481
+    }
+  ]
 }

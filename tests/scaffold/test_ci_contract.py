@@ -120,6 +120,20 @@ P3_W04_R01_BASE_TREE = "f7c92b34537b8fc089c8624af9da6ec9dea74a68"
 P3_W04_R01_PREDECESSOR = "b932bef422b4ec67b1b313ecae51b0f7e48d72a2"
 
 
+# Approved P3-W05-R01: one historical inert-slot manifest control, its
+# independent regression tests, this exact exception and the appended ledger.
+# Earlier W05 commits retain the original nine-path scope.
+P3_W05_R01_PATHS = frozenset((
+    "tests/scaffold/test_module_manifest.py",
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_phase3_transition.py",
+    "phase3/transition_ledger.md",
+))
+P3_W05_R01_BASE = "a2aa2112231ba7595070216e659798130127dc3c"
+P3_W05_R01_BASE_TREE = "d468e02fa40a5014e838937486fa49185bc1e72d"
+P3_W05_R01_PREDECESSOR = "a175d6d4b4153ddc9147301f9db8d247d12e4852"
+
+
 def phase3_effective_paths(paths, unit, *, cumulative=False):
     """Phase 3 scopes are separate from the unchanged historical P2 API."""
     current = phase_guard.phase3_unit_number(unit)
@@ -129,12 +143,15 @@ def phase3_effective_paths(paths, unit, *, cumulative=False):
         allowed.update(paths[f"P3-W{step:02}"])
         if step == 4:
             allowed.update(P3_W04_R01_PATHS)
+        if step == 5:
+            allowed.update(P3_W05_R01_PATHS)
     return frozenset(allowed)
 
 
 def phase3_scope_exceptions(unit):
     """Name accepted cumulative amendments without granting later edit rights."""
-    return ["P3-W04-R01"] if phase_guard.phase3_unit_number(unit) >= 4 else []
+    current = phase_guard.phase3_unit_number(unit)
+    return (["P3-W04-R01"] if current >= 4 else []) + (["P3-W05-R01"] if current >= 5 else [])
 
 
 def phase3_check_changed_paths(paths, unit, changed):
@@ -284,6 +301,17 @@ def phase3_w04_pre_amendment(predecessor, successor):
     return frozenset(git_text("rev-list", predecessor + ".." + P3_W04_R01_BASE).splitlines())
 
 
+def phase3_w05_pre_amendment(predecessor, successor):
+    """Read the fixed records-only W05 boundary, independently of metadata."""
+    require(predecessor == P3_W05_R01_PREDECESSOR, "w05_repair_predecessor_mismatch")
+    require(git_text("rev-parse", P3_W05_R01_BASE + "^{tree}") == P3_W05_R01_BASE_TREE,
+            "w05_repair_boundary_tree_mismatch")
+    require(git_text("show", "-s", "--format=%P", P3_W05_R01_BASE).split() == [predecessor],
+            "w05_repair_boundary_parent_mismatch")
+    require_ancestor(P3_W05_R01_BASE, successor)
+    return frozenset(git_text("rev-list", predecessor + ".." + P3_W05_R01_BASE).splitlines())
+
+
 def phase3_history(entry, base, head, paths, unit):
     """Check each accepted unit's entire DAG against that unit's own scope.
 
@@ -315,7 +343,9 @@ def phase3_history(entry, base, head, paths, unit):
         immediate = phase3_effective_paths(paths, owner)
         cumulative = phase3_effective_paths(paths, owner, cumulative=True)
         pre_amendment = (phase3_w04_pre_amendment(predecessor, successor)
-                         if owner == "P3-W04" else frozenset())
+                         if owner == "P3-W04" else
+                         phase3_w05_pre_amendment(predecessor, successor)
+                         if owner == "P3-W05" else frozenset())
         commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()
         for commit in commits:
             require(commit not in seen, "duplicate_history_commit")
@@ -324,11 +354,13 @@ def phase3_history(entry, base, head, paths, unit):
             parents = git_text("show", "-s", "--format=%P", commit).split()
             require(bool(parents), "unexpected_root_commit")
             changed = changed_between(parents[0], commit)
-            # Approval cannot retrospectively bless a pre-amendment W04 edit
+            # Approval cannot retrospectively bless a pre-amendment unit edit
             # or a side branch that has not descended from the fixed boundary.
             allowed = paths[owner] if commit in pre_amendment else immediate
             if owner == "P3-W04" and commit not in pre_amendment:
                 require_ancestor(P3_W04_R01_BASE, commit)
+            if owner == "P3-W05" and commit not in pre_amendment:
+                require_ancestor(P3_W05_R01_BASE, commit)
             require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")
             actual = commit_hashes(commit)
             check_entry_bytes(entry["files"], actual, cumulative)
@@ -336,6 +368,8 @@ def phase3_history(entry, base, head, paths, unit):
                             "parents": parents, "unit": owner, "accepted_predecessor": predecessor,
                             "segment_successor": successor, "current_unit_segment": current_segment,
                             "immediate_scope_exceptions": (["P3-W04-R01"] if owner == "P3-W04"
+                                                           and commit not in pre_amendment else
+                                                           ["P3-W05-R01"] if owner == "P3-W05"
                                                            and commit not in pre_amendment else []),
                             "changed_paths": sorted(changed), "tracked_files": len(actual)})
     all_commits = set(git_text("rev-list", intake + ".." + head).splitlines())
