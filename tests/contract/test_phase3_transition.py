@@ -634,11 +634,18 @@ def test_forbidden_intermediate_commit_cannot_be_hidden_by_restored_final_bytes(
         git("commit", "-q", "-m", message)
         return git("rev-parse", "HEAD")
     git("init", "-q")
+    # Synthetic entry bytes and archive bytes have one explicit local format;
+    # inherited Windows Git settings must not alter this history counterexample.
+    git("config", "--local", "core.autocrlf", "false")
+    git("config", "--local", "core.eol", "lf")
     (repo / "fixed.txt").write_bytes(b"fixed entry\n")
     (repo / "allowed.txt").write_bytes(b"entry progress\n")
     initial = commit("Synthetic entry")
-    entry_files = {name: hashlib.sha256((repo / name).read_bytes()).hexdigest() for name in ("fixed.txt", "allowed.txt")}
+    entry_files = {name: hashlib.sha256(raw).hexdigest() for name, raw in (
+        ("fixed.txt", b"fixed entry\n"), ("allowed.txt", b"entry progress\n"))}
     entry = {"intake_commit": initial, "files": entry_files}
+    with patch.object(ci, "ROOT", repo):
+        assert ci.commit_hashes(initial) == entry_files
     (repo / "allowed.txt").write_bytes(b"allowed progress\n")
     good = commit("Allowed unit progress")
     paths = {"P3-W01": frozenset({"allowed.txt"})}
@@ -667,13 +674,17 @@ def test_later_unit_cannot_relabel_an_earlier_units_commit_scope(tmp_path, case)
         git("commit", "-q", "-m", message)
         return git("rev-parse", "HEAD")
     git("init", "-q")
+    git("config", "--local", "core.autocrlf", "false")
+    git("config", "--local", "core.eol", "lf")
     for name in ("first.txt", "second.txt", "fixed.txt"):
         (repo / name).write_bytes(b"entry\n")
     initial = commit("Synthetic entry")
     main_branch = git("branch", "--show-current")
     entry = {"intake_commit": initial, "files": {
-        name: hashlib.sha256((repo / name).read_bytes()).hexdigest()
+        name: hashlib.sha256(b"entry\n").hexdigest()
         for name in ("first.txt", "second.txt", "fixed.txt")}}
+    with patch.object(ci, "ROOT", repo):
+        assert ci.commit_hashes(initial) == entry["files"]
     git("checkout", "-q", "-b", "synthetic-w01")
     (repo / "first.txt").write_bytes(b"first-unit work\n")
     accepted_head = commit("Allowed first-unit work")

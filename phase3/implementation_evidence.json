@@ -36,5 +36,18 @@
     "final_documentation_successor": "pending"
   },
   "analytical_obligations_completed": 0,
-  "phase3_complete": false
+  "phase3_complete": false,
+  "failed_hosted_runs": [
+    {
+      "head": "3d3a9512035bf401b39a1f90601b4c8dc191572d",
+      "run_id": 35547854833,
+      "run_attempt": 1,
+      "status": "failure",
+      "ubuntu": "1786passed_428subtests_each",
+      "windows": "3failed_1783passed_428subtests_each",
+      "scope": "new_synthetic_git_history_fixture_byte_comparison",
+      "gate": "not_accepted_as_four_profile_pass",
+      "repair": "Temporary Git repositories use local LF settings; literal expected entry bytes are checked against the actual Git archive. Same3failures reproduced under isolated CRLF host settings, all6targetedinstances pass after repair. Actual guard and scope assertions unchanged."
+    }
+  ]
 }
