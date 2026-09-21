@@ -1,41 +1,35 @@
 # PHASE_3_PROGRESS
 
-## Authority and current boundary
+## Authority and actual entry
 
-Owner instruction: `批准，启动 P3-W01`. Plan revision 0.1 was accepted through PR #19 and merged at `80aa943f577f4a7deaeb8a0f3253c62d1263ca62`, tree `66ba4b112554ee227bf536e0716b51d555c10747`. The frozen plan SHA-256 is `e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae`. Its original proposed-status header remains a historical record; this later approval establishes authority.
+Owner instruction: `P3-W02 继续`. This accepts completed W01 and authorizes W02 within approved plan revision 0.1. The plan merge is `80aa943f577f4a7deaeb8a0f3253c62d1263ca62`; its frozen SHA-256 is `e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae`. Historical proposed or pending headers in frozen records are not rewritten or backdated.
 
-P3-W01 code and transition validation are complete at the named precursor below. The final documentation successor requires its own post-commit gate, recorded on PR #20. Owner acceptance and merge remain pending. P3-W02 has not started. Phase 3 analytical behavior, public auditing, report output and release are not delivered by W01.
+W01 was normally merged through PR20 at `4105f840ef3eaaa98da5d9e21c1ed7742bbaa1d6`, preserving reviewed tree `82bd2ab8578a6780aada16f7a5c71b9485f5a255`. That actual merge is the W02 entry. Accepted W01 final head `ca028b0616a3d345032e0a9d667bf55c56759534` passed independently audited run `35548885459`, attempt 1, in all four profiles with 1,786 top-level tests and 428 separate subtests. Main postmerge service run `35551657196` also succeeded.
 
-## Accepted predecessor
+## W02 delivered scope
 
-Phase 2 was accepted through PR #18, merge `3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547`, tree `8e07404371fc9128ebdfcd85aab64936b15f7201`. Reviewed W09 head `652ec2f434197ce657bc30c16927a9be66d8378e` passed independently audited run `35519939650`, attempt 1, in all four profiles: 1,650 top-level tests and 428 successful subtest events separately counted. Postmerge service run `35544450516` also passed all four.
+Exactly 14 authorized paths change: four common records, six product files and four new tests. Only `contracts/results.py` is newly promoted. Fourteen of 48 modules are active, 34 remain protected from implementation, and all 42 module bytes outside this unit's six mutable files retain the accepted predecessor. All 35 existing test files remain byte-identical.
 
-The document-only Phase 3 planning head encountered the disclosed inherited-context failure in run `35545499745`. The plan merge itself also failed inherited run `35546955084` at preflight; job `106174464579` confirms `main_merge_requires_unit_footer`, before collection. The owner approved the plan with the disclosed inherited limitation under section 1.2. It is not relabeled passing CI. W01 must provide actual Phase 3 evidence on its own candidate and final documentation successor.
+The private contracts implement 57 closed field bindings, six legal execution/result pairs, seven immutable value kinds, exact integer and original fraction forms, classified completion intervals, typed links and duplicate semantic slots. A value and its linked population retain the same immutable facts. Explicit non-met PC02/PC24 facts cannot support an available result.
 
-## P3-W01 deliverables
+PC02 compares exact operation scope; PC24 checks finite processed populations and all required commit components. Both require a current analysis-job port and check before and after construction. Constructing their project-owned facts does not establish that an analytical family ran. Existing preparation still completes only PC01 and leaves analytical checks pending.
 
-- Pin the real 157-file plan entry and its 156-file accepted Phase 2 predecessor.
-- Establish all fifteen exact work-unit scopes, sixteen new-module earliest promotions, eight extension schedules and the 29-module final ceiling. W01 preserves all 48 product module bytes.
-- Preserve explicit Phase 2 permission semantics and record each stage/history assertion migration. Keep all 1,650 predecessor identities, 34 predecessor test files and 428 subtest events.
-- Migrate the existing cumulative workflow in place, retaining four profiles, exact pins, complete raw evidence, installed-runtime and packaging witnesses.
-- Record independent negative controls and the exact final-head validation before owner review.
+The new invocation context uses one 10,000,000-unit global ledger, including its single 1,024-unit emergency reserve, per-job 1,000,000-unit ceilings, and one 60-second cooperative deadline. Witness reservation/retention counts 20,000 witnesses and 100,000 member occurrences. Equality is allowed; excess stops before work and counters update atomically. Job charges debit global exactly once. Saved witness counters require a current job. Bounded finalization cannot resume analysis; one emergency delivery is terminal. The first safe cause stays fixed, and cancellation remains a separate payload-free event with actual input state.
 
-The source-controlled [entry](phase3/entry_manifest.json), [transition ledger](phase3/transition_ledger.md), [CI review](phase3/ci_review.md), [implementation evidence](phase3/implementation_evidence.json) and [obligation coverage](phase3/obligation_coverage.json) distinguish engineering verification from pending analytical obligations.
+## Validation and review gate
 
-## Validation
+Code head `3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e`, tree `e33b73fe41dff46a148456b0af2f05504bfd64e0`, passed [run 35552824387](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35552824387), attempt 1, in all four required profiles. Each ran **2,089 unique top-level tests across 39 files**, retaining all **1,786 W01 identities**, plus **428 successful subtest events counted separately**. Failures, errors and skips were zero. The 303 new instances cover W02 primitives.
 
-The actual code head `ec221258e3a43fa28f4e9d1c5aeb8bc214b1ae15`, tree `1aa6a55eefedec72b32c22a6274fcec14e969786`, passed [run 35548424303](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35548424303), attempt 1, in all four required profiles. Each collected **1,786 unique top-level tests**, retained all **1,650 predecessor identities**, and reported **428 successful subtest events separately**. All 35 test files ran; failures, errors and skips were zero. The 136 new instances cover the W01 controls.
+Independent raw-artifact reconstruction checked original ZIP/service hashes and lengths, collection/JUnit equality, all 169 tracked bytes before and after, actual entry and complete W01/W02 intermediate history, fixed toolchain wheels, package-member inventories and the installed 48-module/eight-preparation-mode witness. The complete audit and profile identities are recorded in `phase3/implementation_evidence.json`.
 
-Independent raw-artifact checks verified original ZIPs, collection/JUnit equality, actual patch/image and developer-wheel identities, all 165 tracked bytes before/after, actual entry and intermediate history, frozen baseline, packaging and the installed-runtime witness. All 48 product modules retain accepted bytes. The final diff changes 18 files within the exact 23-path W01 allowance.
+Raw code-head audit SHA-256: `6aa39336b19220585fed2165f3ed5bf9753c836cff1bdb7970e00b477100e479`. Verification is assistant-assisted with shared environment/tool provenance, not external certification. The unchanged toolchain applicability and platform limitations remain documented in accepted `phase3/ci_review.md`.
 
-The first supplementary local integration had one newly introduced stage-positive-control failure (1,776 passed, 428 subtests passed); it was corrected and specifically reverified. This is retained as failed integration history, not counted as a successful matrix. The first hosted run `35547854833` also remains failed: each Windows profile had three new synthetic Git-fixture failures caused by inherited CRLF settings. The isolated-fixture repair and exact reproduction are recorded in the transition ledger. The actual repaired hosted code-head run above is the passing gate.
+The supplementary Python 3.12.14 integration run passed 2,063 tests and 428 subtests before the final review controls settled. All 303 final component cases then passed together; final collection retained every prior identity. The earlier uncommitted contract integration had 10 failures and 178 passes, due to four positive fixture reference mismatches and six unsupported reason assertions; the record retains that failed run and its correction. No existing test was changed.
 
-These records form a documentation successor to the verified code head. Its exact commit, tree, own four-profile run and independent raw audit must be attached to [PR #20](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/20) after commit. At this document's creation that gate is pending. Neither the precursor nor this pending sentence certifies future bytes. No W01 acceptance/merge, W02 start or analytical obligation completion is implied.
+W01's initial Windows CRLF fixture failures and the inherited planning-context failures remain disclosed at accepted W01 commit/PR20. They are not relabeled passing.
 
+This evidence update is a successor to the named verified code commit. Its actual commit/tree, own four-profile run and independent raw audit must be attached to [PR #21](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/21) after commit; that gate is pending at this document's creation. W02 owner acceptance and merge remain pending.
 
-| Required profile | Actual Python patch | Runner image | Job | Artifact |
-|---|---|---|---|---|
-| `ubuntu-24.04-py3.11` | `3.11.16` | `20260907.300.1` | `106178528140` | `10617267785` |
-| `ubuntu-24.04-py3.13` | `3.13.15` | `20260907.300.1` | `106178528071` | `10617342815` |
-| `windows-2025-py3.11` | `3.11.9` | `20260907.229.1` | `106178528182` | `10617371663` |
-| `windows-2025-py3.13` | `3.13.15` | `20260907.229.1` | `106178528317` | `10617561596` |
+## Remaining boundary
+
+All 228 analytical field obligations remain pending. W02 supplies private primitives, not complete family execution, the W13 whole-invocation pipeline, final IDs/report-root assembly, public audit behavior, renderers, native capture or release. All existing public refusals and preparation outcomes remain unchanged. P3-W03 has not started.

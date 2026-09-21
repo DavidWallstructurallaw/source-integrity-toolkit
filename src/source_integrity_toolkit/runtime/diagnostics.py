@@ -10,9 +10,9 @@ Traceback locals and hostile debugger/same-process access are outside the claim.
 from dataclasses import dataclass
 from ..contracts.execution import (
     _PreparationAborted, _AuditCancelled, _STRUCTURAL_CODES,
-    _PREPARATION_LIMIT_IDS,
+    _PREPARATION_LIMIT_IDS, _AnalysisAborted, _ANALYSIS_LIMIT_IDS,
 )
-from .resources import _PreparationBudget
+from .resources import _PreparationBudget, _AnalysisBudget
 
 _CONSTRAINT_BASIS = (
     ("exact_integer_range", "PRIVACY_AND_DATA_HANDLING section 8.2: exact integer magnitude."),
@@ -91,3 +91,59 @@ def _emergency_diagnostic(budget: object) -> _SafeDiagnostic:
     if type(budget) is not _PreparationBudget:
         raise TypeError("invalid_private_budget") from None
     return _diagnostic(budget.take_emergency())
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _AnalyticalDiagnostic:
+    """Finite safe transport constants, not a report or analytical salvage."""
+    input_state: str
+    execution_state: str
+    code: str | None
+    location: None
+    safe_message: str
+    qualifications: tuple
+
+    def __post_init__(self) -> None:
+        if (type(self.input_state) is not str or self.input_state not in ("accepted", "not_completed") or
+                type(self.execution_state) is not str or type(self.safe_message) is not str or
+                self.location is not None or type(self.qualifications) is not tuple or
+                len(self.qualifications) > 1 or (self.code is not None and type(self.code) is not str) or
+                any(type(q) is not str or len(q) > 160 for q in self.qualifications)):
+            raise TypeError("invalid_safe_diagnostic") from None
+        allowed = False
+        if self.execution_state == "interrupted":
+            allowed = (self.code == "resource_limit_reached" and
+                self.safe_message == "Processing stopped at a resource boundary." and
+                len(self.qualifications) == 1 and self.qualifications[0] in _ANALYSIS_LIMIT_IDS)
+        elif self.execution_state == "failed":
+            allowed = (self.code == "execution_failed" and
+                self.safe_message == "Processing could not complete safely." and self.qualifications == ())
+        elif self.execution_state == "cancelled":
+            allowed = (self.code is None and self.safe_message == "Processing was cancelled." and
+                self.qualifications == (_CANCEL_BASIS,))
+        if not allowed:
+            raise TypeError("invalid_safe_diagnostic") from None
+
+
+def _analytical_diagnostic(cause: object) -> object:
+    """Exact safe transport types only; no exception/value coercion or logging."""
+    if type(cause) is _PreparationAborted:
+        return _diagnostic(cause)
+    if type(cause) is _AuditCancelled:
+        return _AnalyticalDiagnostic(cause.input_state, "cancelled", None, None,
+            "Processing was cancelled.", (_CANCEL_BASIS,))
+    if type(cause) is not _AnalysisAborted:
+        raise TypeError("unrecognized_private_stop") from None
+    stop = cause.stop
+    if stop.execution_state == "interrupted":
+        return _AnalyticalDiagnostic(stop.input_state, "interrupted", "resource_limit_reached", None,
+            "Processing stopped at a resource boundary.", (cause.limit_id,))
+    return _AnalyticalDiagnostic(stop.input_state, "failed", "execution_failed", None,
+        "Processing could not complete safely.", ())
+
+
+def _emergency_analytical_diagnostic(budget: object) -> object:
+    """Use the one entry-prepaid reserve, preserving the first safe cause."""
+    if type(budget) is not _AnalysisBudget:
+        raise TypeError("invalid_private_budget") from None
+    return _analytical_diagnostic(budget.take_emergency())

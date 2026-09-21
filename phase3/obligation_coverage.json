@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W01",
-  "status": "entry_only_no_analytical_implementation",
+  "unit": "P3-W02",
+  "status": "private_primitives_implemented_field_execution_pending",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "Engineering transition evidence does not discharge analytical or release obligations. Each original source cell and surrounding binding clauses remain controlling.",
+  "meaning": "W02 private contract, prerequisite-fact and accounting primitives do not establish that any analytical operation ran. All original field obligations and surrounding binding clauses remain controlling; all 228 field obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -2529,12 +2529,50 @@
   },
   "prerequisites": {
     "PC01": "accepted_preparation_only",
-    "PC02-PC24": "pending_analytical_execution"
+    "PC02": "private_scope_fact_check_implemented_actual_component_execution_pending",
+    "PC03-PC23": "pending_analytical_execution",
+    "PC24": "private_complete_population_fact_check_implemented_actual_component_execution_pending"
   },
   "analytical_families": {
     "count": 15,
     "status": "pending"
   },
   "phase3_complete": false,
-  "release_complete": false
+  "release_complete": false,
+  "primitive_evidence": [
+    {
+      "source": "OBSERVABILITY_AND_REPORTING.md sections 12.3-12.5, 13, 16.2-16.6, 17",
+      "implementation": [
+        "contracts/results.py",
+        "contracts/report.py"
+      ],
+      "tests": [
+        "tests/contract/test_result_contract.py",
+        "tests/contract/test_prerequisite_contract.py"
+      ],
+      "scope": "Representation, exact scope consistency and finite completion facts only; no actual family execution or full output conformance."
+    },
+    {
+      "source": "REPOSITORY_ARCHITECTURE.md sections 19.1-19.3; PRIVACY_AND_DATA_HANDLING.md section 8; GOVERNANCE_AND_HANDOFF.md section 22.3",
+      "implementation": [
+        "contracts/execution.py",
+        "runtime/resources.py",
+        "runtime/diagnostics.py",
+        "validation/limits.py"
+      ],
+      "tests": [
+        "tests/security/test_analytical_resource_limits.py",
+        "tests/security/test_analytical_diagnostics.py"
+      ],
+      "scope": "Fixed shared accounting, retained witness occurrences, bounded finalization and safe transports. W13 end-to-end invocation and later output/native obligations remain pending."
+    }
+  ],
+  "validated_primitive_code": {
+    "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+    "run_id": 35552824387,
+    "profiles": 4,
+    "tests_each": 2089,
+    "subtests_each": 428,
+    "scope": "Private W02 component evidence only. All 228 field obligations, full analytical execution, final output and release remain pending."
+  }
 }

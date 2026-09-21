@@ -1,15 +1,14 @@
 {
   "format": "sit-phase3-evidence/0.1",
-  "unit": "P3-W01",
+  "unit": "P3-W02",
   "authority": {
-    "owner_instruction": "批准，启动 P3-W01",
-    "plan_pr": 19,
-    "plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
-    "plan_tree": "66ba4b112554ee227bf536e0716b51d555c10747",
+    "owner_instruction": "P3-W02 继续",
+    "approved_plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
     "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
-    "accepted_phase2_merge": "3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547",
-    "w01_acceptance": "pending_owner_review",
-    "next_unit": "P3-W02_not_authorized_or_started"
+    "actual_unit_entry": "4105f840ef3eaaa98da5d9e21c1ed7742bbaa1d6",
+    "w01_acceptance": "accepted_and_normally_merged",
+    "w02_acceptance": "pending_owner_review",
+    "next_unit": "P3-W03_not_authorized_or_started"
   },
   "entry": {
     "file_count": 157,
@@ -19,105 +18,114 @@
     "predecessor_test_files": 34,
     "predecessor_subtests": 428
   },
+  "accepted_w01": {
+    "owner_instruction": "P3-W02 继续",
+    "pr": 20,
+    "head": "ca028b0616a3d345032e0a9d667bf55c56759534",
+    "tree": "82bd2ab8578a6780aada16f7a5c71b9485f5a255",
+    "merge": "4105f840ef3eaaa98da5d9e21c1ed7742bbaa1d6",
+    "run_id": 35548885459,
+    "run_attempt": 1,
+    "profiles_passed": 4,
+    "tests_per_profile": 1786,
+    "subtests_per_profile": 428,
+    "test_files": 35,
+    "identity_sha256": "c6798a416875be8a764787fe68f8beef4bf7a0b0ea3451cea17d862b765756c8",
+    "raw_audit_sha256": "81906ccaa55327232d0e124febb7a26c5b548c56231586878d472578cc75a8fd",
+    "git_audit_sha256": "73c741b282a23fb399323b51dc48641ddce9c831986d4745a8291e35e115db0d",
+    "postmerge_service_run": {
+      "id": 35551657196,
+      "status": "success",
+      "meaning": "GitHub service reports successful postmerge run; accepted final-head raw audit remains the independently reconstructed acceptance evidence."
+    }
+  },
   "product_boundary": {
     "total_modules": 48,
     "inherited_implemented": 13,
-    "new_promotions": 0,
-    "protected_current": 35,
-    "product_byte_changes": 0,
+    "new_promotions": 1,
+    "implemented_current": 14,
+    "protected_current": 34,
+    "mutable_product_paths": 6,
+    "byte_preserved_product_paths": 42,
     "phase_end_implementation_ceiling": 29,
     "phase_end_protected": 19,
     "public_auditing": "refusal_unchanged",
     "runtime_dependencies": 0
   },
   "validation": {
+    "status": "verified_code_precursor_final_evidence_successor_pending",
     "supplementary_local": {
       "python": "3.12.14",
-      "initial_integration": {
-        "tests_passed": 1776,
-        "tests_failed": 1,
+      "meaning": "Supplementary only; does not replace the required four hosted profiles.",
+      "uncommitted_contract_integration": {
+        "failed": 10,
+        "passed": 178,
+        "log": "p3w02-contract-integration.log",
+        "cause": "Four positive fixtures still constructed separate scope objects after strict reference consistency changed; six new assertions demanded an unsupported reason for an unfinished PC24 fact. No pre-existing test was edited.",
+        "repair": "Use the actual same immutable scope/population objects in positive fixtures; assert non-met unfinished PC24 with its note and no fabricated execution reason. Matched representation and atomicity negative controls were added."
+      },
+      "targeted_security_passed": 89,
+      "targeted_contract_passed_before_final_job_port_review": 198,
+      "cumulative_integration": {
+        "tests_passed": 2063,
         "subtests_passed": 428,
-        "meaning": "Uncommitted integration run; stage-positive-control error, retained as failure."
+        "test_files": 39,
+        "failures_errors_skips": 0,
+        "elapsed_seconds": 293.24,
+        "w01_identities_retained": 1786,
+        "local_junit_identity_match": true,
+        "meaning": "Uncommitted integration pass before final atomicity and analysis-job-port review changes settled. It is not substituted for an exact final candidate run; final added controls receive targeted execution and the actual committed four-profile gate."
       },
-      "repair": "Corrected W01 rejection/W05 pure-static positive control; failed method passed with all eight original subtests. Final136-case new transition file passed.",
-      "code_head_collection": {
-        "head": "ec221258e3a43fa28f4e9d1c5aeb8bc214b1ae15",
-        "count": 1786,
-        "files": 35,
-        "predecessor_retained": 1650,
-        "added": 136
+      "final_components": {
+        "passed": 303,
+        "contract": 214,
+        "security": 89,
+        "failed_errors_skips": 0,
+        "scope": "All four new test files executed together after all final code changes; no full analytical family claim."
       },
-      "actual_git_history_audit": {
-        "head": "3d3a9512035bf401b39a1f90601b4c8dc191572d",
-        "status": "pass",
-        "meaning": "Earlier code-head local Git audit without synthetic Actions identity; repaired head is independently checked in the hosted raw audit below."
+      "final_collection": {
+        "count": 2089,
+        "w01_retained": 1786,
+        "w01_missing": [],
+        "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
+        "test_files": 39
       }
     },
     "hosted_code_head": {
       "status": "pass",
-      "head": "ec221258e3a43fa28f4e9d1c5aeb8bc214b1ae15",
-      "tree": "1aa6a55eefedec72b32c22a6274fcec14e969786",
-      "run_id": 35548424303,
+      "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+      "tree": "e33b73fe41dff46a148456b0af2f05504bfd64e0",
+      "run_id": 35552824387,
       "run_attempt": 1,
-      "run_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35548424303",
+      "run_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35552824387",
       "profiles": [
         {
           "profile": "ubuntu-24.04-py3.11",
-          "job_id": 106178528140,
-          "artifact_id": 10617267785,
-          "zip_bytes": 108649,
-          "zip_sha256": "c1d2d1e903f2976ddd238cbd5cdd4c3f5fe22f62f9cd1511f04dd2b94fa551ba",
-          "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
-          "image_version": "20260907.300.1",
-          "tests": 1786,
+          "job_id": 106190629899,
+          "artifact_id": 10619282029,
+          "zip_bytes": 121867,
+          "zip_sha256": "6b6d8fcac38b7db608c3f1334503405b8cdc93aec0115863a22f2b2ce5cc38c5",
+          "environment": {
+            "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+            "image_version": "20260907.300.1",
+            "matrix_os": "ubuntu-24.04",
+            "matrix_python": "3.11",
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.11.16 (main, Aug 13 2026, 02:46:14) [GCC 13.3.0]",
+            "run_attempt": "1",
+            "run_id": "35552824387",
+            "scope": "Phase 3 cumulative verification",
+            "unit": "P3-W02"
+          },
+          "tests": 2089,
           "subtests_passed": 428,
-          "predecessor_retained": 1650,
-          "failures_errors_skips": {
+          "failure_error_skipped_elements": {
             "failure": 0,
             "error": 0,
             "skipped": 0
           },
-          "identity_sha256": "c6798a416875be8a764787fe68f8beef4bf7a0b0ea3451cea17d862b765756c8",
-          "tracked_before_after_files": 165,
-          "installed_module_hashes": 48,
-          "installed_preparation_modes": 8,
-          "installed_negative_events": [
-            "open",
-            "socket.getaddrinfo",
-            "ctypes.dlopen"
-          ],
-          "archive_inventories": [
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 75015,
-              "sha256": "07765ae9b7d144297ea67a14706aacb485c9afa52122ead90cdfe18765dc1d2d",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
-              "bytes": 61853,
-              "sha256": "db029abcdb269f751543d9ab6be11065c98a116fe01ed129cbbefe0f5a9046cc",
-              "regular_member_count": 65,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 58,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 75015,
-              "sha256": "a10f85b99d599ace70daabe6d07e2de5d3da7756f19764309262ab7d26b66e2e",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            }
-          ],
+          "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
+          "tracked_before_after_files": 169,
           "actual_developer_versions": {
             "iniconfig": "2.3.0",
             "packaging": "25.0",
@@ -126,65 +134,84 @@
             "pygments": "2.20.0",
             "pytest": "9.1.1",
             "setuptools": "84.0.0"
+          },
+          "build_inventories": [
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 87065,
+              "sha256": "95567e794760f78eef62c2a8e6aab8b035bacae6f6f7f347e1bf4c46427b587f",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 73109,
+              "sha256": "a895ad3d7c19f8ccd82ecfbd26285d8c2d7d84e8584f985a302d7b3ca252a054",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 87065,
+              "sha256": "aa2d7b558f4680986242a7c9c65378e287a74627c69324c3cdf18705b05db5f3",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "installed_runtime": {
+            "admitted_fixture_modes": 8,
+            "rejected_empty_modes": 2,
+            "public_refusals": 2,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ],
+            "module_hash_count": 48,
+            "module_hashes_equal_code_head": true,
+            "record_sha256": "da1d1b45cd65b882bfd5eafc56eb95f411f8ca7699d28fbe8a1a68e4bd55c05a"
           }
         },
         {
           "profile": "ubuntu-24.04-py3.13",
-          "job_id": 106178528071,
-          "artifact_id": 10617342815,
-          "zip_bytes": 108529,
-          "zip_sha256": "d6b7a1f356fe071f5845b41dadb940fbba5c6378257e190cda22753f134ec08c",
-          "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
-          "image_version": "20260907.300.1",
-          "tests": 1786,
+          "job_id": 106190630019,
+          "artifact_id": 10619161671,
+          "zip_bytes": 121790,
+          "zip_sha256": "10571787253bc4250d35e299f0aa456ff59e2674e9f01361c24e48a0aa178793",
+          "environment": {
+            "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+            "image_version": "20260907.300.1",
+            "matrix_os": "ubuntu-24.04",
+            "matrix_python": "3.13",
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+            "run_attempt": "1",
+            "run_id": "35552824387",
+            "scope": "Phase 3 cumulative verification",
+            "unit": "P3-W02"
+          },
+          "tests": 2089,
           "subtests_passed": 428,
-          "predecessor_retained": 1650,
-          "failures_errors_skips": {
+          "failure_error_skipped_elements": {
             "failure": 0,
             "error": 0,
             "skipped": 0
           },
-          "identity_sha256": "c6798a416875be8a764787fe68f8beef4bf7a0b0ea3451cea17d862b765756c8",
-          "tracked_before_after_files": 165,
-          "installed_module_hashes": 48,
-          "installed_preparation_modes": 8,
-          "installed_negative_events": [
-            "open",
-            "socket.getaddrinfo",
-            "ctypes.dlopen"
-          ],
-          "archive_inventories": [
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 75015,
-              "sha256": "75964120a66fad5c0c770239f5154d6a6c4dfc5a1a5d870fe68e8301a9daab5b",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
-              "bytes": 61833,
-              "sha256": "251b100ab1ab8765a661b9344a9e32853a3e40288430076adc50e813c8e647e4",
-              "regular_member_count": 65,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 58,
-              "source_mismatches": [],
-              "forbidden_members": []
-            },
-            {
-              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 75015,
-              "sha256": "d311b52dcdb106edb04f62d438c840fdc5bc9eb6c48bfbf9756444a43e882286",
-              "regular_member_count": 55,
-              "exact_allowlist_match": true,
-              "source_blob_hashes_checked": 48,
-              "source_mismatches": [],
-              "forbidden_members": []
-            }
-          ],
+          "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
+          "tracked_before_after_files": 169,
           "actual_developer_versions": {
             "iniconfig": "2.3.0",
             "packaging": "25.0",
@@ -193,38 +220,12 @@
             "pygments": "2.20.0",
             "pytest": "9.1.1",
             "setuptools": "84.0.0"
-          }
-        },
-        {
-          "profile": "windows-2025-py3.11",
-          "job_id": 106178528182,
-          "artifact_id": 10617371663,
-          "zip_bytes": 115123,
-          "zip_sha256": "d4b9037ac10ef49b6d9dcbd5b72bb6cf421ee29a253cc7246c9f539eca13e1c6",
-          "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
-          "image_version": "20260907.229.1",
-          "tests": 1786,
-          "subtests_passed": 428,
-          "predecessor_retained": 1650,
-          "failures_errors_skips": {
-            "failure": 0,
-            "error": 0,
-            "skipped": 0
           },
-          "identity_sha256": "c6798a416875be8a764787fe68f8beef4bf7a0b0ea3451cea17d862b765756c8",
-          "tracked_before_after_files": 165,
-          "installed_module_hashes": 48,
-          "installed_preparation_modes": 8,
-          "installed_negative_events": [
-            "open",
-            "socket.getaddrinfo",
-            "ctypes.dlopen"
-          ],
-          "archive_inventories": [
+          "build_inventories": [
             {
               "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 75033,
-              "sha256": "44bee8aa0e980b0b184cebbe2a98536b3e93a16c49094cd31733b5145f511a0d",
+              "bytes": 87065,
+              "sha256": "d79b16b20074bd3bc89bbb1f1f493bf9c63cea24814cf291796346914a76b796",
               "regular_member_count": 55,
               "exact_allowlist_match": true,
               "source_blob_hashes_checked": 48,
@@ -233,8 +234,8 @@
             },
             {
               "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
-              "bytes": 62013,
-              "sha256": "3026a4e682503d55ca600cd86e3c7ba808a7f427f4af6fbfb6f1dc48881c76cf",
+              "bytes": 73039,
+              "sha256": "e927818ebed71d7f475cbae05794a291db023f606e44f67c8a0d5ac370e105aa",
               "regular_member_count": 65,
               "exact_allowlist_match": true,
               "source_blob_hashes_checked": 58,
@@ -243,8 +244,8 @@
             },
             {
               "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 75033,
-              "sha256": "f3a82eb0df93c39fbaf8159b94b3ca5e5d858b64d3c52521275da8108353a76b",
+              "bytes": 87065,
+              "sha256": "b52955f1a43e45e52690f14c7467f24943b69b902364a5ce4646f6a76b1118e4",
               "regular_member_count": 55,
               "exact_allowlist_match": true,
               "source_blob_hashes_checked": 48,
@@ -252,6 +253,51 @@
               "forbidden_members": []
             }
           ],
+          "installed_runtime": {
+            "admitted_fixture_modes": 8,
+            "rejected_empty_modes": 2,
+            "public_refusals": 2,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ],
+            "module_hash_count": 48,
+            "module_hashes_equal_code_head": true,
+            "record_sha256": "fd79201187a317e7d0d8cfa98a140235a877a9d6830e571871ef0d31c5b693af"
+          }
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "job_id": 106190630015,
+          "artifact_id": 10619435953,
+          "zip_bytes": 128464,
+          "zip_sha256": "ab97928699fcdd04912a0063efc88b33806528ac1cb7cb80e32212ec55e744fc",
+          "environment": {
+            "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+            "image_version": "20260907.229.1",
+            "matrix_os": "windows-2025",
+            "matrix_python": "3.11",
+            "platform": "Windows-10-10.0.26100-SP0",
+            "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+            "run_attempt": "1",
+            "run_id": "35552824387",
+            "scope": "Phase 3 cumulative verification",
+            "unit": "P3-W02"
+          },
+          "tests": 2089,
+          "subtests_passed": 428,
+          "failure_error_skipped_elements": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0
+          },
+          "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
+          "tracked_before_after_files": 169,
           "actual_developer_versions": {
             "colorama": "0.4.6",
             "iniconfig": "2.3.0",
@@ -261,38 +307,12 @@
             "pygments": "2.20.0",
             "pytest": "9.1.1",
             "setuptools": "84.0.0"
-          }
-        },
-        {
-          "profile": "windows-2025-py3.13",
-          "job_id": 106178528317,
-          "artifact_id": 10617561596,
-          "zip_bytes": 114962,
-          "zip_sha256": "3f0c1e8e7eeda5e7e0c742dfb818637c63ad7169eac711a10a29f083cfe9a73c",
-          "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
-          "image_version": "20260907.229.1",
-          "tests": 1786,
-          "subtests_passed": 428,
-          "predecessor_retained": 1650,
-          "failures_errors_skips": {
-            "failure": 0,
-            "error": 0,
-            "skipped": 0
           },
-          "identity_sha256": "c6798a416875be8a764787fe68f8beef4bf7a0b0ea3451cea17d862b765756c8",
-          "tracked_before_after_files": 165,
-          "installed_module_hashes": 48,
-          "installed_preparation_modes": 8,
-          "installed_negative_events": [
-            "open",
-            "socket.getaddrinfo",
-            "ctypes.dlopen"
-          ],
-          "archive_inventories": [
+          "build_inventories": [
             {
               "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 75033,
-              "sha256": "44bee8aa0e980b0b184cebbe2a98536b3e93a16c49094cd31733b5145f511a0d",
+              "bytes": 87084,
+              "sha256": "e6fedccab2f5ff5268b72d37f08b4de714b78a563b07fa78df79e379ca03d61c",
               "regular_member_count": 55,
               "exact_allowlist_match": true,
               "source_blob_hashes_checked": 48,
@@ -301,8 +321,8 @@
             },
             {
               "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
-              "bytes": 62103,
-              "sha256": "c632d526faefe06c42fe8f0e4f8eec1018e13e6812c95bdd1bc57ee8b12fa759",
+              "bytes": 73219,
+              "sha256": "fa1c85d64cc9e6506f48c11493cfcd0a64ed11ced3bc65dea91e085735ccd930",
               "regular_member_count": 65,
               "exact_allowlist_match": true,
               "source_blob_hashes_checked": 58,
@@ -311,8 +331,8 @@
             },
             {
               "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
-              "bytes": 75033,
-              "sha256": "f3a82eb0df93c39fbaf8159b94b3ca5e5d858b64d3c52521275da8108353a76b",
+              "bytes": 87084,
+              "sha256": "099a846b1c64b43ce95b8862862484d78bd7c2e37d01a02e186dad8c735e46c0",
               "regular_member_count": 55,
               "exact_allowlist_match": true,
               "source_blob_hashes_checked": 48,
@@ -320,6 +340,51 @@
               "forbidden_members": []
             }
           ],
+          "installed_runtime": {
+            "admitted_fixture_modes": 8,
+            "rejected_empty_modes": 2,
+            "public_refusals": 2,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ],
+            "module_hash_count": 48,
+            "module_hashes_equal_code_head": true,
+            "record_sha256": "90f229a93d6513c081cb1ed3c4b220f5c9b2b06e483db676b9ce097379c81a67"
+          }
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "job_id": 106190629952,
+          "artifact_id": 10618977081,
+          "zip_bytes": 128225,
+          "zip_sha256": "02d9c6b806bb7504ffe5db98215f9c7da2cc9ce7240f49da33f63fceebea6703",
+          "environment": {
+            "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+            "image_version": "20260907.229.1",
+            "matrix_os": "windows-2025",
+            "matrix_python": "3.13",
+            "platform": "Windows-2025Server-10.0.26100-SP0",
+            "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+            "run_attempt": "1",
+            "run_id": "35552824387",
+            "scope": "Phase 3 cumulative verification",
+            "unit": "P3-W02"
+          },
+          "tests": 2089,
+          "subtests_passed": 428,
+          "failure_error_skipped_elements": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0
+          },
+          "identity_sha256": "c906bbbf5e3a38597c882206e80cd4b2891eee75c8cf9eee516a91a6b6460ad8",
+          "tracked_before_after_files": 169,
           "actual_developer_versions": {
             "colorama": "0.4.6",
             "iniconfig": "2.3.0",
@@ -329,47 +394,123 @@
             "pygments": "2.20.0",
             "pytest": "9.1.1",
             "setuptools": "84.0.0"
+          },
+          "build_inventories": [
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 87084,
+              "sha256": "c61f3c7276139b176ddcf5473e40588f4ca13f4e88de49b39ef48e5eab531626",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "scaffold-build0/dist/source_integrity_toolkit-0.1.0.dev0.tar.gz",
+              "bytes": 73229,
+              "sha256": "38a7bc5456bb19e9a64879ff85e30e5a604a0fa7b1c46e17df27105b6813117d",
+              "regular_member_count": 65,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 58,
+              "source_mismatches": [],
+              "forbidden_members": []
+            },
+            {
+              "path": "test_source_distribution_rebui0/source_integrity_toolkit-0.1.0.dev0/dist/source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+              "bytes": 87084,
+              "sha256": "ca66a611c65b2b5d1ff8edcf232811b43201e48c7ff3776044ab8a5c8fa6e687",
+              "regular_member_count": 55,
+              "exact_allowlist_match": true,
+              "source_blob_hashes_checked": 48,
+              "source_mismatches": [],
+              "forbidden_members": []
+            }
+          ],
+          "installed_runtime": {
+            "admitted_fixture_modes": 8,
+            "rejected_empty_modes": 2,
+            "public_refusals": 2,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ],
+            "module_hash_count": 48,
+            "module_hashes_equal_code_head": true,
+            "record_sha256": "943427550f3f9a59b9800fcf7707b8c432338a5966db8961758ca02a119d0187"
           }
         }
       ],
-      "independent_raw_audit_sha256": "04a2ec412e4147a5e818329b6b8950bbf0dec89615ed9102408a32d017db2f41",
+      "raw_audit_sha256": "6aa39336b19220585fed2165f3ed5bf9753c836cff1bdb7970e00b477100e479",
       "audit_checks": [
-        "Original ZIP service length/digest, CRC and extracted bytes",
-        "All1650 predecessor identities; all35 files; actual collection/JUnit identity equality",
-        "1786 top-level pass, 428 separate successful subtests, zero failure/error/skip",
-        "All165 before/after tracked hashes equal actual head",
-        "157-file actual entry and156-file actual predecessor, all intermediate commits and18changedpaths",
-        "Frozen20 baseline and48 product module bytes",
-        "Fixed developer wheel hashes/versions and actual Python/image",
-        "Wheel55 and sdist65 regular member inventories, original/rebuilt wheel member hashes",
-        "48 installed module hashes, eight live preparation modes, empty-input/public refusals and open/DNS/native negative controls"
+        "Original ZIP service digests, lengths, CRC, member scope and extracted bytes",
+        "Exact 2089 collection/JUnit identities, retained1786 W01 identities and separate428 subtest events",
+        "All169 before/after tracked hashes equal the named Git tree",
+        "Actual157-file plan entry and165-file W01 predecessor; both W01 and W02 intermediate commit scopes",
+        "All 35 predecessor test files unchanged; exactly four new test files; all 42 protected product modules unchanged",
+        "Exact fixed developer wheels, actual interpreter patches/images and unchanged workflow/toolchain source",
+        "Wheel55/sdist65 member inventories and rebuilt wheel member equality",
+        "All48 installed module hashes, eight preparation modes, refusal behavior and finite open/DNS/native negative controls"
       ]
     },
     "final_documentation_successor": {
       "status": "pending_at_document_creation",
-      "review_pr": 20,
-      "rule": "This file records the verified precursor. The actual final successor SHA/tree and its own four-profile raw audit are recorded on PR20 after that commit exists. A precursor run does not certify successor bytes."
+      "review_pr": 21,
+      "rule": "This file records the named verified precursor. The actual successor SHA/tree and its own four-profile raw audit are recorded on PR21 after that commit exists. A precursor run does not certify successor bytes."
     }
   },
   "analytical_obligations_completed": 0,
   "phase3_complete": false,
-  "failed_hosted_runs": [
-    {
-      "head": "3d3a9512035bf401b39a1f90601b4c8dc191572d",
-      "run_id": 35547854833,
-      "run_attempt": 1,
-      "status": "failure",
-      "ubuntu": "1786passed_428subtests_each",
-      "windows": "3failed_1783passed_428subtests_each",
-      "scope": "new_synthetic_git_history_fixture_byte_comparison",
-      "gate": "not_accepted_as_four_profile_pass",
-      "repair": "Temporary Git repositories use local LF settings; literal expected entry bytes are checked against the actual Git archive. Same3failures reproduced under isolated CRLF host settings, all6targetedinstances pass after repair. Actual guard and scope assertions unchanged."
-    }
+  "historical_w01_evidence": {
+    "commit": "ca028b0616a3d345032e0a9d667bf55c56759534",
+    "path": "phase3/implementation_evidence.json",
+    "meaning": "The immutable accepted commit preserves the entire precursor evidence, named inventory and disclosed W01 failures. Final-head post-commit gate was settled on PR20 before acceptance."
+  },
+  "failed_hosted_runs": [],
+  "implemented_primitives": [
+    "57 closed field bindings, six legal execution/result pairs, seven immutable value kinds and typed links",
+    "Original finite fraction denominators and classified completion intervals, exact integers and duplicate semantic slots",
+    "Separately paid PC02 scope and PC24 finite completion facts; constructing facts is not executing a family",
+    "One 10,000,000-unit ledger including one 1,024-unit emergency reserve; current-job 1,000,000-unit quotas and one 60-second deadline",
+    "20,000 retained witnesses / 100,000 retained member occurrences with prospective atomic reservation and no work refunds",
+    "Sticky first safe cause, separate analysis/finalization ports, one terminal emergency delivery and independent payload-free cancellation"
   ],
+  "preservation": {
+    "existing_test_files": 35,
+    "required_w01_identities": 1786,
+    "required_subtest_events": 428,
+    "preparation_definitions": "Existing definitions unchanged; new analysis factory and types are separate.",
+    "protected_files": "All files outside the exact 14-path W02 allowance remain unchanged from actual W01 merge; 42 product-module bytes remain fixed.",
+    "existing_preparation": "Existing entry points, return types, refusal surfaces and PC01-only whole-check completion remain unchanged.",
+    "developer_toolchain": "Exact W01 reviewed pins and workflow remain byte-identical; actual installed wheels and platform/Python patch identities are rechecked by this candidate CI. Applicability review is recorded at the accepted W01 phase3/ci_review.md."
+  },
+  "independent_review": {
+    "status": "pass_for_private_W02_scope",
+    "provenance": "Separately reconstructed assistant-assisted source review sharing the same environment and tools; not external certification.",
+    "checks": [
+      "Scope14/product6/test4 and all35 predecessor test files untouched",
+      "42 product modules retain accepted bytes; preparation APIs and old definitions preserved",
+      "Result population identity and classified intervals retained; explicit PC02/24 contradictions rejected",
+      "Saved witness ledger requires a current job; terminal emergency cannot resume delivery",
+      "PC02/24 factories cannot use finalization ports; original sticky cause and construct-before/after cooperative checks preserved"
+    ],
+    "hosted_raw_audit": "pass_at_named_code_precursor",
+    "actual_git_candidate_audit": {
+      "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+      "status": "pass",
+      "sha256": "3bf4cfd7e1727d93c943f6dc51dfa74988fe68c578e090d716f4b4a643eaee53",
+      "source": "Separate read-only actual Git reconstruction; no additional test or runtime execution."
+    }
+  },
   "named_code_snapshot": {
-    "commit": "ec221258e3a43fa28f4e9d1c5aeb8bc214b1ae15",
-    "tree": "1aa6a55eefedec72b32c22a6274fcec14e969786",
-    "tracked_file_count": 165,
+    "commit": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+    "tree": "e33b73fe41dff46a148456b0af2f05504bfd64e0",
+    "tracked_file_count": 169,
     "files": {
       ".gitattributes": "df03ffb662c37e74fda41cdb0697e750f961dccd0f89c019912388d47bca60ff",
       ".github/workflows/p1-w02-verify.yml": "5b525f32fc313232b2ec8706092902a050e166841f34e72c57984c8607eb948e",
@@ -394,10 +535,10 @@
       "PHASE_2_PLAN.md": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918",
       "PHASE_2_PROGRESS.md": "f889bb7bedd8fc7dadeddbe4b3e87c606e7c1cc14127ccc7b79aee8d4a214203",
       "PHASE_3_PLAN.md": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
-      "PHASE_3_PROGRESS.md": "9eddd5c0a717d08ce4b50a3ce9e99602d82d8fe2e02266db400a63e9af9c2953",
+      "PHASE_3_PROGRESS.md": "0e48bde71f850aed891360707e5f610e39aca85522458243d68adabba29ee979",
       "PRIVACY_AND_DATA_HANDLING.md": "3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8",
       "PROJECT_INSTRUCTIONS.md": "cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746",
-      "README.md": "cd55f25174c8d014693545e93d363affb56825ef3070a421030d507752667188",
+      "README.md": "089238c6f5ce4a3a5b42f863d0d6ae256bc80e3511307852dc98c2ae18026ad8",
       "REPOSITORY_ARCHITECTURE.md": "8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d",
       "SECURITY.md": "e3e717e28f2efa6165b10c97784a0ee01de7336737f40030672f131c4a160df4",
       "SOURCE_INTEGRITY_THREAT_MODEL.md": "e74e1bd146acb3ece62dcc4c0096f5fae9f7b72950c5827956fff0398c1c374a",
@@ -416,12 +557,12 @@
       "phase2/module_policy.json": "817c682dc902f177b3b916bad9833f56e59dea5eefb1870e89ab39671eaf2187",
       "phase2/prerequisite_partition.json": "372147857babfac05b71d1856f95bab84b789cd3ddae1004ea6e44ea97ca5b26",
       "phase2/transition_ledger.md": "83bb9007ec92aa1963085dd22f06ea8a157dd016f5cf7f2fd216d0c112a8ae4f",
-      "phase3/ci_review.md": "260169ac5b7a00ba4f4da64bed34365d9c315e4737345356b6f45fc83ecc6648",
+      "phase3/ci_review.md": "680517232317e71cbb43026d0c582c996d0f922e60123fd740744340a2e28f58",
       "phase3/entry_manifest.json": "dfe96f57a222937131e8e4fafd13098f76d134cd88a50ffa9fa82891b9b9659b",
-      "phase3/implementation_evidence.json": "668d5253c0da8ee4509339ad10a158f8ba79a0dc04018df08faf942918cfd825",
-      "phase3/module_policy.json": "5c7fec5d798808f40977d382f72e7ede9fa17b45c007fcbcac5812dda430ba5f",
-      "phase3/obligation_coverage.json": "a2e913e5e2d0daef8e038a3a08f591604e75da82b6667256f96a309b16ebdef7",
-      "phase3/transition_ledger.md": "3d19ef0b507555641bce2089653cedf7ff8026427565bcea8aa7040f95c68188",
+      "phase3/implementation_evidence.json": "5c7230b57b4d7d43ca21db3d8669d0f1563ccc58a4ee7e0486aac2d2bde55ad9",
+      "phase3/module_policy.json": "83e3ca575eb5673067dd64480bcfc45603a20ea8415e7dd3e623b2474564edc1",
+      "phase3/obligation_coverage.json": "6151b7191db5cc5da7ae9f73b6334f8768b8680e286fb89a536e08f837dfe6c9",
+      "phase3/transition_ledger.md": "1177564fbc2296e50cddaf4b9b484447039f5b7424fcdb47de22a642ac6d0e59",
       "pyproject.toml": "46b48be6e50cd4cd412c1be21e50cba190de6c0cdfce9d67284f01c40fde788c",
       "requirements-dev.txt": "ad89dbacd5640dbc156cc922f3bc7ed314ec1eec0f7fcdfd8da822a9e2590f0b",
       "scaffold/baseline_manifest.json": "85cc224e9a948df1cc555821408ecbe31392357714926db4401405e28dd616ef",
@@ -454,9 +595,9 @@
       "src/source_integrity_toolkit/contracts/bundle.py": "7509a30f008de4ade02543bea26ccc4bd3d5843ae62f75b1841e2e61bcb903da",
       "src/source_integrity_toolkit/contracts/constants.py": "d4bee68c62ba495e6aca1fdba352b013f9cc4ed7c3583b61092af234827ad486",
       "src/source_integrity_toolkit/contracts/evidence.py": "3edd9edeb670b2302d8b41eda28e158f782841ced5cc41230cce90fc8cf8db3b",
-      "src/source_integrity_toolkit/contracts/execution.py": "625568507d31f13ca165bc89a37d99f221bc0a31f2d19059bcfad6367a7781d5",
-      "src/source_integrity_toolkit/contracts/report.py": "d37affe49972c14d785babaf1e2bab5a8ad64e17fdd69748e1df9aacb73257d4",
-      "src/source_integrity_toolkit/contracts/results.py": "7f6d5244991220d2c6e845ee1a2ed5ebff5f73dfe6f3df81f0b3b71470617123",
+      "src/source_integrity_toolkit/contracts/execution.py": "212101c332201eda064d0a45140e922cbf24b7d9bcf36f14a9dc89c2b1790fa3",
+      "src/source_integrity_toolkit/contracts/report.py": "ab345c1229d683826626d552d4a9a2b2231ca36875f7e92a79df4a99d54980d0",
+      "src/source_integrity_toolkit/contracts/results.py": "9951b584025cd5b30ed4310c0f019b12d13e3eb51ad54be8b148f0fc3d52429b",
       "src/source_integrity_toolkit/graph/__init__.py": "3db1c2c13cc1ae2bfb1a049894a04f7d27d7e6874d2079f1348d910aa0f5c943",
       "src/source_integrity_toolkit/graph/cycles.py": "99f243d5a93a06e6ad427527a84153f10897d236afdf78f2a66efd0b5eb603d6",
       "src/source_integrity_toolkit/graph/projections.py": "40e5d00654c91b516c479281620e3d6d21e7e0214a6ebcf0b1d1080b48ec0a47",
@@ -475,11 +616,11 @@
       "src/source_integrity_toolkit/reporting/markdown_report.py": "e2af7736cc1254fd6f4ad4366ed24e6fc6163e2761c17c1cce8f48307a83ca7e",
       "src/source_integrity_toolkit/runtime/__init__.py": "6bcbe18cb7295bd3339cf426931bdb29ed89edb348575d5deb070f008dec72c7",
       "src/source_integrity_toolkit/runtime/boundary.py": "a7e34fea2ad313062e85fbc92b59c30cbf9ffd826d16e64105cfec050b966bb4",
-      "src/source_integrity_toolkit/runtime/diagnostics.py": "258469b4580fb6761851daba412c5318e7677395c67e514502f5673501958f4d",
+      "src/source_integrity_toolkit/runtime/diagnostics.py": "2763dd36343ad5e60aca3d5c244d6c94a288b09ebf268f045dcc3d5f01445814",
       "src/source_integrity_toolkit/runtime/disclosure.py": "a9cf0d4b24eb4ddaa239747fc487a91aaf2708f8bd9954035dd42536b1c15b11",
-      "src/source_integrity_toolkit/runtime/resources.py": "ba17e38172307cdc1021d893977575b42f493145b0c797687407d3d2315699ec",
+      "src/source_integrity_toolkit/runtime/resources.py": "9e48df5fa5613da72656134a328d81b6f238be4f699069db8208df7da7187be5",
       "src/source_integrity_toolkit/validation/__init__.py": "0688a44d77c520368899546cc30531aad2849443c12941b536539bab5aac218e",
-      "src/source_integrity_toolkit/validation/limits.py": "e1b24bf8aacc3ea25090ae5a5e0bcf839b3f0980d8832cb4dfc0f2dbc432e7fa",
+      "src/source_integrity_toolkit/validation/limits.py": "f01e4e5cbc076b07440df19ed2524db549849fcc6cd9834648437ee61a5e53c8",
       "src/source_integrity_toolkit/validation/references.py": "7ab63627c068b38364f5c47a6731903fc55bc9d86318bed4f182d9602418df7b",
       "src/source_integrity_toolkit/validation/semantics.py": "12fc6d7132279af0de76839e2fff11c887ebb0bd82d1c19e3013fb5c12a76f0d",
       "src/source_integrity_toolkit/validation/structure.py": "bf2e61a236539b4b8bada935b39c46203bb8ccad4102e79730e9f84ba52fa315",
@@ -492,6 +633,8 @@
       "tests/contract/test_observability_preparation.py": "5d6ecf880e5e77bc606670c9e2bc232df662ac026ddb51c145f86fd7fb6b54b8",
       "tests/contract/test_phase2_transition.py": "ddfe98d62cf13aec936a44a4fb970c03ee04ae187cacdcd54f31565b0be17bee",
       "tests/contract/test_phase3_transition.py": "c71b670616b2c2e3e3e424b7722d13ad28d25433561e34b1f96ac140c15b7dc5",
+      "tests/contract/test_prerequisite_contract.py": "88ff508c2de74118344bdd47dc8cc4da09ee9d5cee16cace2243ab16cf2974f7",
+      "tests/contract/test_result_contract.py": "f378232238789284732791b770655ba550748545a36f1ba6eef63240b90303d4",
       "tests/contract/test_temporal_contract.py": "a900f41109fd5688b636cad6cea7f2777a841ddf17a7c3b86fa0cc8d91efce10",
       "tests/contract/test_typed_records.py": "be6ed6b73c6f936dcc774f88d11b29b038f75f33676f3b2225de64d9da06a83a",
       "tests/fixtures/README.md": "98367561c6665e16a8cab1431323d5dab0946ee334928ff553f5b70a04e50921",
@@ -522,6 +665,8 @@
       "tests/scaffold/test_module_manifest.py": "21e9737638d822c53e71607972bd9b6a7f1fd757f3d7c3a762e6f40c377f8f96",
       "tests/scaffold/test_no_runtime_implementation.py": "aa670dc29ac290f9b68b056a580851eca57bc93e7ed899e84a0136d2e6af45f8",
       "tests/scaffold/test_packaging.py": "cfc891098830d9adf1f2ee3a0c3bcc06e884fb00f356aa5a8e1822feb1aa5d93",
+      "tests/security/test_analytical_diagnostics.py": "c05a2b798cf0e7fcc8051d31485f96f490cd187439f4cc45d8c80cd546339dfa",
+      "tests/security/test_analytical_resource_limits.py": "c47860822db6e49c8444af1e489ad66f4aa6587fb2f24d93ad6008fb523dc14d",
       "tests/security/test_input_capture.py": "e8bfab38536db60d6ec5a44412f77f2b522bfebd39c1f861dfe212a1e91784ff",
       "tests/security/test_input_diagnostics.py": "f03e0d91796d39fcc8d90f0ff87914bd45feab9ad219db56f3f9c59c6dd4dc56",
       "tests/security/test_input_resource_limits.py": "9df86868eb78c5f14ffd3e4977182e08a3785bfbb3f3d737396b2119ae05e466",
@@ -537,7 +682,7 @@
       "tools/check_phase0_baseline.py": "3c125bf482203be5f385bbe146fb597f80b2610968d1923bff075f722224eb8e",
       "tools/check_scaffold_boundary.py": "fc9885337b4973a084c4c7326370a7962b898c14f6a0858e09ee6ccbeb97071a"
     },
-    "meaning": "Complete verified precursor inventory, including this record at the precursor. No current-file self-hash claim."
+    "meaning": "Git blob SHA-256 values at the named prior code commit; not a recursive claim about the current evidence-file bytes."
   },
-  "w01_status": "code_head_verified_final_documentation_review_pending"
+  "w02_status": "technically_complete_at_named_precursor_final_successor_gate_and_owner_acceptance_pending"
 }

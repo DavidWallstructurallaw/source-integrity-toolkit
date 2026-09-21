@@ -124,3 +124,47 @@ def _byte_work(port: _BudgetPort, length: int, visits: int = 0) -> None:
         port.charge(1)
         remaining -= min(256, remaining)
     port.check()
+
+
+class _JobPort(_BudgetPort, Protocol):
+    """One project-owned job's charges debit its quota and global ledger once.
+
+    This contract confers no I/O, clock, configurable limit or caller callback.
+    A port is valid only for its current job; it cannot start or resume jobs.
+    """
+    def check_analysis(self) -> None:
+        """Require current analysis work, excluding a finalization-only port."""
+        ...
+
+
+class _FinalizationPort(Protocol):
+    """Restricted accounting for bounded delivery after analysis has stopped."""
+    def charge(self, units: int) -> None:
+        ...
+
+    def check(self) -> None:
+        ...
+
+
+_ANALYSIS_LIMIT_IDS = _PREPARATION_LIMIT_IDS + ("WU9-L13",)
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _AnalysisAborted(Exception):
+    """Payload-free resource/failure transport, separate from cancellation."""
+    stop: _PreparationStop
+    limit_id: str | None = None
+
+    def __post_init__(self) -> None:
+        _require(type(self.stop) is _PreparationStop)
+        _require(self.stop.input_state in ("accepted", "not_completed"))
+        if self.stop.execution_state == "interrupted":
+            _require(type(self.limit_id) is str and self.limit_id in _ANALYSIS_LIMIT_IDS)
+        else:
+            _require(self.stop.execution_state == "failed" and self.limit_id is None)
+
+    def __str__(self) -> str:
+        return "analytical_processing_stopped"
+
+    def __repr__(self) -> str:
+        return "_AnalysisAborted()"
