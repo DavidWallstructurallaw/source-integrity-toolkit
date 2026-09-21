@@ -1759,3 +1759,56 @@ The fixture cause was reproduced locally under an isolated Git global configurat
 ## Code-head validation outcome
 
 At actual head `ec221258e3a43fa28f4e9d1c5aeb8bc214b1ae15`, hosted run `35548424303`, attempt 1, all four profiles collected and passed 1,786 unique top-level tests across 35 files, including every original 1,650 identity plus 136 new instances. All 428 historical subtest events passed separately; zero failures/errors/skips. Independent raw ZIP, collection, JUnit, history, fixed-source and package/installed-runtime checks passed. This establishes the repaired migration on the named code head. Its documentation successor remains a separate post-commit verification gate recorded in PR #20.
+
+
+## P3-W04-R01: approved inherited-guard test migration
+
+Owner approval on 2026-09-21: `批准 **P3-W04-R01**`. This approves the concrete proposal published in PR #23, SHA-256 `32c4372d886d98280cb389bc8912610ec2628e3c477ac7057785e304001cf42f`. The ordinary W04 instruction remains `P3-W04 go`. Approval covers this narrow repair and completion of W04 verification; W04 acceptance/merge and W05 remain pending.
+
+The pre-amendment boundary is failed code head `879b67b7066690ab0bee8cef569aa8869f78af03`, tree `f7c92b34537b8fc089c8624af9da6ec9dea74a68`, following accepted W03 merge `b932bef422b4ec67b1b313ecae51b0f7e48d72a2`. The original W04 segment through that head retains its thirteen-path scope. Only approved successors gain the following four immediate paths, separately from the unchanged plan table:
+
+```text
+tests/scaffold/test_no_runtime_implementation.py
+tests/scaffold/test_ci_contract.py
+tests/contract/test_phase3_transition.py
+phase3/transition_ledger.md
+```
+
+Effective W04 scope is seventeen paths. W01 retains its original permissions, which already included these four paths; W02/W03 and W05-W15 gain no immediate repair permissions. Later cumulative evidence retains the named R01 history. The driver preserves actual event/footer context, all historical DAG checks, P2 APIs/repairs and unchanged plan parsing. Product, guard, workflow, plan, entry-manifest, dependency and source/fixture bytes are outside this repair.
+
+### Original failure and preserved evidence
+
+Hosted run `35596533702`, attempt 1, ran on the pre-amendment head. Every Ubuntu 24.04 / Windows 2025 and Python 3.11 / 3.13 profile collected 2,930 unique top-level tests: 2,928 passed and the same two inherited tests failed, with zero test errors/skips and 428 successful subtest events. Local Python 3.12.14 reported the same failures in 664.23 seconds with all 177 tracked bytes unchanged. The failed run remains failed.
+
+Independent original-artifact forensic audit SHA-256: `2fb5aacf0bc958d94a96bac494dae3881010b750f9992ea703803815a844c6ce`, status `verified_failed_run`, no evidence-integrity issues, overall acceptance false. All 566 new graph cases passed. Packaging and installed-runtime checks actually executed and passed; their success does not replace the failed cumulative gate. Original failed ZIP digests are retained below:
+
+| Profile | Artifact ID | ZIP SHA-256 |
+|---|---|---|
+| Ubuntu 24.04 / Python 3.11 | `10637196663` | `83dca1fcd20357c653be4b1ecff9d198496e9bda9c1a1ce6dc89ddd533ec148d` |
+| Ubuntu 24.04 / Python 3.13 | `10637426486` | `a5aec6ef5ddac91492592f0819ea7a3552c9db924fd6712327f5acb1d9f52d58` |
+| Windows 2025 / Python 3.11 | `10636988024` | `139928578b434f5ef47c6b0c55c67e2bddb80a2991111f614abb2cdff809fb33` |
+| Windows 2025 / Python 3.13 | `10636529704` | `9deddd66f3e45fe12e27790f08c95ce33216ee39223f3f955b8e1b8d07c2e644` |
+
+Both historical methods completely overwrite `graph/cycles.py` before inspection. W04 legitimately promotes this slot: 20,000 comment bytes fit its 262,144-byte live limit and `ACTIVE = {}` is a permitted literal assignment. Malformed syntax still fails. The static guard does not import product code; changing graph implementation cannot repair the obsolete probe target. Disposable-copy diagnostic SHA-256 `9ca9f0fb1f1b9ed1acf15b9afdc8e12f49db3c229e05d92d6849e5408477a5cd` records twelve mutations and three actual optimized CLI controls, with the designated permanent-inert target `reporting/json_report.py`. Supplementary independent probe SHA-256: `b4251ac85af819e35a188fd8bc581b4837b29a8f01c1f7e57623822e3c50a25b`.
+
+### Method-level migration recorded before adaptation
+
+Original source remains loaded from hash-pinned P1 intake `eb730dda31d189c8487b5247a45bae47b678821b`. The following source hashes are UTF-8 AST source slices excluding indentation preceding `def`. Both collected class method identities remain unchanged. The original loader, metadata-copy setup and every other inherited method remain active.
+
+| Original method in `NoRuntimeImplementationTests` | Original method SHA-256 | Purpose and exact replacement | Rejecting controls |
+|---|---|---|---|
+| `test_syntax_error_and_oversize_do_not_crash_guard` | `10b1e12f848c946e28d505c9d47569f9796045f0e702f8a6793a1bf8d1a75767` | Keep `def (\n`, `"#" * 20000` and both original false-result assertions; replace only mutation target `graph/cycles.py` with `reporting/json_report.py` in an explicit adapter method. | Original syntax/oversize rejection remains live; added issue-specific controls cover inert 16,384/16,385 and live 262,144/262,145 boundaries. Inert equality still fails its byte pin and does not falsely require overall success. |
+| `test_real_guard_cli_is_not_removed_by_python_optimization` | `a587976618561eff826dcfbe99ce533597a0881d2b10060135b9a5b20618a8a2` | Keep actual `-I -B -O`, positive return code 0, timeout 20, `ACTIVE = {}`, negative return code 1 and parsed JSON false assertion; replace only mutation target with the permanent inert slot. | Real optimized CLI retains the original inert-body negative plus an independent promoted-module forbidden-effect negative, each tied to the actual mutated path. |
+
+Independent transition tests compare current adapter AST bodies with the pinned original methods, allowing only documented helper-name/target substitution. Mutation controls reject deleted assertions, altered return-code expectations, removal of `-O`, stale targets, relaxed bounds and replacement by an old snapshot. New separately named controls preserve all 2,930 existing identities and the 428 historical subtests; actual additions are collected rather than assumed.
+
+Implementation and verification status at this appendix's creation: authorized and pending. Required completion evidence includes targeted retained/new controls, original identity and assertion preservation, exact pre/post-amendment Git scope, all 48 product bytes matching the failed code head, and full four-profile success on both the repaired code head and its final documentation successor. Actual outcomes will be recorded after execution. No passing result is asserted here.
+
+
+### R01 targeted validation before the repair commit
+
+The explicit wrapper migration and its five new live controls passed 17 top-level tests with the original 11 subtest events in 23.56 seconds. The transition file passed 180 tests in 18.74 seconds, retaining all 136 prior identities and adding 44 named instances. The CI contract file passed its original 20 tests in a separate 0.34-second root invocation. These are separate targeted runs, with original logs and JUnit retained; no cumulative or hosted success is inferred.
+
+Independent read-only R01 review passed 72 checks with no remaining blocking findings. Report SHA-256: `a3e15269f304c36a9f2a62f5f1853e8dc329010e0630cc63ccd1cfcad289d2c5`. It verified the exact two method AST migrations and actual live bindings, all unchanged old definitions outside the named scope adaptation, raw plan13/effective W04 scope17, all fifteen immediate contexts, fixed pre-amendment Git identity, the actual old DAG and additional independent side-branch/reverted-excursion counterexamples. All 48 product modules, guard, plan, workflow, entry and policy match the failed head. This shared-environment assistant review is supplementary to the still-required exact-head matrix.
+
+Reviewed code-file SHA-256 values: wrapper `a0b2d0413952ec4db177967c3f54a83e01795cf207d3e33abd0a941a58b0051e`; CI driver `18b1db14373ace5523062f41e48977d5b170c5b238b3a04c65bd42e11a03e6a4`; transition tests `6d04e15cdf30e3a832af1d50fdfa1bec85577710910817100aaa110fd7021169`. Exact committed-head cumulative validation and the final documentation successor remain pending at this ledger revision.

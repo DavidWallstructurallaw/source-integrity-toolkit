@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W03",
-  "status": "sixteen_owner_local_cores_verified_all_integration_and_release_pending",
+  "unit": "P3-W04",
+  "status": "W04_graph_components_verified_sixteen_inherited_cores_all_integration_release_pending",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "Exactly sixteen source-bound SIT-VF054 through SIT-VF057 P/N/M/B rows have passed owner-local core controls at the named W03 code precursor. The other 212 cores and all 228 integration/release rows remain pending. This does not complete whole field obligations, upstream providers, graph witnesses, whole-report prerequisite connections or W13 integration.",
+  "meaning": "W04 verified graph mechanics and private graph-provider checks at the named code head. The sixteen accepted W03 owner-local core rows retain their exact evidence. The other 212 cores and all 228 integration/release rows remain pending. No graph success supplies an independent-source or documentary-boundary conclusion.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -3063,7 +3063,7 @@
     "PC01": "accepted_preparation_only",
     "PC02": "private_exact_scope_check_exercised_in_W03_component_tests_whole_invocation_pending",
     "PC03": "SOURCE_INVENTORY_provider_execution_pending_W05",
-    "PC04": "GRAPH_VIEW_CONTRACT_provider_execution_pending_W04",
+    "PC04": "private_GRAPH_VIEW_CONTRACT_component_checks_verified_W04_whole_Result_and_W13_integration_pending",
     "PC05-PC06-PC09-PC10": "record_local_qualification_helpers_verified_whole_scoped_check_to_Result_basis_index_connections_pending",
     "PC07-PC08-PC11-PC23": "pending_analytical_execution",
     "PC24": "private_finite_component_completion_check_exercised_not_documentary_qualification_or_whole_pipeline_completion"
@@ -3108,5 +3108,51 @@
   },
   "release_status_counts": {
     "pending": 228
+  },
+  "historical_w03_evidence": {
+    "commit": "b932bef422b4ec67b1b313ecae51b0f7e48d72a2",
+    "path": "phase3/obligation_coverage.json",
+    "sha256": "54e52d110b9a93d0ba063f7931f9ea2ea6d3bf522b517ee86c5923ed10cccd13"
+  },
+  "w04_graph_scope": {
+    "status": "owner_local_graph_components_verified",
+    "head": "d04754aef793d0cfcef984c2f9c2d36bdadcd276",
+    "tree": "a09fe755862a019f542bbf8953986bb8a3e464b6",
+    "run_id": 35600424202,
+    "raw_audit_sha256": "f850ece0af2bacf5b13c7cf1d94638318ca8e52ce84a8ee3f5ecdd7449254ef4",
+    "new_test_files": {
+      "tests/contract/test_graph_views.py": {
+        "bytes": 23878,
+        "sha256": "6fc9c300af293a5e2360fbf661215288186379024366cf358f9e30d29b566f65",
+        "collected_cases": 336
+      },
+      "tests/unit/test_graph_traversal.py": {
+        "bytes": 17303,
+        "sha256": "6fc863e073c743f4c77eb809487ea2a3659dcfc0ef5836d3ed2d7a693ad47d7a",
+        "collected_cases": 121
+      },
+      "tests/unit/test_graph_cycles.py": {
+        "bytes": 11334,
+        "sha256": "8c6340a9cbf527305b17110f155369a15d4b79b50943918cb2d4536aca2925b0",
+        "collected_cases": 15
+      },
+      "tests/unit/test_graph_witnesses.py": {
+        "bytes": 19092,
+        "sha256": "b013d94df8e39c166fef7eea013515ecd0b9d1bee585ffa5d12171fee3015eb4",
+        "collected_cases": 24
+      },
+      "tests/security/test_graph_limits.py": {
+        "bytes": 14725,
+        "sha256": "1f6ac6254173bb477cb7b843c24c223a24858d4452b09d8cc3d01f83c54dc4b3",
+        "collected_cases": 70
+      }
+    },
+    "technical_review_sha256": "dca722055f076a95676ed25ac0eb41be1d1e65bd2c49276dd141c57b3973f900",
+    "amendment": "P3-W04-R01",
+    "repair_review_sha256": "a3e15269f304c36a9f2a62f5f1853e8dc329010e0630cc63ccd1cfcad289d2c5",
+    "pre_amendment_failure_audit_sha256": "2fb5aacf0bc958d94a96bac494dae3881010b750f9992ea703803815a844c6ce",
+    "full_field_obligations_closed": 0,
+    "whole_invocation_integration": "pending_W13",
+    "final_successor_gate": "pending_at_creation_settle_on_review_PR"
   }
 }
