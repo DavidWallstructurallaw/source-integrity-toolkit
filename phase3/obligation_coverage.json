@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W02",
-  "status": "private_primitives_implemented_field_execution_pending",
+  "unit": "P3-W03",
+  "status": "sixteen_owner_local_cores_verified_all_integration_and_release_pending",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "W02 private contract, prerequisite-fact and accounting primitives do not establish that any analytical operation ran. All original field obligations and surrounding binding clauses remain controlling; all 228 field obligations remain pending.",
+  "meaning": "Exactly sixteen source-bound SIT-VF054 through SIT-VF057 P/N/M/B rows have passed owner-local core controls at the named W03 code precursor. The other 212 cores and all 228 integration/release rows remain pending. This does not complete whole field obligations, upstream providers, graph witnesses, whole-report prerequisite connections or W13 integration.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -2346,10 +2346,42 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 878,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "coverage_disclosures",
+          "source_clause": "H7: all eight coverage assessments, including partial model history, retain kind, subjects, predicates, dimensions, members, omissions and basis.",
+          "source": "VALIDATION_PLAN.md §12.15 054-P",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "All eight original H7 coverage records, scoped fields and partial model label are disclosed under EVIDENCE_BASIS.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf054_h7_retains_all_eight_separate_coverage_records"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF054-N",
@@ -2357,10 +2389,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 878,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "coverage_disclosures",
+          "source_clause": "Output mutant: apply complete acquisition coverage as complete model/correction history; reject.",
+          "source": "VALIDATION_PLAN.md §12.15 054-N",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "Kinds and dependency dimensions retain separate qualification; complete acquisition does not qualify model/correction scope.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf054_h7_retains_all_eight_separate_coverage_records",
+            "tests/contract/test_analytical_basis.py::test_complete_label_cannot_override_the_required_coverage_area_or_its_limits[wrong_kind]",
+            "tests/contract/test_analytical_basis.py::test_complete_label_cannot_override_the_required_coverage_area_or_its_limits[wrong_dimension]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF054-M",
@@ -2368,10 +2434,43 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 878,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "coverage_disclosures",
+          "source_clause": "Missing coverage remains unknown for dependent exhaustive results; preserve positive scoped witnesses without inventing completeness.",
+          "source": "VALIDATION_PLAN.md §12.15 054-M",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "An explicit empty coverage selection remains empty; missing coverage does not erase separately supplied documentary material. No positive graph witness or exhaustive analytical result is asserted by this component test.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf056_and_vf057_explicit_empty_populations_have_all_zero_categories",
+            "tests/contract/test_analytical_basis.py::test_absent_coverage_does_not_invent_a_record_or_erase_independent_supported_basis"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF054-B",
@@ -2379,10 +2478,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 878,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "coverage_disclosures",
+          "source_clause": "A complete_for_scope label contradicted by an unknown branch remains attributed with its inconsistency; it does not delete the branch.",
+          "source": "VALIDATION_PLAN.md §12.15 054-B",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "Original complete_for_scope label and omitted/unknown branch remain together with incomplete-coverage qualification.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf054_inconsistent_complete_label_keeps_omitted_branch_and_source_claim",
+            "tests/contract/test_analytical_basis.py::test_complete_label_cannot_override_the_required_coverage_area_or_its_limits[omitted_member]",
+            "tests/contract/test_analytical_basis.py::test_complete_label_cannot_override_the_required_coverage_area_or_its_limits[unknown_member]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF055-P",
@@ -2390,10 +2523,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 879,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "documentary_basis_gap_disclosures",
+          "source_clause": "W7-25 identifies uninspectable locator-only support or self-supporting assurance separately from the original documented_record label.",
+          "source": "VALIDATION_PLAN.md §12.15 055-P",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "Locator-only and closed-loop qualification gaps are disclosed separately from unchanged declared documentary labels.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf055_support_gaps_preserve_all_seven_documentary_labels[locator_only]",
+            "tests/unit/test_provenance_profile.py::test_vf055_self_supporting_assurance_cannot_qualify_itself[self_pointer]",
+            "tests/unit/test_provenance_profile.py::test_vf055_self_supporting_assurance_cannot_qualify_itself[closed_two_record_loop]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF055-N",
@@ -2401,10 +2568,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 879,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "documentary_basis_gap_disclosures",
+          "source_clause": "Output mutant: replace the native basis label or silently fetch a URL to fill the gap; reject.",
+          "source": "VALIDATION_PLAN.md §12.15 055-N",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "Raw documentary labels are not rewritten and intercepted local/network support resolution is not invoked.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf055_support_gaps_preserve_all_seven_documentary_labels[locator_only]",
+            "tests/contract/test_analytical_basis.py::test_qualification_does_not_open_or_fetch_inert_support_locators[external_locator]",
+            "tests/contract/test_analytical_basis.py::test_qualification_does_not_open_or_fetch_inert_support_locators[local_locator]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF055-M",
@@ -2412,10 +2613,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 879,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "documentary_basis_gap_disclosures",
+          "source_clause": "Missing asserter/method/support triggers the corresponding qualification gaps, rather than provenance rejection if explicit nullable/Gaps satisfy input rules.",
+          "source": "VALIDATION_PLAN.md §12.15 055-M",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "Each missing asserter/method/support variant is actually admitted and receives its documentary gap; no syntax rejection is inferred.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf055_independent_missing_documentary_members_are_reportable_gaps[asserter]",
+            "tests/unit/test_provenance_profile.py::test_vf055_independent_missing_documentary_members_are_reportable_gaps[method]",
+            "tests/unit/test_provenance_profile.py::test_vf055_independent_missing_documentary_members_are_reportable_gaps[support]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF055-B",
@@ -2423,10 +2658,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 879,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "documentary_basis_gap_disclosures",
+          "source_clause": "Protected visible attestation and withheld underlying material have different availability; a pointer loop cannot authenticate itself.",
+          "source": "VALIDATION_PLAN.md §12.15 055-B",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "Visible protected testimony and hidden material have separate reference states; a closed support loop alone remains insufficient.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf057_visible_protected_attestation_and_withheld_material_stay_distinct",
+            "tests/unit/test_provenance_profile.py::test_vf055_self_supporting_assurance_cannot_qualify_itself[closed_two_record_loop]",
+            "tests/contract/test_analytical_basis.py::test_visible_protected_attestation_is_distinct_from_its_withheld_underlying_material[supplied]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF056-P",
@@ -2434,10 +2703,42 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 880,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "declared_basis_inventory",
+          "source_clause": "H7's named L01-L07 population: seven documented_record labels, zero other categories.",
+          "source": "VALIDATION_PLAN.md §12.15 056-P",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "The exact selected H7-L01..H7-L07 population yields seven documented_record labels and zero in the other four categories.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf056_h7_declared_basis_is_seven_named_relation_records"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF056-N",
@@ -2445,10 +2746,43 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 880,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "declared_basis_inventory",
+          "source_clause": "Output mutant: inventory only documentary-qualified assertions while claiming to count declared basis, or upgrade upstream_inference to direct observation; reject.",
+          "source": "VALIDATION_PLAN.md §12.15 056-N",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "Failed support is not removed from declared-label counts; upstream_inference remains its original category.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf055_support_gaps_preserve_all_seven_documentary_labels[locator_only]",
+            "tests/unit/test_provenance_profile.py::test_vf056_all_five_declared_basis_categories_ignore_qualification_success"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF056-M",
@@ -2456,10 +2790,42 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 880,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "declared_basis_inventory",
+          "source_clause": "A valid explicit empty selected assertion population has all zero category counts, not an absent-history percentage.",
+          "source": "VALIDATION_PLAN.md §12.15 056-M",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "An explicit empty record population yields five zero categories without a completeness percentage.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf056_and_vf057_explicit_empty_populations_have_all_zero_categories"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF056-B",
@@ -2467,10 +2833,43 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 880,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "declared_basis_inventory",
+          "source_clause": "Exercise all five basis_kind values; counts sum to the named record population while qualification outcomes may differ.",
+          "source": "VALIDATION_PLAN.md §12.15 056-B",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "All five supplied basis categories partition the exact selected unique-ID population independently of qualification outcomes.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf056_all_five_declared_basis_categories_ignore_qualification_success",
+            "tests/unit/test_provenance_profile.py::test_each_explicit_population_counts_duplicate_selected_ids_once[records]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF057-P",
@@ -2478,10 +2877,42 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 881,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "reference_availability_inventory",
+          "source_clause": "H7's selected eight SUP references: supplied=8 and other availability categories=0.",
+          "source": "VALIDATION_PLAN.md §12.15 057-P",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "The exact eight H7-SUP references yield supplied=8 and zero in the other three categories.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf057_h7_inventory_counts_eight_references_not_support_occurrences"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF057-N",
@@ -2489,10 +2920,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 881,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "reference_availability_inventory",
+          "source_clause": "Output mutant: locator_only or withheld content becomes supplied because a URL/artifact pointer exists; reject.",
+          "source": "VALIDATION_PLAN.md §12.15 057-N",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "A locator or reference pointer never converts withheld/locator_only into supplied content.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf055_support_gaps_preserve_all_seven_documentary_labels[locator_only]",
+            "tests/unit/test_provenance_profile.py::test_vf055_support_gaps_preserve_all_seven_documentary_labels[withheld]",
+            "tests/unit/test_provenance_profile.py::test_vf057_visible_protected_attestation_and_withheld_material_stay_distinct"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF057-M",
@@ -2500,10 +2965,43 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 881,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "reference_availability_inventory",
+          "source_clause": "An explicit empty reference population yields zero inventories; absent inspectable content for a required claim remains a separate gap.",
+          "source": "VALIDATION_PLAN.md §12.15 057-M",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "An explicit empty reference selection yields four zero categories while missing necessary documentary support remains a separate record gap.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf056_and_vf057_explicit_empty_populations_have_all_zero_categories",
+            "tests/unit/test_provenance_profile.py::test_vf055_independent_missing_documentary_members_are_reportable_gaps[support]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF057-B",
@@ -2511,10 +3009,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 881,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "EVIDENCE_BASIS",
+          "field_key": "reference_availability_inventory",
+          "source_clause": "Exercise supplied/locator_only/withheld/unavailable, preserving protected attestation's visible summary versus hidden underlying reference as separate records.",
+          "source": "VALIDATION_PLAN.md §12.15 057-B",
+          "normative_support": [
+            "DEFINITIONS_AND_UNITS.md §28.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.3–16.6,17",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§3.2,4,9.3,19.1,20.1"
+          ],
+          "owner_local_core": "All four availability categories partition unique reference IDs; protected visible summary and hidden underlying material remain separate.",
+          "test_nodes": [
+            "tests/unit/test_provenance_profile.py::test_vf057_all_four_availability_states_are_exclusive_reference_records",
+            "tests/unit/test_provenance_profile.py::test_vf057_visible_protected_attestation_and_withheld_material_stay_distinct",
+            "tests/unit/test_provenance_profile.py::test_each_explicit_population_counts_duplicate_selected_ids_once[references]"
+          ],
+          "passed_at": {
+            "code_head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+            "run_id": 35583223616,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+            "local_junit_sha256": "d5512f6f0bff40e415d210fb7bbcf2eaf8a68f3cea9054482045575a083d07d5",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Actual PC03 SOURCE_INVENTORY (W05) and PC04 GRAPH_VIEW_CONTRACT (W04) providers and W13 analytical entry integration remain pending. These are admitted-input EVIDENCE_BASIS component checks and cannot certify unavailable providers, positive graph witnesses, exhaustive downstream conclusions, full private pipeline or public reporting.",
+          "release_obligation_status": "pending"
+        }
+      ]
     }
   ],
   "shared_families": {
@@ -2529,9 +3061,12 @@
   },
   "prerequisites": {
     "PC01": "accepted_preparation_only",
-    "PC02": "private_scope_fact_check_implemented_actual_component_execution_pending",
-    "PC03-PC23": "pending_analytical_execution",
-    "PC24": "private_complete_population_fact_check_implemented_actual_component_execution_pending"
+    "PC02": "private_exact_scope_check_exercised_in_W03_component_tests_whole_invocation_pending",
+    "PC03": "SOURCE_INVENTORY_provider_execution_pending_W05",
+    "PC04": "GRAPH_VIEW_CONTRACT_provider_execution_pending_W04",
+    "PC05-PC06-PC09-PC10": "record_local_qualification_helpers_verified_whole_scoped_check_to_Result_basis_index_connections_pending",
+    "PC07-PC08-PC11-PC23": "pending_analytical_execution",
+    "PC24": "private_finite_component_completion_check_exercised_not_documentary_qualification_or_whole_pipeline_completion"
   },
   "analytical_families": {
     "count": 15,
@@ -2539,40 +3074,39 @@
   },
   "phase3_complete": false,
   "release_complete": false,
-  "primitive_evidence": [
-    {
-      "source": "OBSERVABILITY_AND_REPORTING.md sections 12.3-12.5, 13, 16.2-16.6, 17",
-      "implementation": [
-        "contracts/results.py",
-        "contracts/report.py"
-      ],
-      "tests": [
-        "tests/contract/test_result_contract.py",
-        "tests/contract/test_prerequisite_contract.py"
-      ],
-      "scope": "Representation, exact scope consistency and finite completion facts only; no actual family execution or full output conformance."
-    },
-    {
-      "source": "REPOSITORY_ARCHITECTURE.md sections 19.1-19.3; PRIVACY_AND_DATA_HANDLING.md section 8; GOVERNANCE_AND_HANDOFF.md section 22.3",
-      "implementation": [
-        "contracts/execution.py",
-        "runtime/resources.py",
-        "runtime/diagnostics.py",
-        "validation/limits.py"
-      ],
-      "tests": [
-        "tests/security/test_analytical_resource_limits.py",
-        "tests/security/test_analytical_diagnostics.py"
-      ],
-      "scope": "Fixed shared accounting, retained witness occurrences, bounded finalization and safe transports. W13 end-to-end invocation and later output/native obligations remain pending."
-    }
-  ],
-  "validated_primitive_code": {
-    "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
-    "run_id": 35552824387,
-    "profiles": 4,
-    "tests_each": 2089,
-    "subtests_each": 428,
-    "scope": "Private W02 component evidence only. All 228 field obligations, full analytical execution, final output and release remain pending."
+  "historical_primitive_evidence": {
+    "commit": "df670e36b8e0df46ad6d7f66bc03c57932089d6e",
+    "path": "phase3/obligation_coverage.json",
+    "sha256": "9c4f6081e5587eb7a25155be6f6a7b1e9c4bbb3cd11fc66fe731ea98f969cc47"
+  },
+  "w03_owner_local_scope": {
+    "field_ids": [
+      "SIT-VF054",
+      "SIT-VF055",
+      "SIT-VF056",
+      "SIT-VF057"
+    ],
+    "catalog_row_count": 16,
+    "status": "owner_local_core_verified",
+    "semantic_owner": "EVIDENCE_BASIS",
+    "source": "PHASE_3_PLAN.md section 8; VALIDATION_PLAN.md section 12.15",
+    "provider_limits": "PC03 SOURCE_INVENTORY and PC04 GRAPH_VIEW_CONTRACT execution are not provided by W03; owner-local trusted facts are not end-to-end completion evidence.",
+    "verified_rows": 16,
+    "head": "91be92dc3a56d395e9ce58b19d3ae8a673bdbebe",
+    "run_id": 35583223616,
+    "raw_audit_sha256": "0a97456cf71928b616a764e100ad84d771d2d50158608d1c8755d77ddd23108a",
+    "mapping_input_sha256": "2c73dc357346a6624c52e5d73728a4df121cbb772aae53a63e03ce0aab1a6156",
+    "all_nodes_checked_against_actual_collection_and_JUnit": true,
+    "final_documentation_successor_gate": "pending_at_creation_settle_on_PR22"
+  },
+  "core_status_counts": {
+    "owner_local_core_verified": 16,
+    "pending": 212
+  },
+  "integration_status_counts": {
+    "pending": 228
+  },
+  "release_status_counts": {
+    "pending": 228
   }
 }
