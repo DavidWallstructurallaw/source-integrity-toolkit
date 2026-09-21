@@ -1,6 +1,14 @@
 # PHASE_3_PROGRESS
 
-## Authority and current boundary
+## P3-W02 current authority and boundary
+
+Owner instruction: `P3-W02 继续`. It accepts completed W01 and authorizes W02 within the frozen plan. PR #20 was normally merged at `4105f840ef3eaaa98da5d9e21c1ed7742bbaa1d6`, preserving reviewed tree `82bd2ab8578a6780aada16f7a5c71b9485f5a255`. W02 starts from that actual merge.
+
+W01 final head `ca028b0616a3d345032e0a9d667bf55c56759534` passed its own run `35548885459`, attempt 1, in all four required profiles: 1,786 top-level tests, 428 separately counted successful subtests, zero failures/errors/skips. Independent raw audit SHA-256: `81906ccaa55327232d0e124febb7a26c5b548c56231586878d472578cc75a8fd`. Earlier pending-status statements below are retained historical creation-time records, superseded by this acceptance.
+
+W02 private primitives are implemented; exact committed-head hosted verification is pending. Its exact scope is four common records, six product files and four new test files. Only `contracts/results.py` is newly promoted; 14 of 48 modules are active and 42 module bytes remain fixed this unit. The deliverables are private immutable result contracts, PC02/PC24 execution facts, a single invocation budget with per-job ports, witness reservation/retention and safe diagnostics. Constructing records does not establish analytical execution. Public auditing, final reports, native capture, release and W03 are not part of this unit. All 228 analytical field obligations remain pending. W02 owner acceptance and merge remain pending.
+
+## Historical W01 authority and boundary
 
 Owner instruction: `批准，启动 P3-W01`. Plan revision 0.1 was accepted through PR #19 and merged at `80aa943f577f4a7deaeb8a0f3253c62d1263ca62`, tree `66ba4b112554ee227bf536e0716b51d555c10747`. The frozen plan SHA-256 is `e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae`. Its original proposed-status header remains a historical record; this later approval establishes authority.
 

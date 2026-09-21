@@ -303,3 +303,268 @@ class _ObservabilityPreparation:
     @property
     def preparation_kind(self) -> str:
         return "private_observability_preparation"
+
+
+# P3-W02: separate analytical facts. All preparation declarations above retain
+# their earlier meanings; constructing these facts does not execute an analysis.
+from .execution import _BudgetPort, _JobPort, _byte_work
+from .bundle import _Number
+from .results import (
+    _InputRef, _Scope, _Population, _CaseTarget, _BasisRef, _ResultRef, _Reason,
+    _PrerequisiteCheck, _WitnessRef, _unique,
+)
+
+_COMPLETION_COMPONENTS = ('premises', 'conflicts', 'value', 'basis', 'reasons', 'witnesses')
+_COMPLETION_REF_TYPES = (_InputRef, _ResultRef, _BasisRef, _WitnessRef, _PrerequisiteCheck, _Reason)
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _ScopeCheckFact:
+    """The expected cell and the exact scope examined by its actual owner.
+
+    This is a private operation record, not proof of source authenticity or a
+    substitute for the component's paid examination of the admitted snapshot.
+    """
+    result_ref: _ResultRef
+    examined_scope: _Scope
+
+    def __post_init__(self):
+        _require(type(self.result_ref) is _ResultRef and type(self.examined_scope) is _Scope)
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _PopulationCompletion:
+    """Concrete visited members, rather than a caller-supplied complete flag."""
+    population: _Population
+    processed_member_refs: tuple
+
+    def __post_init__(self):
+        _require(type(self.population) is _Population)
+        processed = _unique(self.processed_member_refs, (_InputRef, _CaseTarget))
+        _require(processed <= {ref._key() for ref in self.population.member_refs})
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _ComponentCompletion:
+    """Finite required and actually finished links for one commit component.
+
+    An explicitly empty examined conflict set can finish. An omitted component
+    cannot. Only the semantic owner can supply these project-owned facts after
+    doing the work; their representation does not authenticate that history.
+    """
+    component: str
+    required_refs: tuple
+    processed_refs: tuple
+
+    def __post_init__(self):
+        _require(type(self.component) is str and self.component in _COMPLETION_COMPONENTS)
+        required = _unique(self.required_refs, _COMPLETION_REF_TYPES)
+        processed = _unique(self.processed_refs, _COMPLETION_REF_TYPES)
+        _require(processed <= required)
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _CompletionRecord:
+    result_ref: _ResultRef
+    required_populations: tuple
+    population_completions: tuple
+    components: tuple
+
+    def __post_init__(self):
+        _require(type(self.result_ref) is _ResultRef)
+        required = _unique(self.required_populations, (_Population,))
+        _require(all(pop.scope is self.result_ref.scope for pop in self.required_populations))
+        _require(type(self.population_completions) is tuple and type(self.components) is tuple)
+        populations, components = set(), set()
+        for fact in self.population_completions:
+            _require(type(fact) is _PopulationCompletion)
+            key = fact.population._key()
+            _require(key in required and key not in populations
+                     and any(fact.population is pop for pop in self.required_populations))
+            populations.add(key)
+        for fact in self.components:
+            _require(type(fact) is _ComponentCompletion and fact.component not in components)
+            components.add(fact.component)
+            if fact.component == 'value':
+                _require(len(fact.required_refs) == 1 and type(fact.required_refs[0]) is _ResultRef
+                         and fact.required_refs[0] is self.result_ref)
+
+
+def _charge_scope(scope: _Scope, port: _BudgetPort) -> None:
+    """Prospective bounded passes for keys, comparisons and constructor checks.
+
+    Scope-key canonicalization compares sets. The quadratic bound prepaid here
+    deliberately covers every possible pair rather than hiding a native sort.
+    These private primitives are small; family algorithms use their paid index.
+    """
+    port.charge(12)
+    _charge_input_ref(scope.inquiry_ref, port)
+    for refs in (scope.claim_refs, scope.target_refs, scope.coverage_refs):
+        port.charge(len(refs) * len(refs) + 2 * len(refs) + 1)
+        for ref in refs:
+            _charge_input_ref(ref, port, repeats=len(refs) + 3)
+    for text in (scope.dependency_dimension, scope.graph_view, scope.temporal_basis):
+        if text is not None:
+            _byte_work(port, 4 * len(text), 1)
+    if scope.requested_time is not None:
+        _charge_frozen(scope.requested_time.fields, port)
+    for text in scope.qualifications:
+        _byte_work(port, 4 * len(text), 1)
+    _charge_anchor(scope.operation_anchor, port)
+    port.check()
+
+
+def _charge_input_ref(ref: _InputRef, port: _BudgetPort, *, repeats: int = 1) -> None:
+    for _ in range(repeats):
+        port.charge(4)
+        for text in (ref.collection, ref.identifier, ref.selector):
+            if text is not None:
+                _byte_work(port, 4 * len(text), 1)
+
+
+def _charge_anchor(anchor: tuple, port: _BudgetPort) -> None:
+    for part in anchor:
+        port.charge(1)
+        if type(part) is _InputRef:
+            _charge_input_ref(part, port)
+        elif type(part) is str:
+            _byte_work(port, 4 * len(part), 1)
+
+
+def _charge_frozen(value, port: _BudgetPort) -> None:
+    port.charge(1)
+    if type(value) is str:
+        _byte_work(port, 4 * len(value), 1)
+    elif type(value) is _Array:
+        for child in value.items:
+            _charge_frozen(child, port)
+    elif type(value) is _Object:
+        port.charge(len(value.items) * len(value.items) + len(value.items) + 1)
+        for key, child in value.items:
+            for _ in range(len(value.items) + 2):
+                _byte_work(port, 4 * len(key), 1)
+            _charge_frozen(child, port)
+    elif type(value) is _Number:
+        _byte_work(port, len(value.coefficient) + 32, 4)
+
+
+def _charge_link(ref, port: _BudgetPort) -> None:
+    port.charge(1)
+    if type(ref) is _InputRef:
+        _charge_input_ref(ref, port)
+    elif type(ref) is _CaseTarget:
+        _charge_input_ref(ref.case_ref, port)
+        _charge_input_ref(ref.before_ref, port)
+    elif type(ref) is _BasisRef:
+        _charge_input_ref(ref.source, port)
+    elif type(ref) is _ResultRef:
+        _charge_scope(ref.scope, port)
+        _byte_work(port, 4 * (len(ref.diagnostic_id) + len(ref.field_key)), 2)
+    elif type(ref) is _WitnessRef:
+        _charge_scope(ref.scope, port)
+        _byte_work(port, 4 * len(ref.kind), 1)
+        _charge_anchor(ref.anchor, port)
+    elif type(ref) is _PrerequisiteCheck:
+        _charge_link(ref.result_ref, port)
+        _byte_work(port, 4 * len(ref.check_id), 1)
+    elif type(ref) is _Reason:
+        _charge_scope(ref.scope, port)
+        _byte_work(port, 4 * (len(ref.code) + len(ref.detail) + len(ref.classification)), 3)
+        for source in ref.input_refs:
+            _charge_input_ref(source, port, repeats=len(ref.input_refs) + 3)
+    elif type(ref) is _Population:
+        _charge_scope(ref.scope, port)
+        _byte_work(port, 4 * (len(ref.unit) + len(ref.selection_rule)), 2)
+        for member in ref.member_refs:
+            for _ in range(len(ref.member_refs) + 3):
+                _charge_link(member, port)
+    else:
+        raise TypeError('invalid_private_representation')
+
+
+def _same_links(required: tuple, processed: tuple, port: _BudgetPort) -> bool:
+    """Paid finite matching; duplicates were refused at fact construction."""
+    port.charge(1)
+    if len(required) != len(processed):
+        return False
+    for expected in required:
+        found = False
+        for observed in processed:
+            port.charge(1)
+            _charge_link(expected, port)
+            _charge_link(observed, port)
+            if expected._key() == observed._key():
+                found = True
+                break
+        if not found:
+            return False
+    return True
+
+
+def _scope_check(fact: _ScopeCheckFact, port: _JobPort) -> _PrerequisiteCheck:
+    """Execute only the PC02 exact-scope comparison on a current analysis job."""
+    try:
+        port.check_analysis()
+    except AttributeError:
+        raise TypeError('analysis_job_port_required') from None
+    port.charge(1)
+    _require(type(fact) is _ScopeCheckFact)
+    # Separate passes cover the comparison and construction of linked output.
+    for _ in range(4):
+        _charge_link(fact.result_ref, port)
+        _charge_scope(fact.examined_scope, port)
+    matched = fact.result_ref.scope._key() == fact.examined_scope._key()
+    reasons = ()
+    if not matched:
+        port.charge(12)
+        _byte_work(port, 256, 1)
+        reasons = (_Reason('scope_unestablished', fact.result_ref.scope, (fact.result_ref,), (),
+                           'The examined scope differs from this exact result cell.', 'evidence_gap'),)
+    port.charge(12)
+    _byte_work(port, 256, 1)
+    port.check()
+    result = _PrerequisiteCheck('PC02', fact.result_ref, 'met' if matched else 'unmet', (), reasons,
+                                'Exact operation scope comparison; supplied evidence is not authenticated.')
+    port.check()
+    return result
+
+
+def _completion_check(record: _CompletionRecord, port: _JobPort) -> _PrerequisiteCheck:
+    """PC24 checks the owner's finite completion record, not metadata flags.
+
+    Unfinished work must not publish this check as an epistemic non-result:
+    the owning operation retains its interrupted/not_performed result pairing.
+    A later orchestrator cannot manufacture missing component records.
+    """
+    try:
+        port.check_analysis()
+    except AttributeError:
+        raise TypeError('analysis_job_port_required') from None
+    port.charge(1)
+    _require(type(record) is _CompletionRecord)
+    port.charge(len(record.population_completions) + 1)
+    matched = _same_links(record.required_populations,
+                          tuple(fact.population for fact in record.population_completions), port)
+    for fact in record.population_completions:
+        port.charge(2)
+        if fact.population.membership_state != 'enumerated_for_scope':
+            matched = False
+        if not _same_links(fact.population.member_refs, fact.processed_member_refs, port):
+            matched = False
+    port.charge(len(record.components) + len(_COMPLETION_COMPONENTS) + 2)
+    if len(record.components) != len(_COMPLETION_COMPONENTS):
+        matched = False
+    for component in record.components:
+        port.charge(1)
+        if not _same_links(component.required_refs, component.processed_refs, port):
+            matched = False
+    for _ in range(4):
+        _charge_link(record.result_ref, port)
+    port.charge(12)
+    _byte_work(port, 256, 1)
+    port.check()
+    result = _PrerequisiteCheck('PC24', record.result_ref, 'met' if matched else 'unmet', (), (),
+                                'Owner-recorded finite processing is complete.' if matched else
+                                'Required population or commit component remains unfinished; no value may commit.')
+    port.check()
+    return result
