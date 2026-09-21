@@ -2566,5 +2566,13 @@
       ],
       "scope": "Fixed shared accounting, retained witness occurrences, bounded finalization and safe transports. W13 end-to-end invocation and later output/native obligations remain pending."
     }
-  ]
+  ],
+  "validated_primitive_code": {
+    "head": "3a5ef2d12b84958b8d3ac4c6b6aae9ef5ee8f04e",
+    "run_id": 35552824387,
+    "profiles": 4,
+    "tests_each": 2089,
+    "subtests_each": 428,
+    "scope": "Private W02 component evidence only. All 228 field obligations, full analytical execution, final output and release remain pending."
+  }
 }
