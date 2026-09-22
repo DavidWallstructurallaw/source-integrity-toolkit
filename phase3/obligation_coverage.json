@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W06",
-  "status": "W06_started_blocked_on_missing_comparison_population_provider",
+  "status": "W06_implemented_pending_exact_code_head_core_verification",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 64 accepted owner-local core rows remain unchanged. W06 has started, but its real PC03 comparison-population provider is missing. No new core row is verified. All 228 integration cells and all 228 release cells remain pending.",
+  "meaning": "All 64 accepted structured core rows remain exact. Sixteen W06 source-bound implemented rows await actual complete exact-head verification. No new core, integration or release closure is claimed.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -5065,12 +5065,21 @@
   },
   "w06_start": {
     "accepted_predecessor": "3dd10f987816dffd73e56631b1c4593e9c3f1b54",
-    "status": "affected_work_blocked",
+    "status": "implementation_complete_pending_exact_code_head_validation",
     "planned_core_obligations": 16,
     "new_core_obligations_verified": 0,
     "missing_dependency_owner": "SOURCE_INVENTORY",
-    "proposed_amendment": "P3-W06-R01",
-    "amendment_approved": false,
-    "original_effective_scope_count": 6
-  }
+    "amendment_approved": true,
+    "original_effective_scope_count": 6,
+    "amendment": "P3-W06-R01",
+    "actual_approval": "批准 **P3-W06-R01** 继续",
+    "effective_scope_count": 10
+  },
+  "w06_core_mapping_inputs": [
+    {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-core-evidence-map.json",
+      "bytes": 17859,
+      "sha256": "ea91f2420164fc93918e99cfc537e29438ca98d358fa11e453d9593f45915f54"
+    }
+  ]
 }

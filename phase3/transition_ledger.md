@@ -1871,3 +1871,49 @@ Python 3.13 ast.dump omits empty lists by default. Independent format reproducti
 Supplementary independent review `d679a9961bd3ccc8999c81faf14ef1c1dbf5491141ea1355df876663e02962f1` binds the original review `0f1045ae8a0663bda7fb95b632970beeb244962c6a3ee07cd4cad95f624e5b07`, unchanged approval/proposal/pre-boundary and actual corrected source. Focused execution passed 76 cases with 180 deselected. Formatter reproduction on local Python 3.12 is recorded separately from required native 3.13 execution. The original interrupted local attempt has no known exit result; the later canceled local attempt exited 130. Neither represents a full-suite pass.
 
 This successor remains within the approved thirteen W05 paths and changes only this append-only ledger, the three common records and `tests/contract/test_phase3_transition.py`. It requires new exact-head local, four-profile, raw-artifact and Git gates. No new core row is promoted here. The final three-record successor requires its own matrix and audit; owner W05 acceptance/merge and W06 remain pending.
+
+
+## P3-W06-R01: actual approval and bounded comparison-provider amendment
+
+On 2026-09-22 the owner explicitly instructed `批准 **P3-W06-R01** 继续`. Actual approval record SHA-256: `aaee9f5677b13d5bd5720b5c7e986e86eb21e6d3df6402a2b50717ecc58034c4`. Approved proposal SHA-256: `b3d4b8a92036c68a42dcc2e6332dfdd905ea51a58a5ff6172f782068b9d11e69`. This appendix records the approval before the gate adaptation.
+
+Fixed original-scope checkpoint: `5dbf39949b8fca63e5abad87b32578b61df87b80`, tree `5cbb23c0b1f2cc65656fca813ca7b90b36274bfa`, sole parent and accepted W05 predecessor `3dd10f987816dffd73e56631b1c4593e9c3f1b54`. Its four common-record changes retain original six-path authority. Earlier W06 commits cannot acquire retrospective permission. Only approved W06 descendants acquire the exact ten-path scope. W07 and later immediate scopes remain unchanged. The W04 and W05 amendments retain their own fixed history boundaries.
+
+The only four additional paths are:
+
+- `src/source_integrity_toolkit/analysis/inventory.py`
+
+- `tests/scaffold/test_ci_contract.py`
+
+- `tests/contract/test_phase3_transition.py`
+
+- `phase3/transition_ledger.md`
+
+
+The raw approved plan, guard, workflow, entry, pins and original test identities remain unchanged. Inventory retains its complete accepted 16,156-byte prefix (SHA-256 `a79e22224ed5ce60c1c38dc68d737bcaa7e832fa404484a53ddde32961631b08`); its appended paid comparison population provider remains owned by SOURCE_INVENTORY. PC03 does not confer PC11 or any other semantic qualification.
+
+### Gate migration recorded before adaptation
+
+The only changed driver functions are `phase3_effective_paths`, `phase3_scope_exceptions` and `phase3_history`. The five added definitions are `P3_W06_R01_PATHS`, `P3_W06_R01_BASE`, `P3_W06_R01_BASE_TREE`, `P3_W06_R01_PREDECESSOR` and `phase3_w06_pre_amendment`. All other prior driver source nodes remain exact. Original driver SHA-256: `f011914dee89c92782e7f1dc1c1a3580b1adab945913460f7c02ae889de40d7b`; original transition source SHA-256: `9875d989cf3dfaa7fa3e34b5f940a8c75eba09b86225c1ae3d378f6a6c2334e5`.
+
+| Existing transition method | Original source-segment SHA-256 | Exact authorized migration |
+|---|---|---|
+
+| `test_each_unit_has_exact_four_common_records_and_approved_paths` | `2d6c1a34fa2c694846044d54961adcfb79e2ab412e3443a879245079046f97c1` | Add only W06 effective-scope expectations; preserve every literal raw-plan scope. |
+
+| `test_w04_r01_name_is_cumulative_but_immediate_permissions_are_not` | `dd55a1922c24fad2bf9a6541eab5d7e0264d3f5e54d95f2da2b8e498a4094bb4` | Add the cumulative W06 label and separately approved overlap; do not attribute W06 permission to W04. |
+
+| `test_w04_r01_driver_keeps_original_p2_and_unrelated_ci_ast` | `fd3e88fd20bf06ba330ba61234dc791ce8bd5ef562fc7ddbdb48a31571185e7f` | Retain the fixed historical W04 proof and route the current driver through the new exact W06 oracle. |
+
+| `test_w05_r01_exact_authority_preserves_plan_and_other_unit_scopes` | `60c78e3470bbdbf252376935eaa98ce410ba3493a1ab05ae63fae51aa7871c43` | Retain all W05 literal boundaries and pins; route current-driver verification through the exact W06 oracle. |
+
+| `test_w05_r01_cumulative_name_never_grants_later_immediate_rights` | `8eaeb6649dc39d84ed45a67526034f79f228ad331ed2b4ee02b841a5a50fa0cd` | Recognize only independently approved W06 extras; retain all other and future immediate rejections. |
+
+| `test_w05_r01_driver_oracle_rejects_unrelated_or_self_selected_changes` | `95ab3c5b97f81a4fbb4495bf59b5fcfd01df28740bc11ab3cac89d0371e4ebb8` | Keep every original mutant applied to the current source with a positive baseline, rejected by the exact W06 oracle. |
+
+| `test_w05_r01_fixed_boundary_and_complete_history_reject_unauthorized_edits` | `8f9ff5a6af8a7357d73388ff687de70fe3b2893624b708bdcefefd1192a2d3cf` | Give both existing later-unit fixtures actual isolated W06 boundary metadata; retain the intended clean positive and forbidden W05 manifest rejection. |
+
+
+The unchanged `_assert_w05_r01_driver_source` continues proving fixed accepted W05 bytes. A separate independent current-W06 oracle constrains every approved driver delta; unchanged P2 APIs, both older boundary helpers, `_assert_w05_r01_migrated_source`, `_w05_portable_ast_dump`, all six `LIVE_MIGRATION_SHA256` pins and every other prior source node remain active. New controls retain real clean current-source/history positives before rejecting pre-boundary extras, wrong fixed metadata, unanchored or restored side branches, restored forbidden commits, path lookalikes, malformed acceptance footers/parents and W07 immediate extras. The complete DAG must be covered exactly once.
+
+Validation at creation of this appendix: implementation and targeted verification pending. Preserve all 3,179 baseline top-level identities and 428 separate historical subtests; no previous passing report certifies these new bytes. Full local and all four exact-code hosted gates, independent source/raw/Git audits, and the final three-record successor gates remain required. The code-head ledger must remain frozen in that final successor. Preserve 64 prior core rows and all 228 pending integration/release rows. This approval grants neither W06 acceptance/merge nor W07 startup.

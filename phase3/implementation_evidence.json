@@ -13,7 +13,49 @@
     "actual_unit_entry": "3dd10f987816dffd73e56631b1c4593e9c3f1b54",
     "w05_acceptance": "accepted_and_normally_merged",
     "w06_acceptance": "pending_owner_review",
-    "next_unit": "P3-W07_not_authorized_or_started"
+    "next_unit": "P3-W07_not_authorized_or_started",
+    "amendment": {
+      "id": "P3-W06-R01",
+      "owner_instruction": "批准 **P3-W06-R01** 继续",
+      "approval": {
+        "path": "/workspace/scratch/5e401153f47f/p3w06-r01-approval.json",
+        "bytes": 1390,
+        "sha256": "aaee9f5677b13d5bd5720b5c7e986e86eb21e6d3df6402a2b50717ecc58034c4"
+      },
+      "proposal": {
+        "path": "/workspace/scratch/5e401153f47f/P3-W06-R01.md",
+        "bytes": 25595,
+        "sha256": "b3d4b8a92036c68a42dcc2e6332dfdd905ea51a58a5ff6172f782068b9d11e69"
+      },
+      "pre_amendment_head": "5dbf39949b8fca63e5abad87b32578b61df87b80",
+      "pre_amendment_tree": "5cbb23c0b1f2cc65656fca813ca7b90b36274bfa",
+      "accepted_predecessor": "3dd10f987816dffd73e56631b1c4593e9c3f1b54",
+      "additional_paths": [
+        "src/source_integrity_toolkit/analysis/inventory.py",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py",
+        "phase3/transition_ledger.md"
+      ],
+      "original_scope_count": 6,
+      "effective_scope_count": 10,
+      "authorizes_merge": false,
+      "authorizes_w07": false,
+      "pre_amendment_record": {
+        "head": "5dbf39949b8fca63e5abad87b32578b61df87b80",
+        "tree": "5cbb23c0b1f2cc65656fca813ca7b90b36274bfa",
+        "git_verification": {
+          "path": "/workspace/scratch/5e401153f47f/p3w06-blocked-commit.json",
+          "bytes": 551,
+          "sha256": "1fa16d98d4ef61af65e63b43a4eaf4c952a4febf0f398869b5be2c390cfd4776"
+        },
+        "implementation_record": {
+          "commit": "5dbf39949b8fca63e5abad87b32578b61df87b80",
+          "path": "phase3/implementation_evidence.json",
+          "sha256": "8f14900908d5a8b43d51f1ad1840fd268205d1effcbd9f392fe22a40e3995f23"
+        },
+        "meaning": "Records-only original-six-path checkpoint; the actual source/provider gap and all 64 inherited core rows retain their historical meanings."
+      }
+    }
   },
   "accepted_predecessor": {
     "unit": "P3-W05",
@@ -61,63 +103,64 @@
       "phase3/implementation_evidence.json",
       "phase3/obligation_coverage.json",
       "src/source_integrity_toolkit/analysis/process_comparison.py",
-      "tests/unit/test_process_comparison.py"
+      "tests/unit/test_process_comparison.py",
+      "src/source_integrity_toolkit/analysis/inventory.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py",
+      "phase3/transition_ledger.md"
     ],
-    "amendment": null,
-    "proposed_amendment": "P3-W06-R01",
-    "amendment_approved": false,
-    "checkpoint_paths": [
-      "PHASE_3_PROGRESS.md",
-      "phase3/module_policy.json",
-      "phase3/implementation_evidence.json",
-      "phase3/obligation_coverage.json"
+    "amendment": "P3-W06-R01",
+    "amendment_approved": true,
+    "approved_additional_paths": [
+      "src/source_integrity_toolkit/analysis/inventory.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py",
+      "phase3/transition_ledger.md"
     ],
-    "products_and_tests_unchanged_in_checkpoint": true
+    "pre_amendment_head": "5dbf39949b8fca63e5abad87b32578b61df87b80",
+    "pre_amendment_tree": "5cbb23c0b1f2cc65656fca813ca7b90b36274bfa",
+    "temporal_rule": "Original six paths through the actual fixed boundary; only approved W06 descendants acquire the four exact additional paths."
   },
   "product_boundary": {
-    "status": "scheduled_policy_advanced_implementation_blocked",
+    "status": "scheduled_private_M003_and_approved_provider_extension_implemented",
     "scheduled_live_slots": 21,
     "scheduled_inert_slots": 27,
     "planning_entry_files_protected": 33,
-    "new_w06_implementation_completed": false,
-    "public_report_and_native_release_implemented": false
+    "new_w06_implementation_completed": true,
+    "public_report_and_native_release_implemented": false,
+    "accepted_predecessor_product_files_frozen": 46,
+    "actual_pc03_owner": "SOURCE_INVENTORY",
+    "actual_pc04_owner": "GRAPH_VIEW_CONTRACT"
   },
   "implementation": {
-    "status": "blocked_on_missing_actual_PC03_provider",
+    "status": "implemented_pending_exact_code_head_full_verification",
     "families": [
       "SIT-M003"
     ],
     "field_count": 4,
     "planned_core_obligations": 16,
     "new_core_obligations_verified": 0,
-    "core_mapping_inputs": [],
-    "gap": "The existing SOURCE_INVENTORY provider enumerates the entire one-Claim Inquiry seed population; it cannot supply an exact independence-assessment population or multiple-Claim scope.",
-    "reproduction": {
-      "path": "p3w06-pc03-owner-probe.json",
-      "bytes": 2722,
-      "sha256": "d5479e8e8987388aa42f60e73c67f6bd791cd1be795ba3a7df96e5a1ef1b8be4"
+    "inherited_core_obligations_verified": 64,
+    "technical_review": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-independent-technical-review.json",
+      "bytes": 22207,
+      "sha256": "ff0c3c81abbacd760b8ed295c6cdef4e144648ab6a2f0ed78eac601fbfb51ab9"
     },
-    "reproduction_script": {
-      "path": "p3w06-pc03-owner-probe.py",
-      "bytes": 2792,
-      "sha256": "c68557fb37d02d01d4971f8f454c0544d22a9e534721ce4fbbe2694649774d86"
+    "repair_review": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-r01-independent-review.json",
+      "bytes": 22048,
+      "sha256": "2e3763a5e8c1131a5ddae20481b363a37e63f205c16486364d55349c379dbef1"
     },
-    "reproduction_log": {
-      "path": "p3w06-pc03-owner-probe.log",
-      "bytes": 2722,
-      "sha256": "d5479e8e8987388aa42f60e73c67f6bd791cd1be795ba3a7df96e5a1ef1b8be4"
-    },
-    "forbidden_workarounds": [
-      "local PC03 met without the semantic owner",
-      "relabel seed-population facts as comparison facts",
-      "fake SOURCE_INVENTORY ProviderFact",
-      "restrict valid comparison inputs to the existing single-Claim helper"
+    "core_mapping_inputs": [
+      {
+        "path": "/workspace/scratch/5e401153f47f/p3w06-core-evidence-map.json",
+        "bytes": 17859,
+        "sha256": "ea91f2420164fc93918e99cfc537e29438ca98d358fa11e453d9593f45915f54"
+      }
     ],
-    "governing_rules": [
-      "PHASE_3_PLAN.md sections 3.1, 5, 8, 11",
-      "REPOSITORY_ARCHITECTURE.md sections 2, 5, 19.3",
-      "OBSERVABILITY_AND_REPORTING.md section 13.1 PC03"
-    ]
+    "mapping_status": "16 actual source-bound oracle rows await exact code-head collection/JUnit/full local/four-profile/raw/Git verification.",
+    "scope": "Private exact-assessment component with actual paid SOURCE_INVENTORY comparison selection, GRAPH_VIEW_CONTRACT eligibility, same-job facts and the single runtime-issued witness ledger.",
+    "deferred": "Whole Result/prerequisite composition and W13 invocation, public reporting, native platform and release duties remain pending."
   },
   "validation": {
     "transition_preflight": {
@@ -130,28 +173,60 @@
       "bytes": 1586,
       "sha256": "277a5890699e385061c9ef8a40fcdb686fab7cbff3ffc85d51e11c24de6b063a"
     },
-    "full_local_suite": "not_run_on_this_checkpoint",
-    "required_four_profile_candidate_ci": "not_yet_run_on_this_checkpoint",
+    "full_local_suite": "pending_on_this_exact_code_commit",
+    "required_four_profile_candidate_ci": "pending_on_this_exact_code_commit",
     "diagnostic_scope": "Four real admitted-input provider probes; isolated transition checks. These do not execute or verify the missing W06 component.",
-    "rules": "Any checkpoint CI outcome belongs only to that records-only commit and cannot close W06 implementation or core obligations."
+    "rules": "Any checkpoint CI outcome belongs only to that records-only commit and cannot close W06 implementation or core obligations.",
+    "ci_applicability_review": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-ci-applicability-review.json",
+      "bytes": 28484,
+      "sha256": "0d3ffdfc095baa808fe1302e7dedee0bffb17ddee2db72c7b3d0a1e18e427e6c"
+    },
+    "technical_review": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-independent-technical-review.json",
+      "bytes": 22207,
+      "sha256": "ff0c3c81abbacd760b8ed295c6cdef4e144648ab6a2f0ed78eac601fbfb51ab9"
+    },
+    "repair_review": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-r01-independent-review.json",
+      "bytes": 22048,
+      "sha256": "2e3763a5e8c1131a5ddae20481b363a37e63f205c16486364d55349c379dbef1"
+    },
+    "development_history": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-development-history.json",
+      "bytes": 295353,
+      "sha256": "ea9074b3f9007f99a5a15acdfc1a6cf0b653ce1461cd49ec22b1989a3ac061d6"
+    },
+    "final_documentation_successor": {
+      "status": "not_created",
+      "rule": "A direct exact three-record successor requires its own four-profile raw/Git gate."
+    }
   },
   "preservation": {
     "accepted_top_level_identities_required": 3179,
     "historical_subtest_events_required": 428,
-    "old_test_files_frozen": 50,
-    "old_product_files_unchanged_in_checkpoint": 48,
-    "tracked_files_in_checkpoint": 180,
-    "current_test_files_in_checkpoint": 50,
     "existing_core_rows_unchanged": 64,
-    "integration_and_release_cells_all_pending": true
+    "integration_and_release_cells_all_pending": true,
+    "accepted_predecessor_product_files_frozen": 46,
+    "accepted_predecessor_test_files_frozen": 48,
+    "authorized_old_test_changes": [
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py"
+    ],
+    "current_test_files_expected": 51,
+    "current_tracked_files_expected": 181,
+    "current_test_files": 51,
+    "current_tracked_files": 181,
+    "unchanged_old_inventory_source_prefix_sha256": "a79e22224ed5ce60c1c38dc68d737bcaa7e832fa404484a53ddde32961631b08"
   },
   "limitations": [
-    "P3-W06-R01 is proposed only; no added path authority is recorded.",
-    "No W06 implementation or full-gate success is asserted.",
-    "Any local product/test draft is excluded from this records-only checkpoint.",
+    "Independent author/test/review work used shared tools and sources; no external certification is claimed.",
+    "All actual targeted failures remain in development evidence and do not become passing full-gate claims.",
+    "Code-head complete local and four-profile/raw/Git gates remain pending at commit creation.",
+    "The final three-record successor requires its own four-profile/raw/Git gates.",
     "W06 acceptance/merge and W07 are not authorized."
   ],
-  "w06_status": "started_affected_work_blocked_pending_narrow_amendment",
+  "w06_status": "implemented_pending_exact_code_head_acceptance",
   "owner_local_core_obligations_verified": 64,
   "phase3_complete": false
 }
