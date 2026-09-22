@@ -1,5 +1,5 @@
 {
-  "active_unit": "P3-W06",
+  "active_unit": "P3-W07",
   "extension_first_units": {
     "contracts/evidence.py": 3,
     "contracts/execution.py": 2,
@@ -31,6 +31,10 @@
   "format": "sit-phase3-modules/0.1",
   "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
   "promotions": [
+    {
+      "path": "analysis/contribution_profile.py",
+      "unit": 7
+    },
     {
       "path": "analysis/inventory.py",
       "unit": 5

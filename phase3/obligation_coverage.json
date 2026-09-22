@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W06",
-  "status": "W06_16_owner_local_core_rows_verified_64_inherited_all_integration_release_pending",
+  "unit": "P3-W07",
+  "status": "W07_named_code_112_owner_local_core_rows_verified_pending_owner_review",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "Exactly 16 W06 owner-local rows have actual mapped passing code-head tests. The accepted 64 structured rows remain verbatim. Remaining 148 cores and all 228 integration/release rows are pending.",
+  "meaning": "The 80 accepted predecessor core rows are retained unchanged. Exactly 32 W07 owner-local core rows now have passing named-code evidence. All integration and release obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -2406,10 +2406,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 782,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF013 P",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-01]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF013-N",
@@ -2417,10 +2453,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 782,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF013 N",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_n_artifact_context_cannot_create_an_acquisition_parent"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF013-M",
@@ -2428,10 +2500,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 782,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF013 M",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V02]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF013-B",
@@ -2439,10 +2547,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 782,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF013 B",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_b_paths_and_distinct_origins_are_different_units[False]",
+            "tests/unit/test_contribution_profile.py::test_vf013_b_paths_and_distinct_origins_are_different_units[True]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF014-P",
@@ -2450,10 +2595,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 783,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF014 P",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-01]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF014-N",
@@ -2461,10 +2642,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 783,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF014 N",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf014_n_and_vf016_n_reject_normalized_incidence_and_dropped_unresolved_denominator"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF014-M",
@@ -2472,10 +2689,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 783,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF014 M",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V02]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF014-B",
@@ -2483,10 +2736,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 783,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF014 B",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V03]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF015-P",
@@ -2494,10 +2783,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 784,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF015 P",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-01]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF015-N",
@@ -2505,10 +2830,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 784,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF015 N",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf015_n_late_bad_branch_preserves_known_incidence_but_blocks_complete_row[disputed]",
+            "tests/unit/test_contribution_profile.py::test_vf015_n_late_bad_branch_preserves_known_incidence_but_blocks_complete_row[unknown]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF015-M",
@@ -2516,10 +2878,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 784,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF015 M",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V02]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF015-B",
@@ -2527,10 +2925,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 784,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF015 B",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V03]",
+            "tests/unit/test_contribution_profile.py::test_vf015_b_declared_baseline_scope_cut_precedence_is_exhaustive"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF016-P",
@@ -2538,10 +2973,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 785,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF016 P",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-01]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF016-N",
@@ -2549,10 +3020,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 785,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF016 N",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf014_n_and_vf016_n_reject_normalized_incidence_and_dropped_unresolved_denominator"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF016-M",
@@ -2560,10 +3067,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 785,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF016 M",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V02]",
+            "tests/unit/test_contribution_profile.py::test_vf016_m_and_vf017_b_empty_population_has_no_ratio"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF016-B",
@@ -2571,10 +3115,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 785,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.4, SIT-VF016 B",
+            "DEFINITIONS_AND_UNITS.md section 22",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V03]",
+            "tests/unit/test_contribution_profile.py::test_vf016_b_all_unknown_is_zero_resolution_over_known_population"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF017-P",
@@ -2582,10 +3163,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 791,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.5, SIT-VF017 P",
+            "DEFINITIONS_AND_UNITS.md section 23",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-01]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF017-N",
@@ -2593,10 +3210,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 791,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.5, SIT-VF017 N",
+            "DEFINITIONS_AND_UNITS.md section 23",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf017_n_reject_half_allocation_and_resolved_subset_hhi"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF017-M",
@@ -2604,10 +3257,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 791,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.5, SIT-VF017 M",
+            "DEFINITIONS_AND_UNITS.md section 23",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V02]",
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V03]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF017-B",
@@ -2615,10 +3305,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 791,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.5, SIT-VF017 B",
+            "DEFINITIONS_AND_UNITS.md section 23",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_contribution_profile.py::test_vf013_to_vf017_frozen_hero_populations_incidence_dispositions_and_gates[H7-V01]",
+            "tests/unit/test_contribution_profile.py::test_vf016_m_and_vf017_b_empty_population_has_no_ratio",
+            "tests/unit/test_contribution_profile.py::test_vf017_b_three_buckets_need_no_independence_assessment_or_agreement"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF018-P",
@@ -2626,10 +3354,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 797,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF018 P",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf018_to_vf020_frozen_immediate_populations_and_exact_denominators[H7-01]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF018-N",
@@ -2637,10 +3401,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 797,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF018 N",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf018_n_multi_origin_inherited_parents_cannot_become_mixed"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF018-M",
@@ -2648,10 +3448,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 797,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF018 M",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf018_m_and_vf019_b_known_copy_survives_unknown_distant_ancestry",
+            "tests/unit/test_immediate_inheritance.py::test_vf018_to_vf020_frozen_immediate_populations_and_exact_denominators[H7-V02]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF018-B",
@@ -2659,10 +3496,49 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 797,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF018 B",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf018_b_immediate_structure_is_independent_of_qualified_root_structure[diamond]",
+            "tests/unit/test_immediate_inheritance.py::test_vf018_b_immediate_structure_is_independent_of_qualified_root_structure[mixed]",
+            "tests/unit/test_immediate_inheritance.py::test_vf018_b_immediate_structure_is_independent_of_qualified_root_structure[two_roots]",
+            "tests/unit/test_immediate_inheritance.py::test_vf018_b_immediate_structure_is_independent_of_qualified_root_structure[unqualified_direct]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF019-P",
@@ -2670,10 +3546,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 798,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF019 P",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf018_to_vf020_frozen_immediate_populations_and_exact_denominators[H7-01]",
+            "tests/unit/test_immediate_inheritance.py::test_vf018_to_vf020_frozen_immediate_populations_and_exact_denominators[H7-V03]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF019-N",
@@ -2681,10 +3594,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 798,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF019 N",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf019_n_paths_or_text_novelty_cannot_replace_seed_numerator"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF019-M",
@@ -2692,10 +3641,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 798,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF019 M",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf019_m_unknown_row_cannot_be_dropped_or_replaced_by_interval_endpoint"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF019-B",
@@ -2703,10 +3688,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 798,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF019 B",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf018_m_and_vf019_b_known_copy_survives_unknown_distant_ancestry",
+            "tests/unit/test_immediate_inheritance.py::test_vf019_b_and_vf020_m_empty_population_has_no_fraction_or_endpoints"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF020-P",
@@ -2714,10 +3736,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 799,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF020 P",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf018_to_vf020_frozen_immediate_populations_and_exact_denominators[H7-V02]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF020-N",
@@ -2725,10 +3783,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 799,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF020 N",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf020_n_interval_cannot_be_confidence_resolved_only_or_a_point"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF020-M",
@@ -2736,10 +3830,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 799,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF020 M",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf019_b_and_vf020_m_empty_population_has_no_fraction_or_endpoints",
+            "tests/unit/test_immediate_inheritance.py::test_vf020_m_all_unknown_has_full_finite_completion_interval"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF020-B",
@@ -2747,10 +3878,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 799,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/contribution_profile.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.6, SIT-VF020 B",
+            "DEFINITIONS_AND_UNITS.md section 24",
+            "PHASE_3_PLAN.md section 12"
+          ],
+          "test_nodes": [
+            "tests/unit/test_immediate_inheritance.py::test_vf018_to_vf020_frozen_immediate_populations_and_exact_denominators[H7-01]"
+          ],
+          "core_scope": "Actual owner-local values, populations, state, prerequisites, basis and resolved witness payloads; full invocation/report composition remains pending.",
+          "map_packet": {
+            "path": "w07-core-map.json",
+            "bytes": 19932,
+            "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+          },
+          "passed_at": {
+            "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+            "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+            "run_id": 35720935198,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+            "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+            "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete private invocation remains pending W13; public report composition remains pending the reporting phase. Owner-local results do not certify public auditing, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF021-P",
@@ -5573,8 +6740,8 @@
     "final_documentation_successor_gate": "pending_at_creation_settle_on_PR22"
   },
   "core_status_counts": {
-    "owner_local_core_verified": 80,
-    "pending": 148
+    "owner_local_core_verified": 112,
+    "pending": 116
   },
   "integration_status_counts": {
     "pending": 228
@@ -5777,5 +6944,48 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "affected_controls_and_exact_three_records_178_unchanged_blobs_pending_at_creation"
+  },
+  "w07_start": {
+    "owner_instruction": "Source Integrity Toolkit 验收 PR #25 启动 P3-W07",
+    "accepted_predecessor": "5c520dc15010c7f86d4bcfa5f760ff5e11e7e9d4",
+    "pr": 25,
+    "status": "named_code_verified_pending_owner_review"
+  },
+  "w07_owner_local_scope": {
+    "fields": [
+      "SIT-VF013",
+      "SIT-VF014",
+      "SIT-VF015",
+      "SIT-VF016",
+      "SIT-VF017",
+      "SIT-VF018",
+      "SIT-VF019",
+      "SIT-VF020"
+    ],
+    "new_core_verified": 32,
+    "inherited_core_verified": 80,
+    "core_map": {
+      "path": "w07-core-map.json",
+      "bytes": 19932,
+      "sha256": "e4c9620da8733df7c66670e4b24d210464ad49706c0db631dff01150b9a844ea"
+    },
+    "passed_at": {
+      "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+      "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+      "run_id": 35720935198,
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+      "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+      "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
+    "whole_invocation_integration": "pending_W13",
+    "final_successor_gate": "affected_controls_and_exact_three_records_180_unchanged_blobs_settle_on_PR26"
   }
 }
