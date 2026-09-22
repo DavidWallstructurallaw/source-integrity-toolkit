@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W07",
-  "status": "W07_named_code_112_owner_local_core_rows_verified_pending_owner_review",
+  "unit": "P3-W08",
+  "status": "W08_blocked_pending_P3-W08-R01_112_inherited_core_rows_verified",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 80 accepted predecessor core rows are retained unchanged. Exactly 32 W07 owner-local core rows now have passing named-code evidence. All integration and release obligations remain pending.",
+  "meaning": "The 112 accepted predecessor core rows are retained unchanged. All 24 W08 core obligations remain pending: direct component evidence has 61 passing and 3 failing tests; full cumulative verification and owner review are unperformed.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -6987,5 +6987,16 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "affected_controls_and_exact_three_records_180_unchanged_blobs_settle_on_PR26"
+  },
+  "w08_start": {
+    "owner_instruction": "启动 P3-W08",
+    "accepted_predecessor": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
+    "accepted_pr": 26,
+    "status": "blocked_pending_P3-W08-R01",
+    "planned_core_obligations": 24,
+    "newly_verified_core_obligations": 0,
+    "component_tests_passed": 61,
+    "component_tests_failed": 3,
+    "full_matrix": "not_run_on_known_failing_checkpoint"
   }
 }
