@@ -11,7 +11,7 @@
     "owner_instruction": "然后是W10  了吗，是的话直接继续",
     "predecessor_acceptance": "The instruction to continue directly to W10 accepts the delivered W09 review and authorizes its prerequisite merge.",
     "actual_unit_entry": "06854e067ba849a3699412d54d778fc2abbe1caa",
-    "w10_acceptance": "pending_implementation_verification_and_owner_review",
+    "w10_acceptance": "pending_owner_acceptance_of_PR29",
     "next_unit": "P3-W11_not_authorized_or_started"
   },
   "accepted_predecessor": {
@@ -50,7 +50,7 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "implemented_direct_verified_pending_hosted_matrix",
+    "status": "complete_and_verified_pending_owner_acceptance",
     "owner": "analysis/correction_routes.py",
     "families": [
       "M011"
@@ -68,11 +68,15 @@
       "OBSERVABILITY_AND_REPORTING.md M011 and PC19/PC20",
       "VALIDATION_PLAN.md section 12.11",
       "GOVERNANCE_AND_HANDOFF.md section 22"
-    ]
+    ],
+    "source_sha256": {
+      "src/source_integrity_toolkit/analysis/correction_routes.py": "4935dd55e0f4b47b49b4e50d02b73dd816387fa93cdb6bc447ee8dde0c619c0f",
+      "tests/unit/test_correction_routes.py": "288a12d6e5b69a0ca2ca8616d87faee222b748aeef59ab7a66f017c654c1526b"
+    }
   },
   "validation": {
-    "status": "direct_pass_hosted_matrix_pending",
-    "local_cumulative": "not_planned; direct semantic tests followed by four hosted cumulative profiles",
+    "status": "four_profile_cumulative_verification_passed",
+    "local_cumulative": "not_run; actual direct semantic evidence and the four required hosted cumulative profiles provide verification",
     "direct_runs": {
       "correction_routes": {
         "tests": 41,
@@ -116,7 +120,7 @@
       }
     },
     "full_matrix": {
-      "status": "pending_code_commit",
+      "status": "passed",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
@@ -125,7 +129,66 @@
       ],
       "inherited_test_identities": 3549,
       "separate_subtests_required": 428,
-      "expected_tests": 3590
+      "expected_tests": 3590,
+      "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+      "code_tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+      "run_id": "35791081540",
+      "run_attempt": 1,
+      "tests_per_profile": 3590,
+      "separate_subtests_per_profile": 428,
+      "raw_audit": {
+        "path": "w10-raw-audit.json",
+        "bytes": 3788,
+        "sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f"
+      },
+      "profiles": [
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w10-ci/phase3-windows-2025-py3.11-35791081540-1.zip",
+          "sha256": "32b4db32a44b2428d268551f62944b2a5de7a0f80a55ab73806a4ded4dd239fc",
+          "bytes": 197994,
+          "service_digest_checked": true,
+          "tests": 3590,
+          "subtests": 428,
+          "seconds": 1343.61,
+          "package_member_checks": true
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w10-ci/phase3-windows-2025-py3.13-35791081540-1.zip",
+          "sha256": "ee7eb77b8289542038c2715a8269b71cb2210b1344ebeb7aac2bd6cd10eac075",
+          "bytes": 197840,
+          "service_digest_checked": true,
+          "tests": 3590,
+          "subtests": 428,
+          "seconds": 1221.05,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w10-ci/phase3-ubuntu-24.04-py3.13-35791081540-1.zip",
+          "sha256": "1f04536467950742756fb4839619af923d5bfb5a25bbbd0c0823e0716c3b6f85",
+          "bytes": 190594,
+          "service_digest_checked": true,
+          "tests": 3590,
+          "subtests": 428,
+          "seconds": 732.19,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w10-ci/phase3-ubuntu-24.04-py3.11-35791081540-1.zip",
+          "sha256": "90dea48c5ff663bc3403522837f425a21f842e2c8625a651872b243f33db9350",
+          "bytes": 191103,
+          "service_digest_checked": true,
+          "tests": 3590,
+          "subtests": 428,
+          "seconds": 932.76,
+          "package_member_checks": true
+        }
+      ],
+      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit.",
+      "qualification": "All four profiles completed successfully on this same W10 code head, retaining every accepted W09 test identity."
     },
     "collection": {
       "count": 3590,
@@ -148,14 +211,20 @@
           "sha256": "66528dd52711cf6800a61ef437275705c1bb983b373ac33eed78b7ec2d32ec8b"
         }
       ]
+    },
+    "qualification": "All 12 mapped W10 owner-local core obligations passed in each required profile. Affected controls and exact source identity settle the later three-record administrative successor; its gate remains pending until actually executed.",
+    "core_map": {
+      "path": "w10-core-map.json",
+      "bytes": 19399,
+      "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
     }
   },
-  "owner_local_core_obligations_verified": 172,
+  "owner_local_core_obligations_verified": 184,
   "phase3_complete": false,
   "limitations": [
-    "W10 core obligations remain pending until actual direct tests, complete same-head four-profile evidence and node mapping pass.",
     "Declared routes and imported authority records do not establish use, correction effect, causal efficacy, institutional verification or sustained capacity.",
     "All integration/release obligations remain pending. Public API/CLI auditing and reporting remain inactive.",
-    "W09 recovery disclosures remain part of the accepted predecessor evidence and are not rewritten as complete original local evidence."
+    "W09 recovery disclosures remain part of the accepted predecessor evidence and are not rewritten as complete original local evidence.",
+    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
   ]
 }
