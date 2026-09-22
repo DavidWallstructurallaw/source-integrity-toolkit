@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W09",
-  "status": "W09_approved_CI_time_repair_in_progress",
+  "status": "W09_R01_owner_local_core_verified_pending_owner_acceptance",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "136 inherited cores remain verified; all 36 W09 target cores and 92 total cores remain pending until four complete profiles verify the repaired code. All 228 integration and release obligations remain pending.",
+  "meaning": "The 136 inherited verified core rows remain unchanged; exactly 36 W09 owner-local cores now have all four hosted cumulative profiles verified. The remaining 56 cores and all 228 integration/release obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -5438,10 +5438,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 823,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.9 SIT-VF029",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "Separate H7-EXT-F and H7-INT-A jobs retain exact external/internal native conclusions, subjects, boundary I1, relevant instant, grounding, method and support.",
+          "rejecting_mutation_or_boundary": "Swapping native external/internal conclusions fails the independent source oracle.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf029_positive_h7_external_and_internal_assessments_keep_exact_native_basis"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF029-N",
@@ -5449,10 +5483,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 823,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.9 SIT-VF029",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "Small complete canonical dossier has a recent remote Artifact, human actor and actual admission, with no externality assessment.",
+          "rejecting_mutation_or_boundary": "Requested qualified externality remains unavailable/None with externality_unestablished; promoting metadata to external is rejected.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf029_negative_recent_human_remote_metadata_and_admission_cannot_create_externality"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF029-M",
@@ -5460,10 +5528,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 823,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.9 SIT-VF029",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "Missing assessment has no qualified result; null grounding with valid Gap, declaration basis and withheld support preserve native assessment but withhold qualification.",
+          "rejecting_mutation_or_boundary": "An available native external conclusion cannot silently become available qualified_externality; actual PC15 stays nonmet.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf029_missing_qualification_retains_native_assessment_and_explicit_unavailability[grounding]",
+            "tests/unit/test_presence.py::test_vf029_missing_qualification_retains_native_assessment_and_explicit_unavailability[documentary_basis]",
+            "tests/unit/test_presence.py::test_vf029_missing_qualification_retains_native_assessment_and_explicit_unavailability[inspectable_support]",
+            "tests/unit/test_presence.py::test_vf029_negative_recent_human_remote_metadata_and_admission_cannot_create_externality"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF029-B",
@@ -5471,10 +5576,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 823,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.9 SIT-VF029",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "Selection/use controls change occurred to did_not_occur while the exact same externality and admission remain available.",
+          "rejecting_mutation_or_boundary": "Neither nonselection nor nonuse negates the externality assessment; M009 has only record disclosures and emits no scalar Presence.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf029_vf030_boundary_selection_and_use_negative_preserve_externality_and_admission"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF030-P",
@@ -5482,10 +5621,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 824,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.9 SIT-VF030",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "H7-EXT-F links exactly EF PA/PP/PS/PU rows; small OriginEvent assessment links only through qualified supplied single-hop originates_from EvidenceItem-to-OriginEvent mapping.",
+          "rejecting_mutation_or_boundary": "Exact original subject/state/stage/run/key and mapping Assertion ID/direction stay visible; an unsupported mapping cannot supply a linked row.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf030_positive_h7_links_only_ef_native_four_stage_records",
+            "tests/unit/test_presence.py::test_origin_assessment_links_stage_only_through_qualified_explicit_directional_mapping[True]",
+            "tests/unit/test_presence.py::test_origin_assessment_links_stage_only_through_qualified_explicit_directional_mapping[False]"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF030-N",
@@ -5493,10 +5668,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 824,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.9 SIT-VF030",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "An unrelated EvidenceItem keeps different identity even when Artifact, publisher, detail and observed time match.",
+          "rejecting_mutation_or_boundary": "Adding its otherwise identical PipelineRecord to EF stage links is rejected by the literal ID-set oracle.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf030_negative_shared_prose_publisher_and_date_never_join_another_subject"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF030-M",
@@ -5504,10 +5713,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 824,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.9 SIT-VF030",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "Supported externality without any subject stage records remains qualified and natively disclosed.",
+          "rejecting_mutation_or_boundary": "Stage links remain empty; an invented admission row is rejected.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf030_missing_stages_preserves_qualified_assessment_without_inventing_links"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF030-B",
@@ -5515,10 +5758,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 824,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.9 SIT-VF030",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "External admission survives explicit nonselection/nonuse; an actual supported influence record survives missing earlier stages.",
+          "rejecting_mutation_or_boundary": "Only supplied links remain; no admission/preservation/selection is fabricated from influence.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf029_vf030_boundary_selection_and_use_negative_preserve_externality_and_admission",
+            "tests/unit/test_presence.py::test_vf030_vf031_missing_earlier_stages_do_not_erase_a_supported_influence_record"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF031-P",
@@ -5526,10 +5804,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 830,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF031",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "Four separate H7 owner jobs preserve all24 exact native stage records at intake-1/store-1/select-1/answer-use-1, including state, subject, output, linkage kind and observed time.",
+          "rejecting_mutation_or_boundary": "Relabeling one record as a different stage is rejected; no stage union or multiplied funnel is used.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf031_positive_four_independent_stage_keys_preserve_all_native_records[admission-intake-1-H7-PA-]",
+            "tests/unit/test_presence.py::test_vf031_positive_four_independent_stage_keys_preserve_all_native_records[preservation-store-1-H7-PP-]",
+            "tests/unit/test_presence.py::test_vf031_positive_four_independent_stage_keys_preserve_all_native_records[selection-select-1-H7-PS-]",
+            "tests/unit/test_presence.py::test_vf031_positive_four_independent_stage_keys_preserve_all_native_records[influence-answer-use-1-H7-PU-]"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF031-N",
@@ -5537,10 +5852,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 830,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF031",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "Separate select-1 and select-2 attempt keys retain their own explicit negative and later positive native observations.",
+          "rejecting_mutation_or_boundary": "Copying the later result over the prior negative fails source equality; the later key contains only its actual row.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf031_negative_repeated_attempt_keys_remain_separate_without_newest_wins"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF031-M",
@@ -5548,10 +5897,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 830,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF031",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "A complete canonical dossier with only the supported influence row remains admissible and discloses that row.",
+          "rejecting_mutation_or_boundary": "Earlier stages stay absent and missing finite cohort cannot produce a stage fraction.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf030_vf031_missing_earlier_stages_do_not_erase_a_supported_influence_record"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF031-B",
@@ -5559,10 +5942,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 830,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF031",
+            "DEFINITIONS_AND_UNITS.md §§20.5,25.2,26.1-26.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,9.6,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M009/M010; PC15-PC18"
+          ],
+          "owner_local_core": "Original positive, extra unknown and later explicit contrary rows at one exact key all remain in stage disclosures.",
+          "rejecting_mutation_or_boundary": "Dropping the earlier positive for newest-wins fails the native row-ID-set oracle; cohort counting is tested independently.",
+          "test_nodes": [
+            "tests/unit/test_presence.py::test_vf031_boundary_duplicate_unknown_and_contradictory_rows_all_remain_visible"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF032-P",
@@ -5570,10 +5987,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 831,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF032 P, line 831, cell 1",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "H7 influence has exact T=6, Y={EA,EB,ED}, F={EC,EF}, U={EE} at answer-run-1/answer-use-1/influence.",
+          "rejecting_mutation_or_boundary": "Named member sets and counts reject stage-key mixing or a seed-derived cohort.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_p_h7_exact_member_partition_uses_anchored_six"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF032-N",
@@ -5581,10 +6032,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 831,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF032 N, line 831, cell 2",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "The original H7 3/2/1 six-member partition is accepted before output mutations.",
+          "rejecting_mutation_or_boundary": "Dropping EE or counting a repeated A log as a fourth Y member must be rejected by the same literal oracle.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_n_partition_rejects_unknown_omission_and_log_count_inflation[omit_unknown]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_n_partition_rejects_unknown_omission_and_log_count_inflation[duplicate_log_member]"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF032-M",
@@ -5592,10 +6078,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 831,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF032 M, line 831, cell 3",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "A five-member cohort retains E as U when its target observation is absent, belongs to another key, or belongs to another run. No selected coverage yields an unavailable partition with unestablished membership.",
+          "rejecting_mutation_or_boundary": "Missing classification never deletes a denominator member; missing cohort never creates a known-empty T=0 population.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_m_missing_observation_stays_u_in_w719_population[missing]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_m_missing_observation_stays_u_in_w719_population[different_key]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_m_missing_observation_stays_u_in_w719_population[different_run]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_m_unestablished_population_is_not_an_empty_partition"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF032-B",
@@ -5603,10 +6126,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 831,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF032 B, line 831, cell 4",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Extra unknown beside supported A leaves Y/F/U=3/1/1; a later bare contrary declaration makes A unresolved and yields 2/1/2. Both original rows remain.",
+          "rejecting_mutation_or_boundary": "No newest-wins or stronger-basis-wins reducer may erase relevant contrary evidence, and duplicate observations remain one member.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_b_additional_unknown_differs_from_bare_contrary_declaration[unknown]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_b_additional_unknown_differs_from_bare_contrary_declaration[did_not_occur]"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF033-P",
@@ -5614,10 +6172,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 832,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF033 P, line 832, cell 1",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "H7 selection has Y=5, F=1, U=0 and exact 5/6 with PC16 and PC17 met. Two explicit native coverage dimensions preserve the same stage fraction and remain disclosed without creating a pipeline dependency dimension.",
+          "rejecting_mutation_or_boundary": "Exact six-member population prevents record-count or resolved-subset denominators.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf033_p_selection_fraction_keeps_exact_six_member_denominator",
+            "tests/unit/test_pipeline_cohorts.py::test_multiple_declared_coverage_dimensions_do_not_change_stage_population"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF033-N",
@@ -5625,10 +6218,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 832,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF033 N, line 832, cell 2",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "H7 influence point remains completed/unavailable with stage_classification_unresolved.",
+          "rejecting_mutation_or_boundary": "After accepting that output, an available 3/5 value formed by omitting EE is rejected.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf033_n_unknown_use_member_cannot_be_dropped_to_report_three_fifths"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF033-M",
@@ -5636,10 +6263,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 832,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF033 M, line 832, cell 3",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "An unanchored coverage declaration or mixed influence/selection anchors cannot supply a stage fraction; native stage disclosures survive. H7 U=1 also keeps its point unavailable.",
+          "rejecting_mutation_or_boundary": "Individual logs do not repair absent or ambiguous cohort anchors, nor do known members justify dropping unknown members.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf033_m_stage_logs_cannot_supply_missing_or_ambiguous_cohort_anchor[missing]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf033_m_stage_logs_cannot_supply_missing_or_ambiguous_cohort_anchor[ambiguous]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf033_n_unknown_use_member_cannot_be_dropped_to_report_three_fifths"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF033-B",
@@ -5647,10 +6310,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 832,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF033 B, line 832, cell 4",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Explicit empty anchored membership gives a zero-member partition and no fraction/interval; a nonempty all-negative six-member cohort yields 0/6.",
+          "rejecting_mutation_or_boundary": "Known empty and known negative populations cannot share a numerical zero sentinel for their ratios.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf033_b_known_empty_and_all_negative_cohorts_have_different_values[empty]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf033_b_known_empty_and_all_negative_cohorts_have_different_values[negative]"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF034-P",
@@ -5658,10 +6356,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 833,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF034 P, line 833, cell 1",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "H7 influence interval is [3/6,4/6]; W7-19 selection interval is [3/5,4/5], with finite_cohort_completion kind.",
+          "rejecting_mutation_or_boundary": "Both exact endpoints retain the same original finite population.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_p_h7_and_w719_intervals_preserve_full_finite_cohorts"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF034-N",
@@ -5669,10 +6401,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 833,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF034 N, line 833, cell 2",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "The correct H7 [3/6,4/6] finite-cohort interval is accepted before output mutations.",
+          "rejecting_mutation_or_boundary": "An altered denominator 5 or a measured_use_rate label is rejected.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_n_interval_rejects_measured_rate_or_resolved_only_denominator[wrong_denominator]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_n_interval_rejects_measured_rate_or_resolved_only_denominator[measured_rate_label]"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF034-M",
@@ -5680,10 +6447,54 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 833,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF034 M, line 833, cell 3",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Nonenumerated, partial, omitted, wrong-kind, unresolved, or declaration-only cohort coverage cannot yield interval endpoints. Missing target records remain U inside an otherwise valid cohort. A self-pointer limitation remains nonblocking when independent supplied support qualifies the cohort; sole self-support still blocks it. An unresolved explicit dispute between complete and partial coverage assertions blocks the point and retains its exact assertion ID in result basis, premise-disputed reason inputs, and actual witness members.",
+          "rejecting_mutation_or_boundary": "An unqualified population cannot be promoted into a finite denominator or completion interval. Conflict qualification cannot erase the native opposing assertion from its source chain.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_m_invalid_universe_never_supplies_interval[not_enumerated]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_m_invalid_universe_never_supplies_interval[partial]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_m_invalid_universe_never_supplies_interval[omitted]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_m_invalid_universe_never_supplies_interval[wrong_kind]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_m_invalid_universe_never_supplies_interval[unresolved]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_m_invalid_universe_never_supplies_interval[declared_coverage]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_m_missing_observation_stays_u_in_w719_population[missing]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_m_missing_observation_stays_u_in_w719_population[different_key]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf032_m_missing_observation_stays_u_in_w719_population[different_run]",
+            "tests/unit/test_pipeline_cohorts.py::test_independent_supplied_support_survives_self_pointer_limitation",
+            "tests/unit/test_pipeline_cohorts.py::test_disputed_coverage_retains_exact_conflict_basis_reason_and_witness"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF034-B",
@@ -5691,10 +6502,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 833,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF034 B, line 833, cell 4",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "With U=0, the completion interval is completed/not_applicable with completion_interval_not_needed, while the exact point remains available.",
+          "rejecting_mutation_or_boundary": "Point and optional interval retain the same scoped Population; complete classification is not represented as missing evidence.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf034_b_complete_classifications_make_interval_structurally_unneeded"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF035-P",
@@ -5702,10 +6547,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 834,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF035 P, line 834, cell 1",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "H7 preservation and selection each disclose the distinct target key with intake-1, the same six members and fully Y admission; their transition fractions are 6/6 and 5/6.",
+          "rejecting_mutation_or_boundary": "The represented baseline and target remain distinct actual stage scopes rather than a multiplied funnel.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf035_p_h7_retention_and_selection_keep_distinct_valid_pairs"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF035-N",
@@ -5713,10 +6592,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 834,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF035 N, line 834, cell 2",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Two competing valid admission stage keys leave the standalone target 5/6 available but the transition unavailable with transition_baseline_unestablished. At the explicitly requested observation instant, a competing admission coverage whose effective window is known expired is excluded and transition remains 5/6; changing only that window to unknown restores competition and withholds the transition.",
+          "rejecting_mutation_or_boundary": "Automatic first-baseline selection cannot satisfy the explicit uniqueness condition. Known temporal nonapplicability differs from unknown applicability; neither unconditional competitor retention nor unconditional unknown exclusion satisfies both controls.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf035_n_competing_admission_keys_block_transition_only",
+            "tests/unit/test_pipeline_cohorts.py::test_expired_admission_coverage_does_not_compete_but_unknown_window_does"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF035-M",
@@ -5724,10 +6638,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 834,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF035 M, line 834, cell 3",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Removing admission coverage preserves target observations and target 5/6 but leaves the transition unavailable with transition_baseline_unestablished.",
+          "rejecting_mutation_or_boundary": "Existing admission logs alone cannot replace the required eligible admission cohort.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf035_m_no_admission_coverage_retains_target_stage_disclosures"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF035-B",
@@ -5735,10 +6683,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 834,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF035 B, line 834, cell 4",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Influence retains its stage interval but has no applicable transition. Changed output Artifact versions are disclosed while selection transition retains the original six EvidenceItem subjects.",
+          "rejecting_mutation_or_boundary": "Output versions cannot replace counted members or create an admission-to-influence transition.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf035_b_influence_is_outside_transition_and_output_versions_are_not_members"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF036-P",
@@ -5746,10 +6728,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 835,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF036 P, line 835, cell 1",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "The unique all-admitted H7 baseline supports an exact selection transition 5/6 with PC18 met and original member IDs.",
+          "rejecting_mutation_or_boundary": "A valid target point needs the separate fully evidenced baseline before receiving transition meaning.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf036_p_unique_fully_admitted_baseline_yields_exact_five_sixths"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF036-N",
@@ -5757,10 +6773,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 835,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF036 N, line 835, cell 2",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Unknown, negative, unsupported or absent admission of one member, and different baseline members, each withhold transition while leaving standalone 5/6 intact.",
+          "rejecting_mutation_or_boundary": "The target fraction cannot be borrowed to bypass a failed admission or same-members gate.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf036_n_ineligible_baseline_cannot_borrow_standalone_target_fraction[unknown_admission]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf036_n_ineligible_baseline_cannot_borrow_standalone_target_fraction[negative_admission]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf036_n_ineligible_baseline_cannot_borrow_standalone_target_fraction[unsupported_admission]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf036_n_ineligible_baseline_cannot_borrow_standalone_target_fraction[missing_admission]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf036_n_ineligible_baseline_cannot_borrow_standalone_target_fraction[different_members]"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF036-M",
@@ -5768,10 +6822,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 835,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF036 M, line 835, cell 3",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Admission observations on another run cannot support this target transition; the target 5/6 survives with transition_baseline_unestablished.",
+          "rejecting_mutation_or_boundary": "Similar stage names and the same member IDs do not permit cross-run transition pairing.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf036_m_different_run_does_not_supply_compatible_admission_baseline"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF036-B",
@@ -5779,10 +6867,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 835,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF036 B, line 835, cell 4",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "The fully admitted W7-19 baseline leaves an unresolved transition point when target U=1; making the unresolved target negative gives exact 3/5.",
+          "rejecting_mutation_or_boundary": "A valid baseline does not resolve unknown target classifications.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf036_b_transition_point_requires_all_target_classifications"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF037-P",
@@ -5790,10 +6912,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 836,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF037 P, line 836, cell 1",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "The unique fully Y same-five-member baseline permits transition [3/5,4/5] for W7-19.",
+          "rejecting_mutation_or_boundary": "Both endpoints remain tied to the explicit target and admitted baseline populations.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf037_p_w719_transition_interval_requires_qualified_same_member_intake"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF037-N",
@@ -5801,10 +6957,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 836,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF037 N, line 836, cell 2",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "Ambiguous baseline keys or changed baseline membership leave target [3/5,4/5] available but transition endpoints unavailable.",
+          "rejecting_mutation_or_boundary": "Copying the standalone interval into the ineligible transition is rejected by the unavailable-transition oracle.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf037_n_target_interval_cannot_be_copied_to_ineligible_transition[ambiguous]",
+            "tests/unit/test_pipeline_cohorts.py::test_vf037_n_target_interval_cannot_be_copied_to_ineligible_transition[different_members]"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF037-M",
@@ -5812,10 +7003,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 836,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF037 M, line 836, cell 3",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "With no admission cohort, the target interval survives and the transition has null endpoints with transition_baseline_unestablished.",
+          "rejecting_mutation_or_boundary": "Missing baseline evidence cannot be converted to a numerical transition interval.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf037_m_absent_baseline_keeps_target_interval_without_transition_endpoints"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF037-B",
@@ -5823,10 +7048,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 836,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/presence.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.10 SIT-VF037 B, line 836, cell 4",
+            "DEFINITIONS_AND_UNITS.md §§26.1-26.4,28.2-28.4",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.10,18.2,27.1",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1; PC16-PC18,PC24"
+          ],
+          "owner_local_core": "H7 exact preservation and selection transitions have no needed interval; influence has no applicable transition interval.",
+          "rejecting_mutation_or_boundary": "completion_interval_not_needed and no_applicable_subject remain separate reasons for separate structural cases.",
+          "test_nodes": [
+            "tests/unit/test_pipeline_cohorts.py::test_vf037_b_exact_transitions_need_no_interval_and_influence_has_no_transition"
+          ],
+          "map_packet": {
+            "path": "w09-r01-core-map.json",
+            "bytes": 47907,
+            "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+          },
+          "passed_at": {
+            "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+            "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+            "run_id": "35785828269",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF038-P",
@@ -7582,8 +8841,8 @@
     "final_documentation_successor_gate": "pending_at_creation_settle_on_PR22"
   },
   "core_status_counts": {
-    "owner_local_core_verified": 136,
-    "pending": 92
+    "owner_local_core_verified": 172,
+    "pending": 56
   },
   "integration_status_counts": {
     "pending": 228
@@ -7878,11 +9137,11 @@
     "owner_instruction": "很好，继续Phase 3   W09",
     "accepted_predecessor": "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74",
     "accepted_pr": 27,
-    "status": "approved_CI_time_repair_controls_passed_full_matrix_pending",
+    "status": "approved_repair_and_implementation_verified_pending_owner_acceptance",
     "planned_core_obligations": 36,
-    "newly_verified_core_obligations": 0,
+    "newly_verified_core_obligations": 36,
     "component_tests_passed": 85,
-    "full_matrix": "pending_revised_code_all_four_profiles",
+    "full_matrix": "passed_all_four_repaired_code_profiles",
     "blocked_evidence": {
       "path": "w09-blocked-audit.json",
       "bytes": 4165,
@@ -7894,5 +9153,41 @@
       "sha256": "cfdba2bf6f23e71b04d87cb81013eba04cdfafe92abb65470f58d71daa21bd65"
     },
     "repair_affected_controls_passed": 331
+  },
+  "w09_owner_local_scope": {
+    "fields": [
+      "SIT-VF029",
+      "SIT-VF030",
+      "SIT-VF031",
+      "SIT-VF032",
+      "SIT-VF033",
+      "SIT-VF034",
+      "SIT-VF035",
+      "SIT-VF036",
+      "SIT-VF037"
+    ],
+    "new_core_verified": 36,
+    "inherited_core_verified": 136,
+    "core_map": {
+      "path": "w09-r01-core-map.json",
+      "bytes": 47907,
+      "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+    },
+    "passed_at": {
+      "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+      "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+      "run_id": "35785828269",
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
+    "whole_invocation_integration": "pending_W13",
+    "final_successor_gate": "affected_controls_and_exact_three_records_184_unchanged_blobs_on_PR28"
   }
 }

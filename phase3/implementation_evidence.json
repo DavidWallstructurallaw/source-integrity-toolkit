@@ -11,7 +11,7 @@
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "w09_acceptance": "pending_repaired_code_verification_and_owner_acceptance",
+    "w09_acceptance": "pending_owner_acceptance_of_PR28",
     "next_unit": "P3-W10_not_authorized_or_started",
     "approved_amendments": [
       {
@@ -24,7 +24,12 @@
         },
         "fixed_preapproval_checkpoint": "5bccceee13995f7ee51ed44339d596aadb309644"
       }
-    ]
+    ],
+    "recovery_receipt": {
+      "path": "w09-r01-approval-recovered.json",
+      "bytes": 4499,
+      "sha256": "01cb79c19e3177c815da97144b6e73c472254320dc2f0e5a1e58e1c63d1d1635"
+    }
   },
   "accepted_predecessor": {
     "unit": "P3-W08",
@@ -79,7 +84,7 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "product_implemented_approved_ci_time_repair_verified_locally_matrix_pending",
+    "status": "complete_and_verified_pending_owner_acceptance",
     "owners": [
       "PRESENCE_RECORDS"
     ],
@@ -111,19 +116,77 @@
     }
   },
   "validation": {
-    "status": "affected_controls_passed_revised_four_profile_matrix_pending",
+    "status": "four_profile_repaired_code_cumulative_verification_passed",
     "full_matrix": {
-      "status": "pending_revised_code",
+      "status": "passed",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
         "windows-2025-py3.11",
         "windows-2025-py3.13"
       ],
-      "qualification": "All four profiles must execute on the same new repaired code head. The prior three passes cannot fill this gate."
+      "qualification": "All four profiles completed successfully on this same repaired code head. No result from the prior failed matrix fills this gate.",
+      "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+      "code_tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+      "run_id": "35785828269",
+      "run_attempt": 1,
+      "tests_per_profile": 3549,
+      "separate_subtests_per_profile": 428,
+      "raw_audit": {
+        "path": "w09-r01-raw-audit.json",
+        "bytes": 3973,
+        "sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0"
+      },
+      "profiles": [
+        {
+          "profile": "windows-2025-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w09-r01-ci/phase3-windows-2025-py3.13-35785828269-1.zip",
+          "sha256": "fcd7e58d2dab30872f0b59ef599e3d46da26fa43d8a7b1eacc384f241d40854b",
+          "bytes": 195064,
+          "service_digest_checked": true,
+          "tests": 3549,
+          "subtests": 428,
+          "seconds": 1217.77,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w09-r01-ci/phase3-ubuntu-24.04-py3.13-35785828269-1.zip",
+          "sha256": "c9cfc60cb49df906c27552f2ccab34d2e5bde8bc8bb5cbb0d1a524156b35b29b",
+          "bytes": 188291,
+          "service_digest_checked": true,
+          "tests": 3549,
+          "subtests": 428,
+          "seconds": 922.07,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w09-r01-ci/phase3-ubuntu-24.04-py3.11-35785828269-1.zip",
+          "sha256": "da3a37829cd19132e926436b00ff9106d6aec96ecd6c0fc3cdeade620adfcb7a",
+          "bytes": 188256,
+          "service_digest_checked": true,
+          "tests": 3549,
+          "subtests": 428,
+          "seconds": 897.84,
+          "package_member_checks": true
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w09-r01-ci/phase3-windows-2025-py3.11-35785828269-1.zip",
+          "sha256": "ea6434a7b42b4791a6155efce9a2be2d21575260a1a312dbb02e898421501944",
+          "bytes": 195306,
+          "service_digest_checked": true,
+          "tests": 3549,
+          "subtests": 428,
+          "seconds": 1288.31,
+          "package_member_checks": true
+        }
+      ],
+      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit."
     },
-    "local_cumulative": "not_planned; direct semantic tests and affected controls precede the required four hosted cumulative profiles",
-    "qualification": "85 direct semantic tests passed on unchanged product/test bytes. Existing affected CI/scope/workflow controls and all four profiles must verify the authorized repair before any of the 36 W09 core rows is promoted.",
+    "local_cumulative": "not_run; actual direct component/control evidence and the four required hosted cumulative profiles provide verification",
+    "qualification": "All 36 mapped W09 owner-local core obligations passed in each required profile. Affected controls and exact source identity settle the later three-record administrative successor; its gate remains pending until actually executed.",
     "component_runtime": {
       "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
       "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
@@ -290,7 +353,68 @@
         "tests/contract/test_phase3_transition.py": "30f0e60d87072b5fc3a278269a8febbe6208339837e60ed68fecf6bd1bf34207",
         ".github/workflows/phase1-ci.yml": "b3dbc7a2077edc3bd0fc3ab9e2a919a027c2be1b6c4a9520ca49af4aa29389af"
       },
-      "source_identity_before_after": true
+      "source_identity_before_after": true,
+      "recovery_status": {
+        "status": "original_local_junit_unavailable; same_331_identities_verified_in_four_repaired_hosted_profiles",
+        "unavailable_original_junit": {
+          "path": "w09-r01-controls.xml",
+          "bytes": 54382,
+          "sha256": "30f02512d6c33adaf579dc0e62d677f3a74fc2bbd4314e82f306e8b7535961b9"
+        },
+        "recovered_original_files": {
+          "w09-r01-controls.log": {
+            "path": "w09-r01-controls.log",
+            "bytes": 421,
+            "sha256": "217e10384aefdff0d28468bb2d28acabbedb59b599dd43a29dbcbbf7f4298d7f"
+          },
+          "w09-r01-controls-before.json": {
+            "path": "w09-r01-controls-before.json",
+            "bytes": 330,
+            "sha256": "0b67f586d79fb278bd89119d63b01785963d12d0d127a8e6be14681e48f81ca8"
+          },
+          "w09-r01-controls-after.json": {
+            "path": "w09-r01-controls-after.json",
+            "bytes": 330,
+            "sha256": "0b67f586d79fb278bd89119d63b01785963d12d0d127a8e6be14681e48f81ca8"
+          },
+          "w09-r01-controls-execution.json": {
+            "path": "w09-r01-controls-execution.json",
+            "bytes": 798,
+            "sha256": "e801cd38357f2ef3e331ebe50bd08b520411aeacf324862428369746f6f52914"
+          }
+        },
+        "provenance": {
+          "path": "w09-r01-controls-recovery-provenance.json",
+          "bytes": 1751,
+          "sha256": "55ced0b8b06d1a8e634ce868bb7e09a656ebdb8ad219944f4bfb1f44c30635c6"
+        },
+        "hosted_control_identity_coverage": {
+          "head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+          "run_id": "35785828269",
+          "run_attempt": 1,
+          "profiles": [
+            "ubuntu-24.04-py3.11",
+            "ubuntu-24.04-py3.13",
+            "windows-2025-py3.11",
+            "windows-2025-py3.13"
+          ],
+          "transition_count": 317,
+          "ci_contract_class_count": 14,
+          "total": 331,
+          "selection": [
+            "tests/contract/test_phase3_transition.py::*",
+            "tests/scaffold/test_ci_contract.py::CiContractTests::*"
+          ],
+          "sorted_node_ids_newline_joined_sha256": "f9ee50b83e00b5b873030305bdd43b060b32981c3b6f9346f16a4af43cb412ad",
+          "all_collected_and_passed_in_each": true,
+          "raw_audit": {
+            "path": "w09-r01-raw-audit.json",
+            "bytes": 3973,
+            "sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0"
+          }
+        },
+        "qualification": "The original local JUnit bytes were not recovered; the historical packet is preserved without claiming availability. Its log and execution/pre/post receipts match their original hashes. The four newly verified hosted collection/JUnit pairs independently contain and pass the same 331 control identities."
+      }
     },
     "repair_collection": {
       "count": 3549,
@@ -298,9 +422,14 @@
       "added": 0,
       "removed": 0,
       "new_governance_identities": 0
+    },
+    "core_map": {
+      "path": "w09-r01-core-map.json",
+      "bytes": 47907,
+      "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
     }
   },
-  "owner_local_core_obligations_verified": 136,
+  "owner_local_core_obligations_verified": 172,
   "phase3_complete": false,
   "limitations": [
     "Public audit API/CLI and reporting remain inactive.",
@@ -308,9 +437,12 @@
     "All 228 integration and 228 release obligations remain pending.",
     "No scalar Presence, causal influence estimate or unrestricted cross-population transition is authorized.",
     "The incomplete Windows/Python3.13 run has no complete JUnit or pytest log; passed tests/subtests cannot be counted for it.",
-    "Three successful profiles are not a four-profile pass. No W09 core obligation is promoted.",
+    "The original run 35779540524 remains a failed three-pass/one-timeout matrix; it supplied no verified W09 core rows. The new same-head four-profile evidence separately qualifies this implementation.",
     "Package archive bytes are not supplied; no independent whole-archive rebuild or native-host certification is claimed.",
-    "Public API/CLI audit, reporting, full private orchestration, integration and release remain pending."
+    "Public API/CLI audit, reporting, full private orchestration, integration and release remain pending.",
+    "The original 8,485-byte approval receipt was lost in the local workspace reset. Its SHA256 cfdba2bf6f23e71b04d87cb81013eba04cdfafe92abb65470f58d71daa21bd65 and authority entry remain in committed code; the explicitly reconstructed recovery receipt is a different 4,499-byte file with SHA256 01cb79c19e3177c815da97144b6e73c472254320dc2f0e5a1e58e1c63d1d1635, not a byte recovery or new approval.",
+    "The original local 331-control JUnit XML was lost during the workspace reset and is not supplied or counted as recovered evidence. The preserved committed receipt remains historical; the repaired hosted four-profile gate is independently verified from its original artifacts.",
+    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
   ],
   "resolved_approval_boundary": {
     "proposal": "P3-W09-R01",
@@ -340,6 +472,25 @@
       "authority_basis": "PHASE_3_PLAN.md section 4: a later out-of-scope correction requires a named narrow amendment and actual approval. This proposal grants no edit permission.",
       "preservation": "All 3549 identities, 428 separately reported subtests, four profiles, semantic assertions, product resource budgets, pins and no-skip rules stay required."
     },
-    "status": "repair_authorized_verification_pending"
+    "status": "authorized_repair_verified_pending_owner_acceptance",
+    "verification": {
+      "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+      "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
+      "run_id": "35785828269",
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
+    "recovery_receipt": {
+      "path": "w09-r01-approval-recovered.json",
+      "bytes": 4499,
+      "sha256": "01cb79c19e3177c815da97144b6e73c472254320dc2f0e5a1e58e1c63d1d1635"
+    }
   }
 }
