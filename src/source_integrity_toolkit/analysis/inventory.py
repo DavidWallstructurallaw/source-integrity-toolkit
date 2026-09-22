@@ -356,3 +356,143 @@ def _inventory_profile(prepared, context, ledger, port):
     answer = _InventoryProfile(facts, result_set.results, tuple(witnesses))
     port.check()
     return answer
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _ComparisonInventoryFacts:
+    """SOURCE_INVENTORY's exact supplied comparison selection, not PC11.
+
+    In particular, presence, population and scope matching neither authenticate
+    the native conclusion nor establish basis, time, identity or independence.
+    """
+    prepared: object
+    context: object
+    job_port: object
+    inquiry: object
+    assessment: object
+    members: tuple
+    examined_assessments: tuple
+    selection_refs: tuple
+    scope_compatible: bool
+    reason_codes: tuple
+    pc03: _ProviderFact
+
+
+def _comparison_scope(entity, context, port):
+    """Only source ID membership; no lifecycle or qualification filtering."""
+    scope = _field(entity.node.fields, 'scope', port)
+    if not _analysis_contains(_field(scope, 'inquiry_refs', port).items, context.inquiry_ref, port):
+        return False
+    claims = _field(scope, 'claim_refs', port).items
+    for claim in context.claim_refs:
+        port.charge(1)
+        if not _analysis_contains(claims, claim, port):
+            return False
+    details = _field(_field(entity.node.fields, 'data', port), 'details', port)
+    return _compare_text(_field(details, 'dimension', port), context.dependency_dimension, port) == 0
+
+
+def _comparison_subjects_match(members, context, port):
+    if not context.subject_refs:
+        return True
+    port.charge(1)
+    if len(members) != len(context.subject_refs):
+        return False
+    for member in members:
+        port.charge(1)
+        if not _analysis_contains(context.subject_refs, member.identifier, port):
+            return False
+    return True
+
+
+def _comparison_inventory_facts(prepared, context, assessment_ref, port):
+    """Enumerate one explicit independence assessment's submitted subjects.
+
+    Empty context subjects derive the exact native list. A caller subset or
+    superset cannot replace that list: the mismatch is retained as PC03 unmet,
+    with the supplied population still present. Multiple selected Claim IDs
+    are permitted, each exactly targeted by the Inquiry and required in scope.
+
+    None requests absence of an applicable supplied comparison for this exact
+    question. The finite source set is actually scanned. An existing match
+    requires explicit selection; overlapping pairs never become a joint set.
+    An empty subject query is not a subject wildcard for a selected assessment:
+    its population comes only from that explicit source assertion.
+    """
+    inquiry = _analysis_start(prepared, context, port)
+    port.charge(4)
+    _require(bool(context.claim_refs) and context.dependency_dimension is not None)
+    _require(assessment_ref is None or type(assessment_ref) is str)
+    targets = _field(inquiry.node.fields, 'target_claim_refs', port).items
+    for claim in context.claim_refs:
+        port.charge(1)
+        _require(_analysis_contains(targets, claim, port))
+    dimensions = _field(inquiry.node.fields, 'dependency_dimensions', port).items
+    _require(_analysis_contains(dimensions, context.dependency_dimension, port))
+    sources = [_analysis_address(inquiry, port, 'target_claim_refs'),
+               _analysis_address(inquiry, port, 'dependency_dimensions')]
+    examined, members = [], ()
+    assessment, compatible, reasons = None, False, ('missing_comparison_assessment',)
+    if assessment_ref is not None:
+        assessment = _analysis_lookup(prepared, assessment_ref, port)
+        _require(assessment.collection == 'assertions')
+        obj = assessment.node.fields
+        _require(_field(obj, 'assertion_kind', port) == 'assessment')
+        data = _field(obj, 'data', port)
+        _require(_field(data, 'assessment_kind', port) == 'independence')
+        members = _entities(prepared, _field(data, 'subject_refs', port).items, port)
+        compatible = _comparison_scope(assessment, context, port) and _comparison_subjects_match(members, context, port)
+        reasons = () if compatible else ('scope_unestablished',)
+        port.charge(1)
+        examined.append(assessment)
+    else:
+        # A no-selection request is not an invitation to pick a winner,
+        # calculate a maximal set, sum pairs, or synthesize a singleton.
+        found = False
+        for candidate in prepared.entities:
+            port.charge(2)
+            if candidate.collection != 'assertions':
+                continue
+            obj = candidate.node.fields
+            if _field(obj, 'assertion_kind', port) != 'assessment':
+                continue
+            data = _field(obj, 'data', port)
+            if _field(data, 'assessment_kind', port) != 'independence':
+                continue
+            port.charge(1)
+            examined.append(candidate)
+            if _comparison_scope(candidate, context, port):
+                candidate_members = _entities(prepared, _field(data, 'subject_refs', port).items, port)
+                if _comparison_subjects_match(candidate_members, context, port):
+                    found = True
+        if found:
+            raise TypeError('explicit_comparison_selection_required')
+    for candidate in examined:
+        for selector in ('scope.inquiry_refs', 'scope.claim_refs', 'data.subject_refs', 'data.details.dimension'):
+            port.charge(1)
+            sources.append(_analysis_address(candidate, port, selector))
+    port.charge(len(sources) + 1)
+    source_refs = _analysis_unique_addresses(tuple(sources), port)
+    # Provider construction revisits and hashes all source-address strings;
+    # no earlier source lookup's debit stands in for this additional pass.
+    for source in source_refs:
+        for unused in range(3):
+            _analysis_text(source.collection, port)
+            _analysis_text(source.record_id, port)
+            _analysis_text(source.selector, port)
+    port.charge(16 + 4 * len(source_refs))
+    state = 'unknown' if assessment is None else 'met' if compatible else 'unmet'
+    provider = _ProviderFact('PC03', 'SOURCE_INVENTORY', context, state, source_refs, prepared)
+    port.charge(len(examined) + len(reasons) + 16)
+    result = _ComparisonInventoryFacts(prepared, context, port, inquiry, assessment,
+        members, tuple(examined), source_refs, compatible, reasons, provider)
+    port.check()
+    return result
+
+
+def _check_comparison_inventory(facts, prepared, context, port):
+    """Facts can be consumed only in their actual current analytical job."""
+    _analysis_port(port)
+    port.charge(4)
+    _require(type(facts) is _ComparisonInventoryFacts and facts.job_port is port and
+             facts.prepared is prepared and facts.context is context)

@@ -254,6 +254,8 @@ def test_each_unit_has_exact_four_common_records_and_approved_paths(step):
     effective = expected | (W04_R01_PATHS if step == 4 else frozenset())
     if step == 5:
         effective |= W05_R01_PATHS
+    if step == 6:
+        effective |= W06_R01_PATHS
     assert ci.phase3_effective_paths(paths, unit) == effective
     ci.phase3_check_changed_paths(paths, unit, effective)
     cumulative = COMMON | frozenset().union(*(ADDITIONAL[number] for number in range(1, step + 1)))
@@ -261,6 +263,8 @@ def test_each_unit_has_exact_four_common_records_and_approved_paths(step):
         cumulative |= W04_R01_PATHS
     if step >= 5:
         cumulative |= W05_R01_PATHS
+    if step >= 6:
+        cumulative |= W06_R01_PATHS
     assert ci.phase3_effective_paths(paths, unit, cumulative=True) == cumulative
     assert len(COMMON) == 4
     for future_path in (COMMON | frozenset().union(*ADDITIONAL.values())) - effective:
@@ -781,10 +785,12 @@ def test_w04_r01_name_is_cumulative_but_immediate_permissions_are_not(step):
     unit = f"P3-W{step:02}"
     paths = guard.phase3_plan_paths(ROOT)
     assert ci.phase3_scope_exceptions(unit) == ((["P3-W04-R01"] if step >= 4 else []) +
-                                              (["P3-W05-R01"] if step >= 5 else []))
+                                              (["P3-W05-R01"] if step >= 5 else []) +
+                                              (["P3-W06-R01"] if step >= 6 else []))
     for path in W04_R01_PATHS:
-        # Three paths have a separate W05 approval. The W04 wrapper does not.
-        if step in (1, 4) or (step == 5 and path in W05_R01_PATHS):
+        # Overlapping paths need their own W05/W06 approval; the W04 wrapper has neither.
+        if (step in (1, 4) or (step == 5 and path in W05_R01_PATHS) or
+                (step == 6 and path in W06_R01_PATHS)):
             ci.phase3_check_changed_paths(paths, unit, {path})
         else:
             with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
@@ -831,7 +837,7 @@ def test_w04_r01_driver_keeps_original_p2_and_unrelated_ci_ast():
         ast.dump(n) for n in after.body if name(n) not in changed | additions]
     for expected in changed | additions:
         assert sum(name(n) == expected for n in after.body) == 1, expected
-    _assert_w05_r01_driver_source((ROOT / path).read_bytes())
+    _assert_w06_r01_driver_source((ROOT / path).read_bytes())
 
 
 _W04_MIGRATED_METHODS = (
@@ -1094,7 +1100,7 @@ def test_w05_r01_exact_authority_preserves_plan_and_other_unit_scopes():
     assert ci.P3_W05_R01_BASE == W05_R01_BASE
     assert ci.P3_W05_R01_BASE_TREE == W05_R01_BASE_TREE
     assert ci.P3_W05_R01_PREDECESSOR == W05_R01_PREDECESSOR
-    _assert_w05_r01_driver_source((ROOT / "tests/scaffold/test_ci_contract.py").read_bytes())
+    _assert_w06_r01_driver_source((ROOT / "tests/scaffold/test_ci_contract.py").read_bytes())
     paths = guard.phase3_plan_paths(ROOT)
     assert paths["P3-W05"] == COMMON | ADDITIONAL[5] and len(paths["P3-W05"]) == 9
     assert len(ci.phase3_effective_paths(paths, "P3-W05")) == 13
@@ -1121,11 +1127,14 @@ def test_w05_r01_cumulative_name_never_grants_later_immediate_rights(step):
         expected |= W04_R01_PATHS
     if step == 5:
         expected |= W05_R01_PATHS
+    if step == 6:
+        expected |= W06_R01_PATHS
     assert ci.phase3_effective_paths(paths, unit) == expected
     assert ci.phase3_scope_exceptions(unit) == ((["P3-W04-R01"] if step >= 4 else []) +
-                                              (["P3-W05-R01"] if step >= 5 else []))
+                                              (["P3-W05-R01"] if step >= 5 else []) +
+                                              (["P3-W06-R01"] if step >= 6 else []))
     ci.phase3_check_changed_paths(paths, unit, expected)
-    for path in (W05_R01_PATHS | W04_R01_PATHS) - expected:
+    for path in (W05_R01_PATHS | W04_R01_PATHS | W06_R01_PATHS) - expected:
         with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
             ci.phase3_check_changed_paths(paths, unit, expected | {path})
     # These paths have been cumulative since W01. That never enlarges a later
@@ -1151,7 +1160,7 @@ def test_w05_r01_rejects_other_old_paths_and_lookalikes(path):
                                       "missing_w05_boundary", "candidate_selected_boundary"))
 def test_w05_r01_driver_oracle_rejects_unrelated_or_self_selected_changes(mutation):
     raw = (ROOT / "tests/scaffold/test_ci_contract.py").read_bytes()
-    _assert_w05_r01_driver_source(raw)
+    _assert_w06_r01_driver_source(raw)
     tree = ast.parse(raw)
     if mutation in ("p2_body", "w04_boundary", "context_resolution"):
         name = {"p2_body": "effective_paths", "w04_boundary": "phase3_w04_pre_amendment",
@@ -1166,7 +1175,7 @@ def test_w05_r01_driver_oracle_rejects_unrelated_or_self_selected_changes(mutati
                           and isinstance(n.targets[0], ast.Name) and n.targets[0].id == "P3_W05_R01_BASE")
         assignment.value = ast.Constant("0" * 40)
     with pytest.raises(AssertionError):
-        _assert_w05_r01_driver_source(ast.unparse(tree))
+        _assert_w06_r01_driver_source(ast.unparse(tree))
 
 
 def _w05_portable_ast_dump(node):
@@ -1493,15 +1502,18 @@ def test_w05_r01_fixed_boundary_and_complete_history_reject_unauthorized_edits(t
         (repo / "fixed.txt").write_bytes(b"entry\n")
         current = commit("Restore final protected bytes")
     base, unit = predecessor, "P3-W05"
+    w06_boundary, w06_tree, w06_predecessor = W06_R01_BASE, W06_R01_BASE_TREE, W06_R01_PREDECESSOR
     if case in ("clean_later_unit", "later_unit_repair"):
         git("checkout", "-q", main)
         git("merge", "-q", "--no-ff", "synthetic-w05", "-m", "Accepted W05\n\nSIT-Phase-Unit: P3-W05")
         base = git("rev-parse", "HEAD")
         git("checkout", "-q", "-b", "synthetic-w06")
         (repo / "six.txt").write_bytes(b"authorized W06 work\n")
+        current = w06_boundary = commit("Later unit original-scope boundary")
+        w06_tree, w06_predecessor = git("rev-parse", current + "^{tree}"), base
         if case == "later_unit_repair":
             (repo / repair).write_bytes(b"not authorized by cumulative W05 R01\n")
-        current = commit("Later unit work")
+            current = commit("Still unapproved W05-only path after W06 boundary")
         unit = "P3-W06"
     if case == "missing_boundary_ancestry":
         current = predecessor
@@ -1518,7 +1530,10 @@ def test_w05_r01_fixed_boundary_and_complete_history_reject_unauthorized_edits(t
             patch.object(ci, "P3_W04_R01_PREDECESSOR", w04_predecessor), \
             patch.object(ci, "P3_W05_R01_BASE", boundary), \
             patch.object(ci, "P3_W05_R01_BASE_TREE", boundary_tree), \
-            patch.object(ci, "P3_W05_R01_PREDECESSOR", declared_predecessor):
+            patch.object(ci, "P3_W05_R01_PREDECESSOR", declared_predecessor), \
+            patch.object(ci, "P3_W06_R01_BASE", w06_boundary), \
+            patch.object(ci, "P3_W06_R01_BASE_TREE", w06_tree), \
+            patch.object(ci, "P3_W06_R01_PREDECESSOR", w06_predecessor):
         assert ci.commit_hashes(initial) == entry["files"]
         if case in ("clean", "clean_later_unit"):
             history = ci.phase3_history(entry, base, current, paths, unit)
@@ -1532,7 +1547,7 @@ def test_w05_r01_fixed_boundary_and_complete_history_reject_unauthorized_edits(t
                 assert row["immediate_scope_exceptions"] == expected
             if case == "clean_later_unit":
                 assert next(row for row in history if row["commit"] == current)["immediate_scope_exceptions"] == []
-                assert ci.phase3_scope_exceptions(unit) == ["P3-W04-R01", "P3-W05-R01"]
+                assert ci.phase3_scope_exceptions(unit) == ["P3-W04-R01", "P3-W05-R01", "P3-W06-R01"]
         else:
             reason = {
                 "pre_boundary_repair": "intermediate_work_unit_allowlist_exceeded",
@@ -1548,5 +1563,403 @@ def test_w05_r01_fixed_boundary_and_complete_history_reject_unauthorized_edits(t
                 "duplicate_footer": "wrong_phase3_predecessor",
                 "later_unit_repair": "intermediate_work_unit_allowlist_exceeded",
             }[case]
+            with pytest.raises(ValueError, match="^" + reason + "$"):
+                ci.phase3_history(entry, base, current, paths, unit)
+
+
+# Independently transcribed owner-approved W06 amendment; raw plan remains fixed.
+W06_R01_PATHS = frozenset((
+    "src/source_integrity_toolkit/analysis/inventory.py",
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_phase3_transition.py",
+    "phase3/transition_ledger.md",
+))
+W06_R01_BASE = "5dbf39949b8fca63e5abad87b32578b61df87b80"
+W06_R01_BASE_TREE = "5cbb23c0b1f2cc65656fca813ca7b90b36274bfa"
+W06_R01_PREDECESSOR = "3dd10f987816dffd73e56631b1c4593e9c3f1b54"
+
+
+W06_R01_PROPOSAL_SHA256 = "b3d4b8a92036c68a42dcc2e6332dfdd905ea51a58a5ff6172f782068b9d11e69"
+W06_R01_APPROVAL_SHA256 = "aaee9f5677b13d5bd5720b5c7e986e86eb21e6d3df6402a2b50717ecc58034c4"
+_W06_R01_MIGRATED_METHODS = ('test_each_unit_has_exact_four_common_records_and_approved_paths', 'test_w04_r01_name_is_cumulative_but_immediate_permissions_are_not', 'test_w04_r01_driver_keeps_original_p2_and_unrelated_ci_ast', 'test_w05_r01_exact_authority_preserves_plan_and_other_unit_scopes', 'test_w05_r01_driver_oracle_rejects_unrelated_or_self_selected_changes', 'test_w05_r01_cumulative_name_never_grants_later_immediate_rights', 'test_w05_r01_fixed_boundary_and_complete_history_reject_unauthorized_edits')
+
+_W06_R01_DRIVER_DELTAS = (
+    ('def phase3_effective_paths(', 'P3_W06_R01_PATHS = frozenset((\n    "src/source_integrity_toolkit/analysis/inventory.py",\n    "tests/scaffold/test_ci_contract.py",\n    "tests/contract/test_phase3_transition.py",\n    "phase3/transition_ledger.md",\n))\nP3_W06_R01_BASE = "5dbf39949b8fca63e5abad87b32578b61df87b80"\nP3_W06_R01_BASE_TREE = "5cbb23c0b1f2cc65656fca813ca7b90b36274bfa"\nP3_W06_R01_PREDECESSOR = "3dd10f987816dffd73e56631b1c4593e9c3f1b54"\n\n\ndef phase3_effective_paths('),
+    ('            allowed.update(P3_W05_R01_PATHS)', '            allowed.update(P3_W05_R01_PATHS)\n        if step == 6:\n            allowed.update(P3_W06_R01_PATHS)'),
+    ('    return (["P3-W04-R01"] if current >= 4 else []) + (["P3-W05-R01"] if current >= 5 else [])', '    return ((["P3-W04-R01"] if current >= 4 else []) + (["P3-W05-R01"] if current >= 5 else []) +\n            (["P3-W06-R01"] if current >= 6 else []))'),
+    ('def phase3_history(', 'def phase3_w06_pre_amendment(predecessor, successor):\n    """Read the fixed approved W06 boundary, never a candidate declaration."""\n    require(predecessor == P3_W06_R01_PREDECESSOR, "w06_repair_predecessor_mismatch")\n    require(git_text("rev-parse", P3_W06_R01_BASE + "^{tree}") == P3_W06_R01_BASE_TREE,\n            "w06_repair_boundary_tree_mismatch")\n    require(git_text("show", "-s", "--format=%P", P3_W06_R01_BASE).split() == [predecessor],\n            "w06_repair_boundary_parent_mismatch")\n    require_ancestor(P3_W06_R01_BASE, successor)\n    return frozenset(git_text("rev-list", predecessor + ".." + P3_W06_R01_BASE).splitlines())\n\n\ndef phase3_history('),
+    ('                         if owner == "P3-W05" else frozenset())', '                         if owner == "P3-W05" else\n                         phase3_w06_pre_amendment(predecessor, successor)\n                         if owner == "P3-W06" else frozenset())'),
+    ('                require_ancestor(P3_W05_R01_BASE, commit)', '                require_ancestor(P3_W05_R01_BASE, commit)\n            if owner == "P3-W06" and commit not in pre_amendment:\n                require_ancestor(P3_W06_R01_BASE, commit)'),
+    ('                                                           ["P3-W05-R01"] if owner == "P3-W05"\n                                                           and commit not in pre_amendment else []),', '                                                           ["P3-W05-R01"] if owner == "P3-W05"\n                                                           and commit not in pre_amendment else\n                                                           ["P3-W06-R01"] if owner == "P3-W06"\n                                                           and commit not in pre_amendment else []),'),
+)
+
+
+def _assert_w06_r01_driver_source(raw):
+    """Keep the old historical proof, then require exactly the approved current delta."""
+    baseline = git_bytes("tests/scaffold/test_ci_contract.py", W06_R01_PREDECESSOR)
+    assert hashlib.sha256(baseline).hexdigest() == "f011914dee89c92782e7f1dc1c1a3580b1adab945913460f7c02ae889de40d7b"
+    _assert_w05_r01_driver_source(baseline)
+    expected = baseline.decode()
+    for previous, replacement in _W06_R01_DRIVER_DELTAS:
+        assert expected.count(previous) == 1, "invalid_fixed_w06_source_delta"
+        expected = expected.replace(previous, replacement, 1)
+    # P3-W06-R02 adjusts only the complete CI test-process timeout.
+    old_timeout = "env=env, timeout=900, check=False"
+    assert expected.count(old_timeout) == 1
+    expected = expected.replace(old_timeout, "env=env, timeout=1200, check=False", 1)
+    same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))
+    assert same_ast, "unauthorized_current_w06_driver_delta"
+
+
+def test_w06_r01_exact_authority_and_current_source_keep_every_other_unit_scope():
+    ci = ci_driver()
+    assert ci.P3_W06_R01_PATHS == W06_R01_PATHS
+    assert ci.P3_W06_R01_BASE == W06_R01_BASE
+    assert ci.P3_W06_R01_BASE_TREE == W06_R01_BASE_TREE
+    assert ci.P3_W06_R01_PREDECESSOR == W06_R01_PREDECESSOR
+    _assert_w06_r01_driver_source((ROOT / "tests/scaffold/test_ci_contract.py").read_bytes())
+    paths = guard.phase3_plan_paths(ROOT)
+    assert paths["P3-W06"] == COMMON | ADDITIONAL[6] and len(paths["P3-W06"]) == 6
+    assert not W06_R01_PATHS & paths["P3-W06"]
+    assert len(ci.phase3_effective_paths(paths, "P3-W06")) == 10
+    for step in range(1, 16):
+        unit = f"P3-W{step:02}"
+        expected = COMMON | ADDITIONAL[step]
+        extras = {4: W04_R01_PATHS, 5: W05_R01_PATHS, 6: W06_R01_PATHS}.get(step, frozenset())
+        assert ci.phase3_effective_paths(paths, unit) == expected | extras
+        assert paths[unit] == expected
+        for path in W06_R01_PATHS - expected - extras:
+            with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
+                ci.phase3_check_changed_paths(paths, unit, {path})
+    assert_live_migration_bytes({p: (ROOT / p).read_bytes() for p in LIVE_MIGRATION_SHA256})
+
+
+@pytest.mark.parametrize("path", (
+    "src/source_integrity_toolkit/analysis/inventory.py.bak",
+    "src/source_integrity_toolkit/analysis/../analysis/inventory.py",
+    "tests/unit/test_inventory.py", "tests/scaffold/test_module_manifest.py",
+    "tests/scaffold/test_no_runtime_implementation.py", "tests/contract/test_phase2_transition.py",
+    "phase2/transition_ledger.md", "tools/check_scaffold_boundary.py",
+    ".github/workflows/phase1-ci.yml", "PHASE_3_PLAN.md", "phase3/entry_manifest.json",
+    PACKAGE + "contracts/results.py", PACKAGE + "graph/projections.py", PACKAGE + "analysis/origins.py",
+))
+def test_w06_r01_rejects_every_unapproved_path_and_lookalike(path):
+    ci = ci_driver()
+    paths = guard.phase3_plan_paths(ROOT)
+    allowed = COMMON | ADDITIONAL[6] | W06_R01_PATHS
+    ci.phase3_check_changed_paths(paths, "P3-W06", allowed)
+    with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
+        ci.phase3_check_changed_paths(paths, "P3-W06", allowed | {path})
+
+
+@pytest.mark.parametrize("mutation", (
+    "missing_boundary", "wrong_base", "wrong_tree", "wrong_predecessor", "extra_path",
+    "retroactive_authority", "future_immediate_authority", "unchecked_ancestry", "unchecked_parent",
+    "unchecked_tree", "first_parent_only", "net_diff_only", "drop_history_accounting",
+    "missing_scope_check", "wrong_exception_label", "old_w05_helper", "old_p2_body", "extra_constant",
+))
+def test_w06_r01_current_source_oracle_rejects_permission_and_history_weakening(mutation):
+    raw = (ROOT / "tests/scaffold/test_ci_contract.py").read_bytes()
+    _assert_w06_r01_driver_source(raw)
+    tree = ast.parse(raw)
+    functions = {n.name: n for n in tree.body if isinstance(n, ast.FunctionDef)}
+    assignments = {n.targets[0].id: n for n in tree.body if isinstance(n, ast.Assign)
+                   and len(n.targets) == 1 and isinstance(n.targets[0], ast.Name)}
+    if mutation == "missing_boundary":
+        tree.body.remove(functions["phase3_w06_pre_amendment"])
+    elif mutation in ("wrong_base", "wrong_tree", "wrong_predecessor"):
+        key = {"wrong_base": "BASE", "wrong_tree": "BASE_TREE", "wrong_predecessor": "PREDECESSOR"}[mutation]
+        assignments["P3_W06_R01_" + key].value = ast.Constant("0" * 40)
+    elif mutation == "extra_path":
+        assignments["P3_W06_R01_PATHS"].value.args[0].elts.append(ast.Constant("arbitrary.py"))
+    elif mutation == "future_immediate_authority":
+        condition = next(n for n in ast.walk(functions["phase3_effective_paths"]) if isinstance(n, ast.Compare)
+                         and isinstance(n.comparators[0], ast.Constant) and n.comparators[0].value == 6)
+        condition.ops = [ast.GtE()]
+    elif mutation in ("unchecked_ancestry", "unchecked_parent", "unchecked_tree"):
+        method = functions["phase3_w06_pre_amendment"]
+        marker = {"unchecked_ancestry": "require_ancestor", "unchecked_parent": "w06_repair_boundary_parent_mismatch",
+                  "unchecked_tree": "w06_repair_boundary_tree_mismatch"}[mutation]
+        method.body = [n for n in method.body if marker not in ast.unparse(n)]
+    elif mutation in ("old_w05_helper", "old_p2_body"):
+        method = functions["phase3_w05_pre_amendment" if mutation == "old_w05_helper" else "effective_paths"]
+        method.body = [ast.Return(value=ast.Constant(None))]
+    elif mutation == "extra_constant":
+        tree.body.append(ast.parse("CANDIDATE_APPROVED_PATHS = {'arbitrary.py'}").body[0])
+    else:
+        history = functions["phase3_history"]
+        if mutation in ("retroactive_authority", "net_diff_only", "drop_history_accounting", "missing_scope_check"):
+            for node in ast.walk(history):
+                if isinstance(node, ast.Assign) and mutation == "retroactive_authority" and ast.unparse(node.targets[0]) == "allowed":
+                    node.value = ast.Name(id="immediate", ctx=ast.Load())
+                if isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
+                    if mutation == "net_diff_only" and node.func.id == "changed_between":
+                        node.args = [ast.Name(id="predecessor", ctx=ast.Load()), ast.Name(id="successor", ctx=ast.Load())]
+                    if node.func.id == "require" and len(node.args) == 2:
+                        reason = getattr(node.args[1], "value", None)
+                        if (mutation == "drop_history_accounting" and reason == "incomplete_history_accounting" or
+                                mutation == "missing_scope_check" and reason == "intermediate_work_unit_allowlist_exceeded"):
+                            node.args[0] = ast.Constant(True)
+        elif mutation == "first_parent_only":
+            next(n for n in ast.walk(history) if isinstance(n, ast.Constant) and n.value == "--topo-order").value = "--first-parent"
+        else:
+            next(n for n in ast.walk(history) if isinstance(n, ast.Constant) and n.value == "P3-W06-R01").value = "P3-W05-R01"
+    with pytest.raises(AssertionError, match="unauthorized_current_w06_driver_delta"):
+        _assert_w06_r01_driver_source(ast.unparse(ast.fix_missing_locations(tree)))
+
+
+def test_w06_r01_only_seven_old_transition_methods_change_and_every_other_source_node_is_exact():
+    path = "tests/contract/test_phase3_transition.py"
+    before = git_bytes(path, W06_R01_BASE)
+    assert hashlib.sha256(before).hexdigest() == "9875d989cf3dfaa7fa3e34b5f940a8c75eba09b86225c1ae3d378f6a6c2334e5"
+    old, live = before.decode(), (ROOT / path).read_text(encoding="utf-8")
+    previous, actual = ast.parse(old).body, ast.parse(live).body
+    assert len(actual) > len(previous)
+    changed = set()
+    for left, right in zip(previous, actual):
+        if isinstance(left, ast.FunctionDef) and left.name in _W06_R01_MIGRATED_METHODS:
+            assert isinstance(right, ast.FunctionDef) and left.name == right.name
+            assert ast.dump(left) != ast.dump(right)
+            # Existing collection identities and decorator parameter sets remain exact.
+            assert [ast.dump(n) for n in left.decorator_list] == [ast.dump(n) for n in right.decorator_list]
+            changed.add(left.name)
+        else:
+            assert ast.dump(left) == ast.dump(right)
+            assert ast.get_source_segment(old, left) == ast.get_source_segment(live, right)
+    assert changed == set(_W06_R01_MIGRATED_METHODS) and len(changed) == 7
+
+
+def test_w06_r01_ledger_preserves_prefix_and_records_actual_approval_and_each_migration():
+    path = "phase3/transition_ledger.md"
+    previous = git_bytes(path, W06_R01_BASE)
+    current = (ROOT / path).read_bytes()
+    assert current.startswith(previous) and len(current) > len(previous)
+    appendix = current[len(previous):].decode()
+    for marker in ("批准 **P3-W06-R01** 继续", W06_R01_PROPOSAL_SHA256, W06_R01_APPROVAL_SHA256,
+                   W06_R01_BASE, W06_R01_BASE_TREE, W06_R01_PREDECESSOR,
+                   *sorted(W06_R01_PATHS), *_W06_R01_MIGRATED_METHODS,
+                   "phase3_effective_paths", "phase3_scope_exceptions", "phase3_history"):
+        assert marker in appendix, marker
+    old_source = git_bytes("tests/contract/test_phase3_transition.py", W06_R01_BASE).decode()
+    old_methods = {n.name: n for n in ast.parse(old_source).body if isinstance(n, ast.FunctionDef)}
+    for name in _W06_R01_MIGRATED_METHODS:
+        digest = hashlib.sha256(ast.get_source_segment(old_source, old_methods[name]).encode()).hexdigest()
+        assert digest in appendix, name
+    assert len(guard.phase3_historical_nodes(ROOT)) == 1650
+
+
+def test_w06_r01_actual_boundary_remains_original_six_paths_and_complete_accepted_history():
+    ci = ci_driver()
+    assert ci.git_text("rev-parse", W06_R01_BASE + "^{tree}") == W06_R01_BASE_TREE
+    assert ci.git_text("show", "-s", "--format=%P", W06_R01_BASE).split() == [W06_R01_PREDECESSOR]
+    assert ci.phase3_w06_pre_amendment(W06_R01_PREDECESSOR, W06_R01_BASE) == {W06_R01_BASE}
+    entry, paths = guard.phase3_entry_manifest(ROOT), guard.phase3_plan_paths(ROOT)
+    history = ci.phase3_history(entry, W06_R01_PREDECESSOR, W06_R01_BASE, paths, "P3-W06")
+    assert len(history) == len({row["commit"] for row in history})
+    assert {row["commit"] for row in history} == set(ci.git_text("rev-list", ENTRY + ".." + W06_R01_BASE).splitlines())
+    current = [row for row in history if row["current_unit_segment"]]
+    assert len(current) == 1 and current[0]["commit"] == W06_R01_BASE
+    assert current[0]["tree"] == W06_R01_BASE_TREE
+    assert current[0]["immediate_scope_exceptions"] == [] and set(current[0]["changed_paths"]) == COMMON
+    actual, previous = ci.commit_hashes(W06_R01_BASE), ci.commit_hashes(W06_R01_PREDECESSOR)
+    assert len(actual) == len(previous) == 180 and set(actual) == set(previous)
+    assert {p for p in actual if actual[p] != previous[p]} == COMMON
+    assert sum(p.startswith("tests/") and p.endswith(".py") for p in actual) == 50
+    assert sum(p.startswith(PACKAGE) and p.endswith(".py") for p in actual) == 48
+    assert {row["unit"] for row in history} == {f"P3-W{n:02}" for n in range(1, 7)}
+    for number, boundary in ((4, W04_R01_BASE), (5, W05_R01_BASE)):
+        for row in (r for r in history if r["unit"] == f"P3-W{number:02}"):
+            assert row["immediate_scope_exceptions"] == ([] if row["commit"] == boundary else [f"P3-W{number:02}-R01"])
+
+
+@pytest.mark.parametrize("case", (
+    "clean", "clean_later_unit", "pre_boundary_inventory", "pre_boundary_driver",
+    "pre_boundary_transition", "pre_boundary_ledger", "pre_boundary_then_restore",
+    "candidate_evidence_boundary", "candidate_policy_boundary", "candidate_source_boundary",
+    "post_boundary_forbidden_then_restore", "unanchored_side_branch_then_restore",
+    "anchored_side_branch_forbidden_then_restore", "wrong_boundary_tree", "wrong_boundary_parent",
+    "wrong_predecessor", "missing_boundary_ancestry", "wrong_footer", "duplicate_footer",
+    "missing_footer", "malformed_accepted_parent", "later_inventory", "later_driver",
+    "later_transition", "later_ledger",
+))
+def test_w06_r01_real_dag_preserves_boundary_and_rejects_restored_or_later_authority(tmp_path, case):
+    """Actual Git objects prove all commits, not just the accepted final diff."""
+    ci = ci_driver()
+    repo = tmp_path / "six-unit-history"
+    repo.mkdir()
+    def git(*args):
+        return subprocess.check_output(["git", "-c", "user.name=Synthetic Test",
+            "-c", "user.email=synthetic@example.invalid", *args], cwd=repo,
+            stderr=subprocess.PIPE, text=True, timeout=30).strip()
+    def commit(message):
+        git("add", "--all")
+        git("commit", "-q", "-m", message)
+        return git("rev-parse", "HEAD")
+    def write(path, value):
+        (repo / path).write_bytes(value)
+    extras = {
+        "inventory": PACKAGE + "analysis/inventory.py",
+        "driver": "tests/scaffold/test_ci_contract.py",
+        "transition": "tests/contract/test_phase3_transition.py",
+        "ledger": "phase3/transition_ledger.md",
+    }
+    w04_repair = "tests/scaffold/test_no_runtime_implementation.py"
+    w05_repair = "tests/scaffold/test_module_manifest.py"
+    names = tuple(f"unit-{step}.txt" for step in range(1, 8)) + (
+        "fixed.txt", "side.txt", w04_repair, w05_repair, *extras.values())
+    git("init", "-q")
+    git("config", "--local", "core.autocrlf", "false")
+    git("config", "--local", "core.eol", "lf")
+    for name in names:
+        (repo / name).parent.mkdir(parents=True, exist_ok=True)
+        write(name, b"entry\n")
+    initial = commit("Planning entry")
+    main = git("branch", "--show-current")
+    entry = {"intake_commit": initial, "files": {name: hashlib.sha256(b"entry\n").hexdigest() for name in names}}
+    paths = {f"P3-W{step:02}": frozenset({f"unit-{step}.txt"}) for step in range(1, 8)}
+    paths["P3-W01"] |= frozenset((w04_repair, w05_repair, *extras.values()))
+    paths["P3-W06"] |= {"side.txt"}
+    historical = {}
+    # Independent W04/W05 authority remains active across each accepted merge.
+    for step in range(1, 6):
+        previous = git("rev-parse", "HEAD")
+        branch = f"synthetic-w{step:02}"
+        git("checkout", "-q", "-b", branch)
+        write(f"unit-{step}.txt", b"original authorized work\n")
+        boundary = commit("Original unit scope")
+        if step in (4, 5):
+            historical[step] = (previous, boundary, git("rev-parse", boundary + "^{tree}"))
+            write(w04_repair if step == 4 else w05_repair, b"separately approved historical repair\n")
+            commit("Historical R01 work")
+        git("checkout", "-q", main)
+        footer = f"SIT-Phase-Unit: P3-W{step:02}"
+        if step == 5:
+            if case == "wrong_footer":
+                footer = "SIT-Phase-Unit: P3-W06"
+            elif case == "duplicate_footer":
+                footer += "\n" + footer
+            elif case == "missing_footer":
+                footer = "Accepted without unit footer"
+        if step == 3 and case == "malformed_accepted_parent":
+            # Single-parent main commit is not an accepted two-parent unit merge.
+            write(f"unit-{step}.txt", b"fake accepted main work\n")
+            commit("Invalid direct acceptance\n\n" + footer)
+        else:
+            git("merge", "-q", "--no-ff", branch, "-m", "Accepted unit\n\n" + footer)
+    predecessor = git("rev-parse", "HEAD")
+    git("checkout", "-q", "-b", "synthetic-w06")
+    write("unit-6.txt", b"original W06 records\n")
+    if case.startswith("pre_boundary_") and case != "pre_boundary_then_restore":
+        write(extras[case.removeprefix("pre_boundary_")], b"not yet authorized\n")
+    if case in ("pre_boundary_then_restore", "candidate_evidence_boundary", "candidate_policy_boundary", "candidate_source_boundary"):
+        write(extras["inventory"], b"unauthorized before fixed boundary\n")
+    boundary = commit("Fixed original-scope W06 checkpoint")
+    boundary_tree = git("rev-parse", boundary + "^{tree}")
+    if case == "unanchored_side_branch_then_restore":
+        git("checkout", "-q", "-b", "unanchored", predecessor)
+        write(extras["ledger"], b"side branch without boundary ancestry\n")
+        commit("Unanchored repair")
+        write(extras["ledger"], b"entry\n")
+        write("side.txt", b"otherwise allowed side work\n")
+        commit("Restored unanchored repair")
+        git("checkout", "-q", "synthetic-w06")
+        git("merge", "-q", "--no-ff", "unanchored", "-m", "Merge restored unanchored branch")
+    if case == "pre_boundary_then_restore":
+        write(extras["inventory"], b"entry\n")
+        commit("Restore unauthorized checkpoint bytes")
+    for path in extras.values():
+        write(path, b"approved exact W06 successor\n")
+    current = commit("Approved W06 R01 work")
+    clean_current = current
+    # Every destructive case also has a conforming source/scope positive.
+    ci.phase3_check_changed_paths(paths, "P3-W06", set(extras.values()))
+    if case.startswith("candidate_"):
+        key = {"candidate_evidence_boundary": "implementation_evidence",
+               "candidate_policy_boundary": "module_policy", "candidate_source_boundary": "source_declaration"}[case]
+        write("unit-6.txt", json.dumps({key: {"repair_base": current,
+              "repair_tree": git("rev-parse", current + "^{tree}"),
+              "authorized_paths": sorted(extras.values())}}).encode())
+        current = commit("Candidate metadata cannot relabel original scope")
+    if case == "post_boundary_forbidden_then_restore":
+        write("fixed.txt", b"forbidden intermediate bytes\n")
+        commit("Unauthorized intermediate edit")
+        write("fixed.txt", b"entry\n")
+        current = commit("Restored final bytes")
+    if case == "anchored_side_branch_forbidden_then_restore":
+        git("checkout", "-q", "-b", "anchored", boundary)
+        write("fixed.txt", b"forbidden side-branch bytes\n")
+        commit("Unauthorized side-branch edit after boundary")
+        write("fixed.txt", b"entry\n")
+        write("side.txt", b"otherwise legal side-branch work\n")
+        commit("Restored forbidden side-branch bytes")
+        git("checkout", "-q", "synthetic-w06")
+        git("merge", "-q", "--no-ff", "anchored", "-m", "Merge restored anchored side branch")
+        current = git("rev-parse", "HEAD")
+    base, unit = predecessor, "P3-W06"
+    if case == "clean_later_unit" or case.startswith("later_"):
+        git("checkout", "-q", main)
+        git("merge", "-q", "--no-ff", "synthetic-w06", "-m", "Accepted W06\n\nSIT-Phase-Unit: P3-W06")
+        base = git("rev-parse", "HEAD")
+        git("checkout", "-q", "-b", "synthetic-w07")
+        write("unit-7.txt", b"authorized W07 work\n")
+        current = commit("Clean W07 scope")
+        if case.startswith("later_"):
+            clean_current = current
+            write(extras[case.removeprefix("later_")], b"cumulative label cannot grant immediate rights\n")
+            current = commit("Unauthorized W07 repair path")
+        unit = "P3-W07"
+    declared_boundary, declared_tree, declared_predecessor = boundary, boundary_tree, predecessor
+    if case == "wrong_boundary_tree":
+        declared_tree = "0" * 40
+    elif case == "wrong_boundary_parent":
+        declared_boundary, declared_tree = current, git("rev-parse", current + "^{tree}")
+    elif case == "wrong_predecessor":
+        declared_predecessor = initial
+    elif case == "missing_boundary_ancestry":
+        current = predecessor
+    with patch.object(ci, "ROOT", repo), \
+            patch.object(ci, "P3_W04_R01_PREDECESSOR", historical[4][0]), \
+            patch.object(ci, "P3_W04_R01_BASE", historical[4][1]), \
+            patch.object(ci, "P3_W04_R01_BASE_TREE", historical[4][2]), \
+            patch.object(ci, "P3_W05_R01_PREDECESSOR", historical[5][0]), \
+            patch.object(ci, "P3_W05_R01_BASE", historical[5][1]), \
+            patch.object(ci, "P3_W05_R01_BASE_TREE", historical[5][2]), \
+            patch.object(ci, "P3_W06_R01_PREDECESSOR", declared_predecessor), \
+            patch.object(ci, "P3_W06_R01_BASE", declared_boundary), \
+            patch.object(ci, "P3_W06_R01_BASE_TREE", declared_tree):
+        assert ci.commit_hashes(initial) == entry["files"]
+        # Legal pre-mutation history really passes where the case starts clean.
+        if case in ("post_boundary_forbidden_then_restore", "anchored_side_branch_forbidden_then_restore") or case.startswith("later_"):
+            positive = ci.phase3_history(entry, base, clean_current, paths, unit)
+            assert len(positive) == len({row["commit"] for row in positive})
+            assert {row["commit"] for row in positive} == set(git("rev-list", initial + ".." + clean_current).splitlines())
+        if case in ("clean", "clean_later_unit"):
+            history = ci.phase3_history(entry, base, current, paths, unit)
+            assert len(history) == len({row["commit"] for row in history})
+            assert {row["commit"] for row in history} == set(git("rev-list", initial + ".." + current).splitlines())
+            assert next(row for row in history if row["commit"] == boundary)["immediate_scope_exceptions"] == []
+            for row in history:
+                step = int(row["unit"][-2:])
+                old_boundary = historical[step][1] if step in historical else boundary
+                expected = [f"P3-W{step:02}-R01"] if step in (4, 5, 6) and row["commit"] != old_boundary else []
+                assert row["immediate_scope_exceptions"] == expected
+            if case == "clean":
+                assert next(row for row in history if row["commit"] == current)["changed_paths"] == sorted(extras.values())
+            else:
+                assert next(row for row in history if row["commit"] == current)["immediate_scope_exceptions"] == []
+                assert ci.phase3_scope_exceptions(unit) == ["P3-W04-R01", "P3-W05-R01", "P3-W06-R01"]
+                assert ci.phase3_effective_paths(paths, unit) == paths[unit]
+        else:
+            reason = {
+                "wrong_boundary_tree": "w06_repair_boundary_tree_mismatch",
+                "wrong_boundary_parent": "w06_repair_boundary_parent_mismatch",
+                "wrong_predecessor": "w06_repair_predecessor_mismatch",
+                "missing_boundary_ancestry": "entry_or_predecessor_ancestry_mismatch",
+                "unanchored_side_branch_then_restore": "entry_or_predecessor_ancestry_mismatch",
+                "wrong_footer": "wrong_phase3_predecessor",
+                "duplicate_footer": "wrong_phase3_predecessor",
+                "missing_footer": "wrong_phase3_predecessor",
+                "malformed_accepted_parent": "invalid_accepted_merge_chain",
+            }.get(case, "intermediate_work_unit_allowlist_exceeded")
             with pytest.raises(ValueError, match="^" + reason + "$"):
                 ci.phase3_history(entry, base, current, paths, unit)
