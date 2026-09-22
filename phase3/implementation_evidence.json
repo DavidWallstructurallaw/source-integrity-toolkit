@@ -11,7 +11,7 @@
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "w09_acceptance": "pending_implementation_verification_and_owner_review",
+    "w09_acceptance": "blocked_pending_narrow_amendment_approval_and_complete_required_verification",
     "next_unit": "P3-W10_not_authorized_or_started"
   },
   "accepted_predecessor": {
@@ -61,7 +61,7 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "components_implemented_direct_tests_passed_full_verification_pending",
+    "status": "implemented_direct_tests_passed_full_matrix_blocked",
     "owners": [
       "PRESENCE_RECORDS"
     ],
@@ -88,18 +88,107 @@
     "semantic_scope": "Boundary-qualified attributed externality and exact subject/mapping stage links; independent exact-key native stage disclosures; qualified finite EvidenceItem/Anomaly universe; Y/F/U with contrary evidence retained; same-population unique fully admitted baseline only for preservation/selection."
   },
   "validation": {
-    "status": "direct_semantic_tests_passed_full_verification_pending",
+    "status": "three_profiles_passed_one_profile_incomplete_timeout",
     "full_matrix": {
-      "status": "pending",
+      "status": "failed",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
         "windows-2025-py3.11",
         "windows-2025-py3.13"
-      ]
+      ],
+      "code_head": "59a25116bfe5fe8f4f9b407852bb29fa692e542d",
+      "code_tree": "199651e190be5357e74b7280ac0437366d8afb41",
+      "run_id": 35779540524,
+      "run_attempt": 1,
+      "profiles": [
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w09-ci/phase3-ubuntu-24.04-py3.11-35779540524-1.zip",
+          "bytes": 188044,
+          "sha256": "33d60edd5ffa115b5805d23a6163504b03be3c77fa7a644208a5b1a3cab3fd9d",
+          "service_digest_size_crc": "verified",
+          "source_files_matching_code_before_after": 187,
+          "collected": 3549,
+          "status": "passed",
+          "tests_passed": 3549,
+          "subtests_passed": 428
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w09-ci/phase3-windows-2025-py3.13-35779540524-1.zip",
+          "bytes": 142876,
+          "sha256": "a96dbd8120f480e75c509d3b3e4ee968324feacff297aa7aacefb0945e700ea9",
+          "service_digest_size_crc": "verified",
+          "source_files_matching_code_before_after": 187,
+          "collected": 3549,
+          "status": "incomplete_timeout",
+          "failure": {
+            "error_type": "TimeoutExpired",
+            "message": "Command '['D:\\\\a\\\\_temp\\\\sit-p3\\\\tools\\\\Scripts\\\\python.exe', '-m', 'pytest', 'tests/scaffold', 'tests/security', 'tests/contract', 'tests/unit', 'tests/integration', '-q', '--basetemp', 'D:\\\\a\\\\_temp\\\\sit-p3\\\\pytest', '--junitxml', 'D:\\\\a\\\\_temp\\\\sit-p3\\\\evidence\\\\junit.xml']' timed out after 1200 seconds",
+            "stage": "test"
+          },
+          "tests_passed": null,
+          "subtests_passed": null,
+          "missing": [
+            "junit.xml",
+            "pytest.log",
+            "pytest-exit.json"
+          ]
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w09-ci/phase3-ubuntu-24.04-py3.13-35779540524-1.zip",
+          "bytes": 188147,
+          "sha256": "6e7815aedb9e179e59cf20f9f704df838852ced5c5fb715f7b5352cdca1e1338",
+          "service_digest_size_crc": "verified",
+          "source_files_matching_code_before_after": 187,
+          "collected": 3549,
+          "status": "passed",
+          "tests_passed": 3549,
+          "subtests_passed": 428
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w09-ci/phase3-windows-2025-py3.11-35779540524-1.zip",
+          "bytes": 194513,
+          "sha256": "e1539a0c52bf93c1b1b9964a5c29af9415cca9c16a8e597f6980496af25bfa11",
+          "service_digest_size_crc": "verified",
+          "source_files_matching_code_before_after": 187,
+          "collected": 3549,
+          "status": "passed",
+          "tests_passed": 3549,
+          "subtests_passed": 428
+        }
+      ],
+      "successful_profiles": 3,
+      "incomplete_profiles": 1,
+      "failed_profile": "windows-2025-py3.13",
+      "failure_type": "TimeoutExpired",
+      "pytest_process_limit_seconds": 1200,
+      "raw_gate_audit": {
+        "path": "w09-raw-audit.json",
+        "bytes": 236,
+        "sha256": "0be504ddc2196a241d7f7ded02bc52ba64fed57902997a6b255eb0601d5814b4"
+      },
+      "blocked_evidence_audit": {
+        "path": "w09-blocked-audit.json",
+        "bytes": 4165,
+        "sha256": "6b6b97a80b113c9618bdfe448f08447979d040c13a9b7650488f9e149e2cece3"
+      },
+      "raw_summary": {
+        "path": "w09-ci-download-and-failure-summary.json",
+        "bytes": 6918,
+        "sha256": "1eaac974d54944ed4a76e966dae7f3185666aba15752bfd22fc9fdc425867b42"
+      },
+      "job_log": {
+        "path": "w09-ci/windows-py313-job-106921219306.log",
+        "bytes": 49671,
+        "sha256": "b7d81c0ac08d5e4af156519de3dd36388dfa407715880ad987f297d6d2e8d2c6"
+      }
     },
     "local_cumulative": "not_planned; direct semantic tests and affected controls precede the required four hosted cumulative profiles",
-    "qualification": "Direct semantic cases passed; W09 core promotion still requires all four original hosted CI profiles and actual collection/JUnit/source evidence. No supplementary local full suite is planned.",
+    "qualification": "85 direct semantic cases and three required cumulative profiles passed. The fourth profile has no complete JUnit/pytest result after the existing 1200-second process timeout. The four-profile gate failed; none of the 36 W09 cores is promoted.",
     "component_runtime": {
       "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
       "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
@@ -150,6 +239,31 @@
     "Public audit API/CLI and reporting remain inactive.",
     "Complete private orchestration remains assigned to W13.",
     "All 228 integration and 228 release obligations remain pending.",
-    "No scalar Presence, causal influence estimate or unrestricted cross-population transition is authorized."
-  ]
+    "No scalar Presence, causal influence estimate or unrestricted cross-population transition is authorized.",
+    "The incomplete Windows/Python3.13 run has no complete JUnit or pytest log; passed tests/subtests cannot be counted for it.",
+    "Three successful profiles are not a four-profile pass. No W09 core obligation is promoted.",
+    "Package archive bytes are not supplied; no independent whole-archive rebuild or native-host certification is claimed.",
+    "Public API/CLI audit, reporting, full private orchestration, integration and release remain pending."
+  ],
+  "blocked_on": {
+    "proposal": "P3-W09-R01",
+    "approval": "pending",
+    "proposed_changes": {
+      "pytest_process_limit_seconds": {
+        "from": 1200,
+        "to": 1800
+      },
+      "workflow_job_timeout_minutes": {
+        "from": 25,
+        "to": 40
+      }
+    },
+    "proposed_additional_paths": [
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py",
+      ".github/workflows/phase1-ci.yml"
+    ],
+    "authority_basis": "PHASE_3_PLAN.md section 4: a later out-of-scope correction requires a named narrow amendment and actual approval. This proposal grants no edit permission.",
+    "preservation": "All 3549 identities, 428 separately reported subtests, four profiles, semantic assertions, product resource budgets, pins and no-skip rules stay required."
+  }
 }
