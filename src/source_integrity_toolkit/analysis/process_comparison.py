@@ -192,6 +192,11 @@ def _codes(fact, port):
 
 
 def _current(entity, prepared, context, port):
+    port.charge(1)
+    if entity.collection != 'assertions':
+        # Native records have no assertion lifecycle. Their retained links
+        # still receive the graph owner's separate scope/time eligibility.
+        return True
     if not _analysis_scope(entity, context, port, subjects=False, relation_types=False):
         return False
     current, unused = _analysis_current(prepared, entity, port)
@@ -244,10 +249,10 @@ def _process_edge(edge, dimension, port):
     if not selector.startswith('data.role_bindings[role=') or not selector.endswith('].object_ref'):
         return False
     if dimension == 'analytical_method':
-        return selector.startswith('data.role_bindings[role=method_input;')
+        return selector == 'data.role_bindings[role=method_input].object_ref'
     if dimension == 'evaluation_rubric':
-        return (selector.startswith('data.role_bindings[role=rubric;') or
-                selector.startswith('data.role_bindings[role=reference_answer;'))
+        return selector in ('data.role_bindings[role=rubric].object_ref',
+                            'data.role_bindings[role=reference_answer].object_ref')
     if dimension == 'model_ancestry':
         return edge.target.kind in ('model', 'unresolved_reference')
     return False
@@ -350,7 +355,7 @@ def _premise_inputs(facts, port):
     return _analysis_unique_addresses(_tuple(refs, port), port)
 
 
-def _premise_checks(premises, port, *, basis_premises=None):
+def _premise_checks(premises, port, *, basis_premises=None, native_time_sources=()):
     port.charge(8)
     bases, conflicts, times, codes = [], [], [], []
     for fact in premises:
@@ -365,6 +370,13 @@ def _premise_checks(premises, port, *, basis_premises=None):
         port.charge(len(basis_premises) + 1)
         bases = [fact.basis.state for fact in basis_premises]
     sources = _premise_inputs(premises, port)
+    if native_time_sources:
+        # Native records have no assertion window. Their actual graph-link
+        # temporal limitations must survive beside the assertion premises.
+        port.charge(len(native_time_sources) + len(sources) + 3)
+        times.append('unknown')
+        codes.append('time_applicability_unknown')
+        sources = _analysis_unique_addresses(sources + native_time_sources, port)
     return (_check('PC05', _aggregate(bases, port, empty='unknown'), sources, codes, port),
             _check('PC09', _aggregate(conflicts, port, empty='unknown'), sources, codes, port),
             _check('PC10', _aggregate(times, port, empty='unknown'), sources, codes, port))
@@ -465,6 +477,8 @@ def _comparison_facts(prepared, context, assessment_ref, ledger, port):
     identities, contrary, disclosures, problems, witnesses = [], [], [], [], [witness]
     process_required, process_basis, origin_required, origin_coverage_states, boundary_problems = [], [], [], [], []
     process_checks, origin_checks = [], []
+    port.charge(1)
+    native_time_sources = []
     assessment, members = inventory.assessment, inventory.members
     process_state, origin_state = 'unmet', 'unmet'
     if assessment is None:
@@ -597,6 +611,9 @@ def _comparison_facts(prepared, context, assessment_ref, ledger, port):
                     denied = _field(relation, 'polarity', port) == 'denied'
                 else:
                     denied = False
+                    if _analysis_contains(edge.reason_codes, 'time_applicability_unknown', port):
+                        port.charge(1)
+                        native_time_sources.append(edge.source_ref)
                 premise = _premise(prepared, entity, claim_context, premises, port)
                 port.charge(1)
                 process_required.append(premise)
@@ -659,7 +676,8 @@ def _comparison_facts(prepared, context, assessment_ref, ledger, port):
                     port.charge(2)
                     contrary.append(entity)
                     disclosures.append(entity)
-        checks = _premise_checks(_tuple(process_required, port), port, basis_premises=_tuple(process_basis, port))
+        checks = _premise_checks(_tuple(process_required, port), port,
+            basis_premises=_tuple(process_basis, port), native_time_sources=_tuple(native_time_sources, port))
         port.charge(len(checks))
         process_checks.extend(checks)
         identity_states, identity_sources, identity_codes = [], [], []

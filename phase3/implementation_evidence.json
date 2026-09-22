@@ -1,44 +1,63 @@
 {
   "format": "sit-phase3-evidence/0.1",
-  "unit": "P3-W07",
+  "unit": "P3-W08",
   "authority": {
-    "owner_instruction": "Source Integrity Toolkit 验收 PR #25 启动 P3-W07",
+    "owner_instruction": "启动 P3-W08",
+    "approved_amendment": {
+      "amendment": "P3-W08-R01",
+      "owner_message": "批准 P3-W08-R01",
+      "source": "Explicit user message in this conversation after the linked review package was delivered.",
+      "approval_text_sha256": "195969b8b24f012252fb19890c1cfcc852602679838fb5c03ad7e3928db8ee74",
+      "proposal_file": "P3-W08-R01-REQUEST.md",
+      "proposal_sha256": "0ea3353b8c58b36a03a99a900f47946dcd2a34de56272ef0bb24b23fd70109a9",
+      "proposal_bundle_sha256": "dd9be62aa0a183c935395569662c883ee092a0c92d183a091ec01a86c0302471",
+      "fixed_preapproval_boundary": "250dd83b3a7c7fc420263da48583473faf4ebc13",
+      "boundary_tree": "34fd6ae4e7179d748dcfd03a599d7a12ccb5bf57",
+      "accepted_predecessor": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
+      "approved_additional_paths": [
+        "src/source_integrity_toolkit/analysis/process_comparison.py",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "effective_path_count": 11,
+      "scope_limits": "Original eight paths plus exactly these three. Preserve old immediate scopes and the fixed preapproval boundary; no plan/workflow/guard/ledger/entry-manifest or old M003-test-file changes. Current-source oracle adapted in place without a new historical chain.",
+      "semantic_acceptance": "Exact native role selectors; native record handling without Assertion lifecycle reads; actual source-addressed native temporal unknowns in PC10; same paid helper and job ledger; original snapshot and Assertion semantics."
+    },
     "approved_plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
     "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
-    "actual_unit_entry": "5c520dc15010c7f86d4bcfa5f760ff5e11e7e9d4",
+    "actual_unit_entry": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
     "governing_policy": {
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "w06_acceptance": "accepted_and_merged",
-    "w07_acceptance": "pending_owner_review",
-    "next_unit": "P3-W08_not_authorized_or_started"
+    "w08_acceptance": "pending_owner_acceptance_of_PR27",
+    "next_unit": "P3-W09_not_authorized_or_started"
   },
   "accepted_predecessor": {
-    "unit": "P3-W06",
-    "pr": 25,
-    "merge": "5c520dc15010c7f86d4bcfa5f760ff5e11e7e9d4",
-    "tree": "532a200c0f310fb595ae11ab32498597963ca4f2",
-    "reviewed_head": "886fbf5ff6fa541e799c45c9c979696c48ade850",
-    "verified_code": "d6ed83dfd234589a14dfa4286b224f580fb93217",
-    "run_id": 35715623138,
-    "tests_per_profile": 3341,
+    "unit": "P3-W07",
+    "pr": 26,
+    "merge": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
+    "tree": "aafedfb3b756fc38bc57c495a73d548ce9eb4889",
+    "reviewed_head": "968d21dc26bbe98358007f863b1e32037d9f9e5d",
+    "verified_code": "17e32f46de666f62815ad3542dc37389cd91d04c",
+    "run_id": 35720935198,
+    "tests_per_profile": 3397,
     "separate_subtests_per_profile": 428,
-    "raw_audit_sha256": "00c0cb57652224e7989e5e1fc3f2f9709f1c1406eddb9579df3b7620a1266ec3",
-    "final_audit_sha256": "a48a0bd4847a7e5482b55143b0ba9b1f0a47d959d739a9206f5cb96d59f0679b",
+    "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+    "final_audit_sha256": "7f6401ce990f59e0d714dd1201ee5939df68ab5427276c1c732fcb35e5610f97",
     "records": {
       "phase3/implementation_evidence.json": {
-        "commit": "5c520dc15010c7f86d4bcfa5f760ff5e11e7e9d4",
+        "commit": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
         "path": "phase3/implementation_evidence.json",
-        "sha256": "39c6373c9d4aea9b58b25d9a5151b2c9cde74da2781ce357933f3fb66d37ea2a"
+        "sha256": "8cdc1357220d964d5ff6bb9647e07d11893fda34d2468b4cfaeb28a74b9bc243"
       },
       "phase3/obligation_coverage.json": {
-        "commit": "5c520dc15010c7f86d4bcfa5f760ff5e11e7e9d4",
+        "commit": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
         "path": "phase3/obligation_coverage.json",
-        "sha256": "abc3dfb9b44cf1e7187c9dedd563958b90bafe6a9063b63b06fc72ff60afbea1"
+        "sha256": "b54a30af8d2c739dbce65548588da615f85c9e7cb939cba9340f9b696838d2d7"
       }
     },
-    "acceptance_checks": "Four original ZIPs, collection/JUnit identities, all 181 source hashes, three-record successor and other 178 blob/mode equality checked; no repeated full matrix."
+    "acceptance_checks": "Recovered original evidence ZIP and manifest; rechecked four original CI ZIPs, collection/JUnit identities, all 183 source hashes, three-record successor and other 180 blob/mode equality. No repeated full matrix. Local console capture gap remains disclosed; hosted logs are complete."
   },
   "scope": {
     "effective_authorized_paths": [
@@ -46,215 +65,198 @@
       "phase3/implementation_evidence.json",
       "phase3/module_policy.json",
       "phase3/obligation_coverage.json",
-      "src/source_integrity_toolkit/analysis/contribution_profile.py",
-      "tests/unit/test_contribution_profile.py",
-      "tests/unit/test_immediate_inheritance.py"
+      "src/source_integrity_toolkit/analysis/evaluator_lineage.py",
+      "src/source_integrity_toolkit/analysis/human_review.py",
+      "src/source_integrity_toolkit/analysis/process_comparison.py",
+      "tests/contract/test_phase3_transition.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/unit/test_evaluator_lineage.py",
+      "tests/unit/test_human_review.py"
     ],
-    "immediate_scope_exceptions": [],
+    "immediate_scope_exceptions": [
+      "P3-W08-R01"
+    ],
     "historical_scope_exceptions": [
       "P3-W04-R01",
       "P3-W05-R01",
-      "P3-W06-R01"
+      "P3-W06-R01",
+      "P3-W08-R01"
     ],
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "implemented_named_code_verified_pending_owner_review",
-    "owner": "CONTRIBUTION_PROFILE",
+    "status": "complete_and_verified_pending_owner_acceptance",
+    "owners": [
+      "EVALUATOR_LINEAGE",
+      "HUMAN_REVIEW_RECORDS"
+    ],
+    "repaired_original_helper": "analysis/process_comparison.py",
     "families": [
-      "SIT-M004",
-      "SIT-M005",
-      "SIT-M006"
+      "SIT-M008",
+      "SIT-M013"
     ],
     "field_ids": [
-      "SIT-VF013",
-      "SIT-VF014",
-      "SIT-VF015",
-      "SIT-VF016",
-      "SIT-VF017",
-      "SIT-VF018",
-      "SIT-VF019",
-      "SIT-VF020"
+      "SIT-VF025",
+      "SIT-VF026",
+      "SIT-VF027",
+      "SIT-VF028",
+      "SIT-VF049",
+      "SIT-VF050"
     ],
-    "private_interfaces": [
-      "_contribution_profile",
-      "_contribution_facts",
-      "_contribution_results"
-    ],
-    "work_budget_preserved": true
+    "work_budget_preserved": true,
+    "repair": "Exact native method/rubric/reference-answer selectors; native records retained without Assertion-only lifecycle reads; actual native graph temporal unknowns and their canonical sources retained in PC10. Assertion scope/lifecycle/time and paid original helper ownership preserved.",
+    "selected_review_scope": "Human contribution retains selected reviews while native process comparison retains the complete actual comparison set.",
+    "source_sha256": {
+      "src/source_integrity_toolkit/analysis/evaluator_lineage.py": "71e8a96caf3d25e9b6f130c99243ab5df16ab5a3407e8b39ac08f583a93c0cdd",
+      "src/source_integrity_toolkit/analysis/human_review.py": "bcff22f09add6285a2bcd744ab1e77d1d878f2a92eb1effb738564fe3716a3aa",
+      "src/source_integrity_toolkit/analysis/process_comparison.py": "9d0777bf4fdd422f4392657c3407970c47093de4992cf3837c9a3fe6e3d7e9d0",
+      "tests/contract/test_phase3_transition.py": "fb67b75edab831c9fc96162eada7c760c07c8f9d0eadf1e30b06cb4934198285",
+      "tests/scaffold/test_ci_contract.py": "19075095a5303e2020be316c0996dd6d6ec3d10cef41a59a0a757f19c5f0473b",
+      "tests/unit/test_evaluator_lineage.py": "f90ba1b288bf7203eb11a2660d19ef0fb5358a82dbe8ff9e864d9b5c87a0a947",
+      "tests/unit/test_human_review.py": "07a8b60cbba11e5218a670ca3345b4b5f9a78fb091574872cd6cef77757f4ddd"
+    }
+  },
+  "preapproval_history": {
+    "checkpoint": "250dd83b3a7c7fc420263da48583473faf4ebc13",
+    "initial_checkpoint": "8a0f59692661165de1f1fd5dc374076948313fe6",
+    "status": "61_passed_3_failed_components_no_matrix",
+    "evidence_record": {
+      "commit": "250dd83b3a7c7fc420263da48583473faf4ebc13",
+      "path": "phase3/implementation_evidence.json"
+    },
+    "package": {
+      "name": "Source-Integrity-Toolkit-P3-W08-R01-Review-Evidence.zip",
+      "sha256": "dd9be62aa0a183c935395569662c883ee092a0c92d183a091ec01a86c0302471"
+    },
+    "qualification": "Original failed component runs and failed/incomplete in-memory proposals remain historical evidence. No proposal-only pass is counted as current repaired-code verification."
   },
   "validation": {
-    "status": "exact_named_code_local_and_four_profile_gates_passed",
-    "required": "Direct semantic tests and four-profile executable-code matrix; affected controls only for a later administrative successor.",
-    "preflight": {
-      "scope": "Supplementary isolated W07 policy/promotion probe; no analytical pass claim",
-      "existing_ci_transition_tests_passed": 337,
-      "existing_manifest_tests_passed": 13,
-      "unchanged_guard_driver_transition_sources": true,
-      "new_governance_tests": 0
+    "status": "four_profile_cumulative_verification_passed",
+    "component_runtime": "CPython 3.12.14 with accepted pinned development wheels",
+    "actual_repaired_comparison_and_human": {
+      "tests": 128,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit": {
+        "path": "w08-r01-human-comparison.xml",
+        "bytes": 20839,
+        "sha256": "67e95ddfeb27ea35eac72e17a9f4250ab49dfb2a78030b138fac0cd20ec04f6d"
+      }
     },
-    "semantic_review": {
-      "scope": "Same-tool read-only review of code and source contracts, not independent theory validation",
-      "result": "no_blocking_findings",
-      "focused_probes": [
-        "direct_link_without_qualified_terminal_origin",
-        "known_copy_with_precise_immediate_coverage_and_distant_unknown",
-        "unknown_native_member_remains_unresolved"
-      ],
-      "witness_compaction": "One completed population witness link per root leaf; all original per-seed paths and quota-accounted payloads retained.",
-      "same_job_reuse": "Paid native coverage and identity facts remain confined to the current job; each narrower use checks actual membership and relevant endpoints."
+    "existing_scope_controls": {
+      "tests": 337,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit": {
+        "path": "w08-r01-controls.xml",
+        "bytes": 55261,
+        "sha256": "38368b423211ec3e29eaf0256d1ca1a1e291182760bbdf9ef528ae26477932a0"
+      }
     },
-    "targeted": {
-      "tests": 56,
-      "result": "passed",
-      "seconds": 39.96,
-      "python": "3.12.14",
-      "scope": "Both new W07 test modules; supplementary local profile only."
+    "unchanged_evaluator_component": {
+      "tests": 40,
+      "junit": {
+        "path": "w08-evaluator-final.xml",
+        "bytes": 6144,
+        "sha256": "405164eeb06d68b2debb4f3c77ed10651e983d153d4b38fb3307e7e29331fd59"
+      },
+      "source_sha256": "71e8a96caf3d25e9b6f130c99243ab5df16ab5a3407e8b39ac08f583a93c0cdd"
     },
-    "collection": {
-      "tests": 3397,
-      "inherited_w06_retained": 3341,
-      "new_semantic_tests": 56,
-      "new_governance_tests": 0,
-      "test_files": 53
+    "toolchain": {
+      "path": "w08-local-toolchain.json",
+      "bytes": 12868,
+      "sha256": "6c216a0c4161664f201b7aed00e133112a714dd6444fea1c0cea5c5a60e72124"
     },
-    "source_hashes": {
-      "src/source_integrity_toolkit/analysis/contribution_profile.py": "4eccb7e682f8a8ce67192da1f7ccd3ced314b2f92e2cd2637444e9553ee502ed",
-      "tests/unit/test_contribution_profile.py": "8c8645dceb3c697ed2657c96f103234e1f2a6a115131fcadf0aa50794cf5e389",
-      "tests/unit/test_immediate_inheritance.py": "bf5e50af4b5a39a8c393df4a9802774338ff3413b9df31ed1659f02284155704"
-    },
-    "passed_at": {
-      "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
-      "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
-      "run_id": 35720935198,
-      "run_attempt": 1,
-      "profiles": [
+    "full_matrix": {
+      "status": "passed",
+      "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
         "windows-2025-py3.11",
         "windows-2025-py3.13"
       ],
-      "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
-      "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
-      "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
-      "all_mapped_nodes_collected_and_passed_in_each": true
-    },
-    "local": {
-      "result": "passed",
-      "python": "3.12.14",
-      "tests": 3397,
-      "separate_subtests": 428,
-      "seconds": 827.873,
-      "duration_basis": "JUnit testsuite time",
-      "reported_test_events": 3825,
-      "console_log_complete": false,
-      "subtest_count_basis": "JUnit aggregate successful events minus exact top-level case identities; hosted logs separately corroborate the subtest count.",
-      "limitations": [
-        "Retained local console log stops at 46 percent and lacks its final summary; cause was not established. Local completion relies on actual process exit 0 and the complete JUnit. The initial log-summary audit failure is preserved in w07-local-log-audit-incomplete.json; no hosted or repository gate was relaxed."
-      ],
-      "initial_log_audit": {
-        "path": "w07-local-log-audit-incomplete.json",
-        "bytes": 1210,
-        "sha256": "496d4418a9a11e2fcf9bb05f03aad76d0e5e15b49be87ba2649dc7423bea3532"
-      },
-      "tracked_files_unchanged": 183,
-      "log": {
-        "path": "w07-local.log",
-        "bytes": 1769,
-        "sha256": "ab4d6c4ecdfd5aebad6d32fd43e903f06bb3cb3b0ca76cd90fd6999755dc382d"
-      },
-      "junit": {
-        "path": "w07-local.xml",
-        "bytes": 547352,
-        "sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c"
-      },
-      "audit": {
-        "path": "w07-local-audit.json",
-        "bytes": 1672,
-        "sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8"
-      }
-    },
-    "hosted": {
-      "run_id": 35720935198,
+      "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+      "code_tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+      "run_id": "35771613781",
       "run_attempt": 1,
-      "url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35720935198",
-      "result": "passed",
-      "tests_per_profile": 3397,
+      "tests_per_profile": 3464,
       "separate_subtests_per_profile": 428,
       "raw_audit": {
-        "path": "w07-raw-audit.json",
-        "bytes": 3743,
-        "sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495"
+        "path": "w08-raw-audit.json",
+        "bytes": 3865,
+        "sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4"
       },
       "profiles": [
         {
-          "profile": "windows-2025-py3.11",
-          "sha256": "a6d07fc2cc5b84631b44df5774f3348c24b558adf7d0a8ab2f94b51c9eae8354",
-          "bytes": 184588,
-          "service_digest_checked": true,
-          "tests": 3397,
-          "subtests": 428,
-          "seconds": 897.66,
-          "package_member_checks": true,
-          "zip": "phase3-windows-2025-py3.11-35720935198-1.zip"
-        },
-        {
-          "profile": "ubuntu-24.04-py3.13",
-          "sha256": "824ef34c88bbefdbd666207f3dd9ad1d8f52db517c39cf62fc8ab1217e48e6ee",
-          "bytes": 177338,
-          "service_digest_checked": true,
-          "tests": 3397,
-          "subtests": 428,
-          "seconds": 772.82,
-          "package_member_checks": true,
-          "zip": "phase3-ubuntu-24.04-py3.13-35720935198-1.zip"
-        },
-        {
           "profile": "ubuntu-24.04-py3.11",
-          "sha256": "71c1d7712f624742257c5e2a695e82591e04891e85ce29251932b2b902d1942d",
-          "bytes": 177575,
+          "zip": "/workspace/scratch/4e5267fe5990/w08-ci/phase3-ubuntu-24.04-py3.11-35771613781-1.zip",
+          "sha256": "c60c13baa9eb9043bb8076c543de9d61ad86d13ae42b8e4c33cf9be64fc3580c",
+          "bytes": 182585,
           "service_digest_checked": true,
-          "tests": 3397,
+          "tests": 3464,
           "subtests": 428,
-          "seconds": 783.31,
-          "package_member_checks": true,
-          "zip": "phase3-ubuntu-24.04-py3.11-35720935198-1.zip"
+          "seconds": 849.27,
+          "package_member_checks": true
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w08-ci/phase3-windows-2025-py3.11-35771613781-1.zip",
+          "sha256": "701b386258729e4974d234e697a718b8bb7d0af30f68d3045971c1e3964b363f",
+          "bytes": 189341,
+          "service_digest_checked": true,
+          "tests": 3464,
+          "subtests": 428,
+          "seconds": 1176.86,
+          "package_member_checks": true
         },
         {
           "profile": "windows-2025-py3.13",
-          "sha256": "7690d6fc1e614603a5ceb097a6048678e67e216b1fbe6139a04d4bec258d7a14",
-          "bytes": 184365,
+          "zip": "/workspace/scratch/4e5267fe5990/w08-ci/phase3-windows-2025-py3.13-35771613781-1.zip",
+          "sha256": "7af3b3825c3343fa7e05c4d88a892603a1fdb2d61557831abc656273c33a51a0",
+          "bytes": 189283,
           "service_digest_checked": true,
-          "tests": 3397,
+          "tests": 3464,
           "subtests": 428,
-          "seconds": 1081.76,
-          "package_member_checks": true,
-          "zip": "phase3-windows-2025-py3.13-35720935198-1.zip"
+          "seconds": 1054.14,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w08-ci/phase3-ubuntu-24.04-py3.13-35771613781-1.zip",
+          "sha256": "4367598bba2fb8a5eedd72d4477a4fcc45ea094ec4e2b96d47a844422e272200",
+          "bytes": 182199,
+          "service_digest_checked": true,
+          "tests": 3464,
+          "subtests": 428,
+          "seconds": 550.45,
+          "package_member_checks": true
         }
       ],
-      "checks": "Original ZIP service digest/size/CRC, actual test identities and JUnit, 183 before/after Git source hashes, seven-path scope, recorded package members and installed-runtime boundaries.",
-      "limitations": [
-        "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
-      ]
+      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit."
     },
-    "final_documentation_successor": {
-      "code_parent": "17e32f46de666f62815ad3542dc37389cd91d04c",
-      "status": "pending_at_creation_settle_on_PR26",
-      "paths": [
-        "PHASE_3_PROGRESS.md",
-        "phase3/implementation_evidence.json",
-        "phase3/obligation_coverage.json"
-      ],
-      "control": "Affected existing controls, complete actual W07 commit scope and other 180 exact blobs/modes; results recorded externally on PR26 to avoid self-referential hashes.",
-      "full_matrix_repetition_required": false
+    "local_cumulative": "not_planned; actual local targeted regressions plus four required hosted cumulative profiles",
+    "qualification": "All 24 mapped owner-local core obligations passed in each required profile. Affected controls and exact source identity settle the later three-record administrative successor.",
+    "collection": {
+      "tests": 3464,
+      "accepted_w07_retained": 3397,
+      "new_direct_tests": 67,
+      "governance_test_identities_added": 0
+    },
+    "core_map": {
+      "path": "w08-core-map.json",
+      "bytes": 33119,
+      "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
     }
   },
-  "owner_local_core_obligations_verified": 112,
+  "owner_local_core_obligations_verified": 136,
   "phase3_complete": false,
   "limitations": [
     "Public audit API/CLI and reporting remain inactive.",
     "Complete private orchestration remains assigned to W13.",
     "All 228 integration and 228 release obligations remain pending.",
-    "No W07 acceptance, W08 authorization or release is inferred."
+    "W08 owner acceptance and W09 authorization are not inferred.",
+    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
   ]
 }

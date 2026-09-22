@@ -158,6 +158,8 @@ def phase3_effective_paths(paths, unit, *, cumulative=False):
             allowed.update(P3_W05_R01_PATHS)
         if step == 6:
             allowed.update(P3_W06_R01_PATHS)
+        if step == 8:
+            allowed.update(P3_W08_R01_PATHS)
     return frozenset(allowed)
 
 
@@ -165,7 +167,7 @@ def phase3_scope_exceptions(unit):
     """Name accepted cumulative amendments without granting later edit rights."""
     current = phase_guard.phase3_unit_number(unit)
     return ((["P3-W04-R01"] if current >= 4 else []) + (["P3-W05-R01"] if current >= 5 else []) +
-            (["P3-W06-R01"] if current >= 6 else []))
+            (["P3-W06-R01"] if current >= 6 else []) + (["P3-W08-R01"] if current >= 8 else []))
 
 
 def phase3_check_changed_paths(paths, unit, changed):
@@ -373,6 +375,14 @@ def phase3_history(entry, base, head, paths, unit):
                          if owner == "P3-W05" else
                          phase3_w06_pre_amendment(predecessor, successor)
                          if owner == "P3-W06" else frozenset())
+        if owner == "P3-W08":
+            require(predecessor == P3_W08_R01_PREDECESSOR, "w08_repair_predecessor_mismatch")
+            require(git_text("rev-parse", P3_W08_R01_BASE + "^{tree}") == P3_W08_R01_BASE_TREE,
+                    "w08_repair_boundary_tree_mismatch")
+            # The approved boundary follows two original-scope W08 commits.
+            require_ancestor(predecessor, P3_W08_R01_BASE)
+            require_ancestor(P3_W08_R01_BASE, successor)
+            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W08_R01_BASE).splitlines())
         commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()
         for commit in commits:
             require(commit not in seen, "duplicate_history_commit")
@@ -390,6 +400,8 @@ def phase3_history(entry, base, head, paths, unit):
                 require_ancestor(P3_W05_R01_BASE, commit)
             if owner == "P3-W06" and commit not in pre_amendment:
                 require_ancestor(P3_W06_R01_BASE, commit)
+            if owner == "P3-W08" and commit not in pre_amendment:
+                require_ancestor(P3_W08_R01_BASE, commit)
             require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")
             actual = commit_hashes(commit)
             check_entry_bytes(entry["files"], actual, cumulative)
@@ -401,6 +413,8 @@ def phase3_history(entry, base, head, paths, unit):
                                                            ["P3-W05-R01"] if owner == "P3-W05"
                                                            and commit not in pre_amendment else
                                                            ["P3-W06-R01"] if owner == "P3-W06"
+                                                           and commit not in pre_amendment else
+                                                           ["P3-W08-R01"] if owner == "P3-W08"
                                                            and commit not in pre_amendment else []),
                             "changed_paths": sorted(changed), "tracked_files": len(actual)})
     all_commits = set(git_text("rev-list", intake + ".." + head).splitlines())
@@ -548,6 +562,17 @@ def evidence_report(base, evidence):
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
         output.write("## Phase 3 cumulative verification\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
     require(summary["pass"], "required_CI_evidence_failed_or_incomplete")
+
+
+# Owner-approved P3-W08-R01: the original W08 segment keeps its eight paths.
+P3_W08_R01_PATHS = frozenset((
+    "src/source_integrity_toolkit/analysis/process_comparison.py",
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_phase3_transition.py",
+))
+P3_W08_R01_BASE = "250dd83b3a7c7fc420263da48583473faf4ebc13"
+P3_W08_R01_BASE_TREE = "34fd6ae4e7179d748dcfd03a599d7a12ccb5bf57"
+P3_W08_R01_PREDECESSOR = "5b685e80585fe19adb0d9b0324b698cf5bb54e42"
 
 
 if __name__ == "__main__":

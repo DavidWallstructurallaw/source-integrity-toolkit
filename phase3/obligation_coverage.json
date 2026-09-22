@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W07",
-  "status": "W07_named_code_112_owner_local_core_rows_verified_pending_owner_review",
+  "unit": "P3-W08",
+  "status": "W08_owner_local_core_verified_pending_owner_acceptance",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 80 accepted predecessor core rows are retained unchanged. Exactly 32 W07 owner-local core rows now have passing named-code evidence. All integration and release obligations remain pending.",
+  "meaning": "The 112 inherited verified core rows remain unchanged; exactly 24 W08 owner-local cores now have all four hosted cumulative profiles verified. The remaining 92 cores and all 228 integration/release obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -4710,10 +4710,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 814,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF025 P, line 814, cell 1",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "For the H7 generator/judge pair, the graph-derived count is 2 with exact members H7-MBASE and H7-TRAINING; shared role objects and one-sided ancestry are empty, and upstream_coverage_incomplete remains attached.",
+          "rejecting_mutation_or_boundary": "The exact two-member population preserves positive ancestry despite partial further history; neither a role identity nor a missing-history assumption can replace either literal ancestor.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf025_p_h7_two_strict_ancestors_retain_partial_history"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF025-N",
@@ -4721,10 +4755,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 814,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF025 N, line 814, cell 2",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "After removing H7-ML01 through H7-ML04, the completed examined ancestor count is 0 with incomplete-history limits, while the separate exact family-label count remains 1.",
+          "rejecting_mutation_or_boundary": "After accepting the zero-ancestor output, the test changes that count to 1 and requires the same zero-count oracle to reject it.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf025_n_removing_ancestry_keeps_family_match_without_invented_parent"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF025-M",
@@ -4732,10 +4800,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 814,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF025 M, line 814, cell 3",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "A missing judge binding gives an unavailable null ancestor count with roles_incomplete; an unresolved judge subject gives an unavailable null with unknown_endpoint. Disclosures survive and PC14 is not met.",
+          "rejecting_mutation_or_boundary": "For both admitted missing-data variants, replacing unavailable/null with available/0 is rejected by the original unavailable-count oracle.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf025_m_missing_or_unresolved_role_is_unavailable[missing]",
+            "tests/unit/test_evaluator_lineage.py::test_vf025_m_missing_or_unresolved_role_is_unavailable[unresolved]"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF025-B",
@@ -4743,10 +4846,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 814,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF025 B, line 814, cell 4",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "The related-model microcase has exactly model3 as one strict ancestor. Identical bound model objects with no edges have zero strict ancestors and a separate shared-object disclosure; a one-way model-to-model2 edge remains a relationship path with zero common ancestors. H7 keeps split-A and split-B beside H7-TRAINING at dataset granularity.",
+          "rejecting_mutation_or_boundary": "Zero-length role identity does not add a strict ancestor, one-sided ancestry cannot disappear with a zero common count, and differing supplied subset descriptions do not erase the common dataset reference or establish row-level overlap.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf025_b_w705_one_ancestor_and_zero_length_identity_are_separate",
+            "tests/unit/test_evaluator_lineage.py::test_vf025_b_one_sided_ancestry_survives_zero_shared_count",
+            "tests/unit/test_evaluator_lineage.py::test_vf025_b_common_dataset_with_distinct_subsets_stays_dataset_level"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF026-P",
@@ -4754,10 +4893,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 815,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF026 P, line 815, cell 1",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "H7 has one inventory-origin family match with the exact tuple (H7-family), while the separate graph-derived ancestor count remains 2.",
+          "rejecting_mutation_or_boundary": "The literal family tuple and distinct inventory/graph result origins keep the supplied string outside the ancestor population.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf026_p_exact_h7_family_is_separate_from_model_ancestry"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF026-N",
@@ -4765,10 +4938,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 815,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF026 N, line 815, cell 2",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "The baseline exact F/F labels produce 1; changing the second label to f, leading-space F, trailing-space F, or same-provider-new-family produces 0 while the existing common ancestor count stays 1.",
+          "rejecting_mutation_or_boundary": "Each accepted zero-label-match output is mutated to count 1 and rejected, covering case folding, whitespace trimming and provider-based matching.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf026_n_only_exact_family_strings_match[f]",
+            "tests/unit/test_evaluator_lineage.py::test_vf026_n_only_exact_family_strings_match[ F]",
+            "tests/unit/test_evaluator_lineage.py::test_vf026_n_only_exact_family_strings_match[F ]",
+            "tests/unit/test_evaluator_lineage.py::test_vf026_n_only_exact_family_strings_match[same-provider-new-family]"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF026-M",
@@ -4776,10 +4986,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 815,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF026 M, line 815, cell 3",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "A null label on model2 yields zero inspected supplied-label matches, retains model2 in missing_family_models with its exact data.family_label gap, and leaves the known ancestor count at 1.",
+          "rejecting_mutation_or_boundary": "Setting model_key to F and retaining the common provider cannot fill the absent family label; the missing-family reason and original gap text remain disclosed.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf026_m_unknown_label_preserves_gap_without_modelkey_provider_fallback"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF026-B",
@@ -4787,10 +5031,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 815,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF026 B, line 815, cell 4",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "Multiple generator/judge bindings carrying F, including a repeated model2 binding, still produce the distinct match tuple (F) and count 1; ancestor-family on an upstream model is excluded.",
+          "rejecting_mutation_or_boundary": "Binding multiplicity does not multiply label matches, and a family string on an ancestor is not treated as a directly bound role label.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf026_b_repeated_bindings_and_labelled_ancestors_do_not_add_matches"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF027-P",
@@ -4798,10 +5076,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 816,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF027 P, line 816, cell 1",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "H7 disclosures retain H7-EVAL, the actual generator/judge roles, exact H7-MGEN/H7-MJUDGE subjects, H7-COV-MODEL partial history and documented_record basis; each result retains its correlation interpretation limit.",
+          "rejecting_mutation_or_boundary": "The exact left/right role-object tuples and native partial-history tokens prevent a different role pair, a completed-history substitution or an unqualified correlation interpretation from satisfying this oracle.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf027_p_h7_discloses_exact_actual_rolepair_native_basis_and_partial_history"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF027-N",
@@ -4809,10 +5121,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 816,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF027 N, line 816, cell 2",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "Two human-review Evaluations inspect the same claim using their represented human_reviewer/method_input pairs. Each pair has a zero common-ancestor count while the shared target claim stays in the native disclosure.",
+          "rejecting_mutation_or_boundary": "After accepting each zero count, changing it to 1 as though the reviewed target were a shared process ancestor is rejected.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf027_n_common_reviewed_target_does_not_become_process_ancestor"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF027-M",
@@ -4820,10 +5166,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 816,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF027 M, line 816, cell 3",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "H7 retains partial, unexamined training exposure and an unmet PC06. In the separate qualified-method case, M013 retains a qualified procedure member count of 2, while M008 model_ancestry and evaluation_rubric scopes each retain zero recorded overlap with upstream_coverage_incomplete and PC06 not met.",
+          "rejecting_mutation_or_boundary": "A qualified analytical-method comparison does not complete model or rubric history; positive procedure qualification and the remaining dimensional coverage gaps coexist.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf027_m_unexamined_training_and_rubric_remain_disclosed",
+            "tests/unit/test_evaluator_lineage.py::test_vf027_m_qualified_method_comparison_does_not_complete_model_or_rubric_exposure"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF027-B",
@@ -4831,10 +5212,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 816,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF027 B, line 816, cell 4",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "An actor bound as both generator and judge is a shared exact actor with zero strict ancestors and no model family labels. Distinct reference-answer and rubric Artifacts that copy dataset have one shared material ancestor and two exact copy-edge paths in material_transformation/evaluation_rubric scope.",
+          "rejecting_mutation_or_boundary": "Actor identity is kept separate from model labels and graph ancestry; rubric/material commonality requires its own typed paths and selected view.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf027_b_actor_identity_models_and_shared_rubric_are_distinct"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF028-P",
@@ -4842,10 +5257,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 817,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF028 P, line 817, cell 1",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "H7 retains the four exact paths MGEN to MBASE via ML01, MJUDGE to MBASE via ML02, MGEN to TRAINING via ML03, and MJUDGE to TRAINING via ML04. The completed available witness collection equals its linked witness references.",
+          "rejecting_mutation_or_boundary": "The endpoint and ordered-edge tuples require the supplied ancestry assertions; family labels cannot substitute for any named edge.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf028_p_h7_paired_paths_preserve_exact_ordered_edges"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF028-N",
@@ -4853,10 +5302,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 817,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF028 N, line 817, cell 2",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "With no lineage edges, equal supplied F labels still give a label count of 1 but an ancestor count of 0 and no positive ancestry paths; overlap witness references contain no path reference.",
+          "rejecting_mutation_or_boundary": "Adding a fabricated model-to-model2 path labelled family-label-F to the accepted empty path set is rejected.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf028_n_no_ancestry_path_can_be_fabricated_from_family_or_prose"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF028-M",
@@ -4864,10 +5347,44 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 817,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF028 M, line 817, cell 3",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "A completed partial-history case with no eligible ancestry path and distinct family strings emits an available empty positive witness collection, retains upstream_coverage_incomplete, and has PC24 met with an independence interpretation limit.",
+          "rejecting_mutation_or_boundary": "The empty witness collection is scoped to completed supplied records; the accompanying incomplete-coverage reason remains and cannot become a complete-history or independence finding.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf028_m_completed_partial_history_empty_witness_has_scoped_limit"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF028-B",
@@ -4875,10 +5392,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 817,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/evaluator_lineage.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.8, SIT-VF028 B, line 817, cell 4",
+            "DEFINITIONS_AND_UNITS.md §25.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§6.7,10.6,25.3",
+            "OBSERVABILITY_AND_REPORTING.md §§12.2-12.5,13.1,14.1"
+          ],
+          "owner_local_core": "A diamond produces one unique shared ancestor model5 with a finite ordered left path and the exact right-root path. In a cycle returning to the same role-bound model, only model3 counts as strict ancestry; model stays a shared exact object, and a closed finite cycle witness retains outward/return edges and lineage_cycle.",
+          "rejecting_mutation_or_boundary": "Multiple routes do not multiply ancestor IDs, and a cycle returning to the role subject cannot count that subject as its own strict ancestor; both cycle endpoints and edge identities are checked.",
+          "test_nodes": [
+            "tests/unit/test_evaluator_lineage.py::test_vf028_b_diamond_paths_are_finite_and_do_not_multiply_ancestor_ids",
+            "tests/unit/test_evaluator_lineage.py::test_vf028_b_cycle_return_never_counts_identical_subject_as_own_ancestor"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF029-P",
@@ -5766,10 +6318,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 863,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/human_review.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.13 SIT-VF049",
+            "DEFINITIONS_AND_UNITS.md §§10,25.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §6.7",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M013; PC10/PC11/PC14/PC22",
+            "DEFINITIONS_AND_UNITS.md §20.5"
+          ],
+          "owner_local_core": "W7-06 keeps two qualified analytical-method process members, both attributed human contributions, common target, exact native scope and explicit unexamined training/rubric dimensions. Original M003 call and witnesses are paid and retained in this job.",
+          "rejecting_mutation_or_boundary": "Erasing unexamined dimensions is rejected by the exact native source oracle; no institutional execution or renewable judgment is inferred.",
+          "test_nodes": [
+            "tests/unit/test_human_review.py::test_vf049_positive_original_comparison_is_paid_in_current_job_with_full_population"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF049-N",
@@ -5777,10 +6364,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 863,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/human_review.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.13 SIT-VF049",
+            "DEFINITIONS_AND_UNITS.md §§10,25.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §6.7",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M013; PC10/PC11/PC14/PC22",
+            "DEFINITIONS_AND_UNITS.md §20.5"
+          ],
+          "owner_local_core": "Human title, declared unrelated employer and separate endpoint preserve the contribution and missing comparison.",
+          "rejecting_mutation_or_boundary": "A fabricated independent_corrective_capacity field is rejected after each accepted source-bound baseline.",
+          "test_nodes": [
+            "tests/unit/test_human_review.py::test_vf049_negative_identity_metadata_cannot_manufacture_corrective_independence[human_title]",
+            "tests/unit/test_human_review.py::test_vf049_negative_identity_metadata_cannot_manufacture_corrective_independence[different_employer]",
+            "tests/unit/test_human_review.py::test_vf049_negative_identity_metadata_cannot_manufacture_corrective_independence[separate_endpoint]"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF049-M",
@@ -5788,10 +6412,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 863,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/human_review.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.13 SIT-VF049",
+            "DEFINITIONS_AND_UNITS.md §§10,25.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §6.7",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M013; PC10/PC11/PC14/PC22",
+            "DEFINITIONS_AND_UNITS.md §20.5"
+          ],
+          "owner_local_core": "H7-HREVIEW has a separately available supplied human contribution and missing_comparison_assessment for process independence.",
+          "rejecting_mutation_or_boundary": "A fabricated met process qualification is rejected without erasing the recorded contribution.",
+          "test_nodes": [
+            "tests/unit/test_human_review.py::test_vf049_missing_assessment_retains_separate_substantive_contribution"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF049-B",
@@ -5799,10 +6458,51 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 863,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/human_review.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.13 SIT-VF049",
+            "DEFINITIONS_AND_UNITS.md §§10,25.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §6.7",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M013; PC10/PC11/PC14/PC22",
+            "DEFINITIONS_AND_UNITS.md §20.5"
+          ],
+          "owner_local_core": "A common reviewed object coexists with qualified separate procedures. A selected shared dependency or unsupported process basis must withhold only process qualification and retain both supplied contributions.",
+          "rejecting_mutation_or_boundary": "The approved R01 repair retains actual method_input/rubric/reference_answer native edges. All three same-input mutants withhold process qualification; both original human contributions survive.",
+          "test_nodes": [
+            "tests/unit/test_human_review.py::test_vf049_boundary_common_target_survives_and_shared_method_blocks_only_qualification[method_input-analytical_method]",
+            "tests/unit/test_human_review.py::test_vf049_boundary_common_target_survives_and_shared_method_blocks_only_qualification[rubric-evaluation_rubric]",
+            "tests/unit/test_human_review.py::test_vf049_boundary_common_target_survives_and_shared_method_blocks_only_qualification[reference_answer-evaluation_rubric]",
+            "tests/unit/test_human_review.py::test_losing_documented_procedure_basis_keeps_both_contributions_without_execution_claim",
+            "tests/unit/test_human_review.py::test_native_role_time_unknown_withholds_comparison_and_its_temporal_prerequisite[method_input-analytical_method]",
+            "tests/unit/test_human_review.py::test_native_role_time_unknown_withholds_comparison_and_its_temporal_prerequisite[rubric-evaluation_rubric]",
+            "tests/unit/test_human_review.py::test_native_role_time_unknown_withholds_comparison_and_its_temporal_prerequisite[reference_answer-evaluation_rubric]"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF050-P",
@@ -5810,10 +6510,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 864,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/human_review.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.13 SIT-VF050",
+            "DEFINITIONS_AND_UNITS.md §§10,25.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §6.7",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M013; PC10/PC11/PC14/PC22",
+            "DEFINITIONS_AND_UNITS.md §20.5"
+          ],
+          "owner_local_core": "H7-HREVIEW preserves exact human contribution text, reviewer, method, target, result and supplied CORR provenance.",
+          "rejecting_mutation_or_boundary": "Replacing substantive source reasoning with merely reading model text is rejected by native source equality.",
+          "test_nodes": [
+            "tests/unit/test_human_review.py::test_vf050_positive_actual_human_reasoning_role_method_result_and_corr_basis"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF050-N",
@@ -5821,10 +6556,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 864,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/human_review.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.13 SIT-VF050",
+            "DEFINITIONS_AND_UNITS.md §§10,25.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §6.7",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M013; PC10/PC11/PC14/PC22",
+            "DEFINITIONS_AND_UNITS.md §20.5"
+          ],
+          "owner_local_core": "A genuine human reviewer passes admission and owner disclosure.",
+          "rejecting_mutation_or_boundary": "Changing the reviewer Actor to software_agent or organization produces rejected endpoint_or_claim_mismatch at actual admission.",
+          "test_nodes": [
+            "tests/unit/test_human_review.py::test_vf050_negative_nonhuman_reviewer_binding_is_rejected_after_valid_baseline[software_agent]",
+            "tests/unit/test_human_review.py::test_vf050_negative_nonhuman_reviewer_binding_is_rejected_after_valid_baseline[organization]"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF050-M",
@@ -5832,10 +6603,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 864,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/human_review.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.13 SIT-VF050",
+            "DEFINITIONS_AND_UNITS.md §§10,25.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §6.7",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M013; PC10/PC11/PC14/PC22",
+            "DEFINITIONS_AND_UNITS.md §20.5"
+          ],
+          "owner_local_core": "A human role with null review_contribution and the required Gap remains admissible with missing_contribution status.",
+          "rejecting_mutation_or_boundary": "Upgrading the admitted missing contribution to recorded_human_contribution is rejected.",
+          "test_nodes": [
+            "tests/unit/test_human_review.py::test_vf050_missing_contribution_with_valid_gap_never_becomes_substantive"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF050-B",
@@ -5843,10 +6649,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 864,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/human_review.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.13 SIT-VF050",
+            "DEFINITIONS_AND_UNITS.md §§10,25.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §6.7",
+            "OBSERVABILITY_AND_REPORTING.md §14.2 M013; PC10/PC11/PC14/PC22",
+            "DEFINITIONS_AND_UNITS.md §20.5"
+          ],
+          "owner_local_core": "Both protected human Actor and unresolved protected-human reference retain supplied inspectable attestation, contribution and unresolved independence, with no sustained-judgment claim.",
+          "rejecting_mutation_or_boundary": "Changing protected_attestation into documentary certainty is rejected; formal/execution and model-only review are separately tested.",
+          "test_nodes": [
+            "tests/unit/test_human_review.py::test_vf050_boundary_protected_human_attestation_preserves_contribution_and_limits[protected_actor]",
+            "tests/unit/test_human_review.py::test_vf050_boundary_protected_human_attestation_preserves_contribution_and_limits[unresolved_actor]"
+          ],
+          "map_packet": {
+            "path": "w08-core-map.json",
+            "bytes": 33119,
+            "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+          },
+          "passed_at": {
+            "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+            "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+            "run_id": "35771613781",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF051-P",
@@ -6740,8 +7582,8 @@
     "final_documentation_successor_gate": "pending_at_creation_settle_on_PR22"
   },
   "core_status_counts": {
-    "owner_local_core_verified": 112,
-    "pending": 116
+    "owner_local_core_verified": 136,
+    "pending": 92
   },
   "integration_status_counts": {
     "pending": 228
@@ -6987,5 +7829,49 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "affected_controls_and_exact_three_records_180_unchanged_blobs_settle_on_PR26"
+  },
+  "w08_start": {
+    "owner_instruction": "启动 P3-W08",
+    "accepted_predecessor": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
+    "accepted_pr": 26,
+    "status": "implemented_and_verified_pending_owner_acceptance",
+    "planned_core_obligations": 24,
+    "newly_verified_core_obligations": 24,
+    "component_tests_passed": 67,
+    "component_tests_failed": 0,
+    "full_matrix": "passed_all_four_profiles"
+  },
+  "w08_owner_local_scope": {
+    "fields": [
+      "SIT-VF025",
+      "SIT-VF026",
+      "SIT-VF027",
+      "SIT-VF028",
+      "SIT-VF049",
+      "SIT-VF050"
+    ],
+    "new_core_verified": 24,
+    "inherited_core_verified": 112,
+    "core_map": {
+      "path": "w08-core-map.json",
+      "bytes": 33119,
+      "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
+    },
+    "passed_at": {
+      "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+      "tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+      "run_id": "35771613781",
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
+    "whole_invocation_integration": "pending_W13",
+    "final_successor_gate": "affected_controls_and_exact_three_records_182_unchanged_blobs_on_PR27"
   }
 }
