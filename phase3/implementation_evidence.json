@@ -59,7 +59,7 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "implemented_target_tests_passed_full_gates_pending",
+    "status": "implemented_named_code_verified_pending_owner_review",
     "owner": "CONTRIBUTION_PROFILE",
     "families": [
       "SIT-M004",
@@ -84,7 +84,7 @@
     "work_budget_preserved": true
   },
   "validation": {
-    "status": "targeted_pass_full_local_and_four_profiles_pending",
+    "status": "exact_named_code_local_and_four_profile_gates_passed",
     "required": "Direct semantic tests and four-profile executable-code matrix; affected controls only for a later administrative successor.",
     "preflight": {
       "scope": "Supplementary isolated W07 policy/promotion probe; no analytical pass claim",
@@ -122,9 +122,134 @@
       "src/source_integrity_toolkit/analysis/contribution_profile.py": "4eccb7e682f8a8ce67192da1f7ccd3ced314b2f92e2cd2637444e9553ee502ed",
       "tests/unit/test_contribution_profile.py": "8c8645dceb3c697ed2657c96f103234e1f2a6a115131fcadf0aa50794cf5e389",
       "tests/unit/test_immediate_inheritance.py": "bf5e50af4b5a39a8c393df4a9802774338ff3413b9df31ed1659f02284155704"
+    },
+    "passed_at": {
+      "code_head": "17e32f46de666f62815ad3542dc37389cd91d04c",
+      "tree": "701a7cf6eca765af974447b5ba359b6db8ec6910",
+      "run_id": 35720935198,
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495",
+      "local_audit_sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8",
+      "local_junit_sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
+    "local": {
+      "result": "passed",
+      "python": "3.12.14",
+      "tests": 3397,
+      "separate_subtests": 428,
+      "seconds": 827.873,
+      "duration_basis": "JUnit testsuite time",
+      "reported_test_events": 3825,
+      "console_log_complete": false,
+      "subtest_count_basis": "JUnit aggregate successful events minus exact top-level case identities; hosted logs separately corroborate the subtest count.",
+      "limitations": [
+        "Retained local console log stops at 46 percent and lacks its final summary; cause was not established. Local completion relies on actual process exit 0 and the complete JUnit. The initial log-summary audit failure is preserved in w07-local-log-audit-incomplete.json; no hosted or repository gate was relaxed."
+      ],
+      "initial_log_audit": {
+        "path": "w07-local-log-audit-incomplete.json",
+        "bytes": 1210,
+        "sha256": "496d4418a9a11e2fcf9bb05f03aad76d0e5e15b49be87ba2649dc7423bea3532"
+      },
+      "tracked_files_unchanged": 183,
+      "log": {
+        "path": "w07-local.log",
+        "bytes": 1769,
+        "sha256": "ab4d6c4ecdfd5aebad6d32fd43e903f06bb3cb3b0ca76cd90fd6999755dc382d"
+      },
+      "junit": {
+        "path": "w07-local.xml",
+        "bytes": 547352,
+        "sha256": "6ef962622aa2546b8d8e459bbedeb3bf425bd804b31a10a02b61083ca9a2975c"
+      },
+      "audit": {
+        "path": "w07-local-audit.json",
+        "bytes": 1672,
+        "sha256": "c8438766e8aff2d892769ccdbad9d59626e24ae73fcd5c3f0de8b86242ac51c8"
+      }
+    },
+    "hosted": {
+      "run_id": 35720935198,
+      "run_attempt": 1,
+      "url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35720935198",
+      "result": "passed",
+      "tests_per_profile": 3397,
+      "separate_subtests_per_profile": 428,
+      "raw_audit": {
+        "path": "w07-raw-audit.json",
+        "bytes": 3743,
+        "sha256": "3e6e905665ba452225dbde5e334f8a6a6f76205825f1704c36138b870a2d3495"
+      },
+      "profiles": [
+        {
+          "profile": "windows-2025-py3.11",
+          "sha256": "a6d07fc2cc5b84631b44df5774f3348c24b558adf7d0a8ab2f94b51c9eae8354",
+          "bytes": 184588,
+          "service_digest_checked": true,
+          "tests": 3397,
+          "subtests": 428,
+          "seconds": 897.66,
+          "package_member_checks": true,
+          "zip": "phase3-windows-2025-py3.11-35720935198-1.zip"
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "sha256": "824ef34c88bbefdbd666207f3dd9ad1d8f52db517c39cf62fc8ab1217e48e6ee",
+          "bytes": 177338,
+          "service_digest_checked": true,
+          "tests": 3397,
+          "subtests": 428,
+          "seconds": 772.82,
+          "package_member_checks": true,
+          "zip": "phase3-ubuntu-24.04-py3.13-35720935198-1.zip"
+        },
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "sha256": "71c1d7712f624742257c5e2a695e82591e04891e85ce29251932b2b902d1942d",
+          "bytes": 177575,
+          "service_digest_checked": true,
+          "tests": 3397,
+          "subtests": 428,
+          "seconds": 783.31,
+          "package_member_checks": true,
+          "zip": "phase3-ubuntu-24.04-py3.11-35720935198-1.zip"
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "sha256": "7690d6fc1e614603a5ceb097a6048678e67e216b1fbe6139a04d4bec258d7a14",
+          "bytes": 184365,
+          "service_digest_checked": true,
+          "tests": 3397,
+          "subtests": 428,
+          "seconds": 1081.76,
+          "package_member_checks": true,
+          "zip": "phase3-windows-2025-py3.13-35720935198-1.zip"
+        }
+      ],
+      "checks": "Original ZIP service digest/size/CRC, actual test identities and JUnit, 183 before/after Git source hashes, seven-path scope, recorded package members and installed-runtime boundaries.",
+      "limitations": [
+        "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
+      ]
+    },
+    "final_documentation_successor": {
+      "code_parent": "17e32f46de666f62815ad3542dc37389cd91d04c",
+      "status": "pending_at_creation_settle_on_PR26",
+      "paths": [
+        "PHASE_3_PROGRESS.md",
+        "phase3/implementation_evidence.json",
+        "phase3/obligation_coverage.json"
+      ],
+      "control": "Affected existing controls, complete actual W07 commit scope and other 180 exact blobs/modes; results recorded externally on PR26 to avoid self-referential hashes.",
+      "full_matrix_repetition_required": false
     }
   },
-  "owner_local_core_obligations_verified": 80,
+  "owner_local_core_obligations_verified": 112,
   "phase3_complete": false,
   "limitations": [
     "Public audit API/CLI and reporting remain inactive.",
