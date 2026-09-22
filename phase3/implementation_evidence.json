@@ -142,20 +142,20 @@
     "new_core_obligations_verified": 0,
     "inherited_core_obligations_verified": 64,
     "technical_review": {
-      "path": "/workspace/scratch/5e401153f47f/p3w06-independent-technical-review.json",
-      "bytes": 22207,
-      "sha256": "ff0c3c81abbacd760b8ed295c6cdef4e144648ab6a2f0ed78eac601fbfb51ab9"
+      "path": "/workspace/scratch/5e401153f47f/p3w06-owner-annotation-independent-supplement.json",
+      "bytes": 5288,
+      "sha256": "192551b55237403030fa6ec0d9a3ae1e54d8a5a1bc61cedc3eebc7ef9b92346d"
     },
     "repair_review": {
-      "path": "/workspace/scratch/5e401153f47f/p3w06-r01-independent-review.json",
-      "bytes": 22048,
-      "sha256": "2e3763a5e8c1131a5ddae20481b363a37e63f205c16486364d55349c379dbef1"
+      "path": "/workspace/scratch/5e401153f47f/p3w06-r01-independent-review-repaired.json",
+      "bytes": 23269,
+      "sha256": "838b7c64fdf4c776ceaf2e7a9f042edeb1b4a5502e2d5bede97065268cfddc6a"
     },
     "core_mapping_inputs": [
       {
-        "path": "/workspace/scratch/5e401153f47f/p3w06-core-evidence-map.json",
-        "bytes": 17859,
-        "sha256": "ea91f2420164fc93918e99cfc537e29438ca98d358fa11e453d9593f45915f54"
+        "path": "/workspace/scratch/5e401153f47f/p3w06-core-evidence-map-repaired.json",
+        "bytes": 19133,
+        "sha256": "35ba0f407fbfe86fc38a0d2b1f38e07086674cb64439f37addd1c2e7d3229785"
       }
     ],
     "mapping_status": "16 actual source-bound oracle rows await exact code-head collection/JUnit/full local/four-profile/raw/Git verification.",
@@ -183,23 +183,28 @@
       "sha256": "0d3ffdfc095baa808fe1302e7dedee0bffb17ddee2db72c7b3d0a1e18e427e6c"
     },
     "technical_review": {
-      "path": "/workspace/scratch/5e401153f47f/p3w06-independent-technical-review.json",
-      "bytes": 22207,
-      "sha256": "ff0c3c81abbacd760b8ed295c6cdef4e144648ab6a2f0ed78eac601fbfb51ab9"
+      "path": "/workspace/scratch/5e401153f47f/p3w06-owner-annotation-independent-supplement.json",
+      "bytes": 5288,
+      "sha256": "192551b55237403030fa6ec0d9a3ae1e54d8a5a1bc61cedc3eebc7ef9b92346d"
     },
     "repair_review": {
-      "path": "/workspace/scratch/5e401153f47f/p3w06-r01-independent-review.json",
-      "bytes": 22048,
-      "sha256": "2e3763a5e8c1131a5ddae20481b363a37e63f205c16486364d55349c379dbef1"
+      "path": "/workspace/scratch/5e401153f47f/p3w06-r01-independent-review-repaired.json",
+      "bytes": 23269,
+      "sha256": "838b7c64fdf4c776ceaf2e7a9f042edeb1b4a5502e2d5bede97065268cfddc6a"
     },
     "development_history": {
-      "path": "/workspace/scratch/5e401153f47f/p3w06-development-history.json",
-      "bytes": 295353,
-      "sha256": "ea9074b3f9007f99a5a15acdfc1a6cf0b653ce1461cd49ec22b1989a3ac061d6"
+      "path": "/workspace/scratch/5e401153f47f/p3w06-docstring-history-bridge.json",
+      "bytes": 18612,
+      "sha256": "0843931c2ab397551deba2061f4ac3b85b5abc9f7cfec92821f2534054abfc62"
     },
     "final_documentation_successor": {
       "status": "not_created",
       "rule": "A direct exact three-record successor requires its own four-profile raw/Git gate."
+    },
+    "preceding_failed_code_gate": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-failed-code-375fb05/failure-audit.json",
+      "bytes": 6014,
+      "sha256": "ed74b57f08a1dab1c52a87b7a497361fff3f07dba4a92e55931d4bbb9b6cf3bd"
     }
   },
   "preservation": {

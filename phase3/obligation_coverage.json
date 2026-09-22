@@ -5077,9 +5077,9 @@
   },
   "w06_core_mapping_inputs": [
     {
-      "path": "/workspace/scratch/5e401153f47f/p3w06-core-evidence-map.json",
-      "bytes": 17859,
-      "sha256": "ea91f2420164fc93918e99cfc537e29438ca98d358fa11e453d9593f45915f54"
+      "path": "/workspace/scratch/5e401153f47f/p3w06-core-evidence-map-repaired.json",
+      "bytes": 19133,
+      "sha256": "35ba0f407fbfe86fc38a0d2b1f38e07086674cb64439f37addd1c2e7d3229785"
     }
   ]
 }

@@ -1603,7 +1603,8 @@ def _assert_w06_r01_driver_source(raw):
     for previous, replacement in _W06_R01_DRIVER_DELTAS:
         assert expected.count(previous) == 1, "invalid_fixed_w06_source_delta"
         expected = expected.replace(previous, replacement, 1)
-    assert ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected)), "unauthorized_current_w06_driver_delta"
+    same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))
+    assert same_ast, "unauthorized_current_w06_driver_delta"
 
 
 def test_w06_r01_exact_authority_and_current_source_keep_every_other_unit_scope():

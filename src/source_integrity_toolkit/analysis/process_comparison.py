@@ -1,6 +1,6 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""PROCESS_COMPARISON: paid, exact supplied M003 assessments.
+"""Owner: PROCESS_COMPARISON. Paid, exact supplied M003 assessments.
 
 Definitions 9.3/21.3 and reporting 14.2: an assessment is neither an
 independence flag nor a global source total. Its listed population survives
