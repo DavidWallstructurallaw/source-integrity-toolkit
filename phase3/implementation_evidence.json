@@ -30,7 +30,7 @@
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "w08_acceptance": "pending_full_verification_and_owner_review",
+    "w08_acceptance": "pending_owner_acceptance_of_PR27",
     "next_unit": "P3-W09_not_authorized_or_started"
   },
   "accepted_predecessor": {
@@ -85,7 +85,7 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "R01_repaired_components_verified_full_gates_pending",
+    "status": "complete_and_verified_pending_owner_acceptance",
     "owners": [
       "EVALUATOR_LINEAGE",
       "HUMAN_REVIEW_RECORDS"
@@ -131,7 +131,7 @@
     "qualification": "Original failed component runs and failed/incomplete in-memory proposals remain historical evidence. No proposal-only pass is counted as current repaired-code verification."
   },
   "validation": {
-    "status": "components_passed_full_verification_pending",
+    "status": "four_profile_cumulative_verification_passed",
     "component_runtime": "CPython 3.12.14 with accepted pinned development wheels",
     "actual_repaired_comparison_and_human": {
       "tests": 128,
@@ -170,29 +170,93 @@
       "sha256": "6c216a0c4161664f201b7aed00e133112a714dd6444fea1c0cea5c5a60e72124"
     },
     "full_matrix": {
-      "status": "pending",
+      "status": "passed",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
         "windows-2025-py3.11",
         "windows-2025-py3.13"
-      ]
+      ],
+      "code_head": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
+      "code_tree": "a29d0d5675a1ba9ab2ff2e69c3997b526f57c7c3",
+      "run_id": "35771613781",
+      "run_attempt": 1,
+      "tests_per_profile": 3464,
+      "separate_subtests_per_profile": 428,
+      "raw_audit": {
+        "path": "w08-raw-audit.json",
+        "bytes": 3865,
+        "sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4"
+      },
+      "profiles": [
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w08-ci/phase3-ubuntu-24.04-py3.11-35771613781-1.zip",
+          "sha256": "c60c13baa9eb9043bb8076c543de9d61ad86d13ae42b8e4c33cf9be64fc3580c",
+          "bytes": 182585,
+          "service_digest_checked": true,
+          "tests": 3464,
+          "subtests": 428,
+          "seconds": 849.27,
+          "package_member_checks": true
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w08-ci/phase3-windows-2025-py3.11-35771613781-1.zip",
+          "sha256": "701b386258729e4974d234e697a718b8bb7d0af30f68d3045971c1e3964b363f",
+          "bytes": 189341,
+          "service_digest_checked": true,
+          "tests": 3464,
+          "subtests": 428,
+          "seconds": 1176.86,
+          "package_member_checks": true
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w08-ci/phase3-windows-2025-py3.13-35771613781-1.zip",
+          "sha256": "7af3b3825c3343fa7e05c4d88a892603a1fdb2d61557831abc656273c33a51a0",
+          "bytes": 189283,
+          "service_digest_checked": true,
+          "tests": 3464,
+          "subtests": 428,
+          "seconds": 1054.14,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w08-ci/phase3-ubuntu-24.04-py3.13-35771613781-1.zip",
+          "sha256": "4367598bba2fb8a5eedd72d4477a4fcc45ea094ec4e2b96d47a844422e272200",
+          "bytes": 182199,
+          "service_digest_checked": true,
+          "tests": 3464,
+          "subtests": 428,
+          "seconds": 550.45,
+          "package_member_checks": true
+        }
+      ],
+      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit."
     },
     "local_cumulative": "not_planned; actual local targeted regressions plus four required hosted cumulative profiles",
-    "qualification": "No W08 core promotion until actual full gates. A later record-only successor receives affected control and byte-identity checks.",
+    "qualification": "All 24 mapped owner-local core obligations passed in each required profile. Affected controls and exact source identity settle the later three-record administrative successor.",
     "collection": {
       "tests": 3464,
       "accepted_w07_retained": 3397,
       "new_direct_tests": 67,
       "governance_test_identities_added": 0
+    },
+    "core_map": {
+      "path": "w08-core-map.json",
+      "bytes": 33119,
+      "sha256": "cf33a2405caa489ecb3fe18335b8537425ea2e0ee81727d24090abb3dd98c9c2"
     }
   },
-  "owner_local_core_obligations_verified": 112,
+  "owner_local_core_obligations_verified": 136,
   "phase3_complete": false,
   "limitations": [
     "Public audit API/CLI and reporting remain inactive.",
     "Complete private orchestration remains assigned to W13.",
     "All 228 integration and 228 release obligations remain pending.",
-    "W08 owner acceptance and W09 authorization are not inferred."
+    "W08 owner acceptance and W09 authorization are not inferred.",
+    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
   ]
 }
