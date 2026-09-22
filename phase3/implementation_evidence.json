@@ -11,8 +11,20 @@
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "w09_acceptance": "blocked_pending_narrow_amendment_approval_and_complete_required_verification",
-    "next_unit": "P3-W10_not_authorized_or_started"
+    "w09_acceptance": "pending_repaired_code_verification_and_owner_acceptance",
+    "next_unit": "P3-W10_not_authorized_or_started",
+    "approved_amendments": [
+      {
+        "amendment": "P3-W09-R01",
+        "owner_instruction": "批准 P3-W09-R01",
+        "approval_record": {
+          "path": "w09-r01-approval.json",
+          "bytes": 8485,
+          "sha256": "cfdba2bf6f23e71b04d87cb81013eba04cdfafe92abb65470f58d71daa21bd65"
+        },
+        "fixed_preapproval_checkpoint": "5bccceee13995f7ee51ed44339d596aadb309644"
+      }
+    ]
   },
   "accepted_predecessor": {
     "unit": "P3-W08",
@@ -43,25 +55,31 @@
   },
   "scope": {
     "effective_authorized_paths": [
+      ".github/workflows/phase1-ci.yml",
       "PHASE_3_PROGRESS.md",
       "phase3/implementation_evidence.json",
       "phase3/module_policy.json",
       "phase3/obligation_coverage.json",
       "src/source_integrity_toolkit/analysis/presence.py",
+      "tests/contract/test_phase3_transition.py",
+      "tests/scaffold/test_ci_contract.py",
       "tests/unit/test_pipeline_cohorts.py",
       "tests/unit/test_presence.py"
     ],
-    "immediate_scope_exceptions": [],
+    "immediate_scope_exceptions": [
+      "P3-W09-R01"
+    ],
     "historical_scope_exceptions": [
       "P3-W04-R01",
       "P3-W05-R01",
       "P3-W06-R01",
-      "P3-W08-R01"
+      "P3-W08-R01",
+      "P3-W09-R01"
     ],
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "implemented_direct_tests_passed_full_matrix_blocked",
+    "status": "product_implemented_approved_ci_time_repair_verified_locally_matrix_pending",
     "owners": [
       "PRESENCE_RECORDS"
     ],
@@ -85,11 +103,71 @@
       "tests/unit/test_presence.py": "400fbb77bad550ce1aae88f4a1f89c23e30ae15db0b9f4b9de082c793aff40b2",
       "tests/unit/test_pipeline_cohorts.py": "1aa6c71d7b5fa803024be342a82af3998857bbbdfe2f6f34854ddf6a4314b597"
     },
-    "semantic_scope": "Boundary-qualified attributed externality and exact subject/mapping stage links; independent exact-key native stage disclosures; qualified finite EvidenceItem/Anomaly universe; Y/F/U with contrary evidence retained; same-population unique fully admitted baseline only for preservation/selection."
+    "semantic_scope": "Boundary-qualified attributed externality and exact subject/mapping stage links; independent exact-key native stage disclosures; qualified finite EvidenceItem/Anomaly universe; Y/F/U with contrary evidence retained; same-population unique fully admitted baseline only for preservation/selection.",
+    "frozen_product_and_direct_test_sha256": {
+      "src/source_integrity_toolkit/analysis/presence.py": "69b3447fa721f97ce0aa5d488a22e6798ffa2012e1ec73a047e4da1141e8c518",
+      "tests/unit/test_presence.py": "400fbb77bad550ce1aae88f4a1f89c23e30ae15db0b9f4b9de082c793aff40b2",
+      "tests/unit/test_pipeline_cohorts.py": "1aa6c71d7b5fa803024be342a82af3998857bbbdfe2f6f34854ddf6a4314b597"
+    }
   },
   "validation": {
-    "status": "three_profiles_passed_one_profile_incomplete_timeout",
+    "status": "affected_controls_passed_revised_four_profile_matrix_pending",
     "full_matrix": {
+      "status": "pending_revised_code",
+      "required_profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "qualification": "All four profiles must execute on the same new repaired code head. The prior three passes cannot fill this gate."
+    },
+    "local_cumulative": "not_planned; direct semantic tests and affected controls precede the required four hosted cumulative profiles",
+    "qualification": "85 direct semantic tests passed on unchanged product/test bytes. Existing affected CI/scope/workflow controls and all four profiles must verify the authorized repair before any of the 36 W09 core rows is promoted.",
+    "component_runtime": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
+    },
+    "direct_runs": {
+      "presence": {
+        "tests": 26,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "junit": {
+          "path": "w09-presence-final.xml",
+          "bytes": 4299,
+          "sha256": "316c93be7ed3b4110adf2cdbd3952387562313988d0ecf81c6d64615bfc90ad6"
+        },
+        "log": {
+          "path": "w09-presence-final.log",
+          "bytes": 100,
+          "sha256": "2d479796d868ad496f66768f26abf3578d52f3619b932c1e06f41ff57438c38c"
+        }
+      },
+      "cohorts": {
+        "tests": 59,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "junit": {
+          "path": "w09-cohorts-final.xml",
+          "bytes": 9245,
+          "sha256": "3a5961f302b915829eb16f6e8ca4b707956261ff838cee7f1b5469f65f43a1c4"
+        },
+        "log": {
+          "path": "w09-cohorts-final.log",
+          "bytes": 100,
+          "sha256": "327cccc6ed407c7808d099fc00fa805eb1923e94c13f2f02572db18ecd5db02a"
+        }
+      }
+    },
+    "accepted_development_toolchain": {
+      "path": "w08-local-toolchain.json",
+      "bytes": 12868,
+      "sha256": "6c216a0c4161664f201b7aed00e133112a714dd6444fea1c0cea5c5a60e72124"
+    },
+    "prior_failed_matrix": {
       "status": "failed",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
@@ -187,50 +265,39 @@
         "sha256": "b7d81c0ac08d5e4af156519de3dd36388dfa407715880ad987f297d6d2e8d2c6"
       }
     },
-    "local_cumulative": "not_planned; direct semantic tests and affected controls precede the required four hosted cumulative profiles",
-    "qualification": "85 direct semantic cases and three required cumulative profiles passed. The fourth profile has no complete JUnit/pytest result after the existing 1200-second process timeout. The four-profile gate failed; none of the 36 W09 cores is promoted.",
-    "component_runtime": {
-      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
-      "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
-    },
-    "direct_runs": {
-      "presence": {
-        "tests": 26,
-        "failures": 0,
-        "errors": 0,
-        "skipped": 0,
-        "junit": {
-          "path": "w09-presence-final.xml",
-          "bytes": 4299,
-          "sha256": "316c93be7ed3b4110adf2cdbd3952387562313988d0ecf81c6d64615bfc90ad6"
-        },
-        "log": {
-          "path": "w09-presence-final.log",
-          "bytes": 100,
-          "sha256": "2d479796d868ad496f66768f26abf3578d52f3619b932c1e06f41ff57438c38c"
-        }
+    "repair_controls": {
+      "tests": 331,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": {
+        "path": "w09-r01-controls.log",
+        "bytes": 421,
+        "sha256": "217e10384aefdff0d28468bb2d28acabbedb59b599dd43a29dbcbbf7f4298d7f"
       },
-      "cohorts": {
-        "tests": 59,
-        "failures": 0,
-        "errors": 0,
-        "skipped": 0,
-        "junit": {
-          "path": "w09-cohorts-final.xml",
-          "bytes": 9245,
-          "sha256": "3a5961f302b915829eb16f6e8ca4b707956261ff838cee7f1b5469f65f43a1c4"
-        },
-        "log": {
-          "path": "w09-cohorts-final.log",
-          "bytes": 100,
-          "sha256": "327cccc6ed407c7808d099fc00fa805eb1923e94c13f2f02572db18ecd5db02a"
-        }
-      }
+      "junit": {
+        "path": "w09-r01-controls.xml",
+        "bytes": 54382,
+        "sha256": "30f02512d6c33adaf579dc0e62d677f3a74fc2bbd4314e82f306e8b7535961b9"
+      },
+      "execution": {
+        "path": "w09-r01-controls-execution.json",
+        "bytes": 798,
+        "sha256": "e801cd38357f2ef3e331ebe50bd08b520411aeacf324862428369746f6f52914"
+      },
+      "source_sha256": {
+        "tests/scaffold/test_ci_contract.py": "b29db49ee91297b5740ba0f6b909bae95d800a14929d86ca6d4fe10ee985765d",
+        "tests/contract/test_phase3_transition.py": "30f0e60d87072b5fc3a278269a8febbe6208339837e60ed68fecf6bd1bf34207",
+        ".github/workflows/phase1-ci.yml": "b3dbc7a2077edc3bd0fc3ab9e2a919a027c2be1b6c4a9520ca49af4aa29389af"
+      },
+      "source_identity_before_after": true
     },
-    "accepted_development_toolchain": {
-      "path": "w08-local-toolchain.json",
-      "bytes": 12868,
-      "sha256": "6c216a0c4161664f201b7aed00e133112a714dd6444fea1c0cea5c5a60e72124"
+    "repair_collection": {
+      "count": 3549,
+      "retained_original_W09": 3549,
+      "added": 0,
+      "removed": 0,
+      "new_governance_identities": 0
     }
   },
   "owner_local_core_obligations_verified": 136,
@@ -245,25 +312,34 @@
     "Package archive bytes are not supplied; no independent whole-archive rebuild or native-host certification is claimed.",
     "Public API/CLI audit, reporting, full private orchestration, integration and release remain pending."
   ],
-  "blocked_on": {
+  "resolved_approval_boundary": {
     "proposal": "P3-W09-R01",
-    "approval": "pending",
-    "proposed_changes": {
-      "pytest_process_limit_seconds": {
-        "from": 1200,
-        "to": 1800
-      },
-      "workflow_job_timeout_minutes": {
-        "from": 25,
-        "to": 40
-      }
+    "approval": {
+      "path": "w09-r01-approval.json",
+      "bytes": 8485,
+      "sha256": "cfdba2bf6f23e71b04d87cb81013eba04cdfafe92abb65470f58d71daa21bd65"
     },
-    "proposed_additional_paths": [
-      "tests/scaffold/test_ci_contract.py",
-      "tests/contract/test_phase3_transition.py",
-      ".github/workflows/phase1-ci.yml"
-    ],
-    "authority_basis": "PHASE_3_PLAN.md section 4: a later out-of-scope correction requires a named narrow amendment and actual approval. This proposal grants no edit permission.",
-    "preservation": "All 3549 identities, 428 separately reported subtests, four profiles, semantic assertions, product resource budgets, pins and no-skip rules stay required."
+    "previous_request": {
+      "proposal": "P3-W09-R01",
+      "approval": "pending",
+      "proposed_changes": {
+        "pytest_process_limit_seconds": {
+          "from": 1200,
+          "to": 1800
+        },
+        "workflow_job_timeout_minutes": {
+          "from": 25,
+          "to": 40
+        }
+      },
+      "proposed_additional_paths": [
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py",
+        ".github/workflows/phase1-ci.yml"
+      ],
+      "authority_basis": "PHASE_3_PLAN.md section 4: a later out-of-scope correction requires a named narrow amendment and actual approval. This proposal grants no edit permission.",
+      "preservation": "All 3549 identities, 428 separately reported subtests, four profiles, semantic assertions, product resource budgets, pins and no-skip rules stay required."
+    },
+    "status": "repair_authorized_verification_pending"
   }
 }

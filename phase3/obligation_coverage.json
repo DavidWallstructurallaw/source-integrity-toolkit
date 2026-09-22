@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W09",
-  "status": "W09_implemented_verification_blocked_pending_narrow_amendment_approval",
+  "status": "W09_approved_CI_time_repair_in_progress",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "136 inherited cores remain verified; all 36 W09 target cores and 92 total cores remain pending because one of four required profiles timed out. All 228 integration and release obligations remain pending.",
+  "meaning": "136 inherited cores remain verified; all 36 W09 target cores and 92 total cores remain pending until four complete profiles verify the repaired code. All 228 integration and release obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -7878,15 +7878,21 @@
     "owner_instruction": "很好，继续Phase 3   W09",
     "accepted_predecessor": "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74",
     "accepted_pr": 27,
-    "status": "implemented_ci_blocked_pending_narrow_amendment",
+    "status": "approved_CI_time_repair_controls_passed_full_matrix_pending",
     "planned_core_obligations": 36,
     "newly_verified_core_obligations": 0,
     "component_tests_passed": 85,
-    "full_matrix": "three_passed_one_incomplete_timeout",
+    "full_matrix": "pending_revised_code_all_four_profiles",
     "blocked_evidence": {
       "path": "w09-blocked-audit.json",
       "bytes": 4165,
       "sha256": "6b6b97a80b113c9618bdfe448f08447979d040c13a9b7650488f9e149e2cece3"
-    }
+    },
+    "approval_record": {
+      "path": "w09-r01-approval.json",
+      "bytes": 8485,
+      "sha256": "cfdba2bf6f23e71b04d87cb81013eba04cdfafe92abb65470f58d71daa21bd65"
+    },
+    "repair_affected_controls_passed": 331
   }
 }

@@ -29,7 +29,7 @@
     "scaffold": {
       "name": "analytical core (${{ matrix.os }}, Python ${{ matrix.python }})",
       "runs-on": "${{ matrix.os }}",
-      "timeout-minutes": 25,
+      "timeout-minutes": 40,
       "strategy": {
         "fail-fast": false,
         "matrix": {

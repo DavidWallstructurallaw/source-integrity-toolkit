@@ -160,6 +160,8 @@ def phase3_effective_paths(paths, unit, *, cumulative=False):
             allowed.update(P3_W06_R01_PATHS)
         if step == 8:
             allowed.update(P3_W08_R01_PATHS)
+        if step == 9:
+            allowed.update(P3_W09_R01_PATHS)
     return frozenset(allowed)
 
 
@@ -167,7 +169,8 @@ def phase3_scope_exceptions(unit):
     """Name accepted cumulative amendments without granting later edit rights."""
     current = phase_guard.phase3_unit_number(unit)
     return ((["P3-W04-R01"] if current >= 4 else []) + (["P3-W05-R01"] if current >= 5 else []) +
-            (["P3-W06-R01"] if current >= 6 else []) + (["P3-W08-R01"] if current >= 8 else []))
+            (["P3-W06-R01"] if current >= 6 else []) + (["P3-W08-R01"] if current >= 8 else []) +
+            (["P3-W09-R01"] if current >= 9 else []))
 
 
 def phase3_check_changed_paths(paths, unit, changed):
@@ -189,6 +192,8 @@ def policy(value):
         require(v["concurrency"]["group"] == "phase3-${{ github.event.pull_request.number || github.ref }}", "phase_concurrency")
         v["concurrency"]["group"] = "phase1-${{ github.event.pull_request.number || github.ref }}"
         job = v["jobs"]["scaffold"]
+        require(type(job["timeout-minutes"]) is int and job["timeout-minutes"] == 40, "phase_job_timeout")
+        job["timeout-minutes"] = 25
         require(job["name"] == "analytical core (${{ matrix.os }}, Python ${{ matrix.python }})", "phase_job")
         job["name"] = "scaffold (${{ matrix.os }}, Python ${{ matrix.python }})"
         steps = job["steps"]
@@ -383,6 +388,16 @@ def phase3_history(entry, base, head, paths, unit):
             require_ancestor(predecessor, P3_W08_R01_BASE)
             require_ancestor(P3_W08_R01_BASE, successor)
             pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W08_R01_BASE).splitlines())
+        if owner == "P3-W09":
+            require(predecessor == P3_W09_R01_PREDECESSOR, "w09_repair_predecessor_mismatch")
+            require(git_text("rev-parse", P3_W09_R01_BASE + "^{tree}") == P3_W09_R01_BASE_TREE,
+                    "w09_repair_boundary_tree_mismatch")
+            require(git_text("show", "-s", "--format=%P", P3_W09_R01_BASE).split() ==
+                    ["59a25116bfe5fe8f4f9b407852bb29fa692e542d"], "w09_repair_boundary_parent_mismatch")
+            # Both original W09 commits retain their raw seven-path scope.
+            require_ancestor(predecessor, P3_W09_R01_BASE)
+            require_ancestor(P3_W09_R01_BASE, successor)
+            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W09_R01_BASE).splitlines())
         commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()
         for commit in commits:
             require(commit not in seen, "duplicate_history_commit")
@@ -402,6 +417,8 @@ def phase3_history(entry, base, head, paths, unit):
                 require_ancestor(P3_W06_R01_BASE, commit)
             if owner == "P3-W08" and commit not in pre_amendment:
                 require_ancestor(P3_W08_R01_BASE, commit)
+            if owner == "P3-W09" and commit not in pre_amendment:
+                require_ancestor(P3_W09_R01_BASE, commit)
             require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")
             actual = commit_hashes(commit)
             check_entry_bytes(entry["files"], actual, cumulative)
@@ -415,6 +432,8 @@ def phase3_history(entry, base, head, paths, unit):
                                                            ["P3-W06-R01"] if owner == "P3-W06"
                                                            and commit not in pre_amendment else
                                                            ["P3-W08-R01"] if owner == "P3-W08"
+                                                           and commit not in pre_amendment else
+                                                           ["P3-W09-R01"] if owner == "P3-W09"
                                                            and commit not in pre_amendment else []),
                             "changed_paths": sorted(changed), "tracked_files": len(actual)})
     all_commits = set(git_text("rev-list", intake + ".." + head).splitlines())
@@ -508,7 +527,7 @@ def run_suite(base, evidence):
         "predecessor_subtest_events": 428,
         "scope": "all present scaffold/security/contract/unit/integration directories"})
     result = run([python, "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",
-                  "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=1200, check=False)
+                  "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=1800, check=False)
     save(evidence / "pytest-exit.json", {"exit_code": result.returncode})
     require(result.returncode == 0, "accumulated_suite_failed")
 
@@ -573,6 +592,18 @@ P3_W08_R01_PATHS = frozenset((
 P3_W08_R01_BASE = "250dd83b3a7c7fc420263da48583473faf4ebc13"
 P3_W08_R01_BASE_TREE = "34fd6ae4e7179d748dcfd03a599d7a12ccb5bf57"
 P3_W08_R01_PREDECESSOR = "5b685e80585fe19adb0d9b0324b698cf5bb54e42"
+
+
+# Owner-approved P3-W09-R01: CI timeouts and their exact existing controls.
+# The fixed preapproval checkpoint and its parent retain seven paths.
+P3_W09_R01_PATHS = frozenset((
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_phase3_transition.py",
+    ".github/workflows/phase1-ci.yml",
+))
+P3_W09_R01_BASE = "5bccceee13995f7ee51ed44339d596aadb309644"
+P3_W09_R01_BASE_TREE = "012e520e14977a3ee6a6a1ab143799cfa87ca18a"
+P3_W09_R01_PREDECESSOR = "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74"
 
 
 if __name__ == "__main__":
