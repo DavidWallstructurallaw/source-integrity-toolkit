@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W04",
-  "status": "W04_graph_components_verified_sixteen_inherited_cores_all_integration_release_pending",
+  "unit": "P3-W05",
+  "status": "W05_48_owner_local_core_rows_verified_16_inherited_all_integration_release_pending",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "W04 verified graph mechanics and private graph-provider checks at the named code head. The sixteen accepted W03 owner-local core rows retain their exact evidence. The other 212 cores and all 228 integration/release rows remain pending. No graph success supplies an independent-source or documentary-boundary conclusion.",
+  "meaning": "Exactly 48 W05 owner-local core rows have actual mapped passing tests; the accepted sixteen W03 rows are preserved verbatim. The remaining 164 cores and all 228 integration/release rows remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -14,10 +14,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 755,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF001",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "H7-01 has exact Artifact IDs H7-A through H7-F, count 6, artifact_record unit and Inquiry-only scope.",
+          "rejecting_mutation_or_boundary": "An added invented-source member is rejected after the accepted source-bound positive.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-P]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF001-N",
@@ -25,10 +63,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 755,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF001",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "H7-01 remains exactly A-F; H7-ANSWER does not enter the source-position union.",
+          "rejecting_mutation_or_boundary": "A representationally valid count/population with added nonseed H7-ANSWER is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-N]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF001-M",
@@ -36,10 +112,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 755,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF001",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "The admitted sparse Inquiry has an explicitly enumerated empty Artifact inventory, available count 0 and retained empty witness.",
+          "rejecting_mutation_or_boundary": "An invented-source member is rejected; no actual-source zero is asserted.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-M]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF001-B",
@@ -47,10 +161,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 755,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF001",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "Two Claim-bound contributions share artifact; A(I) contains artifact exactly once.",
+          "rejecting_mutation_or_boundary": "Adding artifact2 despite absent seed binding is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-B]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF002-P",
@@ -58,10 +210,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 756,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF002",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "One explicitly seeded unresolved reference gives U_A=(unresolved), count 1, unresolved_reference unit.",
+          "rejecting_mutation_or_boundary": "Removing the explicitly supplied unresolved endpoint is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-P]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF002-N",
@@ -69,10 +259,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 756,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF002",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "H7-V02 U_A is empty even though upstream EvidenceItem H7-UX is unknown.",
+          "rejecting_mutation_or_boundary": "A valid output mutant counting H7-UX as a seed Artifact endpoint is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-N]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF002-M",
@@ -80,10 +308,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 756,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF002",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "H7-01 U_A is explicitly empty and available 0 despite unrelated model-history uncertainty.",
+          "rejecting_mutation_or_boundary": "Adding an invented endpoint is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-M]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF002-B",
@@ -91,10 +357,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 756,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF002",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "Two seed contributions and the explicit seed position share unresolved; the endpoint occurs once in U_A.",
+          "rejecting_mutation_or_boundary": "Adding resolved artifact to the unresolved endpoint set is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-B]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF003-P",
@@ -102,10 +406,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 757,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF003",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "H7-01 exact Claim-bound seed IDs are H7-EA, H7-EB, H7-EC, H7-ED, H7-EE, H7-EF, count 6.",
+          "rejecting_mutation_or_boundary": "Adding an invented contribution is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-P]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF003-N",
@@ -113,10 +455,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 757,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF003",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "H7-01 E(I,C) remains the exact six explicit seeds.",
+          "rejecting_mutation_or_boundary": "Adding nonseed ancestor H7-ER1 is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-N]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF003-M",
@@ -124,10 +504,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 757,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF003",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "Empty explicit seed_evidence_refs gives selected Claim an enumerated count 0, with no_seed_contributions reason.",
+          "rejecting_mutation_or_boundary": "Adding an invented contribution is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-M]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF003-B",
@@ -135,10 +553,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 757,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF003",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "Three distinct explicit contributions e/e2/e3 from two Artifacts remain three IDs.",
+          "rejecting_mutation_or_boundary": "Collapsing e3 because it shares e artifact is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-B]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF004-P",
@@ -146,10 +602,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 758,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF004",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "H7-01/C1 has exact resolved Artifact IDs H7-A through H7-F, count 6, Claim-bound scope.",
+          "rejecting_mutation_or_boundary": "Adding an invented resolved Artifact is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-P]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF004-N",
@@ -157,10 +651,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 758,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF004",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "artifact and artifact2 have the same locator and different versions; both exact IDs remain in A(I,C).",
+          "rejecting_mutation_or_boundary": "A valid output mutant collapsing the second version to one Artifact is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-N]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF004-M",
@@ -168,10 +700,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 758,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF004",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "A Claim seed bound to typed unresolved has empty resolved Artifact population and unknown_endpoint disclosure.",
+          "rejecting_mutation_or_boundary": "Promoting unresolved itself to a resolved Artifact member is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-M]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF004-B",
@@ -179,10 +749,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 758,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF004",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "Shared artifact appears in both separately evaluated Claim populations and once in the Inquiry-wide union.",
+          "rejecting_mutation_or_boundary": "Adding an invented Artifact to a Claim population is rejected; exact other-Claim and Inquiry sets are also asserted.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-B]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF005-P",
@@ -190,10 +798,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 759,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF005",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "Explicit artifact/artifact2 seeds with no seed EvidenceItem bindings give Inquiry-wide unassigned count 2.",
+          "rejecting_mutation_or_boundary": "Replacing that complete member set with empty is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF005-P]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF005-N",
@@ -201,10 +847,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 759,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF005",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "H7-01 has zero unassigned explicit seeds; nonseed H7-ANSWER does not enter this population.",
+          "rejecting_mutation_or_boundary": "An output mutant including nonseed H7-ANSWER as unassigned is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF005-N]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF005-M",
@@ -212,10 +896,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 759,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF005",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "No explicit Artifact seeds gives an enumerated empty unassigned population and available 0.",
+          "rejecting_mutation_or_boundary": "An invented unassigned source is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF005-M]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF005-B",
@@ -223,10 +945,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 759,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/inventory.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md §12.1 SIT-VF005",
+            "DEFINITIONS_AND_UNITS.md §§20.1,21.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §5",
+            "OBSERVABILITY_AND_REPORTING.md PC03 / SIT-M001"
+          ],
+          "owner_local_core": "The sole artifact seed is bound only by claim2 contribution e2, so it is assigned throughout Inquiry while selected claim has no seed.",
+          "rejecting_mutation_or_boundary": "Calling artifact unassigned merely because selected Claim lacks a contribution is rejected.",
+          "test_nodes": [
+            "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF005-B]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+            "bytes": 13476,
+            "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF006-P",
@@ -234,10 +994,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 765,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md §2.2"
+          ],
+          "owner_local_core": "Actual completed origin count 2, exactly H7-O1/H7-O2; six literal source paths and actual scoped witness links.",
+          "rejecting_mutation_or_boundary": "All six seed paths preserve their assertion identities; no ancestor-only ER1 becomes a seed.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf006_p_h7_exact_reached_origins_and_six_finite_source_paths"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF006-N",
@@ -245,10 +1043,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 765,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "owner_local_core": "Each real parentless/unknown expected-Origin baseline first yields an exact empty reached-Origin inventory.",
+          "rejecting_mutation_or_boundary": "Only counted selection is changed in a copy of the actual baseline count DTO, falsely adding E or UnresolvedReference; literal oracle rejects.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf006_n_parentless_evidence_and_unresolved_expected_origin_are_not_origins"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF006-M",
@@ -256,10 +1091,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 765,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md W7-03"
+          ],
+          "owner_local_core": "Completed supplied view reaches zero OriginEvents while retaining one represented frontier and two affected seeds.",
+          "rejecting_mutation_or_boundary": "Zero record inventory never converts the unknown object to an OriginEvent or yields a hidden-root total.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf006_m_and_vf021_p_shared_unknown_is_one_frontier_and_zero_reached_origins"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF006-B",
@@ -267,10 +1140,49 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 765,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md W7-04/W7-14"
+          ],
+          "owner_local_core": "Diamond counts O once after all four edges; acquisition cycle preserves O exit and both unresolved seeds.",
+          "rejecting_mutation_or_boundary": "Path multiplicity cannot duplicate roots; canonical positive exit cannot erase cyclic branch.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf006_b_diamond_counts_one_origin_after_examining_both_branches",
+            "tests/unit/test_origins.py::test_vf006_b_cycle_exit_preserves_origin_and_unresolved_affected_seeds"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF007-P",
@@ -278,10 +1190,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 766,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md §2.3"
+          ],
+          "owner_local_core": "Actual qualified origin inventory exactly H7-O1/H7-O2 with native OB1/OB2 scope, data and provenance.",
+          "rejecting_mutation_or_boundary": "Native source boundary, coverage and supporting reference IDs are independently compared to frozen H7 input.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf007_p_h7_qualified_count_and_vf008_p_attributed_boundaries"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF007-N",
@@ -289,10 +1239,50 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 766,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md W7-25"
+          ],
+          "owner_local_core": "After real H7 baseline count 2, changing only ACQ support availability/content leaves reached2 but qualified0.",
+          "rejecting_mutation_or_boundary": "This is input delta, not an output mutant; original documented_origin labels and source basis remain in disclosures with support_uninspectable.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf007_n_support_removal_is_an_input_delta_not_boundary_relabeling[locator_only]",
+            "tests/unit/test_origins.py::test_vf007_n_support_removal_is_an_input_delta_not_boundary_relabeling[withheld]",
+            "tests/unit/test_origins.py::test_vf007_n_support_removal_is_an_input_delta_not_boundary_relabeling[unavailable]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF007-M",
@@ -300,10 +1290,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 766,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "owner_local_core": "Actual unqualified documentary-label case retains reached origin, native documented_origin role and qualification gap, qualified count0.",
+          "rejecting_mutation_or_boundary": "Missing documentary basis cannot be filled by the label or relabeled as no real origins.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf007_m_documentary_label_without_basis_has_explicit_zero_examined_count"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF007-B",
@@ -311,10 +1338,52 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 766,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3",
+            "VALIDATION_PLAN.md W7-17/W7-18"
+          ],
+          "owner_local_core": "Four native roles coexist with reached4/documentary1; visible protected attestation can qualify one shared opaque origin. Required coverage basis/conflict participates in qualification; unrelated reaching-path basis does not erase a qualified boundary inventory.",
+          "rejecting_mutation_or_boundary": "Withheld attestation negative loses documentary qualification; baseline/scope/declared roles never become documentary origins.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_w7_17_all_four_boundary_roles_coexist_without_becoming_unresolved_roots",
+            "tests/unit/test_origins.py::test_vf007_b_protected_attestation_qualifies_one_opaque_origin_with_native_limits",
+            "tests/unit/test_origins.py::test_boundary_checks_follow_required_coverage_basis_and_conflict_without_poisoning_other_premises[basis]",
+            "tests/unit/test_origins.py::test_boundary_checks_follow_required_coverage_basis_and_conflict_without_poisoning_other_premises[conflict]",
+            "tests/unit/test_origins.py::test_documentary_boundary_inventory_keeps_its_own_basis_when_reaching_path_support_is_missing"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF008-P",
@@ -322,10 +1391,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 767,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "owner_local_core": "OB1/OB2 source identifiers, subjects, roles, dimension, coverage, scope and provenance exactly match frozen H7 records.",
+          "rejecting_mutation_or_boundary": "Result scope/check/basis/witness/reason references validated on actual results.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf007_p_h7_qualified_count_and_vf008_p_attributed_boundaries"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF008-N",
@@ -333,10 +1439,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 767,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "owner_local_core": "Actual baseline disclosure passes native-field equality first.",
+          "rejecting_mutation_or_boundary": "Only native boundary_role changed to documented_origin in copied actual disclosure; source-field oracle rejects.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf008_n_output_mutant_cannot_rename_a_native_boundary[declared_origin]",
+            "tests/unit/test_origins.py::test_vf008_n_output_mutant_cannot_rename_a_native_boundary[reference_baseline]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF008-M",
@@ -344,10 +1488,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 767,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "owner_local_core": "No boundary assessments gives explicit empty disclosure, reached1 and documentary0.",
+          "rejecting_mutation_or_boundary": "No automatic boundary or root is fabricated at a parentless OriginEvent.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf008_m_no_boundary_assessment_is_an_explicit_empty_inventory"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF008-B",
@@ -355,10 +1536,49 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 767,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §21.2",
+            "VALIDATION_PLAN.md §12.2",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §§9.1,10.3"
+          ],
+          "owner_local_core": "Known O→O2 parent stays visible: reached O/O2 and only O2 documentary terminal, original assessments retained.",
+          "rejecting_mutation_or_boundary": "Termination labels cannot stop same-dimension in-scope parent traversal.",
+          "test_nodes": [
+            "tests/unit/test_origins.py::test_vf008_b_termination_label_cannot_hide_a_known_same_dimension_parent[documented_origin]",
+            "tests/unit/test_origins.py::test_vf008_b_termination_label_cannot_hide_a_known_same_dimension_parent[scope_cut]",
+            "tests/unit/test_origins.py::test_vf008_b_termination_label_cannot_hide_a_known_same_dimension_parent[reference_baseline]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF009-P",
@@ -894,10 +2114,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 805,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md W7-03"
+          ],
+          "owner_local_core": "Two seeds share one actual unresolved endpoint with two actual witness paths; frontier1/affected2.",
+          "rejecting_mutation_or_boundary": "Member identity controls distinct frontier cardinality; not number of paths/seeds.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf006_m_and_vf021_p_shared_unknown_is_one_frontier_and_zero_reached_origins"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF021-N",
@@ -905,10 +2163,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 805,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "owner_local_core": "Actual frontier baseline count1 and member UX passes first.",
+          "rejecting_mutation_or_boundary": "Only count changed to2 in copied actual count DTO; oracle rejects.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf021_n_output_mutant_cannot_count_one_shared_unknown_twice"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF021-M",
@@ -916,10 +2211,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 805,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md §2.3"
+          ],
+          "owner_local_core": "H7 acquisition frontier, terminal and affected-seed counts are explicit0 with all6 processed seeds.",
+          "rejecting_mutation_or_boundary": "Partial model coverage remains in source and cannot contaminate or be erased by acquisition0.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf021_m_h7_complete_acquisition_frontier_inventory_is_explicit_zero"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF021-B",
@@ -927,10 +2260,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 805,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "owner_local_core": "An UnresolvedReference expected OriginEvent stays one frontier, zero reached origins, two affected seeds.",
+          "rejecting_mutation_or_boundary": "Expected kind is never instantiated as resolved origin or concealed-root multiplicity.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf021_b_typed_unknown_origin_is_one_reference_not_an_origin_record"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF022-P",
@@ -938,10 +2308,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 806,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "owner_local_core": "Complete represented trace to one unqualified OriginEvent counts exactly that terminal, with one affected seed.",
+          "rejecting_mutation_or_boundary": "Reaching a resolved terminal does not qualify its boundary.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_p_and_m_missing_qualification_leaves_one_visible_terminal"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF022-N",
@@ -949,10 +2356,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 806,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "owner_local_core": "Actual reached terminal1/documentary0 baseline passes.",
+          "rejecting_mutation_or_boundary": "Only selected documentary-origin membership/count is changed in actual baseline DTO to promote terminal; rejected.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_n_output_mutant_cannot_promote_a_parentless_terminal_to_documentary_root"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF022-M",
@@ -960,10 +2404,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 806,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "owner_local_core": "Missing applicable boundary keeps terminal visible, documentary count0 and unqualified_origin_boundary gap.",
+          "rejecting_mutation_or_boundary": "No hidden-origin count, nonexistent boundary or unknown upper bound is introduced.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_p_and_m_missing_qualification_leaves_one_visible_terminal"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF022-B",
@@ -971,10 +2452,49 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 806,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "owner_local_core": "Shared terminal1/affected2; explicit supported scope cut is separate from unqualified terminal; cyclic exit remains visible.",
+          "rejecting_mutation_or_boundary": "Terminal, chosen cut and cycle are not reduced to one root category.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_b_shared_terminal_is_one_record_with_two_affected_seeds",
+            "tests/unit/test_ancestry_frontiers.py::test_vf022_b_explicit_scope_cut_is_separate_from_an_unqualified_terminal",
+            "tests/unit/test_origins.py::test_vf006_b_cycle_exit_preserves_origin_and_unresolved_affected_seeds"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF023-P",
@@ -982,10 +2502,49 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 807,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md §3.2/W7-03"
+          ],
+          "owner_local_core": "H7-V02 only EU affected while original six fixed paths and O1/O2 survive; shared UX case has affected2.",
+          "rejecting_mutation_or_boundary": "No dossier-wide suppression or frontier-count substitution.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf023_p_h7_v02_only_added_seed_is_affected_and_original_origins_survive",
+            "tests/unit/test_ancestry_frontiers.py::test_vf006_m_and_vf021_p_shared_unknown_is_one_frontier_and_zero_reached_origins"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF023-N",
@@ -993,10 +2552,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 807,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "owner_local_core": "Actual shared-UX affected count2 baseline passes.",
+          "rejecting_mutation_or_boundary": "Only count changed to frontier count1 in copied actual affected-count DTO; rejected.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf023_n_output_mutant_cannot_copy_frontier_count_into_affected_seed_count"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF023-M",
@@ -1004,10 +2600,52 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 807,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "OBSERVABILITY_AND_REPORTING.md §12.4",
+            "OBSERVABILITY_AND_REPORTING.md §13.1"
+          ],
+          "owner_local_core": "Fully processed all-unknown source retains two affected seeds; interrupted processing raises sticky real AnalysisAborted. Actual PC06 distinguishes missing coverage unknown from explicitly partial coverage unmet, with affected seed retained.",
+          "rejecting_mutation_or_boundary": "Incomplete traversal cannot return a completed zero or partial exact count; W13 delivery remains outside this component test.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf023_m_all_selected_ancestry_unknown_keeps_the_completed_seed_population",
+            "tests/unit/test_origins.py::test_origin_profile_resource_stop_is_sticky_and_never_returns_partial_counts[200]",
+            "tests/unit/test_origins.py::test_pc06_distinguishes_absent_coverage_from_supplied_incomplete_coverage[missing-SIT-M007]",
+            "tests/unit/test_origins.py::test_pc06_distinguishes_absent_coverage_from_supplied_incomplete_coverage[partial-SIT-M007]"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF023-B",
@@ -1015,10 +2653,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 807,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md W7-15"
+          ],
+          "owner_local_core": "One selected seed is unresolved through distant UX, while its immediate E→E copy remains actual typed edge.",
+          "rejecting_mutation_or_boundary": "No M006 result is fabricated here; retained immediate evidence supports later owner without removing ancestry gap.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf023_b_distant_unknown_does_not_erase_the_known_immediate_copy"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF024-P",
@@ -1026,10 +2702,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 808,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md §3.2"
+          ],
+          "owner_local_core": "EU disclosure preserves UX, not_recorded, expected evidence_item, acquisition scope, COV-ACQ and exact LU branch.",
+          "rejecting_mutation_or_boundary": "Gap source identities and finite path witness remain attributable.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_p_h7_v02_keeps_gap_reason_expected_kind_branch_and_coverage"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF024-N",
@@ -1037,10 +2751,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 808,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3"
+          ],
+          "owner_local_core": "Actual shared-gap disclosure passes source-derived identity/kind/reason/scope oracle first.",
+          "rejecting_mutation_or_boundary": "Copies mutate only shared endpoint identity into per-seed pseudonyms, or remove required gap rows; both rejected. Required expected-kind structure cannot be replaced by free text containing the same token.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_n_output_mutants_cannot_split_opaque_identity_or_erase_the_gap",
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_n_output_mutant_cannot_move_required_expected_kind_into_free_text"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF024-M",
@@ -1048,10 +2800,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 808,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md W7-03/W7-25"
+          ],
+          "owner_local_core": "Gap-only upstream case remains admitted, frontier1/affected2; locator remains inert under network tripwires.",
+          "rejecting_mutation_or_boundary": "No source fetch or inferred ancestry fills missing history.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_m_gap_only_locator_stays_inert_and_preserves_shared_unknown"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF024-B",
@@ -1059,10 +2849,49 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 808,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/origins.py",
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md §22.4",
+            "VALIDATION_PLAN.md §12.7",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §10.3",
+            "VALIDATION_PLAN.md W7-18"
+          ],
+          "owner_local_core": "One known shared opaque identity retained across two seed disclosures; visible scoped attestation and withheld underlying identity stay distinct.",
+          "rejecting_mutation_or_boundary": "No pseudonym multiplication, public identity verification, independent-source claim or hidden-root bound.",
+          "test_nodes": [
+            "tests/unit/test_ancestry_frontiers.py::test_vf024_b_protected_shared_endpoint_preserves_opaque_commonality",
+            "tests/unit/test_origins.py::test_vf007_b_protected_attestation_qualifies_one_opaque_origin_with_native_limits"
+          ],
+          "map_packet": {
+            "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+            "bytes": 21481,
+            "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+          },
+          "passed_at": {
+            "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+            "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+            "run_id": 35658806356,
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+            "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+            "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          },
+          "remaining_integration": "Complete scoped Result/prerequisite composition and whole private invocation remain pending W13; owner-local tests do not certify public reporting, independent sources or release.",
+          "release_obligation_status": "pending"
+        }
+      ]
     },
     {
       "test_id": "SIT-VF025-P",
@@ -3062,7 +4891,7 @@
   "prerequisites": {
     "PC01": "accepted_preparation_only",
     "PC02": "private_exact_scope_check_exercised_in_W03_component_tests_whole_invocation_pending",
-    "PC03": "SOURCE_INVENTORY_provider_execution_pending_W05",
+    "PC03": "W05_SOURCE_INVENTORY_owner_local_components_recorded_whole_PC03_Result_and_W13_invocation_pending",
     "PC04": "private_GRAPH_VIEW_CONTRACT_component_checks_verified_W04_whole_Result_and_W13_integration_pending",
     "PC05-PC06-PC09-PC10": "record_local_qualification_helpers_verified_whole_scoped_check_to_Result_basis_index_connections_pending",
     "PC07-PC08-PC11-PC23": "pending_analytical_execution",
@@ -3100,8 +4929,8 @@
     "final_documentation_successor_gate": "pending_at_creation_settle_on_PR22"
   },
   "core_status_counts": {
-    "owner_local_core_verified": 16,
-    "pending": 212
+    "owner_local_core_verified": 64,
+    "pending": 164
   },
   "integration_status_counts": {
     "pending": 228
@@ -3152,6 +4981,85 @@
     "repair_review_sha256": "a3e15269f304c36a9f2a62f5f1853e8dc329010e0630cc63ccd1cfcad289d2c5",
     "pre_amendment_failure_audit_sha256": "2fb5aacf0bc958d94a96bac494dae3881010b750f9992ea703803815a844c6ce",
     "full_field_obligations_closed": 0,
+    "whole_invocation_integration": "pending_W13",
+    "final_successor_gate": "pending_at_creation_settle_on_review_PR"
+  },
+  "w05_start": {
+    "owner_instruction": "P3-W05 启动",
+    "accepted_predecessor": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+    "status": "named_code_owner_local_cores_verified_final_successor_gate_pending",
+    "planned_core_obligations": 48,
+    "new_core_obligations_verified": 48,
+    "amendment_approved": true,
+    "diagnostic_evidence_sha256": "3b998b945b7a14f0ec78485abb7fe844816b7784c7acd849f6da5f8d470b115c",
+    "amendment": "P3-W05-R01",
+    "actual_approval": "批准 **P3-W05-R01**"
+  },
+  "w05_core_mapping_inputs": [
+    {
+      "path": "p3w05-inventory-core-evidence-map.json",
+      "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5",
+      "bytes": 13476
+    },
+    {
+      "path": "p3w05-origins-core-evidence-map.json",
+      "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed",
+      "bytes": 21481
+    }
+  ],
+  "historical_w04_evidence": {
+    "commit": "a175d6d4b4153ddc9147301f9db8d247d12e4852",
+    "path": "phase3/obligation_coverage.json",
+    "sha256": "2cb1f5e9123727e3a7e05151ba4336f4795731df78055e3f54bbf532afd81365",
+    "meaning": "Immutable full accepted predecessor record, including all pre-W05 row evidence."
+  },
+  "w05_owner_local_scope": {
+    "head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+    "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+    "fields": [
+      "SIT-VF001",
+      "SIT-VF002",
+      "SIT-VF003",
+      "SIT-VF004",
+      "SIT-VF005",
+      "SIT-VF006",
+      "SIT-VF007",
+      "SIT-VF008",
+      "SIT-VF021",
+      "SIT-VF022",
+      "SIT-VF023",
+      "SIT-VF024"
+    ],
+    "new_core_verified": 48,
+    "inherited_core_verified": 16,
+    "core_maps": [
+      {
+        "path": "/workspace/scratch/5e401153f47f/p3w05-inventory-core-evidence-map.json",
+        "bytes": 13476,
+        "sha256": "fbf3a6f66ae527326c74f02d94b0782bb4051324bef51a48a441974969c21ab5"
+      },
+      {
+        "path": "/workspace/scratch/5e401153f47f/p3w05-origins-core-evidence-map.json",
+        "bytes": 21481,
+        "sha256": "19013d019bc8886590dad828b7b93749f174098aaee42ecd32f3596b4fff0eed"
+      }
+    ],
+    "passed_at": {
+      "code_head": "ae4c267fbf23d650b75c0e2b157e1d136a20ca34",
+      "tree": "f85a5eb455fa9a16895ccd0d7d33e8c8b67c8d2f",
+      "run_id": 35658806356,
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "dbaa9993b303124958b907b2a8977077d47f949be6b8d9d9b5537f1c65aadfd1",
+      "git_audit_sha256": "730503cdca64529e2cc591087032ec0bb89464fbb01419f120596971afd381f3",
+      "local_junit_sha256": "f6e057ad5900922712fba577914ce3cac49a03b15b4f973993af9773e876c4ea",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "pending_at_creation_settle_on_review_PR"
   }
