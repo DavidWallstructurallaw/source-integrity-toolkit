@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W08",
-  "status": "W08_owner_local_core_verified_pending_owner_acceptance",
+  "unit": "P3-W09",
+  "status": "W09_in_progress",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 112 inherited verified core rows remain unchanged; exactly 24 W08 owner-local cores now have all four hosted cumulative profiles verified. The remaining 92 cores and all 228 integration/release obligations remain pending.",
+  "meaning": "All 136 inherited verified core rows remain unchanged. The 36 W09 target cores remain pending until actual gates pass, as do the remaining 56 later cores and all 228 integration/release obligations.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -7873,5 +7873,14 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "affected_controls_and_exact_three_records_182_unchanged_blobs_on_PR27"
+  },
+  "w09_start": {
+    "owner_instruction": "很好，继续Phase 3   W09",
+    "accepted_predecessor": "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74",
+    "accepted_pr": 27,
+    "status": "components_verified_full_verification_pending",
+    "planned_core_obligations": 36,
+    "newly_verified_core_obligations": 0,
+    "component_tests_passed": 85
   }
 }
