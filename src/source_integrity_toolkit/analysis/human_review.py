@@ -384,6 +384,11 @@ def _disclosures(facts, field, port):
             if candidate.evaluation is entity:
                 review = candidate
                 break
+        # A full comparison may include an unselected Evaluation. Preserve
+        # that native process in the corrective leaf without importing its
+        # human contribution into this independently selected review scope.
+        if field == _FIELDS[1] and entity.kind == 'evaluation' and review is None:
+            continue
         # Human disclosures retain role/dependency limits; unrelated native
         # comparison records belong to the corrective-process disclosure.
         if field == _FIELDS[1] and entity.collection == 'assertions':

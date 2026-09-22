@@ -81,10 +81,11 @@
     "work_budget_preserved": true,
     "source_sha256": {
       "src/source_integrity_toolkit/analysis/evaluator_lineage.py": "71e8a96caf3d25e9b6f130c99243ab5df16ab5a3407e8b39ac08f583a93c0cdd",
-      "src/source_integrity_toolkit/analysis/human_review.py": "a300515724d100b81f7884f60fd057e4fdc8f4dbc46b3978d29f0c15e8f97307",
+      "src/source_integrity_toolkit/analysis/human_review.py": "bcff22f09add6285a2bcd744ab1e77d1d878f2a92eb1effb738564fe3716a3aa",
       "tests/unit/test_evaluator_lineage.py": "f90ba1b288bf7203eb11a2660d19ef0fb5358a82dbe8ff9e864d9b5c87a0a947",
       "tests/unit/test_human_review.py": "ddf5a9c5fcd55a1760411ffe163653c0ad8570af8c9dca2c51bcced0a59cf39f"
-    }
+    },
+    "selected_review_scope_fix": "Retain the complete native comparison set, while excluding unselected Evaluation records from human-contribution leaf disclosures. Existing regression unchanged."
   },
   "validation": {
     "status": "blocked_known_three_semantic_failures",
@@ -113,16 +114,16 @@
       "failures": 3,
       "errors": 0,
       "skipped": 0,
-      "seconds": 65.98,
+      "seconds": 64.585,
       "log": {
-        "path": "w08-human-current.log",
+        "path": "w08-human-scope-fixed-current.log",
         "bytes": 7371,
-        "sha256": "221536cfb384c6d5a476b72fa0e3d7eae93120c9fd686423a891b61f98c11bf4"
+        "sha256": "e683f830522588f3688c8a444e6bfeda9e3d416d39f70412a7a76a286d63572b"
       },
       "junit": {
-        "path": "w08-human-current.xml",
+        "path": "w08-human-scope-fixed-current.xml",
         "bytes": 10921,
-        "sha256": "8e976205935b5d34d2c233abdcc2474183f0225a66f3066ef11a9268faa07eb6"
+        "sha256": "c05f26965fc9d5ddcef9dcb03006deaabb53f0906f738a2eb15fd24d1a5e69d0"
       }
     },
     "collection": {
@@ -143,8 +144,8 @@
       },
       {
         "path": "w08-human-core-map.json",
-        "bytes": 13879,
-        "sha256": "c3b9477f2c6720f13f9bd6f346094e9860d5e9aff4f4f50d40edc114234d89fa"
+        "bytes": 14263,
+        "sha256": "5832e22c4173810f61ad17b297abe1a47f6c9d2d0c331b6f62cf0e60d2280dde"
       }
     ],
     "toolchain": {
@@ -165,7 +166,8 @@
     "independent_scope_and_collection_audit": {
       "path": "w08-readonly-pre-amendment-audit.json",
       "bytes": 4714,
-      "sha256": "107be6b6625456ccbd8ad50f4b79c1c3515736fc9b1d52f72d882578e65d9879"
+      "sha256": "107be6b6625456ccbd8ad50f4b79c1c3515736fc9b1d52f72d882578e65d9879",
+      "qualified_checkpoint": "8a0f59692661165de1f1fd5dc374076948313fe6 before the authorized five-line human scope fix. Final scope and source binding are separately checked after this successor."
     }
   },
   "owner_local_core_obligations_verified": 112,
@@ -222,6 +224,54 @@
         "sha256": "82e856e8a1cbffc7fd619a8c102d12108a2eb6f6b1e3acd2c3c21e282377627e"
       },
       "qualification": "Scratch proposal diagnostic; patch has not been applied to repository and is not evidence of a passing current product."
-    }
+    },
+    "additional_native_time_requirement": {
+      "review": {
+        "path": "w08-native-time-review.json",
+        "bytes": 1511,
+        "sha256": "07a32303c25062b929392712df6f24cc08bccffbbcb17e196a19e03b63e43c9c"
+      },
+      "candidate_patch_covers_it": false,
+      "required": "Propagate actual native-edge temporal limitations with source refs to M003 PC10. time_specific unknown cannot become met; qualification remains unavailable. Snapshot and Assertion behavior retained."
+    },
+    "extended_proposal_diagnostics": [
+      {
+        "status": "124_passed_1_failed_on_initial_owner",
+        "tests": 125,
+        "old_m003_tests_passed": 101,
+        "failure": "Unselected comparison Evaluation leaked into selected human contribution. Fixed inside authorized human_review.py; this original mixed run remains failed.",
+        "log": {
+          "path": "w08-refined-native-regression-probe.log",
+          "bytes": 1277,
+          "sha256": "470687f06a02a0d7522fbb62f0da2405b4cfd0189edb529cc82a483813fde645"
+        },
+        "junit": {
+          "path": "w08-refined-native-regression-probe.xml",
+          "bytes": 21279,
+          "sha256": "05527b66bc1cada39b6d12d12890b3969dfad50beb8ad36dc71455cf477a596a"
+        }
+      },
+      {
+        "status": "24_passed_on_scope_fixed_human_owner",
+        "tests": 24,
+        "seconds": 48.35,
+        "log": {
+          "path": "w08-human-scope-fixed-proposal-probe.log",
+          "bytes": 100,
+          "sha256": "8551106f3259cadf0a1ff10b92b7ff60cd513fb87cdace486c6d8dba675d58b3"
+        },
+        "junit": {
+          "path": "w08-human-scope-fixed-proposal-probe.xml",
+          "bytes": 4206,
+          "sha256": "db954b45d5f12a28d31560550a0e6cb73c5c5c8fe61bd168334be4855976011d"
+        },
+        "binding": {
+          "path": "w08-human-scope-fixed-proposal-probe.json",
+          "bytes": 480,
+          "sha256": "5a3b687f63725fcbc2e6c1b5ec3c15a5b08e57e519e9bbf2229d0ea9e7e8bc97"
+        }
+      }
+    ],
+    "proposal_diagnostic_limit": "All proposal substitutions occur in memory with original helper bytes unchanged. Current product still has three failing tests. Candidate patch has the explicitly outstanding PC10 requirement; no full-matrix or acceptance claim."
   }
 }

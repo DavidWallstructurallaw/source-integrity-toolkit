@@ -8,6 +8,8 @@ The original eight-path checkpoint is implemented. On CPython 3.12.14, the 40 ev
 
 P3-W08-R01 is proposed and awaits explicit owner approval under plan section 5. It would add only process_comparison.py and the two existing CI/transition scope-test files to W08's immediate allowlist, for eleven total paths. The existing checks would retain a fixed preapproval boundary and historical unit scopes. No transition-ledger edit or new historical gate chain is proposed. The frozen plan, workflow and guard remain unchanged.
 
+Proposal-only extended regression exposed a selected-review disclosure leak, now fixed in the authorized human_review.py: human contribution excludes unselected Evaluation records while the actual comparison retains its complete native set. The original mixed proposal run remains 124 passed / 1 failed, including all 101 old M003 tests passing; the corrected human owner separately passes all 24 proposal-mode tests. The unapplied helper candidate still needs a bounded PC10 correction so native time-specific unknowns cannot be reported as met. These diagnostics do not replace actual repaired-code verification.
+
 Full collection reports 3,461 tests, including the 64 new W08 tests. The full four-profile matrix is deferred while the three semantic failures remain. All 112 inherited verified core rows are preserved; 116 cores and all 228 integration/release rows remain pending. All 24 W08 target cores remain pending. The effective Verification Governance and Evidence-Semantics Protection policy remains controlling.
 
 W08 is blocked pending the named amendment, its repair, full verification and owner review. W09 is not authorized or started.
