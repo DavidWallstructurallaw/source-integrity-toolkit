@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W06",
-  "status": "W06_16_owner_local_core_rows_verified_64_inherited_all_integration_release_pending",
+  "unit": "P3-W07",
+  "status": "W07_in_progress_80_inherited_core_rows_verified",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "Exactly 16 W06 owner-local rows have actual mapped passing code-head tests. The accepted 64 structured rows remain verbatim. Remaining 148 cores and all 228 integration/release rows are pending.",
+  "meaning": "The 80 accepted predecessor core rows are retained unchanged. W07 targets 32 owner-local core obligations; none is newly claimed passed before actual verification.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -5777,5 +5777,11 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "affected_controls_and_exact_three_records_178_unchanged_blobs_pending_at_creation"
+  },
+  "w07_start": {
+    "owner_instruction": "Source Integrity Toolkit 验收 PR #25 启动 P3-W07",
+    "accepted_predecessor": "5c520dc15010c7f86d4bcfa5f760ff5e11e7e9d4",
+    "pr": 25,
+    "status": "authorized_in_progress"
   }
 }
