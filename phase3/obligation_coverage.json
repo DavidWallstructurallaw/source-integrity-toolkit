@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W05",
-  "status": "W05_48_owner_local_core_rows_verified_16_inherited_all_integration_release_pending",
+  "unit": "P3-W06",
+  "status": "W06_started_blocked_on_missing_comparison_population_provider",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "Exactly 48 W05 owner-local core rows have actual mapped passing tests; the accepted sixteen W03 rows are preserved verbatim. The remaining 164 cores and all 228 integration/release rows remain pending.",
+  "meaning": "The 64 accepted owner-local core rows remain unchanged. W06 has started, but its real PC03 comparison-population provider is missing. No new core row is verified. All 228 integration cells and all 228 release cells remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -5062,5 +5062,15 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "pending_at_creation_settle_on_review_PR"
+  },
+  "w06_start": {
+    "accepted_predecessor": "3dd10f987816dffd73e56631b1c4593e9c3f1b54",
+    "status": "affected_work_blocked",
+    "planned_core_obligations": 16,
+    "new_core_obligations_verified": 0,
+    "missing_dependency_owner": "SOURCE_INVENTORY",
+    "proposed_amendment": "P3-W06-R01",
+    "amendment_approved": false,
+    "original_effective_scope_count": 6
   }
 }

@@ -1,5 +1,5 @@
 {
-  "active_unit": "P3-W05",
+  "active_unit": "P3-W06",
   "extension_first_units": {
     "contracts/evidence.py": 3,
     "contracts/execution.py": 2,
@@ -38,6 +38,10 @@
     {
       "path": "analysis/origins.py",
       "unit": 5
+    },
+    {
+      "path": "analysis/process_comparison.py",
+      "unit": 6
     },
     {
       "path": "contracts/results.py",
