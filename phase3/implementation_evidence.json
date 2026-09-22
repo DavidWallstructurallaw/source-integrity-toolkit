@@ -1,79 +1,45 @@
 {
   "format": "sit-phase3-evidence/0.1",
-  "unit": "P3-W09",
+  "unit": "P3-W10",
   "authority": {
-    "owner_instruction": "很好，继续Phase 3   W09",
-    "predecessor_acceptance": "Continuation instruction follows delivered W08 review package and authorizes the prerequisite acceptance/merge.",
     "approved_plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
     "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
-    "actual_unit_entry": "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74",
     "governing_policy": {
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "w09_acceptance": "pending_owner_acceptance_of_PR28",
-    "next_unit": "P3-W10_not_authorized_or_started",
-    "approved_amendments": [
-      {
-        "amendment": "P3-W09-R01",
-        "owner_instruction": "批准 P3-W09-R01",
-        "approval_record": {
-          "path": "w09-r01-approval.json",
-          "bytes": 8485,
-          "sha256": "cfdba2bf6f23e71b04d87cb81013eba04cdfafe92abb65470f58d71daa21bd65"
-        },
-        "fixed_preapproval_checkpoint": "5bccceee13995f7ee51ed44339d596aadb309644"
-      }
-    ],
-    "recovery_receipt": {
-      "path": "w09-r01-approval-recovered.json",
-      "bytes": 4499,
-      "sha256": "01cb79c19e3177c815da97144b6e73c472254320dc2f0e5a1e58e1c63d1d1635"
-    }
+    "owner_instruction": "然后是W10  了吗，是的话直接继续",
+    "predecessor_acceptance": "The instruction to continue directly to W10 accepts the delivered W09 review and authorizes its prerequisite merge.",
+    "actual_unit_entry": "06854e067ba849a3699412d54d778fc2abbe1caa",
+    "w10_acceptance": "pending_implementation_verification_and_owner_review",
+    "next_unit": "P3-W11_not_authorized_or_started"
   },
   "accepted_predecessor": {
-    "unit": "P3-W08",
-    "pr": 27,
-    "merge": "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74",
-    "tree": "f465bc0ba24b7ceb3ae513705ff61de710ee2c70",
-    "reviewed_head": "8ae74d1236342d8e0938d4b56ef1ac537d5c7487",
-    "verified_code": "8fc1bc282f9a5253b26158b7c633e4bb1e85eec5",
-    "run_id": 35771613781,
-    "tests_per_profile": 3464,
-    "separate_subtests_per_profile": 428,
-    "review_bundle_sha256": "b383d1121674e6d031525438b3b9c20c535167641d102d899246d0a8c6e5a6d1",
-    "raw_audit_sha256": "41b95d390fbf99a16a9c6cab231c76684cc260dc659b04462aebc854417d15e4",
-    "final_audit_sha256": "ec5df48ce6ff0e201399bf45f036aec79da18fc0a88f0e490025b27d070b709c",
-    "records": {
-      "phase3/implementation_evidence.json": {
-        "commit": "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74",
-        "path": "phase3/implementation_evidence.json",
-        "sha256": "a58a05e330adc36a4409f19e1be99b8805c1c7a47a40cfca0e0f8904838293ed"
-      },
-      "phase3/obligation_coverage.json": {
-        "commit": "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74",
-        "path": "phase3/obligation_coverage.json",
-        "sha256": "aa4dc4c7e2a99f26f449ba24b1fdb789bad21ec7332793ccf7ecf71dbac703ab"
-      }
+    "unit": "P3-W09",
+    "merge": "06854e067ba849a3699412d54d778fc2abbe1caa",
+    "tree": "dc02473a0f085eb30c2086b60a76d377ccdbe97f",
+    "review_head": "eb650a9cccb7ac9b031823fcaac414a1662c14ae",
+    "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
+    "pr": 28,
+    "review_package": {
+      "path": "Source-Integrity-Toolkit-P3-W09-Review-Evidence.zip",
+      "bytes": 2029273,
+      "sha256": "f69af7c87ef0aaaa2d786bdd35c46081d83384d9179814d04da9b272eb0fcee0"
     },
-    "acceptance_checks": "Actual live PR head matched delivered review; reviewed package hash and passing raw/final audits rechecked; merge has accepted W07/reviewed W08 parents and exact reviewed tree. No duplicate matrix on administrative merge."
+    "owner_instruction": "然后是W10  了吗，是的话直接继续",
+    "acceptance": "delivered_W09_accepted_by_instruction_to_start_next_planned_unit",
+    "known_recovery_limits": "Original approval receipt bytes and local331 JUnit XML unavailable; complete hosted four-profile and original85 direct XML evidence preserved."
   },
   "scope": {
     "effective_authorized_paths": [
-      ".github/workflows/phase1-ci.yml",
       "PHASE_3_PROGRESS.md",
       "phase3/implementation_evidence.json",
       "phase3/module_policy.json",
       "phase3/obligation_coverage.json",
-      "src/source_integrity_toolkit/analysis/presence.py",
-      "tests/contract/test_phase3_transition.py",
-      "tests/scaffold/test_ci_contract.py",
-      "tests/unit/test_pipeline_cohorts.py",
-      "tests/unit/test_presence.py"
+      "src/source_integrity_toolkit/analysis/correction_routes.py",
+      "tests/unit/test_correction_routes.py"
     ],
-    "immediate_scope_exceptions": [
-      "P3-W09-R01"
-    ],
+    "immediate_scope_exceptions": [],
     "historical_scope_exceptions": [
       "P3-W04-R01",
       "P3-W05-R01",
@@ -84,413 +50,112 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "complete_and_verified_pending_owner_acceptance",
-    "owners": [
-      "PRESENCE_RECORDS"
-    ],
+    "status": "implemented_direct_verified_pending_hosted_matrix",
+    "owner": "analysis/correction_routes.py",
     "families": [
-      "SIT-M009",
-      "SIT-M010"
+      "M011"
     ],
-    "field_ids": [
-      "SIT-VF029",
-      "SIT-VF030",
-      "SIT-VF031",
-      "SIT-VF032",
-      "SIT-VF033",
-      "SIT-VF034",
-      "SIT-VF035",
-      "SIT-VF036",
-      "SIT-VF037"
+    "fields": [
+      "SIT-VF038",
+      "SIT-VF039",
+      "SIT-VF040"
     ],
-    "source_sha256": {
-      "src/source_integrity_toolkit/analysis/presence.py": "69b3447fa721f97ce0aa5d488a22e6798ffa2012e1ec73a047e4da1141e8c518",
-      "tests/unit/test_presence.py": "400fbb77bad550ce1aae88f4a1f89c23e30ae15db0b9f4b9de082c793aff40b2",
-      "tests/unit/test_pipeline_cohorts.py": "1aa6c71d7b5fa803024be342a82af3998857bbbdfe2f6f34854ddf6a4314b597"
-    },
-    "semantic_scope": "Boundary-qualified attributed externality and exact subject/mapping stage links; independent exact-key native stage disclosures; qualified finite EvidenceItem/Anomaly universe; Y/F/U with contrary evidence retained; same-population unique fully admitted baseline only for preservation/selection.",
-    "frozen_product_and_direct_test_sha256": {
-      "src/source_integrity_toolkit/analysis/presence.py": "69b3447fa721f97ce0aa5d488a22e6798ffa2012e1ec73a047e4da1141e8c518",
-      "tests/unit/test_presence.py": "400fbb77bad550ce1aae88f4a1f89c23e30ae15db0b9f4b9de082c793aff40b2",
-      "tests/unit/test_pipeline_cohorts.py": "1aa6c71d7b5fa803024be342a82af3998857bbbdfe2f6f34854ddf6a4314b597"
-    }
+    "scheduled_new_core_obligations": 12,
+    "source_clauses": [
+      "PHASE_3_PLAN.md section 15",
+      "DEFINITIONS_AND_UNITS.md section 27.1",
+      "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8, 8, 11.1",
+      "OBSERVABILITY_AND_REPORTING.md M011 and PC19/PC20",
+      "VALIDATION_PLAN.md section 12.11",
+      "GOVERNANCE_AND_HANDOFF.md section 22"
+    ]
   },
   "validation": {
-    "status": "four_profile_repaired_code_cumulative_verification_passed",
-    "full_matrix": {
-      "status": "passed",
-      "required_profiles": [
-        "ubuntu-24.04-py3.11",
-        "ubuntu-24.04-py3.13",
-        "windows-2025-py3.11",
-        "windows-2025-py3.13"
-      ],
-      "qualification": "All four profiles completed successfully on this same repaired code head. No result from the prior failed matrix fills this gate.",
-      "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
-      "code_tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
-      "run_id": "35785828269",
-      "run_attempt": 1,
-      "tests_per_profile": 3549,
-      "separate_subtests_per_profile": 428,
-      "raw_audit": {
-        "path": "w09-r01-raw-audit.json",
-        "bytes": 3973,
-        "sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0"
-      },
-      "profiles": [
-        {
-          "profile": "windows-2025-py3.13",
-          "zip": "/workspace/scratch/4e5267fe5990/w09-r01-ci/phase3-windows-2025-py3.13-35785828269-1.zip",
-          "sha256": "fcd7e58d2dab30872f0b59ef599e3d46da26fa43d8a7b1eacc384f241d40854b",
-          "bytes": 195064,
-          "service_digest_checked": true,
-          "tests": 3549,
-          "subtests": 428,
-          "seconds": 1217.77,
-          "package_member_checks": true
-        },
-        {
-          "profile": "ubuntu-24.04-py3.13",
-          "zip": "/workspace/scratch/4e5267fe5990/w09-r01-ci/phase3-ubuntu-24.04-py3.13-35785828269-1.zip",
-          "sha256": "c9cfc60cb49df906c27552f2ccab34d2e5bde8bc8bb5cbb0d1a524156b35b29b",
-          "bytes": 188291,
-          "service_digest_checked": true,
-          "tests": 3549,
-          "subtests": 428,
-          "seconds": 922.07,
-          "package_member_checks": true
-        },
-        {
-          "profile": "ubuntu-24.04-py3.11",
-          "zip": "/workspace/scratch/4e5267fe5990/w09-r01-ci/phase3-ubuntu-24.04-py3.11-35785828269-1.zip",
-          "sha256": "da3a37829cd19132e926436b00ff9106d6aec96ecd6c0fc3cdeade620adfcb7a",
-          "bytes": 188256,
-          "service_digest_checked": true,
-          "tests": 3549,
-          "subtests": 428,
-          "seconds": 897.84,
-          "package_member_checks": true
-        },
-        {
-          "profile": "windows-2025-py3.11",
-          "zip": "/workspace/scratch/4e5267fe5990/w09-r01-ci/phase3-windows-2025-py3.11-35785828269-1.zip",
-          "sha256": "ea6434a7b42b4791a6155efce9a2be2d21575260a1a312dbb02e898421501944",
-          "bytes": 195306,
-          "service_digest_checked": true,
-          "tests": 3549,
-          "subtests": 428,
-          "seconds": 1288.31,
-          "package_member_checks": true
-        }
-      ],
-      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit."
-    },
-    "local_cumulative": "not_run; actual direct component/control evidence and the four required hosted cumulative profiles provide verification",
-    "qualification": "All 36 mapped W09 owner-local core obligations passed in each required profile. Affected controls and exact source identity settle the later three-record administrative successor; its gate remains pending until actually executed.",
-    "component_runtime": {
-      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
-      "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
-    },
+    "status": "direct_pass_hosted_matrix_pending",
+    "local_cumulative": "not_planned; direct semantic tests followed by four hosted cumulative profiles",
     "direct_runs": {
-      "presence": {
-        "tests": 26,
+      "correction_routes": {
+        "tests": 41,
+        "passed": 41,
         "failures": 0,
         "errors": 0,
         "skipped": 0,
-        "junit": {
-          "path": "w09-presence-final.xml",
-          "bytes": 4299,
-          "sha256": "316c93be7ed3b4110adf2cdbd3952387562313988d0ecf81c6d64615bfc90ad6"
+        "pytest_seconds": 14.74,
+        "elapsed_seconds": 14.927931299000193,
+        "source_sha256": {
+          "src/source_integrity_toolkit/analysis/correction_routes.py": "4935dd55e0f4b47b49b4e50d02b73dd816387fa93cdb6bc447ee8dde0c619c0f",
+          "tests/unit/test_correction_routes.py": "288a12d6e5b69a0ca2ca8616d87faee222b748aeef59ab7a66f017c654c1526b"
         },
-        "log": {
-          "path": "w09-presence-final.log",
-          "bytes": 100,
-          "sha256": "2d479796d868ad496f66768f26abf3578d52f3619b932c1e06f41ff57438c38c"
-        }
-      },
-      "cohorts": {
-        "tests": 59,
-        "failures": 0,
-        "errors": 0,
-        "skipped": 0,
-        "junit": {
-          "path": "w09-cohorts-final.xml",
-          "bytes": 9245,
-          "sha256": "3a5961f302b915829eb16f6e8ca4b707956261ff838cee7f1b5469f65f43a1c4"
-        },
-        "log": {
-          "path": "w09-cohorts-final.log",
-          "bytes": 100,
-          "sha256": "327cccc6ed407c7808d099fc00fa805eb1923e94c13f2f02572db18ecd5db02a"
-        }
+        "receipts": [
+          {
+            "path": "w10-direct.log",
+            "bytes": 100,
+            "sha256": "873683511ea15007aaa0ec6e138f0225eea7ffdfe05eb01a0523d9268ef264ba"
+          },
+          {
+            "path": "w10-direct.xml",
+            "bytes": 6429,
+            "sha256": "f6bbaf97681ff58a6239cf808184455790a687ed42fb95bfd1dccf5dac90311f"
+          },
+          {
+            "path": "w10-direct-before.json",
+            "bytes": 245,
+            "sha256": "38c81ec2136fc59eebf449f6230da3ef8f2c306e3ac6ab60ec8590a4e2f564f3"
+          },
+          {
+            "path": "w10-direct-after.json",
+            "bytes": 245,
+            "sha256": "38c81ec2136fc59eebf449f6230da3ef8f2c306e3ac6ab60ec8590a4e2f564f3"
+          },
+          {
+            "path": "w10-direct-execution.json",
+            "bytes": 684,
+            "sha256": "2f735d7df0199690691105a34958394238a9c2cce0053ecc6005024d02e25308"
+          }
+        ]
       }
     },
-    "accepted_development_toolchain": {
-      "path": "w08-local-toolchain.json",
-      "bytes": 12868,
-      "sha256": "6c216a0c4161664f201b7aed00e133112a714dd6444fea1c0cea5c5a60e72124"
-    },
-    "prior_failed_matrix": {
-      "status": "failed",
+    "full_matrix": {
+      "status": "pending_code_commit",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
         "windows-2025-py3.11",
         "windows-2025-py3.13"
       ],
-      "code_head": "59a25116bfe5fe8f4f9b407852bb29fa692e542d",
-      "code_tree": "199651e190be5357e74b7280ac0437366d8afb41",
-      "run_id": 35779540524,
-      "run_attempt": 1,
-      "profiles": [
-        {
-          "profile": "ubuntu-24.04-py3.11",
-          "zip": "/workspace/scratch/4e5267fe5990/w09-ci/phase3-ubuntu-24.04-py3.11-35779540524-1.zip",
-          "bytes": 188044,
-          "sha256": "33d60edd5ffa115b5805d23a6163504b03be3c77fa7a644208a5b1a3cab3fd9d",
-          "service_digest_size_crc": "verified",
-          "source_files_matching_code_before_after": 187,
-          "collected": 3549,
-          "status": "passed",
-          "tests_passed": 3549,
-          "subtests_passed": 428
-        },
-        {
-          "profile": "windows-2025-py3.13",
-          "zip": "/workspace/scratch/4e5267fe5990/w09-ci/phase3-windows-2025-py3.13-35779540524-1.zip",
-          "bytes": 142876,
-          "sha256": "a96dbd8120f480e75c509d3b3e4ee968324feacff297aa7aacefb0945e700ea9",
-          "service_digest_size_crc": "verified",
-          "source_files_matching_code_before_after": 187,
-          "collected": 3549,
-          "status": "incomplete_timeout",
-          "failure": {
-            "error_type": "TimeoutExpired",
-            "message": "Command '['D:\\\\a\\\\_temp\\\\sit-p3\\\\tools\\\\Scripts\\\\python.exe', '-m', 'pytest', 'tests/scaffold', 'tests/security', 'tests/contract', 'tests/unit', 'tests/integration', '-q', '--basetemp', 'D:\\\\a\\\\_temp\\\\sit-p3\\\\pytest', '--junitxml', 'D:\\\\a\\\\_temp\\\\sit-p3\\\\evidence\\\\junit.xml']' timed out after 1200 seconds",
-            "stage": "test"
-          },
-          "tests_passed": null,
-          "subtests_passed": null,
-          "missing": [
-            "junit.xml",
-            "pytest.log",
-            "pytest-exit.json"
-          ]
-        },
-        {
-          "profile": "ubuntu-24.04-py3.13",
-          "zip": "/workspace/scratch/4e5267fe5990/w09-ci/phase3-ubuntu-24.04-py3.13-35779540524-1.zip",
-          "bytes": 188147,
-          "sha256": "6e7815aedb9e179e59cf20f9f704df838852ced5c5fb715f7b5352cdca1e1338",
-          "service_digest_size_crc": "verified",
-          "source_files_matching_code_before_after": 187,
-          "collected": 3549,
-          "status": "passed",
-          "tests_passed": 3549,
-          "subtests_passed": 428
-        },
-        {
-          "profile": "windows-2025-py3.11",
-          "zip": "/workspace/scratch/4e5267fe5990/w09-ci/phase3-windows-2025-py3.11-35779540524-1.zip",
-          "bytes": 194513,
-          "sha256": "e1539a0c52bf93c1b1b9964a5c29af9415cca9c16a8e597f6980496af25bfa11",
-          "service_digest_size_crc": "verified",
-          "source_files_matching_code_before_after": 187,
-          "collected": 3549,
-          "status": "passed",
-          "tests_passed": 3549,
-          "subtests_passed": 428
-        }
-      ],
-      "successful_profiles": 3,
-      "incomplete_profiles": 1,
-      "failed_profile": "windows-2025-py3.13",
-      "failure_type": "TimeoutExpired",
-      "pytest_process_limit_seconds": 1200,
-      "raw_gate_audit": {
-        "path": "w09-raw-audit.json",
-        "bytes": 236,
-        "sha256": "0be504ddc2196a241d7f7ded02bc52ba64fed57902997a6b255eb0601d5814b4"
-      },
-      "blocked_evidence_audit": {
-        "path": "w09-blocked-audit.json",
-        "bytes": 4165,
-        "sha256": "6b6b97a80b113c9618bdfe448f08447979d040c13a9b7650488f9e149e2cece3"
-      },
-      "raw_summary": {
-        "path": "w09-ci-download-and-failure-summary.json",
-        "bytes": 6918,
-        "sha256": "1eaac974d54944ed4a76e966dae7f3185666aba15752bfd22fc9fdc425867b42"
-      },
-      "job_log": {
-        "path": "w09-ci/windows-py313-job-106921219306.log",
-        "bytes": 49671,
-        "sha256": "b7d81c0ac08d5e4af156519de3dd36388dfa407715880ad987f297d6d2e8d2c6"
-      }
+      "inherited_test_identities": 3549,
+      "separate_subtests_required": 428,
+      "expected_tests": 3590
     },
-    "repair_controls": {
-      "tests": 331,
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "log": {
-        "path": "w09-r01-controls.log",
-        "bytes": 421,
-        "sha256": "217e10384aefdff0d28468bb2d28acabbedb59b599dd43a29dbcbbf7f4298d7f"
-      },
-      "junit": {
-        "path": "w09-r01-controls.xml",
-        "bytes": 54382,
-        "sha256": "30f02512d6c33adaf579dc0e62d677f3a74fc2bbd4314e82f306e8b7535961b9"
-      },
-      "execution": {
-        "path": "w09-r01-controls-execution.json",
-        "bytes": 798,
-        "sha256": "e801cd38357f2ef3e331ebe50bd08b520411aeacf324862428369746f6f52914"
-      },
-      "source_sha256": {
-        "tests/scaffold/test_ci_contract.py": "b29db49ee91297b5740ba0f6b909bae95d800a14929d86ca6d4fe10ee985765d",
-        "tests/contract/test_phase3_transition.py": "30f0e60d87072b5fc3a278269a8febbe6208339837e60ed68fecf6bd1bf34207",
-        ".github/workflows/phase1-ci.yml": "b3dbc7a2077edc3bd0fc3ab9e2a919a027c2be1b6c4a9520ca49af4aa29389af"
-      },
-      "source_identity_before_after": true,
-      "recovery_status": {
-        "status": "original_local_junit_unavailable; same_331_identities_verified_in_four_repaired_hosted_profiles",
-        "unavailable_original_junit": {
-          "path": "w09-r01-controls.xml",
-          "bytes": 54382,
-          "sha256": "30f02512d6c33adaf579dc0e62d677f3a74fc2bbd4314e82f306e8b7535961b9"
-        },
-        "recovered_original_files": {
-          "w09-r01-controls.log": {
-            "path": "w09-r01-controls.log",
-            "bytes": 421,
-            "sha256": "217e10384aefdff0d28468bb2d28acabbedb59b599dd43a29dbcbbf7f4298d7f"
-          },
-          "w09-r01-controls-before.json": {
-            "path": "w09-r01-controls-before.json",
-            "bytes": 330,
-            "sha256": "0b67f586d79fb278bd89119d63b01785963d12d0d127a8e6be14681e48f81ca8"
-          },
-          "w09-r01-controls-after.json": {
-            "path": "w09-r01-controls-after.json",
-            "bytes": 330,
-            "sha256": "0b67f586d79fb278bd89119d63b01785963d12d0d127a8e6be14681e48f81ca8"
-          },
-          "w09-r01-controls-execution.json": {
-            "path": "w09-r01-controls-execution.json",
-            "bytes": 798,
-            "sha256": "e801cd38357f2ef3e331ebe50bd08b520411aeacf324862428369746f6f52914"
-          }
-        },
-        "provenance": {
-          "path": "w09-r01-controls-recovery-provenance.json",
-          "bytes": 1751,
-          "sha256": "55ced0b8b06d1a8e634ce868bb7e09a656ebdb8ad219944f4bfb1f44c30635c6"
-        },
-        "hosted_control_identity_coverage": {
-          "head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
-          "run_id": "35785828269",
-          "run_attempt": 1,
-          "profiles": [
-            "ubuntu-24.04-py3.11",
-            "ubuntu-24.04-py3.13",
-            "windows-2025-py3.11",
-            "windows-2025-py3.13"
-          ],
-          "transition_count": 317,
-          "ci_contract_class_count": 14,
-          "total": 331,
-          "selection": [
-            "tests/contract/test_phase3_transition.py::*",
-            "tests/scaffold/test_ci_contract.py::CiContractTests::*"
-          ],
-          "sorted_node_ids_newline_joined_sha256": "f9ee50b83e00b5b873030305bdd43b060b32981c3b6f9346f16a4af43cb412ad",
-          "all_collected_and_passed_in_each": true,
-          "raw_audit": {
-            "path": "w09-r01-raw-audit.json",
-            "bytes": 3973,
-            "sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0"
-          }
-        },
-        "qualification": "The original local JUnit bytes were not recovered; the historical packet is preserved without claiming availability. Its log and execution/pre/post receipts match their original hashes. The four newly verified hosted collection/JUnit pairs independently contain and pass the same 331 control identities."
-      }
-    },
-    "repair_collection": {
-      "count": 3549,
-      "retained_original_W09": 3549,
-      "added": 0,
+    "collection": {
+      "count": 3590,
+      "inherited_retained": 3549,
+      "added": 41,
       "removed": 0,
       "new_governance_identities": 0
     },
-    "core_map": {
-      "path": "w09-r01-core-map.json",
-      "bytes": 47907,
-      "sha256": "b2bc0b5049f7539a4d964d024baaff906b1b19c2be6744a89665d6bc687994b5"
+    "existing_scope_controls": {
+      "passed": 3,
+      "receipts": [
+        {
+          "path": "w10-policy-controls.log",
+          "bytes": 98,
+          "sha256": "d0d58fe0ce72b4ad7a5753e7ea987720fa7d34534a57f72fbee21d55bec1e265"
+        },
+        {
+          "path": "w10-policy-controls.xml",
+          "bytes": 699,
+          "sha256": "66528dd52711cf6800a61ef437275705c1bb983b373ac33eed78b7ec2d32ec8b"
+        }
+      ]
     }
   },
   "owner_local_core_obligations_verified": 172,
   "phase3_complete": false,
   "limitations": [
-    "Public audit API/CLI and reporting remain inactive.",
-    "Complete private orchestration remains assigned to W13.",
-    "All 228 integration and 228 release obligations remain pending.",
-    "No scalar Presence, causal influence estimate or unrestricted cross-population transition is authorized.",
-    "The incomplete Windows/Python3.13 run has no complete JUnit or pytest log; passed tests/subtests cannot be counted for it.",
-    "The original run 35779540524 remains a failed three-pass/one-timeout matrix; it supplied no verified W09 core rows. The new same-head four-profile evidence separately qualifies this implementation.",
-    "Package archive bytes are not supplied; no independent whole-archive rebuild or native-host certification is claimed.",
-    "Public API/CLI audit, reporting, full private orchestration, integration and release remain pending.",
-    "The original 8,485-byte approval receipt was lost in the local workspace reset. Its SHA256 cfdba2bf6f23e71b04d87cb81013eba04cdfafe92abb65470f58d71daa21bd65 and authority entry remain in committed code; the explicitly reconstructed recovery receipt is a different 4,499-byte file with SHA256 01cb79c19e3177c815da97144b6e73c472254320dc2f0e5a1e58e1c63d1d1635, not a byte recovery or new approval.",
-    "The original local 331-control JUnit XML was lost during the workspace reset and is not supplied or counted as recovered evidence. The preserved committed receipt remains historical; the repaired hosted four-profile gate is independently verified from its original artifacts.",
-    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
-  ],
-  "resolved_approval_boundary": {
-    "proposal": "P3-W09-R01",
-    "approval": {
-      "path": "w09-r01-approval.json",
-      "bytes": 8485,
-      "sha256": "cfdba2bf6f23e71b04d87cb81013eba04cdfafe92abb65470f58d71daa21bd65"
-    },
-    "previous_request": {
-      "proposal": "P3-W09-R01",
-      "approval": "pending",
-      "proposed_changes": {
-        "pytest_process_limit_seconds": {
-          "from": 1200,
-          "to": 1800
-        },
-        "workflow_job_timeout_minutes": {
-          "from": 25,
-          "to": 40
-        }
-      },
-      "proposed_additional_paths": [
-        "tests/scaffold/test_ci_contract.py",
-        "tests/contract/test_phase3_transition.py",
-        ".github/workflows/phase1-ci.yml"
-      ],
-      "authority_basis": "PHASE_3_PLAN.md section 4: a later out-of-scope correction requires a named narrow amendment and actual approval. This proposal grants no edit permission.",
-      "preservation": "All 3549 identities, 428 separately reported subtests, four profiles, semantic assertions, product resource budgets, pins and no-skip rules stay required."
-    },
-    "status": "authorized_repair_verified_pending_owner_acceptance",
-    "verification": {
-      "code_head": "15dd3edbd1f5e75a6fefd21554b2aaa92586d55d",
-      "tree": "92bc9683dba755931ee6904c12eb8ed295d7c9a9",
-      "run_id": "35785828269",
-      "run_attempt": 1,
-      "profiles": [
-        "ubuntu-24.04-py3.11",
-        "ubuntu-24.04-py3.13",
-        "windows-2025-py3.11",
-        "windows-2025-py3.13"
-      ],
-      "raw_audit_sha256": "77d44d3a5c0b6182a71c852f56a877f3532e528b8e509d4621f2d6440c9773c0",
-      "all_mapped_nodes_collected_and_passed_in_each": true
-    },
-    "recovery_receipt": {
-      "path": "w09-r01-approval-recovered.json",
-      "bytes": 4499,
-      "sha256": "01cb79c19e3177c815da97144b6e73c472254320dc2f0e5a1e58e1c63d1d1635"
-    }
-  }
+    "W10 core obligations remain pending until actual direct tests, complete same-head four-profile evidence and node mapping pass.",
+    "Declared routes and imported authority records do not establish use, correction effect, causal efficacy, institutional verification or sustained capacity.",
+    "All integration/release obligations remain pending. Public API/CLI auditing and reporting remain inactive.",
+    "W09 recovery disclosures remain part of the accepted predecessor evidence and are not rewritten as complete original local evidence."
+  ]
 }

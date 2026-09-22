@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W09",
-  "status": "W09_R01_owner_local_core_verified_pending_owner_acceptance",
+  "unit": "P3-W10",
+  "status": "W10_in_progress_no_new_core_promotion",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 136 inherited verified core rows remain unchanged; exactly 36 W09 owner-local cores now have all four hosted cumulative profiles verified. The remaining 56 cores and all 228 integration/release obligations remain pending.",
+  "meaning": "172 inherited verified cores remain unchanged; 12 scheduled W10 correction-route cores remain pending until completed evidence qualifies them. All 228 integration and release obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -9189,5 +9189,20 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "affected_controls_and_exact_three_records_184_unchanged_blobs_on_PR28"
+  },
+  "w10_start": {
+    "accepted_predecessor": "06854e067ba849a3699412d54d778fc2abbe1caa",
+    "status": "implementation_in_progress",
+    "fields": [
+      "SIT-VF038",
+      "SIT-VF039",
+      "SIT-VF040"
+    ],
+    "scheduled_core_obligations": 12,
+    "newly_verified_core_obligations": 0,
+    "baseline_core_status_counts": {
+      "owner_local_core_verified": 172,
+      "pending": 56
+    }
   }
 }
