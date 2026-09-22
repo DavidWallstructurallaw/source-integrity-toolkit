@@ -256,6 +256,8 @@ def test_each_unit_has_exact_four_common_records_and_approved_paths(step):
         effective |= W05_R01_PATHS
     if step == 6:
         effective |= W06_R01_PATHS
+    if step == 8:
+        effective |= W08_R01_PATHS
     assert ci.phase3_effective_paths(paths, unit) == effective
     ci.phase3_check_changed_paths(paths, unit, effective)
     cumulative = COMMON | frozenset().union(*(ADDITIONAL[number] for number in range(1, step + 1)))
@@ -265,6 +267,8 @@ def test_each_unit_has_exact_four_common_records_and_approved_paths(step):
         cumulative |= W05_R01_PATHS
     if step >= 6:
         cumulative |= W06_R01_PATHS
+    if step >= 8:
+        cumulative |= W08_R01_PATHS
     assert ci.phase3_effective_paths(paths, unit, cumulative=True) == cumulative
     assert len(COMMON) == 4
     for future_path in (COMMON | frozenset().union(*ADDITIONAL.values())) - effective:
@@ -786,11 +790,12 @@ def test_w04_r01_name_is_cumulative_but_immediate_permissions_are_not(step):
     paths = guard.phase3_plan_paths(ROOT)
     assert ci.phase3_scope_exceptions(unit) == ((["P3-W04-R01"] if step >= 4 else []) +
                                               (["P3-W05-R01"] if step >= 5 else []) +
-                                              (["P3-W06-R01"] if step >= 6 else []))
+                                              (["P3-W06-R01"] if step >= 6 else []) +
+                                              (["P3-W08-R01"] if step >= 8 else []))
     for path in W04_R01_PATHS:
-        # Overlapping paths need their own W05/W06 approval; the W04 wrapper has neither.
+        # Overlapping paths require their own approved immediate-unit scope.
         if (step in (1, 4) or (step == 5 and path in W05_R01_PATHS) or
-                (step == 6 and path in W06_R01_PATHS)):
+                (step == 6 and path in W06_R01_PATHS) or (step == 8 and path in W08_R01_PATHS)):
             ci.phase3_check_changed_paths(paths, unit, {path})
         else:
             with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
@@ -1129,12 +1134,15 @@ def test_w05_r01_cumulative_name_never_grants_later_immediate_rights(step):
         expected |= W05_R01_PATHS
     if step == 6:
         expected |= W06_R01_PATHS
+    if step == 8:
+        expected |= W08_R01_PATHS
     assert ci.phase3_effective_paths(paths, unit) == expected
     assert ci.phase3_scope_exceptions(unit) == ((["P3-W04-R01"] if step >= 4 else []) +
                                               (["P3-W05-R01"] if step >= 5 else []) +
-                                              (["P3-W06-R01"] if step >= 6 else []))
+                                              (["P3-W06-R01"] if step >= 6 else []) +
+                                              (["P3-W08-R01"] if step >= 8 else []))
     ci.phase3_check_changed_paths(paths, unit, expected)
-    for path in (W05_R01_PATHS | W04_R01_PATHS | W06_R01_PATHS) - expected:
+    for path in (W05_R01_PATHS | W04_R01_PATHS | W06_R01_PATHS | W08_R01_PATHS) - expected:
         with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
             ci.phase3_check_changed_paths(paths, unit, expected | {path})
     # These paths have been cumulative since W01. That never enlarges a later
@@ -1607,6 +1615,10 @@ def _assert_w06_r01_driver_source(raw):
     old_timeout = "env=env, timeout=900, check=False"
     assert expected.count(old_timeout) == 1
     expected = expected.replace(old_timeout, "env=env, timeout=1200, check=False", 1)
+    # The approved W08 repair extends this existing current-source oracle.
+    for previous, replacement in _W08_R01_DRIVER_DELTAS:
+        assert expected.count(previous) == 1, "invalid_fixed_w08_source_delta"
+        expected = expected.replace(previous, replacement, 1)
     same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))
     assert same_ast, "unauthorized_current_w06_driver_delta"
 
@@ -1622,13 +1634,20 @@ def test_w06_r01_exact_authority_and_current_source_keep_every_other_unit_scope(
     assert paths["P3-W06"] == COMMON | ADDITIONAL[6] and len(paths["P3-W06"]) == 6
     assert not W06_R01_PATHS & paths["P3-W06"]
     assert len(ci.phase3_effective_paths(paths, "P3-W06")) == 10
+    assert ci.P3_W08_R01_PATHS == W08_R01_PATHS
+    assert ci.P3_W08_R01_BASE == W08_R01_BASE
+    assert ci.P3_W08_R01_BASE_TREE == W08_R01_BASE_TREE
+    assert ci.P3_W08_R01_PREDECESSOR == W08_R01_PREDECESSOR
+    assert len(paths["P3-W08"]) == 8
+    assert len(ci.phase3_effective_paths(paths, "P3-W08")) == 11
     for step in range(1, 16):
         unit = f"P3-W{step:02}"
         expected = COMMON | ADDITIONAL[step]
-        extras = {4: W04_R01_PATHS, 5: W05_R01_PATHS, 6: W06_R01_PATHS}.get(step, frozenset())
+        extras = {4: W04_R01_PATHS, 5: W05_R01_PATHS, 6: W06_R01_PATHS,
+                  8: W08_R01_PATHS}.get(step, frozenset())
         assert ci.phase3_effective_paths(paths, unit) == expected | extras
         assert paths[unit] == expected
-        for path in W06_R01_PATHS - expected - extras:
+        for path in (W06_R01_PATHS | W08_R01_PATHS) - expected - extras:
             with pytest.raises(ValueError, match="^work_unit_allowlist_exceeded$"):
                 ci.phase3_check_changed_paths(paths, unit, {path})
     assert_live_migration_bytes({p: (ROOT / p).read_bytes() for p in LIVE_MIGRATION_SHA256})
@@ -1963,3 +1982,24 @@ def test_w06_r01_real_dag_preserves_boundary_and_rejects_restored_or_later_autho
             }.get(case, "intermediate_work_unit_allowlist_exceeded")
             with pytest.raises(ValueError, match="^" + reason + "$"):
                 ci.phase3_history(entry, base, current, paths, unit)
+
+
+# Independently transcribed approved P3-W08-R01; historical scopes stay exact.
+W08_R01_PATHS = frozenset((
+    "src/source_integrity_toolkit/analysis/process_comparison.py",
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_phase3_transition.py",
+))
+W08_R01_BASE = "250dd83b3a7c7fc420263da48583473faf4ebc13"
+W08_R01_BASE_TREE = "34fd6ae4e7179d748dcfd03a599d7a12ccb5bf57"
+W08_R01_PREDECESSOR = "5b685e80585fe19adb0d9b0324b698cf5bb54e42"
+
+
+_W08_R01_DRIVER_DELTAS = (
+    ('            allowed.update(P3_W06_R01_PATHS)\n', '            allowed.update(P3_W06_R01_PATHS)\n        if step == 8:\n            allowed.update(P3_W08_R01_PATHS)\n'),
+    ('            (["P3-W06-R01"] if current >= 6 else []))', '            (["P3-W06-R01"] if current >= 6 else []) + (["P3-W08-R01"] if current >= 8 else []))'),
+    ('        commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()\n', '        if owner == "P3-W08":\n            require(predecessor == P3_W08_R01_PREDECESSOR, "w08_repair_predecessor_mismatch")\n            require(git_text("rev-parse", P3_W08_R01_BASE + "^{tree}") == P3_W08_R01_BASE_TREE,\n                    "w08_repair_boundary_tree_mismatch")\n            # The approved boundary follows two original-scope W08 commits.\n            require_ancestor(predecessor, P3_W08_R01_BASE)\n            require_ancestor(P3_W08_R01_BASE, successor)\n            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W08_R01_BASE).splitlines())\n        commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()\n'),
+    ('                require_ancestor(P3_W06_R01_BASE, commit)\n', '                require_ancestor(P3_W06_R01_BASE, commit)\n            if owner == "P3-W08" and commit not in pre_amendment:\n                require_ancestor(P3_W08_R01_BASE, commit)\n'),
+    ('                                                           ["P3-W06-R01"] if owner == "P3-W06"\n                                                           and commit not in pre_amendment else []),', '                                                           ["P3-W06-R01"] if owner == "P3-W06"\n                                                           and commit not in pre_amendment else\n                                                           ["P3-W08-R01"] if owner == "P3-W08"\n                                                           and commit not in pre_amendment else []),'),
+    ('if __name__ == "__main__":\n', '# Owner-approved P3-W08-R01: the original W08 segment keeps its eight paths.\nP3_W08_R01_PATHS = frozenset((\n    "src/source_integrity_toolkit/analysis/process_comparison.py",\n    "tests/scaffold/test_ci_contract.py",\n    "tests/contract/test_phase3_transition.py",\n))\nP3_W08_R01_BASE = "250dd83b3a7c7fc420263da48583473faf4ebc13"\nP3_W08_R01_BASE_TREE = "34fd6ae4e7179d748dcfd03a599d7a12ccb5bf57"\nP3_W08_R01_PREDECESSOR = "5b685e80585fe19adb0d9b0324b698cf5bb54e42"\n\n\nif __name__ == "__main__":\n'),
+)

@@ -3,7 +3,26 @@
   "unit": "P3-W08",
   "authority": {
     "owner_instruction": "启动 P3-W08",
-    "interpretation": "Sequential advance after successful review and acceptance of W07 PR26.",
+    "approved_amendment": {
+      "amendment": "P3-W08-R01",
+      "owner_message": "批准 P3-W08-R01",
+      "source": "Explicit user message in this conversation after the linked review package was delivered.",
+      "approval_text_sha256": "195969b8b24f012252fb19890c1cfcc852602679838fb5c03ad7e3928db8ee74",
+      "proposal_file": "P3-W08-R01-REQUEST.md",
+      "proposal_sha256": "0ea3353b8c58b36a03a99a900f47946dcd2a34de56272ef0bb24b23fd70109a9",
+      "proposal_bundle_sha256": "dd9be62aa0a183c935395569662c883ee092a0c92d183a091ec01a86c0302471",
+      "fixed_preapproval_boundary": "250dd83b3a7c7fc420263da48583473faf4ebc13",
+      "boundary_tree": "34fd6ae4e7179d748dcfd03a599d7a12ccb5bf57",
+      "accepted_predecessor": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
+      "approved_additional_paths": [
+        "src/source_integrity_toolkit/analysis/process_comparison.py",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "effective_path_count": 11,
+      "scope_limits": "Original eight paths plus exactly these three. Preserve old immediate scopes and the fixed preapproval boundary; no plan/workflow/guard/ledger/entry-manifest or old M003-test-file changes. Current-source oracle adapted in place without a new historical chain.",
+      "semantic_acceptance": "Exact native role selectors; native record handling without Assertion lifecycle reads; actual source-addressed native temporal unknowns in PC10; same paid helper and job ledger; original snapshot and Assertion semantics."
+    },
     "approved_plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
     "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
     "actual_unit_entry": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
@@ -11,8 +30,7 @@
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "w07_acceptance": "accepted_and_merged",
-    "w08_acceptance": "blocked_pending_named_scope_amendment_and_full_verification",
+    "w08_acceptance": "pending_full_verification_and_owner_review",
     "next_unit": "P3-W09_not_authorized_or_started"
   },
   "accepted_predecessor": {
@@ -49,23 +67,30 @@
       "phase3/obligation_coverage.json",
       "src/source_integrity_toolkit/analysis/evaluator_lineage.py",
       "src/source_integrity_toolkit/analysis/human_review.py",
+      "src/source_integrity_toolkit/analysis/process_comparison.py",
+      "tests/contract/test_phase3_transition.py",
+      "tests/scaffold/test_ci_contract.py",
       "tests/unit/test_evaluator_lineage.py",
       "tests/unit/test_human_review.py"
     ],
-    "immediate_scope_exceptions": [],
+    "immediate_scope_exceptions": [
+      "P3-W08-R01"
+    ],
     "historical_scope_exceptions": [
       "P3-W04-R01",
       "P3-W05-R01",
-      "P3-W06-R01"
+      "P3-W06-R01",
+      "P3-W08-R01"
     ],
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "original_eight_path_checkpoint_complete_with_known_dependency_failure",
+    "status": "R01_repaired_components_verified_full_gates_pending",
     "owners": [
       "EVALUATOR_LINEAGE",
       "HUMAN_REVIEW_RECORDS"
     ],
+    "repaired_original_helper": "analysis/process_comparison.py",
     "families": [
       "SIT-M008",
       "SIT-M013"
@@ -79,82 +104,73 @@
       "SIT-VF050"
     ],
     "work_budget_preserved": true,
+    "repair": "Exact native method/rubric/reference-answer selectors; native records retained without Assertion-only lifecycle reads; actual native graph temporal unknowns and their canonical sources retained in PC10. Assertion scope/lifecycle/time and paid original helper ownership preserved.",
+    "selected_review_scope": "Human contribution retains selected reviews while native process comparison retains the complete actual comparison set.",
     "source_sha256": {
       "src/source_integrity_toolkit/analysis/evaluator_lineage.py": "71e8a96caf3d25e9b6f130c99243ab5df16ab5a3407e8b39ac08f583a93c0cdd",
       "src/source_integrity_toolkit/analysis/human_review.py": "bcff22f09add6285a2bcd744ab1e77d1d878f2a92eb1effb738564fe3716a3aa",
+      "src/source_integrity_toolkit/analysis/process_comparison.py": "9d0777bf4fdd422f4392657c3407970c47093de4992cf3837c9a3fe6e3d7e9d0",
+      "tests/contract/test_phase3_transition.py": "fb67b75edab831c9fc96162eada7c760c07c8f9d0eadf1e30b06cb4934198285",
+      "tests/scaffold/test_ci_contract.py": "19075095a5303e2020be316c0996dd6d6ec3d10cef41a59a0a757f19c5f0473b",
       "tests/unit/test_evaluator_lineage.py": "f90ba1b288bf7203eb11a2660d19ef0fb5358a82dbe8ff9e864d9b5c87a0a947",
-      "tests/unit/test_human_review.py": "ddf5a9c5fcd55a1760411ffe163653c0ad8570af8c9dca2c51bcced0a59cf39f"
+      "tests/unit/test_human_review.py": "07a8b60cbba11e5218a670ca3345b4b5f9a78fb091574872cd6cef77757f4ddd"
+    }
+  },
+  "preapproval_history": {
+    "checkpoint": "250dd83b3a7c7fc420263da48583473faf4ebc13",
+    "initial_checkpoint": "8a0f59692661165de1f1fd5dc374076948313fe6",
+    "status": "61_passed_3_failed_components_no_matrix",
+    "evidence_record": {
+      "commit": "250dd83b3a7c7fc420263da48583473faf4ebc13",
+      "path": "phase3/implementation_evidence.json"
     },
-    "selected_review_scope_fix": "Retain the complete native comparison set, while excluding unselected Evaluation records from human-contribution leaf disclosures. Existing regression unchanged."
+    "package": {
+      "name": "Source-Integrity-Toolkit-P3-W08-R01-Review-Evidence.zip",
+      "sha256": "dd9be62aa0a183c935395569662c883ee092a0c92d183a091ec01a86c0302471"
+    },
+    "qualification": "Original failed component runs and failed/incomplete in-memory proposals remain historical evidence. No proposal-only pass is counted as current repaired-code verification."
   },
   "validation": {
-    "status": "blocked_known_three_semantic_failures",
-    "component_runtime": "CPython 3.12.14; exact accepted W07 development wheels; offline installed",
-    "evaluator": {
-      "tests": 40,
-      "passed": 40,
+    "status": "components_passed_full_verification_pending",
+    "component_runtime": "CPython 3.12.14 with accepted pinned development wheels",
+    "actual_repaired_comparison_and_human": {
+      "tests": 128,
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 35.95,
-      "log": {
-        "path": "w08-evaluator-final.log",
-        "bytes": 100,
-        "sha256": "e4b58ebef88f76edafdb8cb7e1dd15475e5d2d39e988d80e2bb85405be08b554"
-      },
+      "junit": {
+        "path": "w08-r01-human-comparison.xml",
+        "bytes": 20839,
+        "sha256": "67e95ddfeb27ea35eac72e17a9f4250ab49dfb2a78030b138fac0cd20ec04f6d"
+      }
+    },
+    "existing_scope_controls": {
+      "tests": 337,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit": {
+        "path": "w08-r01-controls.xml",
+        "bytes": 55261,
+        "sha256": "38368b423211ec3e29eaf0256d1ca1a1e291182760bbdf9ef528ae26477932a0"
+      }
+    },
+    "unchanged_evaluator_component": {
+      "tests": 40,
       "junit": {
         "path": "w08-evaluator-final.xml",
         "bytes": 6144,
         "sha256": "405164eeb06d68b2debb4f3c77ed10651e983d153d4b38fb3307e7e29331fd59"
-      }
-    },
-    "human": {
-      "tests": 24,
-      "passed": 21,
-      "failures": 3,
-      "errors": 0,
-      "skipped": 0,
-      "seconds": 64.585,
-      "log": {
-        "path": "w08-human-scope-fixed-current.log",
-        "bytes": 7371,
-        "sha256": "e683f830522588f3688c8a444e6bfeda9e3d416d39f70412a7a76a286d63572b"
       },
-      "junit": {
-        "path": "w08-human-scope-fixed-current.xml",
-        "bytes": 10921,
-        "sha256": "c05f26965fc9d5ddcef9dcb03006deaabb53f0906f738a2eb15fd24d1a5e69d0"
-      }
+      "source_sha256": "71e8a96caf3d25e9b6f130c99243ab5df16ab5a3407e8b39ac08f583a93c0cdd"
     },
-    "collection": {
-      "tests": 3461,
-      "new_tests": 64,
-      "predecessor_tests": 3397,
-      "log": {
-        "path": "w08-current-collection.log",
-        "bytes": 417860,
-        "sha256": "d1ef8bee814ac11c6bb2fa79c8711fa543dada5df37876778545e79c2fff55cc"
-      }
-    },
-    "direct_core_maps": [
-      {
-        "path": "w08-evaluator-core-map.json",
-        "bytes": 8115,
-        "sha256": "c61850411a3668a88728b9d4793e735e6257dfdd1e34792255d35b3f77b3a882"
-      },
-      {
-        "path": "w08-human-core-map.json",
-        "bytes": 14263,
-        "sha256": "5832e22c4173810f61ad17b297abe1a47f6c9d2d0c331b6f62cf0e60d2280dde"
-      }
-    ],
     "toolchain": {
       "path": "w08-local-toolchain.json",
       "bytes": 12868,
       "sha256": "6c216a0c4161664f201b7aed00e133112a714dd6444fea1c0cea5c5a60e72124"
     },
     "full_matrix": {
-      "status": "not_run_on_known_failing_checkpoint",
+      "status": "pending",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
@@ -162,12 +178,13 @@
         "windows-2025-py3.13"
       ]
     },
-    "qualification": "Component evidence only. No W08 core status is promoted. The full cumulative matrix and owner review remain required.",
-    "independent_scope_and_collection_audit": {
-      "path": "w08-readonly-pre-amendment-audit.json",
-      "bytes": 4714,
-      "sha256": "107be6b6625456ccbd8ad50f4b79c1c3515736fc9b1d52f72d882578e65d9879",
-      "qualified_checkpoint": "8a0f59692661165de1f1fd5dc374076948313fe6 before the authorized five-line human scope fix. Final scope and source binding are separately checked after this successor."
+    "local_cumulative": "not_planned; actual local targeted regressions plus four required hosted cumulative profiles",
+    "qualification": "No W08 core promotion until actual full gates. A later record-only successor receives affected control and byte-identity checks.",
+    "collection": {
+      "tests": 3464,
+      "accepted_w07_retained": 3397,
+      "new_direct_tests": 67,
+      "governance_test_identities_added": 0
     }
   },
   "owner_local_core_obligations_verified": 112,
@@ -176,102 +193,6 @@
     "Public audit API/CLI and reporting remain inactive.",
     "Complete private orchestration remains assigned to W13.",
     "All 228 integration and 228 release obligations remain pending.",
-    "No W08 acceptance, W09 authorization or release is inferred."
-  ],
-  "blocking_dependency": {
-    "amendment": "P3-W08-R01",
-    "approval": "pending",
-    "authority_required_by": "PHASE_3_PLAN.md section 5 exact path scope and named amendment rule; section 13 original comparison helper requirement",
-    "original_helper": "src/source_integrity_toolkit/analysis/process_comparison.py",
-    "original_helper_sha256": "7371769ddc44f29b7beea2d6d8faa1a28dec4c424a7d89c46c2f927a828b2979",
-    "original_helper_unchanged": true,
-    "actual_failure": "Native method_input, rubric and reference_answer role selectors end the role slot with ], but M003 matches ;. Shared dependencies disappear and two represented corrective processes incorrectly qualify.",
-    "reproduction": {
-      "path": "w08-m003-role-selector-reproduction.json",
-      "bytes": 2316,
-      "sha256": "3c140bddf4016bc9f6c19ebe67fad71faee8afb08e1ce011ef001347f10c8c6d"
-    },
-    "refined_proposal": "Match exact canonical selectors; retain non-Assertion native records before the unchanged Assertion scope/lifecycle branch. Native records have no Assertion lifecycle. Preserve charged basis/conflict checks and native graph scope/time eligibility.",
-    "selector_only_proposal_probe": {
-      "status": "failed_in_memory_only",
-      "reason": "Retaining actual native Evaluation edges exposed the inherited Assertion-only lifecycle lookup. This incomplete proposal is not the requested final fix.",
-      "evidence": {
-        "path": "w08-proposed-fix-probe.json",
-        "bytes": 407,
-        "sha256": "82d4bcdf9c6e0c51b27ce9a7ec736bf4016d179193d66368c0a68b126782b529"
-      }
-    },
-    "proposed_additional_paths": [
-      "src/source_integrity_toolkit/analysis/process_comparison.py",
-      "tests/scaffold/test_ci_contract.py",
-      "tests/contract/test_phase3_transition.py"
-    ],
-    "proposed_effective_path_count": 11,
-    "proposed_control_changes": "Extend existing immediate/cumulative scope checks and current driver oracle with fixed W08 preapproval boundary; adapt existing tests in place. Preserve historical unit scopes and test identities; no new historical test chain or transition ledger edit.",
-    "current_scope_unchanged": true,
-    "refined_proposal_probe": {
-      "status": "three_regressions_pass_in_memory_only",
-      "tests": 3,
-      "seconds": 18.46,
-      "patch": {
-        "path": "w08-proposed-process-native-roles.patch",
-        "bytes": 1449,
-        "sha256": "211bcefe5efce0aa02c7baa4a630bfa48ad56ec2bc0b7d6094687230b4a44d02"
-      },
-      "evidence": {
-        "path": "w08-refined-native-fix-probe.json",
-        "bytes": 388,
-        "sha256": "82e856e8a1cbffc7fd619a8c102d12108a2eb6f6b1e3acd2c3c21e282377627e"
-      },
-      "qualification": "Scratch proposal diagnostic; patch has not been applied to repository and is not evidence of a passing current product."
-    },
-    "additional_native_time_requirement": {
-      "review": {
-        "path": "w08-native-time-review.json",
-        "bytes": 1511,
-        "sha256": "07a32303c25062b929392712df6f24cc08bccffbbcb17e196a19e03b63e43c9c"
-      },
-      "candidate_patch_covers_it": false,
-      "required": "Propagate actual native-edge temporal limitations with source refs to M003 PC10. time_specific unknown cannot become met; qualification remains unavailable. Snapshot and Assertion behavior retained."
-    },
-    "extended_proposal_diagnostics": [
-      {
-        "status": "124_passed_1_failed_on_initial_owner",
-        "tests": 125,
-        "old_m003_tests_passed": 101,
-        "failure": "Unselected comparison Evaluation leaked into selected human contribution. Fixed inside authorized human_review.py; this original mixed run remains failed.",
-        "log": {
-          "path": "w08-refined-native-regression-probe.log",
-          "bytes": 1277,
-          "sha256": "470687f06a02a0d7522fbb62f0da2405b4cfd0189edb529cc82a483813fde645"
-        },
-        "junit": {
-          "path": "w08-refined-native-regression-probe.xml",
-          "bytes": 21279,
-          "sha256": "05527b66bc1cada39b6d12d12890b3969dfad50beb8ad36dc71455cf477a596a"
-        }
-      },
-      {
-        "status": "24_passed_on_scope_fixed_human_owner",
-        "tests": 24,
-        "seconds": 48.35,
-        "log": {
-          "path": "w08-human-scope-fixed-proposal-probe.log",
-          "bytes": 100,
-          "sha256": "8551106f3259cadf0a1ff10b92b7ff60cd513fb87cdace486c6d8dba675d58b3"
-        },
-        "junit": {
-          "path": "w08-human-scope-fixed-proposal-probe.xml",
-          "bytes": 4206,
-          "sha256": "db954b45d5f12a28d31560550a0e6cb73c5c5c8fe61bd168334be4855976011d"
-        },
-        "binding": {
-          "path": "w08-human-scope-fixed-proposal-probe.json",
-          "bytes": 480,
-          "sha256": "5a3b687f63725fcbc2e6c1b5ec3c15a5b08e57e519e9bbf2229d0ea9e7e8bc97"
-        }
-      }
-    ],
-    "proposal_diagnostic_limit": "All proposal substitutions occur in memory with original helper bytes unchanged. Current product still has three failing tests. Candidate patch has the explicitly outstanding PC10 requirement; no full-matrix or acceptance claim."
-  }
+    "W08 owner acceptance and W09 authorization are not inferred."
+  ]
 }

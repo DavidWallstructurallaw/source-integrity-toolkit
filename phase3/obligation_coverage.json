@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W08",
-  "status": "W08_blocked_pending_P3-W08-R01_112_inherited_core_rows_verified",
+  "status": "W08_R01_approved_verification_pending_112_inherited_core_rows_verified",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 112 accepted predecessor core rows are retained unchanged. All 24 W08 core obligations remain pending: direct component evidence has 61 passing and 3 failing tests; full cumulative verification and owner review are unperformed.",
+  "meaning": "The 112 accepted predecessor core rows are retained unchanged. R01 is approved and repaired direct regressions pass; all 24 W08 core obligations await the full cumulative matrix and owner review.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -6992,11 +6992,11 @@
     "owner_instruction": "启动 P3-W08",
     "accepted_predecessor": "5b685e80585fe19adb0d9b0324b698cf5bb54e42",
     "accepted_pr": 26,
-    "status": "blocked_pending_P3-W08-R01",
+    "status": "P3-W08-R01_repaired_components_pass_full_verification_pending",
     "planned_core_obligations": 24,
     "newly_verified_core_obligations": 0,
-    "component_tests_passed": 61,
-    "component_tests_failed": 3,
-    "full_matrix": "not_run_on_known_failing_checkpoint"
+    "component_tests_passed": 67,
+    "component_tests_failed": 0,
+    "full_matrix": "pending_repaired_code"
   }
 }

@@ -467,3 +467,48 @@ def test_two_actual_assessments_keep_each_own_qualification_when_one_cites_the_o
     mutant[other['id']]['process_qualification_state'] = 'met'
     with pytest.raises(AssertionError):
         assert mutant[other['id']]['process_qualification_state'] == 'unmet'
+
+
+@pytest.mark.parametrize('role,dimension', (('method_input', 'analytical_method'),
+    ('rubric', 'evaluation_rubric'), ('reference_answer', 'evaluation_rubric')))
+def test_native_role_time_unknown_withholds_comparison_and_its_temporal_prerequisite(role, dimension):
+    """Definitions20.5/PC10: native unknown time cannot inherit Assertion time."""
+    source = method_pair(role, dimension)
+    for identifier in REVIEWS:
+        h.cases.by_id(source, identifier)['data']['occurred_at'] = h.cases.unknown()
+    snapshot, _, _, snapshot_job = h.run(source, dependency_dimension=dimension,
+        subject_refs=REVIEWS, graph_view='model_evaluation')
+    qualified = h.leaf(snapshot, 'qualified_process_set_member_count')
+    h.assert_count(qualified, REVIEWS, dimension=dimension)
+    assert snapshot.facts.job_port is snapshot_job
+    assert next(check.state for check in qualified.check_refs if check.check_id == 'PC10') == 'met'
+    timed, prepared, owner, job = h.run(source, dependency_dimension=dimension,
+        subject_refs=REVIEWS, graph_view='model_evaluation', temporal_basis='time_specific',
+        requested_time=h.requested('2026-01-10T13:00:00Z'))
+    assert timed.facts.prepared is prepared and timed.facts.job_port is job
+    assert job.used > 0 and owner.witnesses._retained_witnesses == len(timed.witnesses)
+    qualified = h.leaf(timed, 'qualified_process_set_member_count')
+    assert (qualified.execution_state, qualified.result_state, qualified.value) == ('completed', 'unavailable', None)
+    assert qualified.ref.scope.temporal_basis == 'time_specific'
+    assert 'time_applicability_unknown' in codes(qualified)
+    pc10 = next(check for check in qualified.check_refs if check.check_id == 'PC10')
+    assert pc10.result_ref is qualified.ref and pc10.state == 'unknown'
+    actual_sources = {(ref.collection, ref.identifier, ref.selector) for ref in pc10.input_refs}
+    expected_sources = {('records', identifier, 'data.role_bindings[role=' + role + '].object_ref')
+                        for identifier in REVIEWS}
+    assert expected_sources <= actual_sources
+    observations = [edge for reach in timed.facts.reaches for edge in reach.observations
+                    if edge.source_ref.record_id in REVIEWS and
+                    edge.source_ref.selector == 'data.role_bindings[role=' + role + '].object_ref']
+    assert {edge.source_ref.record_id for edge in observations} == set(REVIEWS)
+    assert all(not edge.eligible and 'time_applicability_unknown' in edge.reason_codes for edge in observations)
+    # The native observation is the missing temporal premise; both supplied
+    # Assertion windows still qualify independently in this requested instant.
+    for identifier in ('H7-IND12', 'H7-COV-COMP'):
+        premises = [premise for premise in timed.facts.premises if premise.source.identifier == identifier]
+        assert premises and all(premise.time.state == 'met' for premise in premises)
+    actual_state = {'pc10': pc10.state, 'qualified_state': qualified.result_state}
+    assert actual_state == {'pc10': 'unknown', 'qualified_state': 'unavailable'}
+    mutant = dict(actual_state, pc10='met')
+    with pytest.raises(AssertionError):
+        assert mutant == {'pc10': 'unknown', 'qualified_state': 'unavailable'}
