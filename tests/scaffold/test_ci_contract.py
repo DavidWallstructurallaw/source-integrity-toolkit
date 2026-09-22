@@ -494,7 +494,7 @@ def run_suite(base, evidence):
         "predecessor_subtest_events": 428,
         "scope": "all present scaffold/security/contract/unit/integration directories"})
     result = run([python, "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",
-                  "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=900, check=False)
+                  "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=1200, check=False)
     save(evidence / "pytest-exit.json", {"exit_code": result.returncode})
     require(result.returncode == 0, "accumulated_suite_failed")
 

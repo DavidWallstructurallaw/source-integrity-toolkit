@@ -1603,6 +1603,10 @@ def _assert_w06_r01_driver_source(raw):
     for previous, replacement in _W06_R01_DRIVER_DELTAS:
         assert expected.count(previous) == 1, "invalid_fixed_w06_source_delta"
         expected = expected.replace(previous, replacement, 1)
+    # P3-W06-R02 adjusts only the complete CI test-process timeout.
+    old_timeout = "env=env, timeout=900, check=False"
+    assert expected.count(old_timeout) == 1
+    expected = expected.replace(old_timeout, "env=env, timeout=1200, check=False", 1)
     same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))
     assert same_ast, "unauthorized_current_w06_driver_delta"
 

@@ -55,6 +55,40 @@
         },
         "meaning": "Records-only original-six-path checkpoint; the actual source/provider gap and all 64 inherited core rows retain their historical meanings."
       }
+    },
+    "verification_amendments": [
+      {
+        "id": "P3-W06-R02",
+        "owner_instruction": "批准 **P3-W06-R02**",
+        "approval": {
+          "path": "/workspace/scratch/5e401153f47f/p3w06-r02-approval.json",
+          "bytes": 1545,
+          "sha256": "ad4c9312d359dea99276a4c0ce91c74c0e73bb54a1b2ca50984a3b871c1311dd"
+        },
+        "proposal": {
+          "path": "/workspace/scratch/5e401153f47f/P3-W06-R02.md",
+          "bytes": 7149,
+          "sha256": "12e4faab7485617807c3376a6d2d6a9c003de1600878199f1685378f23e20f03"
+        },
+        "pre_amendment_head": "be855b8371fb4928d971f2e6c9ba3eeee74796c1",
+        "pre_amendment_tree": "51927c445631c0f437066817032845c26695ba47",
+        "new_paths": [],
+        "source_changes": {
+          "tests/scaffold/test_ci_contract.py": "run_suite only: full pytest timeout=900 to timeout=1200",
+          "tests/contract/test_phase3_transition.py": "_assert_w06_r01_driver_source only: four approved expected-literal lines"
+        },
+        "new_test_ids": 0,
+        "new_history_frameworks": 0
+      }
+    ],
+    "verification_governance": {
+      "status": "effective_owner_instruction",
+      "policy": {
+        "path": "/workspace/scratch/5e401153f47f/SOURCE_INTEGRITY_VERIFICATION_GOVERNANCE.md",
+        "bytes": 7472,
+        "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
+      },
+      "rule": "Preserve semantic and security guarantees; admit new tests only for distinct defects. Administrative records use affected-control verification. Consolidate historical machinery at Phase 3 completion."
     }
   },
   "accepted_predecessor": {
@@ -133,7 +167,7 @@
     "actual_pc04_owner": "GRAPH_VIEW_CONTRACT"
   },
   "implementation": {
-    "status": "implemented_pending_exact_code_head_full_verification",
+    "status": "implemented_pending_R02_exact_code_head_full_verification",
     "families": [
       "SIT-M003"
     ],
@@ -160,7 +194,13 @@
     ],
     "mapping_status": "16 actual source-bound oracle rows await exact code-head collection/JUnit/full local/four-profile/raw/Git verification.",
     "scope": "Private exact-assessment component with actual paid SOURCE_INVENTORY comparison selection, GRAPH_VIEW_CONTRACT eligibility, same-job facts and the single runtime-issued witness ledger.",
-    "deferred": "Whole Result/prerequisite composition and W13 invocation, public reporting, native platform and release duties remain pending."
+    "deferred": "Whole Result/prerequisite composition and W13 invocation, public reporting, native platform and release duties remain pending.",
+    "prior_repair_review_scope": "The retained R01 repair review describes fixed code be855b8371fb4928d971f2e6c9ba3eeee74796c1. R02 applies only the separately approved two exact source patches and ledger appendix.",
+    "verification_amendment_review": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-r02-implementation-review.json",
+      "bytes": 4640,
+      "sha256": "c2c4894ef7a533f4d159adffe2bc056017a99541eaff0a0911146951f85f6667"
+    }
   },
   "validation": {
     "transition_preflight": {
@@ -175,8 +215,8 @@
     },
     "full_local_suite": "pending_on_this_exact_code_commit",
     "required_four_profile_candidate_ci": "pending_on_this_exact_code_commit",
-    "diagnostic_scope": "Four real admitted-input provider probes; isolated transition checks. These do not execute or verify the missing W06 component.",
-    "rules": "Any checkpoint CI outcome belongs only to that records-only commit and cannot close W06 implementation or core obligations.",
+    "diagnostic_scope": "M003 implementation and its 101 component tests are unchanged from be855b8. Original development probes and failed attempts retain their historical scope. R02 changes only the complete-test timeout and its exact current-source expectation.",
+    "rules": "Complete local and supported hosted results must bind this exact executable code. Earlier incomplete Windows runs do not close W06 obligations.",
     "ci_applicability_review": {
       "path": "/workspace/scratch/5e401153f47f/p3w06-ci-applicability-review.json",
       "bytes": 28484,
@@ -199,12 +239,35 @@
     },
     "final_documentation_successor": {
       "status": "not_created",
-      "rule": "A direct exact three-record successor requires its own four-profile raw/Git gate."
+      "rule": "Exact three-record administrative successor: verify affected record/authority controls and equality of all other 178 blobs to verified code; no automatic second full suite or four-profile matrix. Executable changes still require verification appropriate to their impact.",
+      "authority_policy_sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
     "preceding_failed_code_gate": {
       "path": "/workspace/scratch/5e401153f47f/p3w06-failed-code-375fb05/failure-audit.json",
       "bytes": 6014,
       "sha256": "ed74b57f08a1dab1c52a87b7a497361fff3f07dba4a92e55931d4bbb9b6cf3bd"
+    },
+    "prior_failed_code_gates": [
+      {
+        "path": "/workspace/scratch/5e401153f47f/p3w06-failed-code-375fb05/failure-audit.json",
+        "bytes": 6014,
+        "sha256": "ed74b57f08a1dab1c52a87b7a497361fff3f07dba4a92e55931d4bbb9b6cf3bd"
+      },
+      {
+        "path": "/workspace/scratch/5e401153f47f/p3w06-failed-code-be855b8/failure-audit.json",
+        "bytes": 284620,
+        "sha256": "6b6745efc721baeae00739f856c324d127bd2224d92ffd343530133bc3d80394"
+      }
+    ],
+    "r02_proposal_check": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-r02-proposal-review.json",
+      "bytes": 3404,
+      "sha256": "595e19e685d5a3a65eb09fbc2ca6a41d69e2767bab643c9e852ab6aba6956d7a"
+    },
+    "r02_actual_source_control_verification": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-r02-implementation-review.json",
+      "bytes": 4640,
+      "sha256": "c2c4894ef7a533f4d159adffe2bc056017a99541eaff0a0911146951f85f6667"
     }
   },
   "preservation": {
@@ -228,10 +291,10 @@
     "Independent author/test/review work used shared tools and sources; no external certification is claimed.",
     "All actual targeted failures remain in development evidence and do not become passing full-gate claims.",
     "Code-head complete local and four-profile/raw/Git gates remain pending at commit creation.",
-    "The final three-record successor requires its own four-profile/raw/Git gates.",
+    "A 1200-second full-pytest timeout does not guarantee completion. The workflow limit and product budgets are unchanged.",
     "W06 acceptance/merge and W07 are not authorized."
   ],
-  "w06_status": "implemented_pending_exact_code_head_acceptance",
+  "w06_status": "R02_implemented_pending_exact_code_head_acceptance",
   "owner_local_core_obligations_verified": 64,
   "phase3_complete": false
 }

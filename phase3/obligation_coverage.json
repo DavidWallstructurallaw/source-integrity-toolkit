@@ -1,7 +1,7 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W06",
-  "status": "W06_implemented_pending_exact_code_head_core_verification",
+  "status": "W06_R02_implemented_pending_exact_code_head_core_verification",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
@@ -5065,7 +5065,7 @@
   },
   "w06_start": {
     "accepted_predecessor": "3dd10f987816dffd73e56631b1c4593e9c3f1b54",
-    "status": "implementation_complete_pending_exact_code_head_validation",
+    "status": "R02_implemented_pending_exact_code_head_validation",
     "planned_core_obligations": 16,
     "new_core_obligations_verified": 0,
     "missing_dependency_owner": "SOURCE_INVENTORY",
@@ -5081,5 +5081,15 @@
       "bytes": 19133,
       "sha256": "35ba0f407fbfe86fc38a0d2b1f38e07086674cb64439f37addd1c2e7d3229785"
     }
-  ]
+  ],
+  "verification_amendment": {
+    "id": "P3-W06-R02",
+    "approval": {
+      "path": "/workspace/scratch/5e401153f47f/p3w06-r02-approval.json",
+      "bytes": 1545,
+      "sha256": "ad4c9312d359dea99276a4c0ce91c74c0e73bb54a1b2ca50984a3b871c1311dd"
+    },
+    "new_core_obligations_verified": 0,
+    "meaning": "Verification process timeout and existing active assertion only; no new analytical claim or test identity."
+  }
 }
