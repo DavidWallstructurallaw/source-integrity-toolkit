@@ -5,7 +5,8 @@
 SIT-RP-0.1 section 19 and Phase 2 section 3.1: fixed 10,000,000 total,
 1,024 prepaid emergency units inside that total, cooperative sixty seconds.
 The analytical factory adds per-job accounting and witness reservations.
-No full analytical orchestration, report, I/O or public invocation is implemented.
+The boundary composes these ledgers into private analytical orchestration.
+No report, I/O or public invocation is implemented here.
 Only the zero-argument project factory creates a context. Tests patch the fixed
 clock symbol outside the product; no caller-supplied clock/limit is accepted.
 This is not isolation from malicious same-process mutation or hard real time.
@@ -121,7 +122,7 @@ class _PreparationBudget:
         raise self._cause from None
 
     def record_input_acceptance(self) -> None:
-        """Trusted future W05 boundary only, after all admission work completes.
+        """Trusted runtime boundary only, after all required admission work completes.
 
         This records a caller-established fact; it performs no validation and is
         never exposed through the public API or selected by source data.
@@ -153,6 +154,7 @@ class _AnalyticalJob:
     """Project-owned, current-job port; never accepted from a public caller."""
     _owner: object
     _used: int = field(default=0, init=False)
+    _committed: object = field(default=None, init=False)
 
     @property
     def used(self) -> int:
@@ -223,8 +225,8 @@ class _AnalysisBudget(_PreparationBudget):
     """One entry-to-finalization ledger, with separate job and delivery ports.
 
     Admission may use this object through _BudgetPort before acceptance. The
-    future orchestrator must finish the structural job plan before recording
-    acceptance. W02 supplies accounting primitives, not that orchestration.
+    boundary finishes the complete structural job plan before recording
+    acceptance. The job carries only already-paid immutable committed cells.
     The existing preparation factory continues to construct its original type.
     """
     _phase: str = field(default="admission", init=False)

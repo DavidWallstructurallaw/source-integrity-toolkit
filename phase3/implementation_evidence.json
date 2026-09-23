@@ -1,6 +1,6 @@
 {
   "format": "sit-phase3-evidence/0.1",
-  "unit": "P3-W12",
+  "unit": "P3-W13",
   "authority": {
     "approved_plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
     "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
@@ -8,26 +8,26 @@
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "owner_instruction": "验收 W11、合并 PR #30，然后启动 P3-W12",
-    "actual_unit_entry": "b5cc98b9264e3921fce2dbdba838c63e786cced7",
-    "w12_acceptance": "pending_owner_acceptance_of_PR31",
-    "next_unit": "P3-W13_not_authorized_or_started"
+    "owner_instruction": "验收 W12、合并 PR #31，再启动 W13",
+    "actual_unit_entry": "db019ea54faf7a08bc841811c3f261a60aa9eb54",
+    "w13_acceptance": "pending_implementation_verification_and_owner_review",
+    "next_unit": "P3-W14_not_authorized_or_started"
   },
   "accepted_predecessor": {
-    "unit": "P3-W11",
-    "merge": "b5cc98b9264e3921fce2dbdba838c63e786cced7",
-    "tree": "8f8276c6fe7bf5409761616fc92599e46f001c66",
-    "review_head": "232a72be866ab32f3076e538d4d237aa4aae0970",
-    "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
-    "pr": 30,
+    "unit": "P3-W12",
+    "merge": "db019ea54faf7a08bc841811c3f261a60aa9eb54",
+    "tree": "daa1be6883ba9d5950ca1084185f232c55e26991",
+    "review_head": "e42e32d9c2f2628204fa3ba12b09c9cab3438bd9",
+    "code_head": "41dfe8c230bc2356a7cad7e3e2074ab4b0aaf3a6",
+    "pr": 31,
     "review_package": {
-      "path": "Source-Integrity-Toolkit-P3-W11-Review-Evidence.zip",
-      "bytes": 4200911,
-      "sha256": "7b9bc294a44d808ae17d14b7bbf80d41704a5bf1113cbb8187b6ee83587af0bb"
+      "path": "Source-Integrity-Toolkit-P3-W12-Review-Evidence.zip",
+      "bytes": 5468275,
+      "sha256": "532bc2f70b4afa4d296f5c23b6e55cb3d0f9fa9745f2a1c10c10159f32a7303c"
     },
-    "owner_instruction": "验收 W11、合并 PR #30，然后启动 P3-W12",
+    "owner_instruction": "验收 W12、合并 PR #31，再启动 W13",
     "acceptance": "explicit_owner_acceptance_and_merge_authorization",
-    "known_recovery_limits": "W11 evidence and actual R01 approval are complete. Nested W09 historical recovery limitations remain as disclosed in the predecessor chain."
+    "known_recovery_limits": "W12 original CI and final review evidence are complete. The preserved development checkpoint discloses partial context candidate logs and final authoritative direct evidence; the first scratch admin audit zero-key comparison was fixed without product changes. Nested W09 historical recovery limitations remain predecessor history."
   },
   "scope": {
     "effective_authorized_paths": [
@@ -35,11 +35,14 @@
       "phase3/implementation_evidence.json",
       "phase3/module_policy.json",
       "phase3/obligation_coverage.json",
-      "src/source_integrity_toolkit/analysis/context.py",
-      "src/source_integrity_toolkit/analysis/findings.py",
-      "tests/contract/test_finding_boundaries.py",
-      "tests/unit/test_context_preservation.py",
-      "tests/unit/test_findings.py"
+      "src/source_integrity_toolkit/contracts/execution.py",
+      "src/source_integrity_toolkit/contracts/report.py",
+      "src/source_integrity_toolkit/runtime/boundary.py",
+      "src/source_integrity_toolkit/runtime/diagnostics.py",
+      "src/source_integrity_toolkit/runtime/resources.py",
+      "tests/contract/test_analytical_observability.py",
+      "tests/integration/test_analytical_pipeline.py",
+      "tests/security/test_analytical_interruption.py"
     ],
     "immediate_scope_exceptions": [],
     "historical_scope_exceptions": [
@@ -53,174 +56,323 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "complete_and_verified_pending_owner_acceptance",
+    "status": "implemented_direct_verified_pending_four_profile_ci",
     "owners": [
-      "analysis/context.py",
-      "analysis/findings.py"
+      "runtime/boundary.py",
+      "runtime/resources.py",
+      "runtime/diagnostics.py",
+      "contracts/execution.py",
+      "contracts/report.py"
     ],
     "families": [
-      "M014"
+      "SIT-M001",
+      "SIT-M002",
+      "SIT-M003",
+      "SIT-M004",
+      "SIT-M005",
+      "SIT-M006",
+      "SIT-M007",
+      "SIT-M008",
+      "SIT-M009",
+      "SIT-M010",
+      "SIT-M011",
+      "SIT-M012",
+      "SIT-M013",
+      "SIT-M014",
+      "SIT-M015"
     ],
-    "fields": [
-      "SIT-VF051",
-      "SIT-VF052",
-      "SIT-VF053"
-    ],
-    "finding_conditions": 22,
-    "observation_forms": 6,
-    "scheduled_new_core_obligations": 12,
+    "scheduled_new_core_obligations": 0,
     "source_clauses": [
-      "PHASE_3_PLAN.md section 17",
-      "DEFINITIONS_AND_UNITS.md section 26.5",
-      "OBSERVABILITY_AND_REPORTING.md sections 17-18 and M014",
-      "SOURCE_INTEGRITY_THREAT_MODEL.md threat cards",
-      "VALIDATION_PLAN.md section 12.14 and finding conditions"
+      "PHASE_3_PLAN.md sections 3.4 and 18",
+      "OBSERVABILITY_AND_REPORTING.md sections 12-17",
+      "REPOSITORY_ARCHITECTURE.md sections 17.4,18.1-18.2,19.2-19.3",
+      "GOVERNANCE_AND_HANDOFF.md sections 22.3 and 22.5"
     ],
     "source_sha256": {
-      "src/source_integrity_toolkit/analysis/context.py": "40cb6afefd1c187eaa8afe6555971d55da4cecba8ce3b157c83b42552e56a736",
-      "src/source_integrity_toolkit/analysis/findings.py": "e983a368d3544998b2a4879a82e1a3366f20da074651a1084dc758bc569ff34b",
-      "tests/contract/test_finding_boundaries.py": "fc3380b204ac6dca2be00511970a8c8f84904216cde1aaac3b8ba33d038ea187",
-      "tests/unit/test_context_preservation.py": "05b98397397de7df9509d0ea40bd641386fb71c1d39ad22a6c622cc4add164bc",
-      "tests/unit/test_findings.py": "3624f78945a17e8d9af3f2ed2449d786cdab702b73c1e1c6ddbac4cfe0220b61"
+      "src/source_integrity_toolkit/runtime/boundary.py": "2e9f8e2e8234e2579403bfc99d0bfdcc5917d40328a627279b5f84564532af6d",
+      "src/source_integrity_toolkit/runtime/resources.py": "0ff61d32061f78e5eb46ff9903d322dd9335cc964411dc10ffc91eef0a440449",
+      "src/source_integrity_toolkit/runtime/diagnostics.py": "2763dd36343ad5e60aca3d5c244d6c94a288b09ebf268f045dcc3d5f01445814",
+      "src/source_integrity_toolkit/contracts/execution.py": "212101c332201eda064d0a45140e922cbf24b7d9bcf36f14a9dc89c2b1790fa3",
+      "src/source_integrity_toolkit/contracts/report.py": "262b8129cec88e4c0ee30b781045598fa73e76bfb578ee4211e631b67460b82a",
+      "tests/integration/test_analytical_pipeline.py": "1a7773b0156b10571c025c8fc5890e05d431bc1c732bfc546ddc7bc0627e239c",
+      "tests/contract/test_analytical_observability.py": "8c9f4ebeb9764a2e5c4ba98c38dfd98e1e8d9b57c26f37624c7cf8dd52631312",
+      "tests/security/test_analytical_interruption.py": "9e1fc19c39e68efbafc95433d7140706fcf2fdb3fbb259a047f226bdf2748106"
     }
   },
   "validation": {
-    "status": "four_profile_cumulative_verification_passed",
-    "local_cumulative": "not_run; actual direct semantic evidence and the four required hosted cumulative profiles provide verification",
+    "status": "direct_passed_four_profile_ci_pending",
+    "local_cumulative": "not_planned; source-bound direct integration/security tests followed by required four hosted cumulative profiles",
     "direct_runs": {
-      "context_findings_and_boundaries": {
-        "tests": 84,
-        "passed": 84,
+      "private_pipeline_observability_and_interruption": {
+        "tests": 88,
+        "passed": 88,
         "failures": 0,
         "errors": 0,
         "skipped": 0,
         "pytest_exit_code": 0,
         "sources_unchanged": true,
-        "elapsed_seconds": 25.078069350001897,
+        "elapsed_seconds": 101.21286495599998,
         "receipts": [
           {
-            "path": "w12-direct.log",
-            "bytes": 180,
-            "sha256": "77bbea369b24d431899d3e4f9fc75177804283182a5745b40b4c28e759960006"
+            "path": "w13-direct.log",
+            "bytes": 191,
+            "sha256": "b5f6101a043bbce58e4a986cac925f83b2d4461f2317413b56e95a4c7503c1bc"
           },
           {
-            "path": "w12-direct.xml",
-            "bytes": 12821,
-            "sha256": "70e9c9a92b67d3cd8361cf648ef83a08414987c0fe8658f2f24e47f5f7212501"
+            "path": "w13-direct.xml",
+            "bytes": 15084,
+            "sha256": "d90cf53b815b0bb8d167d388deda92fbbd4965fb7640a041427ba6958d60c07c"
           },
           {
-            "path": "w12-direct-before.json",
-            "bytes": 577,
-            "sha256": "7b99d3669aaceaff488f6b562e24d351e0397b8f69945fb695b9763812df8bbe"
+            "path": "w13-direct-before.json",
+            "bytes": 980,
+            "sha256": "02c4e5d14212d18ddf26235dc574ed592778467b52fec266f2bf8de0e171fd73"
           },
           {
-            "path": "w12-direct-after.json",
-            "bytes": 577,
-            "sha256": "7b99d3669aaceaff488f6b562e24d351e0397b8f69945fb695b9763812df8bbe"
+            "path": "w13-direct-after.json",
+            "bytes": 980,
+            "sha256": "02c4e5d14212d18ddf26235dc574ed592778467b52fec266f2bf8de0e171fd73"
           },
           {
-            "path": "w12-direct-execution.json",
-            "bytes": 781,
-            "sha256": "710dc044149b6521595a998c1830092d745a8d6febea39dab580c7f952a1fe0e"
+            "path": "w13-direct-execution.json",
+            "bytes": 812,
+            "sha256": "21a03f07759a657b0a8ab76a687868ee5278821961a928e09c37c3d1aba9b009"
           }
         ]
       }
     },
     "full_matrix": {
-      "status": "passed",
+      "status": "pending",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
         "windows-2025-py3.11",
         "windows-2025-py3.13"
       ],
-      "inherited_test_identities": 3638,
-      "separate_subtests_required": 428,
-      "code_head": "41dfe8c230bc2356a7cad7e3e2074ab4b0aaf3a6",
-      "code_tree": "82104b9ca77ff0f195640c171278f37a4538d771",
-      "run_id": "35814342581",
-      "run_attempt": 1,
-      "tests_per_profile": 3722,
-      "separate_subtests_per_profile": 428,
-      "raw_audit": {
-        "path": "w12-raw-audit.json",
-        "bytes": 3918,
-        "sha256": "c6060040d90d64edaa93378cea5e3bdd0f995ef58fcdb57716715e39488cb6d5"
-      },
-      "profiles": [
-        {
-          "profile": "windows-2025-py3.13",
-          "zip": "/workspace/scratch/4e5267fe5990/w12-ci/phase3-windows-2025-py3.13-35814342581-1.zip",
-          "sha256": "8c523949f7bfca1d702f4081f31d7a1e74736e3c7a10f5b787a5e368c4f4e7ef",
-          "bytes": 208202,
-          "service_digest_checked": true,
-          "tests": 3722,
-          "subtests": 428,
-          "seconds": 1198.05,
-          "package_member_checks": true
-        },
-        {
-          "profile": "ubuntu-24.04-py3.13",
-          "zip": "/workspace/scratch/4e5267fe5990/w12-ci/phase3-ubuntu-24.04-py3.13-35814342581-1.zip",
-          "sha256": "ea4b1b1eee1bd7b517325a577703992f567d1a07f903c95cf0271ad5587783c8",
-          "bytes": 201279,
-          "service_digest_checked": true,
-          "tests": 3722,
-          "subtests": 428,
-          "seconds": 1044.95,
-          "package_member_checks": true
-        },
-        {
-          "profile": "ubuntu-24.04-py3.11",
-          "zip": "/workspace/scratch/4e5267fe5990/w12-ci/phase3-ubuntu-24.04-py3.11-35814342581-1.zip",
-          "sha256": "04e64606a8095c540be1716f302296eefa1cb69fae167ab70bad9a949586835f",
-          "bytes": 201180,
-          "service_digest_checked": true,
-          "tests": 3722,
-          "subtests": 428,
-          "seconds": 824.76,
-          "package_member_checks": true
-        },
-        {
-          "profile": "windows-2025-py3.11",
-          "zip": "/workspace/scratch/4e5267fe5990/w12-ci/phase3-windows-2025-py3.11-35814342581-1.zip",
-          "sha256": "833ac75cfe40b790ae4bc694fa1b9a4e75d6621ede1cb5a196c3d85095beee7a",
-          "bytes": 207830,
-          "service_digest_checked": true,
-          "tests": 3722,
-          "subtests": 428,
-          "seconds": 840.42,
-          "package_member_checks": true
-        }
-      ],
-      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit.",
-      "qualification": "All four profiles completed successfully on this same W12 code head, retaining every accepted W11 test identity."
+      "inherited_test_identities": 3722,
+      "separate_subtests_required": 428
     },
     "collection": {
       "status": "collected_pending_hosted_execution",
-      "total": 3722,
-      "inherited_retained": 3638,
-      "added": 84,
+      "total": 3810,
+      "inherited_retained": 3722,
+      "added": 88,
       "removed": 0,
       "new_governance_identities": 0,
       "receipt": {
-        "path": "w12-collection-summary.json",
-        "bytes": 9932,
-        "sha256": "669e65efcbec11426ca153993b55d4f06b5a7037c90f5c9970e444dbb4d1375f"
+        "path": "w13-collection-summary.json",
+        "bytes": 12062,
+        "sha256": "f641ba94ec1512d400e01fd485c63f87ff1ac4054f054c32103db69a4b8f30fc"
       }
     },
-    "qualification": "All 12 mapped W12 owner-local core obligations passed in each required profile. Affected controls and exact source identity settle the later three-record administrative successor; its gate remains pending until actually executed.",
-    "core_map": {
-      "path": "w12-core-map.json",
-      "bytes": 15837,
-      "sha256": "c6df608cbabf0b8da6207b7c5b53e20bb15620731cfefaf72ee9316525004f9e"
+    "private_integration": {
+      "status": "pending",
+      "checks": [
+        {
+          "source_clauses": [
+            "PHASE_3_PLAN.md section 3.1",
+            "PHASE_3_PLAN.md sections 2 and 18",
+            "REPOSITORY_ARCHITECTURE.md sections 17.1, 17.2 and 17.4"
+          ],
+          "test_nodes": [
+            "tests/integration/test_analytical_pipeline.py::test_all_fifteen_families_execute_actual_finite_scopes_in_both_modes[utf8]",
+            "tests/integration/test_analytical_pipeline.py::test_all_fifteen_families_execute_actual_finite_scopes_in_both_modes[value]",
+            "tests/integration/test_analytical_pipeline.py::test_equivalent_admitted_values_agree_in_results_findings_and_scope_plan[all_families]",
+            "tests/integration/test_analytical_pipeline.py::test_equivalent_admitted_values_agree_in_results_findings_and_scope_plan[sparse]",
+            "tests/integration/test_analytical_pipeline.py::test_original_binary_float_and_supplied_decimal_are_not_silently_rounded_together"
+          ],
+          "verified_behavior": "Both private input modes execute all fifteen owners on finite supplied examples. Equivalent admitted inputs agree in analytical semantics while the original binary-float and exact-decimal representations preserve their required difference."
+        },
+        {
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md section 20.2",
+            "DEFINITIONS_AND_UNITS.md section 20.3",
+            "DEFINITIONS_AND_UNITS.md sections 20.2 and 28.1",
+            "DEFINITIONS_AND_UNITS.md sections 26.1 and 26.2",
+            "OBSERVABILITY_AND_REPORTING.md section 14.1",
+            "OBSERVABILITY_AND_REPORTING.md section 14.2",
+            "PHASE_3_PLAN.md sections 3.1 and 18",
+            "PHASE_3_PLAN.md sections 3.1 and 3.4",
+            "PHASE_3_PLAN.md sections 3.4 and 18",
+            "REPOSITORY_ARCHITECTURE.md section 18.1"
+          ],
+          "test_nodes": [
+            "tests/integration/test_analytical_pipeline.py::test_native_evaluation_target_keeps_exact_claim_scope_and_reverse_metadata_binding",
+            "tests/integration/test_analytical_pipeline.py::test_no_declared_dimension_cannot_execute_an_implicit_world_dimension[utf8]",
+            "tests/integration/test_analytical_pipeline.py::test_no_declared_dimension_cannot_execute_an_implicit_world_dimension[value]",
+            "tests/integration/test_analytical_pipeline.py::test_one_claim_cohort_cannot_hide_other_claim_native_stage_at_same_anchor",
+            "tests/integration/test_analytical_pipeline.py::test_reordering_unordered_inputs_keeps_same_plan_and_semantic_results",
+            "tests/integration/test_analytical_pipeline.py::test_supplied_comparison_and_evaluation_bindings_do_not_expand_to_all_pairs",
+            "tests/integration/test_analytical_pipeline.py::test_unrelated_channel_does_not_create_a_route_under_another_inquiry",
+            "tests/integration/test_analytical_pipeline.py::test_whole_plan_precedes_single_acceptance_and_jobs_follow_semantic_schedule"
+          ],
+          "verified_behavior": "Complete finite planning precedes one input acceptance and jobs follow Inquiry, numeric family and semantic operation order. Declared dimensions, supplied assessments, native Evaluation targets, stage Claims and correction bindings retain exact scope without implicit world dimensions or all-pairs expansion; unordered input permutations preserve semantic results."
+        },
+        {
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md sections 20.4 and 28.1",
+            "DEFINITIONS_AND_UNITS.md sections 22.1, 22.2 and 23.1",
+            "DEFINITIONS_AND_UNITS.md sections 26.1 and 26.3",
+            "OBSERVABILITY_AND_REPORTING.md section 18.2",
+            "OBSERVABILITY_AND_REPORTING.md sections 13.1 and 14.1",
+            "OBSERVABILITY_AND_REPORTING.md sections 13.1 and 16.7",
+            "OBSERVABILITY_AND_REPORTING.md sections 13.1, 14.1 and 14.2",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1 and 14.2",
+            "PHASE_3_PLAN.md sections 3.1 and 18",
+            "PHASE_3_PLAN.md sections 3.1, 3.4 and 18",
+            "PHASE_3_PLAN.md sections 3.3 and 18"
+          ],
+          "test_nodes": [
+            "tests/contract/test_analytical_observability.py::test_actual_checks_are_field_local_and_completion_is_not_a_registry_flag",
+            "tests/contract/test_analytical_observability.py::test_actual_evaluation_with_one_role_does_not_become_structurally_inapplicable_or_zero",
+            "tests/contract/test_analytical_observability.py::test_missing_comparison_is_an_evidence_gap_in_an_actual_claim_dimension",
+            "tests/integration/test_analytical_pipeline.py::test_actual_evaluation_with_missing_role_is_unavailable_not_structurally_absent",
+            "tests/integration/test_analytical_pipeline.py::test_documentary_memberships_and_hhi_preserve_full_two_seed_denominator[utf8]",
+            "tests/integration/test_analytical_pipeline.py::test_documentary_memberships_and_hhi_preserve_full_two_seed_denominator[value]",
+            "tests/integration/test_analytical_pipeline.py::test_m015_uses_actual_current_job_inventory_and_selected_edge_provider_facts[all_families]",
+            "tests/integration/test_analytical_pipeline.py::test_m015_uses_actual_current_job_inventory_and_selected_edge_provider_facts[no_dimension]",
+            "tests/integration/test_analytical_pipeline.py::test_missing_comparison_does_not_erase_the_applicable_claim_question",
+            "tests/integration/test_analytical_pipeline.py::test_native_self_support_cycle_retains_actual_assurance_limitation_and_witness[claim2_assertion-utf8]",
+            "tests/integration/test_analytical_pipeline.py::test_native_self_support_cycle_retains_actual_assurance_limitation_and_witness[claim2_assertion-value]",
+            "tests/integration/test_analytical_pipeline.py::test_native_self_support_cycle_retains_actual_assurance_limitation_and_witness[one_claim-utf8]",
+            "tests/integration/test_analytical_pipeline.py::test_native_self_support_cycle_retains_actual_assurance_limitation_and_witness[one_claim-value]",
+            "tests/integration/test_analytical_pipeline.py::test_native_stage_without_cohort_is_retained_beside_unavailable_ratio"
+          ],
+          "verified_behavior": "M015 uses actual paid current-job PC03 and PC04 provider facts under the same context. Field-local checks retain real completion, documentary qualification and evidence gaps. Native stage observations survive missing cohorts; missing comparisons and evaluator roles remain explicit. The qualified two-seed M004/HHI example preserves its full denominator and basis, while self-support cycles retain an actual assurance limitation and finite witness."
+        },
+        {
+          "source_clauses": [
+            "OBSERVABILITY_AND_REPORTING.md sections 12.3, 12.4, 14.1 and 15",
+            "OBSERVABILITY_AND_REPORTING.md sections 13.2 and 16.7",
+            "PHASE_3_PLAN.md section 18"
+          ],
+          "test_nodes": [
+            "tests/contract/test_analytical_observability.py::test_available_stage_and_case_records_survive_unavailable_ancestry",
+            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[0-families0]",
+            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[1-families1]",
+            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[2-families2]",
+            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[3-families3]",
+            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[4-families4]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M001]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M002]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M003]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M004]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M005]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M006]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M007]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M008]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M009]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M010]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M011]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M012]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M013]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M014]",
+            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M015]",
+            "tests/contract/test_analytical_observability.py::test_every_inquiry_keeps_fifteen_slots_and_five_independent_domains",
+            "tests/contract/test_analytical_observability.py::test_navigation_preserves_reason_bindings_for_every_affected_field",
+            "tests/contract/test_analytical_observability.py::test_no_structural_subject_is_explained_without_inventing_assessments_or_roles"
+          ],
+          "verified_behavior": "Every Inquiry has fifteen family capability slots and five independent evidence domains. Navigation retains every applicable field, its actual availability partition and reasons, explains absent subjects, and preserves available stage and case disclosures alongside unavailable ancestry."
+        },
+        {
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md section 26.5",
+            "OBSERVABILITY_AND_REPORTING.md section 12.4",
+            "OBSERVABILITY_AND_REPORTING.md sections 16.4 and 16.7",
+            "OBSERVABILITY_AND_REPORTING.md sections 16.4 and 19.2",
+            "OBSERVABILITY_AND_REPORTING.md sections 16.4, 16.6 and 16.7",
+            "PHASE_3_PLAN.md section 18",
+            "PHASE_3_PLAN.md sections 3.2, 3.3 and 18",
+            "PHASE_3_PLAN.md sections 3.3 and 18",
+            "PHASE_3_PLAN.md sections 3.3, 3.4 and 18",
+            "REPOSITORY_ARCHITECTURE.md section 18.1",
+            "REPOSITORY_ARCHITECTURE.md sections 18.1 and 18.2"
+          ],
+          "test_nodes": [
+            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[dangling_result]",
+            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[dangling_witness_payload]",
+            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[missing_leaf]",
+            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[missing_pc24]",
+            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[unequal_duplicate]",
+            "tests/contract/test_analytical_observability.py::test_context_stage_links_resolve_to_original_m010_results_without_copied_metrics",
+            "tests/contract/test_analytical_observability.py::test_declared_and_authorized_route_links_resolve_separate_actual_ordered_paths",
+            "tests/contract/test_analytical_observability.py::test_every_private_link_resolves_to_actual_supplied_or_delivered_object",
+            "tests/contract/test_analytical_observability.py::test_inquiry_inventory_duplicates_from_two_claim_jobs_coalesce_by_semantic_body",
+            "tests/contract/test_analytical_observability.py::test_positive_evaluator_path_ref_does_not_attach_the_entire_family_witness_list",
+            "tests/contract/test_analytical_observability.py::test_witness_anchors_keep_one_exact_owner_payload_and_do_not_mix_context_with_stages",
+            "tests/integration/test_analytical_pipeline.py::test_two_claim_inventory_coalesces_only_equal_inquiry_cells[utf8]",
+            "tests/integration/test_analytical_pipeline.py::test_two_claim_inventory_coalesces_only_equal_inquiry_cells[value]"
+          ],
+          "verified_behavior": "Every private input, result and witness link resolves to actual supplied or delivered objects. M014 retains original M010 result links; exact witness anchors resolve only their own finite payload, including separate declared/authorized correction paths and evaluator paths. Equal inquiry-wide result slots coalesce; unequal duplicates, omitted leaves or completion facts and dangling links produce safe contract failure."
+        },
+        {
+          "source_clauses": [
+            "DEFINITIONS_AND_UNITS.md section 26.5",
+            "OBSERVABILITY_AND_REPORTING.md section 12.4",
+            "OBSERVABILITY_AND_REPORTING.md sections 12.2, 12.3 and 12.4",
+            "PHASE_3_PLAN.md sections 3.3, 3.4 and 18",
+            "PHASE_3_PLAN.md sections 3.4 and 18"
+          ],
+          "test_nodes": [
+            "tests/security/test_analytical_interruption.py::test_capture_planning_jobs_and_delivery_use_one_entry_budget",
+            "tests/security/test_analytical_interruption.py::test_delivery_must_fit_remaining_global_work_and_entry_deadline[time]",
+            "tests/security/test_analytical_interruption.py::test_delivery_must_fit_remaining_global_work_and_entry_deadline[work]",
+            "tests/security/test_analytical_interruption.py::test_full_original_h7_keeps_fixed_quotas_and_only_completed_atomic_inventory",
+            "tests/security/test_analytical_interruption.py::test_job_stop_before_owner_retains_previous_complete_jobs_and_marks_later_cells",
+            "tests/security/test_analytical_interruption.py::test_later_findings_stop_keeps_actual_committed_cells_in_the_same_job",
+            "tests/security/test_analytical_interruption.py::test_nested_stage_targets_commit_before_context_referrers_and_survive_local_stop",
+            "tests/security/test_analytical_interruption.py::test_shared_witness_ceiling_interrupts_without_clipping_or_continuation[members-100000]",
+            "tests/security/test_analytical_interruption.py::test_shared_witness_ceiling_interrupts_without_clipping_or_continuation[witnesses-20000]",
+            "tests/security/test_analytical_interruption.py::test_single_deadline_includes_admission_and_all_prior_jobs[job]",
+            "tests/security/test_analytical_interruption.py::test_single_deadline_includes_admission_and_all_prior_jobs[planning]",
+            "tests/security/test_analytical_interruption.py::test_stopped_job_salvage_still_requires_delivery_budget_and_preserves_first_cause[time]",
+            "tests/security/test_analytical_interruption.py::test_stopped_job_salvage_still_requires_delivery_budget_and_preserves_first_cause[work]",
+            "tests/security/test_analytical_interruption.py::test_whole_planning_exhaustion_precedes_acceptance_and_any_job[constructed_value]",
+            "tests/security/test_analytical_interruption.py::test_whole_planning_exhaustion_precedes_acceptance_and_any_job[supplied_utf8]"
+          ],
+          "verified_behavior": "Capture, planning, owner jobs, witnesses and delivery share one fixed invocation budget and entry deadline. Stops preserve actual acceptance, prior atomic commits and explicit unfinished/unstarted cells when charged delivery fits. Nested M010 targets commit before their M014 referrers and survive a later context stop. Exhausted delivery uses safe abort, first cause persists, and original H7 uses unchanged quotas."
+        },
+        {
+          "source_clauses": [
+            "GOVERNANCE_AND_HANDOFF.md section 22.3",
+            "OBSERVABILITY_AND_REPORTING.md section 16.8",
+            "PHASE_3_PLAN.md section 3.4"
+          ],
+          "test_nodes": [
+            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[KeyboardInterrupt-cancelled-None-_assemble_analysis-accepted]",
+            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[KeyboardInterrupt-cancelled-None-_execute_job-accepted]",
+            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[KeyboardInterrupt-cancelled-None-_plan_analysis-not_completed]",
+            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[RuntimeError-failed-execution_failed-_assemble_analysis-accepted]",
+            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[RuntimeError-failed-execution_failed-_execute_job-accepted]",
+            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[RuntimeError-failed-execution_failed-_plan_analysis-not_completed]"
+          ],
+          "verified_behavior": "Injected planning, owner and finalization defects preserve actual input state and return payload-free failed processing. Cancellation is a distinct safe transport with no fabricated resource/failure reason, source-text disclosure or ordinary analytical salvage."
+        },
+        {
+          "source_clauses": [
+            "OBSERVABILITY_AND_REPORTING.md section 16.1",
+            "PHASE_3_PLAN.md sections 2 and 18",
+            "PHASE_3_PLAN.md sections 2, 3.4 and 18"
+          ],
+          "test_nodes": [
+            "tests/contract/test_analytical_observability.py::test_preparation_entry_points_keep_their_original_nonanalytical_contract[utf8]",
+            "tests/contract/test_analytical_observability.py::test_preparation_entry_points_keep_their_original_nonanalytical_contract[value]",
+            "tests/contract/test_analytical_observability.py::test_private_outcome_is_immutable_and_has_no_public_report_or_options"
+          ],
+          "verified_behavior": "Original preparation entry points retain their previous return types and PC01-only observability contract. The private analysis outcome is immutable, exposes no public report envelope or caller options, adds no public exports, and preserves public auditing refusals."
+        }
+      ],
+      "scope": "private_orchestration_only",
+      "full_field_integration_status": "pending",
+      "full_field_release_status": "pending",
+      "qualification": "Only actual mapped direct and hosted execution may establish these private pipeline behaviors; no blanket closure of all field-level integration or release clauses."
     }
   },
   "owner_local_core_obligations_verified": 228,
   "phase3_complete": false,
   "limitations": [
-    "Findings retain finite evidence, scope, basis and limitations. Supplied claims do not become tool verification; missing content detectors do not produce clean poisoning/injection findings.",
-    "All integration/release obligations remain pending. Complete private orchestration remains W13 work. Public API/CLI auditing and reporting remain inactive.",
-    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
+    "W13 implementation and complete same-head four-profile verification remain pending.",
+    "All 228 inherited field-obligation row objects retain their accepted core evidence and pending individual integration/release clauses. Historical remaining-integration descriptions are predecessor-scoped evidence; current W13 private pipeline verification is recorded separately.",
+    "Public API/CLI, report envelope, rendering, exports, native protections and release remain later work. W14 full core validation and W15 final phase acceptance have not started."
   ]
 }
