@@ -10,7 +10,7 @@
     },
     "owner_instruction": "W14  开始",
     "actual_unit_entry": "332e94a007ceb2a955b8e047f45284b431300995",
-    "w14_acceptance": "pending",
+    "w14_acceptance": "pending_owner_acceptance_of_PR33",
     "next_unit": "P3-W15_not_authorized_or_started"
   },
   "accepted_predecessor": {
@@ -84,7 +84,7 @@
     "inherited_blobs_modes_unchanged": 189
   },
   "implementation": {
-    "status": "direct_verified_pending_four_profile_ci",
+    "status": "complete_and_verified_pending_owner_acceptance",
     "product_repairs_authorized": false,
     "source_clauses": [
       "PHASE_3_PLAN.md sections 19,21.2,22",
@@ -152,8 +152,8 @@
     }
   },
   "validation": {
-    "status": "direct_passed_four_profile_pending",
-    "local_cumulative": "not_run; direct affected semantic tests and required four-profile hosted cumulative runs are planned",
+    "status": "four_profile_cumulative_verification_passed",
+    "local_cumulative": "not_run; direct affected semantic tests and required four-profile hosted cumulative runs completed",
     "direct_runs": {
       "new_semantic_tests": {
         "tests": 108,
@@ -194,7 +194,7 @@
       }
     },
     "full_matrix": {
-      "status": "pending",
+      "status": "passed",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
@@ -202,7 +202,78 @@
         "windows-2025-py3.13"
       ],
       "inherited_test_identities": 3810,
-      "separate_subtests_required": 428
+      "separate_subtests_required": 428,
+      "code_head": "5146a2e41dfdddfccebd85367655109288fe313f",
+      "code_tree": "f98de05ee65a7dc20136ea307d84ce04157cab14",
+      "run_id": 35832693910,
+      "run_attempt": 1,
+      "tests_per_profile": 3918,
+      "subtests_per_profile": 428,
+      "raw_audit": {
+        "path": "w14-raw-audit.json",
+        "bytes": 5637,
+        "sha256": "e40cc3b6f667f194f045a9efe9208db9af25f6496e6a606e66c8234682e38bc5"
+      },
+      "profiles": [
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w14-ci/phase3-ubuntu-24.04-py3.11-35832693910-1.zip",
+          "sha256": "ddea25b55e573275fd57ab91a4fde7e758a834a92f031f3bdfef24750541f615",
+          "bytes": 220584,
+          "service_digest_checked": true,
+          "tests": 3918,
+          "subtests": 428,
+          "seconds": 1102.22,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w14-ci/phase3-ubuntu-24.04-py3.13-35832693910-1.zip",
+          "sha256": "d98f0256761d64d6eb7442188cc329d64a038c378722012a7698f3c79b299f5d",
+          "bytes": 220692,
+          "service_digest_checked": true,
+          "tests": 3918,
+          "subtests": 428,
+          "seconds": 1170.43,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w14-ci/phase3-windows-2025-py3.13-35832693910-1.zip",
+          "sha256": "315f7879e7f17ff7f0c8255e3a66dfda886e98a6f3cf234f1ad036df99bfdd9e",
+          "bytes": 227225,
+          "service_digest_checked": true,
+          "tests": 3918,
+          "subtests": 428,
+          "seconds": 1351.32,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w14-ci/phase3-windows-2025-py3.11-35832693910-1.zip",
+          "sha256": "8e9ab4832b2ae4fb524d0f659cd2f87fedc1cfa095adb91af21aa105b3fb7c71",
+          "bytes": 227287,
+          "service_digest_checked": true,
+          "tests": 3918,
+          "subtests": 428,
+          "seconds": 1285.09,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2
+        }
+      ],
+      "all_actual_collection_and_junit_identities_agree": true,
+      "all_tracked_sources_unchanged": true
     },
     "authorship": "Tests, source review and counterexample design use collaborating agents in the same assistant session, the same repository and adopted specifications. This is shared-source/tool lineage and does not constitute independent external review.",
     "checks": [
@@ -1014,7 +1085,7 @@
       }
     ],
     "collection": {
-      "status": "collected_pending_hosted_execution",
+      "status": "collected_and_passed_in_each_required_profile",
       "total": 3918,
       "inherited_retained": 3810,
       "added": 108,
@@ -1027,7 +1098,7 @@
       }
     },
     "w14_core_validation": {
-      "status": "pending",
+      "status": "verified_private_core_validation",
       "scope": "private_core_only",
       "field_obligations": 228,
       "output_mutant_obligations": 49,
@@ -1059,19 +1130,52 @@
           "sha256": "0ec5eca394f3ff1f7f1fdbe965b3711bc9c7043c2028b7583164eb5001743920"
         }
       ],
-      "core_meaning": "Source-bound owner-local clauses plus named private integration/isolation/package checks; not 228 completed whole-invocation cases or full public report obligations."
+      "core_meaning": "Source-bound owner-local clauses plus named private integration/isolation/package checks; not 228 completed whole-invocation cases or full public report obligations.",
+      "passed_at": {
+        "code_head": "5146a2e41dfdddfccebd85367655109288fe313f",
+        "tree": "f98de05ee65a7dc20136ea307d84ce04157cab14",
+        "run_id": 35832693910,
+        "run_attempt": 1,
+        "profiles": [
+          "ubuntu-24.04-py3.11",
+          "ubuntu-24.04-py3.13",
+          "windows-2025-py3.11",
+          "windows-2025-py3.13"
+        ],
+        "raw_audit_sha256": "e40cc3b6f667f194f045a9efe9208db9af25f6496e6a606e66c8234682e38bc5"
+      }
+    },
+    "source_review": {
+      "receipt": {
+        "path": "w14-source-review.json",
+        "bytes": 7641,
+        "sha256": "7812ea5084c6e95299176fb7850f74a1c3c88c03516b9def347b3228aa57d6a0"
+      },
+      "meaning": "Read-only source and actual direct receipt review by a collaborating agent of the same assistant; no independent external review claim."
+    },
+    "administrative_successor": {
+      "scope": [
+        "PHASE_3_PROGRESS.md",
+        "phase3/implementation_evidence.json",
+        "phase3/obligation_coverage.json"
+      ],
+      "gate": "Three affected existing controls on the actual final commit plus exact equality of all other 202 blobs and modes and actual entry/scope/history audit. Receipts are recorded in the review PR/package after the successor exists.",
+      "full_matrix_repeated": false,
+      "status_at_record_creation": "pending_actual_successor_checks"
     }
   },
   "owner_local_core_obligations_verified": 228,
   "phase3_complete": false,
   "limitations": [
-    "All new direct semantic tests passed on unchanged sources; the required four-profile cumulative CI remains pending at creation of this code candidate.",
+    "Required exact-code-head four-profile cumulative CI passed. Final three-record administrative successor checks are recorded externally after the final commit exists.",
     "All public-envelope, rendering, public API/CLI, native-platform and release duties remain pending.",
     "Unchanged quotas govern original heroes; installed analysis execution must distinguish bounded interruption from completed analytical results.",
     "Any product defect requires an explicitly scoped correction; W14 authorizes no product repairs.",
     "WU9-L14 report-representation byte guard is not implemented in this private-core phase and is not claimed verified.",
     "Large graph mechanical and some fixed aggregate limit tests are component-level controls with explicit trusted fixtures or counter preloads; they do not claim 500k-node whole-invocation completion.",
     "Import audit hooks and metadata wrappers are finite probes, not isolation from malicious same-process mutation.",
-    "Original heroes first exceed a per-job work allowance, then safe stopped finalization exceeds remaining total work. The first job cause remains sticky. Observed committed M001 cells are distinguished from zero delivered results; a separate finite installed case proves completed arithmetic."
+    "Original heroes first exceed a per-job work allowance, then safe stopped finalization exceeds remaining total work. The first job cause remains sticky. Observed committed M001 cells are distinguished from zero delivered results; a separate finite installed case proves completed arithmetic.",
+    "Installed original heroes retain fixed-limit interruptions where they occur; observed atomic M001 inventory is distinct from delivered results and supplies no completed all-field hero certification. Receipt checks are tied to the passed source-bound test assertions, including deadline/finalization checks; they do not independently reexecute installed analysis.",
+    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
   ]
 }
