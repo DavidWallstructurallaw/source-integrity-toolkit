@@ -1,5 +1,5 @@
 {
-  "active_unit": "P3-W11",
+  "active_unit": "P3-W12",
   "extension_first_units": {
     "contracts/evidence.py": 3,
     "contracts/execution.py": 2,
@@ -32,6 +32,10 @@
   "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
   "promotions": [
     {
+      "path": "analysis/context.py",
+      "unit": 12
+    },
+    {
       "path": "analysis/contribution_profile.py",
       "unit": 7
     },
@@ -46,6 +50,10 @@
     {
       "path": "analysis/evaluator_lineage.py",
       "unit": 8
+    },
+    {
+      "path": "analysis/findings.py",
+      "unit": 12
     },
     {
       "path": "analysis/human_review.py",
