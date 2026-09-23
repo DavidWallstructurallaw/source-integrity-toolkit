@@ -10,7 +10,7 @@
     },
     "owner_instruction": "验收 W11、合并 PR #30，然后启动 P3-W12",
     "actual_unit_entry": "b5cc98b9264e3921fce2dbdba838c63e786cced7",
-    "w12_acceptance": "pending_implementation_verification_and_owner_review",
+    "w12_acceptance": "pending_owner_acceptance_of_PR31",
     "next_unit": "P3-W13_not_authorized_or_started"
   },
   "accepted_predecessor": {
@@ -53,7 +53,7 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "implemented_direct_verified_pending_four_profile_ci",
+    "status": "complete_and_verified_pending_owner_acceptance",
     "owners": [
       "analysis/context.py",
       "analysis/findings.py"
@@ -79,14 +79,14 @@
     "source_sha256": {
       "src/source_integrity_toolkit/analysis/context.py": "40cb6afefd1c187eaa8afe6555971d55da4cecba8ce3b157c83b42552e56a736",
       "src/source_integrity_toolkit/analysis/findings.py": "e983a368d3544998b2a4879a82e1a3366f20da074651a1084dc758bc569ff34b",
+      "tests/contract/test_finding_boundaries.py": "fc3380b204ac6dca2be00511970a8c8f84904216cde1aaac3b8ba33d038ea187",
       "tests/unit/test_context_preservation.py": "05b98397397de7df9509d0ea40bd641386fb71c1d39ad22a6c622cc4add164bc",
-      "tests/unit/test_findings.py": "3624f78945a17e8d9af3f2ed2449d786cdab702b73c1e1c6ddbac4cfe0220b61",
-      "tests/contract/test_finding_boundaries.py": "fc3380b204ac6dca2be00511970a8c8f84904216cde1aaac3b8ba33d038ea187"
+      "tests/unit/test_findings.py": "3624f78945a17e8d9af3f2ed2449d786cdab702b73c1e1c6ddbac4cfe0220b61"
     }
   },
   "validation": {
-    "status": "direct_passed_four_profile_ci_pending",
-    "local_cumulative": "not_planned; source-bound direct tests followed by required four hosted cumulative profiles",
+    "status": "four_profile_cumulative_verification_passed",
+    "local_cumulative": "not_run; actual direct semantic evidence and the four required hosted cumulative profiles provide verification",
     "direct_runs": {
       "context_findings_and_boundaries": {
         "tests": 84,
@@ -127,7 +127,7 @@
       }
     },
     "full_matrix": {
-      "status": "pending",
+      "status": "passed",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
@@ -135,7 +135,66 @@
         "windows-2025-py3.13"
       ],
       "inherited_test_identities": 3638,
-      "separate_subtests_required": 428
+      "separate_subtests_required": 428,
+      "code_head": "41dfe8c230bc2356a7cad7e3e2074ab4b0aaf3a6",
+      "code_tree": "82104b9ca77ff0f195640c171278f37a4538d771",
+      "run_id": "35814342581",
+      "run_attempt": 1,
+      "tests_per_profile": 3722,
+      "separate_subtests_per_profile": 428,
+      "raw_audit": {
+        "path": "w12-raw-audit.json",
+        "bytes": 3918,
+        "sha256": "c6060040d90d64edaa93378cea5e3bdd0f995ef58fcdb57716715e39488cb6d5"
+      },
+      "profiles": [
+        {
+          "profile": "windows-2025-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w12-ci/phase3-windows-2025-py3.13-35814342581-1.zip",
+          "sha256": "8c523949f7bfca1d702f4081f31d7a1e74736e3c7a10f5b787a5e368c4f4e7ef",
+          "bytes": 208202,
+          "service_digest_checked": true,
+          "tests": 3722,
+          "subtests": 428,
+          "seconds": 1198.05,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w12-ci/phase3-ubuntu-24.04-py3.13-35814342581-1.zip",
+          "sha256": "ea4b1b1eee1bd7b517325a577703992f567d1a07f903c95cf0271ad5587783c8",
+          "bytes": 201279,
+          "service_digest_checked": true,
+          "tests": 3722,
+          "subtests": 428,
+          "seconds": 1044.95,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w12-ci/phase3-ubuntu-24.04-py3.11-35814342581-1.zip",
+          "sha256": "04e64606a8095c540be1716f302296eefa1cb69fae167ab70bad9a949586835f",
+          "bytes": 201180,
+          "service_digest_checked": true,
+          "tests": 3722,
+          "subtests": 428,
+          "seconds": 824.76,
+          "package_member_checks": true
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w12-ci/phase3-windows-2025-py3.11-35814342581-1.zip",
+          "sha256": "833ac75cfe40b790ae4bc694fa1b9a4e75d6621ede1cb5a196c3d85095beee7a",
+          "bytes": 207830,
+          "service_digest_checked": true,
+          "tests": 3722,
+          "subtests": 428,
+          "seconds": 840.42,
+          "package_member_checks": true
+        }
+      ],
+      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit.",
+      "qualification": "All four profiles completed successfully on this same W12 code head, retaining every accepted W11 test identity."
     },
     "collection": {
       "status": "collected_pending_hosted_execution",
@@ -149,13 +208,19 @@
         "bytes": 9932,
         "sha256": "669e65efcbec11426ca153993b55d4f06b5a7037c90f5c9970e444dbb4d1375f"
       }
+    },
+    "qualification": "All 12 mapped W12 owner-local core obligations passed in each required profile. Affected controls and exact source identity settle the later three-record administrative successor; its gate remains pending until actually executed.",
+    "core_map": {
+      "path": "w12-core-map.json",
+      "bytes": 15837,
+      "sha256": "c6df608cbabf0b8da6207b7c5b53e20bb15620731cfefaf72ee9316525004f9e"
     }
   },
-  "owner_local_core_obligations_verified": 216,
+  "owner_local_core_obligations_verified": 228,
   "phase3_complete": false,
   "limitations": [
-    "All 12 W12 core obligations remain pending until actual direct tests, complete same-head four-profile evidence and node mapping pass.",
     "Findings retain finite evidence, scope, basis and limitations. Supplied claims do not become tool verification; missing content detectors do not produce clean poisoning/injection findings.",
-    "All integration/release obligations remain pending. Complete private orchestration remains W13 work. Public API/CLI auditing and reporting remain inactive."
+    "All integration/release obligations remain pending. Complete private orchestration remains W13 work. Public API/CLI auditing and reporting remain inactive.",
+    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
   ]
 }
