@@ -12,7 +12,34 @@
     "predecessor_acceptance": "The instruction to continue W11 accepts the delivered W10 review and authorizes its prerequisite merge.",
     "actual_unit_entry": "82dc7de63e1007f007e527f53ef0ba719e9c1db4",
     "w11_acceptance": "pending_implementation_verification_and_owner_review",
-    "next_unit": "P3-W12_not_authorized_or_started"
+    "next_unit": "P3-W12_not_authorized_or_started",
+    "approved_scope_amendment": {
+      "name": "P3-W11-R01",
+      "approval": "approved_by_actual_owner_message",
+      "owner_instruction": "批准 **P3-W11-R01**，随后继续修复和四环境 CI",
+      "preapproval_checkpoint": "48c9a22e2b07df545cd492f921604431c3fec09c",
+      "preapproval_tree": "e1eb494e80e00d5d99640704a81ae4399cd12a86",
+      "receipt": {
+        "path": "w11-r01-approval-receipt.json",
+        "bytes": 1408,
+        "sha256": "4c47e2c0123f9dc65e587855c3bb661852063d29389222459fa5078809290d92"
+      },
+      "proposal": {
+        "path": "P3-W11-R01-PROPOSAL.json",
+        "bytes": 10083,
+        "sha256": "b3b07b07e5e4a47e87ae15eb598c542e77d636807933de40fbf4445c87b973ad"
+      },
+      "request": {
+        "path": "P3-W11-R01-REQUEST.md",
+        "bytes": 4112,
+        "sha256": "759828638bd5162550f2ff1e83ab9f325add9844359b55e840bc2dc5235f5503"
+      },
+      "proposal_evidence": {
+        "path": "Source-Integrity-Toolkit-P3-W11-R01-Proposal-Evidence.zip",
+        "bytes": 101230,
+        "sha256": "396cecf088f59b69254a00a7c687ae2cc5c62b0d85d77123a8bc491b9a239914"
+      }
+    }
   },
   "accepted_predecessor": {
     "unit": "P3-W10",
@@ -37,20 +64,26 @@
       "phase3/module_policy.json",
       "phase3/obligation_coverage.json",
       "src/source_integrity_toolkit/analysis/correction_outcomes.py",
+      "src/source_integrity_toolkit/contracts/results.py",
+      "tests/contract/test_phase3_transition.py",
+      "tests/scaffold/test_ci_contract.py",
       "tests/unit/test_correction_outcomes.py"
     ],
-    "immediate_scope_exceptions": [],
+    "immediate_scope_exceptions": [
+      "P3-W11-R01"
+    ],
     "historical_scope_exceptions": [
       "P3-W04-R01",
       "P3-W05-R01",
       "P3-W06-R01",
       "P3-W08-R01",
-      "P3-W09-R01"
+      "P3-W09-R01",
+      "P3-W11-R01"
     ],
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "implemented_candidate_blocked_on_unapproved_contract_repair",
+    "status": "implemented_approved_R01_repair_direct_verified_pending_four_profiles",
     "owner": "analysis/correction_outcomes.py",
     "families": [
       "M012"
@@ -75,13 +108,59 @@
     ],
     "source_sha256": {
       "src/source_integrity_toolkit/analysis/correction_outcomes.py": "11a09a667f6a2c6552a980875bf6f09255714582318263bc743db5907259af78",
-      "tests/unit/test_correction_outcomes.py": "2c06937c4c9c75521d3c29d5843c7b34afa27d061437b0a636a64957d18fa55b"
+      "tests/unit/test_correction_outcomes.py": "2c06937c4c9c75521d3c29d5843c7b34afa27d061437b0a636a64957d18fa55b",
+      "src/source_integrity_toolkit/contracts/results.py": "565b4aa8d1053931b0b69b1af686b563427dce2b27be8215e916fbc18d335a11"
     }
   },
   "validation": {
-    "status": "47_direct_pass_1_confirmed_contract_failure_no_full_matrix",
+    "status": "48_direct_75_affected_and_20_ci_contract_controls_pass_four_profile_verification_pending",
     "local_cumulative": "not_planned; source-bound direct tests followed by the required four hosted cumulative profiles",
-    "direct_runs": {
+    "full_matrix": {
+      "status": "pending_after_approved_R01_repair",
+      "required_profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "inherited_test_identities": 3590,
+      "separate_subtests_required": 428,
+      "expected_tests": 3638
+    },
+    "collection": {
+      "count": 3638,
+      "inherited_retained": 3590,
+      "added": 48,
+      "removed": 0,
+      "new_governance_identities": 0
+    },
+    "scope_blocker": {
+      "proposed_amendment": "P3-W11-R01",
+      "approval": "approved_by_actual_owner_message",
+      "applied": true,
+      "reproduction": {
+        "path": "w11-case-target-blocker.json",
+        "bytes": 1225,
+        "sha256": "e6b0c91277774ced2e323a415800712a40f370cafbcb6d410ba5399457ac9d48"
+      },
+      "proposed_core_diff": {
+        "path": "w11-case-target-proposed.diff",
+        "bytes": 571,
+        "sha256": "50593aa360d4f43c810d2018d611ec42e741c07d9f4cf26f0c0f9d2eeb620869"
+      },
+      "additional_paths": [
+        "src/source_integrity_toolkit/contracts/results.py",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "meaning": "The actual owner approved P3-W11-R01. The one-line repair allows records or assertions for before_ref while case_ref remains records-only. Existing W11 scope/history controls have passed within the approved three additional paths. Four-profile verification remains pending.",
+      "approval_receipt": {
+        "path": "w11-r01-approval-receipt.json",
+        "bytes": 1408,
+        "sha256": "4c47e2c0123f9dc65e587855c3bb661852063d29389222459fa5078809290d92"
+      }
+    },
+    "preapproval_direct_runs": {
       "correction_outcomes": {
         "tests": 48,
         "passed": 47,
@@ -121,45 +200,132 @@
         ]
       }
     },
-    "full_matrix": {
-      "status": "not_run_known_blocker_requires_P3-W11-R01",
-      "required_profiles": [
-        "ubuntu-24.04-py3.11",
-        "ubuntu-24.04-py3.13",
-        "windows-2025-py3.11",
-        "windows-2025-py3.13"
-      ],
-      "inherited_test_identities": 3590,
-      "separate_subtests_required": 428,
-      "expected_tests": 3638
+    "direct_runs": {
+      "correction_outcomes": {
+        "tests": 48,
+        "passed": 48,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "pytest_seconds": 12.018,
+        "pytest_exit_code": 0,
+        "sources_unchanged": true,
+        "source_sha256": {
+          "src/source_integrity_toolkit/analysis/correction_outcomes.py": "11a09a667f6a2c6552a980875bf6f09255714582318263bc743db5907259af78",
+          "tests/unit/test_correction_outcomes.py": "2c06937c4c9c75521d3c29d5843c7b34afa27d061437b0a636a64957d18fa55b",
+          "src/source_integrity_toolkit/contracts/results.py": "565b4aa8d1053931b0b69b1af686b563427dce2b27be8215e916fbc18d335a11"
+        },
+        "receipts": [
+          {
+            "path": "w11-direct.log",
+            "bytes": 100,
+            "sha256": "ac9e3eadc58e45143ec46425da60688299ad695a7f1a162c1ac7382ff1bd1114"
+          },
+          {
+            "path": "w11-direct.xml",
+            "bytes": 7347,
+            "sha256": "0103b5548a5c57cc06c34fcd4442b7e29c9e0ff46cf0e459cf99df3de7b6a570"
+          },
+          {
+            "path": "w11-direct-before.json",
+            "bytes": 372,
+            "sha256": "ba4ed9607617e963d30c03258ac0d2d7f06d68782ece191678bdac68ecfa96ed"
+          },
+          {
+            "path": "w11-direct-after.json",
+            "bytes": 372,
+            "sha256": "ba4ed9607617e963d30c03258ac0d2d7f06d68782ece191678bdac68ecfa96ed"
+          },
+          {
+            "path": "w11-direct-execution.json",
+            "bytes": 686,
+            "sha256": "05e1c26239d5ecaf04fcce57fd2108f877438e85bda8c8b00d3ade66292545e2"
+          }
+        ]
+      }
     },
-    "collection": {
-      "count": 3638,
-      "inherited_retained": 3590,
-      "added": 48,
-      "removed": 0,
-      "new_governance_identities": 0
+    "affected_existing_controls": {
+      "tests": 75,
+      "passed": 75,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "pytest_seconds": 10.603,
+      "exit_code": 0,
+      "no_new_test_identities": true,
+      "receipts": [
+        {
+          "path": "w11-r01-controls.log",
+          "bytes": 180,
+          "sha256": "7358c984b49c7f6f79cf4e24891d7323115f9396d50437c818cb7fceda1f8077"
+        },
+        {
+          "path": "w11-r01-controls.xml",
+          "bytes": 12140,
+          "sha256": "790e512accc2ab96346ed953ec436c3b0b85a9817e7fd6394f20045da42ae5c3"
+        },
+        {
+          "path": "w11-r01-controls-before.json",
+          "bytes": 225,
+          "sha256": "bf513dbcd22bc470b36e9cea5ef2d60fe6ce6f128347fcc32a8d4edfc0ccd840"
+        },
+        {
+          "path": "w11-r01-controls-after.json",
+          "bytes": 225,
+          "sha256": "bf513dbcd22bc470b36e9cea5ef2d60fe6ce6f128347fcc32a8d4edfc0ccd840"
+        },
+        {
+          "path": "w11-r01-controls-execution.json",
+          "bytes": 1657,
+          "sha256": "a44155c19ddc041cb4b60430ebd5b612a730390e590e581c90d3da8821f9acec"
+        },
+        {
+          "path": "w11-r01-controls-edit-summary.json",
+          "bytes": 604,
+          "sha256": "8b0d3bd3378459567f3e39323ec8fa8c843ed17c15223d114b246260cdffbe56"
+        }
+      ]
     },
-    "scope_blocker": {
-      "proposed_amendment": "P3-W11-R01",
-      "approval": "pending",
-      "applied": false,
-      "reproduction": {
-        "path": "w11-case-target-blocker.json",
-        "bytes": 1225,
-        "sha256": "e6b0c91277774ced2e323a415800712a40f370cafbcb6d410ba5399457ac9d48"
-      },
-      "proposed_core_diff": {
-        "path": "w11-case-target-proposed.diff",
-        "bytes": 571,
-        "sha256": "50593aa360d4f43c810d2018d611ec42e741c07d9f4cf26f0c0f9d2eeb620869"
-      },
-      "additional_paths": [
-        "src/source_integrity_toolkit/contracts/results.py",
-        "tests/scaffold/test_ci_contract.py",
-        "tests/contract/test_phase3_transition.py"
-      ],
-      "meaning": "The input and documentary identity/linkage checks accept an Assertion target; the existing records-only _CaseTarget constructor then raises invalid_private_representation. The proposed one-line repair remains unapplied."
+    "source_review": {
+      "path": "w11-r01-source-review.json",
+      "bytes": 4206,
+      "sha256": "9b30c4e3ff60d269039c6cfc7e1a89ba6a1849190a693d44716799e6e60e53ff"
+    },
+    "ci_contract_controls": {
+      "tests": 20,
+      "passed": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "pytest_seconds": 0.043,
+      "exit_code": 0,
+      "receipts": [
+        {
+          "path": "w11-r01-ci-contract.log",
+          "bytes": 99,
+          "sha256": "fc4bdbc306a5cd8229bd86fe73dad4927cb19b1f79f8884e3c7fff5dcb539bcc"
+        },
+        {
+          "path": "w11-r01-ci-contract.xml",
+          "bytes": 2853,
+          "sha256": "5b5fb6262c69ba54e3bf7b7c2d671a96ed1e942d2982458f31c377973a8f5fbc"
+        },
+        {
+          "path": "w11-r01-ci-contract-before.json",
+          "bytes": 225,
+          "sha256": "bf513dbcd22bc470b36e9cea5ef2d60fe6ce6f128347fcc32a8d4edfc0ccd840"
+        },
+        {
+          "path": "w11-r01-ci-contract-after.json",
+          "bytes": 225,
+          "sha256": "bf513dbcd22bc470b36e9cea5ef2d60fe6ce6f128347fcc32a8d4edfc0ccd840"
+        },
+        {
+          "path": "w11-r01-ci-contract-execution.json",
+          "bytes": 382,
+          "sha256": "2fb94f38c7d8cad3757bd573be008a1b69d6fa0828233d07e58b5b87d56f5a42"
+        }
+      ]
     }
   },
   "owner_local_core_obligations_verified": 184,
@@ -168,6 +334,6 @@
     "All 32 W11 core obligations remain pending until actual direct tests, complete same-head four-profile evidence and node mapping pass.",
     "Native accepted or failed handling does not establish substantive correction success or processing failure. Documented changes do not establish causal efficacy, applicable authority or sustained capacity.",
     "All integration/release obligations remain pending. Public API/CLI auditing and reporting remain inactive.",
-    "Existing _CaseTarget requires records-only before_ref although frozen correction target types include Assertions. A narrow contract and active-guard repair requires separately approved additional file scope."
+    "The approved P3-W11-R01 adds exactly three paths to W11. Preapproval candidate history retains six paths; earlier and W12+ immediate permissions remain unchanged."
   ]
 }

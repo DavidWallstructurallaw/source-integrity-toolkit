@@ -1,7 +1,7 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W11",
-  "status": "W11_candidate_blocked_pending_P3-W11-R01",
+  "status": "W11_approved_R01_pending_actual_verification",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"

@@ -293,7 +293,7 @@ class _CaseTarget:
 
     def __post_init__(self):
         _require(type(self.case_ref) is _InputRef and self.case_ref.collection == 'records')
-        _require(type(self.before_ref) is _InputRef and self.before_ref.collection == 'records')
+        _require(type(self.before_ref) is _InputRef and self.before_ref.collection in ('records', 'assertions'))
 
     def _key(self):
         return ('case_target', self.case_ref._key(), self.before_ref._key())
