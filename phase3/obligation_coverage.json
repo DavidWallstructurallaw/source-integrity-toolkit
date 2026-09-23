@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W09",
-  "status": "W09_R01_owner_local_core_verified_pending_owner_acceptance",
+  "unit": "P3-W10",
+  "status": "W10_owner_local_core_verified_pending_owner_acceptance",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 136 inherited verified core rows remain unchanged; exactly 36 W09 owner-local cores now have all four hosted cumulative profiles verified. The remaining 56 cores and all 228 integration/release obligations remain pending.",
+  "meaning": "The 172 inherited verified core rows remain unchanged; exactly 12 W10 owner-local cores now have all four hosted cumulative profiles verified. The remaining 44 cores and all 228 integration/release obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -7093,10 +7093,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 842,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF038",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "H7 four exact amend target tuples share the single supplied channel and preserve canonical data.target_refs edge identity.",
+          "rejecting_mutation_or_boundary": "An invented assertion edge, extra target or duplicated channel fails the exact literal H7 path oracle.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf038_p_h7_four_exact_target_tuples_use_real_canonical_links"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF038-N",
@@ -7104,10 +7139,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 842,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF038",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Parallel propagation and a routing cycle retain one finite simple path for the selected channel/target, plus one canonical cycle.",
+          "rejecting_mutation_or_boundary": "Counting multiple walks or channels, expanding a cyclic path, or multiplying cycle witnesses fails the exact path/member assertions.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf038_n_parallel_routes_and_cycle_never_multiply_channel_or_walks"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF038-M",
@@ -7115,10 +7185,50 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 842,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF038",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "A completed partial-view search exposes no recorded route and an explicitly scoped empty witness collection.",
+          "rejecting_mutation_or_boundary": "Universal impossibility or an invented positive path fails the empty witness and native partial coverage oracle; interruption never returns a completed empty result.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf038_m_partial_route_absence_is_scoped_empty_witness",
+            "tests/unit/test_correction_routes.py::test_no_route_retains_actual_complete_or_partial_coverage_basis[partial-True]",
+            "tests/unit/test_correction_routes.py::test_no_route_retains_actual_complete_or_partial_coverage_basis[complete_for_scope-True]",
+            "tests/unit/test_correction_routes.py::test_no_route_retains_actual_complete_or_partial_coverage_basis[complete_for_scope-False]",
+            "tests/unit/test_correction_routes.py::test_interrupted_search_never_returns_completed_empty_route[25]",
+            "tests/unit/test_correction_routes.py::test_interrupted_search_never_returns_completed_empty_route[2500]"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF038-B",
@@ -7126,10 +7236,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 842,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF038",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Each propagated leg retains action and time; cycles are finite and equal-length ties compare the complete edge prefix.",
+          "rejecting_mutation_or_boundary": "Changing one leg to review removes the amend path; predecessor-only tie selection or longer lexical-first selection fails literal route expectations.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf038_b_two_leg_routes_need_each_leg_action_and_survive_cycles",
+            "tests/unit/test_correction_routes.py::test_shortest_authorized_path_ignores_longer_lexically_earlier_route",
+            "tests/unit/test_correction_routes.py::test_equal_length_tie_compares_complete_edge_prefix_not_last_predecessor"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF039-P",
@@ -7137,10 +7284,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 843,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF039",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Every H7 amend tuple retains its exact target, supplied authority and effective-time grant, with all-leg applicability.",
+          "rejecting_mutation_or_boundary": "Grant omission or widening from the exact supplied tuple fails the independent four-target and PC20 oracle.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf039_p_h7_each_amend_tuple_has_exact_documented_grant"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF039-N",
@@ -7148,10 +7330,50 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 843,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF039",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Two-leg routes retain their declaration while a missing, wrong-action, wrong-version or expired-window grant blocks stronger authorization.",
+          "rejecting_mutation_or_boundary": "Accepting only the first leg or extending A1 authority to A2 fails the authorized unavailable oracle.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf039_n_one_inapplicable_leg_blocks_stronger_route_only[missing]",
+            "tests/unit/test_correction_routes.py::test_vf039_n_one_inapplicable_leg_blocks_stronger_route_only[wrong_action]",
+            "tests/unit/test_correction_routes.py::test_vf039_n_one_inapplicable_leg_blocks_stronger_route_only[wrong_version]",
+            "tests/unit/test_correction_routes.py::test_vf039_n_one_inapplicable_leg_blocks_stronger_route_only[expired_window]",
+            "tests/unit/test_correction_routes.py::test_exact_target_version_does_not_follow_same_name_or_supersession",
+            "tests/unit/test_correction_routes.py::test_unrelated_wrong_claim_grant_does_not_authorize_selected_claim"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF039-M",
@@ -7159,10 +7381,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 843,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF039",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Unknown grants, declaration-only support, unavailable evidence and absent authority basis remain unestablished.",
+          "rejecting_mutation_or_boundary": "Promoting unsupported authority to an available authorized witness fails while native declarations are preserved.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf039_m_unknown_or_unsupported_grant_stays_unestablished[unknown_grant]",
+            "tests/unit/test_correction_routes.py::test_vf039_m_unknown_or_unsupported_grant_stays_unestablished[declaration]",
+            "tests/unit/test_correction_routes.py::test_vf039_m_unknown_or_unsupported_grant_stays_unestablished[withheld_support]",
+            "tests/unit/test_correction_routes.py::test_vf039_m_unknown_or_unsupported_grant_stays_unestablished[missing_basis]"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF039-B",
@@ -7170,10 +7430,54 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 843,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF039",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Date-only/unknown timing limits instant qualification; later eligible alternatives are searched and shortest witnesses remain exact.",
+          "rejecting_mutation_or_boundary": "Unknown timed legs cannot produce completed authorized absence even with declared complete coverage; unrelated partial coverage cannot erase a fully documented positive grant.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf039_b_uncertain_effective_time_cannot_authorize_instant[date]",
+            "tests/unit/test_correction_routes.py::test_vf039_b_uncertain_effective_time_cannot_authorize_instant[unknown]",
+            "tests/unit/test_correction_routes.py::test_vf039_b_uncertain_effective_time_cannot_authorize_instant[snapshot]",
+            "tests/unit/test_correction_routes.py::test_later_valid_alternative_is_found_after_first_unauthorized_route",
+            "tests/unit/test_correction_routes.py::test_shortest_authorized_path_ignores_longer_lexically_earlier_route",
+            "tests/unit/test_correction_routes.py::test_equal_length_tie_compares_complete_edge_prefix_not_last_predecessor",
+            "tests/unit/test_correction_routes.py::test_unknown_required_leg_time_prevents_authorization[channel]",
+            "tests/unit/test_correction_routes.py::test_unknown_required_leg_time_prevents_authorization[edge]",
+            "tests/unit/test_correction_routes.py::test_positive_exact_grant_does_not_require_global_route_coverage[absent]",
+            "tests/unit/test_correction_routes.py::test_positive_exact_grant_does_not_require_global_route_coverage[not_examined]"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF040-P",
@@ -7181,10 +7485,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 844,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF040",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Native channel, target/action, complete declared path, grant scope, support and time/coverage records remain tied to the exact request.",
+          "rejecting_mutation_or_boundary": "Omitting or rewriting source scope, effective window, support refs or withheld mailbox facts fails full native record equality.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf040_p_native_channel_grant_scope_window_and_basis_stay_together"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF040-N",
@@ -7192,10 +7531,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 844,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF040",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Owner, mailbox and declared action metadata preserve a declared route while authority, observed effect and capacity stay separate.",
+          "rejecting_mutation_or_boundary": "Invented institutional authority or use/effect/capacity fields fail unavailable authorization, exact result fields and interpretation limits.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf040_n_mailbox_owner_and_action_list_never_manufacture_authority_or_effect"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF040-M",
@@ -7203,10 +7577,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 844,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF040",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "An incomplete second-leg grant retains its native unknown state and the entire declared two-leg route.",
+          "rejecting_mutation_or_boundary": "Dropping the declaration or erasing the unknown grant from disclosures fails the original-source equality oracle.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf040_m_incomplete_grants_retain_declared_route_and_native_uncertainty"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF040-B",
@@ -7214,10 +7623,50 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 844,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_routes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.9 SIT-VF040",
+            "DEFINITIONS_AND_UNITS.md section 27.1",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.8,9.7,11.1,27.3",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,16.7,17; PC19-PC20",
+            "REPOSITORY_ARCHITECTURE.md sections 18.2,19; PHASE_3_PLAN.md sections 3,15"
+          ],
+          "owner_local_core": "Denied, expired and unknown grant values remain attributed; overlapping grant and denial records cannot use newest-wins adjudication.",
+          "rejecting_mutation_or_boundary": "A later affirmative grant cannot erase a supported or declaration-only denial; unresolved target identity cannot become exact authorized scope.",
+          "test_nodes": [
+            "tests/unit/test_correction_routes.py::test_vf040_b_grant_states_remain_attributed_without_newest_wins[denied]",
+            "tests/unit/test_correction_routes.py::test_vf040_b_grant_states_remain_attributed_without_newest_wins[expired]",
+            "tests/unit/test_correction_routes.py::test_vf040_b_grant_states_remain_attributed_without_newest_wins[unknown]",
+            "tests/unit/test_correction_routes.py::test_conflicting_granted_and_denied_records_block_authority_even_with_later_grant[True]",
+            "tests/unit/test_correction_routes.py::test_conflicting_granted_and_denied_records_block_authority_even_with_later_grant[False]",
+            "tests/unit/test_correction_routes.py::test_unresolved_exact_target_retains_declaration_without_authorized_identity"
+          ],
+          "map_packet": {
+            "path": "w10-core-map.json",
+            "bytes": 19399,
+            "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+          },
+          "passed_at": {
+            "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+            "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+            "run_id": "35791081540",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF041-P",
@@ -8841,8 +9290,8 @@
     "final_documentation_successor_gate": "pending_at_creation_settle_on_PR22"
   },
   "core_status_counts": {
-    "owner_local_core_verified": 172,
-    "pending": 56
+    "owner_local_core_verified": 184,
+    "pending": 44
   },
   "integration_status_counts": {
     "pending": 228
@@ -9189,5 +9638,51 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "affected_controls_and_exact_three_records_184_unchanged_blobs_on_PR28"
+  },
+  "w10_start": {
+    "accepted_predecessor": "06854e067ba849a3699412d54d778fc2abbe1caa",
+    "status": "implemented_and_verified_pending_owner_acceptance",
+    "fields": [
+      "SIT-VF038",
+      "SIT-VF039",
+      "SIT-VF040"
+    ],
+    "scheduled_core_obligations": 12,
+    "newly_verified_core_obligations": 12,
+    "baseline_core_status_counts": {
+      "owner_local_core_verified": 172,
+      "pending": 56
+    },
+    "full_matrix": "passed_all_four_profiles"
+  },
+  "w10_owner_local_scope": {
+    "fields": [
+      "SIT-VF038",
+      "SIT-VF039",
+      "SIT-VF040"
+    ],
+    "new_core_verified": 12,
+    "inherited_core_verified": 172,
+    "core_map": {
+      "path": "w10-core-map.json",
+      "bytes": 19399,
+      "sha256": "1a97ce9bd3a8fca594e16bce1db76e4f26077937c254f2c5accb202ebbd2b471"
+    },
+    "passed_at": {
+      "code_head": "f2fef4c48d94a4c7856efacee86de2c7d487db25",
+      "tree": "e06c80d658dc84f4d8b724bb7e46dea5542270e2",
+      "run_id": "35791081540",
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "9268970577ca200602bed4eeb6c9f41679f23e1860ba28817fed88918990897f",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
+    "whole_invocation_integration": "pending_W13",
+    "final_successor_gate": "affected_controls_and_exact_three_records_185_unchanged_blobs_on_PR29"
   }
 }
