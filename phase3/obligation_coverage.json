@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W11",
-  "status": "W11_approved_R01_pending_actual_verification",
+  "status": "W11_owner_local_core_verified_pending_owner_acceptance",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 184 accepted owner-local core rows remain verified. All 32 scheduled W11 rows remain pending until actual verification; all integration/release obligations remain pending.",
+  "meaning": "The 184 inherited verified core rows remain unchanged; exactly 32 W11 owner-local cores now have all four hosted cumulative profiles verified. The remaining 12 cores and all 228 integration/release obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -7674,10 +7674,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 850,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF041",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "H7 literal submission ID yields exactly one case.",
+          "rejecting_mutation_or_boundary": "Adding handling or change records cannot inflate the case population.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf041_p_h7_submission_is_one_case"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF041-N",
@@ -7685,10 +7720,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 850,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF041",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Count only exact submission records.",
+          "rejecting_mutation_or_boundary": "A type-valid five-case output mutant including all event kinds is rejected.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf041_n_handling_and_changes_cannot_be_counted_as_submissions",
+            "tests/unit/test_correction_outcomes.py::test_automatic_case_selection_excludes_unrelated_submission_and_children"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF041-M",
@@ -7696,10 +7767,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 850,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF041",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "An explicitly empty finite submission population yields available zero.",
+          "rejecting_mutation_or_boundary": "Zero supplied cases cannot imply zero real corrective capacity.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf041_m_empty_finite_case_inventory_is_available_zero"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF041-B",
@@ -7707,10 +7813,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 850,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF041",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Two exact submissions targeting one target remain separate cases.",
+          "rejecting_mutation_or_boundary": "Merging submissions by target identity loses one case.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf041_b_separate_submissions_to_same_target_remain_two_cases"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF042-P",
@@ -7718,10 +7859,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 851,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF042",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "H7 HAND1 remains one native attributed handling record.",
+          "rejecting_mutation_or_boundary": "Discarded outcome or provenance violates the source oracle.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf042_p_h7_handling_is_exact_native_record"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF042-N",
@@ -7729,10 +7905,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 851,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF042",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Accepted and later failed records coexist as two event IDs.",
+          "rejecting_mutation_or_boundary": "Newest-wins collapse loses the earlier accepted record.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf042_n_accepted_and_later_failed_are_two_handling_events"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF042-M",
@@ -7740,10 +7951,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 851,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF042",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "No supplied handling event yields zero handling inventory.",
+          "rejecting_mutation_or_boundary": "No handling does not establish neglect or failure.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf042_m_no_handling_records_does_not_infer_neglect"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF042-B",
@@ -7751,10 +7997,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 851,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF042",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Distinct event IDs with repeated outcomes both count.",
+          "rejecting_mutation_or_boundary": "Counting outcome categories instead of records loses one event.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf042_b_repeated_outcome_values_keep_distinct_event_ids"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF043-P",
@@ -7762,10 +8043,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 852,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF043",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "H7 has exactly CHANGE-A, CHANGE-D and CHANGE-R1.",
+          "rejecting_mutation_or_boundary": "Any extra accepted or inferred event fails literal identity membership.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf043_p_h7_three_exact_linked_event_ids"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF043-N",
@@ -7773,10 +8089,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 852,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF043",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Acceptance plus unlinked later version still has zero change records.",
+          "rejecting_mutation_or_boundary": "Attributing succession by later version alone invents a case link.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf043_n_acceptance_and_unlinked_later_version_do_not_create_change"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF043-M",
@@ -7784,10 +8135,48 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 852,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF043",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Zero supplied events coexist with unavailable requested effect.",
+          "rejecting_mutation_or_boundary": "Unavailable effect cannot be replaced by observed failure or empty success.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf043_m_zero_event_inventory_and_unavailable_effect_are_distinct",
+            "tests/unit/test_correction_outcomes.py::test_budget_interruption_never_publishes_completed_zero_counts[25]",
+            "tests/unit/test_correction_outcomes.py::test_budget_interruption_never_publishes_completed_zero_counts[2500]",
+            "tests/unit/test_correction_outcomes.py::test_witness_quota_interrupts_before_complete_profile"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF043-B",
@@ -7795,10 +8184,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 852,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF043",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Two change events on one case-target count as two events.",
+          "rejecting_mutation_or_boundary": "Event deduplication by target loses a native event.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf043_b_two_event_ids_on_one_pair_count_two_events_one_target"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF044-P",
@@ -7806,10 +8230,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 853,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF044",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "H7 documentary pairs are CASE1 paired with A, D and R1-V1.",
+          "rejecting_mutation_or_boundary": "Changing the pair membership or dropping the root violates the literal oracle.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf044_p_h7_three_documentary_case_target_pairs"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF044-N",
@@ -7817,10 +8276,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 853,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF044",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Supported linkage qualifies despite a declared submission; declared linkage remains only an event.",
+          "rejecting_mutation_or_boundary": "Demanding strong submission basis or promoting unsupported change basis gives the wrong count.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf044_n_linkage_description_without_documentary_basis_stays_event",
+            "tests/unit/test_correction_outcomes.py::test_withheld_documentary_support_preserves_event_without_stronger_target"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF044-M",
@@ -7828,10 +8323,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 853,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF044",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Unresolved before or after endpoint retains event without qualifying a pair.",
+          "rejecting_mutation_or_boundary": "Expected type and opaque unresolved ID do not instantiate a resolved endpoint.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf044_m_unresolved_endpoint_does_not_qualify_documentary_target[before]",
+            "tests/unit/test_correction_outcomes.py::test_vf044_m_unresolved_endpoint_does_not_qualify_documentary_target[after]"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF044-B",
@@ -7839,10 +8370,47 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 853,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF044",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Explicit supported removal qualifies without an invented after artifact; opaque resolved and legal Assertion targets keep exact identities.",
+          "rejecting_mutation_or_boundary": "Unknown after-state, duplicate events or wrong collection cannot stand in for a qualified pair.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf044_b_supported_explicit_removal_needs_no_invented_after_artifact",
+            "tests/unit/test_correction_outcomes.py::test_protected_resolved_artifact_identity_remains_documentary",
+            "tests/unit/test_correction_outcomes.py::test_supported_assertion_target_preserves_legal_case_target_collection"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF045-P",
@@ -7850,10 +8418,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 854,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF045",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "H7 three documentary target pairs belong to one case.",
+          "rejecting_mutation_or_boundary": "Counting target rows as cases produces three instead of one.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf045_p_h7_three_changed_targets_belong_to_one_case"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF045-N",
@@ -7861,10 +8464,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 854,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF045",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "One case with three target changes is distinct from three qualified targets.",
+          "rejecting_mutation_or_boundary": "The field-specific count oracle rejects substitution of the target count.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf045_n_case_count_cannot_be_replaced_with_changed_target_count"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF045-M",
@@ -7872,10 +8510,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 854,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF045",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Accepted case without supported change has zero qualifying cases.",
+          "rejecting_mutation_or_boundary": "Acceptance is not a success or a documented change.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf045_m_accepted_without_documentary_change_has_zero_qualifying_cases"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF045-B",
@@ -7883,10 +8556,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 854,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF045",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Two submissions with supported changes to the same target yield two qualifying cases.",
+          "rejecting_mutation_or_boundary": "Global target deduplication loses the second case.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf045_b_two_cases_changing_same_target_are_two_case_target_pairs"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF046-P",
@@ -7894,10 +8602,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 855,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF046",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "H7 proposal, accepted outcome and provenance remain exact native disclosures.",
+          "rejecting_mutation_or_boundary": "Rewriting native proposal or attribution fails source equality.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf046_p_native_proposal_and_handling_provenance_survive"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF046-N",
@@ -7905,10 +8648,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 855,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF046",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Native failed remains an available outcome beside accepted on completed execution.",
+          "rejecting_mutation_or_boundary": "No runtime failure, final-outcome reducer or success-rate field is introduced.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf046_n_native_failed_remains_available_without_newest_wins"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF046-M",
@@ -7916,10 +8694,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 855,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF046",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Separate negative empirical review preserves exact cutoff, target and attribution.",
+          "rejecting_mutation_or_boundary": "An attributed inspection cannot manufacture a change event or permanent no-change conclusion.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf046_m_negative_review_observation_keeps_its_cutoff_and_basis"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF046-B",
@@ -7927,10 +8740,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 855,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF046",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Reasoned rejection remains a handling record without a truth verdict.",
+          "rejecting_mutation_or_boundary": "Rejected does not prove the objection false.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf046_b_reasoned_rejection_is_handling_without_truth_verdict"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF047-P",
@@ -7938,10 +8786,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 856,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF047",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "H7 selected A/D/E subset retains A/D linked, E unavailable and whole-case 1/1/3/3/1.",
+          "rejecting_mutation_or_boundary": "Changing whole-case counts to the subset denominator loses the root event.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf047_p_h7_downstream_subset_keeps_whole_case_inventory_distinct"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF047-N",
@@ -7949,10 +8832,46 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 856,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF047",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Only declared H7 targets appear; E remains undocumented.",
+          "rejecting_mutation_or_boundary": "Marking E failed or adding B/C silently changes meaning/population.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf047_n_undocumented_target_is_not_failed_and_unlisted_targets_are_not_added",
+            "tests/unit/test_correction_outcomes.py::test_extra_linked_target_is_disclosed_without_enlarging_original_declaration"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF047-M",
@@ -7960,10 +8879,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 856,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF047",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Missing target effect stays unavailable with change_evidence_missing.",
+          "rejecting_mutation_or_boundary": "An available empty event inventory does not supply a target effect.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf047_m_missing_effect_remains_unavailable_without_event_invention"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF047-B",
@@ -7971,10 +8925,50 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 856,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF047",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Known linked change remains visible with missing, review-only or unknown authority.",
+          "rejecting_mutation_or_boundary": "Authority gaps do not erase separately supported before/after evidence.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf047_b_documented_change_survives_separate_authority_gaps[missing]",
+            "tests/unit/test_correction_outcomes.py::test_vf047_b_documented_change_survives_separate_authority_gaps[review_only]",
+            "tests/unit/test_correction_outcomes.py::test_vf047_b_documented_change_survives_separate_authority_gaps[unknown]",
+            "tests/unit/test_correction_outcomes.py::test_time_specific_effect_does_not_erase_supplied_event_inventory[2026-01-10T13:00:00Z-True-met]",
+            "tests/unit/test_correction_outcomes.py::test_time_specific_effect_does_not_erase_supplied_event_inventory[2026-01-10T15:00:00Z-False-unmet]",
+            "tests/unit/test_correction_outcomes.py::test_time_specific_effect_does_not_erase_supplied_event_inventory[None-False-unknown]"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF048-P",
@@ -7982,10 +8976,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 857,
       "cell_index": 1,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF048",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Capacity strings, unit, horizon, load, assessor and limits are preserved exactly.",
+          "rejecting_mutation_or_boundary": "Coercing imported strings or dropping attribution fails the native oracle.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf048_p_capacity_strings_horizon_assessor_and_limits_are_exact"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF048-N",
@@ -7993,10 +9022,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 857,
       "cell_index": 2,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF048",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Unsupported capacity declaration remains attributed strings without calculation.",
+          "rejecting_mutation_or_boundary": "Parsing strings into utilization or adequacy invents a formula.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf048_n_capacity_and_load_are_never_parsed_into_utilization"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF048-M",
@@ -8004,10 +9068,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 857,
       "cell_index": 3,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF048",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "H7 empty capacity-assessment inventory supplies no estimate.",
+          "rejecting_mutation_or_boundary": "Empty disclosures cannot become zero capacity.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf048_m_empty_capacity_inventory_does_not_mean_zero_capacity"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF048-B",
@@ -8015,10 +9114,45 @@
       "source": "VALIDATION_PLAN.md",
       "source_line": 857,
       "cell_index": 4,
-      "core_status": "pending",
+      "core_status": "owner_local_core_verified",
       "integration_status": "pending",
       "release_status": "pending",
-      "evidence": []
+      "evidence": [
+        {
+          "owner": "analysis/correction_outcomes.py",
+          "source_clauses": [
+            "VALIDATION_PLAN.md section 12.12 SIT-VF048",
+            "DEFINITIONS_AND_UNITS.md sections 27.2,27.3",
+            "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 6.9,9.8",
+            "OBSERVABILITY_AND_REPORTING.md sections 14.1-14.3,16.2,17; PC21",
+            "PHASE_3_PLAN.md section 16"
+          ],
+          "owner_local_core": "Withheld null strings keep required Gaps; incompatible units/horizons remain separate.",
+          "rejecting_mutation_or_boundary": "Normalization or fabricated scalar capacity loses the supplied uncertainty.",
+          "test_nodes": [
+            "tests/unit/test_correction_outcomes.py::test_vf048_b_withheld_strings_and_incompatible_units_remain_separate"
+          ],
+          "map_packet": {
+            "path": "w11-core-map.json",
+            "bytes": 37092,
+            "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+          },
+          "passed_at": {
+            "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+            "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+            "run_id": "35810064794",
+            "run_attempt": 1,
+            "profiles": [
+              "ubuntu-24.04-py3.11",
+              "ubuntu-24.04-py3.13",
+              "windows-2025-py3.11",
+              "windows-2025-py3.13"
+            ],
+            "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+            "all_mapped_nodes_collected_and_passed_in_each": true
+          }
+        }
+      ]
     },
     {
       "test_id": "SIT-VF049-P",
@@ -9290,8 +10424,8 @@
     "final_documentation_successor_gate": "pending_at_creation_settle_on_PR22"
   },
   "core_status_counts": {
-    "owner_local_core_verified": 184,
-    "pending": 44
+    "owner_local_core_verified": 216,
+    "pending": 12
   },
   "integration_status_counts": {
     "pending": 228
@@ -9687,7 +10821,7 @@
   },
   "w11_start": {
     "accepted_predecessor": "82dc7de63e1007f007e527f53ef0ba719e9c1db4",
-    "status": "implemented_candidate_blocked_pending_scope_approval",
+    "status": "implemented_and_verified_pending_owner_acceptance",
     "fields": [
       "SIT-VF041",
       "SIT-VF042",
@@ -9699,11 +10833,46 @@
       "SIT-VF048"
     ],
     "scheduled_core_obligations": 32,
-    "newly_verified_core_obligations": 0,
+    "newly_verified_core_obligations": 32,
     "baseline_core_status_counts": {
       "owner_local_core_verified": 184,
       "pending": 44
     },
-    "full_matrix": "pending_contract_scope_resolution"
+    "full_matrix": "passed_all_four_profiles"
+  },
+  "w11_owner_local_scope": {
+    "fields": [
+      "SIT-VF041",
+      "SIT-VF042",
+      "SIT-VF043",
+      "SIT-VF044",
+      "SIT-VF045",
+      "SIT-VF046",
+      "SIT-VF047",
+      "SIT-VF048"
+    ],
+    "new_core_verified": 32,
+    "inherited_core_verified": 184,
+    "core_map": {
+      "path": "w11-core-map.json",
+      "bytes": 37092,
+      "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
+    },
+    "passed_at": {
+      "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+      "tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+      "run_id": "35810064794",
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
+    "whole_invocation_integration": "pending_W13",
+    "final_successor_gate": "affected_controls_and_exact_three_records_186_unchanged_blobs_on_PR30"
   }
 }

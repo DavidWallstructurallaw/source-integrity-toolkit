@@ -11,7 +11,7 @@
     "owner_instruction": "W11  继续",
     "predecessor_acceptance": "The instruction to continue W11 accepts the delivered W10 review and authorizes its prerequisite merge.",
     "actual_unit_entry": "82dc7de63e1007f007e527f53ef0ba719e9c1db4",
-    "w11_acceptance": "pending_implementation_verification_and_owner_review",
+    "w11_acceptance": "pending_owner_acceptance_of_PR30",
     "next_unit": "P3-W12_not_authorized_or_started",
     "approved_scope_amendment": {
       "name": "P3-W11-R01",
@@ -83,7 +83,7 @@
     "new_governance_tests": 0
   },
   "implementation": {
-    "status": "implemented_approved_R01_repair_direct_verified_pending_four_profiles",
+    "status": "complete_and_verified_pending_owner_acceptance",
     "owner": "analysis/correction_outcomes.py",
     "families": [
       "M012"
@@ -113,10 +113,10 @@
     }
   },
   "validation": {
-    "status": "48_direct_75_affected_and_20_ci_contract_controls_pass_four_profile_verification_pending",
-    "local_cumulative": "not_planned; source-bound direct tests followed by the required four hosted cumulative profiles",
+    "status": "four_profile_cumulative_verification_passed",
+    "local_cumulative": "not_run; actual direct semantic evidence and the four required hosted cumulative profiles provide verification",
     "full_matrix": {
-      "status": "pending_after_approved_R01_repair",
+      "status": "passed",
       "required_profiles": [
         "ubuntu-24.04-py3.11",
         "ubuntu-24.04-py3.13",
@@ -125,7 +125,66 @@
       ],
       "inherited_test_identities": 3590,
       "separate_subtests_required": 428,
-      "expected_tests": 3638
+      "expected_tests": 3638,
+      "code_head": "ba4654cabae2044d21f8aee534aac1b92de059a2",
+      "code_tree": "ffcb1d3e0bfef961d7d4082add0cf802411e4040",
+      "run_id": "35810064794",
+      "run_attempt": 1,
+      "tests_per_profile": 3638,
+      "separate_subtests_per_profile": 428,
+      "raw_audit": {
+        "path": "w11-raw-audit.json",
+        "bytes": 4130,
+        "sha256": "ee1543efb165a87d6de5d70d150c8771966825305390628471bac4504adbf18a"
+      },
+      "profiles": [
+        {
+          "profile": "windows-2025-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w11-ci/phase3-windows-2025-py3.13-35810064794-1.zip",
+          "sha256": "011ec21b4d1317f2a17e988c40b4ac96b44ca410508d210e3c7c4f64caf4bf7e",
+          "bytes": 201006,
+          "service_digest_checked": true,
+          "tests": 3638,
+          "subtests": 428,
+          "seconds": 1263.33,
+          "package_member_checks": true
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w11-ci/phase3-windows-2025-py3.11-35810064794-1.zip",
+          "sha256": "c8b18815a6ed6e972fad51ca1f075e55bb1a0e72199d3f76dfc477366a8b1fce",
+          "bytes": 200253,
+          "service_digest_checked": true,
+          "tests": 3638,
+          "subtests": 428,
+          "seconds": 729.85,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w11-ci/phase3-ubuntu-24.04-py3.11-35810064794-1.zip",
+          "sha256": "09139f25bc8f98dff5d47c2e27b8bd65d786eacf5dcf70a1bf41a609263910f0",
+          "bytes": 194105,
+          "service_digest_checked": true,
+          "tests": 3638,
+          "subtests": 428,
+          "seconds": 767.29,
+          "package_member_checks": true
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w11-ci/phase3-ubuntu-24.04-py3.13-35810064794-1.zip",
+          "sha256": "6412a2fb91246f6abe7f39d954f10cf6c649aa04b20699bb97e707cf8ebddefd",
+          "bytes": 193884,
+          "service_digest_checked": true,
+          "tests": 3638,
+          "subtests": 428,
+          "seconds": 709.39,
+          "package_member_checks": true
+        }
+      ],
+      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit.",
+      "qualification": "All four profiles completed successfully on this same W11 code head, retaining every accepted W10 test identity."
     },
     "collection": {
       "count": 3638,
@@ -153,7 +212,7 @@
         "tests/scaffold/test_ci_contract.py",
         "tests/contract/test_phase3_transition.py"
       ],
-      "meaning": "The actual owner approved P3-W11-R01. The one-line repair allows records or assertions for before_ref while case_ref remains records-only. Existing W11 scope/history controls have passed within the approved three additional paths. Four-profile verification remains pending.",
+      "meaning": "The actual owner approved P3-W11-R01. The one-line repair allows records or assertions for before_ref while case_ref remains records-only. Existing W11 scope/history controls passed within the approved three additional paths. The direct Assertion-target regression and all four same-code-head cumulative profiles now pass; the original contract blocker is resolved. Final administrative successor checks and owner acceptance remain pending.",
       "approval_receipt": {
         "path": "w11-r01-approval-receipt.json",
         "bytes": 1408,
@@ -326,14 +385,20 @@
           "sha256": "2fb94f38c7d8cad3757bd573be008a1b69d6fa0828233d07e58b5b87d56f5a42"
         }
       ]
+    },
+    "qualification": "All 32 mapped W11 owner-local core obligations passed in each required profile. Affected controls and exact source identity settle the later three-record administrative successor; its gate remains pending until actually executed.",
+    "core_map": {
+      "path": "w11-core-map.json",
+      "bytes": 37092,
+      "sha256": "3787166c0cdb53a473a2a523877df568eb6015513f9c05487d44f7128f1f7a07"
     }
   },
-  "owner_local_core_obligations_verified": 184,
+  "owner_local_core_obligations_verified": 216,
   "phase3_complete": false,
   "limitations": [
-    "All 32 W11 core obligations remain pending until actual direct tests, complete same-head four-profile evidence and node mapping pass.",
     "Native accepted or failed handling does not establish substantive correction success or processing failure. Documented changes do not establish causal efficacy, applicable authority or sustained capacity.",
     "All integration/release obligations remain pending. Public API/CLI auditing and reporting remain inactive.",
-    "The approved P3-W11-R01 adds exactly three paths to W11. Preapproval candidate history retains six paths; earlier and W12+ immediate permissions remain unchanged."
+    "The approved P3-W11-R01 adds exactly three paths to W11. Preapproval candidate history retains six paths; earlier and W12+ immediate permissions remain unchanged.",
+    "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
   ]
 }
