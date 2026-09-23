@@ -1,12 +1,12 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W12",
-  "status": "W12_owner_local_core_verified_pending_owner_acceptance",
+  "unit": "P3-W13",
+  "status": "W13_private_orchestration_verified_pending_owner_acceptance",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
   },
-  "meaning": "The 216 inherited verified core rows remain unchanged; exactly 12 W12 owner-local cores now have all four hosted cumulative profiles verified. All 228 core obligations are verified. All 228 integration/release obligations remain pending.",
+  "meaning": "All 228 accepted W12 field-obligation row objects remain unchanged and owner-local core verified. Actual W13 private orchestration clauses are recorded in implementation_evidence.validation.private_integration. All 228 complete field integration and release obligations remain pending.",
   "field_obligations": [
     {
       "test_id": "SIT-VF001-P",
@@ -11347,5 +11347,53 @@
     },
     "whole_invocation_integration": "pending_W13",
     "final_successor_gate": "affected_controls_and_exact_three_records_189_unchanged_blobs_on_PR31"
+  },
+  "w13_start": {
+    "status": "implemented_and_verified_pending_owner_acceptance",
+    "accepted_predecessor": {
+      "unit": "P3-W12",
+      "merge": "db019ea54faf7a08bc841811c3f261a60aa9eb54",
+      "tree": "daa1be6883ba9d5950ca1084185f232c55e26991",
+      "review_head": "e42e32d9c2f2628204fa3ba12b09c9cab3438bd9",
+      "code_head": "41dfe8c230bc2356a7cad7e3e2074ab4b0aaf3a6",
+      "pr": 31,
+      "review_package": {
+        "path": "Source-Integrity-Toolkit-P3-W12-Review-Evidence.zip",
+        "bytes": 5468275,
+        "sha256": "532bc2f70b4afa4d296f5c23b6e55cb3d0f9fa9745f2a1c10c10159f32a7303c"
+      },
+      "owner_instruction": "验收 W12、合并 PR #31，再启动 W13",
+      "acceptance": "explicit_owner_acceptance_and_merge_authorization",
+      "known_recovery_limits": "W12 original CI and final review evidence are complete. The preserved development checkpoint discloses partial context candidate logs and final authoritative direct evidence; the first scratch admin audit zero-key comparison was fixed without product changes. Nested W09 historical recovery limitations remain predecessor history."
+    },
+    "scheduled_new_core_obligations": 0,
+    "newly_verified_core_obligations": 0,
+    "private_pipeline_integration": "named_private_clauses_verified",
+    "full_matrix": "passed_all_four_profiles"
+  },
+  "w13_private_orchestration": {
+    "status": "verified_private_orchestration",
+    "new_core_verified": 0,
+    "inherited_core_verified": 228,
+    "all_field_row_objects_unchanged": true,
+    "passed_at": {
+      "code_head": "db9c0a05062731ca49e2f2b8fcffd0ba7a1fb6b3",
+      "tree": "3cf8555301751c703501a15f7ff2af7b60582e2e",
+      "run_id": "35819087672",
+      "run_attempt": 1,
+      "profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "raw_audit_sha256": "4fbc625bef5ce3d2e0ccb3c4b22b2a18a4da070fd97137b7bfc7d34f752a9d1a",
+      "all_mapped_nodes_collected_and_passed_in_each": true
+    },
+    "evidence": "phase3/implementation_evidence.json#validation.private_integration",
+    "full_field_integration_status": "pending",
+    "release_status": "pending",
+    "historical_row_scope": "Earlier pending_W13 descriptions remain immutable predecessor evidence; the current named private integration clauses are recorded separately.",
+    "final_successor_gate": "affected_controls_and_exact_three_records_192_unchanged_blobs_on_PR32"
   }
 }
