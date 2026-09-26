@@ -340,17 +340,99 @@ def test_two_claim_inventory_coalesces_only_equal_inquiry_cells(mode):
 
 @pytest.mark.parametrize('mode', ('value', 'utf8'))
 def test_no_declared_dimension_cannot_execute_an_implicit_world_dimension(mode):
-    out = _analyze(_minimal_value(), mode)
+    source = _minimal_value()
+    original = copy.deepcopy(source)
+    out = _analyze(source, mode)
     assert out.execution_state == 'completed'
-    dimensional = {'SIT-M002', 'SIT-M004', 'SIT-M005', 'SIT-M006', 'SIT-M007'}
+    assert source == original
+    dimensional = {'SIT-M002', 'SIT-M003', 'SIT-M004', 'SIT-M005', 'SIT-M006', 'SIT-M007', 'SIT-M013'}
+    assert {row.ref.diagnostic_id for row in out.results} >= dimensional
     for row in out.results:
         if row.ref.diagnostic_id in dimensional:
             assert row.ref.scope.dependency_dimension is None
             assert row.result_state == 'not_applicable' and row.value is None
             assert row.reason_refs
+            assert row.execution_state == 'completed'
+            assert {reason.code for reason in row.reason_refs} == {'dimension_not_selected'}
+            for reason in row.reason_refs:
+                assert reason.classification == 'structural_inapplicability'
+                assert reason.scope is row.ref.scope
+                assert reason.affected_result_refs == (row.ref,)
+                assert reason.input_refs == (row.ref.scope.inquiry_ref,)
+                assert reason.input_refs[0].identifier == 'inquiry'
+            assert next(check for check in row.check_refs if check.check_id == 'PC24').state == 'met'
     for field in ('declared_basis_inventory', 'reference_availability_inventory'):
         rows = _rows(out, field)
         assert rows and all(row.result_state == 'available' for row in rows)
+
+
+@pytest.mark.parametrize('mode', ('value', 'utf8'))
+def test_explicit_acquisition_selection_is_the_paired_dimension_reason_control(mode):
+    source = _minimal_value()
+    source['inquiries'][0]['dependency_dimensions'] = ['acquisition']
+    original = copy.deepcopy(source)
+    out = _analyze(source, mode)
+    assert out.execution_state == 'completed' and source == original
+    assert not any(reason.code == 'dimension_not_selected'
+                   for row in out.results for reason in row.reason_refs)
+    for family in ('SIT-M002', 'SIT-M003', 'SIT-M004', 'SIT-M005', 'SIT-M006', 'SIT-M007', 'SIT-M013'):
+        rows = [row for row in out.results if row.ref.diagnostic_id == family]
+        assert rows and all(row.ref.scope.dependency_dimension == 'acquisition' for row in rows)
+    counts = _rows(out, 'reached_origin_record_count')
+    assert len(counts) == 1 and counts[0].value.value == 0
+    comparisons = _rows(out, 'qualified_process_set_member_count')
+    assert comparisons and all(row.result_state == 'unavailable' and row.value is None for row in comparisons)
+    assert all(row.reason_refs for row in comparisons)
+
+
+@pytest.mark.parametrize('mode', ('value', 'utf8'))
+@pytest.mark.parametrize('selected', (False, True), ids=('unselected', 'acquisition'))
+def test_absent_subjects_keep_their_own_reason_even_without_dimensions(mode, selected):
+    source = _minimal_value()
+    source['inquiries'][0]['dependency_dimensions'] = ['acquisition'] if selected else []
+    original = copy.deepcopy(source)
+    out = _analyze(source, mode)
+    assert out.execution_state == 'completed' and source == original
+    families = {'SIT-M008', 'SIT-M011'}
+    rows = [row for row in out.results if row.ref.diagnostic_id in families]
+    assert {row.ref.diagnostic_id for row in rows} == families
+    for row in rows:
+        assert row.result_state == 'not_applicable' and row.value is None
+        assert {reason.code for reason in row.reason_refs} == {'no_applicable_subject'}
+        assert all(reason.classification == 'structural_inapplicability' for reason in row.reason_refs)
+
+
+@pytest.mark.parametrize('mode', ('value', 'utf8'))
+@pytest.mark.parametrize('claim_bound', (False, True), ids=('inquiry_evaluation', 'claim_evaluation'))
+def test_empty_selection_preserves_each_evaluations_dimension_or_role_cause(mode, claim_bound):
+    source = _family_value()
+    source['inquiries'][0]['dependency_dimensions'] = []
+    evaluation = next(row for row in source['records'] if row['id'] == 'evaluation')
+    incomplete = copy.deepcopy(evaluation)
+    incomplete['id'] = 'incomplete'
+    incomplete['data']['role_bindings'] = incomplete['data']['role_bindings'][:1]
+    if not claim_bound:
+        evaluation['data']['target_refs'] = ['model']
+        incomplete['data']['target_refs'] = ['model']
+    source['records'].append(incomplete)
+    source['inquiries'][0]['target_object_refs'].append('incomplete')
+    original = copy.deepcopy(source)
+    out = _analyze(source, mode)
+    assert out.execution_state == 'completed' and source == original
+    rows = [row for row in out.results if row.ref.diagnostic_id == 'SIT-M008']
+    assert {tuple(ref.identifier for ref in row.ref.scope.target_refs) for row in rows} == {
+        ('evaluation',), ('incomplete',)}
+    for row in rows:
+        assert row.ref.scope.dependency_dimension is None and row.value is None
+        complete_roles = row.ref.scope.target_refs[0].identifier == 'evaluation'
+        assert row.result_state == ('not_applicable' if complete_roles else 'unavailable')
+        assert {reason.code for reason in row.reason_refs} == {
+            'dimension_not_selected' if complete_roles else 'roles_incomplete'}
+        for reason in row.reason_refs:
+            assert reason.classification == ('structural_inapplicability' if complete_roles else 'evidence_gap')
+            assert reason.scope is row.ref.scope and reason.affected_result_refs == (row.ref,)
+            if complete_roles:
+                assert reason.input_refs == (row.ref.scope.inquiry_ref,) + row.ref.scope.target_refs
 
 
 def test_whole_plan_precedes_single_acceptance_and_jobs_follow_semantic_schedule(monkeypatch):

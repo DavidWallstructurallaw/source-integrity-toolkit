@@ -164,6 +164,8 @@ def phase3_effective_paths(paths, unit, *, cumulative=False):
             allowed.update(P3_W09_R01_PATHS)
         if step == 11:
             allowed.update(P3_W11_R01_PATHS)
+        if step == 15:
+            allowed.update(P3_W15_R01_PATHS)
     return frozenset(allowed)
 
 
@@ -172,7 +174,8 @@ def phase3_scope_exceptions(unit):
     current = phase_guard.phase3_unit_number(unit)
     return ((["P3-W04-R01"] if current >= 4 else []) + (["P3-W05-R01"] if current >= 5 else []) +
             (["P3-W06-R01"] if current >= 6 else []) + (["P3-W08-R01"] if current >= 8 else []) +
-            (["P3-W09-R01"] if current >= 9 else []) + (["P3-W11-R01"] if current >= 11 else []))
+            (["P3-W09-R01"] if current >= 9 else []) + (["P3-W11-R01"] if current >= 11 else []) +
+            (["P3-W15-R01"] if current >= 15 else []))
 
 
 def phase3_check_changed_paths(paths, unit, changed):
@@ -409,6 +412,15 @@ def phase3_history(entry, base, head, paths, unit):
             require_ancestor(predecessor, P3_W11_R01_BASE)
             require_ancestor(P3_W11_R01_BASE, successor)
             pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W11_R01_BASE).splitlines())
+        if owner == "P3-W15":
+            require(predecessor == P3_W15_R01_PREDECESSOR, "w15_repair_predecessor_mismatch")
+            require(git_text("rev-parse", P3_W15_R01_BASE + "^{tree}") == P3_W15_R01_BASE_TREE,
+                    "w15_repair_boundary_tree_mismatch")
+            require(git_text("show", "-s", "--format=%P", P3_W15_R01_BASE).split() ==
+                    [P3_W15_R01_PREDECESSOR], "w15_repair_boundary_parent_mismatch")
+            require_ancestor(predecessor, P3_W15_R01_BASE)
+            require_ancestor(P3_W15_R01_BASE, successor)
+            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R01_BASE).splitlines())
         commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()
         for commit in commits:
             require(commit not in seen, "duplicate_history_commit")
@@ -432,6 +444,8 @@ def phase3_history(entry, base, head, paths, unit):
                 require_ancestor(P3_W09_R01_BASE, commit)
             if owner == "P3-W11" and commit not in pre_amendment:
                 require_ancestor(P3_W11_R01_BASE, commit)
+            if owner == "P3-W15" and commit not in pre_amendment:
+                require_ancestor(P3_W15_R01_BASE, commit)
             require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")
             actual = commit_hashes(commit)
             check_entry_bytes(entry["files"], actual, cumulative)
@@ -449,6 +463,8 @@ def phase3_history(entry, base, head, paths, unit):
                                                            ["P3-W09-R01"] if owner == "P3-W09"
                                                            and commit not in pre_amendment else
                                                            ["P3-W11-R01"] if owner == "P3-W11"
+                                                           and commit not in pre_amendment else
+                                                           ["P3-W15-R01"] if owner == "P3-W15"
                                                            and commit not in pre_amendment else []),
                             "changed_paths": sorted(changed), "tracked_files": len(actual)})
     all_commits = set(git_text("rev-list", intake + ".." + head).splitlines())
@@ -631,6 +647,19 @@ P3_W11_R01_PATHS = frozenset((
 P3_W11_R01_BASE = "48c9a22e2b07df545cd492f921604431c3fec09c"
 P3_W11_R01_BASE_TREE = "e1eb494e80e00d5d99640704a81ae4399cd12a86"
 P3_W11_R01_PREDECESSOR = "82dc7de63e1007f007e527f53ef0ba719e9c1db4"
+
+
+# Owner-approved P3-W15-R01: declared dimension selection reason only.
+# The fixed seven-path proposal checkpoint keeps its original permission.
+P3_W15_R01_PATHS = frozenset((
+    "src/source_integrity_toolkit/runtime/boundary.py",
+    "tests/integration/test_analytical_pipeline.py",
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_phase3_transition.py",
+))
+P3_W15_R01_BASE = "e8cf08296f6d335a501a451c777b9de4677ff934"
+P3_W15_R01_BASE_TREE = "2f26ad5ae8357d972b61464e42f5229f21ae2ec4"
+P3_W15_R01_PREDECESSOR = "6dbca96f3314d537beed4ccb6202147bd9248dd9"
 
 
 if __name__ == "__main__":
