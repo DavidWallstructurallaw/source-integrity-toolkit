@@ -7,7 +7,8 @@
     "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
     "actual_unit_entry": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
     "w14_acceptance": "explicitly_accepted_and_merged",
-    "w15_acceptance": "blocked_pending_R01_repair_and_final_matrix"
+    "w15_acceptance": "pending_exact_final_head_evidence_and_owner_acceptance",
+    "r01_owner_instruction": "批准 P3-W15-R01"
   },
   "accepted_predecessor": {
     "unit": "P3-W14",
@@ -41,20 +42,33 @@
       "phase3/module_policy.json",
       "phase3/obligation_coverage.json"
     ],
-    "applied_exception": null,
-    "product_modules_changed": 0,
-    "tests_changed": 0,
-    "guard_or_workflow_changed": false
+    "applied_exception": "P3-W15-R01",
+    "product_modules_changed": 1,
+    "tests_changed": 3,
+    "guard_or_workflow_changed": false,
+    "effective_paths": [
+      "PHASE_3_COMPLETION.md",
+      "PHASE_3_PROGRESS.md",
+      "README.md",
+      "phase3/delivery_manifest.json",
+      "phase3/implementation_evidence.json",
+      "phase3/module_policy.json",
+      "phase3/obligation_coverage.json",
+      "src/source_integrity_toolkit/runtime/boundary.py",
+      "tests/contract/test_phase3_transition.py",
+      "tests/integration/test_analytical_pipeline.py",
+      "tests/scaffold/test_ci_contract.py"
+    ]
   },
   "implementation": {
-    "status": "audit_checkpoint_with_confirmed_reason_gap",
+    "status": "private_core_handoff_with_approved_R01_repair",
     "planned_new_modules_implemented": 16,
     "active_modules": 29,
     "protected_modules": 19,
-    "meaning": "Prior implementation exists and prior test passes remain historical facts; the final completeness claim is blocked by the newly reproduced reason distinction."
+    "meaning": "Private analytical core and the identified dimension reason branch are implemented; owner acceptance depends on exact-final-head hosted evidence. Public/report/native/release duties remain deferred."
   },
   "validation": {
-    "status": "blocked_pending_P3-W15-R01",
+    "status": "direct_affected_checks_passed_final_head_evidence_external",
     "accepted_w14_verification": {
       "status": "four_profile_cumulative_verification_passed",
       "local_cumulative": "not_run; direct affected semantic tests and required four-profile hosted cumulative runs completed",
@@ -1409,11 +1423,47 @@
     },
     "current_checkpoint_controls": "Three affected existing controls and actual committed scope audit are recorded externally after this audit checkpoint exists.",
     "w15_final_matrix": {
-      "status": "not_run",
-      "reason": "Product repair requires owner approval; this administrative checkpoint is not final-phase certification."
+      "status": "exact_final_head_gate_recorded_externally_after_execution",
+      "required_profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "required_tests_per_profile": 3937,
+      "required_separate_subtests": 428,
+      "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
+      "rule": "No acceptance until actual exact-final-head CI, four raw ZIPs and the source/package/history audit pass. This immutable record does not claim a not-yet-run execution."
+    },
+    "r01_resolution": {
+      "status": "implemented_directly_verified",
+      "receipt": {
+        "path": "w15-r01-repair-record.json",
+        "bytes": 7826,
+        "sha256": "00992cec47bd4d70435d18df529163b9db5da5c13d8ea9594ec4865e4f19eb07"
+      }
     }
   },
-  "proposed_amendment": {
+  "owner_local_core_obligations_verified": 228,
+  "phase3_complete": false,
+  "limitations": [
+    "All 228 core cells have accepted source-bound owner-local assertions. This does not establish each cell ran through a completed whole invocation or conforming public report.",
+    "Original H7 and three variants in both private entry modes are actually invoked under fixed quotas and stop with the original job cause; no completed full hero report is claimed. Five committed internal inventory cells are observations, not delivered analytical results.",
+    "Separate finite installed cases complete in both modes; wheel/sdist/rebuilt-wheel allowlists and all 48 module hashes are tested. Archive byte reproducibility and native Windows 11 certification are not claimed.",
+    "SIT-VG017 remains unperformed. Shared families and Traces have only their specified current portions executed; future report/public/file/native duties remain open.",
+    "Positive emission is intentionally dormant for outside_v01, analysis_not_selected and comparison_scope_mismatch under their current no-interface/prohibition scope. dimension_not_selected is separately flagged rather than silently counted as dormant.",
+    "W15 preserves earlier aggregate wording in historical_pre_w15_aggregates and supersedes current shared-family/prerequisite/family dispositions with the audited scope and explicit R01 blocker.",
+    "The original read-only component review changed no repository files and ran no new product tests; this later authorized checkpoint updates seven documents/records. Original W14 four-profile JUnit/collection artifacts were inspected and matched.",
+    "The retained accepted package chain contains complete W09-W14 original four-profile artifact ZIPs and one W08 Ubuntu/Python 3.11 predecessor artifact. This review directly rechecks their CRCs, collection/JUnit identity agreement, successful outcomes and Git-bound before/after snapshots. It does not reexecute historical tests.",
+    "Original W01-W07 hosted artifact ZIPs and W08 other three profiles are absent from this retained handoff. Their reviewed heads, accepted merge trees, recorded per-profile results, artifact digests and test counts remain in accepted Git evidence. Those historical results are not presented as newly replayed raw evidence. Current baseline retention of all 1650 original IDs is directly checked, and W08-W14 actual collection sets are compared directly.",
+    "W09 already disclosed loss of the original approval receipt bytes and local 331-control JUnit XML after workspace reset. The accepted reconstructed approval receipt is labeled reconstructed; complete hosted results cover those controls. No missing local XML or original receipt is fabricated.",
+    "The standalone scratch W11 ZIP is truncated/invalid at 4087296 bytes. The complete 4200911-byte W11 ZIP embedded in the manifest-verified accepted W12 package is the authoritative retained source and is verified here. The damaged scratch duplicate is preserved unchanged and is not a product or CI failure.",
+    "Source blobs and guard schedule establish authorized implementation boundaries. This history review does not on its own establish field-level analytical conformance; the W14 semantic mappings and exact-code CI remain the behavioral evidence.",
+    "W14 original H7 inputs execute under fixed budgets and interrupt before delivered complete results; committed M001 observations and completed small installed cases must retain their distinct meanings. No public report, release, complete all-field H7 success, whole-archive byte reproducibility or Windows 11 native certification is inferred.",
+    "Same-assistant collaborating authors share tools and adopted sources; no independent external review claim.",
+    "Formal normalization review is complete; executable consolidation remains separately scoped and must be completed before the next major implementation phase."
+  ],
+  "historical_r01_proposal": {
     "id": "P3-W15-R01",
     "status": "proposed_pending_explicit_owner_approval",
     "approval": null,
@@ -1470,23 +1520,164 @@
     ],
     "exclusions": "No guard/workflow/pin/timeout/quota/fixture/oracle/specification/public-interface change; no merge, release or next-phase implementation."
   },
-  "owner_local_core_obligations_verified": 228,
-  "phase3_complete": false,
-  "limitations": [
-    "All 228 core cells have accepted source-bound owner-local assertions. This does not establish each cell ran through a completed whole invocation or conforming public report.",
-    "Original H7 and three variants in both private entry modes are actually invoked under fixed quotas and stop with the original job cause; no completed full hero report is claimed. Five committed internal inventory cells are observations, not delivered analytical results.",
-    "Separate finite installed cases complete in both modes; wheel/sdist/rebuilt-wheel allowlists and all 48 module hashes are tested. Archive byte reproducibility and native Windows 11 certification are not claimed.",
-    "SIT-VG017 remains unperformed. Shared families and Traces have only their specified current portions executed; future report/public/file/native duties remain open.",
-    "Positive emission is intentionally dormant for outside_v01, analysis_not_selected and comparison_scope_mismatch under their current no-interface/prohibition scope. dimension_not_selected is separately flagged rather than silently counted as dormant.",
-    "W15 preserves earlier aggregate wording in historical_pre_w15_aggregates and supersedes current shared-family/prerequisite/family dispositions with the audited scope and explicit R01 blocker.",
-    "The original read-only component review changed no repository files and ran no new product tests; this later authorized checkpoint updates seven documents/records. Original W14 four-profile JUnit/collection artifacts were inspected and matched.",
-    "The retained accepted package chain contains complete W09-W14 original four-profile artifact ZIPs and one W08 Ubuntu/Python 3.11 predecessor artifact. This review directly rechecks their CRCs, collection/JUnit identity agreement, successful outcomes and Git-bound before/after snapshots. It does not reexecute historical tests.",
-    "Original W01-W07 hosted artifact ZIPs and W08 other three profiles are absent from this retained handoff. Their reviewed heads, accepted merge trees, recorded per-profile results, artifact digests and test counts remain in accepted Git evidence. Those historical results are not presented as newly replayed raw evidence. Current baseline retention of all 1650 original IDs is directly checked, and W08-W14 actual collection sets are compared directly.",
-    "W09 already disclosed loss of the original approval receipt bytes and local 331-control JUnit XML after workspace reset. The accepted reconstructed approval receipt is labeled reconstructed; complete hosted results cover those controls. No missing local XML or original receipt is fabricated.",
-    "The standalone scratch W11 ZIP is truncated/invalid at 4087296 bytes. The complete 4200911-byte W11 ZIP embedded in the manifest-verified accepted W12 package is the authoritative retained source and is verified here. The damaged scratch duplicate is preserved unchanged and is not a product or CI failure.",
-    "Source blobs and guard schedule establish authorized implementation boundaries. This history review does not on its own establish field-level analytical conformance; the W14 semantic mappings and exact-code CI remain the behavioral evidence.",
-    "W14 original H7 inputs execute under fixed budgets and interrupt before delivered complete results; committed M001 observations and completed small installed cases must retain their distinct meanings. No public report, release, complete all-field H7 success, whole-archive byte reproducibility or Windows 11 native certification is inferred.",
-    "Same-assistant collaborating authors share tools and adopted sources; no independent external review claim.",
-    "Formal normalization review is complete; executable consolidation remains separately scoped and must be completed before the next major implementation phase."
-  ]
+  "approved_amendment": {
+    "id": "P3-W15-R01",
+    "status": "owner_approved_implemented_directly_verified",
+    "approval": {
+      "amendment": "P3-W15-R01",
+      "owner_quote": "批准 P3-W15-R01",
+      "owner_message_utc": "2026-09-26T19:31:52Z",
+      "approved_proposal_sha256": "b9c47a0bbc7d4c801c3c8e563afd0f09c7c0c2c472c1759a87f255a2eeb626c7",
+      "scope_design_sha256": "f3ab195e9ab093a5960182e83c40f37df90500ffd203bce157ea81c58ba2cce4",
+      "checkpoint": "e8cf08296f6d335a501a451c777b9de4677ff934",
+      "checkpoint_tree": "2f26ad5ae8357d972b61464e42f5229f21ae2ec4",
+      "accepted_predecessor": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
+      "pull_request": 34,
+      "additional_paths": [
+        "src/source_integrity_toolkit/runtime/boundary.py",
+        "tests/integration/test_analytical_pipeline.py",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "effective_path_count": 11,
+      "authorized": "Narrow declared-selection reason repair, direct paired/negative controls, W15-only ancestry-delimited scope controls, final exact-head four-profile CI and evidence handoff.",
+      "excluded": "Merge, phase acceptance, next phase, executable verification consolidation, guard/workflow/pin/quota/fixture/oracle/public interface changes."
+    },
+    "approval_receipt": {
+      "path": "w15-r01-approval.json",
+      "bytes": 1133,
+      "sha256": "d69f0ef11e68accb2639c9cfb2f0d16482e2c11e339ade035e35a794393a4fcf"
+    },
+    "tested_repair_precursor": {
+      "commit": "2a8697ea23e315e74c7cc8d7632c95725332b45b",
+      "tree": "b77e6b508aeee653dd822c7a3414c26c517545eb",
+      "parent": "e8cf08296f6d335a501a451c777b9de4677ff934",
+      "verification_scope": "source-bound direct affected checks; final hosted matrix belongs to the later handoff head"
+    },
+    "changed_paths": [
+      "src/source_integrity_toolkit/runtime/boundary.py",
+      "tests/integration/test_analytical_pipeline.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py"
+    ],
+    "source_sha256": {
+      "src/source_integrity_toolkit/runtime/boundary.py": "a53ce75d52b8720a7a7981b88d06dcc16d5e4ba6d21d0bb17094e67b693d5101",
+      "tests/integration/test_analytical_pipeline.py": "381cdc6d0233e715352c9e85c28d7b96655cd7eaa730244134a271c7d35e796b",
+      "tests/scaffold/test_ci_contract.py": "768287a2be11c12a4d35d515307c430d1b48419657826c917813e008e3af9fe0",
+      "tests/contract/test_phase3_transition.py": "4c558580ee3ff31834c985a05c425d73b033591083517a69accb5fbdfbbf9937"
+    },
+    "implemented_behavior": [
+      "An empty Inquiry dependency selection yields dimension_not_selected for planned M002/M003/M004/M005/M006/M007/M013 structural nonresults, without creating a default dimension.",
+      "Each selected Evaluation with a supplied role pair and empty dimensions receives its own scoped dimension_not_selected M008 cells; incomplete actual roles retain roles_incomplete.",
+      "Completed structural cells retain not_applicable, null values/dimensions, structural_inapplicability, actual Inquiry input refs and affected Result refs. Absent Evaluations/routes retain no_applicable_subject and selected missing comparisons remain evidence gaps.",
+      "Additional selection and input-reference work is charged prospectively. Fixed quotas, clocks, interruption/failure separation, public refusals, guard, workflow, pins, fixtures and oracles remain unchanged.",
+      "Only W15 successors of the fixed checkpoint receive the four literal extra paths. Original seven-path checkpoint permission and all earlier unit/history controls remain active."
+    ],
+    "direct_verification": {
+      "semantic": {
+        "tests": 98,
+        "seconds": 255.7688072999954,
+        "execution": {
+          "path": "w15-r01-direct-semantic-execution.json",
+          "bytes": 24188,
+          "sha256": "061a6e7348fc885cc9113d4119f204850d8c450c6a1e6e0b52b9eb3fdcd49a76"
+        },
+        "junit": {
+          "path": "w15-r01-direct-semantic.xml",
+          "bytes": 16850,
+          "sha256": "b3be4933bf0af6d6406562dd6c5ae89065fa723ac838fc94d795477ef465a70e"
+        },
+        "source_bound_paths": [
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "tests/integration/test_analytical_pipeline.py",
+          "tests/security/test_analytical_interruption.py",
+          "tests/contract/test_analytical_observability.py"
+        ],
+        "meaning": "Actual local CPython 3.12.14 affected checks on these exact bytes before commit; the later commit preserves them. This is not the required four-profile CI."
+      },
+      "scope": {
+        "tests": 27,
+        "seconds": 170.11755112399987,
+        "execution": {
+          "path": "w15-r01-direct-scope-execution.json",
+          "bytes": 24237,
+          "sha256": "e1a4ffb77b2ccf75e3df897ddbe699a8101e39d10db223d80ed00d8e87953e27"
+        },
+        "junit": {
+          "path": "w15-r01-direct-scope.xml",
+          "bytes": 4540,
+          "sha256": "dfdd0c281a6831f01a67eefed5d1b116f7127e7a94768a893526ad899a547a79"
+        },
+        "source_bound_paths": [
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "tests/integration/test_analytical_pipeline.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/contract/test_phase3_transition.py"
+        ],
+        "meaning": "Actual local CPython 3.12.14 affected checks on these exact bytes before commit; the later commit preserves them. This is not the required four-profile CI."
+      }
+    },
+    "additional_actual_checks": {
+      "pre_cache_complete_transition_suite": {
+        "tests": 326,
+        "junit": {
+          "path": "w15-r01-scope-attempt1.xml",
+          "bytes": 54218,
+          "sha256": "29cb5921279817934fc44a1d9e37eee7f86b0167756fb7478fb24ed3100819a6"
+        }
+      },
+      "unchanged_driver_controls": {
+        "tests": 20,
+        "junit": {
+          "path": "w15-r01-driver-controls.xml",
+          "bytes": 2856,
+          "sha256": "d1edee4d5340ee05a8e0db3222cd27275758660641d92bb16c0ce23383ffa455"
+        }
+      },
+      "cache_adaptation": "The nine new controls cache only actual immutable Git archive hashes by commit ID across local clones; all path/ancestry/mutation checks still execute. The final 27 affected controls reran after that test-only change."
+    },
+    "actual_collection": {
+      "count": 3937,
+      "retained_w14": 3918,
+      "new": 19,
+      "removed": 0,
+      "new_nodes": {
+        "path": "w15-approved-new-nodes.json",
+        "bytes": 2866,
+        "sha256": "2707bb657df20e330046cb24ef0d9ab34a523dd9116d0458727590256db7b4be"
+      }
+    },
+    "failed_attempts": {
+      "first_targeted_attempt": {
+        "junit": {
+          "path": "w15-r01-semantic-attempt1.xml",
+          "bytes": 18564,
+          "sha256": "d352581f038d48e325ffb25a0a9ea6a26cc3bf5f115c3ddc5b5913b1ef1eeb1e"
+        },
+        "failures": 10,
+        "explanation": "New tests initially used a nonexistent affected_refs attribute and an inadmissible empty Claim selection. Corrected tests use affected_result_refs and an admitted Inquiry with genuinely absent Evaluation/route subjects; no contract or fixture was changed."
+      },
+      "corrected_targeted_attempt": {
+        "junit": {
+          "path": "w15-r01-semantic-attempt2.xml",
+          "bytes": 2514,
+          "sha256": "edd51741be6434d6006243965aa13f7ba475e980c6c0639cf1611d7b1b5f364a"
+        },
+        "passed": 13
+      }
+    },
+    "final_matrix": {
+      "status": "exact_final_head_gate_recorded_externally_after_execution",
+      "required_profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "required_tests_per_profile": 3937,
+      "required_separate_subtests": 428,
+      "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
+      "rule": "No acceptance until actual exact-final-head CI, four raw ZIPs and the source/package/history audit pass. This immutable record does not claim a not-yet-run execution."
+    }
+  }
 }

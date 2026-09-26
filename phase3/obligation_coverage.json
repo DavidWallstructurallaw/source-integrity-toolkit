@@ -1,7 +1,7 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W15",
-  "status": "final_component_accounting_blocked_pending_P3-W15-R01",
+  "status": "private_component_handoff_R01_repaired_final_head_evidence_external",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
@@ -13348,7 +13348,7 @@
   ],
   "shared_families": {
     "count": 26,
-    "status": "current_private_portions_audited_with_SIT_VG014_reason_gap_and_deferred_public_clauses",
+    "status": "current_private_portions_audited_R01_repaired_public_clauses_deferred",
     "current_dispositions": "phase3/delivery_manifest.json#/component_dispositions/shared_families"
   },
   "output_mutants": {
@@ -13456,7 +13456,7 @@
   },
   "analytical_families": {
     "count": 15,
-    "status": "owners_implemented_private_scheduling_reason_R01_unresolved"
+    "status": "fifteen_private_owners_and_declared_selection_reason_implemented"
   },
   "phase3_complete": false,
   "release_complete": false,
@@ -14080,7 +14080,14 @@
       "prescribed_output_mutants": 49,
       "prescribed_input_delta_negatives": 8
     },
-    "issues": [
+    "field_rows_preserved_without_changes": 228,
+    "reason_status": {
+      "implemented_private_or_safe_transport_branch": 37,
+      "dormant_or_future_interface_disposition": 3,
+      "missing_required_dimension_reason": 0
+    },
+    "meaning": "W14 source-bound field passes remain historical. R01 closes the missing private declared-selection reason with actual direct controls; final exact-head evidence remains external and does not close public-envelope/rendering/release clauses.",
+    "historical_checkpoint_issues": [
       {
         "id": "P3-W15-R01",
         "severity": "confirmed_acceptance_blocker",
@@ -14111,12 +14118,26 @@
         }
       }
     ],
-    "field_rows_preserved_without_changes": 228,
-    "reason_status": {
-      "implemented_private_or_safe_transport_branch": 36,
-      "dormant_or_future_interface_disposition": 3,
-      "missing_required_dimension_reason": 1
-    },
-    "meaning": "W14 source-bound assertions remain passed. They do not close the missing shared reason branch, complete whole-invocation coverage, public envelopes, rendering or release."
+    "unresolved_implementation_issues": [],
+    "r01_resolution": {
+      "receipt": {
+        "path": "w15-r01-repair-record.json",
+        "bytes": 7826,
+        "sha256": "00992cec47bd4d70435d18df529163b9db5da5c13d8ea9594ec4865e4f19eb07"
+      },
+      "direct_test_nodes": [
+        "tests/integration/test_analytical_pipeline.py::test_absent_subjects_keep_their_own_reason_even_without_dimensions[acquisition-utf8]",
+        "tests/integration/test_analytical_pipeline.py::test_absent_subjects_keep_their_own_reason_even_without_dimensions[acquisition-value]",
+        "tests/integration/test_analytical_pipeline.py::test_absent_subjects_keep_their_own_reason_even_without_dimensions[unselected-utf8]",
+        "tests/integration/test_analytical_pipeline.py::test_absent_subjects_keep_their_own_reason_even_without_dimensions[unselected-value]",
+        "tests/integration/test_analytical_pipeline.py::test_empty_selection_preserves_each_evaluations_dimension_or_role_cause[claim_evaluation-utf8]",
+        "tests/integration/test_analytical_pipeline.py::test_empty_selection_preserves_each_evaluations_dimension_or_role_cause[claim_evaluation-value]",
+        "tests/integration/test_analytical_pipeline.py::test_empty_selection_preserves_each_evaluations_dimension_or_role_cause[inquiry_evaluation-utf8]",
+        "tests/integration/test_analytical_pipeline.py::test_empty_selection_preserves_each_evaluations_dimension_or_role_cause[inquiry_evaluation-value]",
+        "tests/integration/test_analytical_pipeline.py::test_explicit_acquisition_selection_is_the_paired_dimension_reason_control[utf8]",
+        "tests/integration/test_analytical_pipeline.py::test_explicit_acquisition_selection_is_the_paired_dimension_reason_control[value]"
+      ],
+      "meaning": "The exact paired dimension, absent-subject and incomplete-role controls are linked in the repair record. Existing 228 field rows and their historical W14 pass references remain unchanged."
+    }
   }
 }
