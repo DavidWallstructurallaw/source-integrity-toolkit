@@ -1,6 +1,6 @@
 {
   "format": "sit-phase3-evidence/0.1",
-  "unit": "P3-W13",
+  "unit": "P3-W14",
   "authority": {
     "approved_plan_merge": "80aa943f577f4a7deaeb8a0f3253c62d1263ca62",
     "plan_sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae",
@@ -8,41 +8,50 @@
       "name": "Verification Governance and Evidence-Semantics Protection",
       "sha256": "ad5937ca091e7290009e15da0e3fd9bac0c4b747a6370edddff95ee1e7690cdc"
     },
-    "owner_instruction": "验收 W12、合并 PR #31，再启动 W13",
-    "actual_unit_entry": "db019ea54faf7a08bc841811c3f261a60aa9eb54",
-    "w13_acceptance": "pending_owner_acceptance_of_PR32",
-    "next_unit": "P3-W14_not_authorized_or_started"
+    "owner_instruction": "W14  开始",
+    "actual_unit_entry": "332e94a007ceb2a955b8e047f45284b431300995",
+    "w14_acceptance": "pending_owner_acceptance_of_PR33",
+    "next_unit": "P3-W15_not_authorized_or_started"
   },
   "accepted_predecessor": {
-    "unit": "P3-W12",
-    "merge": "db019ea54faf7a08bc841811c3f261a60aa9eb54",
-    "tree": "daa1be6883ba9d5950ca1084185f232c55e26991",
-    "review_head": "e42e32d9c2f2628204fa3ba12b09c9cab3438bd9",
-    "code_head": "41dfe8c230bc2356a7cad7e3e2074ab4b0aaf3a6",
-    "pr": 31,
+    "unit": "P3-W13",
+    "merge": "332e94a007ceb2a955b8e047f45284b431300995",
+    "tree": "f4d0c460462c471380ec06f23484713f027fe483",
+    "review_head": "cce4d1b11571617b457cbe8a59c52ac0556d852e",
+    "code_head": "db9c0a05062731ca49e2f2b8fcffd0ba7a1fb6b3",
+    "pr": 32,
+    "owner_instruction": "W14  开始",
+    "acceptance": "Owner instruction to start W14 is interpreted in the established sequential workflow as authorization to accept and merge its verified W13 predecessor. This is contextual authorization, not a quotation of an explicit W13 acceptance phrase.",
     "review_package": {
-      "path": "Source-Integrity-Toolkit-P3-W12-Review-Evidence.zip",
-      "bytes": 5468275,
-      "sha256": "532bc2f70b4afa4d296f5c23b6e55cb3d0f9fa9745f2a1c10c10159f32a7303c"
+      "path": "Source-Integrity-Toolkit-P3-W13-Review-Evidence.zip",
+      "bytes": 6754980,
+      "sha256": "527e10c54f962a8e0cca0ff5863ffafa33441cb874a44e9d109f00a9d36bdc40"
     },
-    "owner_instruction": "验收 W12、合并 PR #31，再启动 W13",
-    "acceptance": "explicit_owner_acceptance_and_merge_authorization",
-    "known_recovery_limits": "W12 original CI and final review evidence are complete. The preserved development checkpoint discloses partial context candidate logs and final authoritative direct evidence; the first scratch admin audit zero-key comparison was fixed without product changes. Nested W09 historical recovery limitations remain predecessor history."
+    "raw_audit_sha256": "4fbc625bef5ce3d2e0ccb3c4b22b2a18a4da070fd97137b7bfc7d34f752a9d1a",
+    "final_audit_sha256": "7594f81c3fc819fc1823b5c7170cd36833eca2f90951fa25987f196358f790be",
+    "four_profile_run": 35819087672,
+    "tests_per_profile": 3810,
+    "separate_subtests_per_profile": 428,
+    "known_recovery_limits": "W13 original CI and final evidence complete; preserved development receipts disclose early unhashed candidates. Nested accepted predecessor historical limitations remain unchanged."
   },
   "scope": {
     "effective_authorized_paths": [
       "PHASE_3_PROGRESS.md",
+      "README.md",
+      "phase3/ci_review.md",
       "phase3/implementation_evidence.json",
       "phase3/module_policy.json",
       "phase3/obligation_coverage.json",
-      "src/source_integrity_toolkit/contracts/execution.py",
-      "src/source_integrity_toolkit/contracts/report.py",
-      "src/source_integrity_toolkit/runtime/boundary.py",
-      "src/source_integrity_toolkit/runtime/diagnostics.py",
-      "src/source_integrity_toolkit/runtime/resources.py",
-      "tests/contract/test_analytical_observability.py",
-      "tests/integration/test_analytical_pipeline.py",
-      "tests/security/test_analytical_interruption.py"
+      "tests/contract/test_analytical_mutants.py",
+      "tests/contract/test_analytical_obligations.py",
+      "tests/fixtures/adversarial/phase3_cases.json",
+      "tests/fixtures/micro/phase3_cases.json",
+      "tests/golden/phase3_core_expectations.json",
+      "tests/integration/test_analytical_determinism.py",
+      "tests/integration/test_analytical_hero_inputs.py",
+      "tests/integration/test_analytical_installed_runtime.py",
+      "tests/security/test_analytical_adversarial.py",
+      "tests/security/test_analytical_inertness.py"
     ],
     "immediate_scope_exceptions": [],
     "historical_scope_exceptions": [
@@ -56,100 +65,130 @@
     "new_governance_tests": 0,
     "actual_changed_paths": [
       "PHASE_3_PROGRESS.md",
+      "README.md",
+      "phase3/ci_review.md",
       "phase3/implementation_evidence.json",
       "phase3/module_policy.json",
       "phase3/obligation_coverage.json",
-      "src/source_integrity_toolkit/contracts/report.py",
-      "src/source_integrity_toolkit/runtime/boundary.py",
-      "src/source_integrity_toolkit/runtime/resources.py",
-      "tests/contract/test_analytical_observability.py",
-      "tests/integration/test_analytical_pipeline.py",
-      "tests/security/test_analytical_interruption.py"
+      "tests/contract/test_analytical_mutants.py",
+      "tests/contract/test_analytical_obligations.py",
+      "tests/fixtures/adversarial/phase3_cases.json",
+      "tests/fixtures/micro/phase3_cases.json",
+      "tests/golden/phase3_core_expectations.json",
+      "tests/integration/test_analytical_determinism.py",
+      "tests/integration/test_analytical_hero_inputs.py",
+      "tests/integration/test_analytical_installed_runtime.py",
+      "tests/security/test_analytical_adversarial.py",
+      "tests/security/test_analytical_inertness.py"
     ],
-    "inherited_blobs_modes_unchanged": 185
+    "inherited_blobs_modes_unchanged": 189
   },
   "implementation": {
     "status": "complete_and_verified_pending_owner_acceptance",
-    "owners": [
-      "runtime/boundary.py",
-      "runtime/resources.py",
-      "runtime/diagnostics.py",
-      "contracts/execution.py",
-      "contracts/report.py"
-    ],
-    "families": [
-      "SIT-M001",
-      "SIT-M002",
-      "SIT-M003",
-      "SIT-M004",
-      "SIT-M005",
-      "SIT-M006",
-      "SIT-M007",
-      "SIT-M008",
-      "SIT-M009",
-      "SIT-M010",
-      "SIT-M011",
-      "SIT-M012",
-      "SIT-M013",
-      "SIT-M014",
-      "SIT-M015"
-    ],
-    "scheduled_new_core_obligations": 0,
+    "product_repairs_authorized": false,
     "source_clauses": [
-      "PHASE_3_PLAN.md sections 3.4 and 18",
-      "OBSERVABILITY_AND_REPORTING.md sections 12-17",
-      "REPOSITORY_ARCHITECTURE.md sections 17.4,18.1-18.2,19.2-19.3",
-      "GOVERNANCE_AND_HANDOFF.md sections 22.3 and 22.5"
+      "PHASE_3_PLAN.md sections 19,21.2,22",
+      "VALIDATION_PLAN.md sections 10.2,12,16.3"
     ],
     "source_sha256": {
+      "src/source_integrity_toolkit/__init__.py": "0fdc19062761d6b718ff371557376483f7c8e7bbf7f3c347bcae576587513b97",
+      "src/source_integrity_toolkit/analysis/__init__.py": "2bcd171bde6b0b6c92c3a048cff959780e2e0616f468158b4b97d8967bf7e956",
+      "src/source_integrity_toolkit/analysis/context.py": "40cb6afefd1c187eaa8afe6555971d55da4cecba8ce3b157c83b42552e56a736",
+      "src/source_integrity_toolkit/analysis/contribution_profile.py": "4eccb7e682f8a8ce67192da1f7ccd3ced314b2f92e2cd2637444e9553ee502ed",
+      "src/source_integrity_toolkit/analysis/correction_outcomes.py": "11a09a667f6a2c6552a980875bf6f09255714582318263bc743db5907259af78",
+      "src/source_integrity_toolkit/analysis/correction_routes.py": "4935dd55e0f4b47b49b4e50d02b73dd816387fa93cdb6bc447ee8dde0c619c0f",
+      "src/source_integrity_toolkit/analysis/evaluator_lineage.py": "71e8a96caf3d25e9b6f130c99243ab5df16ab5a3407e8b39ac08f583a93c0cdd",
+      "src/source_integrity_toolkit/analysis/findings.py": "e983a368d3544998b2a4879a82e1a3366f20da074651a1084dc758bc569ff34b",
+      "src/source_integrity_toolkit/analysis/human_review.py": "bcff22f09add6285a2bcd744ab1e77d1d878f2a92eb1effb738564fe3716a3aa",
+      "src/source_integrity_toolkit/analysis/inventory.py": "6179f29dbff1afccb939d225947d57f9b9c1b4b03875f4ba992e993560087313",
+      "src/source_integrity_toolkit/analysis/origins.py": "de77914facb7cfabc7390dcd84cbbc80c8c9823f67d3e2bcb8e826ec21b7fac0",
+      "src/source_integrity_toolkit/analysis/presence.py": "69b3447fa721f97ce0aa5d488a22e6798ffa2012e1ec73a047e4da1141e8c518",
+      "src/source_integrity_toolkit/analysis/process_comparison.py": "9d0777bf4fdd422f4392657c3407970c47093de4992cf3837c9a3fe6e3d7e9d0",
+      "src/source_integrity_toolkit/api.py": "8808d7ef4a0db2f6e314c82fddd4b51cce164a165afaf43e6d626663f6f6768d",
+      "src/source_integrity_toolkit/cli.py": "0c3ee9522fbdf1774a707ec14ed630ce34a901da1f83f63b8aee0f25393d26bc",
+      "src/source_integrity_toolkit/contracts/__init__.py": "5a5c57d26930d12c3de59e180987f740b915e9eb17fd18a2daf29a6f91985432",
+      "src/source_integrity_toolkit/contracts/bundle.py": "7509a30f008de4ade02543bea26ccc4bd3d5843ae62f75b1841e2e61bcb903da",
+      "src/source_integrity_toolkit/contracts/constants.py": "d4bee68c62ba495e6aca1fdba352b013f9cc4ed7c3583b61092af234827ad486",
+      "src/source_integrity_toolkit/contracts/evidence.py": "1b9be04cde9674cb250b34c9d6acfb43bfd35beb19f8ebbe9304f714ef3fc611",
       "src/source_integrity_toolkit/contracts/execution.py": "212101c332201eda064d0a45140e922cbf24b7d9bcf36f14a9dc89c2b1790fa3",
       "src/source_integrity_toolkit/contracts/report.py": "262b8129cec88e4c0ee30b781045598fa73e76bfb578ee4211e631b67460b82a",
+      "src/source_integrity_toolkit/contracts/results.py": "565b4aa8d1053931b0b69b1af686b563427dce2b27be8215e916fbc18d335a11",
+      "src/source_integrity_toolkit/graph/__init__.py": "3db1c2c13cc1ae2bfb1a049894a04f7d27d7e6874d2079f1348d910aa0f5c943",
+      "src/source_integrity_toolkit/graph/cycles.py": "350e986d14aa6452c3a334eb4288d0d1b1105bdea6b0786c0ffc59380d8c5db9",
+      "src/source_integrity_toolkit/graph/projections.py": "b3aa1df29751c0001446af84abcbbde84820576ecb39bc34ff693485b9aea76d",
+      "src/source_integrity_toolkit/graph/traversal.py": "95f9f8a3eec1828f458256c1438fbd169f615c9698daaca176776b803d54f8f7",
+      "src/source_integrity_toolkit/graph/witnesses.py": "40682c09e9d3b53d0d36c5204961eb16739d13b392be68c4bf9698cbd1c31b9f",
+      "src/source_integrity_toolkit/io/__init__.py": "252ed1b29bff2517bc3ce909f4695d0f67c4baf0f1d7707708124107fbba783b",
+      "src/source_integrity_toolkit/io/input_file.py": "5628507c0989e94a3b5b5401e570b19256c940204859da9e938178ea261dea1f",
+      "src/source_integrity_toolkit/io/output_directory.py": "d27ae40d53b09355a0e3e137d490d1c2d1352edf67821c985bd0c79096b605ac",
+      "src/source_integrity_toolkit/io/platform_linux.py": "b63420614f26fc52ebe4e7d9af4d12782fd7374dc4780c420e0e4bdbe6091544",
+      "src/source_integrity_toolkit/io/platform_windows.py": "31e5f7b304d4455d5d60222f2077eefd284edce341c47524ac85de84f690b4c0",
+      "src/source_integrity_toolkit/io/publication.py": "ec5124c4f8f1db6d0f8a0d83ad6a62c28646d34c47740f706d1b47871480661d",
+      "src/source_integrity_toolkit/reporting/__init__.py": "f9db2edfae16c1062a74fcff49d6b5a68b25e35b108413cb1b2bab115ef9dcaa",
+      "src/source_integrity_toolkit/reporting/assemble.py": "ebbc9d87df2283da9e055be5b2db79187791a95043faa2311961d95be17e890d",
+      "src/source_integrity_toolkit/reporting/escaping.py": "9b910e3cc9e6d3bdbb20824420d8a2a599e12f3a300e0dffb9674a8696db0ca8",
+      "src/source_integrity_toolkit/reporting/json_report.py": "5e5b41e8e1a1f0c6d731a22d288905f8ad5d969e6904f374487be1d54bec26dc",
+      "src/source_integrity_toolkit/reporting/markdown_report.py": "e2af7736cc1254fd6f4ad4366ed24e6fc6163e2761c17c1cce8f48307a83ca7e",
+      "src/source_integrity_toolkit/runtime/__init__.py": "6bcbe18cb7295bd3339cf426931bdb29ed89edb348575d5deb070f008dec72c7",
       "src/source_integrity_toolkit/runtime/boundary.py": "2e9f8e2e8234e2579403bfc99d0bfdcc5917d40328a627279b5f84564532af6d",
       "src/source_integrity_toolkit/runtime/diagnostics.py": "2763dd36343ad5e60aca3d5c244d6c94a288b09ebf268f045dcc3d5f01445814",
+      "src/source_integrity_toolkit/runtime/disclosure.py": "a9cf0d4b24eb4ddaa239747fc487a91aaf2708f8bd9954035dd42536b1c15b11",
       "src/source_integrity_toolkit/runtime/resources.py": "0ff61d32061f78e5eb46ff9903d322dd9335cc964411dc10ffc91eef0a440449",
-      "tests/contract/test_analytical_observability.py": "8c9f4ebeb9764a2e5c4ba98c38dfd98e1e8d9b57c26f37624c7cf8dd52631312",
-      "tests/integration/test_analytical_pipeline.py": "1a7773b0156b10571c025c8fc5890e05d431bc1c732bfc546ddc7bc0627e239c",
-      "tests/security/test_analytical_interruption.py": "9e1fc19c39e68efbafc95433d7140706fcf2fdb3fbb259a047f226bdf2748106"
+      "src/source_integrity_toolkit/validation/__init__.py": "0688a44d77c520368899546cc30531aad2849443c12941b536539bab5aac218e",
+      "src/source_integrity_toolkit/validation/limits.py": "f01e4e5cbc076b07440df19ed2524db549849fcc6cd9834648437ee61a5e53c8",
+      "src/source_integrity_toolkit/validation/references.py": "7ab63627c068b38364f5c47a6731903fc55bc9d86318bed4f182d9602418df7b",
+      "src/source_integrity_toolkit/validation/semantics.py": "f98ce60e55d88f543c94a1e260d0172939eb061a983ade4a05f906f7df42ec5d",
+      "src/source_integrity_toolkit/validation/structure.py": "bf2e61a236539b4b8bada935b39c46203bb8ccad4102e79730e9f84ba52fa315",
+      "tests/contract/test_analytical_obligations.py": "8ddeb9753a6ceb0e2512338d0f2517ac1775eacec9f5f17da65f0a4a34b17005",
+      "tests/contract/test_analytical_mutants.py": "5c953d82e58c9ca4d33daf09162ade376be999749089e9268b980c33653f6bfe",
+      "tests/integration/test_analytical_hero_inputs.py": "e197a08623417d1d7623e3acbd6342b80c10fed9c6abb124af75f7221d20fee4",
+      "tests/integration/test_analytical_determinism.py": "cccc2ffdd92f328d7ee384e208cfb68135139c78b3004772145dd9b0500406f2",
+      "tests/integration/test_analytical_installed_runtime.py": "9dbf01b5c95e661c7839617035e0eb93b9e277828fb405af3a9639202ddba395",
+      "tests/security/test_analytical_inertness.py": "1fe18d69dbe960e4ba401de7bde75740dbf1747c4aac88c5102c9257baf25ca6",
+      "tests/security/test_analytical_adversarial.py": "6be473d7e4c9c6f572e865e0ded856ee17a8b932ceb1b60d9e7935037e29e91e",
+      "tests/fixtures/micro/phase3_cases.json": "0be6460c8a59fb5ab3bff950e9eb56ff05891278a6331b741da0b7b953cedeac",
+      "tests/fixtures/adversarial/phase3_cases.json": "e810ffdec2894d43dffb5bc806d88b6de419cab5a823bb8048e81e96fdfacf6d",
+      "tests/golden/phase3_core_expectations.json": "4effefea17e607309259c27a908f9db0540f9755d600d592db2be83fc6ee4677"
     }
   },
   "validation": {
     "status": "four_profile_cumulative_verification_passed",
-    "local_cumulative": "not_run; actual direct private integration/security evidence and the four required hosted cumulative profiles provide verification",
+    "local_cumulative": "not_run; direct affected semantic tests and required four-profile hosted cumulative runs completed",
     "direct_runs": {
-      "private_pipeline_observability_and_interruption": {
-        "tests": 88,
-        "passed": 88,
+      "new_semantic_tests": {
+        "tests": 108,
+        "passed": 108,
         "failures": 0,
         "errors": 0,
         "skipped": 0,
         "pytest_exit_code": 0,
         "sources_unchanged": true,
-        "elapsed_seconds": 101.21286495599998,
+        "elapsed_seconds": 180.42869063500257,
         "receipts": [
           {
-            "path": "w13-direct.log",
-            "bytes": 191,
-            "sha256": "b5f6101a043bbce58e4a986cac925f83b2d4461f2317413b56e95a4c7503c1bc"
+            "path": "w14-direct.log",
+            "bytes": 192,
+            "sha256": "424c3eb6b1dce26c43f5e890c2c089f7dc2f623379ff8822c5d0b06a1cd38ded"
           },
           {
-            "path": "w13-direct.xml",
-            "bytes": 15084,
-            "sha256": "d90cf53b815b0bb8d167d388deda92fbbd4965fb7640a041427ba6958d60c07c"
+            "path": "w14-direct.xml",
+            "bytes": 19574,
+            "sha256": "c045f304d43863b065abe6f58dad5a12398ad9368f3705d3875284055a1d2837"
           },
           {
-            "path": "w13-direct-before.json",
-            "bytes": 980,
-            "sha256": "02c4e5d14212d18ddf26235dc574ed592778467b52fec266f2bf8de0e171fd73"
+            "path": "w14-direct-before.json",
+            "bytes": 7123,
+            "sha256": "31efdb2adb2681b34edfe46058189c1598373eb5623f95f12123aea33ffca40a"
           },
           {
-            "path": "w13-direct-after.json",
-            "bytes": 980,
-            "sha256": "02c4e5d14212d18ddf26235dc574ed592778467b52fec266f2bf8de0e171fd73"
+            "path": "w14-direct-after.json",
+            "bytes": 7123,
+            "sha256": "31efdb2adb2681b34edfe46058189c1598373eb5623f95f12123aea33ffca40a"
           },
           {
-            "path": "w13-direct-execution.json",
-            "bytes": 812,
-            "sha256": "21a03f07759a657b0a8ab76a687868ee5278821961a928e09c37c3d1aba9b009"
+            "path": "w14-direct-execution.json",
+            "bytes": 1084,
+            "sha256": "a827b1dc3abaa8c33fdcffc418746caef171aacb31531a245298a774050135ae"
           }
         ]
       }
@@ -162,286 +201,940 @@
         "windows-2025-py3.11",
         "windows-2025-py3.13"
       ],
-      "inherited_test_identities": 3722,
+      "inherited_test_identities": 3810,
       "separate_subtests_required": 428,
-      "code_head": "db9c0a05062731ca49e2f2b8fcffd0ba7a1fb6b3",
-      "code_tree": "3cf8555301751c703501a15f7ff2af7b60582e2e",
-      "run_id": "35819087672",
+      "code_head": "5146a2e41dfdddfccebd85367655109288fe313f",
+      "code_tree": "f98de05ee65a7dc20136ea307d84ce04157cab14",
+      "run_id": 35832693910,
       "run_attempt": 1,
-      "tests_per_profile": 3810,
-      "separate_subtests_per_profile": 428,
+      "tests_per_profile": 3918,
+      "subtests_per_profile": 428,
       "raw_audit": {
-        "path": "w13-raw-audit.json",
-        "bytes": 4005,
-        "sha256": "4fbc625bef5ce3d2e0ccb3c4b22b2a18a4da070fd97137b7bfc7d34f752a9d1a"
+        "path": "w14-raw-audit.json",
+        "bytes": 5637,
+        "sha256": "e40cc3b6f667f194f045a9efe9208db9af25f6496e6a606e66c8234682e38bc5"
       },
       "profiles": [
         {
-          "profile": "windows-2025-py3.13",
-          "zip": "/workspace/scratch/4e5267fe5990/w13-ci/phase3-windows-2025-py3.13-35819087672-1.zip",
-          "sha256": "4309d7c2eae318329890f788ed107e7dea1685d3df5850f8bb631508747914cd",
-          "bytes": 214149,
+          "profile": "ubuntu-24.04-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w14-ci/phase3-ubuntu-24.04-py3.11-35832693910-1.zip",
+          "sha256": "ddea25b55e573275fd57ab91a4fde7e758a834a92f031f3bdfef24750541f615",
+          "bytes": 220584,
           "service_digest_checked": true,
-          "tests": 3810,
+          "tests": 3918,
           "subtests": 428,
-          "seconds": 1497.76,
-          "package_member_checks": true
-        },
-        {
-          "profile": "windows-2025-py3.11",
-          "zip": "/workspace/scratch/4e5267fe5990/w13-ci/phase3-windows-2025-py3.11-35819087672-1.zip",
-          "sha256": "71fce777bba18c09db8a073668b603991e04e41546483661b090e11908e1375f",
-          "bytes": 213659,
-          "service_digest_checked": true,
-          "tests": 3810,
-          "subtests": 428,
-          "seconds": 893.44,
-          "package_member_checks": true
+          "seconds": 1102.22,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2
         },
         {
           "profile": "ubuntu-24.04-py3.13",
-          "zip": "/workspace/scratch/4e5267fe5990/w13-ci/phase3-ubuntu-24.04-py3.13-35819087672-1.zip",
-          "sha256": "a8617d49181b946431b3b757919efbd5e630d341964573009687640550046156",
-          "bytes": 207436,
+          "zip": "/workspace/scratch/4e5267fe5990/w14-ci/phase3-ubuntu-24.04-py3.13-35832693910-1.zip",
+          "sha256": "d98f0256761d64d6eb7442188cc329d64a038c378722012a7698f3c79b299f5d",
+          "bytes": 220692,
           "service_digest_checked": true,
-          "tests": 3810,
+          "tests": 3918,
           "subtests": 428,
-          "seconds": 1206.49,
-          "package_member_checks": true
+          "seconds": 1170.43,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2
         },
         {
-          "profile": "ubuntu-24.04-py3.11",
-          "zip": "/workspace/scratch/4e5267fe5990/w13-ci/phase3-ubuntu-24.04-py3.11-35819087672-1.zip",
-          "sha256": "f972b83496064fd414e7497adf8fa6dea09476594a1971284fa026cef30d2ba0",
-          "bytes": 206657,
+          "profile": "windows-2025-py3.13",
+          "zip": "/workspace/scratch/4e5267fe5990/w14-ci/phase3-windows-2025-py3.13-35832693910-1.zip",
+          "sha256": "315f7879e7f17ff7f0c8255e3a66dfda886e98a6f3cf234f1ad036df99bfdd9e",
+          "bytes": 227225,
           "service_digest_checked": true,
-          "tests": 3810,
+          "tests": 3918,
           "subtests": 428,
-          "seconds": 638.92,
-          "package_member_checks": true
+          "seconds": 1351.32,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2
+        },
+        {
+          "profile": "windows-2025-py3.11",
+          "zip": "/workspace/scratch/4e5267fe5990/w14-ci/phase3-windows-2025-py3.11-35832693910-1.zip",
+          "sha256": "8e9ab4832b2ae4fb524d0f659cd2f87fedc1cfa095adb91af21aa105b3fb7c71",
+          "bytes": 227287,
+          "service_digest_checked": true,
+          "tests": 3918,
+          "subtests": 428,
+          "seconds": 1285.09,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2
         }
       ],
-      "package_and_runtime_verification": "Source/member/installed-runtime checks passed in each profile; raw-audit limitations remain explicit.",
-      "qualification": "All four profiles completed successfully on this same W13 code head, retaining every accepted W12 test identity."
+      "all_actual_collection_and_junit_identities_agree": true,
+      "all_tracked_sources_unchanged": true
     },
+    "authorship": "Tests, source review and counterexample design use collaborating agents in the same assistant session, the same repository and adopted specifications. This is shared-source/tool lineage and does not constitute independent external review.",
+    "checks": [
+      {
+        "source_clauses": [
+          "DEFINITIONS_AND_UNITS.md sections20.1,21.1,21.2,22.1,22.2,23.1",
+          "PHASE_3_PLAN.md sections3.3,19,21.2"
+        ],
+        "verified_behavior": "Exactly three separately supplied EvidenceItem contributions over one Artifact and two supplied origin IDs with identical native data yield memberships (2,1), resolution3/3 and HHI5/9; no identity inference or semantic deduplication.",
+        "test_nodes": [
+          "tests/contract/test_analytical_obligations.py::test_source_granularity_keeps_exact_populations_and_qualification_gates[three_contributions]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "DEFINITIONS_AND_UNITS.md sections20.1,21.1,21.2,22.1,22.2,23.1",
+          "PHASE_3_PLAN.md sections3.3,19,21.2"
+        ],
+        "verified_behavior": "Resegment the first origin contribution as one further explicit EvidenceItem: Artifact count1, N4, counts3/1, HHI10/16; represented frequency follows original rows.",
+        "test_nodes": [
+          "tests/contract/test_analytical_obligations.py::test_source_granularity_keeps_exact_populations_and_qualification_gates[split_first_contribution]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "DEFINITIONS_AND_UNITS.md sections20.1,21.1,21.2,22.1,22.2,23.1",
+          "PHASE_3_PLAN.md sections3.3,19,21.2"
+        ],
+        "verified_behavior": "Uniformly replicate every supplied contribution: Artifact count1, N6, counts4/2, HHI20/36; unreduced squares remain exact while quotient equals5/9.",
+        "test_nodes": [
+          "tests/contract/test_analytical_obligations.py::test_source_granularity_keeps_exact_populations_and_qualification_gates[uniform_record_replication]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "DEFINITIONS_AND_UNITS.md sections20.1,21.1,21.2,22.1,22.2,23.1",
+          "PHASE_3_PLAN.md sections3.3,19,21.2"
+        ],
+        "verified_behavior": "Remove inspectable support while preserving both documented_origin labels, all supplied IDs and edges: reached origins2, documentary origins0, three unresolved rows, resolution0/3 and unavailableHHI withsupport_uninspectable.",
+        "test_nodes": [
+          "tests/contract/test_analytical_obligations.py::test_source_granularity_keeps_exact_populations_and_qualification_gates[uninspectable_documentary_support]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "DEFINITIONS_AND_UNITS.md sections20.1,21.1,21.2,22.1,22.2,23.1",
+          "PHASE_3_PLAN.md sections3.3,19,21.2"
+        ],
+        "verified_behavior": "Add actual e3-to-origin parent with half-allocation prose: e3 has both origins, nonexclusivecounts3/1 atN3, knownmultiplicity, unavailableHHI withmulti_origin_unallocated; no numericallocation fromprose.",
+        "test_nodes": [
+          "tests/contract/test_analytical_obligations.py::test_source_granularity_keeps_exact_populations_and_qualification_gates[unallocated_multiple_origins]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "DEFINITIONS_AND_UNITS.md sections22,23",
+          "VALIDATION_PLAN.md SIT-VG025 and section16.3"
+        ],
+        "verified_behavior": "Source-defined ratio cross products distinguish nonuniform5/9vs10/16 while preserving uniform5/9=20/36. Original unreducedN-squared values remain visible; no inventedeffectiveindependentsamplecount.",
+        "test_nodes": [
+          "tests/contract/test_analytical_obligations.py::test_nonuniform_resegmentation_changes_frequency_while_uniform_replication_preserves_ratio"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md SIT-VG025,SIT-VG026,section16.3",
+          "PHASE_3_PLAN.md section19"
+        ],
+        "verified_behavior": "Actual fullprivateanalysis of an openlyfictional, internallycoherent dossier retains documentaryHHI4/4andPC12met inbothmodes with exacttwoseedpopulation, links, and explicit no-truth interpretation. This verifies an honest limitation; it is notauthentication of fabricatedmaterial.",
+        "test_nodes": [
+          "tests/contract/test_analytical_obligations.py::test_coherent_fictional_support_can_pass_documentary_gates_without_authenticating_source[value]",
+          "tests/contract/test_analytical_obligations.py::test_coherent_fictional_support_can_pass_documentary_gates_without_authenticating_source[utf8]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.1 / SIT-VF001 / Negative (-N)"
+        ],
+        "verified_behavior": "Real H7 six Artifact members accepted, adding dossier-wide H7-ANSWER rejected by exact seed member oracle.",
+        "test_nodes": [
+          "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF001-N]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.1 / SIT-VF002 / Negative (-N)"
+        ],
+        "verified_behavior": "H7-V02 actual zero unresolved Artifact seed references accepted; injecting upstream EvidenceItem H7-UX rejected.",
+        "test_nodes": [
+          "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF002-N]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.1 / SIT-VF003 / Negative (-N)"
+        ],
+        "verified_behavior": "Real H7 six selected EvidenceItems accepted; adding non-seed ER1 rejected.",
+        "test_nodes": [
+          "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF003-N]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.1 / SIT-VF004 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual two version identities sharing locator accepted; one-version collapse rejected.",
+        "test_nodes": [
+          "tests/unit/test_inventory.py::test_m001_core_source_oracle_and_rejecting_mutant[SIT-VF004-N]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.1 / SIT-VF005 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual H7 empty unassigned-seed inventory accepted; all eight actual non-seed support Artifact IDs rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf005_n_nonseed_support_artifacts_are_not_unassigned_seeds"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.2 / SIT-VF006 / Negative (-N)"
+        ],
+        "verified_behavior": "Completed parentless EvidenceItem and typed unresolved expected OriginEvent baselines both zero; each fake reached origin rejected.",
+        "test_nodes": [
+          "tests/unit/test_origins.py::test_vf006_n_parentless_evidence_and_unresolved_expected_origin_are_not_origins"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.2 / SIT-VF008 / Negative (-N)"
+        ],
+        "verified_behavior": "Each real declared/reference-baseline boundary preserves native role; relabeling documented_origin rejected.",
+        "test_nodes": [
+          "tests/unit/test_origins.py::test_vf008_n_output_mutant_cannot_rename_a_native_boundary[declared_origin]",
+          "tests/unit/test_origins.py::test_vf008_n_output_mutant_cannot_rename_a_native_boundary[reference_baseline]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.3 / SIT-VF009 / Negative (-N)"
+        ],
+        "verified_behavior": "Two actual separately scoped pair outputs accepted; summed size4 and union size3 mutant rejected separately.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf009_n_two_named_pairs_cannot_become_one_larger_comparison[merge_members]",
+          "tests/contract/test_analytical_mutants.py::test_vf009_n_two_named_pairs_cannot_become_one_larger_comparison[sum_pairs]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.3 / SIT-VF011 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual qualified Model procedure pair accepted beside origin-specific not_applicable; typed mutant available2 OriginEvents rejected.",
+        "test_nodes": [
+          "tests/unit/test_process_comparison.py::test_m003_core_source_oracle_and_rejecting_mutant[SIT-VF011-N]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.3 / SIT-VF012 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual both independent and contrary assessments accepted; deleting contrary rejected; separate exact native conclusion authentication mutant rejected.",
+        "test_nodes": [
+          "tests/unit/test_process_comparison.py::test_disclosure_output_mutant_cannot_turn_supplied_conclusion_into_tool_authentication",
+          "tests/unit/test_process_comparison.py::test_m003_core_source_oracle_and_rejecting_mutant[SIT-VF012-N]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.4 / SIT-VF013 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual no-origin source with citation/publisher/owner/model context accepted; fabricated membership/incidence rejected.",
+        "test_nodes": [
+          "tests/unit/test_contribution_profile.py::test_vf013_n_artifact_context_cannot_create_an_acquisition_parent"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.4 / SIT-VF014 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual H7-V03 nonexclusive c=(6,2), N7 accepted; normalization to(6/8,2/8) rejected.",
+        "test_nodes": [
+          "tests/unit/test_contribution_profile.py::test_vf014_n_and_vf016_n_reject_normalized_incidence_and_dropped_unresolved_denominator"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.4 / SIT-VF015 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual known origin plus unknown/disputed branch unresolved disposition accepted; single_documented relabel rejected.",
+        "test_nodes": [
+          "tests/unit/test_contribution_profile.py::test_vf015_n_late_bad_branch_preserves_known_incidence_but_blocks_complete_row[disputed]",
+          "tests/unit/test_contribution_profile.py::test_vf015_n_late_bad_branch_preserves_known_incidence_but_blocks_complete_row[unknown]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.4 / SIT-VF016 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual H7-V02 resolution6/7 and V03 resolution7/7 accepted; dropping unknown denominator or demoting multi-origin numerator rejected.",
+        "test_nodes": [
+          "tests/unit/test_contribution_profile.py::test_vf014_n_and_vf016_n_reject_normalized_incidence_and_dropped_unresolved_denominator"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.5 / SIT-VF017 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual unavailable HHI with full population accepted; V02 fallback26/36 and V03 half-allocation130/196 rejected.",
+        "test_nodes": [
+          "tests/unit/test_contribution_profile.py::test_vf017_n_reject_half_allocation_and_resolved_subset_hhi"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.6 / SIT-VF018 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual V03 immediate inherited classification accepted; inherited-to-mixed mutant rejected.",
+        "test_nodes": [
+          "tests/unit/test_immediate_inheritance.py::test_vf018_n_multi_origin_inherited_parents_cannot_become_mixed"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.6 / SIT-VF019 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual seed-level inherited1/1 accepted; path-count or text-novelty numerators rejected.",
+        "test_nodes": [
+          "tests/unit/test_immediate_inheritance.py::test_vf019_n_paths_or_text_novelty_cannot_replace_seed_numerator"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.6 / SIT-VF020 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual finite_record_completion5/7..6/7 accepted; confidence label, resolved denominator and point collapse rejected.",
+        "test_nodes": [
+          "tests/unit/test_immediate_inheritance.py::test_vf020_n_interval_cannot_be_confidence_resolved_only_or_a_point"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.7 / SIT-VF021 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual one shared frontier accepted; fake two-root inventory rejected.",
+        "test_nodes": [
+          "tests/unit/test_ancestry_frontiers.py::test_vf021_n_output_mutant_cannot_count_one_shared_unknown_twice"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.7 / SIT-VF022 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual one visible unqualified terminal and zero documentary roots accepted; fake documentary root rejected.",
+        "test_nodes": [
+          "tests/unit/test_ancestry_frontiers.py::test_vf022_n_output_mutant_cannot_promote_a_parentless_terminal_to_documentary_root"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.7 / SIT-VF023 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual two affected seeds through one frontier accepted; copying frontier count1 rejected.",
+        "test_nodes": [
+          "tests/unit/test_ancestry_frontiers.py::test_vf023_n_output_mutant_cannot_copy_frontier_count_into_affected_seed_count"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.7 / SIT-VF024 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual one shared opaque gap accepted; pseudonym splitting or deleting gap rejected.",
+        "test_nodes": [
+          "tests/unit/test_ancestry_frontiers.py::test_vf024_n_output_mutants_cannot_split_opaque_identity_or_erase_the_gap"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.8 / SIT-VF027 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual two separately targeted human procedures have zero strict common process ancestor; common reviewed-target count1 rejected.",
+        "test_nodes": [
+          "tests/unit/test_evaluator_lineage.py::test_vf027_n_common_reviewed_target_does_not_become_process_ancestor"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.8 / SIT-VF028 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual matching family but no ancestor edges has empty paths; fabricated family-label path rejected.",
+        "test_nodes": [
+          "tests/unit/test_evaluator_lineage.py::test_vf028_n_no_ancestry_path_can_be_fabricated_from_family_or_prose"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.9 / SIT-VF029 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual missing qualified externality with human/remote/recent metadata accepted; available/external output mutant rejected.",
+        "test_nodes": [
+          "tests/unit/test_presence.py::test_vf029_negative_recent_human_remote_metadata_and_admission_cannot_create_externality"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.9 / SIT-VF030 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual four EF stage rows accepted despite shared Artifact/date/prose; injecting EE row rejected.",
+        "test_nodes": [
+          "tests/unit/test_presence.py::test_vf030_negative_shared_prose_publisher_and_date_never_join_another_subject"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.10 / SIT-VF032 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual full six member Y3/F2/U1 accepted; dropping unknown or duplicate-positive log member rejected.",
+        "test_nodes": [
+          "tests/unit/test_pipeline_cohorts.py::test_vf032_n_partition_rejects_unknown_omission_and_log_count_inflation[duplicate_log_member]",
+          "tests/unit/test_pipeline_cohorts.py::test_vf032_n_partition_rejects_unknown_omission_and_log_count_inflation[omit_unknown]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.10 / SIT-VF033 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual influence point unavailable accepted; 3/5 available mutant rejected.",
+        "test_nodes": [
+          "tests/unit/test_pipeline_cohorts.py::test_vf033_n_unknown_use_member_cannot_be_dropped_to_report_three_fifths"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.10 / SIT-VF034 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual finite cohort interval3/6..4/6 accepted; denominator5 or measured-rate label rejected.",
+        "test_nodes": [
+          "tests/unit/test_pipeline_cohorts.py::test_vf034_n_interval_rejects_measured_rate_or_resolved_only_denominator[measured_rate_label]",
+          "tests/unit/test_pipeline_cohorts.py::test_vf034_n_interval_rejects_measured_rate_or_resolved_only_denominator[wrong_denominator]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.10 / SIT-VF037 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual standalone target interval survives unavailable ambiguous/mismatched transition; copying target interval into transition rejected.",
+        "test_nodes": [
+          "tests/unit/test_pipeline_cohorts.py::test_vf037_n_target_interval_cannot_be_copied_to_ineligible_transition[ambiguous]",
+          "tests/unit/test_pipeline_cohorts.py::test_vf037_n_target_interval_cannot_be_copied_to_ineligible_transition[different_members]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.11 / SIT-VF038 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual four H7 target paths start at one H7-CHANNEL; four fabricated channel identities rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf038_n_four_target_tuples_cannot_become_four_independent_channels"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.11 / SIT-VF040 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual native mailbox/owner record accepted without authority; single inferred authority/effect field rejected separately.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf040_n_mailbox_and_owner_disclosure_cannot_become_authority_or_effect[institutional_authority]",
+          "tests/contract/test_analytical_mutants.py::test_vf040_n_mailbox_and_owner_disclosure_cannot_become_authority_or_effect[observed_correction]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.12 / SIT-VF041 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual one H7 submission accepted first; five submission+handling+change inventory rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf041_n_handling_and_change_events_cannot_become_five_submissions"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.12 / SIT-VF042 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual accepted and later failed IDs count2; latest-only count1 rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf042_n_latest_failed_event_cannot_erase_accepted_handling"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.12 / SIT-VF043 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual no linked event count0 accepted; handling and unrelated later version as change event rejected separately.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf043_n_accepted_request_or_unlinked_version_is_not_a_change_event[handling]",
+          "tests/contract/test_analytical_mutants.py::test_vf043_n_accepted_request_or_unlinked_version_is_not_a_change_event[later-version]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.12 / SIT-VF044 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual two event IDs count2 while one(case,target) count1; repeated pair count2 rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf044_n_two_events_on_one_case_target_cannot_be_two_documentary_targets"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.12 / SIT-VF045 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual three H7 documentary pairs and one CASE1 accepted; changed-target count3 substituted for case count rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf045_n_three_changed_targets_cannot_be_three_cases"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.12 / SIT-VF046 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual completed output with native accepted and failed records accepted; runtime failed or deletion of accepted record rejected separately.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf046_n_native_failed_never_becomes_runtime_failure_or_latest_only[delete_accepted]",
+          "tests/contract/test_analytical_mutants.py::test_vf046_n_native_failed_never_becomes_runtime_failure_or_latest_only[runtime_failure]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.12 / SIT-VF047 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual original four target IDs with E unavailable/change_evidence_missing accepted; failed E or added B/C rejected separately.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf047_n_undocumented_e_cannot_be_failed_or_enlarged_to_b_c[add_unselected_targets]",
+          "tests/contract/test_analytical_mutants.py::test_vf047_n_undocumented_e_cannot_be_failed_or_enlarged_to_b_c[failed_effect]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.12 / SIT-VF048 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual 10 cases/day and 7 cases/day reported strings accepted; derived utilization0.7 rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf048_n_capacity_strings_cannot_become_a_utilization_score"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.13 / SIT-VF049 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual human title, employer, endpoint metadata with no qualifying comparison accepted; invented independent_corrective_capacity rejected.",
+        "test_nodes": [
+          "tests/unit/test_human_review.py::test_vf049_negative_identity_metadata_cannot_manufacture_corrective_independence[different_employer]",
+          "tests/unit/test_human_review.py::test_vf049_negative_identity_metadata_cannot_manufacture_corrective_independence[human_title]",
+          "tests/unit/test_human_review.py::test_vf049_negative_identity_metadata_cannot_manufacture_corrective_independence[separate_endpoint]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.13 / SIT-VF050 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual human actor contribution accepted; software/organization output projection rejected and same input role substitution structurally rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf050_n_nonhuman_actor_cannot_be_presented_as_human_reviewer[organization]",
+          "tests/contract/test_analytical_mutants.py::test_vf050_n_nonhuman_actor_cannot_be_presented_as_human_reviewer[software_agent]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.14 / SIT-VF051 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual null Claim, source context and unclassified Anomaly accepted; forced Claim, erased context, invented rarity/ideology rejected.",
+        "test_nodes": [
+          "tests/unit/test_context_preservation.py::test_vf051_n_native_context_oracle_rejects_reclassification[erase_context]",
+          "tests/unit/test_context_preservation.py::test_vf051_n_native_context_oracle_rejects_reclassification[force_claim]",
+          "tests/unit/test_context_preservation.py::test_vf051_n_native_context_oracle_rejects_reclassification[invent_ideology]",
+          "tests/unit/test_context_preservation.py::test_vf051_n_native_context_oracle_rejects_reclassification[invent_rarity]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.14 / SIT-VF052 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual EF contradiction and all stance rows accepted; deleted EF or lowered integrity field rejected.",
+        "test_nodes": [
+          "tests/unit/test_context_preservation.py::test_vf052_n_disagreement_cannot_delete_source_or_lower_integrity"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.14 / SIT-VF053 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual ResultRef links accepted; copied independent numerator/denominator and final-only suppression conclusion rejected.",
+        "test_nodes": [
+          "tests/unit/test_context_preservation.py::test_vf053_n_stage_links_reject_duplicate_metric_and_final_only_suppression"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.15 / SIT-VF054 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual native scopes accepted; acquisition coverage kind changed singly to model/correction or partial model state changed singly to complete rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf054_n_acquisition_completeness_cannot_replace_other_history[acquisition_as_correction]",
+          "tests/contract/test_analytical_mutants.py::test_vf054_n_acquisition_completeness_cannot_replace_other_history[acquisition_as_model]",
+          "tests/contract/test_analytical_mutants.py::test_vf054_n_acquisition_completeness_cannot_replace_other_history[complete_model]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.15 / SIT-VF055 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual documented_record plus support_uninspectable accepted; relabeling native basis upstream_inference rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf055_n_uninspectable_support_cannot_rewrite_native_documentary_basis"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.15 / SIT-VF056 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual seven declared rows including one upstream_inference and six weak documented rows accepted; qualified-only empty inventory or direct_observation upgrade rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf056_n_declared_inventory_cannot_drop_weak_rows_or_upgrade_inference[qualified_only]",
+          "tests/contract/test_analytical_mutants.py::test_vf056_n_declared_inventory_cannot_drop_weak_rows_or_upgrade_inference[upgrade_inference]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md §12.15 / SIT-VF057 / Negative (-N)"
+        ],
+        "verified_behavior": "Actual seven supplied plus one locator_only/withheld reference accepted; pointer-based upgrade to supplied8 rejected.",
+        "test_nodes": [
+          "tests/contract/test_analytical_mutants.py::test_vf057_n_a_pointer_cannot_upgrade_unavailable_content_to_supplied[locator_only]",
+          "tests/contract/test_analytical_mutants.py::test_vf057_n_a_pointer_cannot_upgrade_unavailable_content_to_supplied[withheld]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "OBSERVABILITY_AND_REPORTING.md section 19.2",
+          "VALIDATION_PLAN.md SIT-VG018",
+          "PHASE_3_PLAN.md section 19"
+        ],
+        "verified_behavior": "Permuting explicit coverage member/predicate sets preserves exact two-seed, one-origin populations, incidence, dispositions and 4/4 HHI, while the deliberately nonlexical native qualification array retains its original supplied order.",
+        "test_nodes": [
+          "tests/integration/test_analytical_determinism.py::test_nested_coverage_sets_permute_without_reordering_native_qualifications[utf8]",
+          "tests/integration/test_analytical_determinism.py::test_nested_coverage_sets_permute_without_reordering_native_qualifications[value]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "OBSERVABILITY_AND_REPORTING.md sections 12.5 and 19.2",
+          "VALIDATION_PLAN.md SIT-VG018",
+          "PHASE_3_PLAN.md section 19"
+        ],
+        "verified_behavior": "ID-preserving edits to Claim prose, attributed boundary explanation and ordered qualification strings retain the exact native data/provenance and preserve all specified origin/contribution values and reason codes.",
+        "test_nodes": [
+          "tests/integration/test_analytical_determinism.py::test_id_preserving_native_text_and_array_changes_are_retained_without_count_drift[utf8]",
+          "tests/integration/test_analytical_determinism.py::test_id_preserving_native_text_and_array_changes_are_retained_without_count_drift[value]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "VALIDATION_PLAN.md SIT-VG018",
+          "OBSERVABILITY_AND_REPORTING.md sections 16.2, 16.6 and 19.2"
+        ],
+        "verified_behavior": "A field-aware bijection of every local ID/reference to a case-sensitive punctuation-bearing ID preserves exact finite memberships, scopes, numerical outcomes and the full execution plan under the inverse map.",
+        "test_nodes": [
+          "tests/integration/test_analytical_determinism.py::test_bijective_local_id_renaming_preserves_exact_memberships_after_inverse_mapping[utf8]",
+          "tests/integration/test_analytical_determinism.py::test_bijective_local_id_renaming_preserves_exact_memberships_after_inverse_mapping[value]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "DEFINITIONS_AND_UNITS.md sections 22.1, 22.2 and 23.1",
+          "OBSERVABILITY_AND_REPORTING.md sections 8.1 and 19.2",
+          "VALIDATION_PLAN.md SIT-VG018",
+          "PHASE_3_PLAN.md section 19"
+        ],
+        "verified_behavior": "A second provenance assertion and a second direct-plus-mediated route are separately executed deltas. Both retain exactly two distinct seed members, one qualified origin, origin incidence 2, and 4/4 HHI; the new assertion is an actual retained basis reference.",
+        "test_nodes": [
+          "tests/integration/test_analytical_determinism.py::test_duplicate_provenance_paths_do_not_multiply_origin_or_contribution_members[utf8-additional_route]",
+          "tests/integration/test_analytical_determinism.py::test_duplicate_provenance_paths_do_not_multiply_origin_or_contribution_members[utf8-parallel_assertion]",
+          "tests/integration/test_analytical_determinism.py::test_duplicate_provenance_paths_do_not_multiply_origin_or_contribution_members[value-additional_route]",
+          "tests/integration/test_analytical_determinism.py::test_duplicate_provenance_paths_do_not_multiply_origin_or_contribution_members[value-parallel_assertion]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "OBSERVABILITY_AND_REPORTING.md sections 18.1 and 19.2",
+          "VALIDATION_PLAN.md SIT-VG018",
+          "PHASE_3_PLAN.md section 19"
+        ],
+        "verified_behavior": "Actual detached Claim-origin witnesses retain e -> e2 -> origin with causal edge order z-first-hop then parent-e2, despite the opposite lexical order and reordered source arrays.",
+        "test_nodes": [
+          "tests/integration/test_analytical_determinism.py::test_causal_witness_edge_order_survives_source_reordering_and_is_not_lexical[utf8]",
+          "tests/integration/test_analytical_determinism.py::test_causal_witness_edge_order_survives_source_reordering_and_is_not_lexical[value]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "OBSERVABILITY_AND_REPORTING.md sections 12.4 and 14.2",
+          "DEFINITIONS_AND_UNITS.md sections 20.4 and 22.2",
+          "VALIDATION_PLAN.md SIT-VG018",
+          "PHASE_3_PLAN.md section 19"
+        ],
+        "verified_behavior": "A supplied weak denial on a disconnected same-dimension OriginEvent does not enter the reached population, add premise_disputed to the tested outputs, alter exact membership, or disable the completed full-population HHI.",
+        "test_nodes": [
+          "tests/integration/test_analytical_determinism.py::test_disconnected_contrary_data_does_not_poison_the_completed_seed_population[utf8]",
+          "tests/integration/test_analytical_determinism.py::test_disconnected_contrary_data_does_not_poison_the_completed_seed_population[value]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "OBSERVABILITY_AND_REPORTING.md sections 12.4, 13.1, 13.2 and 14.2",
+          "DEFINITIONS_AND_UNITS.md sections 20.4, 22.2 and 23.2",
+          "VALIDATION_PLAN.md SIT-VG018",
+          "PHASE_3_PLAN.md section 19"
+        ],
+        "verified_behavior": "A weak denied copy of e -> origin retains the reached origin and both seeds; only e becomes unresolved, e2 remains singly qualified, documentary resolution is exactly 1/2 and whole-population HHI becomes unavailable. Exact Reason references localize e/parent-e/relevant-denial; PC09 retains the actual denial and is unmet.",
+        "test_nodes": [
+          "tests/integration/test_analytical_determinism.py::test_relevant_weak_denial_changes_only_its_seed_and_blocks_full_population_hhi[utf8]",
+          "tests/integration/test_analytical_determinism.py::test_relevant_weak_denial_changes_only_its_seed_and_blocks_full_population_hhi[value]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "Plan 19: warm full-analysis effect interception, negative controls, hostile source strings/extensions, repeated invocation, privacy canaries and nonmutation"
+        ],
+        "verified_behavior": "Both actual analytical entry modes finish a real one-artifact inventory; changed subsequent source gives count two; file/write/list/stat/DNS/socket/native/process/logging controls each produce the intercepted event; hostile content yields no effect or emitted canary; rejected supplied content yields no partial result.",
+        "test_nodes": [
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[constructed_value-None]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[supplied_utf8-None]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-open-open]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-write-open]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-listdir-os.listdir]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-stat-metadata.stat]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-network-socket.getaddrinfo]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-socket-socket.__new__]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-native-ctypes.dlopen]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-process-subprocess.Popen]",
+          "tests/security/test_analytical_inertness.py::test_warm_actual_analysis_cannot_acquire_source_effect_authority[negative-logging-logging.record]",
+          "tests/security/test_analytical_inertness.py::test_actual_analysis_rejects_caller_protocols_without_invoking_them[root_subclass]",
+          "tests/security/test_analytical_inertness.py::test_actual_analysis_rejects_caller_protocols_without_invoking_them[key_subclass]",
+          "tests/security/test_analytical_inertness.py::test_actual_analysis_rejects_caller_protocols_without_invoking_them[callback]",
+          "tests/security/test_analytical_inertness.py::test_actual_analysis_rejects_caller_protocols_without_invoking_them[cycle]",
+          "tests/security/test_analytical_inertness.py::test_actual_analysis_rejects_caller_protocols_without_invoking_them[bytes_subclass]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "Plan 19: separate import-time isolation"
+        ],
+        "verified_behavior": "Existing isolated subprocess imports all 48 modules; approved loader reads only; actual file read/write/stat/socket/DNS/CDLL mutations including swallowed violation are detected before side effect. These are cumulative controls with W13 accepted execution, to be retained in W14 exact-head CI.",
+        "test_nodes": [
+          "tests/security/test_scaffold_inertness.py::ScaffoldInertnessTests::test_cache_helper_preloads_in_clean_interpreter",
+          "tests/security/test_scaffold_inertness.py::ScaffoldInertnessTests::test_dataclasses_preload_in_clean_interpreter",
+          "tests/security/test_scaffold_inertness.py::ScaffoldInertnessTests::test_deliberate_evidence_read_is_detected_before_access",
+          "tests/security/test_scaffold_inertness.py::ScaffoldInertnessTests::test_deliberate_path_inspection_is_detected",
+          "tests/security/test_scaffold_inertness.py::ScaffoldInertnessTests::test_deliberate_write_is_detected_before_modification",
+          "tests/security/test_scaffold_inertness.py::ScaffoldInertnessTests::test_imports_api_and_cli_are_inert",
+          "tests/security/test_scaffold_inertness.py::ScaffoldInertnessTests::test_stub_that_inspects_argument_is_detected",
+          "tests/security/test_scaffold_inertness.py::ScaffoldInertnessTests::test_swallowed_effect_violation_cannot_become_pass",
+          "tests/security/test_scaffold_no_network.py::ScaffoldNetworkTests::test_deliberate_dns_is_detected_without_resolution",
+          "tests/security/test_scaffold_no_network.py::ScaffoldNetworkTests::test_deliberate_socket_creation_is_detected",
+          "tests/security/test_scaffold_no_network.py::ScaffoldNetworkTests::test_real_scaffold_makes_no_application_network_attempt",
+          "tests/security/test_scaffold_no_native_loading.py::ScaffoldNativeTests::test_all_slots_load_without_application_native_binding",
+          "tests/security/test_scaffold_no_native_loading.py::ScaffoldNativeTests::test_deliberate_cdll_is_blocked_before_loading",
+          "tests/security/test_scaffold_no_native_loading.py::ScaffoldNativeTests::test_deliberate_platform_loader_cannot_hide_in_other_slot"
+        ]
+      },
+      {
+        "source_clauses": [
+          "Plan 19: WU9-L01..L08 aggregate bytes/depth/inquiry/record/assertion/evidence/reference/node ceilings"
+        ],
+        "verified_behavior": "Explicit specification literals exercise below/equal/above counter boundaries in both admitted modes, unchanged counters on overflow and sticky stop; depth is a nonresetting peak.",
+        "test_nodes": [
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[supplied_utf8-bytes-16777216-WU9-L01]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[supplied_utf8-inquiries-32-WU9-L03]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[supplied_utf8-records-10000-WU9-L04]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[supplied_utf8-assertions-30000-WU9-L05]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[supplied_utf8-evidence_references-10000-WU9-L06]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[supplied_utf8-reference_occurrences-200000-WU9-L07]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[supplied_utf8-nodes-500000-WU9-L08]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[constructed_value-bytes-16777216-WU9-L01]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[constructed_value-inquiries-32-WU9-L03]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[constructed_value-records-10000-WU9-L04]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[constructed_value-assertions-30000-WU9-L05]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[constructed_value-evidence_references-10000-WU9-L06]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[constructed_value-reference_occurrences-200000-WU9-L07]",
+          "tests/security/test_input_resource_limits.py::test_each_aggregate_below_at_above_without_constructing_fake_input[constructed_value-nodes-500000-WU9-L08]",
+          "tests/security/test_input_resource_limits.py::test_depth_is_a_nonresetting_peak_not_the_count_of_all_containers"
+        ]
+      },
+      {
+        "source_clauses": [
+          "Plan 19: WU9-L09 numeric token and WU9-L10 string/locator/ID boundaries"
+        ],
+        "verified_behavior": "127/128/129 raw numeric tokens preserve resource-vs-schema distinction; every string/locator/ID decoded-byte ceiling uses below/equal/above actual scalar calls; multibyte bytes differ from J escape bytes.",
+        "test_nodes": [
+          "tests/security/test_input_resource_limits.py::test_field_byte_lengths_have_structural_below_at_above_rules[kwargs0-65536]",
+          "tests/security/test_input_resource_limits.py::test_field_byte_lengths_have_structural_below_at_above_rules[kwargs1-4096]",
+          "tests/security/test_input_resource_limits.py::test_field_byte_lengths_have_structural_below_at_above_rules[kwargs2-128]",
+          "tests/security/test_input_resource_limits.py::test_decoded_multibyte_string_count_differs_from_j_escape_count",
+          "tests/contract/test_normalization_profile.py::test_raw_numeric_token_limit_is_resource_not_schema[127]",
+          "tests/contract/test_normalization_profile.py::test_raw_numeric_token_limit_is_resource_not_schema[128]",
+          "tests/contract/test_normalization_profile.py::test_raw_numeric_token_limit_is_resource_not_schema[129]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "Plan 19: WU9-L11 total/per-job work, WU9-L12 deadline and WU9-L13 witness/member boundaries"
+        ],
+        "verified_behavior": "Fixed 10M total/1M job/60s/20k witnesses/100k members, prospective thresholds and atomic reservation; actual invocation shares admission/planning/jobs/delivery budget and existing stop tests preserve earlier cells.",
+        "test_nodes": [
+          "tests/security/test_analytical_resource_limits.py::test_per_job_below_equal_above_is_prospective_and_stops_all_further_analysis",
+          "tests/security/test_analytical_resource_limits.py::test_global_limit_includes_preparation_and_current_job_without_new_reserve",
+          "tests/security/test_analytical_resource_limits.py::test_sixty_second_deadline_does_not_restart_on_new_job_or_finalization",
+          "tests/security/test_analytical_resource_limits.py::test_each_witness_retention_ceiling_below_at_above_counts_pending_and_retained[witnesses-20000]",
+          "tests/security/test_analytical_resource_limits.py::test_each_witness_retention_ceiling_below_at_above_counts_pending_and_retained[members-100000]",
+          "tests/security/test_analytical_interruption.py::test_capture_planning_jobs_and_delivery_use_one_entry_budget",
+          "tests/security/test_analytical_interruption.py::test_shared_witness_ceiling_interrupts_without_clipping_or_continuation[witnesses-20000]",
+          "tests/security/test_analytical_interruption.py::test_shared_witness_ceiling_interrupts_without_clipping_or_continuation[members-100000]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "Plan 19: large finite graphs"
+        ],
+        "verified_behavior": "Real graph traversal uses deep chain 384, wide fanout 160, and 20 layers with nine edges/layer; independent expected path/reach sizes, no recursive walk enumeration, bounded real job work.",
+        "test_nodes": [
+          "tests/unit/test_graph_traversal.py::test_finite_large_shapes_use_bounded_passes_instead_of_recursion_or_walk_enumeration[deep]",
+          "tests/unit/test_graph_traversal.py::test_finite_large_shapes_use_bounded_passes_instead_of_recursion_or_walk_enumeration[wide]",
+          "tests/unit/test_graph_traversal.py::test_finite_large_shapes_use_bounded_passes_instead_of_recursion_or_walk_enumeration[many_walks]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "Plan 19: paid sorting, lookup and numeric operations"
+        ],
+        "verified_behavior": "Actual source sort, binary lookup, exact decimal and delivery structural-key sort each return independent expected values, debit again on repeat, fit exactly at local/global allowance and stop prospectively one unit short.",
+        "test_nodes": [
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[-1-job-source_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[-1-job-source_lookup]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[-1-job-exact_number]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[-1-job-delivery_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[-1-global-source_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[-1-global-source_lookup]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[-1-global-exact_number]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[-1-global-delivery_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[0-job-source_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[0-job-source_lookup]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[0-job-exact_number]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[0-job-delivery_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[0-global-source_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[0-global-source_lookup]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[0-global-exact_number]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[0-global-delivery_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[1-job-source_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[1-job-source_lookup]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[1-job-exact_number]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[1-job-delivery_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[1-global-source_sort]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[1-global-source_lookup]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[1-global-exact_number]",
+          "tests/security/test_analytical_adversarial.py::test_paid_helper_completes_only_when_every_comparison_copy_and_numeric_step_fits[1-global-delivery_sort]"
+        ]
+      },
+      {
+        "source_clauses": [
+          "Plan 19: commit-time faults and stopped finalization"
+        ],
+        "verified_behavior": "Fault is injected at actual _commit_job final check after tuple allocation and before publication: MemoryError/opaque exception/cancellation produce safe no-salvage diagnostics; local work stop retains only completed prior family cells, current tuple remains unpublished. Inherited late-findings, nested-stage and delivery stop tests retain atomic completed cells and preserve first cause under later global/time stop.",
+        "test_nodes": [
+          "tests/security/test_analytical_adversarial.py::test_failure_at_final_commit_check_cannot_publish_current_cells_or_source_exception[memory-constructed_value]",
+          "tests/security/test_analytical_adversarial.py::test_failure_at_final_commit_check_cannot_publish_current_cells_or_source_exception[memory-supplied_utf8]",
+          "tests/security/test_analytical_adversarial.py::test_failure_at_final_commit_check_cannot_publish_current_cells_or_source_exception[opaque_exception-constructed_value]",
+          "tests/security/test_analytical_adversarial.py::test_failure_at_final_commit_check_cannot_publish_current_cells_or_source_exception[opaque_exception-supplied_utf8]",
+          "tests/security/test_analytical_adversarial.py::test_failure_at_final_commit_check_cannot_publish_current_cells_or_source_exception[cancel-constructed_value]",
+          "tests/security/test_analytical_adversarial.py::test_failure_at_final_commit_check_cannot_publish_current_cells_or_source_exception[cancel-supplied_utf8]",
+          "tests/security/test_analytical_adversarial.py::test_failure_at_final_commit_check_cannot_publish_current_cells_or_source_exception[job_work-constructed_value]",
+          "tests/security/test_analytical_adversarial.py::test_failure_at_final_commit_check_cannot_publish_current_cells_or_source_exception[job_work-supplied_utf8]",
+          "tests/security/test_analytical_interruption.py::test_delivery_must_fit_remaining_global_work_and_entry_deadline[work]",
+          "tests/security/test_analytical_interruption.py::test_delivery_must_fit_remaining_global_work_and_entry_deadline[time]",
+          "tests/security/test_analytical_interruption.py::test_later_findings_stop_keeps_actual_committed_cells_in_the_same_job",
+          "tests/security/test_analytical_interruption.py::test_stopped_job_salvage_still_requires_delivery_budget_and_preserves_first_cause[work]",
+          "tests/security/test_analytical_interruption.py::test_stopped_job_salvage_still_requires_delivery_budget_and_preserves_first_cause[time]",
+          "tests/security/test_analytical_interruption.py::test_nested_stage_targets_commit_before_context_referrers_and_survive_local_stop"
+        ]
+      },
+      {
+        "source_clauses": [
+          "PHASE_3_PLAN.md section 19",
+          "GOVERNANCE_AND_HANDOFF.md section 22.3",
+          "Original H7 logical oracles read only by developer tests",
+          "DEFINITIONS_AND_UNITS.md sections 22-23"
+        ],
+        "verified_behavior": "Eight untrimmed fixed-budget analyses in each source and installed execution; independently specified frozen five M001 inventory rows asserted after real atomic commit; no results delivered after terminal safe stop Original job charge rejects requested > 1000000-job_before; original finalization charge rejects requested > 10000000-used_before; first job cause retained; real monotonic deadline stays enabled Two modes complete actual member/count/HHI calculation, exact two members e/e2 -> origin, HHI4/4, realPC24,15capabilities,5domains Original55wheel65sdist, rebuilt55wheel equal every member, cleanofflineinstallonlyone distribution,48exactmodulehashes Actual installed file/network/native interception, negative controls, publicrefusals, invalidadmission, sourceimmutability",
+        "test_nodes": [
+          "tests/integration/test_analytical_hero_inputs.py::test_original_hero_actual_analysis_preserves_fixed_limits_and_atomic_oracle[value-H7-01]",
+          "tests/integration/test_analytical_hero_inputs.py::test_original_hero_actual_analysis_preserves_fixed_limits_and_atomic_oracle[value-H7-V01]",
+          "tests/integration/test_analytical_hero_inputs.py::test_original_hero_actual_analysis_preserves_fixed_limits_and_atomic_oracle[value-H7-V02]",
+          "tests/integration/test_analytical_hero_inputs.py::test_original_hero_actual_analysis_preserves_fixed_limits_and_atomic_oracle[value-H7-V03]",
+          "tests/integration/test_analytical_hero_inputs.py::test_original_hero_actual_analysis_preserves_fixed_limits_and_atomic_oracle[utf8-H7-01]",
+          "tests/integration/test_analytical_hero_inputs.py::test_original_hero_actual_analysis_preserves_fixed_limits_and_atomic_oracle[utf8-H7-V01]",
+          "tests/integration/test_analytical_hero_inputs.py::test_original_hero_actual_analysis_preserves_fixed_limits_and_atomic_oracle[utf8-H7-V02]",
+          "tests/integration/test_analytical_hero_inputs.py::test_original_hero_actual_analysis_preserves_fixed_limits_and_atomic_oracle[utf8-H7-V03]",
+          "tests/integration/test_analytical_installed_runtime.py::test_clean_installed_analysis_original_heroes_and_completed_finite_case"
+        ]
+      }
+    ],
     "collection": {
-      "status": "collected_pending_hosted_execution",
-      "total": 3810,
-      "inherited_retained": 3722,
-      "added": 88,
+      "status": "collected_and_passed_in_each_required_profile",
+      "total": 3918,
+      "inherited_retained": 3810,
+      "added": 108,
       "removed": 0,
       "new_governance_identities": 0,
       "receipt": {
-        "path": "w13-collection-summary.json",
-        "bytes": 12062,
-        "sha256": "f641ba94ec1512d400e01fd485c63f87ff1ac4054f054c32103db69a4b8f30fc"
+        "path": "w14-collection-summary.json",
+        "bytes": 15891,
+        "sha256": "9489925d718627b9bf3de4f24747b1546860576123e0c053f64a3e863b593ef0"
       }
     },
-    "private_integration": {
-      "status": "verified_private_orchestration",
-      "checks": [
+    "w14_core_validation": {
+      "status": "verified_private_core_validation",
+      "scope": "private_core_only",
+      "field_obligations": 228,
+      "output_mutant_obligations": 49,
+      "input_delta_negatives": 8,
+      "mapping_receipts": [
         {
-          "source_clauses": [
-            "PHASE_3_PLAN.md section 3.1",
-            "PHASE_3_PLAN.md sections 2 and 18",
-            "REPOSITORY_ARCHITECTURE.md sections 17.1, 17.2 and 17.4"
-          ],
-          "test_nodes": [
-            "tests/integration/test_analytical_pipeline.py::test_all_fifteen_families_execute_actual_finite_scopes_in_both_modes[utf8]",
-            "tests/integration/test_analytical_pipeline.py::test_all_fifteen_families_execute_actual_finite_scopes_in_both_modes[value]",
-            "tests/integration/test_analytical_pipeline.py::test_equivalent_admitted_values_agree_in_results_findings_and_scope_plan[all_families]",
-            "tests/integration/test_analytical_pipeline.py::test_equivalent_admitted_values_agree_in_results_findings_and_scope_plan[sparse]",
-            "tests/integration/test_analytical_pipeline.py::test_original_binary_float_and_supplied_decimal_are_not_silently_rounded_together"
-          ],
-          "verified_behavior": "Both private input modes execute all fifteen owners on finite supplied examples. Equivalent admitted inputs agree in analytical semantics while the original binary-float and exact-decimal representations preserve their required difference."
+          "path": "w14-contract-mapping.json",
+          "bytes": 281958,
+          "sha256": "eecba845b8d1031d0eed73a9269cd144cc898528feaf60a01f7f96799a531fe0"
         },
         {
-          "source_clauses": [
-            "DEFINITIONS_AND_UNITS.md section 20.2",
-            "DEFINITIONS_AND_UNITS.md section 20.3",
-            "DEFINITIONS_AND_UNITS.md sections 20.2 and 28.1",
-            "DEFINITIONS_AND_UNITS.md sections 26.1 and 26.2",
-            "OBSERVABILITY_AND_REPORTING.md section 14.1",
-            "OBSERVABILITY_AND_REPORTING.md section 14.2",
-            "PHASE_3_PLAN.md sections 3.1 and 18",
-            "PHASE_3_PLAN.md sections 3.1 and 3.4",
-            "PHASE_3_PLAN.md sections 3.4 and 18",
-            "REPOSITORY_ARCHITECTURE.md section 18.1"
-          ],
-          "test_nodes": [
-            "tests/integration/test_analytical_pipeline.py::test_native_evaluation_target_keeps_exact_claim_scope_and_reverse_metadata_binding",
-            "tests/integration/test_analytical_pipeline.py::test_no_declared_dimension_cannot_execute_an_implicit_world_dimension[utf8]",
-            "tests/integration/test_analytical_pipeline.py::test_no_declared_dimension_cannot_execute_an_implicit_world_dimension[value]",
-            "tests/integration/test_analytical_pipeline.py::test_one_claim_cohort_cannot_hide_other_claim_native_stage_at_same_anchor",
-            "tests/integration/test_analytical_pipeline.py::test_reordering_unordered_inputs_keeps_same_plan_and_semantic_results",
-            "tests/integration/test_analytical_pipeline.py::test_supplied_comparison_and_evaluation_bindings_do_not_expand_to_all_pairs",
-            "tests/integration/test_analytical_pipeline.py::test_unrelated_channel_does_not_create_a_route_under_another_inquiry",
-            "tests/integration/test_analytical_pipeline.py::test_whole_plan_precedes_single_acceptance_and_jobs_follow_semantic_schedule"
-          ],
-          "verified_behavior": "Complete finite planning precedes one input acceptance and jobs follow Inquiry, numeric family and semantic operation order. Declared dimensions, supplied assessments, native Evaluation targets, stage Claims and correction bindings retain exact scope without implicit world dimensions or all-pairs expansion; unordered input permutations preserve semantic results."
+          "path": "w14-mutant-mapping.json",
+          "bytes": 49999,
+          "sha256": "cdcf4ff5329acc2fbb79c21276edda870f7606104336623da17a54e418020fcb"
         },
         {
-          "source_clauses": [
-            "DEFINITIONS_AND_UNITS.md sections 20.4 and 28.1",
-            "DEFINITIONS_AND_UNITS.md sections 22.1, 22.2 and 23.1",
-            "DEFINITIONS_AND_UNITS.md sections 26.1 and 26.3",
-            "OBSERVABILITY_AND_REPORTING.md section 18.2",
-            "OBSERVABILITY_AND_REPORTING.md sections 13.1 and 14.1",
-            "OBSERVABILITY_AND_REPORTING.md sections 13.1 and 16.7",
-            "OBSERVABILITY_AND_REPORTING.md sections 13.1, 14.1 and 14.2",
-            "OBSERVABILITY_AND_REPORTING.md sections 14.1 and 14.2",
-            "PHASE_3_PLAN.md sections 3.1 and 18",
-            "PHASE_3_PLAN.md sections 3.1, 3.4 and 18",
-            "PHASE_3_PLAN.md sections 3.3 and 18"
-          ],
-          "test_nodes": [
-            "tests/contract/test_analytical_observability.py::test_actual_checks_are_field_local_and_completion_is_not_a_registry_flag",
-            "tests/contract/test_analytical_observability.py::test_actual_evaluation_with_one_role_does_not_become_structurally_inapplicable_or_zero",
-            "tests/contract/test_analytical_observability.py::test_missing_comparison_is_an_evidence_gap_in_an_actual_claim_dimension",
-            "tests/integration/test_analytical_pipeline.py::test_actual_evaluation_with_missing_role_is_unavailable_not_structurally_absent",
-            "tests/integration/test_analytical_pipeline.py::test_documentary_memberships_and_hhi_preserve_full_two_seed_denominator[utf8]",
-            "tests/integration/test_analytical_pipeline.py::test_documentary_memberships_and_hhi_preserve_full_two_seed_denominator[value]",
-            "tests/integration/test_analytical_pipeline.py::test_m015_uses_actual_current_job_inventory_and_selected_edge_provider_facts[all_families]",
-            "tests/integration/test_analytical_pipeline.py::test_m015_uses_actual_current_job_inventory_and_selected_edge_provider_facts[no_dimension]",
-            "tests/integration/test_analytical_pipeline.py::test_missing_comparison_does_not_erase_the_applicable_claim_question",
-            "tests/integration/test_analytical_pipeline.py::test_native_self_support_cycle_retains_actual_assurance_limitation_and_witness[claim2_assertion-utf8]",
-            "tests/integration/test_analytical_pipeline.py::test_native_self_support_cycle_retains_actual_assurance_limitation_and_witness[claim2_assertion-value]",
-            "tests/integration/test_analytical_pipeline.py::test_native_self_support_cycle_retains_actual_assurance_limitation_and_witness[one_claim-utf8]",
-            "tests/integration/test_analytical_pipeline.py::test_native_self_support_cycle_retains_actual_assurance_limitation_and_witness[one_claim-value]",
-            "tests/integration/test_analytical_pipeline.py::test_native_stage_without_cohort_is_retained_beside_unavailable_ratio"
-          ],
-          "verified_behavior": "M015 uses actual paid current-job PC03 and PC04 provider facts under the same context. Field-local checks retain real completion, documentary qualification and evidence gaps. Native stage observations survive missing cohorts; missing comparisons and evaluator roles remain explicit. The qualified two-seed M004/HHI example preserves its full denominator and basis, while self-support cycles retain an actual assurance limitation and finite witness."
+          "path": "w14-determinism-mapping.json",
+          "bytes": 6255,
+          "sha256": "fae85ba302e0a736ba831fff918d3d1e43c6c37ccdc2cd05fb3ad3e7cc32686f"
         },
         {
-          "source_clauses": [
-            "OBSERVABILITY_AND_REPORTING.md sections 12.3, 12.4, 14.1 and 15",
-            "OBSERVABILITY_AND_REPORTING.md sections 13.2 and 16.7",
-            "PHASE_3_PLAN.md section 18"
-          ],
-          "test_nodes": [
-            "tests/contract/test_analytical_observability.py::test_available_stage_and_case_records_survive_unavailable_ancestry",
-            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[0-families0]",
-            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[1-families1]",
-            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[2-families2]",
-            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[3-families3]",
-            "tests/contract/test_analytical_observability.py::test_domains_link_their_own_results_without_a_cumulative_ladder[4-families4]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M001]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M002]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M003]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M004]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M005]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M006]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M007]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M008]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M009]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M010]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M011]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M012]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M013]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M014]",
-            "tests/contract/test_analytical_observability.py::test_each_family_slot_keeps_every_actual_state_and_field[SIT-M015]",
-            "tests/contract/test_analytical_observability.py::test_every_inquiry_keeps_fifteen_slots_and_five_independent_domains",
-            "tests/contract/test_analytical_observability.py::test_navigation_preserves_reason_bindings_for_every_affected_field",
-            "tests/contract/test_analytical_observability.py::test_no_structural_subject_is_explained_without_inventing_assessments_or_roles"
-          ],
-          "verified_behavior": "Every Inquiry has fifteen family capability slots and five independent evidence domains. Navigation retains every applicable field, its actual availability partition and reasons, explains absent subjects, and preserves available stage and case disclosures alongside unavailable ancestry."
+          "path": "w14-security-mapping.json",
+          "bytes": 20762,
+          "sha256": "4a6cf7d284a498360bc3cd8514696ac20b6183355662986052682941d6af9efb"
         },
         {
-          "source_clauses": [
-            "DEFINITIONS_AND_UNITS.md section 26.5",
-            "OBSERVABILITY_AND_REPORTING.md section 12.4",
-            "OBSERVABILITY_AND_REPORTING.md sections 16.4 and 16.7",
-            "OBSERVABILITY_AND_REPORTING.md sections 16.4 and 19.2",
-            "OBSERVABILITY_AND_REPORTING.md sections 16.4, 16.6 and 16.7",
-            "PHASE_3_PLAN.md section 18",
-            "PHASE_3_PLAN.md sections 3.2, 3.3 and 18",
-            "PHASE_3_PLAN.md sections 3.3 and 18",
-            "PHASE_3_PLAN.md sections 3.3, 3.4 and 18",
-            "REPOSITORY_ARCHITECTURE.md section 18.1",
-            "REPOSITORY_ARCHITECTURE.md sections 18.1 and 18.2"
-          ],
-          "test_nodes": [
-            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[dangling_result]",
-            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[dangling_witness_payload]",
-            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[missing_leaf]",
-            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[missing_pc24]",
-            "tests/contract/test_analytical_observability.py::test_assembly_rejects_incomplete_or_conflicting_owner_delivery[unequal_duplicate]",
-            "tests/contract/test_analytical_observability.py::test_context_stage_links_resolve_to_original_m010_results_without_copied_metrics",
-            "tests/contract/test_analytical_observability.py::test_declared_and_authorized_route_links_resolve_separate_actual_ordered_paths",
-            "tests/contract/test_analytical_observability.py::test_every_private_link_resolves_to_actual_supplied_or_delivered_object",
-            "tests/contract/test_analytical_observability.py::test_inquiry_inventory_duplicates_from_two_claim_jobs_coalesce_by_semantic_body",
-            "tests/contract/test_analytical_observability.py::test_positive_evaluator_path_ref_does_not_attach_the_entire_family_witness_list",
-            "tests/contract/test_analytical_observability.py::test_witness_anchors_keep_one_exact_owner_payload_and_do_not_mix_context_with_stages",
-            "tests/integration/test_analytical_pipeline.py::test_two_claim_inventory_coalesces_only_equal_inquiry_cells[utf8]",
-            "tests/integration/test_analytical_pipeline.py::test_two_claim_inventory_coalesces_only_equal_inquiry_cells[value]"
-          ],
-          "verified_behavior": "Every private input, result and witness link resolves to actual supplied or delivered objects. M014 retains original M010 result links; exact witness anchors resolve only their own finite payload, including separate declared/authorized correction paths and evaluator paths. Equal inquiry-wide result slots coalesce; unequal duplicates, omitted leaves or completion facts and dangling links produce safe contract failure."
-        },
-        {
-          "source_clauses": [
-            "DEFINITIONS_AND_UNITS.md section 26.5",
-            "OBSERVABILITY_AND_REPORTING.md section 12.4",
-            "OBSERVABILITY_AND_REPORTING.md sections 12.2, 12.3 and 12.4",
-            "PHASE_3_PLAN.md sections 3.3, 3.4 and 18",
-            "PHASE_3_PLAN.md sections 3.4 and 18"
-          ],
-          "test_nodes": [
-            "tests/security/test_analytical_interruption.py::test_capture_planning_jobs_and_delivery_use_one_entry_budget",
-            "tests/security/test_analytical_interruption.py::test_delivery_must_fit_remaining_global_work_and_entry_deadline[time]",
-            "tests/security/test_analytical_interruption.py::test_delivery_must_fit_remaining_global_work_and_entry_deadline[work]",
-            "tests/security/test_analytical_interruption.py::test_full_original_h7_keeps_fixed_quotas_and_only_completed_atomic_inventory",
-            "tests/security/test_analytical_interruption.py::test_job_stop_before_owner_retains_previous_complete_jobs_and_marks_later_cells",
-            "tests/security/test_analytical_interruption.py::test_later_findings_stop_keeps_actual_committed_cells_in_the_same_job",
-            "tests/security/test_analytical_interruption.py::test_nested_stage_targets_commit_before_context_referrers_and_survive_local_stop",
-            "tests/security/test_analytical_interruption.py::test_shared_witness_ceiling_interrupts_without_clipping_or_continuation[members-100000]",
-            "tests/security/test_analytical_interruption.py::test_shared_witness_ceiling_interrupts_without_clipping_or_continuation[witnesses-20000]",
-            "tests/security/test_analytical_interruption.py::test_single_deadline_includes_admission_and_all_prior_jobs[job]",
-            "tests/security/test_analytical_interruption.py::test_single_deadline_includes_admission_and_all_prior_jobs[planning]",
-            "tests/security/test_analytical_interruption.py::test_stopped_job_salvage_still_requires_delivery_budget_and_preserves_first_cause[time]",
-            "tests/security/test_analytical_interruption.py::test_stopped_job_salvage_still_requires_delivery_budget_and_preserves_first_cause[work]",
-            "tests/security/test_analytical_interruption.py::test_whole_planning_exhaustion_precedes_acceptance_and_any_job[constructed_value]",
-            "tests/security/test_analytical_interruption.py::test_whole_planning_exhaustion_precedes_acceptance_and_any_job[supplied_utf8]"
-          ],
-          "verified_behavior": "Capture, planning, owner jobs, witnesses and delivery share one fixed invocation budget and entry deadline. Stops preserve actual acceptance, prior atomic commits and explicit unfinished/unstarted cells when charged delivery fits. Nested M010 targets commit before their M014 referrers and survive a later context stop. Exhausted delivery uses safe abort, first cause persists, and original H7 uses unchanged quotas."
-        },
-        {
-          "source_clauses": [
-            "GOVERNANCE_AND_HANDOFF.md section 22.3",
-            "OBSERVABILITY_AND_REPORTING.md section 16.8",
-            "PHASE_3_PLAN.md section 3.4"
-          ],
-          "test_nodes": [
-            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[KeyboardInterrupt-cancelled-None-_assemble_analysis-accepted]",
-            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[KeyboardInterrupt-cancelled-None-_execute_job-accepted]",
-            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[KeyboardInterrupt-cancelled-None-_plan_analysis-not_completed]",
-            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[RuntimeError-failed-execution_failed-_assemble_analysis-accepted]",
-            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[RuntimeError-failed-execution_failed-_execute_job-accepted]",
-            "tests/security/test_analytical_interruption.py::test_cancellation_and_engine_failure_are_distinct_payload_free_no_salvage[RuntimeError-failed-execution_failed-_plan_analysis-not_completed]"
-          ],
-          "verified_behavior": "Injected planning, owner and finalization defects preserve actual input state and return payload-free failed processing. Cancellation is a distinct safe transport with no fabricated resource/failure reason, source-text disclosure or ordinary analytical salvage."
-        },
-        {
-          "source_clauses": [
-            "OBSERVABILITY_AND_REPORTING.md section 16.1",
-            "PHASE_3_PLAN.md sections 2 and 18",
-            "PHASE_3_PLAN.md sections 2, 3.4 and 18"
-          ],
-          "test_nodes": [
-            "tests/contract/test_analytical_observability.py::test_preparation_entry_points_keep_their_original_nonanalytical_contract[utf8]",
-            "tests/contract/test_analytical_observability.py::test_preparation_entry_points_keep_their_original_nonanalytical_contract[value]",
-            "tests/contract/test_analytical_observability.py::test_private_outcome_is_immutable_and_has_no_public_report_or_options"
-          ],
-          "verified_behavior": "Original preparation entry points retain their previous return types and PC01-only observability contract. The private analysis outcome is immutable, exposes no public report envelope or caller options, adds no public exports, and preserves public auditing refusals."
+          "path": "w14-install-mapping.json",
+          "bytes": 5125,
+          "sha256": "0ec5eca394f3ff1f7f1fdbe965b3711bc9c7043c2028b7583164eb5001743920"
         }
       ],
-      "scope": "private_orchestration_only",
-      "full_field_integration_status": "pending",
-      "full_field_release_status": "pending",
-      "qualification": "Only actual mapped direct and hosted execution may establish these private pipeline behaviors; no blanket closure of all field-level integration or release clauses.",
+      "core_meaning": "Source-bound owner-local clauses plus named private integration/isolation/package checks; not 228 completed whole-invocation cases or full public report obligations.",
       "passed_at": {
-        "code_head": "db9c0a05062731ca49e2f2b8fcffd0ba7a1fb6b3",
-        "tree": "3cf8555301751c703501a15f7ff2af7b60582e2e",
-        "run_id": "35819087672",
+        "code_head": "5146a2e41dfdddfccebd85367655109288fe313f",
+        "tree": "f98de05ee65a7dc20136ea307d84ce04157cab14",
+        "run_id": 35832693910,
         "run_attempt": 1,
         "profiles": [
           "ubuntu-24.04-py3.11",
@@ -449,17 +1142,40 @@
           "windows-2025-py3.11",
           "windows-2025-py3.13"
         ],
-        "raw_audit_sha256": "4fbc625bef5ce3d2e0ccb3c4b22b2a18a4da070fd97137b7bfc7d34f752a9d1a",
-        "all_mapped_nodes_collected_and_passed_in_each": true
+        "raw_audit_sha256": "e40cc3b6f667f194f045a9efe9208db9af25f6496e6a606e66c8234682e38bc5"
       }
     },
-    "qualification": "Only the named private orchestration behaviors and source-bound mapped tests are verified here. All 228 field rows retain their prior statuses. Affected controls and exact source identity settle the later three-record administrative successor; that gate remains pending until actually executed."
+    "source_review": {
+      "receipt": {
+        "path": "w14-source-review.json",
+        "bytes": 7641,
+        "sha256": "7812ea5084c6e95299176fb7850f74a1c3c88c03516b9def347b3228aa57d6a0"
+      },
+      "meaning": "Read-only source and actual direct receipt review by a collaborating agent of the same assistant; no independent external review claim."
+    },
+    "administrative_successor": {
+      "scope": [
+        "PHASE_3_PROGRESS.md",
+        "phase3/implementation_evidence.json",
+        "phase3/obligation_coverage.json"
+      ],
+      "gate": "Three affected existing controls on the actual final commit plus exact equality of all other 202 blobs and modes and actual entry/scope/history audit. Receipts are recorded in the review PR/package after the successor exists.",
+      "full_matrix_repeated": false,
+      "status_at_record_creation": "pending_actual_successor_checks"
+    }
   },
   "owner_local_core_obligations_verified": 228,
   "phase3_complete": false,
   "limitations": [
-    "All 228 inherited field-obligation row objects retain their accepted core evidence and pending individual integration/release clauses. Historical remaining-integration descriptions are predecessor-scoped evidence; current W13 private pipeline verification is recorded separately.",
-    "Public API/CLI, report envelope, rendering, exports, native protections and release remain later work. W14 full core validation and W15 final phase acceptance have not started.",
+    "Required exact-code-head four-profile cumulative CI passed. Final three-record administrative successor checks are recorded externally after the final commit exists.",
+    "All public-envelope, rendering, public API/CLI, native-platform and release duties remain pending.",
+    "Unchanged quotas govern original heroes; installed analysis execution must distinguish bounded interruption from completed analytical results.",
+    "Any product defect requires an explicitly scoped correction; W14 authorizes no product repairs.",
+    "WU9-L14 report-representation byte guard is not implemented in this private-core phase and is not claimed verified.",
+    "Large graph mechanical and some fixed aggregate limit tests are component-level controls with explicit trusted fixtures or counter preloads; they do not claim 500k-node whole-invocation completion.",
+    "Import audit hooks and metadata wrappers are finite probes, not isolation from malicious same-process mutation.",
+    "Original heroes first exceed a per-job work allowance, then safe stopped finalization exceeds remaining total work. The first job cause remains sticky. Observed committed M001 cells are distinguished from zero delivered results; a separate finite installed case proves completed arithmetic.",
+    "Installed original heroes retain fixed-limit interruptions where they occur; observed atomic M001 inventory is distinct from delivered results and supplies no completed all-field hero certification. Receipt checks are tied to the passed source-bound test assertions, including deadline/finalization checks; they do not independently reexecute installed analysis.",
     "Package checks compare closed recorded member names, Git source/license hashes, original/rebuilt/installed member equality and installed-run records; generated metadata hashes are not independently reproduced; distribution archive bytes are not supplied, so no independent whole-archive rebuild or native-host certification is claimed."
   ]
 }

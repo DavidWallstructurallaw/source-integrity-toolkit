@@ -1,0 +1,17 @@
+{
+  "description": "W14 independently authored finite counterexamples; source-native record IDs and original H7 files remain unchanged.",
+  "authorship": "Same Codex assistant lineage using the adopted specifications and prior test constructors. No independent external reviewer or empirical source authentication is claimed.",
+  "base": {
+    "constructor": "tests/integration/test_analytical_pipeline.py::_documented_value",
+    "delta": "Clone origin as origin2, preserving its native event_key; clone boundary for origin2; add a third separately identified contribution e3 from the same Artifact with parent-e3 to origin2; expand the explicit coverage members.",
+    "source_selectors": ["inquiries/inquiry/seed_evidence_refs", "records/e/data/artifact_ref", "records/e2/data/artifact_ref", "records/e3/data/artifact_ref", "records/origin/data/event_key", "records/origin2/data/event_key", "assertions/coverage/data/details/member_refs"],
+    "sources": ["DEFINITIONS_AND_UNITS.md sections 20.1,21.1,22.1,22.2,23.1", "VALIDATION_PLAN.md section 12 SIT-VF003-B and SIT-VF017-B", "VALIDATION_PLAN.md section 16.3"]
+  },
+  "cases": [
+    {"id": "three_contributions", "delta": "No further change; exactly e,e2 map to origin and e3 maps to origin2.", "added_contributions": []},
+    {"id": "split_first_contribution", "delta": "Clone e as the separately supplied e4 and parent-e as parent-e4; expand the exact seed and coverage sets.", "added_contributions": [["e", "e4"]]},
+    {"id": "uniform_record_replication", "delta": "Clone e,e2,e3 as e4,e5,e6 with distinct parent assertion IDs; preserve each cloned Artifact binding and exact parent.", "added_contributions": [["e", "e4"], ["e2", "e5"], ["e3", "e6"]]},
+    {"id": "uninspectable_documentary_support", "delta": "Keep all documentary labels and edges but make support locator_only with no excerpt and a synthetic inert URL.", "added_contributions": [], "support_availability": "locator_only"},
+    {"id": "unallocated_multiple_origins", "delta": "Add an additional actual e3-to-origin parent with the supplied prose roughly half from each; no allocation field or weight is authorized.", "added_contributions": [], "additional_parent": ["e3", "origin"]}
+  ]
+}
