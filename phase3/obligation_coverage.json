@@ -1,7 +1,7 @@
 {
   "format": "sit-phase3-obligations/0.1",
-  "unit": "P3-W14",
-  "status": "W14_private_core_validation_verified_pending_owner_acceptance",
+  "unit": "P3-W15",
+  "status": "final_component_accounting_blocked_pending_P3-W15-R01",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
@@ -13348,8 +13348,8 @@
   ],
   "shared_families": {
     "count": 26,
-    "status": "pending_analytical_execution",
-    "source": "scaffold/obligation_catalog.json#shared_families"
+    "status": "current_private_portions_audited_with_SIT_VG014_reason_gap_and_deferred_public_clauses",
+    "current_dispositions": "phase3/delivery_manifest.json#/component_dispositions/shared_families"
   },
   "output_mutants": {
     "count": 49,
@@ -13357,17 +13357,106 @@
     "required_control": "Each invalid mutant must have a baseline-positive control."
   },
   "prerequisites": {
-    "PC01": "accepted_preparation_only",
-    "PC02": "private_exact_scope_check_exercised_in_W03_component_tests_whole_invocation_pending",
-    "PC03": "SOURCE_INVENTORY_paid_comparison_population_provider_owner_local_verified_complete_scoped_Result_and_W13_invocation_pending",
-    "PC04": "private_GRAPH_VIEW_CONTRACT_component_checks_verified_W04_whole_Result_and_W13_integration_pending",
-    "PC05-PC06-PC09-PC10": "record_local_qualification_helpers_verified_whole_scoped_check_to_Result_basis_index_connections_pending",
-    "PC07-PC08-PC11-PC23": "pending_analytical_execution",
-    "PC24": "private_finite_component_completion_check_exercised_not_documentary_qualification_or_whole_pipeline_completion"
+    "PC01": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/0"
+    },
+    "PC02": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/1"
+    },
+    "PC03": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/2"
+    },
+    "PC04": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/3"
+    },
+    "PC05": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/4"
+    },
+    "PC06": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/5"
+    },
+    "PC07": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/6"
+    },
+    "PC08": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/7"
+    },
+    "PC09": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/8"
+    },
+    "PC10": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/9"
+    },
+    "PC11": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/10"
+    },
+    "PC12": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/11"
+    },
+    "PC13": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/12"
+    },
+    "PC14": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/13"
+    },
+    "PC15": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/14"
+    },
+    "PC16": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/15"
+    },
+    "PC17": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/16"
+    },
+    "PC18": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/17"
+    },
+    "PC19": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/18"
+    },
+    "PC20": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/19"
+    },
+    "PC21": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/20"
+    },
+    "PC22": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/21"
+    },
+    "PC23": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/22"
+    },
+    "PC24": {
+      "status": "implemented_scoped_private_check",
+      "disposition": "phase3/delivery_manifest.json#/component_dispositions/prerequisites/23"
+    }
   },
   "analytical_families": {
     "count": 15,
-    "status": "pending"
+    "status": "owners_implemented_private_scheduling_reason_R01_unresolved"
   },
   "phase3_complete": false,
   "release_complete": false,
@@ -13953,5 +14042,81 @@
     "new_output_mutant_obligations": 17,
     "evidence_ref": "phase3/implementation_evidence.json#/validation/w14_core_validation",
     "limitation": "All inherited owner-local assertions rerun cumulatively. Supplemental private integration does not mean all 228 cells have separately executed through a completed full invocation. Public-envelope and rendering clauses remain pending."
+  },
+  "historical_pre_w15_aggregates": {
+    "shared_families": {
+      "count": 26,
+      "status": "pending_analytical_execution",
+      "source": "scaffold/obligation_catalog.json#shared_families"
+    },
+    "prerequisites": {
+      "PC01": "accepted_preparation_only",
+      "PC02": "private_exact_scope_check_exercised_in_W03_component_tests_whole_invocation_pending",
+      "PC03": "SOURCE_INVENTORY_paid_comparison_population_provider_owner_local_verified_complete_scoped_Result_and_W13_invocation_pending",
+      "PC04": "private_GRAPH_VIEW_CONTRACT_component_checks_verified_W04_whole_Result_and_W13_integration_pending",
+      "PC05-PC06-PC09-PC10": "record_local_qualification_helpers_verified_whole_scoped_check_to_Result_basis_index_connections_pending",
+      "PC07-PC08-PC11-PC23": "pending_analytical_execution",
+      "PC24": "private_finite_component_completion_check_exercised_not_documentary_qualification_or_whole_pipeline_completion"
+    },
+    "analytical_families": {
+      "count": 15,
+      "status": "pending"
+    }
+  },
+  "w15_final_audit": {
+    "component_receipt": {
+      "path": "w15-component-audit.json",
+      "bytes": 2704554,
+      "sha256": "2a7445c3252253e58924c4f26196bd9bd2abbd926dda21feb60298e487af29f4"
+    },
+    "catalog_counts": {
+      "fields": 57,
+      "exact_field_obligations": 228,
+      "prerequisites": 24,
+      "reasons": 40,
+      "finding_conditions": 22,
+      "shared_families": 26,
+      "traces": 35,
+      "prescribed_output_mutants": 49,
+      "prescribed_input_delta_negatives": 8
+    },
+    "issues": [
+      {
+        "id": "P3-W15-R01",
+        "severity": "confirmed_acceptance_blocker",
+        "title": "Empty selected dimensions lose the prescribed dimension_not_selected reason distinction",
+        "required_by": [
+          "VALIDATION_PLAN.md section14.2 line973",
+          "OBSERVABILITY_AND_REPORTING.md section13.2 line539",
+          "PHASE_3_PLAN.md sections3.3,20,21.2"
+        ],
+        "actual_source": [
+          "runtime/boundary.py::_plan_analysis schedules no_subject when no claim/dimension tuple exists",
+          "runtime/boundary.py::_planned_nonresults defaults no_applicable_subject",
+          "dimension_not_selected has no production emitter; registry membership alone is not behavior"
+        ],
+        "existing_test": "tests/integration/test_analytical_pipeline.py::test_no_declared_dimension_cannot_execute_an_implicit_world_dimension",
+        "test_limitation": "Confirms not_applicable/null/reason-present and no implicit dimension; does not assert prescribed exact reason code.",
+        "impact": "No invented analysis executes, but callers cannot distinguish an unselected dimension from absent applicable subjects using the prescribed Reason vocabulary.",
+        "required_private_result": "For an applicable represented Claim with no selected dependency dimension, retain null completed/not_applicable Results and structural_inapplicability classification while using dimension_not_selected for affected dimensional leaves. Preserve no_applicable_subject for genuinely absent subject tuples; preserve roles_incomplete and missing-comparison evidence gaps at their existing scopes.",
+        "scope_rule": "W15 is documentation/audit-only; any product/test repair needs a named narrow scope amendment and owner approval. Do not mark phase complete while unresolved.",
+        "reproduction": {
+          "path": "w15-dimension-reason-probe.json",
+          "bytes": 75886,
+          "sha256": "74cef16d42da5094b232d1567f4bced9018a330b3cbeaf38c757c57ba00db462",
+          "head": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
+          "four_completed_calls": true,
+          "empty_dimensions_rows_per_mode": 15,
+          "source_hashes_unchanged": true
+        }
+      }
+    ],
+    "field_rows_preserved_without_changes": 228,
+    "reason_status": {
+      "implemented_private_or_safe_transport_branch": 36,
+      "dormant_or_future_interface_disposition": 3,
+      "missing_required_dimension_reason": 1
+    },
+    "meaning": "W14 source-bound assertions remain passed. They do not close the missing shared reason branch, complete whole-invocation coverage, public envelopes, rendering or release."
   }
 }

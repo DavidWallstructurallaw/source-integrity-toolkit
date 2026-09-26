@@ -2,7 +2,7 @@
 
 A local, supplied-evidence toolkit for examining source lineage, evidence independence, external presence and corrective capacity in AI-native information systems.
 
-**Status: P3-W13 accepted; P3-W14 validation candidate. Final Phase 3 acceptance is pending. Public auditing remains unavailable.** The package remains installable as `0.1.0.dev0`. The private core implements fifteen analytical families in the planned twenty-nine active modules; nineteen protected modules retain their accepted bytes. Public audit calls raise `NotImplementedError`; CLI auditing refuses with exit 1 without reading dossiers or producing reports.
+**Status: P3-W14 accepted; P3-W15 final audit found a required reason-code repair, P3-W15-R01. Phase 3 completion is pending. Public auditing remains unavailable.** The package remains installable as `0.1.0.dev0`. The private core implements fifteen analytical families in the planned twenty-nine active modules; nineteen protected modules retain their accepted bytes. Public audit calls raise `NotImplementedError`; CLI auditing refuses with exit 1 without reading dossiers or producing reports.
 
 
 ## Intended purpose
@@ -17,11 +17,11 @@ The eighteen Phase 0 specifications remain approved at `7d2e5fcaff591641b5cefce0
 
 [PHASE_2_PLAN.md](PHASE_2_PLAN.md) and [PHASE_2_COMPLETION.md](PHASE_2_COMPLETION.md) were accepted through PR #18 at `3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547`. The accepted preparation supports supplied values and UTF-8 bytes, bounded validation, references, time syntax and evidence navigation. The preparation entry points retain their original PC01 admission behavior.
 
-The owner approved [PHASE_3_PLAN.md](PHASE_3_PLAN.md) revision 0.1 with `批准，启动 P3-W01`; PR #19 merged at `80aa943f577f4a7deaeb8a0f3253c62d1263ca62`. [PHASE_3_PROGRESS.md](PHASE_3_PROGRESS.md) records subsequent authority and evidence while prior reviewed documents remain byte-identical. W13 was accepted through [PR #32](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/32), merged at `332e94a007ceb2a955b8e047f45284b431300995`. W14 validates the private core and installed distributions. W15 final component audit and phase acceptance remain future work.
+The owner approved [PHASE_3_PLAN.md](PHASE_3_PLAN.md) revision 0.1 with `批准，启动 P3-W01`; PR #19 merged at `80aa943f577f4a7deaeb8a0f3253c62d1263ca62`. [PHASE_3_PROGRESS.md](PHASE_3_PROGRESS.md) records subsequent authority and evidence while prior reviewed documents remain byte-identical. W13 was accepted through [PR #32](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/32), merged at `332e94a007ceb2a955b8e047f45284b431300995`. W14 was accepted through [PR #33](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/33), merged at `6dbca96f3314d537beed4ccb6202147bd9248dd9`. W15 audits the completed component work and records its open reason-code correction in [PHASE_3_COMPLETION.md](PHASE_3_COMPLETION.md).
 
 The private analysis accepts exact built-in values or supplied UTF-8 bytes and executes actual scoped owners, prerequisites, graph witnesses and immutable result delivery. It preserves supplied assertions, unresolved ancestry, qualified populations, correction history and missing evidence as separate facts. It has a fixed invocation budget and cooperative deadline. A complete supplied dossier can legitimately end with a safe resource interruption; the four original H7 examples currently stop under the unchanged work limits. Partial or interrupted execution cannot certify unperformed fields. These private entry points are implementation seams, with no stable public API or public report format promised.
 
-All 228 field obligations have accepted owner-local core evidence. W14 checks the source clauses, missing counterexamples and integration limits; this count does not close the pending public-envelope, rendering or release clauses. See [phase3/obligation_coverage.json](phase3/obligation_coverage.json) for the per-obligation evidence and remaining duties.
+All 228 field obligations have accepted owner-local core evidence. W14 added source-clause and counterexample checks. W15 identified the missing `dimension_not_selected` distinction for empty dimension selection, so full phase acceptance remains blocked on that repair. The 228 historical core passes do not close this reason branch or pending public-envelope, rendering and release clauses. See [phase3/obligation_coverage.json](phase3/obligation_coverage.json) for the per-obligation evidence and remaining duties.
 
 ## Developer installation and checks
 
@@ -30,13 +30,13 @@ Use a complete Git checkout and a clean CPython 3.11 or 3.13 development environ
 Use the unit context for this checkout. Local execution is separate from the required four-profile hosted gate. In a POSIX shell:
 
 ```sh
-export SIT_PHASE_UNIT=P3-W14
+export SIT_PHASE_UNIT=P3-W15
 ```
 
 In PowerShell:
 
 ```powershell
-$env:SIT_PHASE_UNIT = 'P3-W14'
+$env:SIT_PHASE_UNIT = 'P3-W15'
 ```
 
 Then run:
@@ -47,11 +47,11 @@ python -m pip install --no-build-isolation --no-deps .
 sit --version
 sit --help
 python -B tools/check_phase0_baseline.py
-python -B tools/check_scaffold_boundary.py --unit P3-W14
+python -B tools/check_scaffold_boundary.py --unit P3-W15
 python -m pytest tests -q
 ```
 
-A missing context retains the conservative Phase 2 W01 default and cannot validate this Phase 3 checkout. Keep `SIT_PHASE_UNIT=P3-W14` set for both guard and pytest. CI derives Phase 3 context from the actual `phase3/p3-wNN` branch or a single `SIT-Phase-Unit: P3-WNN` main merge footer. Metadata cannot authorize a unit. The original 1,650 Phase 2 identities and method-level adaptations are recorded in [phase3/transition_ledger.md](phase3/transition_ledger.md).
+A missing context retains the conservative Phase 2 W01 default and cannot validate this Phase 3 checkout. Keep `SIT_PHASE_UNIT=P3-W15` set for both guard and pytest. CI derives Phase 3 context from the actual `phase3/p3-wNN` branch or a single `SIT-Phase-Unit: P3-WNN` main merge footer. Metadata cannot authorize a unit. The original 1,650 Phase 2 identities and method-level adaptations are recorded in [phase3/transition_ledger.md](phase3/transition_ledger.md).
 
 Dependency installation is a developer operation and may access the package index. The installed product has zero third-party runtime dependencies and never imports the developer guards, catalogs or historical tests. Source distributions retain the four permitted repository-context tests; running those tests requires the complete developer checkout. Building the sdist/wheel and using the installed package do not require this test loader or Git history.
 
@@ -61,7 +61,7 @@ The older pytest default covers only tests/scaffold. Use the explicit tests root
 
 [Phase 3 cumulative CI](.github/workflows/phase1-ci.yml) retains Ubuntu 24.04 and Windows Server 2025, each with Python 3.11 and 3.13, immutable action pins, read-only permissions, no stored checkout credentials and finite timeouts. It validates actual entry trees, history and current-unit scope, frozen artifacts, module boundaries and the retained test collection. Raw JUnit outcomes, separately counted subtests, tracked bytes before/after, packaging and offline installed-runtime witnesses remain required.
 
-Accepted W13 code `db9c0a05062731ca49e2f2b8fcffd0ba7a1fb6b3` passed [run 35819087672](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35819087672), attempt 1, in all four profiles with 3,810 tests and 428 separately counted subtests, zero failures/errors/skips. The final three-record successor passed its affected existing controls and preserved all other blobs and modes. These are predecessor results. Current W14 execution is recorded in [phase3/implementation_evidence.json](phase3/implementation_evidence.json) and the review PR after it occurs.
+Accepted W14 code `5146a2e41dfdddfccebd85367655109288fe313f` passed [run 35832693910](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/actions/runs/35832693910), attempt 1, in all four profiles with 3,918 tests and 428 separately counted subtests, zero failures/errors/skips. Its final three-record successor passed the affected existing controls and preserved all other 202 blobs and modes. These are W14 results. W15 has reproduced an additional required reason distinction that the previous test did not assert. Its repair and final exact-head matrix remain pending in [phase3/implementation_evidence.json](phase3/implementation_evidence.json).
 
 The planning PR's inherited-driver failure remains disclosed in [PHASE_3_PLAN.md](PHASE_3_PLAN.md) section 1.2; it is not relabeled as a successful Phase 3 execution.
 
