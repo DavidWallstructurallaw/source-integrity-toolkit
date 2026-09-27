@@ -2389,7 +2389,9 @@ def test_w15_r02_batch_matches_old_queries_and_history_in_real_git(tmp_path, cas
         elif case.startswith("missing_"):
             removed = {"missing_parent": base, "missing_commit": head,
                        "missing_tree": git("rev-parse", head + "^{tree}")}[case]
-            (repo / ".git/objects" / removed[:2] / removed[2:]).unlink()
+            object_path = repo / ".git/objects" / removed[:2] / removed[2:]
+            object_path.chmod(object_path.stat().st_mode | 0o200)
+            object_path.unlink()
         elif case == "replace":
             git("replace", head, entry["intake_commit"])
         elif case == "graft":
