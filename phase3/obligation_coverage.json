@@ -1,7 +1,7 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W15",
-  "status": "private_component_handoff_R01_repaired_final_head_evidence_external",
+  "status": "private_core_R01_repaired_R02_verified_final_head_gate_external",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
@@ -14138,6 +14138,14 @@
         "tests/integration/test_analytical_pipeline.py::test_explicit_acquisition_selection_is_the_paired_dimension_reason_control[value]"
       ],
       "meaning": "The exact paired dimension, absent-subject and incomplete-role controls are linked in the repair record. Existing 228 field rows and their historical W14 pass references remain unchanged."
+    },
+    "r02_verification": {
+      "receipt": {
+        "path": "w15-r02-repair-record.json",
+        "bytes": 6295,
+        "sha256": "c10525988c782d84a0371c4be31c30c605821ec922fc4e8a39b88d1b2f71281e"
+      },
+      "meaning": "Verification transport optimization preserves all product sources, field rows and R01 analytical assertions. Hosted final-head evidence remains required."
     }
   }
 }

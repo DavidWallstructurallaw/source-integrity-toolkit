@@ -8,7 +8,8 @@
     "actual_unit_entry": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
     "w14_acceptance": "explicitly_accepted_and_merged",
     "w15_acceptance": "pending_exact_final_head_evidence_and_owner_acceptance",
-    "r01_owner_instruction": "批准 P3-W15-R01"
+    "r01_owner_instruction": "批准 P3-W15-R01",
+    "r02_owner_instruction": "批准 P3-W15-R02"
   },
   "accepted_predecessor": {
     "unit": "P3-W14",
@@ -58,10 +59,27 @@
       "tests/contract/test_phase3_transition.py",
       "tests/integration/test_analytical_pipeline.py",
       "tests/scaffold/test_ci_contract.py"
-    ]
+    ],
+    "applied_exceptions": [
+      "P3-W15-R01",
+      "P3-W15-R02"
+    ],
+    "r02_post_checkpoint_paths": [
+      "PHASE_3_COMPLETION.md",
+      "PHASE_3_PROGRESS.md",
+      "README.md",
+      "phase3/delivery_manifest.json",
+      "phase3/implementation_evidence.json",
+      "phase3/module_policy.json",
+      "phase3/obligation_coverage.json",
+      "tests/contract/test_phase3_transition.py",
+      "tests/scaffold/test_ci_contract.py"
+    ],
+    "r02_product_modules_changed": 0,
+    "r02_tests_changed": 2
   },
   "implementation": {
-    "status": "private_core_handoff_with_approved_R01_repair",
+    "status": "private_core_handoff_R01_repaired_R02_verification_optimized",
     "planned_new_modules_implemented": 16,
     "active_modules": 29,
     "protected_modules": 19,
@@ -1430,10 +1448,10 @@
         "windows-2025-py3.11",
         "windows-2025-py3.13"
       ],
-      "required_tests_per_profile": 3937,
+      "required_tests_per_profile": 3962,
       "required_separate_subtests": 428,
       "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
-      "rule": "No acceptance until actual exact-final-head CI, four raw ZIPs and the source/package/history audit pass. This immutable record does not claim a not-yet-run execution."
+      "rule": "Only actual final-head four-profile CI and original-artifact audit can satisfy this gate; local timing and older passes do not."
     },
     "r01_resolution": {
       "status": "implemented_directly_verified",
@@ -1441,6 +1459,35 @@
         "path": "w15-r01-repair-record.json",
         "bytes": 7826,
         "sha256": "00992cec47bd4d70435d18df529163b9db5da5c13d8ea9594ec4865e4f19eb07"
+      }
+    },
+    "historical_r01_final_matrix": {
+      "head": "4d480f2cc5400e96e724d949ed00c82d62f5aeb7",
+      "run_id": 36268092968,
+      "attempts": [
+        1,
+        2
+      ],
+      "successful_profiles": 3,
+      "failed_profile": "windows-2025-py3.13",
+      "cause": "Both full suites exceeded the unchanged 1800-second subprocess limit; no completed JUnit counts claimed.",
+      "audit": {
+        "path": "w15-blocked-ci-audit.json",
+        "bytes": 9469,
+        "sha256": "7cc1b0556a560265bea37a1d52c835b4b9f367e7e7b4704a7e334ca797c18046"
+      },
+      "review_package": {
+        "path": "Source-Integrity-Toolkit-P3-W15-R02-Review-Evidence.zip",
+        "bytes": 10838881,
+        "sha256": "cef46ba2c357eb07b2cde03bfeb49ef3da06193ed3c901ad9ffcd176c8285063"
+      }
+    },
+    "r02_resolution": {
+      "status": "implemented_directly_verified",
+      "receipt": {
+        "path": "w15-r02-repair-record.json",
+        "bytes": 6295,
+        "sha256": "c10525988c782d84a0371c4be31c30c605821ec922fc4e8a39b88d1b2f71281e"
       }
     }
   },
@@ -1678,6 +1725,140 @@
       "required_separate_subtests": 428,
       "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
       "rule": "No acceptance until actual exact-final-head CI, four raw ZIPs and the source/package/history audit pass. This immutable record does not claim a not-yet-run execution."
+    }
+  },
+  "approved_r02_amendment": {
+    "id": "P3-W15-R02",
+    "status": "owner_approved_implemented_directly_verified",
+    "approval": {
+      "amendment": "P3-W15-R02",
+      "owner_quote": "批准 P3-W15-R02",
+      "owner_message_utc": "2026-09-27T04:50:25Z",
+      "owner_message_local": "2026-09-26T21:50:25-07:00",
+      "approved_proposal_sha256": "2669a9caae914001cbf9234714670dfadf7fa032843ce4416c55a8dc5c97559f",
+      "proposal_package_sha256": "cef46ba2c357eb07b2cde03bfeb49ef3da06193ed3c901ad9ffcd176c8285063",
+      "checkpoint": "4d480f2cc5400e96e724d949ed00c82d62f5aeb7",
+      "checkpoint_tree": "bf667ea9d1e46379eee610793c9ecf317ca77276",
+      "checkpoint_parent": "2a8697ea23e315e74c7cc8d7632c95725332b45b",
+      "accepted_predecessor": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
+      "pull_request": 34,
+      "verification_paths": [
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "record_paths": [
+        "PHASE_3_COMPLETION.md",
+        "PHASE_3_PROGRESS.md",
+        "README.md",
+        "phase3/delivery_manifest.json",
+        "phase3/implementation_evidence.json",
+        "phase3/module_policy.json",
+        "phase3/obligation_coverage.json"
+      ],
+      "post_checkpoint_allowed_path_count": 9,
+      "authorized": "Within-call actual Git parents/tree metadata batching, exact source/scope and semantic equivalence controls, measured comparison, truthful handoff records, final exact-head four-profile CI and raw evidence audit.",
+      "preserved": "All product and analytical integration bytes at the actual checkpoint; all 3937 existing test identities and 428 separate subtests; live history/ancestry/diff/deletion/archive checks, actual message reads, frozen guard/workflow/pins/specifications/fixtures/oracles, 1800-second suite and 40-minute job limits.",
+      "excluded": "Merge, owner phase acceptance, next phase, permanent verification consolidation, cross-root or cross-call history result caches, product changes or timeout expansion."
+    },
+    "approval_receipt": {
+      "path": "w15-r02-approval.json",
+      "bytes": 1806,
+      "sha256": "7047a69f04e0af347b65c71cd9126f88faf4fce016cb7154c1e21b1ad9524add"
+    },
+    "tested_repair_precursor": {
+      "commit": "fae43fcdae0341a6f596545f700bc8932b5d8444",
+      "tree": "3eea2f22566a262167be115f9be142772cc41a1e",
+      "parent": "4d480f2cc5400e96e724d949ed00c82d62f5aeb7",
+      "meaning": "Actual directly tested two-file repair, followed by final handoff records."
+    },
+    "changed_paths": [
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py"
+    ],
+    "source_sha256": {
+      "tests/scaffold/test_ci_contract.py": "48c78cd0f729d96b5cec2ec4c4bae8419edca2bfe8fcf38d86453c14ff256878",
+      "tests/contract/test_phase3_transition.py": "32dda6db397d516065cfc493dad13a7611765993ac56120a65a83c2d59c399b2"
+    },
+    "implemented_behavior": [
+      "Git-formatted full commit IDs, parents and trees are read in ordered call-local batches with exact row/field coverage and framing.",
+      "No batch data persists across calls or ROOTs. Commit messages, live DAG traversal, ancestry, diff/deletion, archive hashes and every intermediate/history completeness check remain actual.",
+      "The fixed actual R02 checkpoint delimits earlier R01 history from later seven-record/two-verification-file permission; all products and analytical integration remain unchanged.",
+      "Existing identities and assertions remain live; tiny real Git repositories exercise legacy equivalence and malformed/forged batch controls. Timeouts, quotas, workflow, pins, frozen specifications and fixtures are unchanged."
+    ],
+    "direct_verification": {
+      "tests": 371,
+      "seconds": 343.61578984399966,
+      "execution": {
+        "path": "w15-r02-direct-final-execution.json",
+        "bytes": 24150,
+        "sha256": "422205a4d094cb9d03aa49c314d2bf4020dc4e30123776e66697292513c71941"
+      },
+      "junit": {
+        "path": "w15-r02-direct-final.xml",
+        "bytes": 60691,
+        "sha256": "3c31e9f11bd3f7e52c552f4905cdfadd1a22241db393826020bd3108c5dcf027"
+      },
+      "source_bound_paths": [
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "meaning": "Actual affected driver and transition checks on these exact source bytes before commit; not the required final-head hosted matrix."
+    },
+    "paired_history_measurement": {
+      "path": "w15-r02-paired-history-measurement.json",
+      "bytes": 327136,
+      "sha256": "b0aaf79aecd34876c26b0e1656b163982d868db588e375f995d07c456645bde7"
+    },
+    "historical_query_baseline": {
+      "path": "w15-history-query-measurement.json",
+      "bytes": 1833,
+      "sha256": "a70f6cde978212bde2a9482159d7b36b768da24cab867c7694790565c73798d1"
+    },
+    "actual_collection": {
+      "count": 3962,
+      "retained_r01": 3937,
+      "retained_w14": 3918,
+      "new": 25,
+      "removed": 0,
+      "new_nodes": {
+        "path": "w15-r02-candidate-new-nodes.json",
+        "bytes": 3185,
+        "sha256": "71bc79262db3f2563e41b50e9df113b80f19e06ba62edff03f8404aa89380ccb"
+      }
+    },
+    "historical_failed_final_head": {
+      "head": "4d480f2cc5400e96e724d949ed00c82d62f5aeb7",
+      "run_id": 36268092968,
+      "attempts": [
+        1,
+        2
+      ],
+      "successful_profiles": 3,
+      "failed_profile": "windows-2025-py3.13",
+      "cause": "Both full suites exceeded the unchanged 1800-second subprocess limit; no completed JUnit counts claimed.",
+      "audit": {
+        "path": "w15-blocked-ci-audit.json",
+        "bytes": 9469,
+        "sha256": "7cc1b0556a560265bea37a1d52c835b4b9f367e7e7b4704a7e334ca797c18046"
+      },
+      "review_package": {
+        "path": "Source-Integrity-Toolkit-P3-W15-R02-Review-Evidence.zip",
+        "bytes": 10838881,
+        "sha256": "cef46ba2c357eb07b2cde03bfeb49ef3da06193ed3c901ad9ffcd176c8285063"
+      }
+    },
+    "final_matrix": {
+      "status": "exact_final_head_gate_recorded_externally_after_execution",
+      "required_profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "required_tests_per_profile": 3962,
+      "required_separate_subtests": 428,
+      "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
+      "rule": "Only actual final-head four-profile CI and original-artifact audit can satisfy this gate; local timing and older passes do not."
     }
   }
 }

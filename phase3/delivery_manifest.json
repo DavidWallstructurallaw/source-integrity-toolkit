@@ -1,7 +1,7 @@
 {
   "format": "sit-phase3-delivery/0.1",
   "unit": "P3-W15",
-  "status": "private_core_handoff_R01_repaired_owner_acceptance_pending",
+  "status": "private_core_handoff_R01_R02_repaired_owner_acceptance_pending",
   "phase3_complete": false,
   "accepted_predecessor": {
     "unit": "P3-W14",
@@ -13056,6 +13056,12 @@
       "existing_ids_retained": 3918,
       "current_total": 3937,
       "note": "The original W14 classification remains a historical 3918-node census. No executable consolidation or old-test deletion occurred."
+    },
+    "r02_collection_delta": {
+      "retained_r01": 3937,
+      "new_batch_and_authority_controls": 25,
+      "current_total": 3962,
+      "meaning": "Approved call-local metadata batching preserves live verification; no permanent historical-framework consolidation or test retirement was performed."
     }
   },
   "review_receipts": {
@@ -13103,12 +13109,17 @@
       "path": "w15-r01-repair-record.json",
       "bytes": 7826,
       "sha256": "00992cec47bd4d70435d18df529163b9db5da5c13d8ea9594ec4865e4f19eb07"
+    },
+    "w15-r02-repair-record.json": {
+      "path": "w15-r02-repair-record.json",
+      "bytes": 6295,
+      "sha256": "c10525988c782d84a0371c4be31c30c605821ec922fc4e8a39b88d1b2f71281e"
     }
   },
   "remaining_gates": [
-    "Exact final-head four-profile CI and original-evidence audit, linked externally after execution",
+    "Actual exact-final-head four-profile CI and original-artifact audit in PR #34",
     "Owner acceptance of W15 and PHASE_3_COMPLETION.md; merge remains unperformed",
-    "Separately authorized executable verification consolidation before the next major implementation phase"
+    "Separately authorized permanent verification consolidation before the next major implementation phase"
   ],
   "self_reference_rule": "This manifest hashes the complete actual repair precursor. Final head/tree, CI/service raw evidence, 207 tracked hashes and the audit are recorded in PR #34 and the review package after execution.",
   "accepted_w14_snapshot": {
@@ -14556,6 +14567,1699 @@
     "meaning": "Complete already-tested W14 executable precursor, including its then-current records. No current W15 file hashes itself."
   },
   "snapshot": {
+    "commit": "fae43fcdae0341a6f596545f700bc8932b5d8444",
+    "tree": "3eea2f22566a262167be115f9be142772cc41a1e",
+    "count": 207,
+    "files": [
+      {
+        "path": ".gitattributes",
+        "mode": "100644",
+        "git_blob": "2308007e403a05d79a3cb94513c73561448ea57c",
+        "bytes": 1711,
+        "sha256": "df03ffb662c37e74fda41cdb0697e750f961dccd0f89c019912388d47bca60ff"
+      },
+      {
+        "path": ".github/workflows/p1-w02-verify.yml",
+        "mode": "100644",
+        "git_blob": "5d033b3adaba2c951bd56aa28a6b64926d83f450",
+        "bytes": 12612,
+        "sha256": "5b525f32fc313232b2ec8706092902a050e166841f34e72c57984c8607eb948e"
+      },
+      {
+        "path": ".github/workflows/phase1-ci.yml",
+        "mode": "100644",
+        "git_blob": "2040b0295625b17fe514ab499cd1bccb1bc525d2",
+        "bytes": 3524,
+        "sha256": "b3dbc7a2077edc3bd0fc3ab9e2a919a027c2be1b6c4a9520ca49af4aa29389af"
+      },
+      {
+        "path": ".gitignore",
+        "mode": "100644",
+        "git_blob": "de1c1a8bea3c9403408949bbe3c5cd10bf8df853",
+        "bytes": 557,
+        "sha256": "b3bd0071e2758bbb7a28a5c41381e3730a035bee6c2c11140fb98fc8aaa38dd3"
+      },
+      {
+        "path": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md",
+        "mode": "100644",
+        "git_blob": "a08e94bee1e4c8aaa4a47fcdd79b1e8db0fe6911",
+        "bytes": 129967,
+        "sha256": "32272903b45a8749115ed6b4ec9904dd864a2190f9e1a2ba43ced4c8256c0374"
+      },
+      {
+        "path": "CONTRIBUTING.md",
+        "mode": "100644",
+        "git_blob": "69309278a14e8ad7695b4c321136d528df8c9c21",
+        "bytes": 5136,
+        "sha256": "163abe466a4af4c1213e218eba25a4b069b3d399c772f562da47d2c849c7ae3d"
+      },
+      {
+        "path": "DEFINITIONS_AND_UNITS.md",
+        "mode": "100644",
+        "git_blob": "36fd49115cd7a3a85be93eeeb480042a1b74496f",
+        "bytes": 94436,
+        "sha256": "913697e733d4430a64696b36a7893fe2113da7e2cfbcadbb54247a36c1792e9d"
+      },
+      {
+        "path": "DEPENDENCY_STRATEGY.md",
+        "mode": "100644",
+        "git_blob": "74849cc4b4ee3ab927e6de3a721ddc3edba10b15",
+        "bytes": 15029,
+        "sha256": "65b5c4f1f91be019e1fb09329ff5214980e5956579c1c8ccec7f4b6f7b4174ad"
+      },
+      {
+        "path": "GOVERNANCE_AND_HANDOFF.md",
+        "mode": "100644",
+        "git_blob": "81aed5fd6d8edb185ab30881f238aeb5fe8680a6",
+        "bytes": 26255,
+        "sha256": "13e535ded411a3ad5967226e07761d4e88615f5b04c0b5a64c6cbf738cbc9ee8"
+      },
+      {
+        "path": "LICENSE",
+        "mode": "100644",
+        "git_blob": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+        "bytes": 11358,
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      {
+        "path": "LICENSING_NOTES.md",
+        "mode": "100644",
+        "git_blob": "3468b44ec858ac1068f041affe94f8c183e3289a",
+        "bytes": 10911,
+        "sha256": "e544f6f38d4fa83faaba0da42d85bc4af4e3a86028f3a4ab78132d21b2ddb80f"
+      },
+      {
+        "path": "MANIFEST.in",
+        "mode": "100644",
+        "git_blob": "a5c0ec31bba588f10f39314ae7c481ce37c81344",
+        "bytes": 3495,
+        "sha256": "846f5ad18324b044fd431521f21b32aa157805dc33a95f1ec8b82a5677938066"
+      },
+      {
+        "path": "NOTICE",
+        "mode": "100644",
+        "git_blob": "0a6e820bafa1d5c0c21ced6e8567b7024a2c7f47",
+        "bytes": 680,
+        "sha256": "adcb7b8b088b04af20b095775215ca3668d5d5473affd280a63b651956f9f930"
+      },
+      {
+        "path": "OBSERVABILITY_AND_REPORTING.md",
+        "mode": "100644",
+        "git_blob": "cf6c1d0aeb069cf5b68c3ea37b490dd6f5912208",
+        "bytes": 111615,
+        "sha256": "44daa3c86fc7d12e7be16a3aedfe10d16b99f55aa69141f90319ce2b5e63ff6a"
+      },
+      {
+        "path": "PHASE_0_APPROVAL.md",
+        "mode": "100644",
+        "git_blob": "3e61806e3df5afc7d88fae27db765c5e5eb4bdb9",
+        "bytes": 14670,
+        "sha256": "92915c24758dc8cbcdfb075c15361b2beedad469fe69b821a5e13003a4804a9c"
+      },
+      {
+        "path": "PHASE_0_PLAN.md",
+        "mode": "100644",
+        "git_blob": "d5ea6f6dd79b5770dfe80a3677d76706c7e78db8",
+        "bytes": 45379,
+        "sha256": "2d97a820ae218c33cfd00dd96a762853e887f867973a2b2da0945fc4414495b1"
+      },
+      {
+        "path": "PHASE_1_COMPLETION.md",
+        "mode": "100644",
+        "git_blob": "ad04c47fdf35f388f8dd1121fceed0f62c1e7499",
+        "bytes": 19736,
+        "sha256": "3524fdc08eaf9d8b18468ea5838da696acb9790b7419d008f990d4c384a0dccd"
+      },
+      {
+        "path": "PHASE_1_PLAN.md",
+        "mode": "100644",
+        "git_blob": "27ed33cb1c2afc78b12ca099ee7ccb4e68d63bfb",
+        "bytes": 28837,
+        "sha256": "699cf95f81231e09949f81ec7c25096911f8c67e89e8a10bae4157ef8b49fb22"
+      },
+      {
+        "path": "PHASE_1_PROGRESS.md",
+        "mode": "100644",
+        "git_blob": "dd7fc68d9146741e4ae9013b6c31e282d285aa8a",
+        "bytes": 7090,
+        "sha256": "86f41a273434e399b667a8c9437a8ad54a242b03e7a790d90bd4748e98c3f8f9"
+      },
+      {
+        "path": "PHASE_2_COMPLETION.md",
+        "mode": "100644",
+        "git_blob": "c6f0e805e0eaf46fb3f90ed0172e730893532b07",
+        "bytes": 21461,
+        "sha256": "bb26c82262826526e1b2877bee2b659fe857f686ce654553cce79fac69163ff7"
+      },
+      {
+        "path": "PHASE_2_PLAN.md",
+        "mode": "100644",
+        "git_blob": "17b91fd2851006d8bd5c14f6ff922a9d8abbeb0c",
+        "bytes": 50899,
+        "sha256": "bea21992edf58b77cfe0f9a128bb31cee9226a9ea5e87b829663a47768227918"
+      },
+      {
+        "path": "PHASE_2_PROGRESS.md",
+        "mode": "100644",
+        "git_blob": "ff36895233ce4bb3546c5ad807aed980b5443031",
+        "bytes": 3447,
+        "sha256": "f889bb7bedd8fc7dadeddbe4b3e87c606e7c1cc14127ccc7b79aee8d4a214203"
+      },
+      {
+        "path": "PHASE_3_COMPLETION.md",
+        "mode": "100644",
+        "git_blob": "6a07d7d68de445cb0e626da98770d4236e13d5f8",
+        "bytes": 14763,
+        "sha256": "04176861a979aa5c45651b809a62099f75f9a71eb946371d53e9b4b265fd096b"
+      },
+      {
+        "path": "PHASE_3_PLAN.md",
+        "mode": "100644",
+        "git_blob": "4960e60888e8275ce7f7b9640ff791d04f8df587",
+        "bytes": 52648,
+        "sha256": "e56da603271a489092ccfb9f9fe9086540bbb947ada8f4e7a676c8ed8f0feaae"
+      },
+      {
+        "path": "PHASE_3_PROGRESS.md",
+        "mode": "100644",
+        "git_blob": "39dcb8db3990780e3cf491cbd5033aac2c72ceb3",
+        "bytes": 2765,
+        "sha256": "d40abab337c45680c6fd95e9d5faba16bb5a19a87913572da5ef911bb4db4cda"
+      },
+      {
+        "path": "PRIVACY_AND_DATA_HANDLING.md",
+        "mode": "100644",
+        "git_blob": "8e7f6a1835104af4714826311db3ba92d1dd1c0f",
+        "bytes": 28777,
+        "sha256": "3114941454f2d5ff90b3c2003195e35223fa4922104479ecedaea7d387865dd8"
+      },
+      {
+        "path": "PROJECT_INSTRUCTIONS.md",
+        "mode": "100644",
+        "git_blob": "20c0b8fb6a870ccb21acbfc2024096e95cf317a4",
+        "bytes": 22037,
+        "sha256": "cb5cf8f4d367bceacc313189469b3327370bed0450468d62a968825fee4a7746"
+      },
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "git_blob": "a966248d4bb788ad5d25f5cac76f12b17776efcf",
+        "bytes": 10947,
+        "sha256": "4be308174014b4826916f49890640d32b1b640154c0b45f728f5e5c7e8d422c1"
+      },
+      {
+        "path": "REPOSITORY_ARCHITECTURE.md",
+        "mode": "100644",
+        "git_blob": "f9123f217e567b6aed34f876824c3dcd13dab467",
+        "bytes": 67030,
+        "sha256": "8ababca6e074259c3fa98b4ecb5c7e55d150f420e4a2567926ed1cc696d3f97d"
+      },
+      {
+        "path": "SECURITY.md",
+        "mode": "100644",
+        "git_blob": "4fd65a639c50786cc1fc09b9f514bdfadc52a8e6",
+        "bytes": 2944,
+        "sha256": "e3e717e28f2efa6165b10c97784a0ee01de7336737f40030672f131c4a160df4"
+      },
+      {
+        "path": "SOURCE_INTEGRITY_THREAT_MODEL.md",
+        "mode": "100644",
+        "git_blob": "7ba8945cf68e0069d42ad975d5a9ceaeb047d75e",
+        "bytes": 93871,
+        "sha256": "e74e1bd146acb3ece62dcc4c0096f5fae9f7b72950c5827956fff0398c1c374a"
+      },
+      {
+        "path": "SPEC_AUDIT.md",
+        "mode": "100644",
+        "git_blob": "67f6b4ccb33f6db2aca508a64993661b3e28f3a9",
+        "bytes": 42589,
+        "sha256": "3565ab8f1b08f30e06f4983ffd26adbe8bc977b655ebf410b634918a7ae7949a"
+      },
+      {
+        "path": "SUCCESS_CRITERIA.md",
+        "mode": "100644",
+        "git_blob": "63151e95af72d6aea224858bc356f1528a013661",
+        "bytes": 58182,
+        "sha256": "270eed959a08607e182ff5922d6cacdec3c3536c954f3f65d5e9b8d9bcfb5476"
+      },
+      {
+        "path": "THEORY_SOURCE_MAP.md",
+        "mode": "100644",
+        "git_blob": "9cc299535f71b57f8800f6406723a689a6ce2560",
+        "bytes": 56697,
+        "sha256": "015e65baf3fcad8ce78a2285df8f2de8d5b7b4cbdd347707ba3cc5d5ba46b627"
+      },
+      {
+        "path": "THEORY_TO_CODE_TRACEABILITY.md",
+        "mode": "100644",
+        "git_blob": "a6b6c716636bb15bb569b257e9b82086c18185ab",
+        "bytes": 65779,
+        "sha256": "73a69a56828b6ff416164b7bd6420521da1c635bd92f03b92e07231b552a7849"
+      },
+      {
+        "path": "UNRESOLVED_DECISIONS.md",
+        "mode": "100644",
+        "git_blob": "6a037328e6ccae48d13c272c0453bc8f43ca67c9",
+        "bytes": 15713,
+        "sha256": "4d79c732f31eefaad54fb53209e535a248d824e78673a31383442b5ebe74a59e"
+      },
+      {
+        "path": "V0.1_PRODUCT_SPEC.md",
+        "mode": "100644",
+        "git_blob": "ad896af3b749220b1f4adf979fbae4fa5f01b165",
+        "bytes": 62420,
+        "sha256": "70ab331662741c0177908ec5ccac09ff7538f98643567eb3066e0ed8c9cb84e1"
+      },
+      {
+        "path": "VALIDATION_PLAN.md",
+        "mode": "100644",
+        "git_blob": "701ec6a3e215638a02dd1eb82b2f503dd48d16e8",
+        "bytes": 148233,
+        "sha256": "f958a12bda396cd12bfec096353ec17ec786e8c7fe30e07ee987f7d52874b707"
+      },
+      {
+        "path": "phase2/ci_review.md",
+        "mode": "100644",
+        "git_blob": "941f01057face82fef9b0cac8847cdcafbcd6d76",
+        "bytes": 14985,
+        "sha256": "21883602ecbd83da871a94fa7a4daa6748da7a00e886e8fc4bf0a7517cade9e3"
+      },
+      {
+        "path": "phase2/delivery_manifest.json",
+        "mode": "100644",
+        "git_blob": "1f3412ef1c7ca87186e8e6c3d72176c3a247bbd1",
+        "bytes": 381391,
+        "sha256": "61bee9add00120cf24e708c492fa5cc0a8754456aa2949f01b6d109e7cc02b31"
+      },
+      {
+        "path": "phase2/entry_manifest.json",
+        "mode": "100644",
+        "git_blob": "1163dc136837374606647ba21bd566848239f95b",
+        "bytes": 1277,
+        "sha256": "bdec51c6499e080385140446eece9014144cf277c1651b05734f5166a831623f"
+      },
+      {
+        "path": "phase2/implementation_evidence.json",
+        "mode": "100644",
+        "git_blob": "454cf9f4ee5c723d247c5415da944b9f267618ba",
+        "bytes": 25623,
+        "sha256": "4b3923ad9eb755b93315fbf211f9c6e7bde0aef91e7ea55a4f51a82420e30b72"
+      },
+      {
+        "path": "phase2/input_contract_coverage.json",
+        "mode": "100644",
+        "git_blob": "5549f28d2d96f0fda5da0637eedd45399f54d0f1",
+        "bytes": 42410,
+        "sha256": "a91e9a45479c02ec5389868b10a9f7423837f0c5977296b05d301d60ed1dbd0a"
+      },
+      {
+        "path": "phase2/module_policy.json",
+        "mode": "100644",
+        "git_blob": "8bec9a159bacd456645448395f14dba66eee9904",
+        "bytes": 1492,
+        "sha256": "817c682dc902f177b3b916bad9833f56e59dea5eefb1870e89ab39671eaf2187"
+      },
+      {
+        "path": "phase2/prerequisite_partition.json",
+        "mode": "100644",
+        "git_blob": "a801859daab2b19e78041544268ac429a7bf96e5",
+        "bytes": 18714,
+        "sha256": "372147857babfac05b71d1856f95bab84b789cd3ddae1004ea6e44ea97ca5b26"
+      },
+      {
+        "path": "phase2/transition_ledger.md",
+        "mode": "100644",
+        "git_blob": "bd7030c8107a1648f4a457db0ba3b2c3c3b77d31",
+        "bytes": 45257,
+        "sha256": "83bb9007ec92aa1963085dd22f06ea8a157dd016f5cf7f2fd216d0c112a8ae4f"
+      },
+      {
+        "path": "phase3/ci_review.md",
+        "mode": "100644",
+        "git_blob": "079a0f20568b70749b91738ebbb31798fe695705",
+        "bytes": 11683,
+        "sha256": "438feb7266c821a8039e3a40f57cecfa605f1e66fae88d4c78952177a83b10e3"
+      },
+      {
+        "path": "phase3/delivery_manifest.json",
+        "mode": "100644",
+        "git_blob": "8c61eb020a21533d67ddcd156476a8de011bdfb1",
+        "bytes": 763588,
+        "sha256": "c57266089f50614cd7cf1189daec9189ff57102236fba68fafb1e77c0971b536"
+      },
+      {
+        "path": "phase3/entry_manifest.json",
+        "mode": "100644",
+        "git_blob": "dfa3d44f07fb8abcc92668368d5ce6ce397dca5a",
+        "bytes": 229531,
+        "sha256": "dfe96f57a222937131e8e4fafd13098f76d134cd88a50ffa9fa82891b9b9659b"
+      },
+      {
+        "path": "phase3/implementation_evidence.json",
+        "mode": "100644",
+        "git_blob": "688d34f625acc187537209b243ede863bff8b232",
+        "bytes": 115123,
+        "sha256": "cda4a04b73531c3da0c4fb8854653de838dfd458324d4e77a6abfe829a20b886"
+      },
+      {
+        "path": "phase3/module_policy.json",
+        "mode": "100644",
+        "git_blob": "358f6b881cbcd7a69b574fbca22b4d6d86681a64",
+        "bytes": 2152,
+        "sha256": "68fa342e3ec7213e6ce0a8b293918d49f90b0d1560208817dd9ef42d8d86f2f3"
+      },
+      {
+        "path": "phase3/obligation_coverage.json",
+        "mode": "100644",
+        "git_blob": "9eafb4298d3ec1a1c722f2e80490ad2185afc094",
+        "bytes": 705880,
+        "sha256": "7f86ecc08e38b60d820b483a666c1e033c4a6b3b484aa32865bf98fd6823262b"
+      },
+      {
+        "path": "phase3/transition_ledger.md",
+        "mode": "100644",
+        "git_blob": "2da83d11005b0e21d40e2b8127119c7b042a7fe0",
+        "bytes": 285126,
+        "sha256": "9d25548ae63fa1beee94973106a35f91c5d9eeecc471ae56a6367f8b661e3614"
+      },
+      {
+        "path": "pyproject.toml",
+        "mode": "100644",
+        "git_blob": "5fecf128c2d30a595c4ab3fc3516564c24540997",
+        "bytes": 1190,
+        "sha256": "46b48be6e50cd4cd412c1be21e50cba190de6c0cdfce9d67284f01c40fde788c"
+      },
+      {
+        "path": "requirements-dev.txt",
+        "mode": "100644",
+        "git_blob": "e037242d849f827a6c968a0f97830610a1718138",
+        "bytes": 373,
+        "sha256": "ad89dbacd5640dbc156cc922f3bc7ed314ec1eec0f7fcdfd8da822a9e2590f0b"
+      },
+      {
+        "path": "scaffold/baseline_manifest.json",
+        "mode": "100644",
+        "git_blob": "da48da62c4d1dd8e27af43daa0ecdc8e6c4698d8",
+        "bytes": 5777,
+        "sha256": "85cc224e9a948df1cc555821408ecbe31392357714926db4401405e28dd616ef"
+      },
+      {
+        "path": "scaffold/ci_toolchain_review.md",
+        "mode": "100644",
+        "git_blob": "4e0f57facc62aa59d7addf52b7bdd6013e8bb5aa",
+        "bytes": 5968,
+        "sha256": "028dce00ad3507b4a668bfa5261f30926589f41768dd271de176e2b77db1c3c7"
+      },
+      {
+        "path": "scaffold/delivery_manifest.json",
+        "mode": "100644",
+        "git_blob": "706db89ddb69fb8f0c8db80f27b4128c50afab54",
+        "bytes": 14676,
+        "sha256": "c354ec51acbe4ad90cb2f15037b3a3d043eec21e39cd348d8b5ecb2afae3fc5a"
+      },
+      {
+        "path": "scaffold/module_manifest.json",
+        "mode": "100644",
+        "git_blob": "fa0c0f87bd17b004a6cb4ed6a78591de4c24ccbb",
+        "bytes": 12584,
+        "sha256": "e16051e7b20d8159c4b972db76ac1fb2dfc5eb69712e78c7049d7a1060fc0c21"
+      },
+      {
+        "path": "scaffold/obligation_catalog.json",
+        "mode": "100644",
+        "git_blob": "62ec0c934aee408c5bd9e9e32d0c03bac3c806e4",
+        "bytes": 29506,
+        "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
+      },
+      {
+        "path": "scaffold/toolchain_review.md",
+        "mode": "100644",
+        "git_blob": "487a9610db7d4747f8c41d1b06180b5ae222ef5f",
+        "bytes": 9590,
+        "sha256": "62cf026726fafa92192749f92f6b5e0b6836a511117bb4a37827d4c0008f346b"
+      },
+      {
+        "path": "scaffold/trace_catalog.json",
+        "mode": "100644",
+        "git_blob": "b96c6f5acef48c95cdd1504672c8d9b59df5b912",
+        "bytes": 31211,
+        "sha256": "fd954e5cc7a0292d4fb68cc244289c2626b42cd6ec4417a38c35f987d7ec46d7"
+      },
+      {
+        "path": "schemas/README.md",
+        "mode": "100644",
+        "git_blob": "d7d8a311a6d5aab2514c14eb7252e4909ae83a97",
+        "bytes": 744,
+        "sha256": "572df630f420258300d5fd224680296ae4e69b6691ef00593c152ffd88a99ced"
+      },
+      {
+        "path": "schemas/bundle/README.md",
+        "mode": "100644",
+        "git_blob": "02a0181c371db3186a124773050f5a4f1b3bbac1",
+        "bytes": 3583,
+        "sha256": "8db1889f20d1a002eb068fb150fb9cf0d0038e010421a3ad8d7e5b52d12e807c"
+      },
+      {
+        "path": "schemas/bundle/sit-bundle-0.1.schema.json",
+        "mode": "100644",
+        "git_blob": "6149a9d6420ac370b19e21e21520ab48da73805f",
+        "bytes": 42799,
+        "sha256": "4a6d313c8c45c6dba29a8489c1ebbabb4c8dacbbc67b05a7042206fcc7d8c6db"
+      },
+      {
+        "path": "schemas/report/README.md",
+        "mode": "100644",
+        "git_blob": "40778c8dd7631fc5a953334d813bfdb06f1b5662",
+        "bytes": 1590,
+        "sha256": "603a60da4d77b7b8d74d6074c895b226c24fb74f6d24eb092d5136311eb6eefe"
+      },
+      {
+        "path": "src/source_integrity_toolkit/__init__.py",
+        "mode": "100644",
+        "git_blob": "7bea94e138804cbeea4048ef152dcb5726047f1f",
+        "bytes": 445,
+        "sha256": "0fdc19062761d6b718ff371557376483f7c8e7bbf7f3c347bcae576587513b97"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/__init__.py",
+        "mode": "100644",
+        "git_blob": "39f3b82fbbe9c331b5728e9366d08ad5b6750a0c",
+        "bytes": 446,
+        "sha256": "2bcd171bde6b0b6c92c3a048cff959780e2e0616f468158b4b97d8967bf7e956"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/context.py",
+        "mode": "100644",
+        "git_blob": "da5a5cf361ff1c3178510c88605ad9fefd1d11fd",
+        "bytes": 30641,
+        "sha256": "40cb6afefd1c187eaa8afe6555971d55da4cecba8ce3b157c83b42552e56a736"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/contribution_profile.py",
+        "mode": "100644",
+        "git_blob": "2c1db4526b6aea8119c00d0977d347b02db67e0e",
+        "bytes": 34871,
+        "sha256": "4eccb7e682f8a8ce67192da1f7ccd3ced314b2f92e2cd2637444e9553ee502ed"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/correction_outcomes.py",
+        "mode": "100644",
+        "git_blob": "03f4f9995a9b8581508c1793f7bcbd83945f2b1d",
+        "bytes": 33905,
+        "sha256": "11a09a667f6a2c6552a980875bf6f09255714582318263bc743db5907259af78"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/correction_routes.py",
+        "mode": "100644",
+        "git_blob": "7ea8572717bddc8a8f7546a616f3cff0628fbfe3",
+        "bytes": 31197,
+        "sha256": "4935dd55e0f4b47b49b4e50d02b73dd816387fa93cdb6bc447ee8dde0c619c0f"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/evaluator_lineage.py",
+        "mode": "100644",
+        "git_blob": "07d9e6cb9ce52baf2d10050150392beefd45f532",
+        "bytes": 33484,
+        "sha256": "71e8a96caf3d25e9b6f130c99243ab5df16ab5a3407e8b39ac08f583a93c0cdd"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/findings.py",
+        "mode": "100644",
+        "git_blob": "c218b2476211757c80f6736506269cb2fdba7d11",
+        "bytes": 50537,
+        "sha256": "e983a368d3544998b2a4879a82e1a3366f20da074651a1084dc758bc569ff34b"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/human_review.py",
+        "mode": "100644",
+        "git_blob": "f4beebf190cff97696a9d718ce8bdb6801a017a6",
+        "bytes": 26227,
+        "sha256": "bcff22f09add6285a2bcd744ab1e77d1d878f2a92eb1effb738564fe3716a3aa"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/inventory.py",
+        "mode": "100644",
+        "git_blob": "8c163ad8aa48f478ff098451af0485da9002042d",
+        "bytes": 22766,
+        "sha256": "6179f29dbff1afccb939d225947d57f9b9c1b4b03875f4ba992e993560087313"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/origins.py",
+        "mode": "100644",
+        "git_blob": "417e6c3b07447d825a756fc7ac457213b1d3ba48",
+        "bytes": 57554,
+        "sha256": "de77914facb7cfabc7390dcd84cbbc80c8c9823f67d3e2bcb8e826ec21b7fac0"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/presence.py",
+        "mode": "100644",
+        "git_blob": "7f54a6642279952c7d6f857ff0f4a2417b92d456",
+        "bytes": 51349,
+        "sha256": "69b3447fa721f97ce0aa5d488a22e6798ffa2012e1ec73a047e4da1141e8c518"
+      },
+      {
+        "path": "src/source_integrity_toolkit/analysis/process_comparison.py",
+        "mode": "100644",
+        "git_blob": "09bd7f47583ee9583cd30501e7f257dbdd21351f",
+        "bytes": 52861,
+        "sha256": "9d0777bf4fdd422f4392657c3407970c47093de4992cf3837c9a3fe6e3d7e9d0"
+      },
+      {
+        "path": "src/source_integrity_toolkit/api.py",
+        "mode": "100644",
+        "git_blob": "0603b4de9888a51190eeeefc6186b47e2afd88bd",
+        "bytes": 906,
+        "sha256": "8808d7ef4a0db2f6e314c82fddd4b51cce164a165afaf43e6d626663f6f6768d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/cli.py",
+        "mode": "100644",
+        "git_blob": "f48f869385fbeb711458f0189ff55194f73fd050",
+        "bytes": 1390,
+        "sha256": "0c3ee9522fbdf1774a707ec14ed630ce34a901da1f83f63b8aee0f25393d26bc"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/__init__.py",
+        "mode": "100644",
+        "git_blob": "df81f7b32eee0e54a4606b3dd02332407cf53ec1",
+        "bytes": 447,
+        "sha256": "5a5c57d26930d12c3de59e180987f740b915e9eb17fd18a2daf29a6f91985432"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/bundle.py",
+        "mode": "100644",
+        "git_blob": "efa93ccb6f750a38fe6f426fa409aa52651f78bf",
+        "bytes": 17520,
+        "sha256": "7509a30f008de4ade02543bea26ccc4bd3d5843ae62f75b1841e2e61bcb903da"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/constants.py",
+        "mode": "100644",
+        "git_blob": "be7acf3d76d444fef2e124bd343d89005def33d4",
+        "bytes": 17761,
+        "sha256": "d4bee68c62ba495e6aca1fdba352b013f9cc4ed7c3583b61092af234827ad486"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/evidence.py",
+        "mode": "100644",
+        "git_blob": "8ae7eb2185f22b52cc363d3d814aec65148209bb",
+        "bytes": 14758,
+        "sha256": "1b9be04cde9674cb250b34c9d6acfb43bfd35beb19f8ebbe9304f714ef3fc611"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/execution.py",
+        "mode": "100644",
+        "git_blob": "53ae5fce613ef90a8b16b1a6daf7108c8e1f0dc9",
+        "bytes": 6395,
+        "sha256": "212101c332201eda064d0a45140e922cbf24b7d9bcf36f14a9dc89c2b1790fa3"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/report.py",
+        "mode": "100644",
+        "git_blob": "a9d6a150299187b2b95e7f05eacadb6124de6e50",
+        "bytes": 64953,
+        "sha256": "262b8129cec88e4c0ee30b781045598fa73e76bfb578ee4211e631b67460b82a"
+      },
+      {
+        "path": "src/source_integrity_toolkit/contracts/results.py",
+        "mode": "100644",
+        "git_blob": "d38094d924bf99b00b5b02c613de2945036104c5",
+        "bytes": 28635,
+        "sha256": "565b4aa8d1053931b0b69b1af686b563427dce2b27be8215e916fbc18d335a11"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/__init__.py",
+        "mode": "100644",
+        "git_blob": "d5eff5c90ff209f6f3f6b3d53b1a38d292da413e",
+        "bytes": 397,
+        "sha256": "3db1c2c13cc1ae2bfb1a049894a04f7d27d7e6874d2079f1348d910aa0f5c943"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/cycles.py",
+        "mode": "100644",
+        "git_blob": "e58dc6662287e43b8700dee8ad6b2e9d6dbecce4",
+        "bytes": 7188,
+        "sha256": "350e986d14aa6452c3a334eb4288d0d1b1105bdea6b0786c0ffc59380d8c5db9"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/projections.py",
+        "mode": "100644",
+        "git_blob": "f8eb89afbd283830f955afa992d100bf3bfd0ae8",
+        "bytes": 27035,
+        "sha256": "b3aa1df29751c0001446af84abcbbde84820576ecb39bc34ff693485b9aea76d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/traversal.py",
+        "mode": "100644",
+        "git_blob": "0ab5b622b11ac102d06ec5a4aa46e945d3da76e9",
+        "bytes": 14663,
+        "sha256": "95f9f8a3eec1828f458256c1438fbd169f615c9698daaca176776b803d54f8f7"
+      },
+      {
+        "path": "src/source_integrity_toolkit/graph/witnesses.py",
+        "mode": "100644",
+        "git_blob": "7721cc527a8909584585aa468ea43697feebb2bd",
+        "bytes": 9510,
+        "sha256": "40682c09e9d3b53d0d36c5204961eb16739d13b392be68c4bf9698cbd1c31b9f"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/__init__.py",
+        "mode": "100644",
+        "git_blob": "2714a56fb4d2ed55cf66934c8a336f0d5a51944e",
+        "bytes": 391,
+        "sha256": "252ed1b29bff2517bc3ce909f4695d0f67c4baf0f1d7707708124107fbba783b"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/input_file.py",
+        "mode": "100644",
+        "git_blob": "05714101f621cffda6108cecb67915488d0541f6",
+        "bytes": 8437,
+        "sha256": "5628507c0989e94a3b5b5401e570b19256c940204859da9e938178ea261dea1f"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/output_directory.py",
+        "mode": "100644",
+        "git_blob": "9e974acb4ae4afe96a2dfb090dfd459effc8f7cb",
+        "bytes": 399,
+        "sha256": "d27ae40d53b09355a0e3e137d490d1c2d1352edf67821c985bd0c79096b605ac"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/platform_linux.py",
+        "mode": "100644",
+        "git_blob": "6e7c6196ec22baa91a75ced2aba8de831d03f364",
+        "bytes": 397,
+        "sha256": "b63420614f26fc52ebe4e7d9af4d12782fd7374dc4780c420e0e4bdbe6091544"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/platform_windows.py",
+        "mode": "100644",
+        "git_blob": "b1023ff2d960f1a7b0374c46b57069957c807e2f",
+        "bytes": 399,
+        "sha256": "31e5f7b304d4455d5d60222f2077eefd284edce341c47524ac85de84f690b4c0"
+      },
+      {
+        "path": "src/source_integrity_toolkit/io/publication.py",
+        "mode": "100644",
+        "git_blob": "e86a93eedb87b56809977b1c038958c41e70a6a8",
+        "bytes": 394,
+        "sha256": "ec5124c4f8f1db6d0f8a0d83ad6a62c28646d34c47740f706d1b47871480661d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/__init__.py",
+        "mode": "100644",
+        "git_blob": "f3070404ece65e7eb26d4cfbc1ce11eb7f02d57c",
+        "bytes": 401,
+        "sha256": "f9db2edfae16c1062a74fcff49d6b5a68b25e35b108413cb1b2bab115ef9dcaa"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/assemble.py",
+        "mode": "100644",
+        "git_blob": "c90193c4aceba2ab971cc960fbf370a775beaa64",
+        "bytes": 401,
+        "sha256": "ebbc9d87df2283da9e055be5b2db79187791a95043faa2311961d95be17e890d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/escaping.py",
+        "mode": "100644",
+        "git_blob": "a33d2f6e6bc0840f3037f7a6376cabf581251c87",
+        "bytes": 401,
+        "sha256": "9b910e3cc9e6d3bdbb20824420d8a2a599e12f3a300e0dffb9674a8696db0ca8"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/json_report.py",
+        "mode": "100644",
+        "git_blob": "fa7905d6743818af64d7d61b0a5bfcf5be17159a",
+        "bytes": 404,
+        "sha256": "5e5b41e8e1a1f0c6d731a22d288905f8ad5d969e6904f374487be1d54bec26dc"
+      },
+      {
+        "path": "src/source_integrity_toolkit/reporting/markdown_report.py",
+        "mode": "100644",
+        "git_blob": "c6c31013559720421645b69c756e7cb137a28c33",
+        "bytes": 408,
+        "sha256": "e2af7736cc1254fd6f4ad4366ed24e6fc6163e2761c17c1cce8f48307a83ca7e"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/__init__.py",
+        "mode": "100644",
+        "git_blob": "830e640c62a1ce89f5425a17c9f225332d24a751",
+        "bytes": 396,
+        "sha256": "6bcbe18cb7295bd3339cf426931bdb29ed89edb348575d5deb070f008dec72c7"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/boundary.py",
+        "mode": "100644",
+        "git_blob": "cd0b1608ad0c47434588c7764a11eba53a04d4d5",
+        "bytes": 62352,
+        "sha256": "a53ce75d52b8720a7a7981b88d06dcc16d5e4ba6d21d0bb17094e67b693d5101"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/diagnostics.py",
+        "mode": "100644",
+        "git_blob": "d64ba68f2f8bcc4dae3909a8f7d6aacd42289911",
+        "bytes": 8422,
+        "sha256": "2763dd36343ad5e60aca3d5c244d6c94a288b09ebf268f045dcc3d5f01445814"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/disclosure.py",
+        "mode": "100644",
+        "git_blob": "b543c75e314fc21b09799ed32ca913cf03d33157",
+        "bytes": 398,
+        "sha256": "a9cf0d4b24eb4ddaa239747fc487a91aaf2708f8bd9954035dd42536b1c15b11"
+      },
+      {
+        "path": "src/source_integrity_toolkit/runtime/resources.py",
+        "mode": "100644",
+        "git_blob": "f07108f7094fe153860c635b352f499863507d57",
+        "bytes": 13450,
+        "sha256": "0ff61d32061f78e5eb46ff9903d322dd9335cc964411dc10ffc91eef0a440449"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/__init__.py",
+        "mode": "100644",
+        "git_blob": "775fff4175affb1c95a682423fc9c06317321e8e",
+        "bytes": 448,
+        "sha256": "0688a44d77c520368899546cc30531aad2849443c12941b536539bab5aac218e"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/limits.py",
+        "mode": "100644",
+        "git_blob": "8b248185dc7cc0e802c191fdc937d23cbc2beea5",
+        "bytes": 7689,
+        "sha256": "f01e4e5cbc076b07440df19ed2524db549849fcc6cd9834648437ee61a5e53c8"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/references.py",
+        "mode": "100644",
+        "git_blob": "25040fe157ec1cc939a0e742c7818d493f8992e7",
+        "bytes": 25300,
+        "sha256": "7ab63627c068b38364f5c47a6731903fc55bc9d86318bed4f182d9602418df7b"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/semantics.py",
+        "mode": "100644",
+        "git_blob": "45604679943dc456323f6ed046362e5982b4714d",
+        "bytes": 56841,
+        "sha256": "f98ce60e55d88f543c94a1e260d0172939eb061a983ade4a05f906f7df42ec5d"
+      },
+      {
+        "path": "src/source_integrity_toolkit/validation/structure.py",
+        "mode": "100644",
+        "git_blob": "24eb56915d8bd561abdf64d4773d486db9fb18e7",
+        "bytes": 21084,
+        "sha256": "bf2e61a236539b4b8bada935b39c46203bb8ccad4102e79730e9f84ba52fa315"
+      },
+      {
+        "path": "tests/contract/README.md",
+        "mode": "100644",
+        "git_blob": "c6125c2a0be9277f150e6580f54ea0f1ee05f5ad",
+        "bytes": 1558,
+        "sha256": "2ae135e0af60280fdb9f52d4f1a523cb97f7f06d161b8b8735198ad52db38d5d"
+      },
+      {
+        "path": "tests/contract/test_analytical_basis.py",
+        "mode": "100644",
+        "git_blob": "b888aab2e9e28adb819bf5b55ac564a879ab4aeb",
+        "bytes": 39005,
+        "sha256": "f7563868b123857392c527de73d5d82b5020ab4ab11a763dae2d5f083e0d07c7"
+      },
+      {
+        "path": "tests/contract/test_analytical_mutants.py",
+        "mode": "100644",
+        "git_blob": "80a01825120ba249d16fc6fdd4ded85865be183c",
+        "bytes": 18622,
+        "sha256": "5c953d82e58c9ca4d33daf09162ade376be999749089e9268b980c33653f6bfe"
+      },
+      {
+        "path": "tests/contract/test_analytical_obligations.py",
+        "mode": "100644",
+        "git_blob": "858fbe63d8ff94b446f4d5d1d919385291fa3a08",
+        "bytes": 8599,
+        "sha256": "8ddeb9753a6ceb0e2512338d0f2517ac1775eacec9f5f17da65f0a4a34b17005"
+      },
+      {
+        "path": "tests/contract/test_analytical_observability.py",
+        "mode": "100644",
+        "git_blob": "89dc1c8952b5f9e58d7a87d990d799e1495d8586",
+        "bytes": 24029,
+        "sha256": "8c9f4ebeb9764a2e5c4ba98c38dfd98e1e8d9b57c26f37624c7cf8dd52631312"
+      },
+      {
+        "path": "tests/contract/test_analytical_temporal.py",
+        "mode": "100644",
+        "git_blob": "9f934a799297dc7b227e3f9d6d356e1e1b1b59cd",
+        "bytes": 24503,
+        "sha256": "d16eed9fc0f014df0dc85d9ee09b75006c9ab37358de8ecb3061a4c3f41f7220"
+      },
+      {
+        "path": "tests/contract/test_assertion_contract.py",
+        "mode": "100644",
+        "git_blob": "e9211406040d7463690780af6dba87840931296b",
+        "bytes": 7508,
+        "sha256": "042ccafe57679ba35a89abea8a99623690090549b5fb3a2fc5236dba295c34ed"
+      },
+      {
+        "path": "tests/contract/test_bundle_contract.py",
+        "mode": "100644",
+        "git_blob": "b9ee3c46fffe1624c090edef58fe6a88bff69888",
+        "bytes": 10022,
+        "sha256": "53ff31b641652074e1c7d516ab7a9d714bc4d33a065cef27d6f275d92fdd584b"
+      },
+      {
+        "path": "tests/contract/test_evidence_basis.py",
+        "mode": "100644",
+        "git_blob": "39673c47cdca2888d2e37bd81e4b704cd04c9021",
+        "bytes": 4252,
+        "sha256": "c3ac52a65f4bdf92f10431d0c4838735f711d11887f05396688306848f698569"
+      },
+      {
+        "path": "tests/contract/test_finding_boundaries.py",
+        "mode": "100644",
+        "git_blob": "c41e2211b055cc37e10ad66c462fc59630c4249f",
+        "bytes": 12053,
+        "sha256": "fc3380b204ac6dca2be00511970a8c8f84904216cde1aaac3b8ba33d038ea187"
+      },
+      {
+        "path": "tests/contract/test_graph_views.py",
+        "mode": "100644",
+        "git_blob": "93f3c51fd674932839474b88c9fdfeab5b46fe25",
+        "bytes": 23878,
+        "sha256": "6fc9c300af293a5e2360fbf661215288186379024366cf358f9e30d29b566f65"
+      },
+      {
+        "path": "tests/contract/test_input_schema_mapping.py",
+        "mode": "100644",
+        "git_blob": "65b8ff26058be25c756472d40c03c4e3ad4a0ad0",
+        "bytes": 17798,
+        "sha256": "31ea82cb0a96754424a58c1b106341f0d4891a05bb7b949957402bd820925c94"
+      },
+      {
+        "path": "tests/contract/test_normalization_profile.py",
+        "mode": "100644",
+        "git_blob": "eb871ee37de150e0f55d21a9353d8a8c9092d2d0",
+        "bytes": 10017,
+        "sha256": "26f01d230f349995334b6892285def1774dcd10051a3dc7a05d9a4cd424e4a8d"
+      },
+      {
+        "path": "tests/contract/test_observability_preparation.py",
+        "mode": "100644",
+        "git_blob": "9140da8facb407fbcd64477e266be0f16d109227",
+        "bytes": 9306,
+        "sha256": "5d6ecf880e5e77bc606670c9e2bc232df662ac026ddb51c145f86fd7fb6b54b8"
+      },
+      {
+        "path": "tests/contract/test_phase2_transition.py",
+        "mode": "100644",
+        "git_blob": "6f192f1872473cac9d9ac5a46a6ca11e8b5c3438",
+        "bytes": 68150,
+        "sha256": "ddfe98d62cf13aec936a44a4fb970c03ee04ae187cacdcd54f31565b0be17bee"
+      },
+      {
+        "path": "tests/contract/test_phase3_transition.py",
+        "mode": "100644",
+        "git_blob": "55be6910773293758be8f69bc111be612e13074a",
+        "bytes": 229673,
+        "sha256": "32dda6db397d516065cfc493dad13a7611765993ac56120a65a83c2d59c399b2"
+      },
+      {
+        "path": "tests/contract/test_prerequisite_contract.py",
+        "mode": "100644",
+        "git_blob": "8e53f2896e99f0e3da34b32b8f1358c43428e21d",
+        "bytes": 14865,
+        "sha256": "88ff508c2de74118344bdd47dc8cc4da09ee9d5cee16cace2243ab16cf2974f7"
+      },
+      {
+        "path": "tests/contract/test_result_contract.py",
+        "mode": "100644",
+        "git_blob": "d3348eec4fbf799432b7164b114e8d329842a1ed",
+        "bytes": 22299,
+        "sha256": "f378232238789284732791b770655ba550748545a36f1ba6eef63240b90303d4"
+      },
+      {
+        "path": "tests/contract/test_temporal_contract.py",
+        "mode": "100644",
+        "git_blob": "514a7c68c797456a46fbabbb932c10e30bed552f",
+        "bytes": 5275,
+        "sha256": "a900f41109fd5688b636cad6cea7f2777a841ddf17a7c3b86fa0cc8d91efce10"
+      },
+      {
+        "path": "tests/contract/test_typed_records.py",
+        "mode": "100644",
+        "git_blob": "d8fb74118b403455ca269d541830ba256bdea05f",
+        "bytes": 22488,
+        "sha256": "be6ed6b73c6f936dcc774f88d11b29b038f75f33676f3b2225de64d9da06a83a"
+      },
+      {
+        "path": "tests/fixtures/README.md",
+        "mode": "100644",
+        "git_blob": "01ceda3ecd834b4aa52ab865658755822c2385fe",
+        "bytes": 5421,
+        "sha256": "98367561c6665e16a8cab1431323d5dab0946ee334928ff553f5b70a04e50921"
+      },
+      {
+        "path": "tests/fixtures/adversarial/case_index.json",
+        "mode": "100644",
+        "git_blob": "5116f0f27ed8a9c219c04a3a57203857737e1803",
+        "bytes": 23124,
+        "sha256": "2f50e90a8229dfe3613385fa80730fa049ae789fbce198a95323660980245cb2"
+      },
+      {
+        "path": "tests/fixtures/adversarial/phase3_cases.json",
+        "mode": "100644",
+        "git_blob": "71a6b4beb88da65ab1cac4cadcbbcc74f6f0cbaa",
+        "bytes": 2042,
+        "sha256": "e810ffdec2894d43dffb5bc806d88b6de419cab5a823bb8048e81e96fdfacf6d"
+      },
+      {
+        "path": "tests/fixtures/hero/H7-01.bundle.json",
+        "mode": "100644",
+        "git_blob": "7123325bdc8c63bf8378f954ab85ccfab0dec524",
+        "bytes": 163904,
+        "sha256": "06d342e4d12457dd186c48d917ed023a30e24f66e4226dd1ebf769a6365c47f7"
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V01.bundle.json",
+        "mode": "100644",
+        "git_blob": "f56951835bc73e08b0971fdcb5d733ffdb5393db",
+        "bytes": 163875,
+        "sha256": "98f3b5b1d8e1214211adbdbdaa5cdcb71e5bb1b226fb26c2615648bcd49e5d09"
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V02.bundle.json",
+        "mode": "100644",
+        "git_blob": "114ce7e38bbc9fb9271587e0e724e3e73bb54b8f",
+        "bytes": 173059,
+        "sha256": "043d7c3652035042ca2602d48efeed250d6599874b7ae7206cd74de23f596663"
+      },
+      {
+        "path": "tests/fixtures/hero/H7-V03.bundle.json",
+        "mode": "100644",
+        "git_blob": "91315d6ef28103d560577d98b62a4d624c3c99fc",
+        "bytes": 171096,
+        "sha256": "213e84942b77e43291ffec5feed4628ef075ddeb9262224c3d326b9402eae013"
+      },
+      {
+        "path": "tests/fixtures/hero/fixture_manifest.json",
+        "mode": "100644",
+        "git_blob": "2d7d9392b95afb782490687ce3c48a54994a5a76",
+        "bytes": 2318,
+        "sha256": "607fad79a03d6388e15cc3384c738cea6a1757574af9d333aca34676d141b7a6"
+      },
+      {
+        "path": "tests/fixtures/micro/case_index.json",
+        "mode": "100644",
+        "git_blob": "2aa9dd6573a118f148a5fe882fc3e26fe3d21619",
+        "bytes": 19388,
+        "sha256": "580ca1560e69bb0b4583821eac3c554d7fd73d8d4cd07c131225de420d088ed9"
+      },
+      {
+        "path": "tests/fixtures/micro/phase3_cases.json",
+        "mode": "100644",
+        "git_blob": "9eeb328fc306d97350361a69ad96edd5e84c028c",
+        "bytes": 2217,
+        "sha256": "0be6460c8a59fb5ab3bff950e9eb56ff05891278a6331b741da0b7b953cedeac"
+      },
+      {
+        "path": "tests/golden/H7-01.logical.json",
+        "mode": "100644",
+        "git_blob": "26ec01fd6f2c52400560731e0c71753a74755513",
+        "bytes": 27056,
+        "sha256": "bec2d971ded08baeaeb85f3ca340e05e959381540adf944bb437eeef4bf640d5"
+      },
+      {
+        "path": "tests/golden/H7-V01.logical.json",
+        "mode": "100644",
+        "git_blob": "e8b9b01c7844f2b0de29c0acda391b0a946a0083",
+        "bytes": 28111,
+        "sha256": "7cfb2f5d09175e0f658dac6d5db09777eab2b57406312775b18c0796b147b9ac"
+      },
+      {
+        "path": "tests/golden/H7-V02.logical.json",
+        "mode": "100644",
+        "git_blob": "57f55dc447baf92b80795afed1ce48c47f644b01",
+        "bytes": 29361,
+        "sha256": "4bcd1bb23086e475d35830fe01487dde8d4740b5010f59b1da34e4f8445f4134"
+      },
+      {
+        "path": "tests/golden/H7-V03.logical.json",
+        "mode": "100644",
+        "git_blob": "9f74315e6f9efebb937022b1d927b3ba8031d924",
+        "bytes": 29215,
+        "sha256": "44f5315b7a6e50aae7a9f0d800b7c94f6b6a06425473c7982af100822150487d"
+      },
+      {
+        "path": "tests/golden/README.md",
+        "mode": "100644",
+        "git_blob": "583157cdbdab9c4dd29974b64443768c5f338adc",
+        "bytes": 3537,
+        "sha256": "df5a664f6ce0cba56bc61e4af303a7aa88ea96da57ca614bb46b55d50edcbe41"
+      },
+      {
+        "path": "tests/golden/phase3_core_expectations.json",
+        "mode": "100644",
+        "git_blob": "18633314a2000da33c27c35c4df4d1ed5ce173fa",
+        "bytes": 2725,
+        "sha256": "4effefea17e607309259c27a908f9db0540f9755d600d592db2be83fc6ee4677"
+      },
+      {
+        "path": "tests/integration/README.md",
+        "mode": "100644",
+        "git_blob": "892d47be0138f21827f7c48a987546da815e0cfa",
+        "bytes": 1557,
+        "sha256": "e41ffc1c4c55d70e5a8d0a708311d97b349362c4a57bb960822091c19b0e7d82"
+      },
+      {
+        "path": "tests/integration/test_analytical_determinism.py",
+        "mode": "100644",
+        "git_blob": "66c5fa285de320e5c6109c7667bd12db419f0305",
+        "bytes": 14437,
+        "sha256": "cccc2ffdd92f328d7ee384e208cfb68135139c78b3004772145dd9b0500406f2"
+      },
+      {
+        "path": "tests/integration/test_analytical_hero_inputs.py",
+        "mode": "100644",
+        "git_blob": "7ef351e45078a1eeefaba5b8b99c3dc97163b790",
+        "bytes": 8605,
+        "sha256": "e197a08623417d1d7623e3acbd6342b80c10fed9c6abb124af75f7221d20fee4"
+      },
+      {
+        "path": "tests/integration/test_analytical_installed_runtime.py",
+        "mode": "100644",
+        "git_blob": "d72afadbe0ca9875d7a9b8a499000f94ab63ecf2",
+        "bytes": 10536,
+        "sha256": "9dbf01b5c95e661c7839617035e0eb93b9e277828fb405af3a9639202ddba395"
+      },
+      {
+        "path": "tests/integration/test_analytical_pipeline.py",
+        "mode": "100644",
+        "git_blob": "d8ad14af2e7c40c7e13b5474a4645ea4e1e7e3fe",
+        "bytes": 44558,
+        "sha256": "381cdc6d0233e715352c9e85c28d7b96655cd7eaa730244134a271c7d35e796b"
+      },
+      {
+        "path": "tests/integration/test_preparation_capability_boundary.py",
+        "mode": "100644",
+        "git_blob": "5f122be2c000884dcbd41a81b8ee65d54f84eef5",
+        "bytes": 10163,
+        "sha256": "aaa25f2a0fd256d116599e135d975ba7a77ffb6a6ae468495342ba4e358e74f6"
+      },
+      {
+        "path": "tests/integration/test_preparation_pipeline.py",
+        "mode": "100644",
+        "git_blob": "1cab829c30484663dbf8be0c24d8d4cc1110e4d8",
+        "bytes": 18006,
+        "sha256": "14161e83956f428f7219474da0c37203f32f3ed3591054f2b14a50881cabf0a7"
+      },
+      {
+        "path": "tests/integration/test_prepared_hero_inputs.py",
+        "mode": "100644",
+        "git_blob": "3b762855aa0f7c6b00d725435af3da3dabe1afdf",
+        "bytes": 18443,
+        "sha256": "60eb14b6e0942222721ebed083cb4a2328fef8d79dd9ab22c792666634f4e232"
+      },
+      {
+        "path": "tests/scaffold/test_api_stubs.py",
+        "mode": "100644",
+        "git_blob": "1139225d4e0ef396a4ebaecbc240e208875b28a9",
+        "bytes": 2822,
+        "sha256": "0441d0bbb735e70225331099c5c01688b24af1877eb63ef12796de00bab9974a"
+      },
+      {
+        "path": "tests/scaffold/test_baseline_integrity.py",
+        "mode": "100644",
+        "git_blob": "a3f74c5aa27a8ab53dc56fca56775cee63199473",
+        "bytes": 6561,
+        "sha256": "b345c30ed2775b54e70f51797ad1d4a670799303902d1a0b4a8f3d54329aa0b8"
+      },
+      {
+        "path": "tests/scaffold/test_ci_contract.py",
+        "mode": "100644",
+        "git_blob": "3bf5cebcc0fde21a3cc97a270612bbccdac18dda",
+        "bytes": 40839,
+        "sha256": "48c78cd0f729d96b5cec2ec4c4bae8419edca2bfe8fcf38d86453c14ff256878"
+      },
+      {
+        "path": "tests/scaffold/test_cli_scaffold.py",
+        "mode": "100644",
+        "git_blob": "a2508a053f4a70330862856f22592a6eaca3b4ba",
+        "bytes": 2297,
+        "sha256": "8d69b2d20f8c2e1430ba78ab53076d46b28d9e2a54f2c1357e0cdaaa59164f22"
+      },
+      {
+        "path": "tests/scaffold/test_contract_catalogs.py",
+        "mode": "100644",
+        "git_blob": "a5940b75d582abb04729db8f5136bf3d3e3e100e",
+        "bytes": 2010,
+        "sha256": "b75ab18c2df94e8f62eb8132fba09046fa885202202090b49b47c57807a53618"
+      },
+      {
+        "path": "tests/scaffold/test_fixture_integrity.py",
+        "mode": "100644",
+        "git_blob": "a6a470dccc3de83cdd6e6c750d45daa1b378a6f8",
+        "bytes": 29795,
+        "sha256": "4c0de7dbc7e6a6e5c3cd0b9447aef7b96c7411cbc314a54daf773d9fdd3679db"
+      },
+      {
+        "path": "tests/scaffold/test_imports.py",
+        "mode": "100644",
+        "git_blob": "bee59e9a236d26aa333321df2cf7a739f76033ac",
+        "bytes": 1268,
+        "sha256": "3aa77c8d27012d30b4fd836a3697447a59a296874031a784a7b38ce99e44eba0"
+      },
+      {
+        "path": "tests/scaffold/test_layer_boundaries.py",
+        "mode": "100644",
+        "git_blob": "c646f9f1602f5dd15df619237d97561d1d616cc5",
+        "bytes": 844,
+        "sha256": "44e0693b53595466fbd5610d9513e357e935491b25498bab7c39f011ad47475c"
+      },
+      {
+        "path": "tests/scaffold/test_module_manifest.py",
+        "mode": "100644",
+        "git_blob": "04b34943b109ca40386f6e4fbd645380c266afa7",
+        "bytes": 4976,
+        "sha256": "40bbc1d4e2671cbcfd5b1aeeacbfa8531332239f0b543fa46073a4a018d23cb1"
+      },
+      {
+        "path": "tests/scaffold/test_no_runtime_implementation.py",
+        "mode": "100644",
+        "git_blob": "56bc14511bcf8a981f55a03e8a2f4edc36af0307",
+        "bytes": 6632,
+        "sha256": "a0b2d0413952ec4db177967c3f54a83e01795cf207d3e33abd0a941a58b0051e"
+      },
+      {
+        "path": "tests/scaffold/test_packaging.py",
+        "mode": "100644",
+        "git_blob": "c872c4080d08e331b9253cd3cdd9467050d540a4",
+        "bytes": 11356,
+        "sha256": "cfc891098830d9adf1f2ee3a0c3bcc06e884fb00f356aa5a8e1822feb1aa5d93"
+      },
+      {
+        "path": "tests/security/test_analytical_adversarial.py",
+        "mode": "100644",
+        "git_blob": "312cd585a3159321b4749546d65c23da3514b8d3",
+        "bytes": 8270,
+        "sha256": "6be473d7e4c9c6f572e865e0ded856ee17a8b932ceb1b60d9e7935037e29e91e"
+      },
+      {
+        "path": "tests/security/test_analytical_diagnostics.py",
+        "mode": "100644",
+        "git_blob": "11e129882471d8a581ff1489bb507ad257c2dfa4",
+        "bytes": 10991,
+        "sha256": "c05a2b798cf0e7fcc8051d31485f96f490cd187439f4cc45d8c80cd546339dfa"
+      },
+      {
+        "path": "tests/security/test_analytical_inertness.py",
+        "mode": "100644",
+        "git_blob": "0ddf80e5c8e79ab700ac86cb2edc0b6360970e42",
+        "bytes": 8229,
+        "sha256": "1fe18d69dbe960e4ba401de7bde75740dbf1747c4aac88c5102c9257baf25ca6"
+      },
+      {
+        "path": "tests/security/test_analytical_interruption.py",
+        "mode": "100644",
+        "git_blob": "d6c7b590d6c8b02523f5ef99e343713b9a9f5687",
+        "bytes": 17939,
+        "sha256": "9e1fc19c39e68efbafc95433d7140706fcf2fdb3fbb259a047f226bdf2748106"
+      },
+      {
+        "path": "tests/security/test_analytical_resource_limits.py",
+        "mode": "100644",
+        "git_blob": "6630f7a43ad333362485ac9f08280e1fa692370d",
+        "bytes": 18338,
+        "sha256": "c47860822db6e49c8444af1e489ad66f4aa6587fb2f24d93ad6008fb523dc14d"
+      },
+      {
+        "path": "tests/security/test_graph_limits.py",
+        "mode": "100644",
+        "git_blob": "fbdbbc820cf31223cc2f43b1efbc252c7c864e3c",
+        "bytes": 14725,
+        "sha256": "1f6ac6254173bb477cb7b843c24c223a24858d4452b09d8cc3d01f83c54dc4b3"
+      },
+      {
+        "path": "tests/security/test_input_capture.py",
+        "mode": "100644",
+        "git_blob": "603c12902be7f91326c542fbcd3fc3a809db71ef",
+        "bytes": 12721,
+        "sha256": "e8bfab38536db60d6ec5a44412f77f2b522bfebd39c1f861dfe212a1e91784ff"
+      },
+      {
+        "path": "tests/security/test_input_diagnostics.py",
+        "mode": "100644",
+        "git_blob": "143482eed7c904eb234a6346eed3b87cdd153ee3",
+        "bytes": 5982,
+        "sha256": "f03e0d91796d39fcc8d90f0ff87914bd45feab9ad219db56f3f9c59c6dd4dc56"
+      },
+      {
+        "path": "tests/security/test_input_resource_limits.py",
+        "mode": "100644",
+        "git_blob": "1e4ec484a739b41388d265bdf932ffa224557f71",
+        "bytes": 7639,
+        "sha256": "9df86868eb78c5f14ffd3e4977182e08a3785bfbb3f3d737396b2119ae05e466"
+      },
+      {
+        "path": "tests/security/test_preparation_inertness.py",
+        "mode": "100644",
+        "git_blob": "a4bf23cc17aae0d942af530e96117812835e461e",
+        "bytes": 10311,
+        "sha256": "0a6ff2d62f8d5dca61d37fda2a12edce4bcaa428954f7b7042fc1f7a03fe33fa"
+      },
+      {
+        "path": "tests/security/test_scaffold_inertness.py",
+        "mode": "100644",
+        "git_blob": "5e1c7c60ac85a3ed91e2d4c6cee9aab5ed81614d",
+        "bytes": 14859,
+        "sha256": "7179bb00e004e833d7448172cae2068f912e25adb3860c7d5fba9d46396619ba"
+      },
+      {
+        "path": "tests/security/test_scaffold_no_native_loading.py",
+        "mode": "100644",
+        "git_blob": "69d06755fa425d8508369b744277b2f47e4694af",
+        "bytes": 1402,
+        "sha256": "add4a523f73deba8380a257a1846d8c044249996ec88ca56be1f4903563a96a6"
+      },
+      {
+        "path": "tests/security/test_scaffold_no_network.py",
+        "mode": "100644",
+        "git_blob": "0d9ee870c917aa332a81f13cad8d06d769b8b48a",
+        "bytes": 1253,
+        "sha256": "fafa792547d3e3a5b8800308a9b63869b063dd8baa1ef01ab044203760ca23b2"
+      },
+      {
+        "path": "tests/unit/README.md",
+        "mode": "100644",
+        "git_blob": "0872a045c62640d346533b419f762033119c5d29",
+        "bytes": 1520,
+        "sha256": "780ce188f9f9ae364008304bd844dd51c81bee01d607a27b457c1e54f6535078"
+      },
+      {
+        "path": "tests/unit/test_ancestry_frontiers.py",
+        "mode": "100644",
+        "git_blob": "2afe20f4ae9924990c46c8530ccc796d56830db3",
+        "bytes": 13216,
+        "sha256": "53669615bf8eb7f183d71dfac16e1e744cc58010877e339d81c34d6ca8bd845b"
+      },
+      {
+        "path": "tests/unit/test_context_preservation.py",
+        "mode": "100644",
+        "git_blob": "9999951fb1b3e4a04e82f548681559040dca0473",
+        "bytes": 29854,
+        "sha256": "05b98397397de7df9509d0ea40bd641386fb71c1d39ad22a6c622cc4add164bc"
+      },
+      {
+        "path": "tests/unit/test_contribution_profile.py",
+        "mode": "100644",
+        "git_blob": "c027754105b6f458b9db8663fa381442dfb3fa81",
+        "bytes": 27359,
+        "sha256": "8c8645dceb3c697ed2657c96f103234e1f2a6a115131fcadf0aa50794cf5e389"
+      },
+      {
+        "path": "tests/unit/test_correction_outcomes.py",
+        "mode": "100644",
+        "git_blob": "19e737f14389df7a4bc22ede694cad587b8c7e48",
+        "bytes": 28434,
+        "sha256": "2c06937c4c9c75521d3c29d5843c7b34afa27d061437b0a636a64957d18fa55b"
+      },
+      {
+        "path": "tests/unit/test_correction_routes.py",
+        "mode": "100644",
+        "git_blob": "a58eec2d7cea4919a6e1ac6941de1dd45eccb3e8",
+        "bytes": 25662,
+        "sha256": "288a12d6e5b69a0ca2ca8616d87faee222b748aeef59ab7a66f017c654c1526b"
+      },
+      {
+        "path": "tests/unit/test_evaluator_lineage.py",
+        "mode": "100644",
+        "git_blob": "3090db40f08895915d1cfaeec6b80cc248fa86d1",
+        "bytes": 29567,
+        "sha256": "f90ba1b288bf7203eb11a2660d19ef0fb5358a82dbe8ff9e864d9b5c87a0a947"
+      },
+      {
+        "path": "tests/unit/test_evidence_domain_index.py",
+        "mode": "100644",
+        "git_blob": "d05873f4417f87e87a87ec40a0a3487c20b79be8",
+        "bytes": 9990,
+        "sha256": "addc34a1d7252f0d2aabe34239b626ffa497982eb43bf09db6a75593600ec730"
+      },
+      {
+        "path": "tests/unit/test_findings.py",
+        "mode": "100644",
+        "git_blob": "859d3ae68f81f2462dbd7c6b224a77c596f51957",
+        "bytes": 24624,
+        "sha256": "3624f78945a17e8d9af3f2ed2449d786cdab702b73c1e1c6ddbac4cfe0220b61"
+      },
+      {
+        "path": "tests/unit/test_graph_cycles.py",
+        "mode": "100644",
+        "git_blob": "e817b0005d7fd6704570a6c16e93eb8f51af55de",
+        "bytes": 11334,
+        "sha256": "8c6340a9cbf527305b17110f155369a15d4b79b50943918cb2d4536aca2925b0"
+      },
+      {
+        "path": "tests/unit/test_graph_traversal.py",
+        "mode": "100644",
+        "git_blob": "17e95e11b9a6756065e8c4b6401a6cdd896f15ea",
+        "bytes": 17303,
+        "sha256": "6fc863e073c743f4c77eb809487ea2a3659dcfc0ef5836d3ed2d7a693ad47d7a"
+      },
+      {
+        "path": "tests/unit/test_graph_witnesses.py",
+        "mode": "100644",
+        "git_blob": "e9de4a1f53d2d2f98e3acba506d2fc2540e789e7",
+        "bytes": 19092,
+        "sha256": "b013d94df8e39c166fef7eea013515ecd0b9d1bee585ffa5d12171fee3015eb4"
+      },
+      {
+        "path": "tests/unit/test_human_review.py",
+        "mode": "100644",
+        "git_blob": "5cf60dfdb1547b55de9a0640f449450998efbe62",
+        "bytes": 27440,
+        "sha256": "07a8b60cbba11e5218a670ca3345b4b5f9a78fb091574872cd6cef77757f4ddd"
+      },
+      {
+        "path": "tests/unit/test_immediate_inheritance.py",
+        "mode": "100644",
+        "git_blob": "f82bed0038e8fc825f576740f42325b9d565e03a",
+        "bytes": 14713,
+        "sha256": "bf5e50af4b5a39a8c393df4a9802774338ff3413b9df31ed1659f02284155704"
+      },
+      {
+        "path": "tests/unit/test_input_decoding.py",
+        "mode": "100644",
+        "git_blob": "0cfdd5ae61605b598d2fe52d8fae7460ac4e410e",
+        "bytes": 8381,
+        "sha256": "7852ae877408b4f1e56e98235f8082553bb9a5a84f095712b776a1bd09977541"
+      },
+      {
+        "path": "tests/unit/test_inventory.py",
+        "mode": "100644",
+        "git_blob": "2e587b4895b057492677d40ea29906bec9c3ac26",
+        "bytes": 17113,
+        "sha256": "c84ae72fa7f56f728bc3830936e18e46944358610e475c8af320bc3db195f2ab"
+      },
+      {
+        "path": "tests/unit/test_origins.py",
+        "mode": "100644",
+        "git_blob": "05fa0cba16b7cd69bcfae6155391a5bab74f1256",
+        "bytes": 52307,
+        "sha256": "4b529c0950a4874fcec7ea18139a5b1ab0369d6bd6cfd36c8eb9896eb3726915"
+      },
+      {
+        "path": "tests/unit/test_pipeline_cohorts.py",
+        "mode": "100644",
+        "git_blob": "c76b683c706fe6e0ed75e6bb93dd59323ce6dc1b",
+        "bytes": 37878,
+        "sha256": "1aa6c71d7b5fa803024be342a82af3998857bbbdfe2f6f34854ddf6a4314b597"
+      },
+      {
+        "path": "tests/unit/test_presence.py",
+        "mode": "100644",
+        "git_blob": "2db2afe39c3a1b41a63209736d8fb156997657b4",
+        "bytes": 31769,
+        "sha256": "400fbb77bad550ce1aae88f4a1f89c23e30ae15db0b9f4b9de082c793aff40b2"
+      },
+      {
+        "path": "tests/unit/test_process_comparison.py",
+        "mode": "100644",
+        "git_blob": "93a674a7d92f73153bfbc34be470062809904ffc",
+        "bytes": 53252,
+        "sha256": "a98345a7bf2319caf85eb8cb4064b38060dc1b64d790cdcd0b3914b034b37aaa"
+      },
+      {
+        "path": "tests/unit/test_provenance_profile.py",
+        "mode": "100644",
+        "git_blob": "1cb11aee13d1830cf06a5f337c324b8d8e8d9920",
+        "bytes": 29841,
+        "sha256": "74b599ede4cc638a430cc48fa19f7ccb5573f9b1f4ed7d9f9216ddfb8f1f9ab1"
+      },
+      {
+        "path": "tests/unit/test_reference_validation.py",
+        "mode": "100644",
+        "git_blob": "88dd1fed78eb3c30ce6a406e8509238206556b17",
+        "bytes": 7373,
+        "sha256": "9bc483127d8657ba8209789985f9d6cdc725ca98545ab49328a0c44b1145fd69"
+      },
+      {
+        "path": "tests/unit/test_value_capture.py",
+        "mode": "100644",
+        "git_blob": "77021bab9a31cea05231f60d492f47b128b011a9",
+        "bytes": 9176,
+        "sha256": "e42c870f28d0f8216ad365b306eb77acd9116297f986a37ca10a97f6a7d64137"
+      },
+      {
+        "path": "tools/check_phase0_baseline.py",
+        "mode": "100644",
+        "git_blob": "307919a24242e4a1743c0608d6f913610805e225",
+        "bytes": 5341,
+        "sha256": "3c125bf482203be5f385bbe146fb597f80b2610968d1923bff075f722224eb8e"
+      },
+      {
+        "path": "tools/check_scaffold_boundary.py",
+        "mode": "100644",
+        "git_blob": "052b98539c82aa62274f89bb27c38db2fcf30c85",
+        "bytes": 43481,
+        "sha256": "fc9885337b4973a084c4c7326370a7962b898c14f6a0858e09ee6ccbeb97071a"
+      }
+    ],
+    "actual_direct_verification": {
+      "tests": 371,
+      "seconds": 343.61578984399966,
+      "execution": {
+        "path": "w15-r02-direct-final-execution.json",
+        "bytes": 24150,
+        "sha256": "422205a4d094cb9d03aa49c314d2bf4020dc4e30123776e66697292513c71941"
+      },
+      "junit": {
+        "path": "w15-r02-direct-final.xml",
+        "bytes": 60691,
+        "sha256": "3c31e9f11bd3f7e52c552f4905cdfadd1a22241db393826020bd3108c5dcf027"
+      },
+      "source_bound_paths": [
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "meaning": "Actual affected driver and transition checks on these exact source bytes before commit; not the required final-head hosted matrix."
+    },
+    "meaning": "Complete actual directly tested R02 precursor, with its then-current historical handoff documents. Final successor and hosted evidence are linked externally after execution."
+  },
+  "historical_r01_proposal": {
+    "id": "P3-W15-R01",
+    "status": "proposed_pending_explicit_owner_approval",
+    "approval": null,
+    "accepted_predecessor": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
+    "original_paths": [
+      "PHASE_3_COMPLETION.md",
+      "PHASE_3_PROGRESS.md",
+      "README.md",
+      "phase3/delivery_manifest.json",
+      "phase3/implementation_evidence.json",
+      "phase3/module_policy.json",
+      "phase3/obligation_coverage.json"
+    ],
+    "additional_paths": [
+      "src/source_integrity_toolkit/runtime/boundary.py",
+      "tests/integration/test_analytical_pipeline.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py"
+    ],
+    "effective_path_count_if_approved": 11,
+    "path_purposes": {
+      "src/source_integrity_toolkit/runtime/boundary.py": "Implement the source-mandated dimension_not_selected reason for empty dependency selection on otherwise planned dimension-dependent nonresult cells. Keep no implicit dimension, exact null values/scopes, existing resource accounting and execution/availability separation.",
+      "tests/integration/test_analytical_pipeline.py": "Strengthen the existing value/UTF-8 empty-dimension test with exact reason and structural-inapplicability assertions; add or parameterize the paired explicit acquisition case and preserve genuine no-subject/incomplete-role reasons. Retain all existing identities and assertions.",
+      "tests/scaffold/test_ci_contract.py": "Add fixed literal W15-only immediate scope exception and history ancestry boundary; retain all preceding scope rules and every intermediate-commit check.",
+      "tests/contract/test_phase3_transition.py": "Update narrowly enumerated source-delta oracle and existing scope/history assertions to permit exactly this approved W15 exception. Reuse inherited negative controls against path expansion, future/retroactive permission, missing ancestry and dropped history."
+    },
+    "semantic_constraints": [
+      "The source obligation is VALIDATION_PLAN.md section 14.2 dimension_not_selected: inventory-only inquiry with empty selected dimensions, paired with explicitly selected acquisition. OBSERVABILITY_AND_REPORTING.md reason inventory defines the inquiry not selecting a dimension.",
+      "Unavailable evidence or missing subjects must not silently replace this declared selection reason; preserve existing null dimension, null value and no invented acquisition computation.",
+      "Retain no_applicable_subject for genuinely absent eligible subject tuples and roles_incomplete for actual evaluations lacking roles. Do not bulk-relabel unrelated no_subject cells. Preserve stopped/failure classifications and budget ceilings.",
+      "Existing contracts/results.py already registers dimension_not_selected, so no results vocabulary or record contract edit is necessary."
+    ],
+    "scope_gate_design": [
+      "Raw PHASE_3_PLAN.md remains hash-pinned and its W15 path set remains exactly seven. Only driver phase3_effective_paths applies four hardcoded R01 paths when step == 15; earlier immediate scopes remain byte-for-byte semantic equivalents.",
+      "Candidate module_policy/implementation/coverage metadata cannot select or expand the exception. The R01 identifier becomes cumulative only at W15.",
+      "Pin the actual authorization checkpoint commit/tree and accepted predecessor in driver and independent transition literals. Current accepted W14 predecessor is 6dbca96f3314d537beed4ccb6202147bd9248dd9 with tree acedd751af602609c7c228083d770fd7904b7939. If a seven-path W15 proposal checkpoint is committed before approval, pin its actual commit/tree/sole parent and retain original seven-path permission for every predecessor-to-checkpoint commit. No placeholder SHA enters executable gates.",
+      "Every repaired current W15 commit must descend from the pinned boundary and remain within the eleven-path effective set. Historical W01-W14 segments retain their original owner-specific immediate and cumulative rules, including existing R01/R02 approvals. Side branches, restored unauthorized edits and arbitrary parent histories remain rejected.",
+      "Extend existing exact-driver delta replay from actual W14 accepted driver bytes using enumerated authorized substitutions. Keep all original helper bodies/checks outside those deltas and all prior negative mutation identities. No independent new registry or verification framework is needed.",
+      "The final exact W15 head, including final completion/progress/manifest bytes, requires its own four-profile cumulative run. Record actual new test count; retain the 3918 existing nodes and 428 existing subtests. No skips, xfails, quarantine, quota increase or timeout changes are permitted by this repair.",
+      "Any extra product, guard, workflow, fixture, oracle, catalog, report/public API or package change falls outside this amendment and must stop for separately justified scope."
+    ],
+    "guard_remains_frozen": {
+      "path": "tools/check_scaffold_boundary.py",
+      "reason": "PHASE3_EXTENSION_FIRST_UNIT already assigns runtime/boundary.py to 13; phase3_mutable_modules includes it at W15. The declared reason exists in contracts/results.py REASON_CODES. Current live/layer checks do not constrain this branch or reason string. Immediate changed-path permission belongs to CI driver, not this guard.",
+      "must_preserve": "Exact existing guard bytes/hash, PHASE3_PLAN_SHA256, PHASE3_ENTRY_SHA256, first-unit tables, historical APIs and permanent inert inventory."
+    },
+    "actual_preapproval_checkpoint": "Recorded externally in the draft PR and evidence package after this commit exists.",
+    "verification_after_approval": [
+      "Strengthen existing empty-dimension value/UTF-8 identities and add the explicit-acquisition paired control. Assert exact code, classification, state, null values, scope links and unchanged source.",
+      "Exercise genuine no-subject, incomplete-role and selected-dimension controls so the repair cannot bulk-relabel unrelated nonresults; inspect dimension-dependent M003/M008/M013 fallback applicability.",
+      "Run affected existing scope/history controls and their rejecting mutations with literal approved exception and actual checkpoint ancestry, without a new verification framework.",
+      "Run the final exact W15 head once through all four required profiles. Retain every existing 3918 identity and 428 subtest events, record actual additions, raw service evidence, package inventories and installed behavior.",
+      "Record final service results in the PR and review package after the immutable final commit exists. No unnecessary administrative full-matrix repeat."
+    ],
+    "exclusions": "No guard/workflow/pin/timeout/quota/fixture/oracle/specification/public-interface change; no merge, release or next-phase implementation."
+  },
+  "approved_amendment": {
+    "id": "P3-W15-R01",
+    "status": "owner_approved_implemented_directly_verified",
+    "approval": {
+      "amendment": "P3-W15-R01",
+      "owner_quote": "批准 P3-W15-R01",
+      "owner_message_utc": "2026-09-26T19:31:52Z",
+      "approved_proposal_sha256": "b9c47a0bbc7d4c801c3c8e563afd0f09c7c0c2c472c1759a87f255a2eeb626c7",
+      "scope_design_sha256": "f3ab195e9ab093a5960182e83c40f37df90500ffd203bce157ea81c58ba2cce4",
+      "checkpoint": "e8cf08296f6d335a501a451c777b9de4677ff934",
+      "checkpoint_tree": "2f26ad5ae8357d972b61464e42f5229f21ae2ec4",
+      "accepted_predecessor": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
+      "pull_request": 34,
+      "additional_paths": [
+        "src/source_integrity_toolkit/runtime/boundary.py",
+        "tests/integration/test_analytical_pipeline.py",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "effective_path_count": 11,
+      "authorized": "Narrow declared-selection reason repair, direct paired/negative controls, W15-only ancestry-delimited scope controls, final exact-head four-profile CI and evidence handoff.",
+      "excluded": "Merge, phase acceptance, next phase, executable verification consolidation, guard/workflow/pin/quota/fixture/oracle/public interface changes."
+    },
+    "approval_receipt": {
+      "path": "w15-r01-approval.json",
+      "bytes": 1133,
+      "sha256": "d69f0ef11e68accb2639c9cfb2f0d16482e2c11e339ade035e35a794393a4fcf"
+    },
+    "tested_repair_precursor": {
+      "commit": "2a8697ea23e315e74c7cc8d7632c95725332b45b",
+      "tree": "b77e6b508aeee653dd822c7a3414c26c517545eb",
+      "parent": "e8cf08296f6d335a501a451c777b9de4677ff934",
+      "verification_scope": "source-bound direct affected checks; final hosted matrix belongs to the later handoff head"
+    },
+    "changed_paths": [
+      "src/source_integrity_toolkit/runtime/boundary.py",
+      "tests/integration/test_analytical_pipeline.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py"
+    ],
+    "source_sha256": {
+      "src/source_integrity_toolkit/runtime/boundary.py": "a53ce75d52b8720a7a7981b88d06dcc16d5e4ba6d21d0bb17094e67b693d5101",
+      "tests/integration/test_analytical_pipeline.py": "381cdc6d0233e715352c9e85c28d7b96655cd7eaa730244134a271c7d35e796b",
+      "tests/scaffold/test_ci_contract.py": "768287a2be11c12a4d35d515307c430d1b48419657826c917813e008e3af9fe0",
+      "tests/contract/test_phase3_transition.py": "4c558580ee3ff31834c985a05c425d73b033591083517a69accb5fbdfbbf9937"
+    },
+    "implemented_behavior": [
+      "An empty Inquiry dependency selection yields dimension_not_selected for planned M002/M003/M004/M005/M006/M007/M013 structural nonresults, without creating a default dimension.",
+      "Each selected Evaluation with a supplied role pair and empty dimensions receives its own scoped dimension_not_selected M008 cells; incomplete actual roles retain roles_incomplete.",
+      "Completed structural cells retain not_applicable, null values/dimensions, structural_inapplicability, actual Inquiry input refs and affected Result refs. Absent Evaluations/routes retain no_applicable_subject and selected missing comparisons remain evidence gaps.",
+      "Additional selection and input-reference work is charged prospectively. Fixed quotas, clocks, interruption/failure separation, public refusals, guard, workflow, pins, fixtures and oracles remain unchanged.",
+      "Only W15 successors of the fixed checkpoint receive the four literal extra paths. Original seven-path checkpoint permission and all earlier unit/history controls remain active."
+    ],
+    "direct_verification": {
+      "semantic": {
+        "tests": 98,
+        "seconds": 255.7688072999954,
+        "execution": {
+          "path": "w15-r01-direct-semantic-execution.json",
+          "bytes": 24188,
+          "sha256": "061a6e7348fc885cc9113d4119f204850d8c450c6a1e6e0b52b9eb3fdcd49a76"
+        },
+        "junit": {
+          "path": "w15-r01-direct-semantic.xml",
+          "bytes": 16850,
+          "sha256": "b3be4933bf0af6d6406562dd6c5ae89065fa723ac838fc94d795477ef465a70e"
+        },
+        "source_bound_paths": [
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "tests/integration/test_analytical_pipeline.py",
+          "tests/security/test_analytical_interruption.py",
+          "tests/contract/test_analytical_observability.py"
+        ],
+        "meaning": "Actual local CPython 3.12.14 affected checks on these exact bytes before commit; the later commit preserves them. This is not the required four-profile CI."
+      },
+      "scope": {
+        "tests": 27,
+        "seconds": 170.11755112399987,
+        "execution": {
+          "path": "w15-r01-direct-scope-execution.json",
+          "bytes": 24237,
+          "sha256": "e1a4ffb77b2ccf75e3df897ddbe699a8101e39d10db223d80ed00d8e87953e27"
+        },
+        "junit": {
+          "path": "w15-r01-direct-scope.xml",
+          "bytes": 4540,
+          "sha256": "dfdd0c281a6831f01a67eefed5d1b116f7127e7a94768a893526ad899a547a79"
+        },
+        "source_bound_paths": [
+          "src/source_integrity_toolkit/runtime/boundary.py",
+          "tests/integration/test_analytical_pipeline.py",
+          "tests/scaffold/test_ci_contract.py",
+          "tests/contract/test_phase3_transition.py"
+        ],
+        "meaning": "Actual local CPython 3.12.14 affected checks on these exact bytes before commit; the later commit preserves them. This is not the required four-profile CI."
+      }
+    },
+    "additional_actual_checks": {
+      "pre_cache_complete_transition_suite": {
+        "tests": 326,
+        "junit": {
+          "path": "w15-r01-scope-attempt1.xml",
+          "bytes": 54218,
+          "sha256": "29cb5921279817934fc44a1d9e37eee7f86b0167756fb7478fb24ed3100819a6"
+        }
+      },
+      "unchanged_driver_controls": {
+        "tests": 20,
+        "junit": {
+          "path": "w15-r01-driver-controls.xml",
+          "bytes": 2856,
+          "sha256": "d1edee4d5340ee05a8e0db3222cd27275758660641d92bb16c0ce23383ffa455"
+        }
+      },
+      "cache_adaptation": "The nine new controls cache only actual immutable Git archive hashes by commit ID across local clones; all path/ancestry/mutation checks still execute. The final 27 affected controls reran after that test-only change."
+    },
+    "actual_collection": {
+      "count": 3937,
+      "retained_w14": 3918,
+      "new": 19,
+      "removed": 0,
+      "new_nodes": {
+        "path": "w15-approved-new-nodes.json",
+        "bytes": 2866,
+        "sha256": "2707bb657df20e330046cb24ef0d9ab34a523dd9116d0458727590256db7b4be"
+      }
+    },
+    "failed_attempts": {
+      "first_targeted_attempt": {
+        "junit": {
+          "path": "w15-r01-semantic-attempt1.xml",
+          "bytes": 18564,
+          "sha256": "d352581f038d48e325ffb25a0a9ea6a26cc3bf5f115c3ddc5b5913b1ef1eeb1e"
+        },
+        "failures": 10,
+        "explanation": "New tests initially used a nonexistent affected_refs attribute and an inadmissible empty Claim selection. Corrected tests use affected_result_refs and an admitted Inquiry with genuinely absent Evaluation/route subjects; no contract or fixture was changed."
+      },
+      "corrected_targeted_attempt": {
+        "junit": {
+          "path": "w15-r01-semantic-attempt2.xml",
+          "bytes": 2514,
+          "sha256": "edd51741be6434d6006243965aa13f7ba475e980c6c0639cf1611d7b1b5f364a"
+        },
+        "passed": 13
+      }
+    },
+    "final_matrix": {
+      "status": "exact_final_head_gate_recorded_externally_after_execution",
+      "required_profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "required_tests_per_profile": 3937,
+      "required_separate_subtests": 428,
+      "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
+      "rule": "No acceptance until actual exact-final-head CI, four raw ZIPs and the source/package/history audit pass. This immutable record does not claim a not-yet-run execution."
+    }
+  },
+  "historical_r01_snapshot": {
     "commit": "2a8697ea23e315e74c7cc8d7632c95725332b45b",
     "tree": "b77e6b508aeee653dd822c7a3414c26c517545eb",
     "files": [
@@ -16056,207 +17760,124 @@
     },
     "meaning": "Complete named directly tested repair precursor, including its then-current historical checkpoint documents. It is not the final handoff tree and has no four-profile claim. Final exact-head CI and its full tracked hash inventory are recorded externally after that head exists."
   },
-  "historical_r01_proposal": {
-    "id": "P3-W15-R01",
-    "status": "proposed_pending_explicit_owner_approval",
-    "approval": null,
-    "accepted_predecessor": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
-    "original_paths": [
-      "PHASE_3_COMPLETION.md",
-      "PHASE_3_PROGRESS.md",
-      "README.md",
-      "phase3/delivery_manifest.json",
-      "phase3/implementation_evidence.json",
-      "phase3/module_policy.json",
-      "phase3/obligation_coverage.json"
-    ],
-    "additional_paths": [
-      "src/source_integrity_toolkit/runtime/boundary.py",
-      "tests/integration/test_analytical_pipeline.py",
-      "tests/scaffold/test_ci_contract.py",
-      "tests/contract/test_phase3_transition.py"
-    ],
-    "effective_path_count_if_approved": 11,
-    "path_purposes": {
-      "src/source_integrity_toolkit/runtime/boundary.py": "Implement the source-mandated dimension_not_selected reason for empty dependency selection on otherwise planned dimension-dependent nonresult cells. Keep no implicit dimension, exact null values/scopes, existing resource accounting and execution/availability separation.",
-      "tests/integration/test_analytical_pipeline.py": "Strengthen the existing value/UTF-8 empty-dimension test with exact reason and structural-inapplicability assertions; add or parameterize the paired explicit acquisition case and preserve genuine no-subject/incomplete-role reasons. Retain all existing identities and assertions.",
-      "tests/scaffold/test_ci_contract.py": "Add fixed literal W15-only immediate scope exception and history ancestry boundary; retain all preceding scope rules and every intermediate-commit check.",
-      "tests/contract/test_phase3_transition.py": "Update narrowly enumerated source-delta oracle and existing scope/history assertions to permit exactly this approved W15 exception. Reuse inherited negative controls against path expansion, future/retroactive permission, missing ancestry and dropped history."
-    },
-    "semantic_constraints": [
-      "The source obligation is VALIDATION_PLAN.md section 14.2 dimension_not_selected: inventory-only inquiry with empty selected dimensions, paired with explicitly selected acquisition. OBSERVABILITY_AND_REPORTING.md reason inventory defines the inquiry not selecting a dimension.",
-      "Unavailable evidence or missing subjects must not silently replace this declared selection reason; preserve existing null dimension, null value and no invented acquisition computation.",
-      "Retain no_applicable_subject for genuinely absent eligible subject tuples and roles_incomplete for actual evaluations lacking roles. Do not bulk-relabel unrelated no_subject cells. Preserve stopped/failure classifications and budget ceilings.",
-      "Existing contracts/results.py already registers dimension_not_selected, so no results vocabulary or record contract edit is necessary."
-    ],
-    "scope_gate_design": [
-      "Raw PHASE_3_PLAN.md remains hash-pinned and its W15 path set remains exactly seven. Only driver phase3_effective_paths applies four hardcoded R01 paths when step == 15; earlier immediate scopes remain byte-for-byte semantic equivalents.",
-      "Candidate module_policy/implementation/coverage metadata cannot select or expand the exception. The R01 identifier becomes cumulative only at W15.",
-      "Pin the actual authorization checkpoint commit/tree and accepted predecessor in driver and independent transition literals. Current accepted W14 predecessor is 6dbca96f3314d537beed4ccb6202147bd9248dd9 with tree acedd751af602609c7c228083d770fd7904b7939. If a seven-path W15 proposal checkpoint is committed before approval, pin its actual commit/tree/sole parent and retain original seven-path permission for every predecessor-to-checkpoint commit. No placeholder SHA enters executable gates.",
-      "Every repaired current W15 commit must descend from the pinned boundary and remain within the eleven-path effective set. Historical W01-W14 segments retain their original owner-specific immediate and cumulative rules, including existing R01/R02 approvals. Side branches, restored unauthorized edits and arbitrary parent histories remain rejected.",
-      "Extend existing exact-driver delta replay from actual W14 accepted driver bytes using enumerated authorized substitutions. Keep all original helper bodies/checks outside those deltas and all prior negative mutation identities. No independent new registry or verification framework is needed.",
-      "The final exact W15 head, including final completion/progress/manifest bytes, requires its own four-profile cumulative run. Record actual new test count; retain the 3918 existing nodes and 428 existing subtests. No skips, xfails, quarantine, quota increase or timeout changes are permitted by this repair.",
-      "Any extra product, guard, workflow, fixture, oracle, catalog, report/public API or package change falls outside this amendment and must stop for separately justified scope."
-    ],
-    "guard_remains_frozen": {
-      "path": "tools/check_scaffold_boundary.py",
-      "reason": "PHASE3_EXTENSION_FIRST_UNIT already assigns runtime/boundary.py to 13; phase3_mutable_modules includes it at W15. The declared reason exists in contracts/results.py REASON_CODES. Current live/layer checks do not constrain this branch or reason string. Immediate changed-path permission belongs to CI driver, not this guard.",
-      "must_preserve": "Exact existing guard bytes/hash, PHASE3_PLAN_SHA256, PHASE3_ENTRY_SHA256, first-unit tables, historical APIs and permanent inert inventory."
-    },
-    "actual_preapproval_checkpoint": "Recorded externally in the draft PR and evidence package after this commit exists.",
-    "verification_after_approval": [
-      "Strengthen existing empty-dimension value/UTF-8 identities and add the explicit-acquisition paired control. Assert exact code, classification, state, null values, scope links and unchanged source.",
-      "Exercise genuine no-subject, incomplete-role and selected-dimension controls so the repair cannot bulk-relabel unrelated nonresults; inspect dimension-dependent M003/M008/M013 fallback applicability.",
-      "Run affected existing scope/history controls and their rejecting mutations with literal approved exception and actual checkpoint ancestry, without a new verification framework.",
-      "Run the final exact W15 head once through all four required profiles. Retain every existing 3918 identity and 428 subtest events, record actual additions, raw service evidence, package inventories and installed behavior.",
-      "Record final service results in the PR and review package after the immutable final commit exists. No unnecessary administrative full-matrix repeat."
-    ],
-    "exclusions": "No guard/workflow/pin/timeout/quota/fixture/oracle/specification/public-interface change; no merge, release or next-phase implementation."
-  },
-  "approved_amendment": {
-    "id": "P3-W15-R01",
+  "approved_r02_amendment": {
+    "id": "P3-W15-R02",
     "status": "owner_approved_implemented_directly_verified",
     "approval": {
-      "amendment": "P3-W15-R01",
-      "owner_quote": "批准 P3-W15-R01",
-      "owner_message_utc": "2026-09-26T19:31:52Z",
-      "approved_proposal_sha256": "b9c47a0bbc7d4c801c3c8e563afd0f09c7c0c2c472c1759a87f255a2eeb626c7",
-      "scope_design_sha256": "f3ab195e9ab093a5960182e83c40f37df90500ffd203bce157ea81c58ba2cce4",
-      "checkpoint": "e8cf08296f6d335a501a451c777b9de4677ff934",
-      "checkpoint_tree": "2f26ad5ae8357d972b61464e42f5229f21ae2ec4",
+      "amendment": "P3-W15-R02",
+      "owner_quote": "批准 P3-W15-R02",
+      "owner_message_utc": "2026-09-27T04:50:25Z",
+      "owner_message_local": "2026-09-26T21:50:25-07:00",
+      "approved_proposal_sha256": "2669a9caae914001cbf9234714670dfadf7fa032843ce4416c55a8dc5c97559f",
+      "proposal_package_sha256": "cef46ba2c357eb07b2cde03bfeb49ef3da06193ed3c901ad9ffcd176c8285063",
+      "checkpoint": "4d480f2cc5400e96e724d949ed00c82d62f5aeb7",
+      "checkpoint_tree": "bf667ea9d1e46379eee610793c9ecf317ca77276",
+      "checkpoint_parent": "2a8697ea23e315e74c7cc8d7632c95725332b45b",
       "accepted_predecessor": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
       "pull_request": 34,
-      "additional_paths": [
-        "src/source_integrity_toolkit/runtime/boundary.py",
-        "tests/integration/test_analytical_pipeline.py",
+      "verification_paths": [
         "tests/scaffold/test_ci_contract.py",
         "tests/contract/test_phase3_transition.py"
       ],
-      "effective_path_count": 11,
-      "authorized": "Narrow declared-selection reason repair, direct paired/negative controls, W15-only ancestry-delimited scope controls, final exact-head four-profile CI and evidence handoff.",
-      "excluded": "Merge, phase acceptance, next phase, executable verification consolidation, guard/workflow/pin/quota/fixture/oracle/public interface changes."
+      "record_paths": [
+        "PHASE_3_COMPLETION.md",
+        "PHASE_3_PROGRESS.md",
+        "README.md",
+        "phase3/delivery_manifest.json",
+        "phase3/implementation_evidence.json",
+        "phase3/module_policy.json",
+        "phase3/obligation_coverage.json"
+      ],
+      "post_checkpoint_allowed_path_count": 9,
+      "authorized": "Within-call actual Git parents/tree metadata batching, exact source/scope and semantic equivalence controls, measured comparison, truthful handoff records, final exact-head four-profile CI and raw evidence audit.",
+      "preserved": "All product and analytical integration bytes at the actual checkpoint; all 3937 existing test identities and 428 separate subtests; live history/ancestry/diff/deletion/archive checks, actual message reads, frozen guard/workflow/pins/specifications/fixtures/oracles, 1800-second suite and 40-minute job limits.",
+      "excluded": "Merge, owner phase acceptance, next phase, permanent verification consolidation, cross-root or cross-call history result caches, product changes or timeout expansion."
     },
     "approval_receipt": {
-      "path": "w15-r01-approval.json",
-      "bytes": 1133,
-      "sha256": "d69f0ef11e68accb2639c9cfb2f0d16482e2c11e339ade035e35a794393a4fcf"
+      "path": "w15-r02-approval.json",
+      "bytes": 1806,
+      "sha256": "7047a69f04e0af347b65c71cd9126f88faf4fce016cb7154c1e21b1ad9524add"
     },
     "tested_repair_precursor": {
-      "commit": "2a8697ea23e315e74c7cc8d7632c95725332b45b",
-      "tree": "b77e6b508aeee653dd822c7a3414c26c517545eb",
-      "parent": "e8cf08296f6d335a501a451c777b9de4677ff934",
-      "verification_scope": "source-bound direct affected checks; final hosted matrix belongs to the later handoff head"
+      "commit": "fae43fcdae0341a6f596545f700bc8932b5d8444",
+      "tree": "3eea2f22566a262167be115f9be142772cc41a1e",
+      "parent": "4d480f2cc5400e96e724d949ed00c82d62f5aeb7",
+      "meaning": "Actual directly tested two-file repair, followed by final handoff records."
     },
     "changed_paths": [
-      "src/source_integrity_toolkit/runtime/boundary.py",
-      "tests/integration/test_analytical_pipeline.py",
       "tests/scaffold/test_ci_contract.py",
       "tests/contract/test_phase3_transition.py"
     ],
     "source_sha256": {
-      "src/source_integrity_toolkit/runtime/boundary.py": "a53ce75d52b8720a7a7981b88d06dcc16d5e4ba6d21d0bb17094e67b693d5101",
-      "tests/integration/test_analytical_pipeline.py": "381cdc6d0233e715352c9e85c28d7b96655cd7eaa730244134a271c7d35e796b",
-      "tests/scaffold/test_ci_contract.py": "768287a2be11c12a4d35d515307c430d1b48419657826c917813e008e3af9fe0",
-      "tests/contract/test_phase3_transition.py": "4c558580ee3ff31834c985a05c425d73b033591083517a69accb5fbdfbbf9937"
+      "tests/scaffold/test_ci_contract.py": "48c78cd0f729d96b5cec2ec4c4bae8419edca2bfe8fcf38d86453c14ff256878",
+      "tests/contract/test_phase3_transition.py": "32dda6db397d516065cfc493dad13a7611765993ac56120a65a83c2d59c399b2"
     },
     "implemented_behavior": [
-      "An empty Inquiry dependency selection yields dimension_not_selected for planned M002/M003/M004/M005/M006/M007/M013 structural nonresults, without creating a default dimension.",
-      "Each selected Evaluation with a supplied role pair and empty dimensions receives its own scoped dimension_not_selected M008 cells; incomplete actual roles retain roles_incomplete.",
-      "Completed structural cells retain not_applicable, null values/dimensions, structural_inapplicability, actual Inquiry input refs and affected Result refs. Absent Evaluations/routes retain no_applicable_subject and selected missing comparisons remain evidence gaps.",
-      "Additional selection and input-reference work is charged prospectively. Fixed quotas, clocks, interruption/failure separation, public refusals, guard, workflow, pins, fixtures and oracles remain unchanged.",
-      "Only W15 successors of the fixed checkpoint receive the four literal extra paths. Original seven-path checkpoint permission and all earlier unit/history controls remain active."
+      "Git-formatted full commit IDs, parents and trees are read in ordered call-local batches with exact row/field coverage and framing.",
+      "No batch data persists across calls or ROOTs. Commit messages, live DAG traversal, ancestry, diff/deletion, archive hashes and every intermediate/history completeness check remain actual.",
+      "The fixed actual R02 checkpoint delimits earlier R01 history from later seven-record/two-verification-file permission; all products and analytical integration remain unchanged.",
+      "Existing identities and assertions remain live; tiny real Git repositories exercise legacy equivalence and malformed/forged batch controls. Timeouts, quotas, workflow, pins, frozen specifications and fixtures are unchanged."
     ],
     "direct_verification": {
-      "semantic": {
-        "tests": 98,
-        "seconds": 255.7688072999954,
-        "execution": {
-          "path": "w15-r01-direct-semantic-execution.json",
-          "bytes": 24188,
-          "sha256": "061a6e7348fc885cc9113d4119f204850d8c450c6a1e6e0b52b9eb3fdcd49a76"
-        },
-        "junit": {
-          "path": "w15-r01-direct-semantic.xml",
-          "bytes": 16850,
-          "sha256": "b3be4933bf0af6d6406562dd6c5ae89065fa723ac838fc94d795477ef465a70e"
-        },
-        "source_bound_paths": [
-          "src/source_integrity_toolkit/runtime/boundary.py",
-          "tests/integration/test_analytical_pipeline.py",
-          "tests/security/test_analytical_interruption.py",
-          "tests/contract/test_analytical_observability.py"
-        ],
-        "meaning": "Actual local CPython 3.12.14 affected checks on these exact bytes before commit; the later commit preserves them. This is not the required four-profile CI."
+      "tests": 371,
+      "seconds": 343.61578984399966,
+      "execution": {
+        "path": "w15-r02-direct-final-execution.json",
+        "bytes": 24150,
+        "sha256": "422205a4d094cb9d03aa49c314d2bf4020dc4e30123776e66697292513c71941"
       },
-      "scope": {
-        "tests": 27,
-        "seconds": 170.11755112399987,
-        "execution": {
-          "path": "w15-r01-direct-scope-execution.json",
-          "bytes": 24237,
-          "sha256": "e1a4ffb77b2ccf75e3df897ddbe699a8101e39d10db223d80ed00d8e87953e27"
-        },
-        "junit": {
-          "path": "w15-r01-direct-scope.xml",
-          "bytes": 4540,
-          "sha256": "dfdd0c281a6831f01a67eefed5d1b116f7127e7a94768a893526ad899a547a79"
-        },
-        "source_bound_paths": [
-          "src/source_integrity_toolkit/runtime/boundary.py",
-          "tests/integration/test_analytical_pipeline.py",
-          "tests/scaffold/test_ci_contract.py",
-          "tests/contract/test_phase3_transition.py"
-        ],
-        "meaning": "Actual local CPython 3.12.14 affected checks on these exact bytes before commit; the later commit preserves them. This is not the required four-profile CI."
-      }
+      "junit": {
+        "path": "w15-r02-direct-final.xml",
+        "bytes": 60691,
+        "sha256": "3c31e9f11bd3f7e52c552f4905cdfadd1a22241db393826020bd3108c5dcf027"
+      },
+      "source_bound_paths": [
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "meaning": "Actual affected driver and transition checks on these exact source bytes before commit; not the required final-head hosted matrix."
     },
-    "additional_actual_checks": {
-      "pre_cache_complete_transition_suite": {
-        "tests": 326,
-        "junit": {
-          "path": "w15-r01-scope-attempt1.xml",
-          "bytes": 54218,
-          "sha256": "29cb5921279817934fc44a1d9e37eee7f86b0167756fb7478fb24ed3100819a6"
-        }
-      },
-      "unchanged_driver_controls": {
-        "tests": 20,
-        "junit": {
-          "path": "w15-r01-driver-controls.xml",
-          "bytes": 2856,
-          "sha256": "d1edee4d5340ee05a8e0db3222cd27275758660641d92bb16c0ce23383ffa455"
-        }
-      },
-      "cache_adaptation": "The nine new controls cache only actual immutable Git archive hashes by commit ID across local clones; all path/ancestry/mutation checks still execute. The final 27 affected controls reran after that test-only change."
+    "paired_history_measurement": {
+      "path": "w15-r02-paired-history-measurement.json",
+      "bytes": 327136,
+      "sha256": "b0aaf79aecd34876c26b0e1656b163982d868db588e375f995d07c456645bde7"
+    },
+    "historical_query_baseline": {
+      "path": "w15-history-query-measurement.json",
+      "bytes": 1833,
+      "sha256": "a70f6cde978212bde2a9482159d7b36b768da24cab867c7694790565c73798d1"
     },
     "actual_collection": {
-      "count": 3937,
+      "count": 3962,
+      "retained_r01": 3937,
       "retained_w14": 3918,
-      "new": 19,
+      "new": 25,
       "removed": 0,
       "new_nodes": {
-        "path": "w15-approved-new-nodes.json",
-        "bytes": 2866,
-        "sha256": "2707bb657df20e330046cb24ef0d9ab34a523dd9116d0458727590256db7b4be"
+        "path": "w15-r02-candidate-new-nodes.json",
+        "bytes": 3185,
+        "sha256": "71bc79262db3f2563e41b50e9df113b80f19e06ba62edff03f8404aa89380ccb"
       }
     },
-    "failed_attempts": {
-      "first_targeted_attempt": {
-        "junit": {
-          "path": "w15-r01-semantic-attempt1.xml",
-          "bytes": 18564,
-          "sha256": "d352581f038d48e325ffb25a0a9ea6a26cc3bf5f115c3ddc5b5913b1ef1eeb1e"
-        },
-        "failures": 10,
-        "explanation": "New tests initially used a nonexistent affected_refs attribute and an inadmissible empty Claim selection. Corrected tests use affected_result_refs and an admitted Inquiry with genuinely absent Evaluation/route subjects; no contract or fixture was changed."
+    "historical_failed_final_head": {
+      "head": "4d480f2cc5400e96e724d949ed00c82d62f5aeb7",
+      "run_id": 36268092968,
+      "attempts": [
+        1,
+        2
+      ],
+      "successful_profiles": 3,
+      "failed_profile": "windows-2025-py3.13",
+      "cause": "Both full suites exceeded the unchanged 1800-second subprocess limit; no completed JUnit counts claimed.",
+      "audit": {
+        "path": "w15-blocked-ci-audit.json",
+        "bytes": 9469,
+        "sha256": "7cc1b0556a560265bea37a1d52c835b4b9f367e7e7b4704a7e334ca797c18046"
       },
-      "corrected_targeted_attempt": {
-        "junit": {
-          "path": "w15-r01-semantic-attempt2.xml",
-          "bytes": 2514,
-          "sha256": "edd51741be6434d6006243965aa13f7ba475e980c6c0639cf1611d7b1b5f364a"
-        },
-        "passed": 13
+      "review_package": {
+        "path": "Source-Integrity-Toolkit-P3-W15-R02-Review-Evidence.zip",
+        "bytes": 10838881,
+        "sha256": "cef46ba2c357eb07b2cde03bfeb49ef3da06193ed3c901ad9ffcd176c8285063"
       }
     },
     "final_matrix": {
@@ -16267,10 +17888,10 @@
         "windows-2025-py3.11",
         "windows-2025-py3.13"
       ],
-      "required_tests_per_profile": 3937,
+      "required_tests_per_profile": 3962,
       "required_separate_subtests": 428,
       "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
-      "rule": "No acceptance until actual exact-final-head CI, four raw ZIPs and the source/package/history audit pass. This immutable record does not claim a not-yet-run execution."
+      "rule": "Only actual final-head four-profile CI and original-artifact audit can satisfy this gate; local timing and older passes do not."
     }
   }
 }
