@@ -301,6 +301,35 @@ def git_text(*args):
     return subprocess.check_output(["git", *args], cwd=ROOT, text=True, encoding="utf-8", timeout=60).strip()
 
 
+def phase3_commit_metadata(commits):
+    """Read one ordered batch from Git, with exact rows and terminated fields."""
+    require(type(commits) in (list, tuple) and
+            all(type(commit) is str and re.fullmatch(r"[0-9a-f]{40}", commit) for commit in commits),
+            "invalid_commit_metadata_request")
+    require(len(commits) == len(set(commits)), "duplicate_commit_metadata_request")
+    if not commits:
+        return {}
+    output = subprocess.check_output(["git", "show", "--no-walk=unsorted", "-s",
+                                      "--format=%H%x00%T%x00%P%x00", *commits],
+                                     cwd=ROOT, text=True, encoding="utf-8", timeout=60)
+    require(type(output) is str and output.endswith("\n"), "malformed_commit_metadata_batch")
+    rows = output.split("\n")[:-1]
+    require(len(rows) == len(commits), "incomplete_commit_metadata_batch")
+    metadata = {}
+    for expected, row in zip(commits, rows):
+        fields = row.split("\0")
+        require(len(fields) == 4 and fields[3] == "", "malformed_commit_metadata_record")
+        commit, tree, parents = fields[:3]
+        require(commit == expected and commit not in metadata, "wrong_commit_metadata_identity")
+        require(re.fullmatch(r"[0-9a-f]{40}", tree) is not None, "invalid_commit_metadata_tree")
+        parents = parents.split(" ") if parents else []
+        require(all(re.fullmatch(r"[0-9a-f]{40}", parent) for parent in parents),
+                "invalid_commit_metadata_parent")
+        metadata[commit] = {"parents": parents, "tree": tree}
+    require(set(metadata) == set(commits), "incomplete_commit_metadata_batch")
+    return metadata
+
+
 def changed_between(base, head):
     names = subprocess.check_output(["git", "diff", "--no-renames", "--name-only", "-z", base, head],
                                     cwd=ROOT, timeout=60).decode("utf-8").split("\0")
@@ -362,9 +391,10 @@ def phase3_history(entry, base, head, paths, unit):
     current = phase_guard.phase3_unit_number(unit)
     accepted = git_text("rev-list", "--reverse", "--first-parent", intake + ".." + base).splitlines()
     require(len(accepted) == current - 1, "wrong_phase3_predecessor")
+    metadata = phase3_commit_metadata(accepted)
     previous, segments = intake, []
     for step, merge in enumerate(accepted, 1):
-        parents = git_text("show", "-s", "--format=%P", merge).split()
+        parents = metadata[merge]["parents"]
         require(len(parents) == 2 and parents[0] == previous, "invalid_accepted_merge_chain")
         message = subprocess.check_output(["git", "show", "-s", "--format=%B", merge],
                                           cwd=ROOT, text=True, encoding="utf-8", timeout=60)
@@ -421,12 +451,19 @@ def phase3_history(entry, base, head, paths, unit):
             require_ancestor(predecessor, P3_W15_R01_BASE)
             require_ancestor(P3_W15_R01_BASE, successor)
             pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R01_BASE).splitlines())
+            require(git_text("rev-parse", P3_W15_R02_BASE + "^{tree}") == P3_W15_R02_BASE_TREE,
+                    "w15_r02_boundary_tree_mismatch")
+            require(git_text("show", "-s", "--format=%P", P3_W15_R02_BASE).split() ==
+                    [P3_W15_R02_PREDECESSOR], "w15_r02_boundary_parent_mismatch")
+            require_ancestor(P3_W15_R01_BASE, P3_W15_R02_BASE)
+            pre_r02 = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R02_BASE).splitlines())
         commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()
+        metadata.update(phase3_commit_metadata([commit for commit in commits if commit not in metadata]))
         for commit in commits:
             require(commit not in seen, "duplicate_history_commit")
             seen.add(commit)
             require_ancestor(intake, commit)
-            parents = git_text("show", "-s", "--format=%P", commit).split()
+            parents = metadata[commit]["parents"]
             require(bool(parents), "unexpected_root_commit")
             changed = changed_between(parents[0], commit)
             # Approval cannot retrospectively bless a pre-amendment unit edit
@@ -446,10 +483,13 @@ def phase3_history(entry, base, head, paths, unit):
                 require_ancestor(P3_W11_R01_BASE, commit)
             if owner == "P3-W15" and commit not in pre_amendment:
                 require_ancestor(P3_W15_R01_BASE, commit)
+            if owner == "P3-W15" and commit not in pre_r02:
+                require_ancestor(P3_W15_R02_BASE, commit)
+                allowed = paths[owner] | P3_W15_R02_PATHS
             require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")
             actual = commit_hashes(commit)
             check_entry_bytes(entry["files"], actual, cumulative)
-            records.append({"commit": commit, "tree": git_text("rev-parse", commit + "^{tree}"),
+            records.append({"commit": commit, "tree": metadata[commit]["tree"],
                             "parents": parents, "unit": owner, "accepted_predecessor": predecessor,
                             "segment_successor": successor, "current_unit_segment": current_segment,
                             "immediate_scope_exceptions": (["P3-W04-R01"] if owner == "P3-W04"
@@ -464,6 +504,8 @@ def phase3_history(entry, base, head, paths, unit):
                                                            and commit not in pre_amendment else
                                                            ["P3-W11-R01"] if owner == "P3-W11"
                                                            and commit not in pre_amendment else
+                                                           ["P3-W15-R02"] if owner == "P3-W15"
+                                                           and commit not in pre_r02 else
                                                            ["P3-W15-R01"] if owner == "P3-W15"
                                                            and commit not in pre_amendment else []),
                             "changed_paths": sorted(changed), "tracked_files": len(actual)})
@@ -660,6 +702,18 @@ P3_W15_R01_PATHS = frozenset((
 P3_W15_R01_BASE = "e8cf08296f6d335a501a451c777b9de4677ff934"
 P3_W15_R01_BASE_TREE = "2f26ad5ae8357d972b61464e42f5229f21ae2ec4"
 P3_W15_R01_PREDECESSOR = "6dbca96f3314d537beed4ccb6202147bd9248dd9"
+
+
+# Owner-approved P3-W15-R02: within-call Git parents/tree batching only.
+# Later W15 commits keep the seven record paths plus these two controls;
+# the earlier R01 product and integration-test permissions do not extend here.
+P3_W15_R02_PATHS = frozenset((
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_phase3_transition.py",
+))
+P3_W15_R02_BASE = "4d480f2cc5400e96e724d949ed00c82d62f5aeb7"
+P3_W15_R02_BASE_TREE = "bf667ea9d1e46379eee610793c9ecf317ca77276"
+P3_W15_R02_PREDECESSOR = "2a8697ea23e315e74c7cc8d7632c95725332b45b"
 
 
 if __name__ == "__main__":
