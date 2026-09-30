@@ -803,7 +803,11 @@ def test_w04_r01_literal_authority_preserves_plan_guard_and_workflow():
             historical = git_bytes(path, W09_R01_BASE)
             assert hashlib.sha256(historical).hexdigest() == digest, path
             assert historical.count(b'      "timeout-minutes": 25,\n') == 1
-            assert actual == historical.replace(b'      "timeout-minutes": 25,\n', b'      "timeout-minutes": 40,\n', 1)
+            checkpoint = git_bytes(path, W15_R03_BASE)
+            assert hashlib.sha256(checkpoint).hexdigest() == "b3dbc7a2077edc3bd0fc3ab9e2a919a027c2be1b6c4a9520ca49af4aa29389af"
+            assert checkpoint == historical.replace(b'      "timeout-minutes": 25,\n', b'      "timeout-minutes": 40,\n', 1)
+            assert checkpoint.count(b'      "timeout-minutes": 40,\n') == 1
+            assert actual == checkpoint.replace(b'      "timeout-minutes": 40,\n', b'      "timeout-minutes": 50,\n', 1)
         else:
             assert hashlib.sha256(actual).hexdigest() == digest, path
 
@@ -1154,7 +1158,11 @@ def test_w05_r01_exact_authority_preserves_plan_and_other_unit_scopes():
             historical = git_bytes(path, W09_R01_BASE)
             assert hashlib.sha256(historical).hexdigest() == digest, path
             assert historical.count(b'      "timeout-minutes": 25,\n') == 1
-            assert actual == historical.replace(b'      "timeout-minutes": 25,\n', b'      "timeout-minutes": 40,\n', 1)
+            checkpoint = git_bytes(path, W15_R03_BASE)
+            assert hashlib.sha256(checkpoint).hexdigest() == "b3dbc7a2077edc3bd0fc3ab9e2a919a027c2be1b6c4a9520ca49af4aa29389af"
+            assert checkpoint == historical.replace(b'      "timeout-minutes": 25,\n', b'      "timeout-minutes": 40,\n', 1)
+            assert checkpoint.count(b'      "timeout-minutes": 40,\n') == 1
+            assert actual == checkpoint.replace(b'      "timeout-minutes": 40,\n', b'      "timeout-minutes": 50,\n', 1)
         else:
             assert hashlib.sha256(actual).hexdigest() == digest, path
     assert_live_migration_bytes({p: (ROOT / p).read_bytes() for p in LIVE_MIGRATION_SHA256})
@@ -1497,6 +1505,14 @@ def test_w05_r01_only_three_old_transition_methods_have_authorized_adaptations()
             assert source.count(prior) == 1, "invalid_fixed_w15_r02_transition_delta"
             assert expected.count(source) == 1
             expected = expected.replace(source, source.replace(prior, replacement, 1), 1)
+    for method, prior, replacement in _W15_R03_TRANSITION_DELTAS:
+        if method in original_names:
+            node = next(node for node in ast.parse(expected).body
+                        if isinstance(node, ast.FunctionDef) and node.name == method)
+            source = ast.get_source_segment(expected, node)
+            assert source.count(prior) == 1, "invalid_fixed_w15_r03_transition_delta"
+            assert expected.count(source) == 1
+            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)
     expected_functions = {n.name: n for n in ast.parse(expected).body if isinstance(n, ast.FunctionDef)}
     current_functions = {n.name: n for n in ast.parse((ROOT / path).read_bytes()).body if isinstance(n, ast.FunctionDef)}
     for node in original:
@@ -1726,6 +1742,12 @@ def _assert_w06_r01_driver_source(raw):
     for prior, replacement in _W15_R02_DRIVER_DELTAS:
         assert expected.count(prior) == 1, "invalid_fixed_w15_r02_driver_delta"
         expected = expected.replace(prior, replacement, 1)
+    checkpoint = git_bytes("tests/scaffold/test_ci_contract.py", W15_R03_BASE)
+    assert hashlib.sha256(checkpoint).hexdigest() == "48c78cd0f729d96b5cec2ec4c4bae8419edca2bfe8fcf38d86453c14ff256878"
+    assert ast.dump(ast.parse(expected)) == ast.dump(ast.parse(checkpoint))
+    for prior, replacement in _W15_R03_DRIVER_DELTAS:
+        assert expected.count(prior) == 1, "invalid_fixed_w15_r03_driver_delta"
+        expected = expected.replace(prior, replacement, 1)
     same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))
     assert same_ast, "unauthorized_current_w06_driver_delta"
 
@@ -1925,8 +1947,16 @@ def test_w06_r01_only_seven_old_transition_methods_change_and_every_other_source
             assert source.count(prior) == 1, "invalid_fixed_w15_r02_transition_delta"
             assert expected.count(source) == 1
             expected = expected.replace(source, source.replace(prior, replacement, 1), 1)
+    for method, prior, replacement in _W15_R03_TRANSITION_DELTAS:
+        if method in original_names:
+            node = next(node for node in ast.parse(expected).body
+                        if isinstance(node, ast.FunctionDef) and node.name == method)
+            source = ast.get_source_segment(expected, node)
+            assert source.count(prior) == 1, "invalid_fixed_w15_r03_transition_delta"
+            assert expected.count(source) == 1
+            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)
     current = (ROOT / path).read_text(encoding="utf-8")
-    assert len(ast.parse(current).body) == len(ast.parse(expected).body) + 35
+    assert len(ast.parse(current).body) == len(ast.parse(expected).body) + 42
     for left, right in zip(ast.parse(expected).body[:len(previous)], ast.parse(current).body):
         assert ast.dump(left) == ast.dump(right)
         assert ast.get_source_segment(expected, left) == ast.get_source_segment(current, right)
@@ -2456,6 +2486,13 @@ def test_w15_r02_actual_boundary_limits_successors_to_two_controls_and_seven_rec
     assert (ci.P3_W15_R02_BASE, ci.P3_W15_R02_BASE_TREE, ci.P3_W15_R02_PREDECESSOR) == (
         W15_R02_BASE, W15_R02_BASE_TREE, W15_R02_PREDECESSOR)
     assert ci.P3_W15_R02_PATHS == W15_R02_PATHS and len(W15_R02_PATHS) == 2
+    assert (ci.P3_W15_R03_BASE, ci.P3_W15_R03_BASE_TREE, ci.P3_W15_R03_PREDECESSOR) == (
+        W15_R03_BASE, W15_R03_BASE_TREE, W15_R03_PREDECESSOR)
+    assert ci.P3_W15_R03_PATHS == W15_R03_PATHS and len(W15_R03_PATHS) == 3
+    assert W15_R03_PATHS - W15_R02_PATHS == {".github/workflows/phase1-ci.yml"}
+    assert ci.git_text("rev-parse", W15_R03_BASE + "^{tree}") == W15_R03_BASE_TREE
+    assert ci.git_text("show", "-s", "--format=%P", W15_R03_BASE).split() == [W15_R03_PREDECESSOR]
+    ci.require_ancestor(W15_R02_BASE, W15_R03_BASE)
     repo = tmp_path / "r02-authority"
     subprocess.check_call(["git", "clone", "--quiet", "--shared", "--no-checkout", str(ROOT), str(repo)])
     def git(*args):
@@ -2481,7 +2518,10 @@ def test_w15_r02_actual_boundary_limits_successors_to_two_controls_and_seven_rec
         if commit not in archives:
             archives[commit] = actual_hashes(commit)
         return archives[commit]
-    with patch.object(ci, "ROOT", repo), patch.object(ci, "commit_hashes", hashes):
+    with patch.object(ci, "ROOT", repo), patch.object(ci, "commit_hashes", hashes), \
+            patch.object(ci, "P3_W15_R03_BASE", head), \
+            patch.object(ci, "P3_W15_R03_BASE_TREE", git("rev-parse", head + "^{tree}")), \
+            patch.object(ci, "P3_W15_R03_PREDECESSOR", W15_R02_BASE):
         positive = ci.phase3_history(entry, W15_R01_PREDECESSOR, head, paths, "P3-W15")
         assert {row["commit"] for row in positive} == set(git("rev-list", ENTRY + ".." + head).splitlines())
         assert next(row for row in positive if row["commit"] == W15_R01_BASE)["immediate_scope_exceptions"] == []
@@ -2519,6 +2559,53 @@ def test_w15_r02_actual_boundary_limits_successors_to_two_controls_and_seven_rec
         unanchored = git("rev-parse", "HEAD")
         with pytest.raises(ValueError, match="^entry_or_predecessor_ancestry_mismatch$"):
             ci.phase3_history(entry, W15_R01_PREDECESSOR, unanchored, paths, "P3-W15")
+        # Reuse this same real clone and immutable archives for the R03 boundary.
+        # The R02 checkpoint itself still cannot change the workflow.
+        workflow = ".github/workflows/phase1-ci.yml"
+        assert len(paths["P3-W15"] | W15_R03_PATHS) == 10
+        def premature_workflow(left, right):
+            value = actual_changed(left, right)
+            return value | {workflow} if right == head else value
+        with patch.object(ci, "changed_between", premature_workflow):
+            with pytest.raises(ValueError, match="^intermediate_work_unit_allowlist_exceeded$"):
+                ci.phase3_history(entry, W15_R01_PREDECESSOR, head, paths, "P3-W15")
+        git("checkout", "-q", "r02-control")
+        workflow_bytes = (repo / workflow).read_bytes()
+        assert workflow_bytes.count(b'      "timeout-minutes": 40,\n') == 1
+        (repo / workflow).write_bytes(workflow_bytes.replace(
+            b'      "timeout-minutes": 40,\n', b'      "timeout-minutes": 50,\n', 1))
+        git("add", workflow)
+        git("commit", "-q", "-m", "Authorized R03 workflow budget")
+        r03_head = git("rev-parse", "HEAD")
+        r03_history = ci.phase3_history(entry, W15_R01_PREDECESSOR, r03_head, paths, "P3-W15")
+        assert r03_history[:-1] == [dict(row, segment_successor=r03_head)
+                                   if row["current_unit_segment"] else row for row in positive]
+        assert {row["commit"] for row in r03_history} == set(git("rev-list", ENTRY + ".." + r03_head).splitlines())
+        assert r03_history[-1]["changed_paths"] == [workflow]
+        assert r03_history[-1]["immediate_scope_exceptions"] == ["P3-W15-R03"]
+        for attribute, value, reason in (
+            ("P3_W15_R03_BASE_TREE", "0" * 40, "w15_r03_boundary_tree_mismatch"),
+            ("P3_W15_R03_PREDECESSOR", W15_R01_BASE, "w15_r03_boundary_parent_mismatch"),
+        ):
+            with patch.object(ci, attribute, value):
+                with pytest.raises(ValueError, match="^" + reason + "$"):
+                    ci.phase3_history(entry, W15_R01_PREDECESSOR, r03_head, paths, "P3-W15")
+        product = "src/source_integrity_toolkit/runtime/boundary.py"
+        with (repo / product).open("ab") as stream:
+            stream.write(b"\n# Synthetic forbidden R03 product change.\n")
+        git("add", product)
+        git("commit", "-q", "-m", "R03 cannot reopen R01 product permission")
+        forbidden_head = git("rev-parse", "HEAD")
+        with pytest.raises(ValueError, match="^intermediate_work_unit_allowlist_exceeded$"):
+            ci.phase3_history(entry, W15_R01_PREDECESSOR, forbidden_head, paths, "P3-W15")
+        git("checkout", "-q", "-b", "unanchored-r03", W15_R02_BASE)
+        with (repo / changed_path).open("ab") as stream:
+            stream.write(b"\n# Branch without R03 proposal ancestry.\n")
+        git("add", changed_path)
+        git("commit", "-q", "-m", "Unanchored R03 control change")
+        unanchored_r03 = git("rev-parse", "HEAD")
+        with pytest.raises(ValueError, match="^entry_or_predecessor_ancestry_mismatch$"):
+            ci.phase3_history(entry, W15_R01_PREDECESSOR, unanchored_r03, paths, "P3-W15")
 
 
 def test_w15_r02_source_deltas_preserve_every_prior_node_and_identity():
@@ -2540,7 +2627,19 @@ def test_w15_r02_source_deltas_preserve_every_prior_node_and_identity():
         assert source.count(prior) == 1, "invalid_fixed_w15_r02_transition_delta"
         assert expected.count(source) == 1
         expected = expected.replace(source, source.replace(prior, replacement, 1), 1)
+    original_names = {node.name for node in ast.parse(before).body if isinstance(node, ast.FunctionDef)}
+    for method, prior, replacement in _W15_R03_TRANSITION_DELTAS:
+        if method in original_names:
+            node = next(node for node in ast.parse(expected).body
+                        if isinstance(node, ast.FunctionDef) and node.name == method)
+            source = ast.get_source_segment(expected, node)
+            assert source.count(prior) == 1, "invalid_fixed_w15_r03_transition_delta"
+            assert expected.count(source) == 1
+            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)
     additions = {
+        "W15_R03_BASE", "W15_R03_BASE_TREE", "W15_R03_PREDECESSOR", "W15_R03_PATHS",
+        "_W15_R03_DRIVER_DELTAS", "_W15_R03_TRANSITION_DELTAS",
+        "test_w15_r03_source_deltas_preserve_existing_nodes_and_bound_only_ci_budgets",
         "W15_R02_BASE", "W15_R02_BASE_TREE", "W15_R02_PREDECESSOR", "W15_R02_PATHS",
         "_W15_R02_DRIVER_DELTAS", "_W15_R02_TRANSITION_DELTAS",
         "_w15_r02_repo", "_w15_r02_batch_repo", "_w15_r02_old_metadata", "_w15_r02_old_history", "_w15_r02_outcome",
@@ -2632,7 +2731,10 @@ def test_w15_r01_reuses_exact_history_controls_for_approved_successors(tmp_path,
     with patch.object(ci, "ROOT", repo), patch.object(ci, "commit_hashes", hashes), \
             patch.object(ci, "P3_W15_R02_BASE", clean), \
             patch.object(ci, "P3_W15_R02_BASE_TREE", git("rev-parse", clean + "^{tree}")), \
-            patch.object(ci, "P3_W15_R02_PREDECESSOR", W15_R01_BASE):
+            patch.object(ci, "P3_W15_R02_PREDECESSOR", W15_R01_BASE), \
+            patch.object(ci, "P3_W15_R03_BASE", clean), \
+            patch.object(ci, "P3_W15_R03_BASE_TREE", git("rev-parse", clean + "^{tree}")), \
+            patch.object(ci, "P3_W15_R03_PREDECESSOR", W15_R01_BASE):
         positive = ci.phase3_history(entry, W15_R01_PREDECESSOR, clean, paths, "P3-W15")
         assert {row["commit"] for row in positive} == set(git("rev-list", ENTRY + ".." + clean).splitlines())
         original_row = next(row for row in positive if row["commit"] == W15_R01_BASE)
@@ -2682,3 +2784,86 @@ _W15_R01_TRANSITION_DELTAS = (('test_each_unit_has_exact_four_common_records_and
 _W15_R02_DRIVER_DELTAS = (('\n\ndef changed_between(base, head):\n    names = subprocess.check_output(["git", "diff", "--no-renames", "--name-only", "-z", base, head],\n', '\n\ndef phase3_commit_metadata(commits):\n    """Read one ordered batch from Git, with exact rows and terminated fields."""\n    require(type(commits) in (list, tuple) and\n            all(type(commit) is str and re.fullmatch(r"[0-9a-f]{40}", commit) for commit in commits),\n            "invalid_commit_metadata_request")\n    require(len(commits) == len(set(commits)), "duplicate_commit_metadata_request")\n    if not commits:\n        return {}\n    output = subprocess.check_output(["git", "show", "--no-walk=unsorted", "-s",\n                                      "--format=%H%x00%T%x00%P%x00", *commits],\n                                     cwd=ROOT, text=True, encoding="utf-8", timeout=60)\n    require(type(output) is str and output.endswith("\\n"), "malformed_commit_metadata_batch")\n    rows = output.split("\\n")[:-1]\n    require(len(rows) == len(commits), "incomplete_commit_metadata_batch")\n    metadata = {}\n    for expected, row in zip(commits, rows):\n        fields = row.split("\\0")\n        require(len(fields) == 4 and fields[3] == "", "malformed_commit_metadata_record")\n        commit, tree, parents = fields[:3]\n        require(commit == expected and commit not in metadata, "wrong_commit_metadata_identity")\n        require(re.fullmatch(r"[0-9a-f]{40}", tree) is not None, "invalid_commit_metadata_tree")\n        parents = parents.split(" ") if parents else []\n        require(all(re.fullmatch(r"[0-9a-f]{40}", parent) for parent in parents),\n                "invalid_commit_metadata_parent")\n        metadata[commit] = {"parents": parents, "tree": tree}\n    require(set(metadata) == set(commits), "incomplete_commit_metadata_batch")\n    return metadata\n\n\ndef changed_between(base, head):\n    names = subprocess.check_output(["git", "diff", "--no-renames", "--name-only", "-z", base, head],\n'), ('    accepted = git_text("rev-list", "--reverse", "--first-parent", intake + ".." + base).splitlines()\n    require(len(accepted) == current - 1, "wrong_phase3_predecessor")\n    previous, segments = intake, []\n    for step, merge in enumerate(accepted, 1):\n        parents = git_text("show", "-s", "--format=%P", merge).split()\n        require(len(parents) == 2 and parents[0] == previous, "invalid_accepted_merge_chain")\n        message = subprocess.check_output(["git", "show", "-s", "--format=%B", merge],\n', '    accepted = git_text("rev-list", "--reverse", "--first-parent", intake + ".." + base).splitlines()\n    require(len(accepted) == current - 1, "wrong_phase3_predecessor")\n    metadata = phase3_commit_metadata(accepted)\n    previous, segments = intake, []\n    for step, merge in enumerate(accepted, 1):\n        parents = metadata[merge]["parents"]\n        require(len(parents) == 2 and parents[0] == previous, "invalid_accepted_merge_chain")\n        message = subprocess.check_output(["git", "show", "-s", "--format=%B", merge],\n'), ('            require_ancestor(P3_W15_R01_BASE, successor)\n            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R01_BASE).splitlines())\n        commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()\n        for commit in commits:\n            require(commit not in seen, "duplicate_history_commit")\n            seen.add(commit)\n            require_ancestor(intake, commit)\n            parents = git_text("show", "-s", "--format=%P", commit).split()\n            require(bool(parents), "unexpected_root_commit")\n            changed = changed_between(parents[0], commit)\n', '            require_ancestor(P3_W15_R01_BASE, successor)\n            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R01_BASE).splitlines())\n            require(git_text("rev-parse", P3_W15_R02_BASE + "^{tree}") == P3_W15_R02_BASE_TREE,\n                    "w15_r02_boundary_tree_mismatch")\n            require(git_text("show", "-s", "--format=%P", P3_W15_R02_BASE).split() ==\n                    [P3_W15_R02_PREDECESSOR], "w15_r02_boundary_parent_mismatch")\n            require_ancestor(P3_W15_R01_BASE, P3_W15_R02_BASE)\n            pre_r02 = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R02_BASE).splitlines())\n        commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()\n        metadata.update(phase3_commit_metadata([commit for commit in commits if commit not in metadata]))\n        for commit in commits:\n            require(commit not in seen, "duplicate_history_commit")\n            seen.add(commit)\n            require_ancestor(intake, commit)\n            parents = metadata[commit]["parents"]\n            require(bool(parents), "unexpected_root_commit")\n            changed = changed_between(parents[0], commit)\n'), ('            if owner == "P3-W15" and commit not in pre_amendment:\n                require_ancestor(P3_W15_R01_BASE, commit)\n            require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")\n            actual = commit_hashes(commit)\n            check_entry_bytes(entry["files"], actual, cumulative)\n            records.append({"commit": commit, "tree": git_text("rev-parse", commit + "^{tree}"),\n                            "parents": parents, "unit": owner, "accepted_predecessor": predecessor,\n                            "segment_successor": successor, "current_unit_segment": current_segment,\n', '            if owner == "P3-W15" and commit not in pre_amendment:\n                require_ancestor(P3_W15_R01_BASE, commit)\n            if owner == "P3-W15" and commit not in pre_r02:\n                require_ancestor(P3_W15_R02_BASE, commit)\n                allowed = paths[owner] | P3_W15_R02_PATHS\n            require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")\n            actual = commit_hashes(commit)\n            check_entry_bytes(entry["files"], actual, cumulative)\n            records.append({"commit": commit, "tree": metadata[commit]["tree"],\n                            "parents": parents, "unit": owner, "accepted_predecessor": predecessor,\n                            "segment_successor": successor, "current_unit_segment": current_segment,\n'), ('                                                           ["P3-W11-R01"] if owner == "P3-W11"\n                                                           and commit not in pre_amendment else\n                                                           ["P3-W15-R01"] if owner == "P3-W15"\n                                                           and commit not in pre_amendment else []),\n', '                                                           ["P3-W11-R01"] if owner == "P3-W11"\n                                                           and commit not in pre_amendment else\n                                                           ["P3-W15-R02"] if owner == "P3-W15"\n                                                           and commit not in pre_r02 else\n                                                           ["P3-W15-R01"] if owner == "P3-W15"\n                                                           and commit not in pre_amendment else []),\n'), ('\n\nif __name__ == "__main__":\n    if len(sys.argv) == 3 and sys.argv[1] == "--ci-stage":\n', '\n\n# Owner-approved P3-W15-R02: within-call Git parents/tree batching only.\n# Later W15 commits keep the seven record paths plus these two controls;\n# the earlier R01 product and integration-test permissions do not extend here.\nP3_W15_R02_PATHS = frozenset((\n    "tests/scaffold/test_ci_contract.py",\n    "tests/contract/test_phase3_transition.py",\n))\nP3_W15_R02_BASE = "4d480f2cc5400e96e724d949ed00c82d62f5aeb7"\nP3_W15_R02_BASE_TREE = "bf667ea9d1e46379eee610793c9ecf317ca77276"\nP3_W15_R02_PREDECESSOR = "2a8697ea23e315e74c7cc8d7632c95725332b45b"\n\n\nif __name__ == "__main__":\n    if len(sys.argv) == 3 and sys.argv[1] == "--ci-stage":\n'))
 
 _W15_R02_TRANSITION_DELTAS = (('test_w05_r01_only_three_old_transition_methods_have_authorized_adaptations', '            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    expected_functions = {n.name: n for n in ast.parse(expected).body if isinstance(n, ast.FunctionDef)}\n    current_functions = {n.name: n for n in ast.parse((ROOT / path).read_bytes()).body if isinstance(n, ast.FunctionDef)}\n', '            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    for method, prior, replacement in _W15_R02_TRANSITION_DELTAS:\n        if method in original_names:\n            node = next(node for node in ast.parse(expected).body\n                        if isinstance(node, ast.FunctionDef) and node.name == method)\n            source = ast.get_source_segment(expected, node)\n            assert source.count(prior) == 1, "invalid_fixed_w15_r02_transition_delta"\n            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    expected_functions = {n.name: n for n in ast.parse(expected).body if isinstance(n, ast.FunctionDef)}\n    current_functions = {n.name: n for n in ast.parse((ROOT / path).read_bytes()).body if isinstance(n, ast.FunctionDef)}\n'), ('_assert_w06_r01_driver_source', '        assert expected.count(prior) == 1, "invalid_fixed_w15_driver_delta"\n        expected = expected.replace(prior, replacement, 1)\n    same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))\n    assert same_ast, "unauthorized_current_w06_driver_delta"', '        assert expected.count(prior) == 1, "invalid_fixed_w15_driver_delta"\n        expected = expected.replace(prior, replacement, 1)\n    checkpoint = git_bytes("tests/scaffold/test_ci_contract.py", W15_R02_BASE)\n    assert hashlib.sha256(checkpoint).hexdigest() == "768287a2be11c12a4d35d515307c430d1b48419657826c917813e008e3af9fe0"\n    assert ast.dump(ast.parse(expected)) == ast.dump(ast.parse(checkpoint))\n    for prior, replacement in _W15_R02_DRIVER_DELTAS:\n        assert expected.count(prior) == 1, "invalid_fixed_w15_r02_driver_delta"\n        expected = expected.replace(prior, replacement, 1)\n    same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))\n    assert same_ast, "unauthorized_current_w06_driver_delta"'), ('test_w06_r01_only_seven_old_transition_methods_change_and_every_other_source_node_is_exact', '            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    current = (ROOT / path).read_text(encoding="utf-8")\n    assert len(ast.parse(current).body) == len(ast.parse(expected).body) + 17\n    for left, right in zip(ast.parse(expected).body[:len(previous)], ast.parse(current).body):\n        assert ast.dump(left) == ast.dump(right)\n', '            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    for method, prior, replacement in _W15_R02_TRANSITION_DELTAS:\n        if method in original_names:\n            node = next(node for node in ast.parse(expected).body\n                        if isinstance(node, ast.FunctionDef) and node.name == method)\n            source = ast.get_source_segment(expected, node)\n            assert source.count(prior) == 1, "invalid_fixed_w15_r02_transition_delta"\n            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    current = (ROOT / path).read_text(encoding="utf-8")\n    assert len(ast.parse(current).body) == len(ast.parse(expected).body) + 35\n    for left, right in zip(ast.parse(expected).body[:len(previous)], ast.parse(current).body):\n        assert ast.dump(left) == ast.dump(right)\n'), ('test_w15_r01_reuses_exact_history_controls_for_approved_successors', '            cache[commit] = actual_hashes(commit)\n        return cache[commit]\n    with patch.object(ci, "ROOT", repo), patch.object(ci, "commit_hashes", hashes):\n        positive = ci.phase3_history(entry, W15_R01_PREDECESSOR, clean, paths, "P3-W15")\n        assert {row["commit"] for row in positive} == set(git("rev-list", ENTRY + ".." + clean).splitlines())\n', '            cache[commit] = actual_hashes(commit)\n        return cache[commit]\n    with patch.object(ci, "ROOT", repo), patch.object(ci, "commit_hashes", hashes), \\\n            patch.object(ci, "P3_W15_R02_BASE", clean), \\\n            patch.object(ci, "P3_W15_R02_BASE_TREE", git("rev-parse", clean + "^{tree}")), \\\n            patch.object(ci, "P3_W15_R02_PREDECESSOR", W15_R01_BASE):\n        positive = ci.phase3_history(entry, W15_R01_PREDECESSOR, clean, paths, "P3-W15")\n        assert {row["commit"] for row in positive} == set(git("rev-list", ENTRY + ".." + clean).splitlines())\n'))
+
+
+# Approved R03 keeps the two earlier amendments and their literal source proofs.
+W15_R03_BASE = "d32c1499fe7969b9415468ef62c966c38110a090"
+W15_R03_BASE_TREE = "1234a087200c5e56d20c7f53aa0d71a828f167fb"
+W15_R03_PREDECESSOR = "3a8c6f99a2aa71ce8e67454801e16a1c5c5caed7"
+W15_R03_PATHS = frozenset((
+    ".github/workflows/phase1-ci.yml",
+    "tests/scaffold/test_ci_contract.py",
+    "tests/contract/test_phase3_transition.py",
+))
+
+
+def test_w15_r03_source_deltas_preserve_existing_nodes_and_bound_only_ci_budgets():
+    path = "tests/contract/test_phase3_transition.py"
+    before = git_bytes(path, W15_R03_BASE)
+    assert hashlib.sha256(before).hexdigest() == "48fe60a2de66ab2a20468b7f6111d97740b5f48e3829fcd1838319992a74e900"
+    expected = before.decode()
+    assert {method for method, _, _ in _W15_R03_TRANSITION_DELTAS} == {
+        "test_w04_r01_literal_authority_preserves_plan_guard_and_workflow",
+        "test_w05_r01_exact_authority_preserves_plan_and_other_unit_scopes",
+        "_assert_w06_r01_driver_source",
+        "test_w05_r01_only_three_old_transition_methods_have_authorized_adaptations",
+        "test_w06_r01_only_seven_old_transition_methods_change_and_every_other_source_node_is_exact",
+        "test_w15_r01_reuses_exact_history_controls_for_approved_successors",
+        "test_w15_r02_actual_boundary_limits_successors_to_two_controls_and_seven_records",
+        "test_w15_r02_source_deltas_preserve_every_prior_node_and_identity",
+    }
+    for method, prior, replacement in _W15_R03_TRANSITION_DELTAS:
+        node = next(node for node in ast.parse(expected).body
+                    if isinstance(node, ast.FunctionDef) and node.name == method)
+        source = ast.get_source_segment(expected, node)
+        assert source.count(prior) == 1, "invalid_fixed_w15_r03_transition_delta"
+        assert expected.count(source) == 1
+        expected = expected.replace(source, source.replace(prior, replacement, 1), 1)
+    additions = {
+        "W15_R03_BASE", "W15_R03_BASE_TREE", "W15_R03_PREDECESSOR", "W15_R03_PATHS",
+        "_W15_R03_DRIVER_DELTAS", "_W15_R03_TRANSITION_DELTAS",
+        "test_w15_r03_source_deltas_preserve_existing_nodes_and_bound_only_ci_budgets",
+    }
+    def name(node):
+        if isinstance(node, (ast.FunctionDef, ast.ClassDef)):
+            return node.name
+        if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name):
+            return node.targets[0].id
+        return None
+    current = (ROOT / path).read_text(encoding="utf-8")
+    old_nodes, current_nodes = ast.parse(expected).body, ast.parse(current).body
+    assert len(current_nodes) == len(old_nodes) + len(additions)
+    assert {name(node) for node in current_nodes if name(node) in additions} == additions
+    retained = [node for node in current_nodes if name(node) not in additions]
+    assert len(retained) == len(old_nodes)
+    for left, right in zip(old_nodes, retained):
+        assert ast.dump(left) == ast.dump(right), name(left)
+        assert ast.get_source_segment(expected, left) == ast.get_source_segment(current, right), name(left)
+    old_functions = {node.name: node for node in ast.parse(before).body if isinstance(node, ast.FunctionDef)}
+    actual_functions = {node.name: node for node in current_nodes if isinstance(node, ast.FunctionDef)}
+    assert set(old_functions) <= set(actual_functions)
+    for function, node in old_functions.items():
+        assert [ast.dump(item) for item in node.decorator_list] == [
+            ast.dump(item) for item in actual_functions[function].decorator_list], function
+    raw = (ROOT / "tests/scaffold/test_ci_contract.py").read_bytes()
+    _assert_w06_r01_driver_source(raw)
+    assert raw.count(b"env=env, timeout=2400, check=False") == 1
+    for unauthorized in (1800, 2399, 2401, 3000):
+        altered = raw.replace(b"env=env, timeout=2400, check=False",
+                              f"env=env, timeout={unauthorized}, check=False".encode(), 1)
+        with pytest.raises(AssertionError, match="^unauthorized_current_w06_driver_delta"):
+            _assert_w06_r01_driver_source(altered)
+    ci = ci_driver()
+    workflow = ci.read_workflow()
+    assert workflow["jobs"]["scaffold"]["timeout-minutes"] == 50
+    ci.policy(workflow)
+    for unauthorized in (40, 49, 51, 60, 50.0, True):
+        altered = copy.deepcopy(workflow)
+        altered["jobs"]["scaffold"]["timeout-minutes"] = unauthorized
+        with pytest.raises(ValueError, match="^phase_job_timeout$"):
+            ci.policy(altered)
+
+
+_W15_R03_DRIVER_DELTAS = (('        v["concurrency"]["group"] = "phase1-${{ github.event.pull_request.number || github.ref }}"\n        job = v["jobs"]["scaffold"]\n        require(type(job["timeout-minutes"]) is int and job["timeout-minutes"] == 40, "phase_job_timeout")\n        job["timeout-minutes"] = 25\n        require(job["name"] == "analytical core (${{ matrix.os }}, Python ${{ matrix.python }})", "phase_job")\n', '        v["concurrency"]["group"] = "phase1-${{ github.event.pull_request.number || github.ref }}"\n        job = v["jobs"]["scaffold"]\n        require(type(job["timeout-minutes"]) is int and job["timeout-minutes"] == 50, "phase_job_timeout")\n        job["timeout-minutes"] = 25\n        require(job["name"] == "analytical core (${{ matrix.os }}, Python ${{ matrix.python }})", "phase_job")\n'), ('            require_ancestor(P3_W15_R01_BASE, P3_W15_R02_BASE)\n            pre_r02 = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R02_BASE).splitlines())\n        commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()\n        metadata.update(phase3_commit_metadata([commit for commit in commits if commit not in metadata]))\n', '            require_ancestor(P3_W15_R01_BASE, P3_W15_R02_BASE)\n            pre_r02 = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R02_BASE).splitlines())\n            require(git_text("rev-parse", P3_W15_R03_BASE + "^{tree}") == P3_W15_R03_BASE_TREE,\n                    "w15_r03_boundary_tree_mismatch")\n            require(git_text("show", "-s", "--format=%P", P3_W15_R03_BASE).split() ==\n                    [P3_W15_R03_PREDECESSOR], "w15_r03_boundary_parent_mismatch")\n            require_ancestor(P3_W15_R02_BASE, P3_W15_R03_BASE)\n            pre_r03 = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R03_BASE).splitlines())\n        commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()\n        metadata.update(phase3_commit_metadata([commit for commit in commits if commit not in metadata]))\n'), ('                require_ancestor(P3_W15_R02_BASE, commit)\n                allowed = paths[owner] | P3_W15_R02_PATHS\n            require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")\n            actual = commit_hashes(commit)\n', '                require_ancestor(P3_W15_R02_BASE, commit)\n                allowed = paths[owner] | P3_W15_R02_PATHS\n            if owner == "P3-W15" and commit not in pre_r03:\n                require_ancestor(P3_W15_R03_BASE, commit)\n                allowed = paths[owner] | P3_W15_R03_PATHS\n            require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")\n            actual = commit_hashes(commit)\n'), ('                                                           ["P3-W11-R01"] if owner == "P3-W11"\n                                                           and commit not in pre_amendment else\n                                                           ["P3-W15-R02"] if owner == "P3-W15"\n                                                           and commit not in pre_r02 else\n', '                                                           ["P3-W11-R01"] if owner == "P3-W11"\n                                                           and commit not in pre_amendment else\n                                                           ["P3-W15-R03"] if owner == "P3-W15"\n                                                           and commit not in pre_r03 else\n                                                           ["P3-W15-R02"] if owner == "P3-W15"\n                                                           and commit not in pre_r02 else\n'), ('    history = phase3_history(entry, base, head, paths, unit)\n    changed = changed_between(base, head)\n    phase3_check_changed_paths(paths, unit, changed)\n    actual = tracked_bytes()\n    require(actual == commit_hashes(head), "checkout_differs_from_reviewed_commit")\n', '    history = phase3_history(entry, base, head, paths, unit)\n    changed = changed_between(base, head)\n    if unit == "P3-W15" and any(row["immediate_scope_exceptions"] == ["P3-W15-R03"] for row in history):\n        require(changed <= phase3_effective_paths(paths, unit) | P3_W15_R03_PATHS,\n                "work_unit_allowlist_exceeded")\n    else:\n        phase3_check_changed_paths(paths, unit, changed)\n    actual = tracked_bytes()\n    require(actual == commit_hashes(head), "checkout_differs_from_reviewed_commit")\n'), ('        "scope": "all present scaffold/security/contract/unit/integration directories"})\n    result = run([python, "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",\n                  "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=1800, check=False)\n    save(evidence / "pytest-exit.json", {"exit_code": result.returncode})\n    require(result.returncode == 0, "accumulated_suite_failed")\n', '        "scope": "all present scaffold/security/contract/unit/integration directories"})\n    result = run([python, "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",\n                  "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=2400, check=False)\n    save(evidence / "pytest-exit.json", {"exit_code": result.returncode})\n    require(result.returncode == 0, "accumulated_suite_failed")\n'), ('\n\nif __name__ == "__main__":\n    if len(sys.argv) == 3 and sys.argv[1] == "--ci-stage":\n', '\n\n# Owner-approved P3-W15-R03: bounded full-suite and CI job budgets only.\n# Only descendants of this fixed proposal checkpoint gain the workflow path;\n# earlier R02 commits keep their nine paths and earlier scopes stay intact.\nP3_W15_R03_PATHS = frozenset((\n    ".github/workflows/phase1-ci.yml",\n    "tests/scaffold/test_ci_contract.py",\n    "tests/contract/test_phase3_transition.py",\n))\nP3_W15_R03_BASE = "d32c1499fe7969b9415468ef62c966c38110a090"\nP3_W15_R03_BASE_TREE = "1234a087200c5e56d20c7f53aa0d71a828f167fb"\nP3_W15_R03_PREDECESSOR = "3a8c6f99a2aa71ce8e67454801e16a1c5c5caed7"\n\n\nif __name__ == "__main__":\n    if len(sys.argv) == 3 and sys.argv[1] == "--ci-stage":\n'))
+
+_W15_R03_TRANSITION_DELTAS = (('test_w04_r01_literal_authority_preserves_plan_guard_and_workflow', '            assert actual == historical.replace(b\'      "timeout-minutes": 25,\\n\', b\'      "timeout-minutes": 40,\\n\', 1)', '            checkpoint = git_bytes(path, W15_R03_BASE)\n            assert hashlib.sha256(checkpoint).hexdigest() == "b3dbc7a2077edc3bd0fc3ab9e2a919a027c2be1b6c4a9520ca49af4aa29389af"\n            assert checkpoint == historical.replace(b\'      "timeout-minutes": 25,\\n\', b\'      "timeout-minutes": 40,\\n\', 1)\n            assert checkpoint.count(b\'      "timeout-minutes": 40,\\n\') == 1\n            assert actual == checkpoint.replace(b\'      "timeout-minutes": 40,\\n\', b\'      "timeout-minutes": 50,\\n\', 1)'), ('test_w05_r01_exact_authority_preserves_plan_and_other_unit_scopes', '            assert actual == historical.replace(b\'      "timeout-minutes": 25,\\n\', b\'      "timeout-minutes": 40,\\n\', 1)', '            checkpoint = git_bytes(path, W15_R03_BASE)\n            assert hashlib.sha256(checkpoint).hexdigest() == "b3dbc7a2077edc3bd0fc3ab9e2a919a027c2be1b6c4a9520ca49af4aa29389af"\n            assert checkpoint == historical.replace(b\'      "timeout-minutes": 25,\\n\', b\'      "timeout-minutes": 40,\\n\', 1)\n            assert checkpoint.count(b\'      "timeout-minutes": 40,\\n\') == 1\n            assert actual == checkpoint.replace(b\'      "timeout-minutes": 40,\\n\', b\'      "timeout-minutes": 50,\\n\', 1)'), ('_assert_w06_r01_driver_source', '    same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))\n    assert same_ast, "unauthorized_current_w06_driver_delta"', '    checkpoint = git_bytes("tests/scaffold/test_ci_contract.py", W15_R03_BASE)\n    assert hashlib.sha256(checkpoint).hexdigest() == "48c78cd0f729d96b5cec2ec4c4bae8419edca2bfe8fcf38d86453c14ff256878"\n    assert ast.dump(ast.parse(expected)) == ast.dump(ast.parse(checkpoint))\n    for prior, replacement in _W15_R03_DRIVER_DELTAS:\n        assert expected.count(prior) == 1, "invalid_fixed_w15_r03_driver_delta"\n        expected = expected.replace(prior, replacement, 1)\n    same_ast = ast.dump(ast.parse(raw)) == ast.dump(ast.parse(expected))\n    assert same_ast, "unauthorized_current_w06_driver_delta"'), ('test_w05_r01_only_three_old_transition_methods_have_authorized_adaptations', '    expected_functions = {n.name: n for n in ast.parse(expected).body if isinstance(n, ast.FunctionDef)}', '    for method, prior, replacement in _W15_R03_TRANSITION_DELTAS:\n        if method in original_names:\n            node = next(node for node in ast.parse(expected).body\n                        if isinstance(node, ast.FunctionDef) and node.name == method)\n            source = ast.get_source_segment(expected, node)\n            assert source.count(prior) == 1, "invalid_fixed_w15_r03_transition_delta"\n            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    expected_functions = {n.name: n for n in ast.parse(expected).body if isinstance(n, ast.FunctionDef)}'), ('test_w06_r01_only_seven_old_transition_methods_change_and_every_other_source_node_is_exact', '    current = (ROOT / path).read_text(encoding="utf-8")', '    for method, prior, replacement in _W15_R03_TRANSITION_DELTAS:\n        if method in original_names:\n            node = next(node for node in ast.parse(expected).body\n                        if isinstance(node, ast.FunctionDef) and node.name == method)\n            source = ast.get_source_segment(expected, node)\n            assert source.count(prior) == 1, "invalid_fixed_w15_r03_transition_delta"\n            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    current = (ROOT / path).read_text(encoding="utf-8")'), ('test_w06_r01_only_seven_old_transition_methods_change_and_every_other_source_node_is_exact', 'len(ast.parse(expected).body) + 35', 'len(ast.parse(expected).body) + 42'), ('test_w15_r01_reuses_exact_history_controls_for_approved_successors', '            patch.object(ci, "P3_W15_R02_PREDECESSOR", W15_R01_BASE):', '            patch.object(ci, "P3_W15_R02_PREDECESSOR", W15_R01_BASE), \\\n            patch.object(ci, "P3_W15_R03_BASE", clean), \\\n            patch.object(ci, "P3_W15_R03_BASE_TREE", git("rev-parse", clean + "^{tree}")), \\\n            patch.object(ci, "P3_W15_R03_PREDECESSOR", W15_R01_BASE):'), ('test_w15_r02_actual_boundary_limits_successors_to_two_controls_and_seven_records', '    repo = tmp_path / "r02-authority"', '    assert (ci.P3_W15_R03_BASE, ci.P3_W15_R03_BASE_TREE, ci.P3_W15_R03_PREDECESSOR) == (\n        W15_R03_BASE, W15_R03_BASE_TREE, W15_R03_PREDECESSOR)\n    assert ci.P3_W15_R03_PATHS == W15_R03_PATHS and len(W15_R03_PATHS) == 3\n    assert W15_R03_PATHS - W15_R02_PATHS == {".github/workflows/phase1-ci.yml"}\n    assert ci.git_text("rev-parse", W15_R03_BASE + "^{tree}") == W15_R03_BASE_TREE\n    assert ci.git_text("show", "-s", "--format=%P", W15_R03_BASE).split() == [W15_R03_PREDECESSOR]\n    ci.require_ancestor(W15_R02_BASE, W15_R03_BASE)\n    repo = tmp_path / "r02-authority"'), ('test_w15_r02_actual_boundary_limits_successors_to_two_controls_and_seven_records', '    with patch.object(ci, "ROOT", repo), patch.object(ci, "commit_hashes", hashes):', '    with patch.object(ci, "ROOT", repo), patch.object(ci, "commit_hashes", hashes), \\\n            patch.object(ci, "P3_W15_R03_BASE", head), \\\n            patch.object(ci, "P3_W15_R03_BASE_TREE", git("rev-parse", head + "^{tree}")), \\\n            patch.object(ci, "P3_W15_R03_PREDECESSOR", W15_R02_BASE):'), ('test_w15_r02_actual_boundary_limits_successors_to_two_controls_and_seven_records', '        with pytest.raises(ValueError, match="^entry_or_predecessor_ancestry_mismatch$"):\n            ci.phase3_history(entry, W15_R01_PREDECESSOR, unanchored, paths, "P3-W15")', '        with pytest.raises(ValueError, match="^entry_or_predecessor_ancestry_mismatch$"):\n            ci.phase3_history(entry, W15_R01_PREDECESSOR, unanchored, paths, "P3-W15")\n        # Reuse this same real clone and immutable archives for the R03 boundary.\n        # The R02 checkpoint itself still cannot change the workflow.\n        workflow = ".github/workflows/phase1-ci.yml"\n        assert len(paths["P3-W15"] | W15_R03_PATHS) == 10\n        def premature_workflow(left, right):\n            value = actual_changed(left, right)\n            return value | {workflow} if right == head else value\n        with patch.object(ci, "changed_between", premature_workflow):\n            with pytest.raises(ValueError, match="^intermediate_work_unit_allowlist_exceeded$"):\n                ci.phase3_history(entry, W15_R01_PREDECESSOR, head, paths, "P3-W15")\n        git("checkout", "-q", "r02-control")\n        workflow_bytes = (repo / workflow).read_bytes()\n        assert workflow_bytes.count(b\'      "timeout-minutes": 40,\\n\') == 1\n        (repo / workflow).write_bytes(workflow_bytes.replace(\n            b\'      "timeout-minutes": 40,\\n\', b\'      "timeout-minutes": 50,\\n\', 1))\n        git("add", workflow)\n        git("commit", "-q", "-m", "Authorized R03 workflow budget")\n        r03_head = git("rev-parse", "HEAD")\n        r03_history = ci.phase3_history(entry, W15_R01_PREDECESSOR, r03_head, paths, "P3-W15")\n        assert r03_history[:-1] == [dict(row, segment_successor=r03_head)\n                                   if row["current_unit_segment"] else row for row in positive]\n        assert {row["commit"] for row in r03_history} == set(git("rev-list", ENTRY + ".." + r03_head).splitlines())\n        assert r03_history[-1]["changed_paths"] == [workflow]\n        assert r03_history[-1]["immediate_scope_exceptions"] == ["P3-W15-R03"]\n        for attribute, value, reason in (\n            ("P3_W15_R03_BASE_TREE", "0" * 40, "w15_r03_boundary_tree_mismatch"),\n            ("P3_W15_R03_PREDECESSOR", W15_R01_BASE, "w15_r03_boundary_parent_mismatch"),\n        ):\n            with patch.object(ci, attribute, value):\n                with pytest.raises(ValueError, match="^" + reason + "$"):\n                    ci.phase3_history(entry, W15_R01_PREDECESSOR, r03_head, paths, "P3-W15")\n        product = "src/source_integrity_toolkit/runtime/boundary.py"\n        with (repo / product).open("ab") as stream:\n            stream.write(b"\\n# Synthetic forbidden R03 product change.\\n")\n        git("add", product)\n        git("commit", "-q", "-m", "R03 cannot reopen R01 product permission")\n        forbidden_head = git("rev-parse", "HEAD")\n        with pytest.raises(ValueError, match="^intermediate_work_unit_allowlist_exceeded$"):\n            ci.phase3_history(entry, W15_R01_PREDECESSOR, forbidden_head, paths, "P3-W15")\n        git("checkout", "-q", "-b", "unanchored-r03", W15_R02_BASE)\n        with (repo / changed_path).open("ab") as stream:\n            stream.write(b"\\n# Branch without R03 proposal ancestry.\\n")\n        git("add", changed_path)\n        git("commit", "-q", "-m", "Unanchored R03 control change")\n        unanchored_r03 = git("rev-parse", "HEAD")\n        with pytest.raises(ValueError, match="^entry_or_predecessor_ancestry_mismatch$"):\n            ci.phase3_history(entry, W15_R01_PREDECESSOR, unanchored_r03, paths, "P3-W15")'), ('test_w15_r02_source_deltas_preserve_every_prior_node_and_identity', '    additions = {', '    original_names = {node.name for node in ast.parse(before).body if isinstance(node, ast.FunctionDef)}\n    for method, prior, replacement in _W15_R03_TRANSITION_DELTAS:\n        if method in original_names:\n            node = next(node for node in ast.parse(expected).body\n                        if isinstance(node, ast.FunctionDef) and node.name == method)\n            source = ast.get_source_segment(expected, node)\n            assert source.count(prior) == 1, "invalid_fixed_w15_r03_transition_delta"\n            assert expected.count(source) == 1\n            expected = expected.replace(source, source.replace(prior, replacement, 1), 1)\n    additions = {'), ('test_w15_r02_source_deltas_preserve_every_prior_node_and_identity', '        "W15_R02_BASE", "W15_R02_BASE_TREE", "W15_R02_PREDECESSOR", "W15_R02_PATHS",', '        "W15_R03_BASE", "W15_R03_BASE_TREE", "W15_R03_PREDECESSOR", "W15_R03_PATHS",\n        "_W15_R03_DRIVER_DELTAS", "_W15_R03_TRANSITION_DELTAS",\n        "test_w15_r03_source_deltas_preserve_existing_nodes_and_bound_only_ci_budgets",\n        "W15_R02_BASE", "W15_R02_BASE_TREE", "W15_R02_PREDECESSOR", "W15_R02_PATHS",'))
