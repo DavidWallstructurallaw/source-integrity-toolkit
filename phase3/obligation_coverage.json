@@ -1,7 +1,7 @@
 {
   "format": "sit-phase3-obligations/0.1",
   "unit": "P3-W15",
-  "status": "private_core_R01_repaired_R02_verified_final_head_gate_external",
+  "status": "private_core_R01_repaired_R02_preserved_R03_verified_final_head_gate_external",
   "catalog": {
     "path": "scaffold/obligation_catalog.json",
     "sha256": "52db8f7e1966f6ff5a5b05b7da35e217cd7368808258cb355c0cb86cc8613852"
@@ -14146,6 +14146,14 @@
         "sha256": "c10525988c782d84a0371c4be31c30c605821ec922fc4e8a39b88d1b2f71281e"
       },
       "meaning": "Verification transport optimization preserves all product sources, field rows and R01 analytical assertions. Hosted final-head evidence remains required."
+    },
+    "r03_verification": {
+      "receipt": {
+        "path": "w15-r03-repair-record.json",
+        "bytes": 12127,
+        "sha256": "14d5e2a8d38d5fb66b0613410f4bfc8388876306c0b95a0e3b61be8acd0c9b6c"
+      },
+      "meaning": "Only finite outer CI budgets and exact scope/source controls change. Product bytes, all 228 field rows and R01/R02 assertions remain preserved; final-head hosted evidence remains required."
     }
   }
 }

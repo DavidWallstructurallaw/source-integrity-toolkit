@@ -9,7 +9,8 @@
     "w14_acceptance": "explicitly_accepted_and_merged",
     "w15_acceptance": "pending_exact_final_head_evidence_and_owner_acceptance",
     "r01_owner_instruction": "批准 P3-W15-R01",
-    "r02_owner_instruction": "批准 P3-W15-R02"
+    "r02_owner_instruction": "批准 P3-W15-R02",
+    "r03_owner_instruction": "批准 R03 继续"
   },
   "accepted_predecessor": {
     "unit": "P3-W14",
@@ -46,8 +47,9 @@
     "applied_exception": "P3-W15-R01",
     "product_modules_changed": 1,
     "tests_changed": 3,
-    "guard_or_workflow_changed": false,
+    "guard_or_workflow_changed": true,
     "effective_paths": [
+      ".github/workflows/phase1-ci.yml",
       "PHASE_3_COMPLETION.md",
       "PHASE_3_PROGRESS.md",
       "README.md",
@@ -62,7 +64,8 @@
     ],
     "applied_exceptions": [
       "P3-W15-R01",
-      "P3-W15-R02"
+      "P3-W15-R02",
+      "P3-W15-R03"
     ],
     "r02_post_checkpoint_paths": [
       "PHASE_3_COMPLETION.md",
@@ -76,10 +79,26 @@
       "tests/scaffold/test_ci_contract.py"
     ],
     "r02_product_modules_changed": 0,
-    "r02_tests_changed": 2
+    "r02_tests_changed": 2,
+    "r03_post_checkpoint_paths": [
+      ".github/workflows/phase1-ci.yml",
+      "PHASE_3_COMPLETION.md",
+      "PHASE_3_PROGRESS.md",
+      "README.md",
+      "phase3/delivery_manifest.json",
+      "phase3/implementation_evidence.json",
+      "phase3/module_policy.json",
+      "phase3/obligation_coverage.json",
+      "tests/contract/test_phase3_transition.py",
+      "tests/scaffold/test_ci_contract.py"
+    ],
+    "r03_product_modules_changed": 0,
+    "r03_tests_changed": 2,
+    "r03_guard_changed": false,
+    "r03_workflow_changed": true
   },
   "implementation": {
-    "status": "private_core_handoff_R01_repaired_R02_verification_optimized",
+    "status": "private_core_handoff_R01_repaired_R02_optimized_R03_ci_budget_amended",
     "planned_new_modules_implemented": 16,
     "active_modules": 29,
     "protected_modules": 19,
@@ -1448,10 +1467,10 @@
         "windows-2025-py3.11",
         "windows-2025-py3.13"
       ],
-      "required_tests_per_profile": 3962,
+      "required_tests_per_profile": 3963,
       "required_separate_subtests": 428,
       "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
-      "rule": "Only actual final-head four-profile CI and original-artifact audit can satisfy this gate; local timing and older passes do not."
+      "rule": "Only one actual final-head four-profile CI run and original-artifact audit can satisfy this gate. Older passing profiles and local checks cannot be reused. Any failure keeps acceptance blocked without automatic budget expansion or blind retry."
     },
     "r01_resolution": {
       "status": "implemented_directly_verified",
@@ -1488,6 +1507,153 @@
         "path": "w15-r02-repair-record.json",
         "bytes": 6295,
         "sha256": "c10525988c782d84a0371c4be31c30c605821ec922fc4e8a39b88d1b2f71281e"
+      }
+    },
+    "historical_r02_final_matrix": {
+      "head": "3a8c6f99a2aa71ce8e67454801e16a1c5c5caed7",
+      "run_id": 36296729627,
+      "run_attempt": 1,
+      "conclusion": "failure",
+      "successful_profiles": [
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "artifact_attempt": 1,
+          "job_id": 108556845546,
+          "artifact_id": 10924373085,
+          "zip": "/workspace/scratch/4e5267fe5990/w15-r02-ci/phase3-ubuntu-24.04-py3.13-36296729627-1.zip",
+          "sha256": "cc4ab53e860f37f15bd12ce4550b90e6da1a3599d645f70b0e3ecbf733b677e7",
+          "bytes": 223152,
+          "service_digest_checked": true,
+          "collection_count": 3962,
+          "history_commits": 59,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2,
+          "checks_pass": true,
+          "outcome": "success",
+          "tests": 3962,
+          "passed": 3962,
+          "failures": 0,
+          "subtests": 428,
+          "seconds": 1468.26
+        },
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "artifact_attempt": 1,
+          "job_id": 108556845557,
+          "artifact_id": 10924206929,
+          "zip": "/workspace/scratch/4e5267fe5990/w15-r02-ci/phase3-ubuntu-24.04-py3.11-36296729627-1.zip",
+          "sha256": "3cbb5ac9edf17463fb1aa19bf8d42d46296c10d174bb45162458a06b6c0e675b",
+          "bytes": 222833,
+          "service_digest_checked": true,
+          "collection_count": 3962,
+          "history_commits": 59,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2,
+          "checks_pass": true,
+          "outcome": "success",
+          "tests": 3962,
+          "passed": 3962,
+          "failures": 0,
+          "subtests": 428,
+          "seconds": 1330.14
+        }
+      ],
+      "failed_profiles": [
+        {
+          "profile": "windows-2025-py3.11",
+          "artifact_attempt": 1,
+          "job_id": 108556845567,
+          "artifact_id": 10925180167,
+          "zip": "/workspace/scratch/4e5267fe5990/w15-r02-ci/phase3-windows-2025-py3.11-36296729627-1.zip",
+          "sha256": "38cde9a49eac0afc47712e929db236687db81dd5646a1d31c090fdf7f787505f",
+          "bytes": 232792,
+          "service_digest_checked": true,
+          "collection_count": 3962,
+          "history_commits": 59,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2,
+          "checks_pass": true,
+          "outcome": "failure",
+          "completed_test_counts_claimed": true,
+          "failure_kind": "temporary_git_object_unlink_permission_error",
+          "tests": 3962,
+          "passed": 3959,
+          "failures": 3,
+          "subtests": 428,
+          "seconds": 1630.36,
+          "timeout_seconds": null,
+          "failed_test_ids": [
+            "tests/contract/test_phase3_transition.py::test_w15_r02_batch_matches_old_queries_and_history_in_real_git[missing_commit]",
+            "tests/contract/test_phase3_transition.py::test_w15_r02_batch_matches_old_queries_and_history_in_real_git[missing_parent]",
+            "tests/contract/test_phase3_transition.py::test_w15_r02_batch_matches_old_queries_and_history_in_real_git[missing_tree]"
+          ]
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "artifact_attempt": 1,
+          "job_id": 108556845545,
+          "artifact_id": 10924672640,
+          "zip": "/workspace/scratch/4e5267fe5990/w15-r02-ci/phase3-windows-2025-py3.13-36296729627-1.zip",
+          "sha256": "c153a5221c776f0d90d74ac0a8b487308546e7ce268b3bd314048db67fe326c8",
+          "bytes": 168718,
+          "service_digest_checked": true,
+          "collection_count": 3962,
+          "history_commits": 59,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2,
+          "checks_pass": true,
+          "outcome": "failure",
+          "completed_test_counts_claimed": false,
+          "failure_kind": "suite_timeout",
+          "tests": null,
+          "passed": null,
+          "failures": null,
+          "subtests": null,
+          "seconds": null,
+          "timeout_seconds": 1800,
+          "failed_test_ids": []
+        }
+      ],
+      "audit": {
+        "path": "w15-r02-blocked-ci-audit.json",
+        "bytes": 11184,
+        "sha256": "162296318039717f60ab3d4e8d6f97c50540f16aea084d667c3eb6a5a38ad6be"
+      },
+      "review_package": {
+        "path": "Source-Integrity-Toolkit-P3-W15-R02-Execution-and-R03-Review.zip",
+        "bytes": 24306812,
+        "sha256": "02d21d77b91163e43df92d91b34dbf3059a3cd55f03a377bc30244983a22f5e3"
+      },
+      "meaning": "The two Ubuntu passes, Windows 3.11 three fixture failures, and Windows 3.13 1800-second timeout are historical results of this exact head; none carries forward."
+    },
+    "historical_r02_object_mode_followup": {
+      "head": "d32c1499fe7969b9415468ef62c966c38110a090",
+      "tree": "1234a087200c5e56d20c7f53aa0d71a828f167fb",
+      "parent": "3a8c6f99a2aa71ce8e67454801e16a1c5c5caed7",
+      "tests": 12,
+      "pytest_seconds": 15.36,
+      "audit": {
+        "path": "w15-r02-followup-audit.json",
+        "bytes": 29779,
+        "sha256": "6b891e3b774ee7dfb9b76a976ddb791d0ccf6d6f8d1181c28f02a6762a0538a9"
+      },
+      "four_environment_certification": false,
+      "meaning": "The temporary loose object retains its mode bits with owner-write added before actual deletion. Twelve local checks preserve all fault assertions; no Windows CI pass is claimed."
+    },
+    "r03_resolution": {
+      "status": "implemented_directly_verified",
+      "receipt": {
+        "path": "w15-r03-repair-record.json",
+        "bytes": 12127,
+        "sha256": "14d5e2a8d38d5fb66b0613410f4bfc8388876306c0b95a0e3b61be8acd0c9b6c"
       }
     }
   },
@@ -1859,6 +2025,282 @@
       "required_separate_subtests": 428,
       "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
       "rule": "Only actual final-head four-profile CI and original-artifact audit can satisfy this gate; local timing and older passes do not."
+    }
+  },
+  "approved_r03_amendment": {
+    "id": "P3-W15-R03",
+    "status": "owner_approved_implemented_directly_verified",
+    "approval": {
+      "amendment": "P3-W15-R03",
+      "owner_quote": "批准 R03 继续",
+      "owner_message_utc": "2026-09-30T15:08:59Z",
+      "owner_message_local": "2026-09-30T08:08:59-07:00",
+      "timestamp_basis": "Submission context supplied with the approval turn",
+      "approved_proposal_sha256": "67715d138a0c13e336bf7721b68539b8112441e99bcaf1e562298ffae3f7bf2f",
+      "proposal_package_sha256": "02d21d77b91163e43df92d91b34dbf3059a3cd55f03a377bc30244983a22f5e3",
+      "checkpoint": "d32c1499fe7969b9415468ef62c966c38110a090",
+      "checkpoint_tree": "1234a087200c5e56d20c7f53aa0d71a828f167fb",
+      "checkpoint_parent": "3a8c6f99a2aa71ce8e67454801e16a1c5c5caed7",
+      "accepted_predecessor": "6dbca96f3314d537beed4ccb6202147bd9248dd9",
+      "pull_request": 34,
+      "verification_paths": [
+        ".github/workflows/phase1-ci.yml",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "record_paths": [
+        "PHASE_3_COMPLETION.md",
+        "PHASE_3_PROGRESS.md",
+        "README.md",
+        "phase3/delivery_manifest.json",
+        "phase3/implementation_evidence.json",
+        "phase3/module_policy.json",
+        "phase3/obligation_coverage.json"
+      ],
+      "post_checkpoint_allowed_path_count": 10,
+      "suite_timeout_seconds": {
+        "prior": 1800,
+        "approved": 2400
+      },
+      "job_timeout_minutes": {
+        "prior": 40,
+        "approved": 50
+      },
+      "authorized": "Exact outer complete-CI budgets, named source/workflow/scope controls at actual R03 boundary, truthful handoff records, new exact-final-head four-profile CI and original evidence audit.",
+      "preserved": "All 48 product modules and analytical integration bytes; product60second deadline/quotas/clocks; single Git60second limits; all3962prioridentities/428subtests; livehistory and original R01/R02 scopes; guards/pins/frozenplan/specifications/fixtures and product oracles.",
+      "excluded": "Merge or owner acceptance, next phase/release, permanent verification consolidation, automatic further budget expansion or reruns."
+    },
+    "approval_receipt": {
+      "path": "w15-r03-approval.json",
+      "bytes": 1959,
+      "sha256": "e7f75de90dabb58e1232b05924c998f99303a1c3091b87580729886c333cf7aa"
+    },
+    "tested_repair_precursor": {
+      "commit": "95368b54d17721ff7e975773ea4f3a22e5888ecf",
+      "tree": "f8340702fb6793499b1ff9290ea2930363ee79d8",
+      "parent": "d32c1499fe7969b9415468ef62c966c38110a090",
+      "meaning": "Actual directly tested three-file repair, followed by six truthful handoff records."
+    },
+    "changed_paths": [
+      ".github/workflows/phase1-ci.yml",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/contract/test_phase3_transition.py"
+    ],
+    "source_sha256": {
+      ".github/workflows/phase1-ci.yml": "65a3417140bb2bb71581b01fa255b56279ef88b482a732604ce3ab6f8ef77de4",
+      "tests/scaffold/test_ci_contract.py": "820eff6bc369a054dcb6c3964149c56fc62beaf4a6550d5888a9049c0baae57a",
+      "tests/contract/test_phase3_transition.py": "3f84666f2d235bcc20b64e9c74ae972b529751b8c2fa5ea6a9c58fd397a0065a"
+    },
+    "implemented_behavior": [
+      "Only the complete pytest subprocess ceiling changes from 1800 to 2400 seconds and the workflow job ceiling from 40 to 50 minutes; exact current and historical source controls remain active.",
+      "Original W15/R01/R02/R03 immediate authority remains seven/eleven/nine/ten paths, respectively. Actual R03 checkpoint ancestry gates the workflow permission; cumulative W14-to-final scope is twelve paths.",
+      "All 48 product modules and the analytical integration test retain the proposal checkpoint bytes, including the 60-second cooperative product deadline, work/witness quotas and R01 semantic assertions.",
+      "All prior 3962 identities, 428 separate subtests, live Git/history/ancestry/diff/archive checks, other internal timeouts, frozen guard/plans/specifications/fixtures, matrix, steps, permissions and pins remain preserved.",
+      "No permanent verification consolidation, next phase, owner acceptance, merge, release, automatic retry or further budget expansion is authorized."
+    ],
+    "outer_ci_budget": {
+      "suite_timeout_seconds": 2400,
+      "job_timeout_minutes": 50,
+      "historical_suite_timeout_seconds": 1800,
+      "historical_job_timeout_minutes": 40,
+      "meaning": "Finite approved ceilings; no earlier complete Windows 3.13 duration proves sufficiency."
+    },
+    "direct_verification": {
+      "tests": 372,
+      "seconds": 67.81553530299993,
+      "pytest_seconds": 67.57,
+      "execution": {
+        "path": "w15-r03-direct-final-execution.json",
+        "bytes": 24149,
+        "sha256": "8a6b5850780a341de1e787a7b78366e9b311793bff9288a26615d939d5ec94b7"
+      },
+      "junit": {
+        "path": "w15-r03-direct-final.xml",
+        "bytes": 60846,
+        "sha256": "ac499466773c88fb5bb9074d80abf02856aa14e0a4843628ea575fffc915b31d"
+      },
+      "log": {
+        "path": "w15-r03-direct-final.log",
+        "bytes": 511,
+        "sha256": "69be290600db43c14f9ce972d11a371313c3b6cedb9551b5e5fc466327bb17fb"
+      },
+      "source_bound_paths": [
+        ".github/workflows/phase1-ci.yml",
+        "tests/scaffold/test_ci_contract.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "tracked_files_verified": 207,
+      "meaning": "Actual affected driver and transition checks bind all 207 precursor source hashes; the final-head hosted matrix remains a separate gate."
+    },
+    "actual_collection": {
+      "count": 3963,
+      "retained_r02": 3962,
+      "retained_r01": 3937,
+      "retained_w14": 3918,
+      "new": 1,
+      "removed": 0,
+      "new_nodes": {
+        "path": "w15-r03-candidate-new-nodes.json",
+        "bytes": 251,
+        "sha256": "f07fb695199a76488779d8b608f059331c17c57e9d1b0e5378dbfca994a1f888"
+      },
+      "collection": {
+        "path": "w15-r03-candidate-collection.json",
+        "bytes": 507344,
+        "sha256": "2576263369c50278773e4802bc7ec59781f72cb6bd3b3dfb9ff9f802b615d057"
+      }
+    },
+    "historical_failed_r02_final_head": {
+      "head": "3a8c6f99a2aa71ce8e67454801e16a1c5c5caed7",
+      "run_id": 36296729627,
+      "run_attempt": 1,
+      "conclusion": "failure",
+      "successful_profiles": [
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "artifact_attempt": 1,
+          "job_id": 108556845546,
+          "artifact_id": 10924373085,
+          "zip": "/workspace/scratch/4e5267fe5990/w15-r02-ci/phase3-ubuntu-24.04-py3.13-36296729627-1.zip",
+          "sha256": "cc4ab53e860f37f15bd12ce4550b90e6da1a3599d645f70b0e3ecbf733b677e7",
+          "bytes": 223152,
+          "service_digest_checked": true,
+          "collection_count": 3962,
+          "history_commits": 59,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2,
+          "checks_pass": true,
+          "outcome": "success",
+          "tests": 3962,
+          "passed": 3962,
+          "failures": 0,
+          "subtests": 428,
+          "seconds": 1468.26
+        },
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "artifact_attempt": 1,
+          "job_id": 108556845557,
+          "artifact_id": 10924206929,
+          "zip": "/workspace/scratch/4e5267fe5990/w15-r02-ci/phase3-ubuntu-24.04-py3.11-36296729627-1.zip",
+          "sha256": "3cbb5ac9edf17463fb1aa19bf8d42d46296c10d174bb45162458a06b6c0e675b",
+          "bytes": 222833,
+          "service_digest_checked": true,
+          "collection_count": 3962,
+          "history_commits": 59,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2,
+          "checks_pass": true,
+          "outcome": "success",
+          "tests": 3962,
+          "passed": 3962,
+          "failures": 0,
+          "subtests": 428,
+          "seconds": 1330.14
+        }
+      ],
+      "failed_profiles": [
+        {
+          "profile": "windows-2025-py3.11",
+          "artifact_attempt": 1,
+          "job_id": 108556845567,
+          "artifact_id": 10925180167,
+          "zip": "/workspace/scratch/4e5267fe5990/w15-r02-ci/phase3-windows-2025-py3.11-36296729627-1.zip",
+          "sha256": "38cde9a49eac0afc47712e929db236687db81dd5646a1d31c090fdf7f787505f",
+          "bytes": 232792,
+          "service_digest_checked": true,
+          "collection_count": 3962,
+          "history_commits": 59,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2,
+          "checks_pass": true,
+          "outcome": "failure",
+          "completed_test_counts_claimed": true,
+          "failure_kind": "temporary_git_object_unlink_permission_error",
+          "tests": 3962,
+          "passed": 3959,
+          "failures": 3,
+          "subtests": 428,
+          "seconds": 1630.36,
+          "timeout_seconds": null,
+          "failed_test_ids": [
+            "tests/contract/test_phase3_transition.py::test_w15_r02_batch_matches_old_queries_and_history_in_real_git[missing_commit]",
+            "tests/contract/test_phase3_transition.py::test_w15_r02_batch_matches_old_queries_and_history_in_real_git[missing_parent]",
+            "tests/contract/test_phase3_transition.py::test_w15_r02_batch_matches_old_queries_and_history_in_real_git[missing_tree]"
+          ]
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "artifact_attempt": 1,
+          "job_id": 108556845545,
+          "artifact_id": 10924672640,
+          "zip": "/workspace/scratch/4e5267fe5990/w15-r02-ci/phase3-windows-2025-py3.13-36296729627-1.zip",
+          "sha256": "c153a5221c776f0d90d74ac0a8b487308546e7ce268b3bd314048db67fe326c8",
+          "bytes": 168718,
+          "service_digest_checked": true,
+          "collection_count": 3962,
+          "history_commits": 59,
+          "package_member_checks": true,
+          "installed_analysis_checks": true,
+          "original_hero_modes": 8,
+          "completed_finite_modes": 2,
+          "checks_pass": true,
+          "outcome": "failure",
+          "completed_test_counts_claimed": false,
+          "failure_kind": "suite_timeout",
+          "tests": null,
+          "passed": null,
+          "failures": null,
+          "subtests": null,
+          "seconds": null,
+          "timeout_seconds": 1800,
+          "failed_test_ids": []
+        }
+      ],
+      "audit": {
+        "path": "w15-r02-blocked-ci-audit.json",
+        "bytes": 11184,
+        "sha256": "162296318039717f60ab3d4e8d6f97c50540f16aea084d667c3eb6a5a38ad6be"
+      },
+      "review_package": {
+        "path": "Source-Integrity-Toolkit-P3-W15-R02-Execution-and-R03-Review.zip",
+        "bytes": 24306812,
+        "sha256": "02d21d77b91163e43df92d91b34dbf3059a3cd55f03a377bc30244983a22f5e3"
+      },
+      "meaning": "The two Ubuntu passes, Windows 3.11 three fixture failures, and Windows 3.13 1800-second timeout are historical results of this exact head; none carries forward."
+    },
+    "historical_r02_object_mode_followup": {
+      "head": "d32c1499fe7969b9415468ef62c966c38110a090",
+      "tree": "1234a087200c5e56d20c7f53aa0d71a828f167fb",
+      "parent": "3a8c6f99a2aa71ce8e67454801e16a1c5c5caed7",
+      "tests": 12,
+      "pytest_seconds": 15.36,
+      "audit": {
+        "path": "w15-r02-followup-audit.json",
+        "bytes": 29779,
+        "sha256": "6b891e3b774ee7dfb9b76a976ddb791d0ccf6d6f8d1181c28f02a6762a0538a9"
+      },
+      "four_environment_certification": false,
+      "meaning": "The temporary loose object retains its mode bits with owner-write added before actual deletion. Twelve local checks preserve all fault assertions; no Windows CI pass is claimed."
+    },
+    "final_matrix": {
+      "status": "exact_final_head_gate_recorded_externally_after_execution",
+      "required_profiles": [
+        "ubuntu-24.04-py3.11",
+        "ubuntu-24.04-py3.13",
+        "windows-2025-py3.11",
+        "windows-2025-py3.13"
+      ],
+      "required_tests_per_profile": 3963,
+      "required_separate_subtests": 428,
+      "review_url": "https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/34",
+      "rule": "Only one actual final-head four-profile CI run and original-artifact audit can satisfy this gate. Older passing profiles and local checks cannot be reused. Any failure keeps acceptance blocked without automatic budget expansion or blind retry."
     }
   }
 }
