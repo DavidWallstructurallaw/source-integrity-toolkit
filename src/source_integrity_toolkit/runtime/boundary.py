@@ -416,8 +416,12 @@ def _plan_analysis(prepared, budget):
                 if _analysis_contains(tuple(supplied_roles), role, budget):
                     budget.charge(1)
                     roles.append(role)
+            budget.charge(3)
             if len(roles) < 2:
                 add('SIT-M008', ('incomplete_roles', evaluation.identifier),
+                    _plan_context(inquiry, evaluation_claims, budget, subjects=(evaluation.identifier,)))
+            elif not dimensions:
+                add('SIT-M008', ('dimension_not_selected', evaluation.identifier),
                     _plan_context(inquiry, evaluation_claims, budget, subjects=(evaluation.identifier,)))
             for index, first in enumerate(roles):
                 for second in roles[index + 1:]:
@@ -620,7 +624,13 @@ def _plan_analysis(prepared, budget):
                 if job.inquiry_ref == inquiry.identifier and job.family == family:
                     present = True
             if not present:
-                if family == 'SIT-M009':
+                budget.charge(8)
+                if (not dimensions and
+                        ((claims and family in ('SIT-M002', 'SIT-M003', 'SIT-M004',
+                            'SIT-M005', 'SIT-M006', 'SIT-M007')) or
+                         (family == 'SIT-M013' and (claims or review_bindings)))):
+                    add(family, ('dimension_not_selected',), base, ())
+                elif family == 'SIT-M009':
                     add(family, ('missing_assessment',), base, (None,))
                 elif family == 'SIT-M010':
                     add(family, ('missing_stage_history',), _plan_context(inquiry, claims, budget, view='pipeline_stages'), (None, None))
@@ -684,13 +694,16 @@ def _planned_nonresults(prepared, spec, port, *, execution='completed', code='no
         port.charge(30)
         ref = _r._ResultRef(spec.family, field, scope)
         classification = ('execution' if execution != 'completed' else
-            'structural_inapplicability' if code == 'no_applicable_subject' else 'evidence_gap')
+            'structural_inapplicability' if code in ('no_applicable_subject', 'dimension_not_selected') else 'evidence_gap')
         state = ('not_evaluated' if execution != 'completed' else
-            'not_applicable' if code == 'no_applicable_subject' else 'unavailable')
+            'not_applicable' if code in ('no_applicable_subject', 'dimension_not_selected') else 'unavailable')
         detail = ('No eligible subject tuple was supplied for this finite operation.' if code == 'no_applicable_subject'
+            else 'The Inquiry selected no dependency dimension for this finite operation.' if code == 'dimension_not_selected'
             else 'An actual Evaluation lacks a pair of supplied distinct roles.' if code == 'roles_incomplete'
             else 'Processing stopped before this cell made a complete availability decision.')
-        reason = _r._Reason(code, scope, (ref,), targets, detail, classification)
+        port.charge(len(targets) + 2)
+        inputs = (inquiry,) + targets if code == 'dimension_not_selected' else targets
+        reason = _r._Reason(code, scope, (ref,), inputs, detail, classification)
         kind = _r._field_kind(spec.family, field)
         checks = ()
         if execution == 'completed':
@@ -959,8 +972,9 @@ def _provenance_selection(prepared, context, port):
 def _execute_job(prepared, spec, ledger, port):
     """Run only the scheduled job; pure owner helpers debit this same port."""
     family, context, parameters = spec.family, spec.context, spec.parameters
-    if spec.operation_key[0] in ('no_subject', 'incomplete_roles'):
-        code = 'roles_incomplete' if spec.operation_key[0] == 'incomplete_roles' else 'no_applicable_subject'
+    if spec.operation_key[0] in ('no_subject', 'incomplete_roles', 'dimension_not_selected'):
+        code = ('roles_incomplete' if spec.operation_key[0] == 'incomplete_roles' else
+            'dimension_not_selected' if spec.operation_key[0] == 'dimension_not_selected' else 'no_applicable_subject')
         output = _planned_nonresults(prepared, spec, port, code=code)
         _commit_job(port, output, (), ())
         return port._committed
