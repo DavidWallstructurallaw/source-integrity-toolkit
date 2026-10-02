@@ -1,16 +1,16 @@
 # Source Integrity Toolkit Verification Consolidation
 
-Revision: 0.1  
-Checkpoint: VC-01  
-Status: VC-01 completed; VC-02 through VC-06 remain unexecuted.  
-Owner instruction: `批准整合计划，启动 VC-01`  
-Instruction time: 2026-10-01 19:54:10 America/Phoenix / 2026-10-02 02:54:10 UTC.
+Revision: 0.2
+Checkpoint: VC-02
+Status: VC-01 and VC-02 completed; VC-03 through VC-06 remain pending.
+Latest owner instruction: `VC-02 go`.
+Execution date: 2026-10-02 UTC.
 
 ## Accepted authority and scope
 
 The owner approved [VERIFICATION_CONSOLIDATION_PLAN.md](VERIFICATION_CONSOLIDATION_PLAN.md), SHA-256 `a94b59a0bfdbde3c70c7286fd48c5e0cbdb4a538afeb094ba97dce718bd7d11d`, and started VC-01. The plan is stored with its originally reviewed bytes. Its drafting-time pending header is superseded by this later instruction, without rewriting the approved document.
 
-This checkpoint performs baseline verification, one-time guarantee mapping and bounded historical-cost measurement. It does not implement the proposed current controls, retire tests, modify CI or claim completion of the whole consolidation.
+VC-01 performed baseline verification, one-time guarantee mapping and bounded historical-cost measurement. Its published checkpoint is `a47ea2480043c2bb267c047b2d99a67ab4428e53`. The following baseline sections retain that checkpoint's findings. The VC-02 section below records the newly implemented direct controls. Neither checkpoint retires tests, changes the default CI workflow or claims completion of the whole consolidation.
 
 The consolidation branch starts at accepted Phase 3 merge `2413a29b839b7e1de8f76a449762f031de19d52b`. Remote main and merged PR #34 were rechecked. The accepted tree `e2f230bdf6f838f3d12df233559732aa1d5c1699` equals directly tested head `90684996eac568af6129973764fe40f3b666a15f`.
 
@@ -119,6 +119,57 @@ VC-01 validation checks:
 
 This is a single-agent inventory and verification exercise; no independent second-review claim is made. No new full matrix is required for the inventory-only checkpoint, and none was started. The final consolidation gate still requires the complete current suite and all four hosted profiles on the actual final candidate head.
 
-**Next: VC-02, establish current direct controls.** Start with accepted-anchor/frozen-byte authority, exact external context and scope, then actual current module/effect, collection/JUnit and post-anchor history controls. Use the map's proposed witnesses and keep all original checks until their replacement gate is met.
+The VC-01 handoff was to establish accepted-anchor/frozen-byte authority, exact external context and scope, current module/effect, collection/JUnit and post-anchor history controls. All original checks remain until their replacement gate is met.
 
-VC-02 has not started in this checkpoint. The complete candidate will use the one planned implementation PR. Main is not merged, and public auditing, report/native work, the next major phase and release remain outside this checkpoint.
+## VC-02: current direct controls
+
+The owner subsequently instructed `VC-02 go`. This checkpoint changes exactly four approved paths:
+
+```text
+tools/check_scaffold_boundary.py
+tests/contract/test_verification_boundary.py
+verification/consolidation_map.json
+VERIFICATION_CONSOLIDATION_COMPLETION.md
+```
+
+All 48 product modules, all 72 original test files, the workflow, dependencies, build configuration, schemas, fixtures, golden expectations and historical records retain their accepted bytes. The approved consolidation plan remains SHA-256 `a94b59a0bfdbde3c70c7286fd48c5e0cbdb4a538afeb094ba97dce718bd7d11d`. The mapping remains review data and never supplies executable authorization.
+
+The new explicit `VC` entrypoint checks:
+
+- The accepted merge's exact commit, tree and ordered parents, and the approved plan's actual bytes. Git object batches are size-framed and content-hash verified; missing, reordered, extra, malformed and substituted records fail closed.
+- The exact 20-path ceiling, frozen file contents/modes, the actual index and filesystem, and separately supplied runner event/head context. Candidate manifests, map entries and phase environment values cannot enlarge authority. Staged changes restored only in the worktree and assume-unchanged flags do not conceal edits.
+- Every commit after the accepted merge, including merge side branches and forbidden edits later restored. Shallow history, grafts, replace refs, missing necessary objects, wrong ancestry and wrong parents are rejected. No pre-acceptance phase DAG is replayed by the new path; no cross-root or cross-invocation trust cache is retained.
+- The current 48-module inventory, 29 active / 19 protected slots, byte ceilings, source effects, dependencies and cycles. Source-tree inspection includes ignored files and directory boundaries. These checks are separate from VC's complete product-byte freeze.
+- Complete, unique current collection files/identities and exact JUnit identity reconciliation. Successful subtest events are accounted separately; same-count substitution, false zero summaries, hidden failures and skips fail. The legacy driver's historical identity requirements remain active pending retirement.
+- The actual workflow's candidate checkout, read-only permissions, fixed Action pins, four profiles, isolation, 50-minute job budget, complete stages and always-run failure evidence/upload. The 2,400-second suite budget is unchanged. The default driver switches to these APIs in VC-05.
+
+The independent new test file has 21 test functions, expanding to 121 cases. Nineteen of the map's twenty proposed canonical entrypoints are exercised. The historical-loader absence entrypoint remains pending VC-03, because all six wrappers still load historical source.
+
+### Executed evidence
+
+Local execution used the same pinned offline tools as VC-01, on Linux / CPython 3.12.14. This is a development checkpoint, not a hosted acceptance profile.
+
+| Check | Result |
+| --- | --- |
+| All new current controls | 121 passed |
+| Six existing wrapper suites, four preparation guard mutations and related dependency controls | 130 passed |
+| Combined targeted run | 251 passed, 91 subtests passed, 0 failures/errors/skips; 144.53 seconds |
+| Independent collection/JUnit reconciliation of that run | 251 top-level identities plus 91 separate subtest events match |
+| Full repository collection | 4,084 unique identities in 73 files; all original 3,963 retained, 121 added, none removed |
+| Collection set SHA-256 | `2be0ab4b33375cf01217c28ca0ed19ff45855a6f3ccd9b0dff31cd7575e42e02` |
+| Existing live-migration-source diagnostic | 1 passed; its six protected sources remain unchanged |
+| Old W04 exact guard-byte oracle diagnostic | 1 failed on the new guard hash; retained pending approved historical-chain retirement |
+
+The targeted run selected affected controls explicitly. It is not a filtered full-suite success claim. The map's `vc02_execution` section retains selectors, expanded new nodes, source hashes, collection accounting, raw logs and JUnit records, including unsuccessful development attempts.
+
+The initial run exposed a footer parser that incorrectly included preceding blank lines: 108 passed and 1 failed. That defect was corrected. A later collection attempt rejected the reserved pytest parameter name `request`; it was renamed to `commit_ids`. The final targeted run includes both corrections and additional ignored-source / missing-object cases. Earlier failures are retained as failures.
+
+The old W04 source hash expects the pre-consolidation guard. Its failure is the intermediate bootstrap situation explicitly approved in plan section 4. The check has not been weakened, skipped, relabelled as passed or deleted. Complete-suite acceptance remains pending the later migration and retirement gates.
+
+### Remaining boundaries
+
+The legacy default driver and all old test identities remain active. Per-node replacement equivalence and retirement approval remain pending. The mixed-file control currently preserves all non-enumerated top-level code; dedicated import/constant cleanup and the preparation witness's fixture adaptation are deferred to VC-03 within the approved scope.
+
+The current control does not establish a security boundary against an actor replacing both the verifier and its trusted event source. Synthetic event tests and local Git checks do not constitute a hosted GitHub event or completed matrix. No full matrix, implementation PR, merge, product change or release was performed at this checkpoint.
+
+**Next: VC-03, materialize the six current test wrappers and adapt the approved mixed-file dependencies.** VC-04 retires proven historical chains, VC-05 switches the CI/developer entrypoints, and VC-06 performs final four-profile acceptance on the exact completed candidate.
