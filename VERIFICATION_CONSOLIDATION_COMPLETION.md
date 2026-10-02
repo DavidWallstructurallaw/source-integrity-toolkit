@@ -1,16 +1,16 @@
 # Source Integrity Toolkit Verification Consolidation
 
-Revision: 0.2
-Checkpoint: VC-02
-Status: VC-01 and VC-02 completed; VC-03 through VC-06 remain pending.
-Latest owner instruction: `VC-02 go`.
+Revision: 0.3
+Checkpoint: VC-03
+Status: VC-01 through VC-03 completed; VC-04 through VC-06 remain pending.
+Latest owner instruction: `VC-03 go`.
 Execution date: 2026-10-02 UTC.
 
 ## Accepted authority and scope
 
 The owner approved [VERIFICATION_CONSOLIDATION_PLAN.md](VERIFICATION_CONSOLIDATION_PLAN.md), SHA-256 `a94b59a0bfdbde3c70c7286fd48c5e0cbdb4a538afeb094ba97dce718bd7d11d`, and started VC-01. The plan is stored with its originally reviewed bytes. Its drafting-time pending header is superseded by this later instruction, without rewriting the approved document.
 
-VC-01 performed baseline verification, one-time guarantee mapping and bounded historical-cost measurement. Its published checkpoint is `a47ea2480043c2bb267c047b2d99a67ab4428e53`. The following baseline sections retain that checkpoint's findings. The VC-02 section below records the newly implemented direct controls. Neither checkpoint retires tests, changes the default CI workflow or claims completion of the whole consolidation.
+VC-01 performed baseline verification, one-time guarantee mapping and bounded historical-cost measurement. Its published checkpoint is `a47ea2480043c2bb267c047b2d99a67ab4428e53`. The following baseline sections retain that checkpoint's findings. VC-02, published as `e4b0378b6e41293260de7323dfd5f179831736f7`, added current direct controls. Neither of those checkpoints retired tests. The VC-03 section records current source materialization and the bounded replacement of two obsolete loader API checks. The default workflow and full consolidation acceptance remain pending.
 
 The consolidation branch starts at accepted Phase 3 merge `2413a29b839b7e1de8f76a449762f031de19d52b`. Remote main and merged PR #34 were rechecked. The accepted tree `e2f230bdf6f838f3d12df233559732aa1d5c1699` equals directly tested head `90684996eac568af6129973764fe40f3b666a15f`.
 
@@ -172,4 +172,60 @@ The legacy default driver and all old test identities remain active. Per-node re
 
 The current control does not establish a security boundary against an actor replacing both the verifier and its trusted event source. Synthetic event tests and local Git checks do not constitute a hosted GitHub event or completed matrix. No full matrix, implementation PR, merge, product change or release was performed at this checkpoint.
 
-**Next: VC-03, materialize the six current test wrappers and adapt the approved mixed-file dependencies.** VC-04 retires proven historical chains, VC-05 switches the CI/developer entrypoints, and VC-06 performs final four-profile acceptance on the exact completed candidate.
+The VC-02 handoff was VC-03: materialize the six current test wrappers and adapt the approved mixed-file dependencies.
+
+## VC-03: explicit current test source
+
+The owner instructed `VC-03 go`. This checkpoint modifies 13 approved Python paths plus this completion record and the one-time map. All 48 product modules, the approved plan, the actual workflow, dependencies, build configuration, frozen specifications, schemas, fixtures, golden expectations and all non-enumerated mixed-file code retain their accepted bytes.
+
+The six scaffold files now contain their inherited assertions, assertion helpers and effective current overrides directly. `load_phase1_test` and its executable source allowlist are removed. There is one current definition for each effective test method; historical monkeypatch assignments no longer supply implementations. All 118 collected identities in these files remain present and pass, covering import effects, exact inventory, catalogue/owner bindings, dependency layers, byte ceilings, optimized-Python rejection, workflow policy and JUnit accounting.
+
+Package-only mutation fixtures now use explicit current inspection with 29 active and 19 inert modules. The 19 inert byte pins and five accepted preparation-module pins remain enforced. The outer VC checkout control continues to freeze all 48 product modules. The `--modules-only` CLI option rejects combinations with authorization/event/head flags and makes no checkout authorization or analytical conformance claim.
+
+The five mixed files retain all non-enumerated source exactly. Observability and capture helpers no longer import a transition test module. Bundle and schema helpers already use the now-materialized CI file, so their files require no edits. The preparation mutation witness changes exactly two context expressions, preserving its positive baseline, actual forbidden injection, negative result and restored-original positive result. The installed preparation witness changes only the receipt's unit label to `VC`; all build, install, hero, byte, effect and refusal assertions are unchanged.
+
+An additional hidden executable dependency was removed from the R02 history comparison. It previously fetched an old CI function from Git, extracted its AST and executed it. The existing nine real-Git cases now compare with independently written expectations for their finite three-commit fixture. Full/shallow history, missing parent/tree/commit objects, replace/graft behavior, changed ROOT/Git state and wrong valid parents remain covered. Read-only historical comparisons and the old stage-history algorithms remain pending VC-04; no promise is made that all development checks run without Git.
+
+### One-time preservation proof
+
+The map's `vc03_execution.equivalence` records all 71 effective wrapper function groups, comprising 118 identities. Their ASTs match the accepted effective functions after enumerated current-API/context substitutions, override-name materialization and the accepted bundle-schema state. Catalogue validation helpers, fresh-import effects, JUnit helpers and retained packaging acquisition helpers are preserved. The manifest helper directly checks original catalogue identities, actual live bodies/owners and current cycles instead of substituting old inert bytes fetched from Git.
+
+The proof separately confirms the preparation witness's two exact context substitutions, the installed witness's single label substitution, all five mixed files' retained portions, all 48 product bytes and all 24 package-only byte pins. This is a one-time review artifact outside the runtime path, with its audit source retained in the existing map. It creates no new permanent migration oracle.
+
+Exactly two old identities are retired:
+
+```text
+tests/contract/test_phase2_transition.py::Phase2TransitionTests::test_unlisted_historical_source_cannot_execute
+tests/contract/test_phase2_transition.py::Phase2TransitionTests::test_altered_historical_test_bytes_cannot_execute
+```
+
+Their loader API no longer exists. Three fresh-interpreter controls prove current loading with no `.git`, an active blocked-Git gate and an active malicious-Git-output gate. Each gate is tested before use; loading makes zero Git requests and each effective test function resolves to its current on-disk declaration. Two additional direct tests cover package/checkout authority separation and preparation byte-pin mutations. Other historical retirement gates remain pending.
+
+### Executed evidence and collection
+
+Execution used the pinned offline tools on local Linux / CPython 3.12.14, without `SIT_PHASE_UNIT` for current or affected tests. This is not one of the four hosted acceptance profiles.
+
+| Check | Result |
+| --- | --- |
+| Six materialized suites, all five mixed files, 126 current controls, installed preparation and nine adapted history cases | 521 passed; 91 separate subtests passed; 192.99 seconds |
+| Additional real metadata rejection controls | 14 passed; 0.65 seconds |
+| Independent collection/JUnit reconciliation | 535 distinct successful test identities, 91 subtest events; no failures, errors or skips in those affected runs |
+| Separate installed receipt-routing check | Passed; 48 installed module hashes, eight admitted hero modes, two empty refusals, two public refusals, zero normal effects and three real negative effect probes |
+| Distribution members | sdist 65; wheel 55; rebuilt wheel 55; wheel member hashes match |
+| Full repository collection | 4,087 unique identities across 73 files; zero direct subprocess launches during collection |
+| Collection set SHA-256 | `fce612e97b5008dba25260f232135fa6a4a2f442c813d76d617c92a99cce70bf` |
+| Separate retained source-shape diagnostics | Two failed, preserved as failures pending VC-04 |
+
+The collection equation is **3,963 original - 2 retired loader API checks + 126 new current controls = 4,087**. Relative to VC-02, five cases are added and two are removed. All 118 wrapper identities remain; no semantic or security identity outside those two removed loader API checks disappears.
+
+Collection's six direct `git show` launches observed at VC-01 are now zero. The local instrumented collection took 1.476 seconds. Counts demonstrate removal of the executable loading mechanism; these timings do not establish a general or full-suite speedup.
+
+The separate receipt-routing check locally sets `GITHUB_ACTIONS=true` and a scratch `RUNNER_TEMP` solely to retain `sit-p3/evidence/w08-installed-runtime.json`. This does not represent a hosted execution. The receipt correctly records the pre-commit parent HEAD; the review record binds the exact tested candidate source bytes with SHA-256 values. Test logs, JUnit records, receipt, expanded selectors, collection changes and source proofs are retained in `vc03_execution`. Duplicate preliminary runs are not added to the 535 distinct-test count.
+
+### Bootstrap limits and handoff
+
+The retained W04 oracle fails because it requires the old wrapper shape; the retained W15-R02 oracle fails because it requires the removed historical comparator function. Both raw failures are preserved. Neither is skipped, xfailed, deleted or reported as passing. They are the intermediate source-shape incompatibility allowed by approved plan section 4, pending their individual VC-04 retirement gates. The complete suite has not been run or declared passing at this checkpoint.
+
+No default workflow switch, new hosted matrix, implementation PR, merge, product change or release occurred. Four-profile acceptance remains VC-06, on the exact completed candidate after VC-04 historical retirement and VC-05 CI/developer integration.
+
+**Next: VC-04, retire the mapped historical chains with their current replacements proven.** This checkpoint stops at VC-03.

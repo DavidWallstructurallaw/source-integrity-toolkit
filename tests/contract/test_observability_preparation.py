@@ -30,10 +30,14 @@ def load_partition():
 
 
 def historical_segment():
-    spec = importlib.util.spec_from_file_location("sit_w06_phase3_migration", ROOT / "tests/contract/test_phase2_transition.py")
-    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
-    module.current_phase3_guard()
-    return module
+    # The remaining read-only historical assertions are retired in VC-04.
+    # Their live checkout binding no longer imports a transition test module.
+    spec = importlib.util.spec_from_file_location("sit_w06_current_guard", ROOT / "tools/check_scaffold_boundary.py")
+    guard = importlib.util.module_from_spec(spec); spec.loader.exec_module(guard)
+    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, timeout=30).strip()
+    guard.current_checkout(ROOT, head, require_clean=False)
+    guard.current_modules(ROOT)
+    return "3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547"
 
 
 def verify_partition(p):
@@ -116,7 +120,7 @@ def test_preserves_existing_report_declarations_and_w05_admission_body():
     migration = historical_segment()
     for relative in ("src/source_integrity_toolkit/contracts/report.py", "src/source_integrity_toolkit/runtime/boundary.py", "src/source_integrity_toolkit/validation/semantics.py"):
         old = ast.parse(subprocess.check_output(["git", "show", BASE + ":" + relative], cwd=ROOT, timeout=30))
-        new = ast.parse(migration.phase2_bytes(relative))
+        new = ast.parse(subprocess.check_output(["git", "show", migration + ":" + relative], cwd=ROOT, timeout=30))
         old_defs = {n.name: n for n in old.body if isinstance(n, (ast.FunctionDef, ast.ClassDef))}
         new_defs = {n.name: n for n in new.body if isinstance(n, (ast.FunctionDef, ast.ClassDef))}
         for name, prior in old_defs.items():
@@ -150,11 +154,11 @@ def test_only_ten_w06_paths_and_no_old_test_permissions_changed():
     spec = importlib.util.spec_from_file_location("sit_w06_scope_driver", ROOT / "tests/scaffold/test_ci_contract.py")
     ci = importlib.util.module_from_spec(spec); spec.loader.exec_module(ci)
     allowed = set().union(*(ci.effective_paths(paths, f"P2-W{i:02}") for i in range(6, current + 1)))
-    changed = subprocess.check_output(["git", "diff", "--name-only", BASE, migration.PHASE2_ACCEPTED], cwd=ROOT, text=True).splitlines()
+    changed = subprocess.check_output(["git", "diff", "--name-only", BASE, migration], cwd=ROOT, text=True).splitlines()
     assert set(changed) <= allowed
     # The trusted unit context, not candidate status metadata, governs later
     # authorized edits. Do not create another test frozen to a transient stage.
     for name in ("tests/scaffold/test_ci_contract.py", "tests/contract/test_input_schema_mapping.py", ".github/workflows/phase1-ci.yml"):
         if name not in allowed:
             raw = subprocess.check_output(["git", "show", BASE + ":" + name], cwd=ROOT, timeout=30)
-            assert raw == migration.phase2_bytes(name)
+            assert raw == subprocess.check_output(["git", "show", migration + ":" + name], cwd=ROOT, timeout=30)

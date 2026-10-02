@@ -433,36 +433,8 @@ def _check_phase2_repository(root, *, unit=None):
 
 
 
-# These are the only executable historical assets this developer helper loads.
-# Complete source bytes are checked against the separately pinned entry record.
-HISTORICAL_TESTS = frozenset((
-    "tests/scaffold/test_imports.py", "tests/scaffold/test_module_manifest.py",
-    "tests/scaffold/test_no_runtime_implementation.py", "tests/scaffold/test_layer_boundaries.py",
-    "tests/scaffold/test_contract_catalogs.py", "tests/scaffold/test_ci_contract.py",
-))
+# Legacy identity accounting remains until VC-04. No historical source loader.
 HISTORICAL_NODES_SHA256 = "3262e08ba9825a41ab78ba55845a9f45ccf3195d3f33dc030cc28ce772eedc83"
-
-
-def load_phase1_test(relative, namespace):
-    """Execute a named, hash-pinned historical test, never candidate input.
-
-    Full Git history is an explicit developer-test prerequisite. There is no
-    network fetch, mutable-ref fallback, user-selected asset or product import.
-    Keeping the actual old assertions avoids silently rewriting their meaning.
-    """
-    require(relative in HISTORICAL_TESTS, "unlisted_historical_test")
-    root = Path(namespace["__file__"]).resolve().parents[2]
-    entry = entry_manifest(root)
-    raw = subprocess.check_output(["git", "show", INTAKE + ":" + relative], cwd=root,
-                                  stderr=subprocess.PIPE, timeout=30)
-    require(hashlib.sha256(raw).hexdigest() == entry["files"][relative], "historical_test_changed")
-    name = namespace["__name__"]
-    if name == "__main__":
-        namespace["__name__"] = "__sit_frozen_test__"
-    try:
-        exec(compile(raw, str(root / relative), "exec", dont_inherit=True), namespace)
-    finally:
-        namespace["__name__"] = name
 
 
 def historical_nodes(root):
@@ -616,6 +588,8 @@ def phase3_mutable_modules(unit=None):
 
 
 def promotions(root, unit=None):
+    if unit == "VC":
+        return VC_ACTIVE
     context = trusted_unit(unit)
     return phase3_promotions(root, context) if context.startswith("P3-") else _phase2_promotions(root, context)
 
@@ -831,6 +805,8 @@ def phase3_check_repository(root, *, unit=None):
 
 
 def check_repository(root, *, unit=None):
+    if unit == "VC":
+        return current_check_repository(root)
     try:
         context = trusted_unit(unit)
     except ValueError:
@@ -889,6 +865,16 @@ graph/cycles.py graph/witnesses.py analysis/inventory.py analysis/origins.py
 analysis/process_comparison.py analysis/contribution_profile.py analysis/evaluator_lineage.py
 analysis/human_review.py analysis/presence.py analysis/correction_routes.py
 analysis/correction_outcomes.py analysis/context.py analysis/findings.py""".split())
+# These five preparation bodies and the 19 inert modules were byte-frozen at
+# Phase 3 acceptance. Package-only probes preserve that same boundary without
+# loading a phase manifest or any Git source. VC's outer scope freezes all 48.
+VC_FROZEN_MODULES = {**{p: oid for p, oid in PINS if p not in VC_ACTIVE},
+    "contracts/bundle.py": "efa93ccb6f750a38fe6f426fa409aa52651f78bf",
+    "contracts/constants.py": "be7acf3d76d444fef2e124bd343d89005def33d4",
+    "io/input_file.py": "05714101f621cffda6108cecb67915488d0541f6",
+    "validation/references.py": "25040fe157ec1cc939a0e742c7818d493f8992e7",
+    "validation/structure.py": "24eb56915d8bd561abdf64d4773d486db9fb18e7",
+}
 VC_MIXED_FUNCTIONS = {
     "tests/contract/test_bundle_contract.py": frozenset((
         "_repair_driver", "test_repair_exception_names_exactly_two_paths",
@@ -908,9 +894,10 @@ VC_MIXED_FUNCTIONS = {
         "test_r01_similar_or_unlisted_repair_paths_are_refused",
         "test_r01_only_two_old_scope_test_bodies_change_and_identities_survive",
         "test_r01_execution_and_diagnostic_changes_are_exact_constant_additions")),
-    # Keep the entire destructive witness until its fixture/context adaptation
-    # is demonstrated in VC-03. A filename permission never waives assertions.
-    "tests/security/test_preparation_inertness.py": frozenset(),
+    # Only its context/fixture wiring may change. VC-03 records one-time proof
+    # that every assertion and the positive/mutation/negative sequence remains.
+    "tests/security/test_preparation_inertness.py": frozenset((
+        "test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy",)),
 }
 VC_TEST_SCOPES = ("contract", "integration", "scaffold", "security", "unit")
 
@@ -1183,6 +1170,17 @@ def current_checkout(root, head, authority=None, *, require_clean=True):
             "clean": index == committed == actual, "frozen_files": len(set(baseline) - VC_PATHS)}
 
 
+def current_live_issues(path, source):
+    if path not in VC_ACTIVE:
+        return ["unapproved_live_module"]
+    return sorted(set(_dependency_issues(path, source, VC_ACTIVE) + _source_effect_issues(path, source)))
+
+
+def current_layer_issues(path, source):
+    return (_dependency_issues(path, source, VC_ACTIVE) if path in VC_ACTIVE
+            else _phase2_layer_issues(path, source))
+
+
 def current_module_issues(sources):
     """Current 48-module effects/limits, separate from VC's all-product freeze."""
     issues, decoded = [], {}
@@ -1194,19 +1192,21 @@ def current_module_issues(sources):
         raw = sources[path]
         if len(raw) > (262144 if path in VC_ACTIVE else 16384):
             issues.append((path, "oversize_module")); continue
+        if path in VC_FROZEN_MODULES and git_blob(raw) != VC_FROZEN_MODULES[path]:
+            issues.append((path, "accepted_blob_changed"))
         try:
             source = raw.decode("utf-8")
         except UnicodeDecodeError:
             issues.append((path, "invalid_utf8")); continue
         decoded[path] = source
-        codes = (_dependency_issues(path, source, VC_ACTIVE) + _source_effect_issues(path, source)
+        codes = (current_live_issues(path, source)
                  if path in VC_ACTIVE else _phase2_layer_issues(path, source) + form_issues(path, source))
         issues.extend((path, code) for code in codes)
     issues.extend(("src/" + PACKAGE, code) for code in phase3_import_cycle_issues(decoded))
     return sorted(set(issues))
 
 
-def current_modules(root):
+def _current_module_sources(root):
     """Inspect the actual source tree, including ignored files and links."""
     source_root, package = Path(root) / "src", Path(root) / "src" / PACKAGE
     require(not source_root.is_symlink() and not package.is_symlink() and package.is_dir(),
@@ -1234,8 +1234,27 @@ def current_modules(root):
     for child in source_root.iterdir():
         require(child.name == PACKAGE or (child.name == "source_integrity_toolkit.egg-info"
                 and child.is_dir() and not child.is_symlink()), "current_unexpected_source_entry")
+    return sources
+
+
+def current_modules(root):
+    sources = _current_module_sources(root)
     require(not current_module_issues(sources), "current_module_boundary_failed")
     return len(sources)
+
+
+def current_check_repository(root):
+    """Package inspection report, not VC path authorization or conformance."""
+    try:
+        sources = _current_module_sources(root)
+        issues = [{"path": path, "code": code} for path, code in current_module_issues(sources)]
+    except (ValueError, OSError) as exc:
+        return {"ok": False, "checked_modules": 0,
+                "issues": [{"path": "src/" + PACKAGE, "code": str(exc)}]}
+    return {"ok": not issues, "checked_modules": len(sources), "issues": issues,
+            "promoted_modules": sorted(VC_ACTIVE), "protected_modules": 19,
+            "entry_byte_protected_modules": 24,
+            "scope": "current package inspection only; no checkout authorization or analytical conformance claim"}
 
 
 def current_collection(nodes, expected_files):
@@ -1351,8 +1370,14 @@ def main(argv=None):
     parser.add_argument("--event-name", choices=("pull_request", "push"))
     parser.add_argument("--event-file", type=Path)
     parser.add_argument("--head")
+    parser.add_argument("--modules-only", action="store_true",
+                        help="Inspect current package bytes/effects without granting checkout authorization")
     args = parser.parse_args(argv)
-    if args.unit == "VC":
+    if args.modules_only:
+        if any((args.unit, args.event_name, args.event_file, args.head)):
+            parser.error("--modules-only cannot replace an authorized-context check")
+        result = current_check_repository(args.root)
+    elif args.unit == "VC":
         try:
             require(args.event_name and args.event_file and args.head, "current_external_context_required")
             result = current_verify(args.root, args.event_name, args.event_file.read_bytes(), args.head)

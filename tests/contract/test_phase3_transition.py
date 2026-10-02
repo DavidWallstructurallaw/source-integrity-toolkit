@@ -2313,14 +2313,20 @@ def _w15_r02_batch_repo(tmp_path_factory):
     return _w15_r02_repo(tmp_path_factory.mktemp("readonly-batch-metadata"))
 
 
-def _w15_r02_old_history(ci):
-    """Execute the pinned pre-optimization function with the same real Git helpers."""
-    raw = git_bytes("tests/scaffold/test_ci_contract.py", W15_R02_BASE).decode()
-    node = next(node for node in ast.parse(raw).body
-                if isinstance(node, ast.FunctionDef) and node.name == "phase3_history")
-    namespace = dict(vars(ci))
-    exec(compile(ast.get_source_segment(raw, node), "<approved-pre-r02-history>", "exec"), namespace)
-    return namespace["phase3_history"]
+def _w15_r02_expected_history(git, entry, base, head):
+    """Independent three-commit fixture expectations, never historical code."""
+    initial, side = entry["intake_commit"], git("rev-parse", base + "^2")
+    rows = []
+    for commit, parents, unit, predecessor, successor, current, changed in (
+        (side, [initial], "P3-W01", initial, base, False, ["first.txt"]),
+        (base, [initial, side], "P3-W01", initial, base, False, ["first.txt"]),
+        (head, [base], "P3-W02", base, head, True, ["second.txt"]),
+    ):
+        rows.append({"commit": commit, "tree": git("rev-parse", commit + "^{tree}"),
+                     "parents": parents, "unit": unit, "accepted_predecessor": predecessor,
+                     "segment_successor": successor, "current_unit_segment": current,
+                     "immediate_scope_exceptions": [], "changed_paths": changed, "tracked_files": 3})
+    return rows
 
 
 def _w15_r02_outcome(action):
@@ -2410,8 +2416,7 @@ def test_w15_r02_batch_matches_old_queries_and_history_in_real_git(tmp_path, cas
     with patch.object(ci, "ROOT", repo):
         baseline_metadata = _w15_r02_old_metadata(ci, commits)
         assert ci.phase3_commit_metadata(commits) == baseline_metadata
-        old = _w15_r02_old_history(ci)
-        positive = old(entry, base, head, paths, "P3-W02")
+        positive = _w15_r02_expected_history(git, entry, base, head)
         assert ci.phase3_history(entry, base, head, paths, "P3-W02") == positive
         assert {row["commit"] for row in positive} == set(git("rev-list", entry["intake_commit"] + ".." + head).splitlines())
         if case == "shallow":
@@ -2428,16 +2433,15 @@ def test_w15_r02_batch_matches_old_queries_and_history_in_real_git(tmp_path, cas
             (repo / ".git/info/grafts").write_text(head + "\n", encoding="ascii")
         expected = _w15_r02_outcome(lambda: _w15_r02_old_metadata(ci, commits))
         assert _w15_r02_outcome(lambda: ci.phase3_commit_metadata(commits)) == expected
-        expected_history = _w15_r02_outcome(lambda: old(entry, base, head, paths, "P3-W02"))
-        assert _w15_r02_outcome(lambda: ci.phase3_history(entry, base, head, paths, "P3-W02")) == expected_history
+        actual_history = _w15_r02_outcome(lambda: ci.phase3_history(entry, base, head, paths, "P3-W02"))
         if case == "full":
-            assert expected_history == ("accepted", positive)
+            assert actual_history == ("accepted", positive)
         elif case in ("replace", "graft") and expected == ("accepted", baseline_metadata):
             # Git versions/configurations that disable replacement or grafts
             # must retain the same complete history, without a skipped test.
-            assert expected_history == ("accepted", positive)
+            assert actual_history == ("accepted", positive)
         else:
-            assert expected_history[0] == "rejected"
+            assert actual_history[0] == "rejected"
 
 
 def test_w15_r02_batch_rereads_same_ids_after_root_and_git_state_change(tmp_path):
@@ -2448,6 +2452,7 @@ def test_w15_r02_batch_rereads_same_ids_after_root_and_git_state_change(tmp_path
         baseline = ci.phase3_commit_metadata(commits)
         assert baseline == _w15_r02_old_metadata(ci, commits)
         positive = ci.phase3_history(entry, base, head, paths, "P3-W02")
+        assert positive == _w15_r02_expected_history(git, entry, base, head)
     other = tmp_path / "other-root"
     subprocess.check_call(["git", "clone", "--quiet", "--no-hardlinks", str(repo), str(other)])
     with patch.object(ci, "ROOT", other):
@@ -2456,9 +2461,7 @@ def test_w15_r02_batch_rereads_same_ids_after_root_and_git_state_change(tmp_path
         changed = _w15_r02_old_metadata(ci, commits)
         assert changed != baseline
         assert ci.phase3_commit_metadata(commits) == changed
-        old = _w15_r02_old_history(ci)
-        assert _w15_r02_outcome(lambda: ci.phase3_history(entry, base, head, paths, "P3-W02")) == _w15_r02_outcome(
-            lambda: old(entry, base, head, paths, "P3-W02"))
+        assert _w15_r02_outcome(lambda: ci.phase3_history(entry, base, head, paths, "P3-W02"))[0] == "rejected"
     with patch.object(ci, "ROOT", repo):
         assert ci.phase3_commit_metadata(commits) == baseline
         assert ci.phase3_history(entry, base, head, paths, "P3-W02") == positive
@@ -2466,10 +2469,10 @@ def test_w15_r02_batch_rereads_same_ids_after_root_and_git_state_change(tmp_path
 
 def test_w15_r02_history_rejects_wrong_valid_parent_after_real_baseline(tmp_path):
     ci = ci_driver()
-    repo, _, _, entry, paths, base, head = _w15_r02_repo(tmp_path)
+    repo, git, _, entry, paths, base, head = _w15_r02_repo(tmp_path)
     with patch.object(ci, "ROOT", repo):
         positive = ci.phase3_history(entry, base, head, paths, "P3-W02")
-        assert positive == _w15_r02_old_history(ci)(entry, base, head, paths, "P3-W02")
+        assert positive == _w15_r02_expected_history(git, entry, base, head)
         actual_metadata = ci.phase3_commit_metadata
         def wrong_parent(commits):
             metadata = actual_metadata(commits)

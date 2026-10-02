@@ -230,15 +230,17 @@ def test_r01_only_two_old_scope_test_bodies_change_and_identities_survive():
 
 
 def test_r01_execution_and_diagnostic_changes_are_exact_constant_additions():
-    spec=importlib.util.spec_from_file_location("sit_capture_phase3_migration",ROOT/"tests/contract/test_phase2_transition.py")
-    migration=importlib.util.module_from_spec(spec);spec.loader.exec_module(migration)
-    migration.current_phase3_guard()
+    ci=ci_driver()
+    head=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True,timeout=30).strip()
+    ci.phase_guard.current_checkout(ROOT,head,require_clean=False)
+    ci.phase_guard.current_modules(ROOT)
+    accepted="3a9b75ab6ca4ed9d7c97207043a5c8f54c2e2547"
     p="src/source_integrity_toolkit/"
     old=old_file(p+"contracts/execution.py","a5d66263f572c2b888d148727b97797a3aa0a521").decode()
-    new=migration.phase2_bytes(p+"contracts/execution.py").decode()
+    new=subprocess.check_output(["git","show",accepted+":"+p+"contracts/execution.py"],cwd=ROOT,timeout=30).decode()
     assert new==old.replace('"identifier_length", "string_length", "locator_length",',
         '"identifier_length", "string_length", "locator_length", "container_cycle",')
     old=old_file(p+"runtime/diagnostics.py","1873edfdf9379991cb4750b6a8e41f8dd7ccb85c").decode()
-    new=migration.phase2_bytes(p+"runtime/diagnostics.py").decode()
+    new=subprocess.check_output(["git","show",accepted+":"+p+"runtime/diagnostics.py"],cwd=ROOT,timeout=30).decode()
     assert new==old.replace('\n)\n_STRUCTURAL_BASIS',
         '\n    ("container_cycle", "REPOSITORY_ARCHITECTURE section 17.1: acyclic caller-container ancestry."),\n)\n_STRUCTURAL_BASIS')

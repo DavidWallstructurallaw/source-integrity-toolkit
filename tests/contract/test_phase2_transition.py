@@ -36,36 +36,16 @@ def phase2_bytes(path):
 
 
 def current_phase3_guard():
-    """Check the live tree independently of every historical byte assertion."""
+    """Bind remaining historical investigations to the current VC checkout."""
     import subprocess
-    unit = f"P3-W{guard.phase3_unit_number():02}"
-    outcome = guard.check_repository(ROOT, unit=unit)
+    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT,
+                                   text=True, timeout=30).strip()
+    authority = guard.current_authority(ROOT)
+    guard.current_history(ROOT, guard.VC_ACCEPTED_HEAD, head, authority)
+    guard.current_checkout(ROOT, head, authority, require_clean=False)
+    outcome = guard.current_check_repository(ROOT)
     assert outcome["ok"], outcome
     assert outcome["checked_modules"] == 48
-    ci = ci_driver()
-    paths = guard.phase3_plan_paths(ROOT)
-    allowed = ci.phase3_effective_paths(paths, unit, cumulative=True)
-    immediate = ci.phase3_effective_paths(paths, unit)
-    ci.phase3_check_changed_paths(paths, unit, immediate)
-    for forbidden in ("PHASE_2_PLAN.md", "src/source_integrity_toolkit/api.py",
-                      "tests/contract/../contract/test_phase2_transition.py",
-                      "phase3/module_policy.json.bak"):
-        assert forbidden not in allowed
-        try:
-            ci.phase3_check_changed_paths(paths, unit, immediate | {forbidden})
-        except ValueError as error:
-            assert str(error) == "work_unit_allowlist_exceeded"
-        else:
-            raise AssertionError("phase3_scope_control_failed")
-    # Include committed, staged and unstaged candidate changes. The pinned
-    # planning entry is not inferred from mutable candidate metadata.
-    changed = set(subprocess.check_output(
-        ["git", "diff", "--name-only", PHASE3_ENTRY], cwd=ROOT,
-        text=True, timeout=30).splitlines())
-    changed.update(subprocess.check_output(
-        ["git", "ls-files", "--others", "--exclude-standard"], cwd=ROOT,
-        text=True, timeout=30).splitlines())
-    assert changed <= allowed, sorted(changed - allowed)
     return outcome
 
 
@@ -241,16 +221,6 @@ class Phase2TransitionTests(unittest.TestCase):
             (root / "phase2/transition_ledger.md").write_text("\n".join(lines))
             with self.assertRaises(ValueError):
                 guard.historical_nodes(root)
-
-    def test_unlisted_historical_source_cannot_execute(self):
-        with self.assertRaises(ValueError):
-            guard.load_phase1_test("../../arbitrary.py", globals())
-
-    def test_altered_historical_test_bytes_cannot_execute(self):
-        namespace = {"__file__": str(ROOT / "tests/scaffold/test_imports.py"), "__name__": "probe"}
-        with patch.object(guard.subprocess, "check_output", return_value=b'raise RuntimeError("executed")'):
-            with self.assertRaises(ValueError):
-                guard.load_phase1_test("tests/scaffold/test_imports.py", namespace)
 
     def test_component_evidence_cannot_close_domain_traces(self):
         value = json.loads((ROOT / "phase2/implementation_evidence.json").read_bytes())
@@ -705,7 +675,7 @@ print(json.dumps({'modules':loaded,'admitted_fixture_modes':8,'rejected_empty_mo
         self.assertEqual(inventory[1]["members"], inventory[2]["members"])
         record = {"head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                   "scope": "W08 clean installed preparation; no public audit or native-file certification",
-                  "unit": f"P3-W{guard.phase3_unit_number():02}", "ok": True, "runtime": result, "distributions": inventory}
+                  "unit": "VC", "ok": True, "runtime": result, "distributions": inventory}
         # Fixed developer evidence destination; no source payload or binary upload.
         destination = (Path(os.environ["RUNNER_TEMP"]) / "sit-p3/evidence" if os.environ.get("GITHUB_ACTIONS") == "true" else work)
         destination.mkdir(parents=True, exist_ok=True)

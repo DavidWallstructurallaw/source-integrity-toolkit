@@ -2,15 +2,16 @@
 # SPDX-License-Identifier: Apache-2.0
 """Direct current guarantees, with real positive controls before mutations.
 
-VC-02 adds these alongside the legacy tests. Acceptance literals and expected
-failure categories below are independently written; candidate maps do not
-generate expectations. The default loader/CI switch remains a later milestone.
+Current guarantees accompany the remaining legacy tests during consolidation.
+Acceptance literals and failure categories are independently written; candidate
+maps do not generate expectations. The CI-context switch remains VC-05 work.
 """
 import copy
 import hashlib
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
@@ -123,6 +124,108 @@ def test_current_paired_metadata_and_source_mutations_fail(repo, case):
 def module_sources():
     package = ROOT / "src/source_integrity_toolkit"
     return {p.relative_to(package).as_posix(): p.read_bytes() for p in package.rglob("*.py")}
+
+
+@pytest.mark.parametrize("case", ["without_git", "git_blocked", "poisoned_git_output"])
+def test_current_test_loading_has_no_historical_blob_execution(tmp_path, case):
+    paths = ["tests/scaffold/" + name + ".py" for name in (
+        "test_imports", "test_module_manifest", "test_no_runtime_implementation",
+        "test_layer_boundaries", "test_contract_catalogs", "test_ci_contract")]
+    root = ROOT
+    if case == "without_git":
+        root = tmp_path / "source-only"
+        for relative in [*paths, "tools/check_scaffold_boundary.py"]:
+            target = root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / relative, target)
+        assert not (root / ".git").exists()
+    script = r'''
+import ast, inspect, json, os, subprocess, sys
+from pathlib import Path
+from unittest.mock import patch
+root, case, paths = Path(sys.argv[1]), sys.argv[2], json.loads(sys.argv[3])
+sys.path[:0] = [str(root), str(root / "src")]
+os.environ.update(PYTEST_DISABLE_PLUGIN_AUTOLOAD="1", SIT_PHASE_UNIT="INVALID-CONTEXT")
+import pytest
+calls = []
+poison = b'raise AssertionError("historical_source_executed")\n'
+original = subprocess.check_output
+def source_gate(command, *args, **kwargs):
+    if isinstance(command, (list, tuple)) and Path(str(command[0])).name.lower() in ("git", "git.exe"):
+        calls.append(list(command))
+        if case == "poisoned_git_output":
+            return poison.decode() if kwargs.get("text") else poison
+        raise RuntimeError("git_disabled_for_test_loading")
+    return original(command, *args, **kwargs)
+def audit(event, args):
+    if event == "subprocess.Popen" and Path(str(args[0])).name.lower() in ("git", "git.exe"):
+        calls.append(list(args[1]))
+        raise RuntimeError("git_disabled_for_test_loading")
+sys.addaudithook(audit)
+class Capture:
+    def pytest_collection_finish(self, session):
+        self.items = list(session.items)
+capture = Capture()
+with patch.object(subprocess, "check_output", source_gate):
+    # Prove the gate is active before using its zero-call result as evidence.
+    if case == "poisoned_git_output":
+        assert subprocess.check_output(["git", "show", "fixture:source.py"]) == poison
+    else:
+        try:
+            subprocess.check_output(["git", "show", "fixture:source.py"])
+        except RuntimeError as error:
+            assert str(error) == "git_disabled_for_test_loading"
+        else:
+            raise AssertionError("inactive_git_gate")
+    assert len(calls) == 1
+    calls.clear()
+    status = pytest.main([*paths, "--collect-only", "-q", "-p", "no:cacheprovider"], plugins=[capture])
+assert status == 0 and capture.items and calls == []
+assert {item.nodeid.split("::", 1)[0] for item in capture.items} == set(paths)
+assert len({item.nodeid for item in capture.items}) == len(capture.items)
+for item in capture.items:
+    function = inspect.unwrap(item.obj)
+    path = root / item.nodeid.split("::", 1)[0]
+    assert Path(function.__code__.co_filename).resolve() == path.resolve()
+    declarations = [node for node in ast.walk(ast.parse(path.read_text(encoding="utf-8")))
+                    if isinstance(node, ast.FunctionDef) and node.name == function.__name__]
+    assert any(min([node.lineno] + [d.lineno for d in node.decorator_list]) ==
+               function.__code__.co_firstlineno for node in declarations)
+from tools import check_scaffold_boundary as guard
+assert not hasattr(guard, "load_phase1_test")
+print("CURRENT_SOURCE_LOADING_OK")
+'''
+    result = subprocess.run([sys.executable, "-I", "-B", "-c", script, str(root), case, json.dumps(paths)],
+                            cwd=root, capture_output=True, text=True, timeout=60)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.stdout.splitlines()[-1] == "CURRENT_SOURCE_LOADING_OK"
+
+
+def test_current_package_probe_cannot_substitute_for_checkout_authorization(repo):
+    command = [sys.executable, "-I", "-B", "-O", str(ROOT / "tools/check_scaffold_boundary.py"),
+               "--root", str(repo), "--modules-only"]
+    positive = subprocess.run(command, capture_output=True, text=True, timeout=60)
+    assert positive.returncode == 0, positive.stdout + positive.stderr
+    report = json.loads(positive.stdout)
+    assert report["ok"] and report["checked_modules"] == 48
+    assert report["entry_byte_protected_modules"] == 24 and report["protected_modules"] == 19
+    for context in (["--unit", "VC"], ["--head", VC01], ["--event-name", "pull_request"],
+                    ["--event-file", str(repo / "event.json")]):
+        refused = subprocess.run(command + context, capture_output=True, text=True, timeout=60)
+        assert refused.returncode == 2
+        assert "cannot replace an authorized-context check" in refused.stderr
+    verified(repo)
+
+
+def test_current_package_frozen_preparation_bytes_have_positive_and_negative_controls():
+    sources = module_sources()
+    assert guard.current_module_issues(sources) == []
+    for path in ("contracts/bundle.py", "contracts/constants.py", "io/input_file.py",
+                 "validation/references.py", "validation/structure.py", "reporting/json_report.py"):
+        changed = dict(sources)
+        changed[path] += b"\n# unauthorized byte change\n"
+        assert (path, "accepted_blob_changed") in guard.current_module_issues(changed)
+    assert guard.current_module_issues(sources) == []
 
 
 @pytest.mark.parametrize("case,code", [

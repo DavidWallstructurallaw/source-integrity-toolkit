@@ -162,7 +162,7 @@ def test_untrusted_python_protocols_remain_unused_through_full_navigation(bad):
 def test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy(tmp_path, target):
     sys.path.insert(0, str(ROOT))
     from tools import check_scaffold_boundary as guard
-    unit = f"P3-W{guard.phase3_unit_number():02}"
+    unit = "VC"
     assert guard.check_repository(ROOT, unit=unit)["ok"]
     root = tmp_path / "isolated-probe"
     shutil.copytree(ROOT / "src/source_integrity_toolkit", root / "src/source_integrity_toolkit")
@@ -172,7 +172,7 @@ def test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy(
     changed = root / "src/source_integrity_toolkit" / target
     assert changed.is_file()
     payload = b'\nUNAUTHORIZED_RESULT = {"independent": True}\n'
-    if target in guard.phase3_promotions(ROOT, unit=unit):
+    if target in guard.promotions(ROOT, unit=unit):
         # Later authorized analytical bodies still cannot acquire network authority.
         payload += b'import socket\n'
     changed.write_bytes(changed.read_bytes() + payload)
