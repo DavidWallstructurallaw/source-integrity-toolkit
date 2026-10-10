@@ -1,5 +1,5 @@
 {
-  "name": "Phase 3 cumulative CI",
+  "name": "Current verification",
   "on": {
     "pull_request": {
       "branches": [
@@ -81,19 +81,19 @@
           }
         },
         {
-          "name": "Check actual checkout and guards",
+          "name": "Check actual event, checkout, history and risk",
           "run": "python -B tests/scaffold/test_ci_contract.py --ci-stage preflight"
         },
         {
-          "name": "Review and install pinned development wheels",
+          "name": "Prepare pinned tools for the recorded verification scope",
           "run": "python -B tests/scaffold/test_ci_contract.py --ci-stage prepare"
         },
         {
-          "name": "Collect and run all cumulative tests",
+          "name": "Run the recorded scope, including all five test directories when full",
           "run": "python -B tests/scaffold/test_ci_contract.py --ci-stage test"
         },
         {
-          "name": "Record results, archives and unchanged checkout",
+          "name": "Reconcile identities, installed witnesses and failure evidence",
           "if": "${{ always() }}",
           "run": "python -B tests/scaffold/test_ci_contract.py --ci-stage evidence"
         },

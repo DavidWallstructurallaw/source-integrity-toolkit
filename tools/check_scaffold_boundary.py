@@ -441,6 +441,11 @@ VC_MIXED_FUNCTIONS = {
         "test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy",)),
 }
 VC_TEST_SCOPES = ("contract", "integration", "scaffold", "security", "unit")
+# These records are neither executed nor read by packaging or authorization.
+# README.md is deliberately absent: pyproject.toml uses it as package metadata.
+VC_DOCUMENTATION_PATHS = frozenset((
+    "VERIFICATION_CONSOLIDATION_COMPLETION.md", "verification/consolidation_map.json",
+))
 
 
 def _current_oid(value):
@@ -665,6 +670,72 @@ def current_history(root, base, head, authority=None):
     return rows
 
 
+def current_risk(root, base, head, authority=None):
+    """Classify the complete reviewed range after validating its authority.
+
+    A final tree diff cannot reveal restored changes or everything introduced
+    by a merge. Derive the range from the verified parent graph, then compare
+    each included commit with every parent. The result records both that union
+    and the net endpoint diff; caller-declared scope never selects a profile.
+    """
+    require(_current_oid(base) and _current_oid(head), "current_invalid_history_range")
+    authority = current_authority(root) if authority is None else authority
+    if base == head == VC_ACCEPTED_HEAD:
+        rows = []
+    else:
+        rows = current_history(root, base, head, authority)
+    metadata = {row["commit"]: row for row in rows}
+
+    def ancestors(commit):
+        found, pending = set(), [commit]
+        while pending:
+            item = pending.pop()
+            if item in found:
+                continue
+            found.add(item)
+            if item == VC_ACCEPTED_HEAD:
+                continue
+            require(item in metadata, "current_incomplete_risk_history")
+            pending.extend(metadata[item]["parents"])
+        return found
+
+    head_ancestors, base_ancestors = ancestors(head), ancestors(base)
+    require(base in head_ancestors, "current_risk_base_not_ancestor")
+    included = head_ancestors - base_ancestors
+    snapshots = {VC_ACCEPTED_HEAD: authority[0]}
+
+    def snapshot(commit):
+        if commit not in snapshots:
+            snapshots[commit] = _current_snapshot(root, commit)
+        return snapshots[commit]
+
+    def changed(left, right):
+        return sorted(path for path in set(left) | set(right)
+                      if left.get(path) != right.get(path))
+
+    net = changed(snapshot(base), snapshot(head))
+    all_paths, changes = set(), []
+    for row in rows:
+        if row["commit"] not in included:
+            continue
+        actual, parents = snapshot(row["commit"]), []
+        for parent in row["parents"]:
+            paths = changed(snapshot(parent), actual)
+            all_paths.update(paths)
+            parents.append({"parent": parent, "changed_paths": paths})
+        changes.append({"commit": row["commit"], "tree": row["tree"], "parents": parents})
+    require(set(net) <= all_paths, "current_incomplete_risk_changes")
+    if all_paths - VC_DOCUMENTATION_PATHS:
+        profile, reason = "full", "non_documentation_paths"
+    elif not all_paths or not net:
+        profile, reason = "full", "empty_change_set"
+    else:
+        profile, reason = "documentation", "documentation_paths_only"
+    return {"profile": profile, "reason": reason, "base": base, "head": head,
+            "changed_paths": sorted(all_paths), "net_changed_paths": net,
+            "commit_changes": changes}
+
+
 def current_checkout(root, head, authority=None, *, require_clean=True):
     """Read index and worktree separately; do not trust assume-unchanged flags."""
     baseline, blobs = current_authority(root) if authority is None else authority
@@ -844,7 +915,7 @@ def current_workflow(value):
     """Direct current CI security policy; no reverse Phase 1 transformation.
 
     Labels are descriptive. Security-bearing keys, stages and arguments are
-    closed. The default driver's later VC wiring is a separate switch.
+    closed. The current driver resolves and records its risk profile itself.
     """
     try:
         require(set(value) == {"name", "on", "permissions", "concurrency", "jobs"}, "current_workflow_keys")

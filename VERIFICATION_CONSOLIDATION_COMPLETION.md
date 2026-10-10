@@ -1,16 +1,16 @@
 # Source Integrity Toolkit Verification Consolidation
 
-Revision: 0.4
-Checkpoint: VC-04
-Status: VC-01 through VC-04 completed locally; VC-05 and VC-06 remain pending.
-Latest owner instruction: `VC-04 继续`.
-Execution dates: VC-01 through VC-03, 2026-10-02 UTC; VC-04, 2026-10-10 UTC.
+Revision: 0.5
+Checkpoint: VC-05
+Status: VC-01 through VC-05 completed locally; VC-06 final hosted acceptance remains pending.
+Latest owner instruction: `VC-05 开始`.
+Execution dates: VC-01 through VC-03, 2026-10-02 UTC; VC-04 and VC-05, 2026-10-10 UTC.
 
 ## Accepted authority and scope
 
 The owner approved [VERIFICATION_CONSOLIDATION_PLAN.md](VERIFICATION_CONSOLIDATION_PLAN.md), SHA-256 `a94b59a0bfdbde3c70c7286fd48c5e0cbdb4a538afeb094ba97dce718bd7d11d`, and started VC-01. The plan is stored with its originally reviewed bytes. Its drafting-time pending header is superseded by this later instruction, without rewriting the approved document.
 
-VC-01 performed baseline verification, one-time guarantee mapping and bounded historical-cost measurement. Its published checkpoint is `a47ea2480043c2bb267c047b2d99a67ab4428e53`. The following baseline sections retain that checkpoint's findings. VC-02, published as `e4b0378b6e41293260de7323dfd5f179831736f7`, added current direct controls. Neither of those checkpoints retired tests. The VC-03 section records current source materialization and the bounded replacement of two obsolete loader API checks. VC-04 retires the mapped historical chains and supplies the minimum current CI bridge; broader CI integration and full consolidation acceptance remain pending.
+VC-01 performed baseline verification, one-time guarantee mapping and bounded historical-cost measurement. Its published checkpoint is `a47ea2480043c2bb267c047b2d99a67ab4428e53`. The following baseline sections retain that checkpoint's findings. VC-02, published as `e4b0378b6e41293260de7323dfd5f179831736f7`, added current direct controls. Neither of those checkpoints retired tests. The VC-03 section records current source materialization and the bounded replacement of two obsolete loader API checks. VC-04 retires the mapped historical chains and supplies the minimum current CI bridge. VC-05 integrates current CI/developer verification; final same-head hosted acceptance remains VC-06.
 
 The consolidation branch starts at accepted Phase 3 merge `2413a29b839b7e1de8f76a449762f031de19d52b`. Remote main and merged PR #34 were rechecked. The accepted tree `e2f230bdf6f838f3d12df233559732aa1d5c1699` equals directly tested head `90684996eac568af6129973764fe40f3b666a15f`.
 
@@ -271,3 +271,50 @@ The complete pre-retirement implementation is available at `3ac5128e4744e2d37084
 No full test-suite run, hosted matrix, PR merge, product release or VC-05 completion is claimed here. Runtime speedup is not inferred from collection counts; the final comparable efficiency measurement remains for the completed candidate.
 
 **Next: VC-05, integrate the current CI/developer entry, evidence handling, risk routing and README.** Final same-head four-environment acceptance remains VC-06.
+
+
+## VC-05: current CI, local entry and explicit evidence
+
+The owner instructed `VC-05 开始`. This checkpoint changes five approved implementation/documentation paths plus the existing completion record and one-time map. It preserves all 48 product modules, the approved plan, frozen specifications, fixtures/golden expectations, dependency and build configuration, Action pins, four hosted profiles, 2,400-second suite budget, 50-minute job budget and 60-second product cooperative deadline.
+
+### Current operation
+
+The workflow keeps its seven stages and security-bearing structure. Labels now describe current verification. CI binds each stage to the actual event, accepted anchor, base/head, run/attempt, Python and operating-system profile. Every post-anchor commit, the actual index/worktree and all frozen paths are checked. Stage records cannot be reused across a different head, attempt or profile.
+
+Risk routing compares every parent edge in the actual event interval and separately records the final net diff. Restored executable changes and merge-side edits still select full verification. Only the exact non-executable completion record and consolidation map paths can select documentation checks; those checks retain authority/history/checkout/module/workflow controls and validate readable record formats. Empty, unknown and mixed changes fail closed or select full scope. README always selects full scope because it supplies package metadata. Reduced checks explicitly report `full_suite: false` and never claim collection, packaging or matrix acceptance.
+
+The sole documented complete local entry is:
+
+```sh
+python -B tests/scaffold/test_ci_contract.py --local --evidence-dir ../sit-local-evidence
+```
+
+It requires a new external evidence directory and the existing pinned development environment. It always collects all five directories, clears inherited pytest filtering and third-party plugin injection, and rejects missing directories, empty/duplicate/omitted collection, unsuccessful or skipped JUnit evidence and mismatched subtest events. Both retained installation test nodes must appear and have successful exact JUnit results, even if collection and JUnit were to omit the same witness together. Current package/rebuild inventories, module hashes and hosted W08/W14 receipts remain required. Local W08 receipt deletion remains explicit; its unchanged installed test still executes and must pass.
+
+Child stdout/stderr are written to raw files while the process runs, with incomplete status recorded before launch. Timeout, startup failure, nonzero exit and interrupt outcomes preserve available output and cannot retain a successful summary. Hosted evidence and upload still use `always()`, the existing `sit-p3/evidence` destination and fourteen-day retention. The source never imports the historical consolidation map as authority or executable code.
+
+### Executed verification
+
+| Check | Result |
+| --- | --- |
+| Actual unified local entry, complete five-directory suite | **3,724 passed; 431 separately counted subtests; 1181.97 pytest seconds** |
+| Local entry elapsed, including preflight, collection and evidence | 1189.117 seconds |
+| Exact full collection/JUnit/subtest reconciliation | 3,724 unique identities in 73 files; no failures, errors or skips |
+| Driver-focused final controls | 38 passed; 11 subtests passed; 3.15 seconds |
+| Current boundary controls | 167 passed; 126.15 seconds; includes 11 new real-Git risk cases |
+| Real-clone documentation stage flow | Passed preflight, prepare, test and evidence; no dependency install or full-suite call |
+| Documentation evidence negatives | Corrupt route, stale head, stale attempt, missing preflight and missing context all rejected with failed summaries |
+| All tracked files during complete local entry | 211 unchanged |
+| Collection identity SHA-256 | `cc9d18fbf7a122855af3393cdabb01cd2013cebbed8f2d61b3ad2bea8e9b7973` |
+
+The collection equation is **3,695 + 29 = 3,724**, equivalently **3,963 original - 424 mapped retirements + 185 current controls = 3,724**. VC-05 removes no test identities. All 118 original wrapper identities and all 3,413 original identities outside the migration map remain. Preliminary and targeted runs overlap the full run and are not added to its distinct-test total.
+
+The complete local run used Linux / CPython 3.12.14 with the exact pinned offline tool set. It verifies the actual working source hashes, with installed receipts honestly recording the pre-commit parent HEAD. The two review records are populated afterward; the implementation, workflow and README bytes remain those exercised by the complete run. The documentation smoke uses real isolated Git commits and guards but substitutes a disclosed local binding to admit Python 3.12. It does not represent a hosted GitHub event.
+
+### Development attempts and handoff
+
+An initial local entry collected 3,721 tests and was intentionally canceled before completion when review identified a missing explicit local installed-witness presence check. Outer cancellation also exposed the need to stream partial logs before process completion. Its original collection and available entry log remain recorded; absent raw pytest output and JUnit are disclosed and never reconstructed or relabelled as successful. The installed-witness fix, live logging and their new direct controls were then verified in the fresh complete run above. The timeout regression allows three seconds for child startup; the production suite and product budgets are unchanged.
+
+Independent review also closed wrong-platform binding, incomplete W14 source-set and unreadable documentation-record gaps. Final review reports no remaining blocker in the reviewed source. Raw local logs, JUnit, installed evidence, collection, source hashes, interrupted attempt and review records are preserved in `vc05_execution`; prior VC-02/03/04 evidence remains unchanged.
+
+**Next: VC-06, freeze the completed candidate and run the same-head Ubuntu/Windows × Python 3.11/3.13 matrix, audit original artifacts, then seek owner acceptance.** No hosted matrix result, general speedup claim, merge, release or next-phase authorization is asserted by this checkpoint.

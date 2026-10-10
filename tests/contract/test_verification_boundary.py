@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Direct current guarantees, with real positive controls before mutations.
 
-Current guarantees accompany the remaining legacy tests during consolidation.
 Acceptance literals and failure categories are independently written; candidate
-maps do not generate expectations. The CI-context switch remains VC-05 work.
+maps do not generate expectations. Actual Git histories exercise the current
+context and risk routing, including restored changes and merge side branches.
 """
 import copy
 import hashlib
@@ -558,6 +558,110 @@ def test_current_history_rejects_restored_forbidden_changes(repo):
     assert forbidden in git(repo, "rev-list", ANCHOR + ".." + restored).decode()
     with pytest.raises(ValueError, match="^current_frozen_file_changed$"):
         guard.current_history(repo, ANCHOR, restored)
+
+
+@pytest.mark.parametrize("path", ["VERIFICATION_CONSOLIDATION_COMPLETION.md", "verification/consolidation_map.json"])
+def test_current_risk_allows_only_explicit_non_executable_documentation(repo, path):
+    edit(repo, path, b"\n")
+    head = commit(repo)
+    route = guard.current_risk(repo, VC01, head)
+    assert route["profile"] == "documentation"
+    assert route["reason"] == "documentation_paths_only"
+    assert route["base"] == VC01 and route["head"] == head
+    assert route["changed_paths"] == route["net_changed_paths"] == [path]
+    assert route["commit_changes"] == [{
+        "commit": head, "tree": git(repo, "rev-parse", head + "^{tree}").decode().strip(),
+        "parents": [{"parent": VC01, "changed_paths": [path]}],
+    }]
+    # The complete review range still contains the earlier executable changes.
+    cumulative = guard.current_risk(repo, ANCHOR, head)
+    assert cumulative["profile"] == "full"
+    assert {row["commit"] for row in cumulative["commit_changes"]} == {VC01, head}
+    assert set(route["changed_paths"]) < set(cumulative["changed_paths"])
+
+
+@pytest.mark.parametrize("case", ["packaged_readme", "executable", "mixed", "candidate_override"])
+def test_current_risk_escalates_package_code_and_mixed_changes(repo, case, monkeypatch):
+    path = "README.md" if case == "packaged_readme" else "tests/scaffold/test_imports.py"
+    expected = {path}
+    edit(repo, path)
+    if case in {"mixed", "candidate_override"}:
+        expected.add("verification/consolidation_map.json")
+        if case == "candidate_override":
+            (repo / "verification/consolidation_map.json").write_text(
+                '{"profile":"documentation","authorized":true,"changed_paths":[]}', encoding="utf-8")
+            monkeypatch.setenv("SIT_VERIFICATION_PROFILE", "documentation")
+            monkeypatch.setenv("SIT_PHASE_UNIT", "P3-W15")
+        else:
+            edit(repo, "verification/consolidation_map.json", b"\n")
+    head = commit(repo)
+    route = guard.current_risk(repo, VC01, head)
+    assert route["profile"] == "full" and route["reason"] == "non_documentation_paths"
+    assert set(route["changed_paths"]) == set(route["net_changed_paths"]) == expected
+    assert [row["commit"] for row in route["commit_changes"]] == [head]
+
+
+def test_current_risk_cannot_hide_executable_change_by_restoring_final_tree(repo):
+    path = "tests/scaffold/test_imports.py"
+    original = (repo / path).read_bytes()
+    edit(repo, path)
+    changed = commit(repo)
+    (repo / path).write_bytes(original)
+    restored = commit(repo)
+    edit(repo, "VERIFICATION_CONSOLIDATION_COMPLETION.md", b"\n")
+    head = commit(repo)
+    route = guard.current_risk(repo, VC01, head)
+    assert route["net_changed_paths"] == ["VERIFICATION_CONSOLIDATION_COMPLETION.md"]
+    assert route["changed_paths"] == ["VERIFICATION_CONSOLIDATION_COMPLETION.md", path]
+    assert route["profile"] == "full" and route["reason"] == "non_documentation_paths"
+    assert [row["commit"] for row in route["commit_changes"]] == [changed, restored, head]
+
+
+def test_current_risk_includes_restored_executable_changes_on_merge_sides(repo):
+    path = "tests/scaffold/test_imports.py"
+    original = (repo / path).read_bytes()
+    git(repo, "checkout", "--quiet", "-b", "risk-main")
+    edit(repo, "VERIFICATION_CONSOLIDATION_COMPLETION.md", b"\n")
+    main = commit(repo)
+    git(repo, "checkout", "--quiet", "-b", "risk-side", VC01)
+    edit(repo, path)
+    side = commit(repo)
+    (repo / path).write_bytes(original)
+    restored = commit(repo)
+    git(repo, "checkout", "--quiet", "risk-main")
+    git(repo, "merge", "--quiet", "--no-ff", "risk-side", "-m", "Synthetic risk merge")
+    head = git(repo, "rev-parse", "HEAD").decode().strip()
+    route = guard.current_risk(repo, VC01, head)
+    assert route["profile"] == "full" and route["reason"] == "non_documentation_paths"
+    assert route["net_changed_paths"] == ["VERIFICATION_CONSOLIDATION_COMPLETION.md"]
+    assert route["changed_paths"] == ["VERIFICATION_CONSOLIDATION_COMPLETION.md", path]
+    assert {row["commit"] for row in route["commit_changes"]} == {main, side, restored, head}
+    assert route["commit_changes"][-1]["parents"] == [
+        {"parent": main, "changed_paths": []},
+        {"parent": restored, "changed_paths": ["VERIFICATION_CONSOLIDATION_COMPLETION.md"]},
+    ]
+
+
+@pytest.mark.parametrize("case", ["same_endpoint", "restored_docs"])
+def test_current_risk_empty_changes_do_not_claim_documentation_success(repo, case):
+    head = VC01
+    if case == "restored_docs":
+        path = "VERIFICATION_CONSOLIDATION_COMPLETION.md"
+        original = (repo / path).read_bytes()
+        edit(repo, path, b"\n")
+        commit(repo)
+        (repo / path).write_bytes(original)
+        head = commit(repo)
+    route = guard.current_risk(repo, VC01, head)
+    assert route["profile"] == "full" and route["reason"] == "empty_change_set"
+    assert route["net_changed_paths"] == []
+
+
+def test_current_risk_does_not_authorize_unknown_markdown_paths(repo):
+    edit(repo, "verification/unreviewed.md")
+    head = commit(repo)
+    with pytest.raises(ValueError, match="^current_unlisted_path$"):
+        guard.current_risk(repo, VC01, head)
 
 
 @pytest.mark.parametrize("case", ["valid_side", "forbidden_side", "pre_anchor_side", "wrong_base"])

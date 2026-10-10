@@ -5,14 +5,15 @@
 The workflow is JSON-form YAML to permit strict standard-library inspection.
 No product code imports this file. Network access is confined to the explicitly
 selected CI dependency acquisition stage, never to an audit operation.
-VC-04 removes historical replay and binds this driver to current controls.
-Workflow presentation and developer-entry consolidation remain VC-05 work.
+Current controls bind every hosted stage to its actual run and candidate.
+The local entry runs the same five test scopes without claiming hosted evidence.
 """
 
 from __future__ import annotations
 
 import copy
 import ast
+import argparse
 from email.parser import BytesParser
 import hashlib
 import json
@@ -23,7 +24,9 @@ import re
 import subprocess
 import sys
 import tarfile
+import tempfile
 import unittest
+from unittest import mock
 import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
@@ -135,12 +138,13 @@ def junit_counts(xml_bytes: bytes, collected_nodes: list[str]) -> dict:
     require(all(value >= 0 for value in totals.values()), "negative JUnit count")
     expected = []
     for node in collected_nodes:
-        parts = node.split("::")
+        prefix, marker, parameter = node.partition("[")
+        parts = prefix.split("::")
         require(len(parts) >= 2 and parts[0].endswith(".py"), "bad collected node")
         classname = parts[0][:-3].replace("/", ".")
         if len(parts) > 2:
             classname += "." + ".".join(parts[1:-1])
-        expected.append((classname, parts[-1]))
+        expected.append((classname, parts[-1] + marker + parameter))
     require(bool(expected) and len(set(expected)) == len(expected), "ambiguous collection identity")
     cases = list(root.iter("testcase"))
     actual = [(case.get("classname"), case.get("name")) for case in cases]
@@ -201,9 +205,37 @@ def save(path: Path, data) -> None:
     path.write_bytes((json.dumps(data, indent=2, sort_keys=True) + "\n").encode("utf-8"))
 
 def run(args, evidence: Path, name: str, *, env=None, timeout=180, check=True):
-    result = subprocess.run([str(a) for a in args], cwd=ROOT, env=env, capture_output=True,
-                            text=True, encoding="utf-8", errors="replace", timeout=timeout)
-    (evidence / (name + ".log")).write_bytes((result.stdout + result.stderr).encode("utf-8"))
+    command = [str(a) for a in args]
+    log = evidence / (name + ".log")
+    stderr_log = evidence / (name + "-stderr.log")
+    status_path = evidence / (name + "-exit.json")
+    # A canceled runner may never execute Python cleanup. Open the raw log and
+    # record an incomplete attempt before launching the child, then stream into it.
+    save(status_path, {"exit_code": None, "timed_out": False, "interrupted": False,
+                       "incomplete": True, "timeout_seconds": timeout})
+    def outputs():
+        stdout = log.read_text(encoding="utf-8", errors="replace")
+        stderr = stderr_log.read_text(encoding="utf-8", errors="replace")
+        # Keep the established combined log, while stderr remains separately
+        # available even if the entire process is killed before this point.
+        with log.open("ab") as combined:
+            combined.write(stderr_log.read_bytes())
+        return stdout, stderr
+    try:
+        with log.open("w", encoding="utf-8") as output, stderr_log.open("w", encoding="utf-8") as error:
+            outcome = subprocess.run(command, cwd=ROOT, env=env, stdout=output,
+                                     stderr=error, timeout=timeout)
+    except (subprocess.TimeoutExpired, OSError, KeyboardInterrupt) as exc:
+        status = {"exit_code": None, "timed_out": isinstance(exc, subprocess.TimeoutExpired),
+                  "interrupted": isinstance(exc, KeyboardInterrupt), "incomplete": True,
+                  "timeout_seconds": timeout, "error_type": type(exc).__name__, "message": str(exc)}
+        outputs()
+        save(status_path, status)
+        raise
+    stdout, stderr = outputs()
+    result = subprocess.CompletedProcess(command, outcome.returncode, stdout=stdout, stderr=stderr)
+    save(status_path, {"exit_code": result.returncode, "timed_out": False, "interrupted": False,
+                       "incomplete": False, "timeout_seconds": timeout})
     print(name + ": exit=" + str(result.returncode), flush=True)
     print(result.stdout[-6000:] + result.stderr[-6000:], flush=True)
     if check:
@@ -217,7 +249,7 @@ def tracked_bytes() -> dict:
 def tool_python(base: Path) -> Path:
     return base / "tools" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
 
-def prepare(base: Path, evidence: Path) -> None:
+def prepare_tools(base: Path, evidence: Path) -> None:
     run([sys.executable, "-m", "venv", str(base / "tools")], evidence, "venv")
     python = tool_python(base)
     run([python, "-m", "pip", "--version"], evidence, "pip-version")
@@ -276,6 +308,10 @@ def prepare(base: Path, evidence: Path) -> None:
 
 
 ALL_SCOPES = ("tests/scaffold", "tests/security", "tests/contract", "tests/unit", "tests/integration")
+INSTALLED_WITNESSES = frozenset({
+    "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+    "tests/integration/test_analytical_installed_runtime.py::test_clean_installed_analysis_original_heroes_and_completed_finite_case",
+})
 
 
 def policy(value):
@@ -290,6 +326,38 @@ def configure_context():
             "current_external_context_required")
     return phase_guard.current_context(os.environ["GITHUB_EVENT_NAME"],
         Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes(), os.environ["SIT_REVIEW_HEAD"])
+
+
+def current_binding(*, local=False):
+    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    if local:
+        return {"mode": "local", "head": head, "python": sys.version,
+                "platform": platform.platform(), "hosted_matrix_attestation": False}
+    context = configure_context()
+    require(os.environ.get("GITHUB_ACTIONS") == "true", "explicit Actions invocation required")
+    require(head == context["head"], "wrong_checked_commit")
+    names = ("GITHUB_RUN_ID", "GITHUB_RUN_ATTEMPT", "SIT_MATRIX_OS", "SIT_MATRIX_PYTHON")
+    require(all(os.environ.get(name) for name in names), "actual_run_and_matrix_required")
+    require(os.environ["GITHUB_RUN_ID"].isdigit() and os.environ["GITHUB_RUN_ATTEMPT"].isdigit(),
+            "invalid_run_identity")
+    require(f"{sys.version_info.major}.{sys.version_info.minor}" == os.environ["SIT_MATRIX_PYTHON"],
+            "wrong_Python_minor")
+    require(os.environ["SIT_MATRIX_OS"] in ("ubuntu-24.04", "windows-2025") and
+            os.environ["SIT_MATRIX_PYTHON"] in ("3.11", "3.13"), "unknown_matrix_profile")
+    require(platform.system() == {"windows-2025": "Windows", "ubuntu-24.04": "Linux"}[os.environ["SIT_MATRIX_OS"]],
+            "wrong_runner_platform")
+    return {"mode": "hosted", **context, "run_id": os.environ["GITHUB_RUN_ID"],
+        "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"], "matrix_os": os.environ["SIT_MATRIX_OS"],
+        "matrix_python": os.environ["SIT_MATRIX_PYTHON"], "python": sys.version,
+        "event_sha256": hashlib.sha256(Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes()).hexdigest()}
+
+
+def bound_record(evidence, name, binding=None):
+    expected = binding if binding is not None else current_binding()
+    require(json.loads((evidence / "binding.json").read_bytes()) == expected, "evidence_run_identity_mismatch")
+    value = json.loads((evidence / name).read_bytes())
+    require(value.get("binding") == expected, "stage_evidence_identity_mismatch")
+    return value
 
 
 def ci_paths():
@@ -309,133 +377,554 @@ def entry_and_scope(evidence):
     record = {"ok": True, **context, **checkout,
         "accepted_head": phase_guard.VC_ACCEPTED_HEAD,
         "accepted_tree": phase_guard.VC_ACCEPTED_TREE,
-        "actual_entry_files": len(authority[0]),
-        "intermediate_commits": history,
+        "actual_entry_files": len(authority[0]), "intermediate_commits": history,
         "provenance": "Accepted Git anchor, every subsequent commit including merge sides, index and actual worktree"}
     save(evidence / "entry-and-scope.json", record)
     return record
 
 
-def guard_command(tool):
+def guard_command(tool, *, local=False):
     command = [sys.executable, "-B", "tools/" + tool + ".py"]
     if tool == "check_scaffold_boundary":
-        command += ["--unit", "VC", "--event-name", os.environ["GITHUB_EVENT_NAME"],
-                    "--event-file", os.environ["GITHUB_EVENT_PATH"], "--head", os.environ["SIT_REVIEW_HEAD"]]
+        if local:
+            command += ["--modules-only"]
+        else:
+            command += ["--unit", "VC", "--event-name", os.environ["GITHUB_EVENT_NAME"],
+                        "--event-file", os.environ["GITHUB_EVENT_PATH"], "--head", os.environ["SIT_REVIEW_HEAD"]]
     return command
 
 
+def initialize_evidence(evidence, binding):
+    # Never recycle outputs from a previous head, job or failed attempt.
+    require(not any(evidence.iterdir()), "evidence_directory_must_be_empty")
+    save(evidence / "binding.json", binding)
+    save(evidence / "tracked-before.json", tracked_bytes())
+
+
 def preflight(base, evidence):
+    binding = current_binding()
+    initialize_evidence(evidence, binding)
     scope = entry_and_scope(evidence)
     policy(read_workflow())
-    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
-    require(head == os.environ["SIT_REVIEW_HEAD"], "wrong_checked_commit")
-    require(f"{sys.version_info.major}.{sys.version_info.minor}" == os.environ["SIT_MATRIX_PYTHON"], "wrong_Python_minor")
-    save(evidence / "environment.json", {"head": head, "python": sys.version, "platform": platform.platform(),
-        "matrix_os": os.environ["SIT_MATRIX_OS"], "matrix_python": os.environ["SIT_MATRIX_PYTHON"],
-        "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
-        "image_version": os.environ.get("ImageVersion"), "scope": "Current verification consolidation",
-        "unit": scope["unit"]})
-    save(evidence / "tracked-before.json", tracked_bytes())
+    risk = phase_guard.current_risk(ROOT, binding["base"], binding["head"])
+    save(evidence / "risk.json", {"binding": binding, **risk})
+    if risk["profile"] == "documentation":
+        validate_documentation()
+    save(evidence / "environment.json", {"binding": binding, "platform": platform.platform(),
+        "image_version": os.environ.get("ImageVersion"), "scope": "Current verification consolidation"})
     for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
         run(guard_command(tool), evidence, tool + "-before")
-    save(evidence / "preflight.json", {"ok": True, "actual_frozen_files_checked": 20,
+    save(evidence / "preflight.json", {"binding": binding, "ok": True,
         "actual_entry_files_checked": scope["actual_entry_files"],
         "actual_frozen_entry_files_checked": scope["frozen_files"], "modules": 48})
 
 
+def selected_profile(evidence):
+    binding = current_binding()
+    require(bound_record(evidence, "preflight.json", binding).get("ok") is True, "preflight_not_successful")
+    risk = bound_record(evidence, "risk.json", binding)
+    actual = phase_guard.current_risk(ROOT, binding["base"], binding["head"])
+    require(risk == {"binding": binding, **actual}, "risk_record_does_not_match_actual_diff")
+    require(risk["profile"] in ("documentation", "full"), "unknown_risk_profile")
+    return binding, risk
+
+
+def validate_documentation():
+    """These records carry no authority, but their formats must remain readable."""
+    value = json.loads((ROOT / "verification/consolidation_map.json").read_bytes(), object_pairs_hook=unique)
+    require(isinstance(value, dict) and bool(value), "documentation_map_must_be_nonempty_object")
+    require(bool((ROOT / "VERIFICATION_CONSOLIDATION_COMPLETION.md").read_text(encoding="utf-8").strip()),
+            "documentation_completion_must_be_nonempty_utf8")
+
+
+def prepare(base, evidence):
+    binding, risk = selected_profile(evidence)
+    if risk["profile"] == "full":
+        prepare_tools(base, evidence)
+    save(evidence / "prepare.json", {"binding": binding, "ok": True, "profile": risk["profile"],
+        "dependency_install_performed": risk["profile"] == "full"})
+
+
 def suite_paths():
-    scopes = [s for s in ALL_SCOPES if (ROOT / s).is_dir()]
-    require(all(s in scopes for s in ALL_SCOPES[:3]), "required_test_directory_missing")
-    return scopes
+    require(all((ROOT / scope).is_dir() for scope in ALL_SCOPES), "required_test_directory_missing")
+    return list(ALL_SCOPES)
 
 
 def collection_check(nodes, expected_files):
     phase_guard.current_collection(nodes, expected_files)
 
 
-def run_suite(base, evidence):
+def reconcile_suite(xml, nodes, successful_subtests):
+    require(INSTALLED_WITNESSES <= set(nodes), "required_installed_witness_missing")
+    return phase_guard.current_junit(xml, nodes, successful_subtests)
+
+
+def suite_environment(*, local=False):
     env = dict(os.environ)
-    env["PYTHONPATH"], env["PIP_NO_INDEX"] = str(ROOT / "src"), "1"
-    python, scopes = tool_python(base), suite_paths()
+    env.update(PYTHONPATH=str(ROOT / "src"), PIP_NO_INDEX="1", PYTHONDONTWRITEBYTECODE="1",
+               PYTEST_DISABLE_PLUGIN_AUTOLOAD="1", PYTEST_ADDOPTS="", PYTEST_PLUGINS="",
+               PYTHONNOUSERSITE="1", PYTHONUTF8="1", PYTHONUNBUFFERED="1",
+               PIP_DISABLE_PIP_VERSION_CHECK="1", PIP_NO_INPUT="1")
+    if local:
+        for name in tuple(env):
+            if name.startswith(("GITHUB_", "SIT_MATRIX_")) or name in ("RUNNER_TEMP", "SIT_REVIEW_HEAD"):
+                env.pop(name)
+    return env
+
+
+def execute_suite(base, evidence, python, binding, *, local=False):
+    env, scopes = suite_environment(local=local), suite_paths()
     files = {p.relative_to(ROOT).as_posix() for scope in scopes for p in (ROOT / scope).rglob("test_*.py")}
     for name in files:
         tree = ast.parse((ROOT / name).read_text(encoding="utf-8"))
         for node in ast.walk(tree):
             if isinstance(node, ast.Attribute):
-                require(node.attr not in ("skip", "skipif", "xfail", "skipIf", "skipUnless", "expectedFailure"), "test_skip_or_xfail_not_authorized")
-    collected = run([python, "-m", "pytest", *scopes, "--collect-only", "-q"], evidence, "collection", env=env)
+                require(node.attr not in ("skip", "skipif", "xfail", "skipIf", "skipUnless", "expectedFailure"),
+                        "test_skip_or_xfail_not_authorized")
+    collected = run([python, "-B", "-m", "pytest", *scopes, "--collect-only", "-q"],
+                    evidence, "collection", env=env)
     nodes = [line.strip() for line in collected.stdout.splitlines() if line.startswith("tests/") and "::" in line]
     collection_check(nodes, files)
-    save(evidence / "collection.json", {"count": len(nodes), "nodes": nodes, "test_files": sorted(files),
-        "scope": "all present scaffold/security/contract/unit/integration directories"})
-    result = run([python, "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",
+    save(evidence / "collection.json", {"binding": binding, "count": len(nodes), "nodes": nodes,
+        "test_files": sorted(files), "scopes": scopes})
+    result = run([python, "-B", "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",
                   "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=2400, check=False)
-    save(evidence / "pytest-exit.json", {"exit_code": result.returncode})
+    # run() writes status even when subprocess creation or its 2400-second budget fails.
     require(result.returncode == 0, "accumulated_suite_failed")
+    save(evidence / "test.json", {"binding": binding, "ok": True, "profile": "full", "full_suite": True})
 
 
-def evidence_report(base, evidence):
-    context = configure_context()
-    summary = {"scope": "Current verification consolidation",
-               "unit": context["unit"], "head": context["head"], "pass": False}
+def run_suite(base, evidence):
+    binding, risk = selected_profile(evidence)
+    prepared = bound_record(evidence, "prepare.json", binding)
+    require(prepared.get("ok") is True and prepared.get("profile") == risk["profile"], "prepare_not_successful")
+    if risk["profile"] == "documentation":
+        save(evidence / "test.json", {"binding": binding, "ok": True, "profile": "documentation",
+            "full_suite": False, "collection_performed": False,
+            "scope": "Explicit non-executable documentation paths; preflight and final boundary checks"})
+    else:
+        execute_suite(base, evidence, tool_python(base), binding)
+
+
+def archive_inventories(base):
     archives = []
     for path in sorted((base / "pytest").rglob("*")):
         if not path.is_file() or not path.name.endswith((".whl", ".tar.gz")):
             continue
         if path.name.endswith(".whl"):
             with zipfile.ZipFile(path) as archive:
-                inventory = [{"path": n, "sha256": hashlib.sha256(archive.read(n)).hexdigest()} for n in archive.namelist()]
+                names = archive.namelist()
+                require(len(names) == len(set(names)), "duplicate_wheel_member")
+                inventory = {name: hashlib.sha256(archive.read(name)).hexdigest() for name in names}
         else:
             with tarfile.open(path) as archive:
-                inventory = [{"path": m.name, "sha256": hashlib.sha256(archive.extractfile(m).read()).hexdigest()}
-                             for m in archive.getmembers() if m.isfile()]
-        archives.append({"path": path.relative_to(base / "pytest").as_posix(), "bytes": path.stat().st_size,
-                         "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "members": inventory})
-    save(evidence / "build-inventories.json", archives)
-    xml, collection = evidence / "junit.xml", evidence / "collection.json"
-    if xml.exists() and collection.exists():
-        summary.update(junit_counts(xml.read_bytes(), json.loads(collection.read_bytes())["nodes"]))
-    before_file = evidence / "tracked-before.json"
-    after = tracked_bytes()
-    save(evidence / "tracked-after.json", after)
-    unchanged = before_file.exists() and json.loads(before_file.read_bytes()) == after
-    pytest_log = evidence / "pytest.log"
-    subtests = re.findall(r"\b(\d+) subtests passed\b", pytest_log.read_text(encoding="utf-8")) if pytest_log.exists() else []
-    subtest_events = int(subtests[-1]) if subtests else (0 if pytest_log.exists() else None)
-    summary["successful_subtest_events"] = subtest_events
-    summary["subtest_events_reconciled"] = bool(subtest_events is not None and
-        subtest_events == summary.get("additional_reported_events"))
-    summary["tracked_bytes_unchanged"] = unchanged
-    guards_ok = True
-    for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
-        outcome = run(guard_command(tool), evidence, tool + "-after", check=False)
-        guards_ok = guards_ok and outcome.returncode == 0
-    entry_and_scope(evidence)
-    exit_record = evidence / "pytest-exit.json"
-    summary.update(guards_pass=guards_ok, archive_count=len(archives))
-    summary["pass"] = bool(unchanged and guards_ok and summary["subtest_events_reconciled"] and
-        collection.exists() and exit_record.exists() and
-        summary.get("tests") == json.loads(collection.read_bytes())["count"] and
-        all(summary.get(k) == 0 for k in ("failures", "errors", "skipped")) and
-        json.loads(exit_record.read_bytes())["exit_code"] == 0 and len(archives) >= 3)
+                members = [member for member in archive.getmembers() if member.isfile()]
+                require(len(members) == len({member.name for member in members}), "duplicate_sdist_member")
+                inventory = {m.name: hashlib.sha256(archive.extractfile(m).read()).hexdigest() for m in members}
+        archives.append({"path": path.relative_to(base / "pytest").as_posix(), "name": path.name,
+            "bytes": path.stat().st_size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "members": inventory})
+    return archives
+
+
+def installed_receipts(base, evidence, binding, archives, *, local=False):
+    modules = {}
+    for path in sorted((ROOT / "src/source_integrity_toolkit").rglob("*.py")):
+        name = path.relative_to(ROOT / "src").as_posix().removesuffix(".py").replace("/", ".").removesuffix(".__init__")
+        modules[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+    require(len(modules) == 48, "installed_module_set_changed")
+    results = {}
+    for label in ("w08", "w14"):
+        name = label + "-installed-runtime.json"
+        path = evidence / name
+        if local:
+            if label == "w08":
+                results[label] = {"receipt_persisted": False,
+                    "reason": "Retained local unittest deletes its temporary receipt; exact JUnit result is required"}
+                continue
+            found = list((base / "pytest").rglob(name))
+            require(len(found) == 1, "local_installed_receipt_missing_or_ambiguous")
+            path.write_bytes(found[0].read_bytes())
+        receipt = json.loads(path.read_bytes())
+        require(receipt.get("head") == binding["head"] and receipt.get("ok") is True, "installed_receipt_head_or_result")
+        runtime = receipt["runtime"]
+        require(runtime["modules"] == modules and runtime["runtime_distributions"] == ["source-integrity-toolkit"] and
+                runtime["normal_effects"] == [] and runtime["negative_events"] == ["open", "socket.getaddrinfo", "ctypes.dlopen"] and
+                runtime["public_refusals"] == 2, "installed_runtime_boundary_incomplete")
+        if label == "w08":
+            require(receipt["unit"] == "VC" and runtime["admitted_fixture_modes"] == 8 and
+                    runtime["rejected_empty_modes"] == 2, "installed_preparation_modes_missing")
+        else:
+            require(receipt["unit"] == "P3-W14" and len(runtime["hero_modes"]) == 8 and
+                    len(runtime["completed_finite_modes"]) == 2 and runtime["invalid_modes"] == 2,
+                    "installed_analysis_modes_missing")
+            source_sets = {
+                "test_sources": {"tests/integration/test_analytical_installed_runtime.py",
+                    "tests/integration/test_analytical_hero_inputs.py", "tests/integration/test_analytical_pipeline.py"},
+                "frozen_test_sources": {"tests/" + kind + "/" + case + suffix
+                    for case in ("H7-01", "H7-V01", "H7-V02", "H7-V03")
+                    for kind, suffix in (("fixtures/hero", ".bundle.json"), ("golden", ".logical.json"))},
+            }
+            for field, expected in source_sets.items():
+                require(set(receipt[field]) == expected and all(hashlib.sha256((ROOT / p).read_bytes()).hexdigest() == digest
+                        for p, digest in receipt[field].items()), "installed_source_evidence_changed")
+        distributions = receipt["distributions"]
+        require(len(distributions) == 3 and distributions[0]["name"].endswith(".tar.gz") and
+                all(r["name"].endswith(".whl") for r in distributions[1:]) and
+                distributions[1]["members"] == distributions[2]["members"], "installed_rebuild_inventory_mismatch")
+        require(all(any(r["name"] == a["name"] and r["members"] == a["members"] for a in archives)
+                    for r in distributions), "installed_inventory_not_in_current_builds")
+        results[label] = {"receipt_persisted": True, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                          "modules": len(modules), "distributions": len(distributions)}
+    return results
+
+
+def emit_summary(evidence, summary):
     save(evidence / "summary.json", summary)
     print("VC_SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
-    with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
-        output.write("## Current verification consolidation\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
-    require(summary["pass"], "required_CI_evidence_failed_or_incomplete")
+    if os.environ.get("GITHUB_STEP_SUMMARY") and summary.get("mode") != "local":
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
+            output.write("## Current verification consolidation\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
+
+
+def evidence_report(base, evidence, *, local=False):
+    summary = {"scope": "Current verification consolidation", "mode": "local" if local else "hosted",
+               "pass": False, "full_suite": False, "hosted_matrix_attestation": False}
+    try:
+        binding = current_binding(local=local)
+        summary.update(binding=binding, head=binding["head"])
+        if local:
+            bound_record(evidence, "preflight.json", binding)
+            risk = {"profile": "full", "reason": "Local entry always runs every canonical scope"}
+        else:
+            _, risk = selected_profile(evidence)
+        summary.update(profile=risk["profile"], risk=risk)
+        archives = archive_inventories(base)
+        save(evidence / "build-inventories.json", archives)
+        summary["archive_count"] = len(archives)
+        require(not list(evidence.glob("*-failure.json")), "earlier_stage_failed")
+        prepared, tested = (bound_record(evidence, name, binding) for name in ("prepare.json", "test.json"))
+        require(prepared.get("ok") is True and tested.get("ok") is True and
+                prepared.get("profile") == tested.get("profile") == risk["profile"], "required_stage_incomplete")
+        after = tracked_bytes()
+        save(evidence / "tracked-after.json", after)
+        summary["tracked_bytes_unchanged"] = json.loads((evidence / "tracked-before.json").read_bytes()) == after
+        require(summary["tracked_bytes_unchanged"], "tracked_bytes_changed_during_verification")
+        for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
+            run(guard_command(tool, local=local), evidence, tool + "-after", env=suite_environment(local=local))
+        policy(read_workflow())
+        if not local:
+            entry_and_scope(evidence)
+        summary["guards_pass"] = True
+        if risk["profile"] == "documentation":
+            validate_documentation()
+            require(tested.get("full_suite") is False and tested.get("collection_performed") is False,
+                    "documentation_claimed_full_suite")
+            require(not any((evidence / name).exists() for name in ("junit.xml", "collection.json", "pytest-exit.json")),
+                    "unexpected_full_suite_evidence_on_documentation_route")
+            summary.update(tests=None, successful_subtest_events=None,
+                scope="Documentation boundary checks only; no test matrix acceptance")
+        else:
+            collection = bound_record(evidence, "collection.json", binding)
+            collection_check(collection["nodes"], collection["test_files"])
+            require(collection["count"] == len(collection["nodes"]) and collection["scopes"] == list(ALL_SCOPES),
+                    "collection_scope_or_count_mismatch")
+            exit_record = json.loads((evidence / "pytest-exit.json").read_bytes())
+            require(exit_record["exit_code"] == 0 and exit_record["timed_out"] is False and
+                    exit_record["interrupted"] is False and exit_record["incomplete"] is False,
+                    "pytest_failed_or_timed_out")
+            log = (evidence / "pytest.log").read_text(encoding="utf-8")
+            subtests = re.findall(r"\b(\d+) subtests passed\b", log)
+            successful_subtests = int(subtests[-1]) if subtests else 0
+            summary.update(reconcile_suite((evidence / "junit.xml").read_bytes(),
+                                            collection["nodes"], successful_subtests))
+            require(len(archives) >= 3 and any(r["name"].endswith(".tar.gz") for r in archives) and
+                    sum(r["name"].endswith(".whl") for r in archives) >= 2, "build_rebuild_archives_missing")
+            summary.update(installed_receipts=installed_receipts(base, evidence, binding, archives, local=local),
+                archive_count=len(archives), successful_subtest_events=successful_subtests,
+                subtest_events_reconciled=True, full_suite=True)
+        summary["pass"] = True
+    except (Exception, KeyboardInterrupt) as exc:
+        summary.update(error_type=type(exc).__name__, message=str(exc))
+        raise
+    finally:
+        emit_summary(evidence, summary)
+
+
+def stage_failure(evidence, stage, exc, *, local=False):
+    failure = {"stage": stage, "error_type": type(exc).__name__, "message": str(exc)}
+    save(evidence / (stage + "-failure.json"), failure)
+    summary_path = evidence / "summary.json"
+    summary = json.loads(summary_path.read_bytes()) if summary_path.exists() else {
+        "scope": "Current verification consolidation", "mode": "local" if local else "hosted"}
+    summary.update({"pass": False, "full_suite": False, "hosted_matrix_attestation": False, "failure": failure})
+    emit_summary(evidence, summary)
+
+
+def local_verify(evidence):
+    evidence = evidence.resolve()
+    require(not evidence.is_relative_to(ROOT), "local_evidence_must_be_outside_repository")
+    evidence.mkdir(parents=True, exist_ok=True)
+    binding = current_binding(local=True)
+    initialize_evidence(evidence, binding)
+    # Only the entry invocation owns this fresh directory; its subprocess tests
+    # receive no GitHub context and cannot emit hosted-run attestations.
+    base = evidence / "work"
+    base.mkdir()
+    stage = "preflight"
+    try:
+        policy(read_workflow())
+        for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
+            run(guard_command(tool, local=True), evidence, tool + "-before", env=suite_environment(local=True))
+        save(evidence / "preflight.json", {"binding": binding, "ok": True,
+            "scope": "Local module/workflow guards; no external authorization event"})
+        stage = "prepare"
+        result = run([sys.executable, "-m", "pip", "--isolated", "list", "--format=json"],
+                     evidence, "installed", env=suite_environment(local=True))
+        installed = {r["name"].lower(): r["version"] for r in json.loads(result.stdout)}
+        selected = {**SELECTED, **({"colorama": "0.4.6"} if os.name == "nt" else {})}
+        require({name: version for name, version in installed.items() if name != "pip"} == selected,
+                "installed tool set mismatch")
+        run([sys.executable, "-m", "pip", "--isolated", "check"], evidence, "pip-check", env=suite_environment(local=True))
+        save(evidence / "installed.json", installed)
+        save(evidence / "prepare.json", {"binding": binding, "ok": True, "profile": "full",
+            "dependency_install_performed": False, "selected_tool_versions_verified": True})
+        stage = "test"
+        execute_suite(base, evidence, sys.executable, binding, local=True)
+        stage = "evidence"
+        evidence_report(base, evidence, local=True)
+    except (Exception, KeyboardInterrupt) as exc:
+        stage_failure(evidence, stage, exc, local=True)
+        raise
+
+
+class DriverEvidenceTests(unittest.TestCase):
+    """Exercise evidence failures and route boundaries without a nested full suite."""
+
+    def workspace(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        return Path(temporary.name)
+
+    def test_timeout_preserves_partial_stdout_stderr_and_status(self):
+        evidence = self.workspace()
+        command = [sys.executable, "-u", "-c",
+            "import sys,time; print('partial stdout'); print('partial stderr',file=sys.stderr); time.sleep(30)"]
+        with self.assertRaises(subprocess.TimeoutExpired):
+            run(command, evidence, "pytest", timeout=3)
+        self.assertIn("partial stdout", (evidence / "pytest.log").read_text())
+        self.assertIn("partial stderr", (evidence / "pytest.log").read_text())
+        status = json.loads((evidence / "pytest-exit.json").read_bytes())
+        self.assertIsNone(status["exit_code"])
+        self.assertIs(status["timed_out"], True)
+
+    def test_nonzero_exit_preserves_raw_output_and_status(self):
+        evidence = self.workspace()
+        with self.assertRaisesRegex(ValueError, "full output preserved"):
+            run([sys.executable, "-c", "print('failed canary'); raise SystemExit(7)"], evidence, "canary")
+        self.assertIn("failed canary", (evidence / "canary.log").read_text())
+        self.assertEqual(json.loads((evidence / "canary-exit.json").read_bytes())["exit_code"], 7)
+
+    def test_process_creation_failure_has_status_and_log(self):
+        evidence = self.workspace()
+        with self.assertRaises(OSError):
+            run([evidence / "missing-interpreter"], evidence, "pytest")
+        self.assertTrue((evidence / "pytest.log").is_file())
+        self.assertIsNone(json.loads((evidence / "pytest-exit.json").read_bytes())["exit_code"])
+
+    def test_interrupt_keeps_live_channels_and_incomplete_status(self):
+        evidence = self.workspace()
+        def interrupted_child(command, **kwargs):
+            kwargs["stdout"].write("live output")
+            kwargs["stdout"].flush()
+            kwargs["stderr"].write("live error")
+            kwargs["stderr"].flush()
+            self.assertEqual((evidence / "pytest.log").read_text(), "live output")
+            self.assertEqual((evidence / "pytest-stderr.log").read_text(), "live error")
+            self.assertIs(json.loads((evidence / "pytest-exit.json").read_bytes())["incomplete"], True)
+            raise KeyboardInterrupt()
+        with mock.patch.object(subprocess, "run", side_effect=interrupted_child):
+            with self.assertRaises(KeyboardInterrupt):
+                run(["interrupted-child"], evidence, "pytest")
+        status = json.loads((evidence / "pytest-exit.json").read_bytes())
+        self.assertIs(status["interrupted"], True)
+        self.assertIs(status["incomplete"], True)
+        self.assertEqual((evidence / "pytest.log").read_text(), "live outputlive error")
+
+    def test_live_logs_keep_stdout_parseable_when_stderr_has_warning(self):
+        evidence = self.workspace()
+        result = run([sys.executable, "-c",
+            "import sys; print('{\"ok\":true}'); print('stderr warning',file=sys.stderr)"], evidence, "json")
+        self.assertEqual(json.loads(result.stdout), {"ok": True})
+        self.assertIn("stderr warning", result.stderr)
+        self.assertIn("stderr warning", (evidence / "json.log").read_text())
+
+    def test_matching_collection_and_junit_cannot_omit_installed_witness(self):
+        def document(nodes):
+            cases = []
+            for node in nodes:
+                parts = node.split("::")
+                classname = ".".join([parts[0][:-3].replace("/", "."), *parts[1:-1]])
+                cases.append('<testcase classname="' + classname + '" name="' + parts[-1] + '"/>')
+            return ('<testsuites><testsuite tests="' + str(len(nodes)) +
+                    '" failures="0" errors="0" skipped="0">' + "".join(cases) +
+                    '</testsuite></testsuites>').encode()
+        nodes = [
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "tests/integration/test_analytical_installed_runtime.py::test_clean_installed_analysis_original_heroes_and_completed_finite_case",
+        ]
+        self.assertEqual(reconcile_suite(document(nodes), nodes, 0)["tests"], 2)
+        for missing in nodes:
+            with self.subTest(missing=missing):
+                reduced = [node for node in nodes if node != missing]
+                self.assertTrue(phase_guard.current_junit(document(reduced), reduced, 0)["identities_match"])
+                with self.assertRaisesRegex(ValueError, "required_installed_witness_missing"):
+                    reconcile_suite(document(reduced), reduced, 0)
+
+    def test_existing_evidence_is_rejected_without_removing_raw_attempt(self):
+        evidence = self.workspace()
+        (evidence / "junit.xml").write_bytes(b"original raw attempt")
+        with self.assertRaisesRegex(ValueError, "must_be_empty"):
+            initialize_evidence(evidence, {"head": "new"})
+        self.assertEqual((evidence / "junit.xml").read_bytes(), b"original raw attempt")
+        self.assertFalse((evidence / "binding.json").exists())
+
+    def test_missing_unit_or_integration_directory_cannot_reduce_suite(self):
+        root = self.workspace()
+        for scope in ALL_SCOPES[:3]:
+            (root / scope).mkdir(parents=True)
+        with mock.patch(__name__ + ".ROOT", root):
+            for missing in ALL_SCOPES[3:]:
+                with self.subTest(missing=missing):
+                    with self.assertRaisesRegex(ValueError, "required_test_directory_missing"):
+                        suite_paths()
+                    (root / missing).mkdir()
+            self.assertEqual(suite_paths(), list(ALL_SCOPES))
+
+    def test_suite_environment_clears_selection_and_plugin_injection(self):
+        with mock.patch.dict(os.environ, {"PYTEST_ADDOPTS": "--deselect tests/unit/test_x.py::test_y",
+                "PYTEST_PLUGINS": "unexpected_plugin", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "0"}):
+            environment = suite_environment()
+        self.assertEqual(environment["PYTEST_ADDOPTS"], "")
+        self.assertEqual(environment["PYTEST_PLUGINS"], "")
+        self.assertEqual(environment["PYTEST_DISABLE_PLUGIN_AUTOLOAD"], "1")
+        self.assertEqual(environment["PIP_NO_INDEX"], "1")
+
+    def test_local_children_do_not_inherit_hosted_receipt_destination(self):
+        with mock.patch.dict(os.environ, {"GITHUB_ACTIONS": "true", "GITHUB_RUN_ID": "123",
+                "RUNNER_TEMP": "/hosted", "SIT_MATRIX_OS": "ubuntu-24.04", "SIT_REVIEW_HEAD": "old"}):
+            environment = suite_environment(local=True)
+        self.assertTrue(all(name not in environment for name in
+            ("GITHUB_ACTIONS", "GITHUB_RUN_ID", "RUNNER_TEMP", "SIT_MATRIX_OS", "SIT_REVIEW_HEAD")))
+
+    def test_wrong_head_attempt_or_matrix_cannot_reuse_stage_record(self):
+        evidence = self.workspace()
+        binding = {"head": "candidate", "run_attempt": "1", "matrix_python": "3.11"}
+        save(evidence / "binding.json", binding)
+        save(evidence / "preflight.json", {"binding": binding, "ok": True})
+        for field, value in (("head", "other"), ("run_attempt", "2"), ("matrix_python", "3.13")):
+            with self.subTest(field=field):
+                with self.assertRaisesRegex(ValueError, "identity_mismatch"):
+                    bound_record(evidence, "preflight.json", {**binding, field: value})
+
+    def test_stage_record_binding_is_checked_independently(self):
+        evidence = self.workspace()
+        save(evidence / "binding.json", {"head": "current"})
+        save(evidence / "preflight.json", {"binding": {"head": "old"}, "ok": True})
+        with self.assertRaisesRegex(ValueError, "stage_evidence_identity_mismatch"):
+            bound_record(evidence, "preflight.json", {"head": "current"})
+
+    def test_recorded_documentation_route_cannot_override_actual_full_diff(self):
+        evidence = self.workspace()
+        binding = {"base": "base", "head": "head"}
+        save(evidence / "binding.json", binding)
+        save(evidence / "preflight.json", {"binding": binding, "ok": True})
+        save(evidence / "risk.json", {"binding": binding, "profile": "documentation"})
+        with mock.patch(__name__ + ".current_binding", return_value=binding), \
+                mock.patch.object(phase_guard, "current_risk", return_value={"profile": "full"}):
+            with self.assertRaisesRegex(ValueError, "actual_diff"):
+                selected_profile(evidence)
+
+    def test_documentation_route_explicitly_records_no_install_or_full_suite(self):
+        evidence = self.workspace()
+        binding = {"head": "candidate"}
+        save(evidence / "binding.json", binding)
+        with mock.patch(__name__ + ".selected_profile", return_value=(binding, {"profile": "documentation"})), \
+                mock.patch(__name__ + ".prepare_tools", side_effect=AssertionError("unexpected install")), \
+                mock.patch(__name__ + ".execute_suite", side_effect=AssertionError("unexpected suite")):
+            prepare(evidence / "work", evidence)
+            run_suite(evidence / "work", evidence)
+        prepared = json.loads((evidence / "prepare.json").read_bytes())
+        tested = json.loads((evidence / "test.json").read_bytes())
+        self.assertIs(prepared["dependency_install_performed"], False)
+        self.assertIs(tested["full_suite"], False)
+        self.assertIs(tested["collection_performed"], False)
+        self.assertFalse((evidence / "junit.xml").exists())
+
+    def test_documentation_still_requires_readable_nonempty_records(self):
+        root = self.workspace()
+        (root / "verification").mkdir()
+        (root / "VERIFICATION_CONSOLIDATION_COMPLETION.md").write_text("Review record", encoding="utf-8")
+        with mock.patch(__name__ + ".ROOT", root):
+            for content in ("{", "{}", "[]", '{"a":1,"a":2}'):
+                with self.subTest(content=content):
+                    (root / "verification/consolidation_map.json").write_text(content, encoding="utf-8")
+                    with self.assertRaises(ValueError):
+                        validate_documentation()
+            (root / "verification/consolidation_map.json").write_text('{"record":"readable"}', encoding="utf-8")
+            validate_documentation()
+
+    def test_early_context_failure_still_writes_failed_summary(self):
+        evidence = self.workspace()
+        with mock.patch(__name__ + ".current_binding", side_effect=ValueError("missing actual context")), \
+                mock.patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": ""}):
+            with self.assertRaisesRegex(ValueError, "missing actual context"):
+                evidence_report(evidence / "work", evidence)
+        summary = json.loads((evidence / "summary.json").read_bytes())
+        self.assertIs(summary["pass"], False)
+        self.assertIs(summary["full_suite"], False)
+        self.assertEqual(summary["message"], "missing actual context")
+
+    def test_stage_failure_preserves_raw_attempt_and_cannot_keep_success(self):
+        evidence = self.workspace()
+        save(evidence / "summary.json", {"pass": True, "full_suite": True})
+        (evidence / "pytest.log").write_text("raw failed attempt", encoding="utf-8")
+        with mock.patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": ""}):
+            stage_failure(evidence, "test", ValueError("test failure"), local=True)
+        summary = json.loads((evidence / "summary.json").read_bytes())
+        self.assertIs(summary["pass"], False)
+        self.assertIs(summary["full_suite"], False)
+        self.assertTrue((evidence / "test-failure.json").is_file())
+        self.assertEqual((evidence / "pytest.log").read_text(), "raw failed attempt")
+
+    def test_parameter_delimiters_remain_part_of_junit_test_name(self):
+        xml = (b'<testsuites><testsuite tests="1" failures="0" errors="0" skipped="0">'
+               b'<testcase classname="tests.unit.test_example" name="test_one[left::right]"/>'
+               b'</testsuite></testsuites>')
+        node = "tests/unit/test_example.py::test_one[left::right]"
+        self.assertEqual(junit_counts(xml, [node])["tests"], 1)
+        self.assertTrue(phase_guard.current_junit(xml, [node], 0)["identities_match"])
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 3 and sys.argv[1] == "--ci-stage":
-        stage = sys.argv[2]
-        stages = {"preflight": preflight, "prepare": prepare, "test": run_suite, "evidence": evidence_report}
-        require(stage in stages, "unknown_CI_stage")
-        base, evidence = ci_paths()
-        try:
-            configure_context()
-            stages[stage](base, evidence)
-        except Exception as exc:
-            save(evidence / (stage + "-failure.json"), {"stage": stage, "error_type": type(exc).__name__, "message": str(exc)})
-            raise
+    if "--ci-stage" in sys.argv or "--local" in sys.argv:
+        parser = argparse.ArgumentParser(description="Current verification entry and evidence driver")
+        mode = parser.add_mutually_exclusive_group(required=True)
+        mode.add_argument("--ci-stage", choices=("preflight", "prepare", "test", "evidence"))
+        mode.add_argument("--local", action="store_true")
+        parser.add_argument("--evidence-dir", type=Path)
+        args = parser.parse_args()
+        if args.local:
+            destination = args.evidence_dir or Path(tempfile.mkdtemp(prefix="sit-vc-local-"))
+            print("Local evidence: " + str(destination.resolve()), flush=True)
+            local_verify(destination)
+        else:
+            require(args.evidence_dir is None, "hosted_evidence_destination_is_fixed")
+            base, evidence = ci_paths()
+            stages = {"preflight": preflight, "prepare": prepare, "test": run_suite, "evidence": evidence_report}
+            try:
+                stages[args.ci_stage](base, evidence)
+            except (Exception, KeyboardInterrupt) as exc:
+                stage_failure(evidence, args.ci_stage, exc)
+                raise
     else:
         unittest.main()
