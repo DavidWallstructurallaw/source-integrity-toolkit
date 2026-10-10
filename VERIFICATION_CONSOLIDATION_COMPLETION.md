@@ -1,16 +1,16 @@
 # Source Integrity Toolkit Verification Consolidation
 
-Revision: 0.3
-Checkpoint: VC-03
-Status: VC-01 through VC-03 completed; VC-04 through VC-06 remain pending.
-Latest owner instruction: `VC-03 go`.
-Execution date: 2026-10-02 UTC.
+Revision: 0.4
+Checkpoint: VC-04
+Status: VC-01 through VC-04 completed locally; VC-05 and VC-06 remain pending.
+Latest owner instruction: `VC-04 继续`.
+Execution dates: VC-01 through VC-03, 2026-10-02 UTC; VC-04, 2026-10-10 UTC.
 
 ## Accepted authority and scope
 
 The owner approved [VERIFICATION_CONSOLIDATION_PLAN.md](VERIFICATION_CONSOLIDATION_PLAN.md), SHA-256 `a94b59a0bfdbde3c70c7286fd48c5e0cbdb4a538afeb094ba97dce718bd7d11d`, and started VC-01. The plan is stored with its originally reviewed bytes. Its drafting-time pending header is superseded by this later instruction, without rewriting the approved document.
 
-VC-01 performed baseline verification, one-time guarantee mapping and bounded historical-cost measurement. Its published checkpoint is `a47ea2480043c2bb267c047b2d99a67ab4428e53`. The following baseline sections retain that checkpoint's findings. VC-02, published as `e4b0378b6e41293260de7323dfd5f179831736f7`, added current direct controls. Neither of those checkpoints retired tests. The VC-03 section records current source materialization and the bounded replacement of two obsolete loader API checks. The default workflow and full consolidation acceptance remain pending.
+VC-01 performed baseline verification, one-time guarantee mapping and bounded historical-cost measurement. Its published checkpoint is `a47ea2480043c2bb267c047b2d99a67ab4428e53`. The following baseline sections retain that checkpoint's findings. VC-02, published as `e4b0378b6e41293260de7323dfd5f179831736f7`, added current direct controls. Neither of those checkpoints retired tests. The VC-03 section records current source materialization and the bounded replacement of two obsolete loader API checks. VC-04 retires the mapped historical chains and supplies the minimum current CI bridge; broader CI integration and full consolidation acceptance remain pending.
 
 The consolidation branch starts at accepted Phase 3 merge `2413a29b839b7e1de8f76a449762f031de19d52b`. Remote main and merged PR #34 were rechecked. The accepted tree `e2f230bdf6f838f3d12df233559732aa1d5c1699` equals directly tested head `90684996eac568af6129973764fe40f3b666a15f`.
 
@@ -229,3 +229,45 @@ The retained W04 oracle fails because it requires the old wrapper shape; the ret
 No default workflow switch, new hosted matrix, implementation PR, merge, product change or release occurred. Four-profile acceptance remains VC-06, on the exact completed candidate after VC-04 historical retirement and VC-05 CI/developer integration.
 
 **Next: VC-04, retire the mapped historical chains with their current replacements proven.** This checkpoint stops at VC-03.
+
+
+## VC-04: retire historical chains
+
+The owner instructed `VC-04 继续`. This checkpoint retires pre-acceptance development machinery after direct replacement review. It changes nine approved Python files and the two consolidation records. Product code, approved plan, frozen specifications, schemas, fixtures, golden files, dependency/build configuration, workflow, Action pins and execution budgets are unchanged.
+
+### Retired and retained guarantees
+
+- Retired 134 historical test functions, representing 422 currently collected identities: 403 from the two transition files and 19 from the four mixed files. The two obsolete loader identities retired in VC-03 remain separately accounted.
+- Every removed identity has an explicit per-function disposition, old source reference and rationale in `vc04_execution.review_records` and the mapping rows. Replacement cases have resolved current targets and successful execution evidence. Three portable-AST comparison groups are archived with their obsolete helper and all callers, so they require no live replacement target. Earlier per-stage permission schedules are archived accepted authority models; current VC has one explicitly approved scope and checks every post-anchor commit including merge sides and restored forbidden changes.
+- Retained the clean-install witness with its exact function bytes, including wheel/sdist/rebuild inventories, offline clean installation, all 48 installed module hashes, hero modes, real effect probes and public refusals.
+- Retained component-evidence closure/refusal assertions. Their initial map classification as historical-only was corrected. The fixed thirteen-component reference is independently transcribed, without consulting a removed stage helper.
+- Retained both value and UTF-8 source-extension witnesses, with current externally supplied VC context replacing the old stage selector. Dossier contents still cannot grant authority or claim unexecuted analytical checks.
+- All 118 materialized wrapper identities and the non-enumerated mixed-file source remain intact. Current authority, checkout, all-post-anchor history, source effects, limits and workflow policy functions keep their implementation bytes.
+- Added 30 direct cases: correctly hashed malformed commit bodies, nonexact or inconsistent external events, forbidden imports and a fake public report body. The current control file now has 156 identities, all executed.
+
+The guard no longer offers old stage contexts. The CI driver received only the minimum corresponding bridge to current event/anchor/history/checkout/collection controls; dependency preparation, packaging helpers, full-suite budget, workflow and failure-evidence stages are preserved. Broad CI integration, developer instructions and risk routing remain VC-05. This coupled bridge prevents removed legacy APIs from leaving the default driver broken.
+
+### Executed evidence
+
+| Check | Result |
+| --- | --- |
+| Fixed-source combined affected suite | 526 passed; 91 separate subtests passed; 208.28 seconds |
+| Additional disjoint observer and preparation-pipeline witnesses | 124 passed |
+| Total distinct local successful identities | 650; no failures, errors or skips |
+| Current boundary file, separate gap review | 156 passed, including all 30 new cases |
+| Real-clone CI bridge | Seven groups of positive/negative checks passed; external VC event, complete actual scope, explicit CLI, missing event, stale stage, product mutation and collection failures |
+| Full current collection | 3,695 unique identities in 73 files; zero subprocess launches during collection |
+| Collection identity SHA-256 | `8d295b8ccfdc80eced61a5b6a89c840fdbd7bc340adef49816f0bcfadb57149a` |
+| Tracked files during combined run | 211 files unchanged |
+
+Collection accounting is **4,087 - 422 + 30 = 3,695**, or **3,963 original - 424 cumulative retirements + 156 current controls = 3,695**. All 3,413 original identities outside the mapped target set remain present. The collection decrease reflects documented retirement, without added skips, xfails or hidden exclusions.
+
+Execution used local Linux / CPython 3.12.14 with pinned offline tools. The combined run freezes all tracked bytes for its duration and separately reconciles exact collected identities with JUnit and observed subtests. Duplicate preliminary runs are not added to the distinct total. Raw logs, JUnit, review evidence and candidate source hashes are stored in `vc04_execution`. Current source scope/history checks pass; all 48 product modules remain frozen against the accepted merge.
+
+### Archive and handoff
+
+The complete pre-retirement implementation is available at `3ac5128e4744e2d3708400e3cb1875a9cd4ed0e1`; the Phase 3 acceptance anchor remains `2413a29b839b7e1de8f76a449762f031de19d52b`. Earlier VC-03 diagnostic failures remain stored unchanged as failures. Their old shape checks have now been specifically retired with mapped current guarantees, rather than relabelled as successful.
+
+No full test-suite run, hosted matrix, PR merge, product release or VC-05 completion is claimed here. Runtime speedup is not inferred from collection counts; the final comparable efficiency measurement remains for the completed candidate.
+
+**Next: VC-05, integrate the current CI/developer entry, evidence handling, risk routing and README.** Final same-head four-environment acceptance remains VC-06.

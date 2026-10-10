@@ -231,6 +231,7 @@ def test_current_package_frozen_preparation_bytes_have_positive_and_negative_con
 @pytest.mark.parametrize("case,code", [
     ("extra", "unexpected_module"), ("missing", "missing_module"),
     ("protected", "non_scaffold_body"), ("syntax", "invalid_python"),
+    ("public_report", "non_scaffold_body"),
     ("encoding", "invalid_utf8"), ("active_size", "oversize_module"), ("inert_size", "oversize_module"),
 ])
 def test_current_module_ceiling_and_protected_slots(case, code):
@@ -244,6 +245,9 @@ def test_current_module_ceiling_and_protected_slots(case, code):
     if case == "extra": path = "analysis/future.py"; sources[path] = b""
     elif case == "missing": del sources[path]
     elif case == "protected": path = "reporting/json_report.py"; sources[path] = b"ACTIVE = {}\n"
+    elif case == "public_report":
+        path = "api.py"
+        sources[path] = b'def audit_bundle(x):\n    return {"report_kind": "audit_report"}\n'
     elif case == "syntax": sources[path] = b"def (\n"
     elif case == "encoding": sources[path] = b"\xff"
     else:
@@ -328,6 +332,45 @@ def test_current_context_rejects_candidate_self_authorization(monkeypatch, case,
         guard.current_context(name, raw or json.dumps(normal), VC01)
 
 
+@pytest.mark.parametrize("case,value,reason", [
+    ("branch", "verification/consolidation; injected", "current_unapproved_branch"),
+    ("branch", "verification/consolidation\n", "current_unapproved_branch"),
+    ("branch", "verification/consolidation/extra", "current_unapproved_branch"),
+    ("branch", "verification/VC-07", "current_unapproved_branch"),
+    ("footer", "SIT-Verification-Unit: VC ", "current_invalid_merge_footer"),
+    ("footer", "SIT-Verification-Unit: VC injected", "current_invalid_merge_footer"),
+    ("footer", "SIT-Verification-Unit: VC-07", "current_invalid_merge_footer"),
+    ("push_ref", "refs/heads/verification/consolidation", "current_unsupported_event"),
+    ("push_after", ANCHOR, "current_event_head_mismatch"),
+    ("push_head_id", ANCHOR, "current_event_head_mismatch"),
+    ("push_deleted", True, "current_event_head_mismatch"),
+    ("push_forced", True, "current_event_head_mismatch"),
+    ("base", "HEAD", "current_invalid_base"),
+    ("base", None, "current_invalid_base"),
+    ("base", VC01, "current_invalid_base"),
+    ("review_head", VC01[:12], "current_invalid_review_head"),
+    ("review_head", VC01.upper(), "current_invalid_review_head"),
+    ("review_head", None, "current_invalid_review_head"),
+])
+def test_current_context_preserves_exact_branch_footer_and_commit_boundaries(case, value, reason):
+    normal = event()
+    assert guard.current_context("pull_request", json.dumps(normal), VC01)["unit"] == "VC"
+    push = {"repository": {"full_name": PROJECT}, "ref": "refs/heads/main", "before": ANCHOR,
+            "after": VC01, "head_commit": {"id": VC01, "message": "Accept VC\n\nSIT-Verification-Unit: VC"}}
+    assert guard.current_context("push", json.dumps(push), VC01)["unit"] == "VC"
+    name, head = "pull_request", VC01
+    if case == "branch": normal["pull_request"]["head"]["ref"] = value
+    elif case == "base": normal["pull_request"]["base"]["sha"] = value
+    elif case == "review_head": head = value
+    else:
+        name, normal = "push", push
+        if case == "footer": normal["head_commit"]["message"] = value
+        elif case == "push_head_id": normal["head_commit"]["id"] = value
+        else: normal[case.removeprefix("push_")] = value
+    with pytest.raises(ValueError, match="^" + reason + "$"):
+        guard.current_context(name, json.dumps(normal), head)
+
+
 @pytest.mark.parametrize("path", [PRODUCT, "README.md.bak", "tests/contract/test_verification_boundaries.py",
                                    "./README.md", "tests/../README.md", "README.md/", "README.md:stream",
                                    "tests\\contract\\test_verification_boundary.py"])
@@ -380,6 +423,8 @@ def test_current_checkout_rejects_out_of_scope_states(repo, case, reason):
     ("graph/cycles.py", b"import socket\n", "unapproved_import"),
     ("graph/cycles.py", b"import ctypes\n", "unapproved_import"),
     ("graph/cycles.py", b"import subprocess\n", "unapproved_import"),
+    ("runtime/boundary.py", b"from pathlib import Path\n", "unapproved_import"),
+    ("runtime/boundary.py", b"import recursive_integrity_toolkit\n", "unapproved_import"),
     ("graph/cycles.py", b"VALUE = sum((1, 2))\n", "import_time_execution"),
     ("graph/cycles.py", b"def f(x=sum((1, 2))):\n    return x\n", "import_time_execution"),
     ("graph/cycles.py", b"class X(metaclass=type):\n    pass\n", "custom_metaclass"),
@@ -387,6 +432,8 @@ def test_current_checkout_rejects_out_of_scope_states(repo, case, reason):
     ("graph/cycles.py", b'VALUE = "tests/golden/answer"\n', "runtime_catalog_or_oracle_reference"),
     ("contracts/results.py", b"from source_integrity_toolkit.runtime import boundary\n", "layer_violation"),
     ("runtime/boundary.py", b"from source_integrity_toolkit.reporting import json_report\n", "forbidden_dependency"),
+    ("runtime/boundary.py", b"from ..reporting import assemble\n", "forbidden_dependency"),
+    ("runtime/boundary.py", b"from ..io import platform_windows\n", "forbidden_dependency"),
     ("graph/cycles.py", b"from ..... import x\n", "relative_import_escape"),
     ("graph/cycles.py", b"from typing import *\n", "wildcard_import"),
 ])
@@ -576,16 +623,49 @@ def test_current_git_metadata_rejects_malformed_responses(repo, monkeypatch, cas
         guard.current_commit_metadata(repo, [ANCHOR, VC01])
 
 
+@pytest.mark.parametrize("case,reason", [
+    ("invalid_tree", "current_invalid_commit_tree"),
+    ("invalid_parent", "current_invalid_commit_parent"),
+    ("duplicate_parent", "current_invalid_commit_parent"),
+    ("duplicate_tree", "current_malformed_commit_headers"),
+    ("late_parent", "current_malformed_commit_headers"),
+    ("missing_separator", "current_malformed_commit"),
+])
+def test_current_git_metadata_rejects_hash_valid_malformed_commit_headers(repo, monkeypatch, case, reason):
+    assert guard.current_commit_metadata(repo, [ANCHOR]) == {ANCHOR: {"tree": TREE, "parents": PARENTS}}
+    body = git(repo, "cat-file", "commit", ANCHOR)
+    header, separator, message = body.partition(b"\n\n")
+    assert separator and header.startswith(b"tree " + TREE.encode() + b"\n")
+    lines = header.split(b"\n")
+    assert lines[1:3] == [b"parent " + parent.encode() for parent in PARENTS]
+    if case == "invalid_tree": lines[0] = b"tree invalid-object-id"
+    elif case == "invalid_parent": lines[1] = b"parent invalid-object-id"
+    elif case == "duplicate_parent": lines.insert(2, lines[1])
+    elif case == "duplicate_tree": lines.insert(3, lines[0])
+    elif case == "late_parent": lines.append(lines.pop(1))
+    changed = b"\n".join(lines)
+    if case != "missing_separator": changed += b"\n\n" + message
+    # The response is internally hash-valid, so rejection must come from the
+    # commit grammar rather than merely detecting tampered object bytes.
+    oid = hashlib.sha1(b"commit " + str(len(changed)).encode() + b"\0" + changed).hexdigest()
+    raw = oid.encode() + b" commit " + str(len(changed)).encode() + b"\n" + changed + b"\n"
+    monkeypatch.setattr(guard, "_current_git", lambda *args, **kwargs: raw)
+    with pytest.raises(ValueError, match="^" + reason + "$"):
+        guard.current_commit_metadata(repo, [oid])
+
+
 @pytest.mark.parametrize("commit_ids,reason", [
     ([ANCHOR[:12]], "current_invalid_object_request"), ([123], "current_invalid_object_request"),
     ([ANCHOR.upper()], "current_invalid_object_request"), (ANCHOR, "current_invalid_object_request"),
     ([ANCHOR, ANCHOR], "current_duplicate_object_request"),
+    ({ANCHOR}, "current_invalid_object_request"),
 ])
 def test_current_git_metadata_invalid_requests_do_not_launch_git(monkeypatch, commit_ids, reason):
     def unexpected(*args, **kwargs):
         raise AssertionError("invalid request must not launch Git")
     monkeypatch.setattr(guard, "_current_git", unexpected)
     assert guard.current_commit_metadata(ROOT, []) == {}
+    assert guard.current_commit_metadata(ROOT, ()) == {}
     with pytest.raises(ValueError, match="^" + reason + "$"):
         guard.current_commit_metadata(ROOT, commit_ids)
 
