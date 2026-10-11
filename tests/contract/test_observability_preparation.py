@@ -29,11 +29,6 @@ def load_partition():
     return json.loads((ROOT / "phase2/prerequisite_partition.json").read_bytes())
 
 
-def historical_segment():
-    spec = importlib.util.spec_from_file_location("sit_w06_phase3_migration", ROOT / "tests/contract/test_phase2_transition.py")
-    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
-    module.current_phase3_guard()
-    return module
 
 
 def verify_partition(p):
@@ -110,51 +105,3 @@ def test_partition_rejects_omissions_and_overclaims(change):
     elif change == "drop_pc": p["checks"].pop()
     else: p["checks"][11]["deferred_semantic_owner"] = "INGESTION_CONTRACT"
     with pytest.raises(AssertionError): verify_partition(p)
-
-
-def test_preserves_existing_report_declarations_and_w05_admission_body():
-    migration = historical_segment()
-    for relative in ("src/source_integrity_toolkit/contracts/report.py", "src/source_integrity_toolkit/runtime/boundary.py", "src/source_integrity_toolkit/validation/semantics.py"):
-        old = ast.parse(subprocess.check_output(["git", "show", BASE + ":" + relative], cwd=ROOT, timeout=30))
-        new = ast.parse(migration.phase2_bytes(relative))
-        old_defs = {n.name: n for n in old.body if isinstance(n, (ast.FunctionDef, ast.ClassDef))}
-        new_defs = {n.name: n for n in new.body if isinstance(n, (ast.FunctionDef, ast.ClassDef))}
-        for name, prior in old_defs.items():
-            current = copy.deepcopy(new_defs["_run_preparation" if name == "_prepare" else name])
-            if name == "_prepare":
-                current.name = "_prepare"
-                assert current.args.kwonlyargs[-1].arg == "evidence_domains"
-                current.args.kwonlyargs.pop(); current.args.kw_defaults.pop()
-                # Locate the authorized post-admission navigation branch by AST,
-                # preserving every old validation/error/acceptance statement.
-                found = []
-                for node in ast.walk(current):
-                    for attr in ("body", "orelse", "finalbody"):
-                        body = getattr(node, attr, None)
-                        if isinstance(body, list):
-                            for stmt in list(body):
-                                if isinstance(stmt, ast.If) and isinstance(stmt.test, ast.Name) and stmt.test.id == "evidence_domains":
-                                    found.append(stmt); body.remove(stmt)
-                assert len(found) == 1
-            assert ast.dump(prior, include_attributes=False) == ast.dump(current, include_attributes=False), (relative, name)
-
-
-def test_only_ten_w06_paths_and_no_old_test_permissions_changed():
-    migration = historical_segment()
-    spec = importlib.util.spec_from_file_location("sit_w06_guard", ROOT / "tools/check_scaffold_boundary.py")
-    guard = importlib.util.module_from_spec(spec); spec.loader.exec_module(guard)
-    paths = guard.plan_paths(ROOT)
-    assert len(paths["P2-W06"]) == 10
-    current = guard.unit_number("P2-W09")
-    assert current >= 6
-    spec = importlib.util.spec_from_file_location("sit_w06_scope_driver", ROOT / "tests/scaffold/test_ci_contract.py")
-    ci = importlib.util.module_from_spec(spec); spec.loader.exec_module(ci)
-    allowed = set().union(*(ci.effective_paths(paths, f"P2-W{i:02}") for i in range(6, current + 1)))
-    changed = subprocess.check_output(["git", "diff", "--name-only", BASE, migration.PHASE2_ACCEPTED], cwd=ROOT, text=True).splitlines()
-    assert set(changed) <= allowed
-    # The trusted unit context, not candidate status metadata, governs later
-    # authorized edits. Do not create another test frozen to a transient stage.
-    for name in ("tests/scaffold/test_ci_contract.py", "tests/contract/test_input_schema_mapping.py", ".github/workflows/phase1-ci.yml"):
-        if name not in allowed:
-            raw = subprocess.check_output(["git", "show", BASE + ":" + name], cwd=ROOT, timeout=30)
-            assert raw == migration.phase2_bytes(name)

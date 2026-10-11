@@ -1,248 +1,363 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Cumulative Phase 3 CI, retaining the complete accepted predecessor suite."""
-from pathlib import Path
-import sys
-import io
+"""Current explicit workflow tests and a repository-only CI evidence driver.
+
+The workflow is JSON-form YAML to permit strict standard-library inspection.
+No product code imports this file. Network access is confined to the explicitly
+selected CI dependency acquisition stage, never to an audit operation.
+Current controls bind every hosted stage to its actual run and candidate.
+The local entry runs the same five test scopes without claiming hosted evidence.
+"""
+
+from __future__ import annotations
+
+import copy
 import ast
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import argparse
+from email.parser import BytesParser
+import hashlib
+import json
+import os
+from pathlib import Path
+import platform
+import re
+import subprocess
+import sys
+import tarfile
+import tempfile
+import unittest
+from unittest import mock
+import urllib.request
+import xml.etree.ElementTree as ET
+import zipfile
+
+ROOT = Path(__file__).resolve().parents[2]
+
+sys.path.insert(0, str(ROOT))
 from tools import check_scaffold_boundary as phase_guard
-phase_guard.load_phase1_test("tests/scaffold/test_ci_contract.py", globals())
-_phase1_policy = policy
-_phase1_preflight = preflight
+
+WORKFLOW = ".github/workflows/phase1-ci.yml"
+
+CHECKOUT = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
+
+PYTHON = "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97"
+
+UPLOAD = "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+
+HEAD = "${{ github.event.pull_request.head.sha || github.sha }}"
+
+DRIVER = "python -B tests/scaffold/test_ci_contract.py --ci-stage "
+
+SELECTED = {"setuptools": "84.0.0", "pytest": "9.1.1", "iniconfig": "2.3.0",
+            "packaging": "25.0", "pluggy": "1.6.0", "pygments": "2.20.0"}
+
+DIRECT_HASHES = {
+    "setuptools": "51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670",
+    "pytest": "37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c",
+}
+
+SCOPES = ["tests/scaffold", "tests/security"]
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise ValueError(message)
+
+def unique(pairs):
+    result = {}
+    for key, value in pairs:
+        require(key not in result, "duplicate_json_key")
+        result[key] = value
+    return result
+
+def read_workflow() -> dict:
+    return json.loads((ROOT / WORKFLOW).read_text(encoding="utf-8"), object_pairs_hook=unique)
+
+class CiContractTests(unittest.TestCase):
+    def altered(self, mutate):
+        value = copy.deepcopy(read_workflow())
+        mutate(value)
+        with self.assertRaises(ValueError):
+            policy(value)
+
+    def test_workflow_is_closed_and_minimal(self):
+        policy(read_workflow())
+
+    def test_duplicate_keys_fail(self):
+        with self.assertRaises(ValueError):
+            json.loads('{"permissions":{},"permissions":{"contents":"write"}}', object_pairs_hook=unique)
+
+    def test_write_permission_fails(self):
+        self.altered(lambda v: v["permissions"].update(contents="write"))
+
+    def test_privileged_trigger_fails(self):
+        self.altered(lambda v: v["on"].update(pull_request_target={}))
+
+    def test_mutable_action_pin_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["steps"][0].update(uses="actions/checkout@main"))
+
+    def test_saved_checkout_credentials_fail(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["steps"][0]["with"].update({"persist-credentials": True}))
+
+    def test_missing_platform_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["strategy"]["matrix"].update(os=["ubuntu-24.04"]))
+
+    def test_missing_lower_bound_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["strategy"]["matrix"].update(python=["3.13"]))
+
+    def test_skipped_test_step_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["steps"][4].update({"if": "false"}))
+
+    def test_ignored_failure_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"].update({"continue-on-error": True}))
+
+    def test_untrusted_shell_expression_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["steps"][4].update(run="echo '${{ github.event.pull_request.title }}'"))
+
+    def test_broad_artifact_upload_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["steps"][6]["with"].update(path="."))
+
+    def test_cache_or_secret_injection_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["env"].update(TOKEN="${{ secrets.DEPLOY_KEY }}"))
+
+    def test_missing_guard_stage_fails(self):
+        self.altered(lambda v: v["jobs"]["scaffold"]["steps"].pop(2))
+
+def junit_counts(xml_bytes: bytes, collected_nodes: list[str]) -> dict:
+    """Match top-level outcomes to collection while retaining all failure events.
+
+    Pytest 9.1 includes successful unittest subtest events in the suite's tests
+    attribute but does not emit a separate testcase element for each of them.
+    Keep that aggregate separate from actual collected top-level test instances.
+    """
+    root = ET.fromstring(xml_bytes)
+    require(root.tag == "testsuites", "unexpected JUnit root")
+    suites = list(root)
+    require(bool(suites) and all(s.tag == "testsuite" for s in suites), "JUnit suites missing")
+    totals = {key: sum(int(s.attrib[key]) for s in suites)
+              for key in ("tests", "failures", "errors", "skipped")}
+    require(all(value >= 0 for value in totals.values()), "negative JUnit count")
+    expected = []
+    for node in collected_nodes:
+        prefix, marker, parameter = node.partition("[")
+        parts = prefix.split("::")
+        require(len(parts) >= 2 and parts[0].endswith(".py"), "bad collected node")
+        classname = parts[0][:-3].replace("/", ".")
+        if len(parts) > 2:
+            classname += "." + ".".join(parts[1:-1])
+        expected.append((classname, parts[-1] + marker + parameter))
+    require(bool(expected) and len(set(expected)) == len(expected), "ambiguous collection identity")
+    cases = list(root.iter("testcase"))
+    actual = [(case.get("classname"), case.get("name")) for case in cases]
+    require(len(actual) == len(expected) and len(set(actual)) == len(actual) and
+            set(actual) == set(expected), "JUnit does not cover exact collected test identities")
+    require(totals["tests"] >= len(cases), "JUnit aggregate smaller than top-level results")
+    failed = sum(case.find("failure") is not None for case in cases)
+    errored = sum(case.find("error") is not None for case in cases)
+    skipped = sum(case.find("skipped") is not None for case in cases)
+    return {"tests": len(cases), "reported_test_events": totals["tests"],
+            "additional_reported_events": totals["tests"] - len(cases),
+            "failures": max(totals["failures"], failed),
+            "errors": max(totals["errors"], errored),
+            "skipped": max(totals["skipped"], skipped),
+            "top_level_failures": failed, "top_level_errors": errored,
+            "top_level_skipped": skipped, "collection_identities_match": True}
+
+class JunitAccountingTests(unittest.TestCase):
+    NODE = "tests/scaffold/test_example.py::Example::test_one"
+
+    def document(self, aggregate=4, failures=0, child=""):
+        return (f'<testsuites><testsuite tests="{aggregate}" failures="{failures}" errors="0" skipped="0">'
+                '<testcase classname="tests.scaffold.test_example.Example" name="test_one">'
+                + child + '</testcase></testsuite></testsuites>').encode()
+
+    def test_subtest_aggregate_does_not_inflate_top_level_count(self):
+        result = junit_counts(self.document(), [self.NODE])
+        self.assertEqual(result["tests"], 1)
+        self.assertEqual(result["reported_test_events"], 4)
+        self.assertEqual(result["additional_reported_events"], 3)
+        self.assertEqual(result["failures"], 0)
+
+    def test_subtest_failure_in_suite_cannot_be_lost(self):
+        result = junit_counts(self.document(failures=1), [self.NODE])
+        self.assertEqual(result["failures"], 1)
+
+    def test_failure_element_overrides_false_zero_header(self):
+        result = junit_counts(self.document(child='<failure message="canary"/>'), [self.NODE])
+        self.assertEqual(result["failures"], 1)
+
+    def test_missing_collected_result_is_rejected(self):
+        with self.assertRaises(ValueError):
+            junit_counts(self.document(), [self.NODE, self.NODE.replace("test_one", "test_two")])
+
+    def test_unknown_or_duplicate_test_identity_is_rejected(self):
+        with self.assertRaises(ValueError):
+            junit_counts(self.document().replace(b"test_one", b"test_other"), [self.NODE])
+        with self.assertRaises(ValueError):
+            junit_counts(self.document(), [self.NODE, self.NODE])
+
+    def test_invalid_aggregate_and_skipped_child_do_not_pass(self):
+        with self.assertRaises(ValueError):
+            junit_counts(self.document(aggregate=0), [self.NODE])
+        result = junit_counts(self.document(child='<skipped message="canary"/>'), [self.NODE])
+        self.assertEqual(result["skipped"], 1)
+
+def save(path: Path, data) -> None:
+    path.write_bytes((json.dumps(data, indent=2, sort_keys=True) + "\n").encode("utf-8"))
+
+def run(args, evidence: Path, name: str, *, env=None, timeout=180, check=True):
+    command = [str(a) for a in args]
+    log = evidence / (name + ".log")
+    stderr_log = evidence / (name + "-stderr.log")
+    status_path = evidence / (name + "-exit.json")
+    # A canceled runner may never execute Python cleanup. Open the raw log and
+    # record an incomplete attempt before launching the child, then stream into it.
+    save(status_path, {"exit_code": None, "timed_out": False, "interrupted": False,
+                       "incomplete": True, "timeout_seconds": timeout})
+    def outputs():
+        stdout = log.read_text(encoding="utf-8", errors="replace")
+        stderr = stderr_log.read_text(encoding="utf-8", errors="replace")
+        # Keep the established combined log, while stderr remains separately
+        # available even if the entire process is killed before this point.
+        with log.open("ab") as combined:
+            combined.write(stderr_log.read_bytes())
+        return stdout, stderr
+    try:
+        with log.open("w", encoding="utf-8") as output, stderr_log.open("w", encoding="utf-8") as error:
+            outcome = subprocess.run(command, cwd=ROOT, env=env, stdout=output,
+                                     stderr=error, timeout=timeout)
+    except (subprocess.TimeoutExpired, OSError, KeyboardInterrupt) as exc:
+        status = {"exit_code": None, "timed_out": isinstance(exc, subprocess.TimeoutExpired),
+                  "interrupted": isinstance(exc, KeyboardInterrupt), "incomplete": True,
+                  "timeout_seconds": timeout, "error_type": type(exc).__name__, "message": str(exc)}
+        outputs()
+        save(status_path, status)
+        raise
+    stdout, stderr = outputs()
+    result = subprocess.CompletedProcess(command, outcome.returncode, stdout=stdout, stderr=stderr)
+    save(status_path, {"exit_code": result.returncode, "timed_out": False, "interrupted": False,
+                       "incomplete": False, "timeout_seconds": timeout})
+    print(name + ": exit=" + str(result.returncode), flush=True)
+    print(result.stdout[-6000:] + result.stderr[-6000:], flush=True)
+    if check:
+        require(result.returncode == 0, name + " failed; full output preserved")
+    return result
+
+def tracked_bytes() -> dict:
+    names = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT).decode("utf-8").split("\0")
+    return {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in names if name}
+
+def tool_python(base: Path) -> Path:
+    return base / "tools" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+
+def prepare_tools(base: Path, evidence: Path) -> None:
+    run([sys.executable, "-m", "venv", str(base / "tools")], evidence, "venv")
+    python = tool_python(base)
+    run([python, "-m", "pip", "--version"], evidence, "pip-version")
+    wheels = base / "wheelhouse"
+    run([python, "-m", "pip", "--isolated", "download", "--index-url", "https://pypi.org/simple",
+         "--only-binary=:all:", "--no-cache-dir", "--retries", "2", "--timeout", "30",
+         "--dest", wheels, "-r", "requirements-dev.txt"], evidence, "download", timeout=300)
+    selected = dict(SELECTED)
+    if os.name == "nt":
+        selected["colorama"] = "0.4.6"
+    reviewed = []
+    seen = set()
+    for wheel in sorted(wheels.glob("*.whl")):
+        raw = wheel.read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        with zipfile.ZipFile(wheel) as archive:
+            members = archive.namelist()
+            metas = [n for n in members if n.endswith(".dist-info/METADATA") and n.count("/") == 1]
+            require(len(metas) == 1, "wheel metadata shape")
+            meta = BytesParser().parsebytes(archive.read(metas[0]))
+            name, version = meta["Name"].lower(), meta["Version"]
+            require(name in selected and version == selected[name] and name not in seen, "unselected development wheel")
+            seen.add(name)
+            if name in DIRECT_HASHES:
+                require(digest == DIRECT_HASHES[name], "previously selected wheel hash changed")
+            url = "https://pypi.org/pypi/" + name + "/" + version + "/json"
+            with urllib.request.urlopen(url, timeout=30) as response:
+                upstream = json.load(response)
+            files = [f for f in upstream["urls"] if f["filename"] == wheel.name]
+            require(len(files) == 1 and not files[0]["yanked"], "unavailable/yanked wheel")
+            require(files[0]["digests"]["sha256"] == digest and files[0]["size"] == len(raw), "PyPI wheel identity")
+            notices = [{"path": n, "sha256": hashlib.sha256(archive.read(n)).hexdigest()}
+                for n in members if not n.endswith("/") and
+                any(part.lower().startswith(("license", "copying", "notice")) for part in n.split("/"))]
+            require(bool(notices), "license/notice material absent")
+            vendors = []
+            for n in members:
+                if "/_vendor/" in n and n.endswith(".dist-info/METADATA"):
+                    vm = BytesParser().parsebytes(archive.read(n))
+                    vendors.append({"name": vm["Name"], "version": vm["Version"],
+                                    "license": vm.get("License-Expression") or vm.get("License")})
+            reviewed.append({"name": name, "version": version, "filename": wheel.name, "sha256": digest,
+                "bytes": len(raw), "upstream": url, "requires_python": meta.get("Requires-Python"),
+                "requires_dist": meta.get_all("Requires-Dist", []), "notices": notices,
+                "license": meta.get("License-Expression") or meta.get("License"), "vendored_metadata": vendors})
+    require(seen == set(selected), "development wheel set incomplete")
+    save(evidence / "reviewed-wheels.json", reviewed)
+    run([python, "-m", "pip", "--isolated", "install", "--no-index", "--find-links", wheels,
+         "--no-cache-dir", "--report", evidence / "install-report.json", "-r", "requirements-dev.txt"],
+        evidence, "install", timeout=300)
+    run([python, "-m", "pip", "--isolated", "check"], evidence, "pip-check")
+    result = run([python, "-m", "pip", "--isolated", "list", "--format=json"], evidence, "installed")
+    installed = {r["name"].lower(): r["version"] for r in json.loads(result.stdout)}
+    require({k: v for k, v in installed.items() if k != "pip"} == selected, "installed tool set mismatch")
+    save(evidence / "installed.json", installed)
+
+
 ALL_SCOPES = ("tests/scaffold", "tests/security", "tests/contract", "tests/unit", "tests/integration")
-
-
-# Explicit owner-approved P2-W02-R01. These two paths supplement only W02's
-# immediate diff. Cumulative accounting retains them after W02, without giving
-# later units a new permission to edit either path. No metadata selects extras.
-P2_W02_R01_PATHS = frozenset((
-    "tests/security/test_scaffold_inertness.py",
-    "tests/scaffold/test_ci_contract.py",
-))
-
-
-# Explicit owner-approved P2-W04-R01: fixed cycle qualifier and scope tests.
-# Only W04 receives immediate permission; no candidate metadata adds paths.
-P2_W04_R01_PATHS = frozenset((
-    "src/source_integrity_toolkit/contracts/execution.py",
-    "src/source_integrity_toolkit/runtime/diagnostics.py",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_bundle_contract.py",
-))
-
-# Explicit owner-approved P2-W05-R01: capture-test retargeting only.
-# These five paths extend W05 immediate scope, never another unit's scope.
-P2_W05_R01_PATHS = frozenset((
-    "tests/unit/test_input_decoding.py",
-    "tests/unit/test_value_capture.py",
-    "tests/security/test_input_capture.py",
-    "tests/scaffold/test_ci_contract.py",
-    "phase2/transition_ledger.md",
-))
-
-# Explicit owner-approved P2-W05-R02: the live W02 coverage-status assertion.
-# Only this one additional path is authorized; older exceptions stay separate.
-P2_W05_R02_PATHS = frozenset(("tests/contract/test_input_schema_mapping.py",))
-
-# Explicit owner-approved P2-W07-R01: phase-context metadata and scope tests.
-# Only W07 gains these immediate paths; later units retain cumulative history.
-P2_W07_R01_PATHS = frozenset((
-    "phase2/module_policy.json",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_bundle_contract.py",
-    "tests/security/test_input_capture.py",
-    "tests/contract/test_input_schema_mapping.py",
-    "phase2/transition_ledger.md",
-))
-
-# Explicit owner-approved P2-W08-R01: exact W08 transition only.
-# Other units retain their own immediate scopes; history stays cumulative.
-P2_W08_R01_PATHS = frozenset((
-    "phase2/module_policy.json",
-    "tests/contract/test_bundle_contract.py",
-    "tests/security/test_input_capture.py",
-    "tests/contract/test_input_schema_mapping.py",
-    "tests/contract/test_phase2_transition.py",
-    "tests/security/test_preparation_inertness.py",
-    "phase2/transition_ledger.md",
-))
-
-# Explicit owner-approved P2-W09-R01: final handoff context only.
-# Only W09 gains these immediate paths; all earlier scopes remain exact.
-P2_W09_R01_PATHS = frozenset((
-    "phase2/module_policy.json",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_bundle_contract.py",
-    "tests/security/test_input_capture.py",
-    "tests/contract/test_input_schema_mapping.py",
-    "tests/contract/test_phase2_transition.py",
-    "phase2/transition_ledger.md",
-))
-
-def effective_paths(paths, unit, *, cumulative=False):
-    current = phase_guard.unit_number(unit)
-    steps = range(1, current + 1) if cumulative else (current,)
-    allowed = set()
-    for step in steps:
-        allowed.update(paths[f"P2-W{step:02}"])
-        if step == 2:
-            allowed.update(P2_W02_R01_PATHS)
-        if step == 4:
-            allowed.update(P2_W04_R01_PATHS)
-        if step == 5:
-            allowed.update(P2_W05_R01_PATHS)
-            allowed.update(P2_W05_R02_PATHS)
-        if step == 7:
-            allowed.update(P2_W07_R01_PATHS)
-        if step == 8:
-            allowed.update(P2_W08_R01_PATHS)
-        if step == 9:
-            allowed.update(P2_W09_R01_PATHS)
-    return frozenset(allowed)
-
-
-def check_changed_paths(paths, unit, changed):
-    require(changed <= effective_paths(paths, unit), "work_unit_allowlist_exceeded")
-
-
-# Approved P3-W04-R01: two inherited inert-slot controls, their independent
-# regression tests, this driver's exact exception and the append-only ledger.
-# The original plan and every other unit's immediate permissions stay intact.
-P3_W04_R01_PATHS = frozenset((
-    "tests/scaffold/test_no_runtime_implementation.py",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-    "phase3/transition_ledger.md",
-))
-P3_W04_R01_BASE = "879b67b7066690ab0bee8cef569aa8869f78af03"
-P3_W04_R01_BASE_TREE = "f7c92b34537b8fc089c8624af9da6ec9dea74a68"
-P3_W04_R01_PREDECESSOR = "b932bef422b4ec67b1b313ecae51b0f7e48d72a2"
-
-
-# Approved P3-W05-R01: one historical inert-slot manifest control, its
-# independent regression tests, this exact exception and the appended ledger.
-# Earlier W05 commits retain the original nine-path scope.
-P3_W05_R01_PATHS = frozenset((
-    "tests/scaffold/test_module_manifest.py",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-    "phase3/transition_ledger.md",
-))
-P3_W05_R01_BASE = "a2aa2112231ba7595070216e659798130127dc3c"
-P3_W05_R01_BASE_TREE = "d468e02fa40a5014e838937486fa49185bc1e72d"
-P3_W05_R01_PREDECESSOR = "a175d6d4b4153ddc9147301f9db8d247d12e4852"
-
-
-P3_W06_R01_PATHS = frozenset((
-    "src/source_integrity_toolkit/analysis/inventory.py",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-    "phase3/transition_ledger.md",
-))
-P3_W06_R01_BASE = "5dbf39949b8fca63e5abad87b32578b61df87b80"
-P3_W06_R01_BASE_TREE = "5cbb23c0b1f2cc65656fca813ca7b90b36274bfa"
-P3_W06_R01_PREDECESSOR = "3dd10f987816dffd73e56631b1c4593e9c3f1b54"
-
-
-def phase3_effective_paths(paths, unit, *, cumulative=False):
-    """Phase 3 scopes are separate from the unchanged historical P2 API."""
-    current = phase_guard.phase3_unit_number(unit)
-    steps = range(1, current + 1) if cumulative else (current,)
-    allowed = set()
-    for step in steps:
-        allowed.update(paths[f"P3-W{step:02}"])
-        if step == 4:
-            allowed.update(P3_W04_R01_PATHS)
-        if step == 5:
-            allowed.update(P3_W05_R01_PATHS)
-        if step == 6:
-            allowed.update(P3_W06_R01_PATHS)
-        if step == 8:
-            allowed.update(P3_W08_R01_PATHS)
-        if step == 9:
-            allowed.update(P3_W09_R01_PATHS)
-        if step == 11:
-            allowed.update(P3_W11_R01_PATHS)
-        if step == 15:
-            allowed.update(P3_W15_R01_PATHS)
-    return frozenset(allowed)
-
-
-def phase3_scope_exceptions(unit):
-    """Name accepted cumulative amendments without granting later edit rights."""
-    current = phase_guard.phase3_unit_number(unit)
-    return ((["P3-W04-R01"] if current >= 4 else []) + (["P3-W05-R01"] if current >= 5 else []) +
-            (["P3-W06-R01"] if current >= 6 else []) + (["P3-W08-R01"] if current >= 8 else []) +
-            (["P3-W09-R01"] if current >= 9 else []) + (["P3-W11-R01"] if current >= 11 else []) +
-            (["P3-W15-R01"] if current >= 15 else []))
-
-
-def phase3_check_changed_paths(paths, unit, changed):
-    require(changed <= phase3_effective_paths(paths, unit), "work_unit_allowlist_exceeded")
-
-
-def check_entry_bytes(entry_files, actual, allowed):
-    """Check every entry byte outside scope and account for every added path."""
-    require(set(entry_files) <= set(actual) <= set(entry_files) | set(allowed), "tracked_path_accounting")
-    require(all(actual[p] == h for p, h in entry_files.items() if p not in allowed), "frozen_entry_byte_changed")
+INSTALLED_WITNESSES = frozenset({
+    "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+    "tests/integration/test_analytical_installed_runtime.py::test_clean_installed_analysis_original_heroes_and_completed_finite_case",
+})
 
 
 def policy(value):
-    """Validate only enumerated migration deltas, then run every old rule."""
-    try:
-        v = copy.deepcopy(value)
-        require(v["name"] == "Phase 3 cumulative CI", "phase_name")
-        v["name"] = "Phase 1 scaffold CI"
-        require(v["concurrency"]["group"] == "phase3-${{ github.event.pull_request.number || github.ref }}", "phase_concurrency")
-        v["concurrency"]["group"] = "phase1-${{ github.event.pull_request.number || github.ref }}"
-        job = v["jobs"]["scaffold"]
-        require(type(job["timeout-minutes"]) is int and job["timeout-minutes"] == 50, "phase_job_timeout")
-        job["timeout-minutes"] = 25
-        require(job["name"] == "analytical core (${{ matrix.os }}, Python ${{ matrix.python }})", "phase_job")
-        job["name"] = "scaffold (${{ matrix.os }}, Python ${{ matrix.python }})"
-        steps = job["steps"]
-        require(len(steps) == 7, "step_count")
-        require(steps[0]["with"]["fetch-depth"] == 0, "complete_history_required")
-        steps[0]["with"]["fetch-depth"] = 1
-        require(steps[4]["name"] == "Collect and run all cumulative tests", "cumulative_test_stage")
-        steps[4]["name"] = "Collect and run all scaffold and security tests"
-        require(steps[6]["with"]["name"] == "phase3-${{ matrix.os }}-py${{ matrix.python }}-${{ github.run_id }}-${{ github.run_attempt }}", "artifact_identity")
-        steps[6]["with"]["name"] = "phase1-${{ matrix.os }}-py${{ matrix.python }}-${{ github.run_id }}-${{ github.run_attempt }}"
-        expected = "${{ runner.temp }}/sit-p3/evidence/*.json\n${{ runner.temp }}/sit-p3/evidence/*.xml\n${{ runner.temp }}/sit-p3/evidence/*.log"
-        require(steps[6]["with"]["path"] == expected, "artifact_scope")
-        steps[6]["with"]["path"] = expected.replace("sit-p3", "sit-w06")
-        _phase1_policy(v)
-    except (KeyError, TypeError, IndexError) as exc:
-        raise ValueError("malformed_workflow") from exc
-
-
-def resolve_unit(event_name, event, head):
-    """Mechanical unit context from runner event, never candidate metadata."""
-    if event_name == "pull_request":
-        pr = event["pull_request"]
-        require(pr["head"]["sha"] == head, "event_head_mismatch")
-        match = re.fullmatch(r"(?:phase2/(p2-w0[1-9])|phase3/(p3-w(?:0[1-9]|1[0-5])))", pr["head"]["ref"])
-        require(match is not None, "review_branch_requires_explicit_unit")
-        unit = (match[1] or match[2]).upper()
-        base = pr["base"]["sha"]
-    else:
-        require(event_name == "push" and event["ref"] == "refs/heads/main", "unsupported_event")
-        require(event["head_commit"]["id"] == head, "event_head_mismatch")
-        marks = re.findall(r"^SIT-Phase-Unit:([^\n]*)$", event["head_commit"]["message"], re.M)
-        require(len(marks) == 1 and re.fullmatch(r" (?:P2-W0[1-9]|P3-W(?:0[1-9]|1[0-5]))", marks[0]) is not None,
-                "main_merge_requires_unit_footer")
-        unit, base = marks[0][1:], event["before"]
-    require(isinstance(base, str) and re.fullmatch(r"[0-9a-f]{40}", base) is not None, "invalid_base_sha")
-    return unit, base
+    """Direct current workflow policy; independent of historical test source."""
+    phase_guard.current_workflow(value)
 
 
 def configure_context():
-    event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes(), object_pairs_hook=unique)
-    unit, base = resolve_unit(os.environ["GITHUB_EVENT_NAME"], event, os.environ["SIT_REVIEW_HEAD"])
-    require(unit.startswith("P3-"), "current_workflow_requires_phase3_context")
-    os.environ["SIT_PHASE_UNIT"] = unit
-    return unit, base
+    """Require the runner's actual event; no legacy stage or local fallback."""
+    require(all(os.environ.get(name) for name in
+                ("GITHUB_EVENT_PATH", "GITHUB_EVENT_NAME", "SIT_REVIEW_HEAD")),
+            "current_external_context_required")
+    return phase_guard.current_context(os.environ["GITHUB_EVENT_NAME"],
+        Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes(), os.environ["SIT_REVIEW_HEAD"])
+
+
+def current_binding(*, local=False):
+    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    if local:
+        return {"mode": "local", "head": head, "python": sys.version,
+                "platform": platform.platform(), "hosted_matrix_attestation": False}
+    context = configure_context()
+    require(os.environ.get("GITHUB_ACTIONS") == "true", "explicit Actions invocation required")
+    require(head == context["head"], "wrong_checked_commit")
+    names = ("GITHUB_RUN_ID", "GITHUB_RUN_ATTEMPT", "SIT_MATRIX_OS", "SIT_MATRIX_PYTHON")
+    require(all(os.environ.get(name) for name in names), "actual_run_and_matrix_required")
+    require(os.environ["GITHUB_RUN_ID"].isdigit() and os.environ["GITHUB_RUN_ATTEMPT"].isdigit(),
+            "invalid_run_identity")
+    require(f"{sys.version_info.major}.{sys.version_info.minor}" == os.environ["SIT_MATRIX_PYTHON"],
+            "wrong_Python_minor")
+    require(os.environ["SIT_MATRIX_OS"] in ("ubuntu-24.04", "windows-2025") and
+            os.environ["SIT_MATRIX_PYTHON"] in ("3.11", "3.13"), "unknown_matrix_profile")
+    require(platform.system() == {"windows-2025": "Windows", "ubuntu-24.04": "Linux"}[os.environ["SIT_MATRIX_OS"]],
+            "wrong_runner_platform")
+    return {"mode": "hosted", **context, "run_id": os.environ["GITHUB_RUN_ID"],
+        "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"], "matrix_os": os.environ["SIT_MATRIX_OS"],
+        "matrix_python": os.environ["SIT_MATRIX_PYTHON"], "python": sys.version,
+        "event_sha256": hashlib.sha256(Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes()).hexdigest()}
+
+
+def bound_record(evidence, name, binding=None):
+    expected = binding if binding is not None else current_binding()
+    require(json.loads((evidence / "binding.json").read_bytes()) == expected, "evidence_run_identity_mismatch")
+    value = json.loads((evidence / name).read_bytes())
+    require(value.get("binding") == expected, "stage_evidence_identity_mismatch")
+    return value
 
 
 def ci_paths():
@@ -253,508 +368,563 @@ def ci_paths():
     return base, evidence
 
 
-def commit_hashes(commit):
-    require(re.fullmatch(r"[0-9a-f]{40}", commit) is not None, "invalid_commit")
-    raw = subprocess.check_output(["git", "archive", "--format=tar", commit], cwd=ROOT, timeout=60)
-    with tarfile.open(fileobj=io.BytesIO(raw), mode="r:") as archive:
-        files = [m for m in archive.getmembers() if not m.isdir()]
-        require(all(m.isfile() for m in files), "unexpected_git_object_type")
-        require(len({m.name for m in files}) == len(files), "duplicate_git_archive_path")
-        return {m.name: hashlib.sha256(archive.extractfile(m).read()).hexdigest() for m in files}
-
-
 def entry_and_scope(evidence):
-    unit, base = configure_context()
-    if unit.startswith("P3-"):
-        return phase3_entry_and_scope(evidence, unit, base)
-    entry = phase_guard.entry_manifest(ROOT)
-    paths = phase_guard.plan_paths(ROOT)
-    require(commit_hashes(entry["intake_commit"]) == entry["files"], "actual_intake_hash_mismatch")
-    original = {p: h for p, h in entry["files"].items() if p != "PHASE_2_PLAN.md"}
-    require(len(original) == 124 and commit_hashes(entry["phase1_commit"]) == original, "actual_phase1_hash_mismatch")
-    for key, commit_key in (("intake_tree", "intake_commit"), ("phase1_tree", "phase1_commit")):
-        actual = subprocess.check_output(["git", "rev-parse", entry[commit_key] + "^{tree}"], cwd=ROOT, text=True).strip()
-        require(actual == entry[key], "entry_tree_mismatch")
-    changed = subprocess.check_output(["git", "diff", "--name-only", "-z", base, "HEAD"], cwd=ROOT).decode().split("\0")
-    changed = {p for p in changed if p}
-    check_changed_paths(paths, unit, changed)
-    deleted = subprocess.check_output(["git", "diff", "--name-only", "--diff-filter=DR", base, "HEAD"], cwd=ROOT)
-    require(not deleted, "deletion_or_rename_not_authorized")
-    cumulative = effective_paths(paths, unit, cumulative=True)
-    actual = tracked_bytes()
-    require(set(entry["files"]) <= set(actual) <= set(entry["files"]) | cumulative, "tracked_path_accounting")
-    require(all(actual[p] == h for p, h in entry["files"].items() if p not in cumulative), "frozen_entry_byte_changed")
-    old = phase_guard.historical_nodes(ROOT)
-    save(evidence / "entry-and-scope.json", {"ok": True, "unit": unit, "base": base,
-        "intake_commit": entry["intake_commit"], "actual_entry_files": 125, "actual_phase1_files": 124,
-        "changed_paths": sorted(changed), "tracked_files": len(actual), "historical_test_identities": len(old),
-        "scope_exceptions": (["P2-W02-R01"] if phase_guard.unit_number(unit) >= 2 else []) +
-            (["P2-W04-R01"] if phase_guard.unit_number(unit) >= 4 else []) +
-            (["P2-W05-R01", "P2-W05-R02"] if phase_guard.unit_number(unit) >= 5 else []) +
-            (["P2-W07-R01"] if phase_guard.unit_number(unit) >= 7 else []) +
-            (["P2-W08-R01"] if phase_guard.unit_number(unit) >= 8 else []) +
-            (["P2-W09-R01"] if phase_guard.unit_number(unit) >= 9 else []),
-        "provenance": "Full local Git commit archives and actual checkout, not substituted artifact metadata"})
+    """Verify only the owner-accepted anchor and all subsequent real commits."""
+    context = configure_context()
+    authority = phase_guard.current_authority(ROOT)
+    history = phase_guard.current_history(ROOT, context["base"], context["head"], authority)
+    checkout = phase_guard.current_checkout(ROOT, context["head"], authority)
+    record = {"ok": True, **context, **checkout,
+        "accepted_head": phase_guard.VC_ACCEPTED_HEAD,
+        "accepted_tree": phase_guard.VC_ACCEPTED_TREE,
+        "actual_entry_files": len(authority[0]), "intermediate_commits": history,
+        "provenance": "Accepted Git anchor, every subsequent commit including merge sides, index and actual worktree"}
+    save(evidence / "entry-and-scope.json", record)
+    return record
 
 
-def git_text(*args):
-    return subprocess.check_output(["git", *args], cwd=ROOT, text=True, encoding="utf-8", timeout=60).strip()
+def guard_command(tool, *, local=False):
+    command = [sys.executable, "-B", "tools/" + tool + ".py"]
+    if tool == "check_scaffold_boundary":
+        if local:
+            command += ["--modules-only"]
+        else:
+            command += ["--unit", "VC", "--event-name", os.environ["GITHUB_EVENT_NAME"],
+                        "--event-file", os.environ["GITHUB_EVENT_PATH"], "--head", os.environ["SIT_REVIEW_HEAD"]]
+    return command
 
 
-def phase3_commit_metadata(commits):
-    """Read one ordered batch from Git, with exact rows and terminated fields."""
-    require(type(commits) in (list, tuple) and
-            all(type(commit) is str and re.fullmatch(r"[0-9a-f]{40}", commit) for commit in commits),
-            "invalid_commit_metadata_request")
-    require(len(commits) == len(set(commits)), "duplicate_commit_metadata_request")
-    if not commits:
-        return {}
-    output = subprocess.check_output(["git", "show", "--no-walk=unsorted", "-s",
-                                      "--format=%H%x00%T%x00%P%x00", *commits],
-                                     cwd=ROOT, text=True, encoding="utf-8", timeout=60)
-    require(type(output) is str and output.endswith("\n"), "malformed_commit_metadata_batch")
-    rows = output.split("\n")[:-1]
-    require(len(rows) == len(commits), "incomplete_commit_metadata_batch")
-    metadata = {}
-    for expected, row in zip(commits, rows):
-        fields = row.split("\0")
-        require(len(fields) == 4 and fields[3] == "", "malformed_commit_metadata_record")
-        commit, tree, parents = fields[:3]
-        require(commit == expected and commit not in metadata, "wrong_commit_metadata_identity")
-        require(re.fullmatch(r"[0-9a-f]{40}", tree) is not None, "invalid_commit_metadata_tree")
-        parents = parents.split(" ") if parents else []
-        require(all(re.fullmatch(r"[0-9a-f]{40}", parent) for parent in parents),
-                "invalid_commit_metadata_parent")
-        metadata[commit] = {"parents": parents, "tree": tree}
-    require(set(metadata) == set(commits), "incomplete_commit_metadata_batch")
-    return metadata
-
-
-def changed_between(base, head):
-    names = subprocess.check_output(["git", "diff", "--no-renames", "--name-only", "-z", base, head],
-                                    cwd=ROOT, timeout=60).decode("utf-8").split("\0")
-    deleted = subprocess.check_output(["git", "diff", "--no-renames", "--name-only", "--diff-filter=D", base, head],
-                                      cwd=ROOT, timeout=60)
-    require(not deleted, "deletion_or_rename_not_authorized")
-    return frozenset(name for name in names if name)
-
-
-def require_ancestor(ancestor, descendant):
-    result = subprocess.run(["git", "merge-base", "--is-ancestor", ancestor, descendant],
-                            cwd=ROOT, capture_output=True, timeout=60)
-    require(result.returncode == 0, "entry_or_predecessor_ancestry_mismatch")
-
-
-def phase3_w04_pre_amendment(predecessor, successor):
-    """Read the fixed failed W04 boundary; candidate records cannot select it."""
-    require(predecessor == P3_W04_R01_PREDECESSOR, "w04_repair_predecessor_mismatch")
-    require(git_text("rev-parse", P3_W04_R01_BASE + "^{tree}") == P3_W04_R01_BASE_TREE,
-            "w04_repair_boundary_tree_mismatch")
-    require(git_text("show", "-s", "--format=%P", P3_W04_R01_BASE).split() == [predecessor],
-            "w04_repair_boundary_parent_mismatch")
-    require_ancestor(P3_W04_R01_BASE, successor)
-    return frozenset(git_text("rev-list", predecessor + ".." + P3_W04_R01_BASE).splitlines())
-
-
-def phase3_w05_pre_amendment(predecessor, successor):
-    """Read the fixed records-only W05 boundary, independently of metadata."""
-    require(predecessor == P3_W05_R01_PREDECESSOR, "w05_repair_predecessor_mismatch")
-    require(git_text("rev-parse", P3_W05_R01_BASE + "^{tree}") == P3_W05_R01_BASE_TREE,
-            "w05_repair_boundary_tree_mismatch")
-    require(git_text("show", "-s", "--format=%P", P3_W05_R01_BASE).split() == [predecessor],
-            "w05_repair_boundary_parent_mismatch")
-    require_ancestor(P3_W05_R01_BASE, successor)
-    return frozenset(git_text("rev-list", predecessor + ".." + P3_W05_R01_BASE).splitlines())
-
-
-def phase3_w06_pre_amendment(predecessor, successor):
-    """Read the fixed approved W06 boundary, never a candidate declaration."""
-    require(predecessor == P3_W06_R01_PREDECESSOR, "w06_repair_predecessor_mismatch")
-    require(git_text("rev-parse", P3_W06_R01_BASE + "^{tree}") == P3_W06_R01_BASE_TREE,
-            "w06_repair_boundary_tree_mismatch")
-    require(git_text("show", "-s", "--format=%P", P3_W06_R01_BASE).split() == [predecessor],
-            "w06_repair_boundary_parent_mismatch")
-    require_ancestor(P3_W06_R01_BASE, successor)
-    return frozenset(git_text("rev-list", predecessor + ".." + P3_W06_R01_BASE).splitlines())
-
-
-def phase3_history(entry, base, head, paths, unit):
-    """Check each accepted unit's entire DAG against that unit's own scope.
-
-    The runner supplies the actual main predecessor. Its first-parent merge
-    chain supplies historical boundaries; candidate policy cannot relabel an
-    earlier commit using a later unit's cumulative permissions.
-    """
-    intake = entry["intake_commit"]
-    require_ancestor(intake, base)
-    require_ancestor(base, head)
-    current = phase_guard.phase3_unit_number(unit)
-    accepted = git_text("rev-list", "--reverse", "--first-parent", intake + ".." + base).splitlines()
-    require(len(accepted) == current - 1, "wrong_phase3_predecessor")
-    metadata = phase3_commit_metadata(accepted)
-    previous, segments = intake, []
-    for step, merge in enumerate(accepted, 1):
-        parents = metadata[merge]["parents"]
-        require(len(parents) == 2 and parents[0] == previous, "invalid_accepted_merge_chain")
-        message = subprocess.check_output(["git", "show", "-s", "--format=%B", merge],
-                                          cwd=ROOT, text=True, encoding="utf-8", timeout=60)
-        marks = re.findall(r"^SIT-Phase-Unit:([^\n]*)$", message, re.M)
-        require(marks == [f" P3-W{step:02}"], "wrong_phase3_predecessor")
-        segments.append((previous, merge, f"P3-W{step:02}", False))
-        previous = merge
-    require(previous == base, "wrong_phase3_predecessor")
-    segments.append((base, head, unit, True))
-    records = []
-    seen = set()
-    for predecessor, successor, owner, current_segment in segments:
-        immediate = phase3_effective_paths(paths, owner)
-        cumulative = phase3_effective_paths(paths, owner, cumulative=True)
-        pre_amendment = (phase3_w04_pre_amendment(predecessor, successor)
-                         if owner == "P3-W04" else
-                         phase3_w05_pre_amendment(predecessor, successor)
-                         if owner == "P3-W05" else
-                         phase3_w06_pre_amendment(predecessor, successor)
-                         if owner == "P3-W06" else frozenset())
-        if owner == "P3-W08":
-            require(predecessor == P3_W08_R01_PREDECESSOR, "w08_repair_predecessor_mismatch")
-            require(git_text("rev-parse", P3_W08_R01_BASE + "^{tree}") == P3_W08_R01_BASE_TREE,
-                    "w08_repair_boundary_tree_mismatch")
-            # The approved boundary follows two original-scope W08 commits.
-            require_ancestor(predecessor, P3_W08_R01_BASE)
-            require_ancestor(P3_W08_R01_BASE, successor)
-            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W08_R01_BASE).splitlines())
-        if owner == "P3-W09":
-            require(predecessor == P3_W09_R01_PREDECESSOR, "w09_repair_predecessor_mismatch")
-            require(git_text("rev-parse", P3_W09_R01_BASE + "^{tree}") == P3_W09_R01_BASE_TREE,
-                    "w09_repair_boundary_tree_mismatch")
-            require(git_text("show", "-s", "--format=%P", P3_W09_R01_BASE).split() ==
-                    ["59a25116bfe5fe8f4f9b407852bb29fa692e542d"], "w09_repair_boundary_parent_mismatch")
-            # Both original W09 commits retain their raw seven-path scope.
-            require_ancestor(predecessor, P3_W09_R01_BASE)
-            require_ancestor(P3_W09_R01_BASE, successor)
-            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W09_R01_BASE).splitlines())
-        if owner == "P3-W11":
-            require(predecessor == P3_W11_R01_PREDECESSOR, "w11_repair_predecessor_mismatch")
-            require(git_text("rev-parse", P3_W11_R01_BASE + "^{tree}") == P3_W11_R01_BASE_TREE,
-                    "w11_repair_boundary_tree_mismatch")
-            require(git_text("show", "-s", "--format=%P", P3_W11_R01_BASE).split() ==
-                    [P3_W11_R01_PREDECESSOR], "w11_repair_boundary_parent_mismatch")
-            require_ancestor(predecessor, P3_W11_R01_BASE)
-            require_ancestor(P3_W11_R01_BASE, successor)
-            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W11_R01_BASE).splitlines())
-        if owner == "P3-W15":
-            require(predecessor == P3_W15_R01_PREDECESSOR, "w15_repair_predecessor_mismatch")
-            require(git_text("rev-parse", P3_W15_R01_BASE + "^{tree}") == P3_W15_R01_BASE_TREE,
-                    "w15_repair_boundary_tree_mismatch")
-            require(git_text("show", "-s", "--format=%P", P3_W15_R01_BASE).split() ==
-                    [P3_W15_R01_PREDECESSOR], "w15_repair_boundary_parent_mismatch")
-            require_ancestor(predecessor, P3_W15_R01_BASE)
-            require_ancestor(P3_W15_R01_BASE, successor)
-            pre_amendment = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R01_BASE).splitlines())
-            require(git_text("rev-parse", P3_W15_R02_BASE + "^{tree}") == P3_W15_R02_BASE_TREE,
-                    "w15_r02_boundary_tree_mismatch")
-            require(git_text("show", "-s", "--format=%P", P3_W15_R02_BASE).split() ==
-                    [P3_W15_R02_PREDECESSOR], "w15_r02_boundary_parent_mismatch")
-            require_ancestor(P3_W15_R01_BASE, P3_W15_R02_BASE)
-            pre_r02 = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R02_BASE).splitlines())
-            require(git_text("rev-parse", P3_W15_R03_BASE + "^{tree}") == P3_W15_R03_BASE_TREE,
-                    "w15_r03_boundary_tree_mismatch")
-            require(git_text("show", "-s", "--format=%P", P3_W15_R03_BASE).split() ==
-                    [P3_W15_R03_PREDECESSOR], "w15_r03_boundary_parent_mismatch")
-            require_ancestor(P3_W15_R02_BASE, P3_W15_R03_BASE)
-            pre_r03 = frozenset(git_text("rev-list", predecessor + ".." + P3_W15_R03_BASE).splitlines())
-        commits = git_text("rev-list", "--reverse", "--topo-order", predecessor + ".." + successor).splitlines()
-        metadata.update(phase3_commit_metadata([commit for commit in commits if commit not in metadata]))
-        for commit in commits:
-            require(commit not in seen, "duplicate_history_commit")
-            seen.add(commit)
-            require_ancestor(intake, commit)
-            parents = metadata[commit]["parents"]
-            require(bool(parents), "unexpected_root_commit")
-            changed = changed_between(parents[0], commit)
-            # Approval cannot retrospectively bless a pre-amendment unit edit
-            # or a side branch that has not descended from the fixed boundary.
-            allowed = paths[owner] if commit in pre_amendment else immediate
-            if owner == "P3-W04" and commit not in pre_amendment:
-                require_ancestor(P3_W04_R01_BASE, commit)
-            if owner == "P3-W05" and commit not in pre_amendment:
-                require_ancestor(P3_W05_R01_BASE, commit)
-            if owner == "P3-W06" and commit not in pre_amendment:
-                require_ancestor(P3_W06_R01_BASE, commit)
-            if owner == "P3-W08" and commit not in pre_amendment:
-                require_ancestor(P3_W08_R01_BASE, commit)
-            if owner == "P3-W09" and commit not in pre_amendment:
-                require_ancestor(P3_W09_R01_BASE, commit)
-            if owner == "P3-W11" and commit not in pre_amendment:
-                require_ancestor(P3_W11_R01_BASE, commit)
-            if owner == "P3-W15" and commit not in pre_amendment:
-                require_ancestor(P3_W15_R01_BASE, commit)
-            if owner == "P3-W15" and commit not in pre_r02:
-                require_ancestor(P3_W15_R02_BASE, commit)
-                allowed = paths[owner] | P3_W15_R02_PATHS
-            if owner == "P3-W15" and commit not in pre_r03:
-                require_ancestor(P3_W15_R03_BASE, commit)
-                allowed = paths[owner] | P3_W15_R03_PATHS
-            require(changed <= allowed, "intermediate_work_unit_allowlist_exceeded")
-            actual = commit_hashes(commit)
-            check_entry_bytes(entry["files"], actual, cumulative)
-            records.append({"commit": commit, "tree": metadata[commit]["tree"],
-                            "parents": parents, "unit": owner, "accepted_predecessor": predecessor,
-                            "segment_successor": successor, "current_unit_segment": current_segment,
-                            "immediate_scope_exceptions": (["P3-W04-R01"] if owner == "P3-W04"
-                                                           and commit not in pre_amendment else
-                                                           ["P3-W05-R01"] if owner == "P3-W05"
-                                                           and commit not in pre_amendment else
-                                                           ["P3-W06-R01"] if owner == "P3-W06"
-                                                           and commit not in pre_amendment else
-                                                           ["P3-W08-R01"] if owner == "P3-W08"
-                                                           and commit not in pre_amendment else
-                                                           ["P3-W09-R01"] if owner == "P3-W09"
-                                                           and commit not in pre_amendment else
-                                                           ["P3-W11-R01"] if owner == "P3-W11"
-                                                           and commit not in pre_amendment else
-                                                           ["P3-W15-R03"] if owner == "P3-W15"
-                                                           and commit not in pre_r03 else
-                                                           ["P3-W15-R02"] if owner == "P3-W15"
-                                                           and commit not in pre_r02 else
-                                                           ["P3-W15-R01"] if owner == "P3-W15"
-                                                           and commit not in pre_amendment else []),
-                            "changed_paths": sorted(changed), "tracked_files": len(actual)})
-    all_commits = set(git_text("rev-list", intake + ".." + head).splitlines())
-    require(seen == all_commits, "incomplete_history_accounting")
-    return records
-
-
-def phase3_entry_and_scope(evidence, unit, base):
-    entry = phase_guard.phase3_entry_manifest(ROOT)
-    paths = phase_guard.phase3_plan_paths(ROOT)
-    require(len(entry["files"]) == 157 and commit_hashes(entry["intake_commit"]) == entry["files"],
-            "actual_phase3_intake_hash_mismatch")
-    original = {p: h for p, h in entry["files"].items() if p != "PHASE_3_PLAN.md"}
-    require(len(original) == 156 and commit_hashes(entry["phase2_commit"]) == original,
-            "actual_phase2_hash_mismatch")
-    for key, commit_key in (("intake_tree", "intake_commit"), ("phase2_tree", "phase2_commit")):
-        require(git_text("rev-parse", entry[commit_key] + "^{tree}") == entry[key], "entry_tree_mismatch")
-    head = git_text("rev-parse", "HEAD")
-    require(head == os.environ["SIT_REVIEW_HEAD"], "wrong_checked_commit")
-    history = phase3_history(entry, base, head, paths, unit)
-    changed = changed_between(base, head)
-    if unit == "P3-W15" and any(row["immediate_scope_exceptions"] == ["P3-W15-R03"] for row in history):
-        require(changed <= phase3_effective_paths(paths, unit) | P3_W15_R03_PATHS,
-                "work_unit_allowlist_exceeded")
-    else:
-        phase3_check_changed_paths(paths, unit, changed)
-    actual = tracked_bytes()
-    require(actual == commit_hashes(head), "checkout_differs_from_reviewed_commit")
-    cumulative = phase3_effective_paths(paths, unit, cumulative=True)
-    check_entry_bytes(entry["files"], actual, cumulative)
-    old = phase_guard.phase3_historical_nodes(ROOT)
-    save(evidence / "entry-and-scope.json", {"ok": True, "unit": unit, "base": base, "head": head,
-        "intake_commit": entry["intake_commit"], "intake_tree": entry["intake_tree"],
-        "phase2_commit": entry["phase2_commit"], "phase2_tree": entry["phase2_tree"],
-        "actual_entry_files": 157, "actual_phase2_files": 156,
-        "changed_paths": sorted(changed), "tracked_files": len(actual),
-        "frozen_entry_files": len(set(entry["files"]) - cumulative),
-        "historical_test_identities": len(old), "phase1_historical_test_identities": len(phase_guard.historical_nodes(ROOT)),
-        "predecessor_subtest_events": 428, "scope_exceptions": phase3_scope_exceptions(unit),
-        "intermediate_commits": history,
-        "provenance": "Full local Git commit archives, all intermediate first-parent changes and actual checkout"})
+def initialize_evidence(evidence, binding):
+    # Never recycle outputs from a previous head, job or failed attempt.
+    require(not any(evidence.iterdir()), "evidence_directory_must_be_empty")
+    save(evidence / "binding.json", binding)
+    save(evidence / "tracked-before.json", tracked_bytes())
 
 
 def preflight(base, evidence):
-    entry_and_scope(evidence)
+    binding = current_binding()
+    initialize_evidence(evidence, binding)
+    scope = entry_and_scope(evidence)
     policy(read_workflow())
-    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
-    require(head == os.environ["SIT_REVIEW_HEAD"], "wrong_checked_commit")
-    require(f"{sys.version_info.major}.{sys.version_info.minor}" == os.environ["SIT_MATRIX_PYTHON"], "wrong_Python_minor")
-    save(evidence / "environment.json", {"head": head, "python": sys.version, "platform": platform.platform(),
-        "matrix_os": os.environ["SIT_MATRIX_OS"], "matrix_python": os.environ["SIT_MATRIX_PYTHON"],
-        "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
-        "image_version": os.environ.get("ImageVersion"), "scope": "Phase 3 cumulative verification",
-        "unit": os.environ["SIT_PHASE_UNIT"]})
-    save(evidence / "tracked-before.json", tracked_bytes())
+    risk = phase_guard.current_risk(ROOT, binding["base"], binding["head"])
+    save(evidence / "risk.json", {"binding": binding, **risk})
+    if risk["profile"] == "documentation":
+        validate_documentation()
+    save(evidence / "environment.json", {"binding": binding, "platform": platform.platform(),
+        "image_version": os.environ.get("ImageVersion"), "scope": "Current verification consolidation"})
     for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
-        run([sys.executable, "-B", "tools/" + tool + ".py"], evidence, tool + "-before")
-    save(evidence / "preflight.json", {"ok": True, "actual_frozen_files_checked": 20,
-        "actual_entry_files_checked": 157, "actual_phase2_files_checked": 156, "modules": 48})
+        run(guard_command(tool), evidence, tool + "-before")
+    save(evidence / "preflight.json", {"binding": binding, "ok": True,
+        "actual_entry_files_checked": scope["actual_entry_files"],
+        "actual_frozen_entry_files_checked": scope["frozen_files"], "modules": 48})
+
+
+def selected_profile(evidence):
+    binding = current_binding()
+    require(bound_record(evidence, "preflight.json", binding).get("ok") is True, "preflight_not_successful")
+    risk = bound_record(evidence, "risk.json", binding)
+    actual = phase_guard.current_risk(ROOT, binding["base"], binding["head"])
+    require(risk == {"binding": binding, **actual}, "risk_record_does_not_match_actual_diff")
+    require(risk["profile"] in ("documentation", "full"), "unknown_risk_profile")
+    return binding, risk
+
+
+def validate_documentation():
+    """These records carry no authority, but their formats must remain readable."""
+    value = json.loads((ROOT / "verification/consolidation_map.json").read_bytes(), object_pairs_hook=unique)
+    require(isinstance(value, dict) and bool(value), "documentation_map_must_be_nonempty_object")
+    require(bool((ROOT / "VERIFICATION_CONSOLIDATION_COMPLETION.md").read_text(encoding="utf-8").strip()),
+            "documentation_completion_must_be_nonempty_utf8")
+
+
+def prepare(base, evidence):
+    binding, risk = selected_profile(evidence)
+    if risk["profile"] == "full":
+        prepare_tools(base, evidence)
+    save(evidence / "prepare.json", {"binding": binding, "ok": True, "profile": risk["profile"],
+        "dependency_install_performed": risk["profile"] == "full"})
 
 
 def suite_paths():
-    scopes = [s for s in ALL_SCOPES if (ROOT / s).is_dir()]
-    require(all(s in scopes for s in ALL_SCOPES[:3]), "required_test_directory_missing")
-    return scopes
+    require(all((ROOT / scope).is_dir() for scope in ALL_SCOPES), "required_test_directory_missing")
+    return list(ALL_SCOPES)
 
 
-def collection_check(nodes, expected_files, *, unit=None):
-    require(len(nodes) == len(set(nodes)) and nodes, "incomplete_or_duplicate_collection")
-    require({n.split("::", 1)[0] for n in nodes} == expected_files, "test_file_omitted")
-    context = os.environ.get("SIT_PHASE_UNIT", "P3-W01") if unit is None else unit
-    if context.startswith("P3-"):
-        phase_guard.phase3_unit_number(context)
-        require(phase_guard.phase3_historical_nodes(ROOT) <= set(nodes), "phase3_historical_test_identity_omitted")
-    else:
-        phase_guard.unit_number(context)
-    require(phase_guard.historical_nodes(ROOT) <= set(nodes), "historical_test_identity_omitted")
+def collection_check(nodes, expected_files):
+    phase_guard.current_collection(nodes, expected_files)
 
 
-def run_suite(base, evidence):
+def reconcile_suite(xml, nodes, successful_subtests):
+    require(INSTALLED_WITNESSES <= set(nodes), "required_installed_witness_missing")
+    return phase_guard.current_junit(xml, nodes, successful_subtests)
+
+
+def suite_environment(*, local=False):
     env = dict(os.environ)
-    env["PYTHONPATH"], env["PIP_NO_INDEX"] = str(ROOT / "src"), "1"
-    python, scopes = tool_python(base), suite_paths()
+    env.update(PYTHONPATH=str(ROOT / "src"), PIP_NO_INDEX="1", PYTHONDONTWRITEBYTECODE="1",
+               PYTEST_DISABLE_PLUGIN_AUTOLOAD="1", PYTEST_ADDOPTS="", PYTEST_PLUGINS="",
+               PYTHONNOUSERSITE="1", PYTHONUTF8="1", PYTHONUNBUFFERED="1",
+               PIP_DISABLE_PIP_VERSION_CHECK="1", PIP_NO_INPUT="1")
+    if local:
+        for name in tuple(env):
+            if name.startswith(("GITHUB_", "SIT_MATRIX_")) or name in ("RUNNER_TEMP", "SIT_REVIEW_HEAD"):
+                env.pop(name)
+    return env
+
+
+def execute_suite(base, evidence, python, binding, *, local=False):
+    env, scopes = suite_environment(local=local), suite_paths()
     files = {p.relative_to(ROOT).as_posix() for scope in scopes for p in (ROOT / scope).rglob("test_*.py")}
     for name in files:
         tree = ast.parse((ROOT / name).read_text(encoding="utf-8"))
         for node in ast.walk(tree):
             if isinstance(node, ast.Attribute):
-                require(node.attr not in ("skip", "skipif", "xfail", "skipIf", "skipUnless", "expectedFailure"), "test_skip_or_xfail_not_authorized")
-    collected = run([python, "-m", "pytest", *scopes, "--collect-only", "-q"], evidence, "collection", env=env)
+                require(node.attr not in ("skip", "skipif", "xfail", "skipIf", "skipUnless", "expectedFailure"),
+                        "test_skip_or_xfail_not_authorized")
+    collected = run([python, "-B", "-m", "pytest", *scopes, "--collect-only", "-q"],
+                    evidence, "collection", env=env)
     nodes = [line.strip() for line in collected.stdout.splitlines() if line.startswith("tests/") and "::" in line]
     collection_check(nodes, files)
-    save(evidence / "collection.json", {"count": len(nodes), "nodes": nodes, "test_files": sorted(files),
-        "historical_retained": 1650, "phase1_historical_retained": 194,
-        "predecessor_subtest_events": 428,
-        "scope": "all present scaffold/security/contract/unit/integration directories"})
-    result = run([python, "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",
+    save(evidence / "collection.json", {"binding": binding, "count": len(nodes), "nodes": nodes,
+        "test_files": sorted(files), "scopes": scopes})
+    result = run([python, "-B", "-m", "pytest", *scopes, "-q", "--basetemp", base / "pytest",
                   "--junitxml", evidence / "junit.xml"], evidence, "pytest", env=env, timeout=2400, check=False)
-    save(evidence / "pytest-exit.json", {"exit_code": result.returncode})
+    # run() writes status even when subprocess creation or its 2400-second budget fails.
     require(result.returncode == 0, "accumulated_suite_failed")
+    save(evidence / "test.json", {"binding": binding, "ok": True, "profile": "full", "full_suite": True})
 
 
-def evidence_report(base, evidence):
-    summary = {"scope": "Phase 3 cumulative verification",
-               "unit": os.environ["SIT_PHASE_UNIT"], "pass": False}
+def run_suite(base, evidence):
+    binding, risk = selected_profile(evidence)
+    prepared = bound_record(evidence, "prepare.json", binding)
+    require(prepared.get("ok") is True and prepared.get("profile") == risk["profile"], "prepare_not_successful")
+    if risk["profile"] == "documentation":
+        save(evidence / "test.json", {"binding": binding, "ok": True, "profile": "documentation",
+            "full_suite": False, "collection_performed": False,
+            "scope": "Explicit non-executable documentation paths; preflight and final boundary checks"})
+    else:
+        execute_suite(base, evidence, tool_python(base), binding)
+
+
+def archive_inventories(base):
     archives = []
     for path in sorted((base / "pytest").rglob("*")):
         if not path.is_file() or not path.name.endswith((".whl", ".tar.gz")):
             continue
         if path.name.endswith(".whl"):
             with zipfile.ZipFile(path) as archive:
-                inventory = [{"path": n, "sha256": hashlib.sha256(archive.read(n)).hexdigest()} for n in archive.namelist()]
+                names = archive.namelist()
+                require(len(names) == len(set(names)), "duplicate_wheel_member")
+                inventory = {name: hashlib.sha256(archive.read(name)).hexdigest() for name in names}
         else:
             with tarfile.open(path) as archive:
-                inventory = [{"path": m.name, "sha256": hashlib.sha256(archive.extractfile(m).read()).hexdigest()}
-                             for m in archive.getmembers() if m.isfile()]
-        archives.append({"path": path.relative_to(base / "pytest").as_posix(), "bytes": path.stat().st_size,
-                         "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "members": inventory})
-    save(evidence / "build-inventories.json", archives)
-    xml, collection = evidence / "junit.xml", evidence / "collection.json"
-    if xml.exists() and collection.exists():
-        summary.update(junit_counts(xml.read_bytes(), json.loads(collection.read_bytes())["nodes"]))
-    before_file = evidence / "tracked-before.json"
-    after = tracked_bytes()
-    save(evidence / "tracked-after.json", after)
-    unchanged = before_file.exists() and json.loads(before_file.read_bytes()) == after
-    pytest_log = evidence / "pytest.log"
-    subtests = re.findall(r"\b(\d+) subtests passed\b", pytest_log.read_text(encoding="utf-8")) if pytest_log.exists() else []
-    subtest_events = int(subtests[-1]) if subtests else None
-    summary["successful_subtest_events"] = subtest_events
-    summary["predecessor_subtest_events"] = 428
-    summary["predecessor_subtests_retained"] = bool(subtest_events is not None and subtest_events >= 428 and
-        subtest_events == summary.get("additional_reported_events"))
-    summary["tracked_bytes_unchanged"] = unchanged
-    guards_ok = True
-    for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
-        outcome = run([sys.executable, "-B", "tools/" + tool + ".py"], evidence, tool + "-after", check=False)
-        guards_ok = guards_ok and outcome.returncode == 0
-    entry_and_scope(evidence)
-    exit_record = evidence / "pytest-exit.json"
-    summary.update(guards_pass=guards_ok, archive_count=len(archives), historical_retained=1650, phase1_historical_retained=194)
-    summary["pass"] = bool(unchanged and guards_ok and summary["predecessor_subtests_retained"] and
-        collection.exists() and exit_record.exists() and
-        summary.get("tests") == json.loads(collection.read_bytes())["count"] and
-        all(summary.get(k) == 0 for k in ("failures", "errors", "skipped")) and
-        json.loads(exit_record.read_bytes())["exit_code"] == 0 and len(archives) >= 3)
+                members = [member for member in archive.getmembers() if member.isfile()]
+                require(len(members) == len({member.name for member in members}), "duplicate_sdist_member")
+                inventory = {m.name: hashlib.sha256(archive.extractfile(m).read()).hexdigest() for m in members}
+        archives.append({"path": path.relative_to(base / "pytest").as_posix(), "name": path.name,
+            "bytes": path.stat().st_size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "members": inventory})
+    return archives
+
+
+def installed_receipts(base, evidence, binding, archives, *, local=False):
+    modules = {}
+    for path in sorted((ROOT / "src/source_integrity_toolkit").rglob("*.py")):
+        name = path.relative_to(ROOT / "src").as_posix().removesuffix(".py").replace("/", ".").removesuffix(".__init__")
+        modules[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+    require(len(modules) == 48, "installed_module_set_changed")
+    results = {}
+    for label in ("w08", "w14"):
+        name = label + "-installed-runtime.json"
+        path = evidence / name
+        if local:
+            if label == "w08":
+                results[label] = {"receipt_persisted": False,
+                    "reason": "Retained local unittest deletes its temporary receipt; exact JUnit result is required"}
+                continue
+            found = list((base / "pytest").rglob(name))
+            require(len(found) == 1, "local_installed_receipt_missing_or_ambiguous")
+            path.write_bytes(found[0].read_bytes())
+        receipt = json.loads(path.read_bytes())
+        require(receipt.get("head") == binding["head"] and receipt.get("ok") is True, "installed_receipt_head_or_result")
+        runtime = receipt["runtime"]
+        require(runtime["modules"] == modules and runtime["runtime_distributions"] == ["source-integrity-toolkit"] and
+                runtime["normal_effects"] == [] and runtime["negative_events"] == ["open", "socket.getaddrinfo", "ctypes.dlopen"] and
+                runtime["public_refusals"] == 2, "installed_runtime_boundary_incomplete")
+        if label == "w08":
+            require(receipt["unit"] == "VC" and runtime["admitted_fixture_modes"] == 8 and
+                    runtime["rejected_empty_modes"] == 2, "installed_preparation_modes_missing")
+        else:
+            require(receipt["unit"] == "P3-W14" and len(runtime["hero_modes"]) == 8 and
+                    len(runtime["completed_finite_modes"]) == 2 and runtime["invalid_modes"] == 2,
+                    "installed_analysis_modes_missing")
+            source_sets = {
+                "test_sources": {"tests/integration/test_analytical_installed_runtime.py",
+                    "tests/integration/test_analytical_hero_inputs.py", "tests/integration/test_analytical_pipeline.py"},
+                "frozen_test_sources": {"tests/" + kind + "/" + case + suffix
+                    for case in ("H7-01", "H7-V01", "H7-V02", "H7-V03")
+                    for kind, suffix in (("fixtures/hero", ".bundle.json"), ("golden", ".logical.json"))},
+            }
+            for field, expected in source_sets.items():
+                require(set(receipt[field]) == expected and all(hashlib.sha256((ROOT / p).read_bytes()).hexdigest() == digest
+                        for p, digest in receipt[field].items()), "installed_source_evidence_changed")
+        distributions = receipt["distributions"]
+        require(len(distributions) == 3 and distributions[0]["name"].endswith(".tar.gz") and
+                all(r["name"].endswith(".whl") for r in distributions[1:]) and
+                distributions[1]["members"] == distributions[2]["members"], "installed_rebuild_inventory_mismatch")
+        require(all(any(r["name"] == a["name"] and r["members"] == a["members"] for a in archives)
+                    for r in distributions), "installed_inventory_not_in_current_builds")
+        results[label] = {"receipt_persisted": True, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                          "modules": len(modules), "distributions": len(distributions)}
+    return results
+
+
+def emit_summary(evidence, summary):
     save(evidence / "summary.json", summary)
-    print("P3_SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
-    with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
-        output.write("## Phase 3 cumulative verification\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
-    require(summary["pass"], "required_CI_evidence_failed_or_incomplete")
+    print("VC_SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
+    if os.environ.get("GITHUB_STEP_SUMMARY") and summary.get("mode") != "local":
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
+            output.write("## Current verification consolidation\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
 
 
-# Owner-approved P3-W08-R01: the original W08 segment keeps its eight paths.
-P3_W08_R01_PATHS = frozenset((
-    "src/source_integrity_toolkit/analysis/process_comparison.py",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-))
-P3_W08_R01_BASE = "250dd83b3a7c7fc420263da48583473faf4ebc13"
-P3_W08_R01_BASE_TREE = "34fd6ae4e7179d748dcfd03a599d7a12ccb5bf57"
-P3_W08_R01_PREDECESSOR = "5b685e80585fe19adb0d9b0324b698cf5bb54e42"
+def evidence_report(base, evidence, *, local=False):
+    summary = {"scope": "Current verification consolidation", "mode": "local" if local else "hosted",
+               "pass": False, "full_suite": False, "hosted_matrix_attestation": False}
+    try:
+        binding = current_binding(local=local)
+        summary.update(binding=binding, head=binding["head"])
+        if local:
+            bound_record(evidence, "preflight.json", binding)
+            risk = {"profile": "full", "reason": "Local entry always runs every canonical scope"}
+        else:
+            _, risk = selected_profile(evidence)
+        summary.update(profile=risk["profile"], risk=risk)
+        archives = archive_inventories(base)
+        save(evidence / "build-inventories.json", archives)
+        summary["archive_count"] = len(archives)
+        require(not list(evidence.glob("*-failure.json")), "earlier_stage_failed")
+        prepared, tested = (bound_record(evidence, name, binding) for name in ("prepare.json", "test.json"))
+        require(prepared.get("ok") is True and tested.get("ok") is True and
+                prepared.get("profile") == tested.get("profile") == risk["profile"], "required_stage_incomplete")
+        after = tracked_bytes()
+        save(evidence / "tracked-after.json", after)
+        summary["tracked_bytes_unchanged"] = json.loads((evidence / "tracked-before.json").read_bytes()) == after
+        require(summary["tracked_bytes_unchanged"], "tracked_bytes_changed_during_verification")
+        for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
+            run(guard_command(tool, local=local), evidence, tool + "-after", env=suite_environment(local=local))
+        policy(read_workflow())
+        if not local:
+            entry_and_scope(evidence)
+        summary["guards_pass"] = True
+        if risk["profile"] == "documentation":
+            validate_documentation()
+            require(tested.get("full_suite") is False and tested.get("collection_performed") is False,
+                    "documentation_claimed_full_suite")
+            require(not any((evidence / name).exists() for name in ("junit.xml", "collection.json", "pytest-exit.json")),
+                    "unexpected_full_suite_evidence_on_documentation_route")
+            summary.update(tests=None, successful_subtest_events=None,
+                scope="Documentation boundary checks only; no test matrix acceptance")
+        else:
+            collection = bound_record(evidence, "collection.json", binding)
+            collection_check(collection["nodes"], collection["test_files"])
+            require(collection["count"] == len(collection["nodes"]) and collection["scopes"] == list(ALL_SCOPES),
+                    "collection_scope_or_count_mismatch")
+            exit_record = json.loads((evidence / "pytest-exit.json").read_bytes())
+            require(exit_record["exit_code"] == 0 and exit_record["timed_out"] is False and
+                    exit_record["interrupted"] is False and exit_record["incomplete"] is False,
+                    "pytest_failed_or_timed_out")
+            log = (evidence / "pytest.log").read_text(encoding="utf-8")
+            subtests = re.findall(r"\b(\d+) subtests passed\b", log)
+            successful_subtests = int(subtests[-1]) if subtests else 0
+            summary.update(reconcile_suite((evidence / "junit.xml").read_bytes(),
+                                            collection["nodes"], successful_subtests))
+            require(len(archives) >= 3 and any(r["name"].endswith(".tar.gz") for r in archives) and
+                    sum(r["name"].endswith(".whl") for r in archives) >= 2, "build_rebuild_archives_missing")
+            summary.update(installed_receipts=installed_receipts(base, evidence, binding, archives, local=local),
+                archive_count=len(archives), successful_subtest_events=successful_subtests,
+                subtest_events_reconciled=True, full_suite=True)
+        summary["pass"] = True
+    except (Exception, KeyboardInterrupt) as exc:
+        summary.update(error_type=type(exc).__name__, message=str(exc))
+        raise
+    finally:
+        emit_summary(evidence, summary)
 
 
-# Owner-approved P3-W09-R01: CI timeouts and their exact existing controls.
-# The fixed preapproval checkpoint and its parent retain seven paths.
-P3_W09_R01_PATHS = frozenset((
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-    ".github/workflows/phase1-ci.yml",
-))
-P3_W09_R01_BASE = "5bccceee13995f7ee51ed44339d596aadb309644"
-P3_W09_R01_BASE_TREE = "012e520e14977a3ee6a6a1ab143799cfa87ca18a"
-P3_W09_R01_PREDECESSOR = "c25c827b9c0c2cf84075c79ebbf6c238dee4ca74"
+def stage_failure(evidence, stage, exc, *, local=False):
+    failure = {"stage": stage, "error_type": type(exc).__name__, "message": str(exc)}
+    save(evidence / (stage + "-failure.json"), failure)
+    summary_path = evidence / "summary.json"
+    summary = json.loads(summary_path.read_bytes()) if summary_path.exists() else {
+        "scope": "Current verification consolidation", "mode": "local" if local else "hosted"}
+    summary.update({"pass": False, "full_suite": False, "hosted_matrix_attestation": False, "failure": failure})
+    emit_summary(evidence, summary)
 
 
-# Owner-approved P3-W11-R01: exact Assertion before-target dependency repair.
-# The original six-path checkpoint remains outside the approved successor scope.
-P3_W11_R01_PATHS = frozenset((
-    "src/source_integrity_toolkit/contracts/results.py",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-))
-P3_W11_R01_BASE = "48c9a22e2b07df545cd492f921604431c3fec09c"
-P3_W11_R01_BASE_TREE = "e1eb494e80e00d5d99640704a81ae4399cd12a86"
-P3_W11_R01_PREDECESSOR = "82dc7de63e1007f007e527f53ef0ba719e9c1db4"
+def local_verify(evidence):
+    evidence = evidence.resolve()
+    require(not evidence.is_relative_to(ROOT), "local_evidence_must_be_outside_repository")
+    evidence.mkdir(parents=True, exist_ok=True)
+    binding = current_binding(local=True)
+    initialize_evidence(evidence, binding)
+    # Only the entry invocation owns this fresh directory; its subprocess tests
+    # receive no GitHub context and cannot emit hosted-run attestations.
+    base = evidence / "work"
+    base.mkdir()
+    stage = "preflight"
+    try:
+        policy(read_workflow())
+        for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
+            run(guard_command(tool, local=True), evidence, tool + "-before", env=suite_environment(local=True))
+        save(evidence / "preflight.json", {"binding": binding, "ok": True,
+            "scope": "Local module/workflow guards; no external authorization event"})
+        stage = "prepare"
+        result = run([sys.executable, "-m", "pip", "--isolated", "list", "--format=json"],
+                     evidence, "installed", env=suite_environment(local=True))
+        installed = {r["name"].lower(): r["version"] for r in json.loads(result.stdout)}
+        selected = {**SELECTED, **({"colorama": "0.4.6"} if os.name == "nt" else {})}
+        require({name: version for name, version in installed.items() if name != "pip"} == selected,
+                "installed tool set mismatch")
+        run([sys.executable, "-m", "pip", "--isolated", "check"], evidence, "pip-check", env=suite_environment(local=True))
+        save(evidence / "installed.json", installed)
+        save(evidence / "prepare.json", {"binding": binding, "ok": True, "profile": "full",
+            "dependency_install_performed": False, "selected_tool_versions_verified": True})
+        stage = "test"
+        execute_suite(base, evidence, sys.executable, binding, local=True)
+        stage = "evidence"
+        evidence_report(base, evidence, local=True)
+    except (Exception, KeyboardInterrupt) as exc:
+        stage_failure(evidence, stage, exc, local=True)
+        raise
 
 
-# Owner-approved P3-W15-R01: declared dimension selection reason only.
-# The fixed seven-path proposal checkpoint keeps its original permission.
-P3_W15_R01_PATHS = frozenset((
-    "src/source_integrity_toolkit/runtime/boundary.py",
-    "tests/integration/test_analytical_pipeline.py",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-))
-P3_W15_R01_BASE = "e8cf08296f6d335a501a451c777b9de4677ff934"
-P3_W15_R01_BASE_TREE = "2f26ad5ae8357d972b61464e42f5229f21ae2ec4"
-P3_W15_R01_PREDECESSOR = "6dbca96f3314d537beed4ccb6202147bd9248dd9"
+class DriverEvidenceTests(unittest.TestCase):
+    """Exercise evidence failures and route boundaries without a nested full suite."""
 
+    def workspace(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        return Path(temporary.name)
 
-# Owner-approved P3-W15-R02: within-call Git parents/tree batching only.
-# Later W15 commits keep the seven record paths plus these two controls;
-# the earlier R01 product and integration-test permissions do not extend here.
-P3_W15_R02_PATHS = frozenset((
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-))
-P3_W15_R02_BASE = "4d480f2cc5400e96e724d949ed00c82d62f5aeb7"
-P3_W15_R02_BASE_TREE = "bf667ea9d1e46379eee610793c9ecf317ca77276"
-P3_W15_R02_PREDECESSOR = "2a8697ea23e315e74c7cc8d7632c95725332b45b"
+    def test_timeout_preserves_partial_stdout_stderr_and_status(self):
+        evidence = self.workspace()
+        command = [sys.executable, "-u", "-c",
+            "import sys,time; print('partial stdout'); print('partial stderr',file=sys.stderr); time.sleep(30)"]
+        with self.assertRaises(subprocess.TimeoutExpired):
+            run(command, evidence, "pytest", timeout=3)
+        self.assertIn("partial stdout", (evidence / "pytest.log").read_text())
+        self.assertIn("partial stderr", (evidence / "pytest.log").read_text())
+        status = json.loads((evidence / "pytest-exit.json").read_bytes())
+        self.assertIsNone(status["exit_code"])
+        self.assertIs(status["timed_out"], True)
 
+    def test_nonzero_exit_preserves_raw_output_and_status(self):
+        evidence = self.workspace()
+        with self.assertRaisesRegex(ValueError, "full output preserved"):
+            run([sys.executable, "-c", "print('failed canary'); raise SystemExit(7)"], evidence, "canary")
+        self.assertIn("failed canary", (evidence / "canary.log").read_text())
+        self.assertEqual(json.loads((evidence / "canary-exit.json").read_bytes())["exit_code"], 7)
 
-# Owner-approved P3-W15-R03: bounded full-suite and CI job budgets only.
-# Only descendants of this fixed proposal checkpoint gain the workflow path;
-# earlier R02 commits keep their nine paths and earlier scopes stay intact.
-P3_W15_R03_PATHS = frozenset((
-    ".github/workflows/phase1-ci.yml",
-    "tests/scaffold/test_ci_contract.py",
-    "tests/contract/test_phase3_transition.py",
-))
-P3_W15_R03_BASE = "d32c1499fe7969b9415468ef62c966c38110a090"
-P3_W15_R03_BASE_TREE = "1234a087200c5e56d20c7f53aa0d71a828f167fb"
-P3_W15_R03_PREDECESSOR = "3a8c6f99a2aa71ce8e67454801e16a1c5c5caed7"
+    def test_process_creation_failure_has_status_and_log(self):
+        evidence = self.workspace()
+        with self.assertRaises(OSError):
+            run([evidence / "missing-interpreter"], evidence, "pytest")
+        self.assertTrue((evidence / "pytest.log").is_file())
+        self.assertIsNone(json.loads((evidence / "pytest-exit.json").read_bytes())["exit_code"])
+
+    def test_interrupt_keeps_live_channels_and_incomplete_status(self):
+        evidence = self.workspace()
+        def interrupted_child(command, **kwargs):
+            kwargs["stdout"].write("live output")
+            kwargs["stdout"].flush()
+            kwargs["stderr"].write("live error")
+            kwargs["stderr"].flush()
+            self.assertEqual((evidence / "pytest.log").read_text(), "live output")
+            self.assertEqual((evidence / "pytest-stderr.log").read_text(), "live error")
+            self.assertIs(json.loads((evidence / "pytest-exit.json").read_bytes())["incomplete"], True)
+            raise KeyboardInterrupt()
+        with mock.patch.object(subprocess, "run", side_effect=interrupted_child):
+            with self.assertRaises(KeyboardInterrupt):
+                run(["interrupted-child"], evidence, "pytest")
+        status = json.loads((evidence / "pytest-exit.json").read_bytes())
+        self.assertIs(status["interrupted"], True)
+        self.assertIs(status["incomplete"], True)
+        self.assertEqual((evidence / "pytest.log").read_text(), "live outputlive error")
+
+    def test_live_logs_keep_stdout_parseable_when_stderr_has_warning(self):
+        evidence = self.workspace()
+        result = run([sys.executable, "-c",
+            "import sys; print('{\"ok\":true}'); print('stderr warning',file=sys.stderr)"], evidence, "json")
+        self.assertEqual(json.loads(result.stdout), {"ok": True})
+        self.assertIn("stderr warning", result.stderr)
+        self.assertIn("stderr warning", (evidence / "json.log").read_text())
+
+    def test_matching_collection_and_junit_cannot_omit_installed_witness(self):
+        def document(nodes):
+            cases = []
+            for node in nodes:
+                parts = node.split("::")
+                classname = ".".join([parts[0][:-3].replace("/", "."), *parts[1:-1]])
+                cases.append('<testcase classname="' + classname + '" name="' + parts[-1] + '"/>')
+            return ('<testsuites><testsuite tests="' + str(len(nodes)) +
+                    '" failures="0" errors="0" skipped="0">' + "".join(cases) +
+                    '</testsuite></testsuites>').encode()
+        nodes = [
+            "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+            "tests/integration/test_analytical_installed_runtime.py::test_clean_installed_analysis_original_heroes_and_completed_finite_case",
+        ]
+        self.assertEqual(reconcile_suite(document(nodes), nodes, 0)["tests"], 2)
+        for missing in nodes:
+            with self.subTest(missing=missing):
+                reduced = [node for node in nodes if node != missing]
+                self.assertTrue(phase_guard.current_junit(document(reduced), reduced, 0)["identities_match"])
+                with self.assertRaisesRegex(ValueError, "required_installed_witness_missing"):
+                    reconcile_suite(document(reduced), reduced, 0)
+
+    def test_existing_evidence_is_rejected_without_removing_raw_attempt(self):
+        evidence = self.workspace()
+        (evidence / "junit.xml").write_bytes(b"original raw attempt")
+        with self.assertRaisesRegex(ValueError, "must_be_empty"):
+            initialize_evidence(evidence, {"head": "new"})
+        self.assertEqual((evidence / "junit.xml").read_bytes(), b"original raw attempt")
+        self.assertFalse((evidence / "binding.json").exists())
+
+    def test_missing_unit_or_integration_directory_cannot_reduce_suite(self):
+        root = self.workspace()
+        for scope in ALL_SCOPES[:3]:
+            (root / scope).mkdir(parents=True)
+        with mock.patch(__name__ + ".ROOT", root):
+            for missing in ALL_SCOPES[3:]:
+                with self.subTest(missing=missing):
+                    with self.assertRaisesRegex(ValueError, "required_test_directory_missing"):
+                        suite_paths()
+                    (root / missing).mkdir()
+            self.assertEqual(suite_paths(), list(ALL_SCOPES))
+
+    def test_suite_environment_clears_selection_and_plugin_injection(self):
+        with mock.patch.dict(os.environ, {"PYTEST_ADDOPTS": "--deselect tests/unit/test_x.py::test_y",
+                "PYTEST_PLUGINS": "unexpected_plugin", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "0"}):
+            environment = suite_environment()
+        self.assertEqual(environment["PYTEST_ADDOPTS"], "")
+        self.assertEqual(environment["PYTEST_PLUGINS"], "")
+        self.assertEqual(environment["PYTEST_DISABLE_PLUGIN_AUTOLOAD"], "1")
+        self.assertEqual(environment["PIP_NO_INDEX"], "1")
+
+    def test_local_children_do_not_inherit_hosted_receipt_destination(self):
+        with mock.patch.dict(os.environ, {"GITHUB_ACTIONS": "true", "GITHUB_RUN_ID": "123",
+                "RUNNER_TEMP": "/hosted", "SIT_MATRIX_OS": "ubuntu-24.04", "SIT_REVIEW_HEAD": "old"}):
+            environment = suite_environment(local=True)
+        self.assertTrue(all(name not in environment for name in
+            ("GITHUB_ACTIONS", "GITHUB_RUN_ID", "RUNNER_TEMP", "SIT_MATRIX_OS", "SIT_REVIEW_HEAD")))
+
+    def test_wrong_head_attempt_or_matrix_cannot_reuse_stage_record(self):
+        evidence = self.workspace()
+        binding = {"head": "candidate", "run_attempt": "1", "matrix_python": "3.11"}
+        save(evidence / "binding.json", binding)
+        save(evidence / "preflight.json", {"binding": binding, "ok": True})
+        for field, value in (("head", "other"), ("run_attempt", "2"), ("matrix_python", "3.13")):
+            with self.subTest(field=field):
+                with self.assertRaisesRegex(ValueError, "identity_mismatch"):
+                    bound_record(evidence, "preflight.json", {**binding, field: value})
+
+    def test_stage_record_binding_is_checked_independently(self):
+        evidence = self.workspace()
+        save(evidence / "binding.json", {"head": "current"})
+        save(evidence / "preflight.json", {"binding": {"head": "old"}, "ok": True})
+        with self.assertRaisesRegex(ValueError, "stage_evidence_identity_mismatch"):
+            bound_record(evidence, "preflight.json", {"head": "current"})
+
+    def test_recorded_documentation_route_cannot_override_actual_full_diff(self):
+        evidence = self.workspace()
+        binding = {"base": "base", "head": "head"}
+        save(evidence / "binding.json", binding)
+        save(evidence / "preflight.json", {"binding": binding, "ok": True})
+        save(evidence / "risk.json", {"binding": binding, "profile": "documentation"})
+        with mock.patch(__name__ + ".current_binding", return_value=binding), \
+                mock.patch.object(phase_guard, "current_risk", return_value={"profile": "full"}):
+            with self.assertRaisesRegex(ValueError, "actual_diff"):
+                selected_profile(evidence)
+
+    def test_documentation_route_explicitly_records_no_install_or_full_suite(self):
+        evidence = self.workspace()
+        binding = {"head": "candidate"}
+        save(evidence / "binding.json", binding)
+        with mock.patch(__name__ + ".selected_profile", return_value=(binding, {"profile": "documentation"})), \
+                mock.patch(__name__ + ".prepare_tools", side_effect=AssertionError("unexpected install")), \
+                mock.patch(__name__ + ".execute_suite", side_effect=AssertionError("unexpected suite")):
+            prepare(evidence / "work", evidence)
+            run_suite(evidence / "work", evidence)
+        prepared = json.loads((evidence / "prepare.json").read_bytes())
+        tested = json.loads((evidence / "test.json").read_bytes())
+        self.assertIs(prepared["dependency_install_performed"], False)
+        self.assertIs(tested["full_suite"], False)
+        self.assertIs(tested["collection_performed"], False)
+        self.assertFalse((evidence / "junit.xml").exists())
+
+    def test_documentation_still_requires_readable_nonempty_records(self):
+        root = self.workspace()
+        (root / "verification").mkdir()
+        (root / "VERIFICATION_CONSOLIDATION_COMPLETION.md").write_text("Review record", encoding="utf-8")
+        with mock.patch(__name__ + ".ROOT", root):
+            for content in ("{", "{}", "[]", '{"a":1,"a":2}'):
+                with self.subTest(content=content):
+                    (root / "verification/consolidation_map.json").write_text(content, encoding="utf-8")
+                    with self.assertRaises(ValueError):
+                        validate_documentation()
+            (root / "verification/consolidation_map.json").write_text('{"record":"readable"}', encoding="utf-8")
+            validate_documentation()
+
+    def test_early_context_failure_still_writes_failed_summary(self):
+        evidence = self.workspace()
+        with mock.patch(__name__ + ".current_binding", side_effect=ValueError("missing actual context")), \
+                mock.patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": ""}):
+            with self.assertRaisesRegex(ValueError, "missing actual context"):
+                evidence_report(evidence / "work", evidence)
+        summary = json.loads((evidence / "summary.json").read_bytes())
+        self.assertIs(summary["pass"], False)
+        self.assertIs(summary["full_suite"], False)
+        self.assertEqual(summary["message"], "missing actual context")
+
+    def test_stage_failure_preserves_raw_attempt_and_cannot_keep_success(self):
+        evidence = self.workspace()
+        save(evidence / "summary.json", {"pass": True, "full_suite": True})
+        (evidence / "pytest.log").write_text("raw failed attempt", encoding="utf-8")
+        with mock.patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": ""}):
+            stage_failure(evidence, "test", ValueError("test failure"), local=True)
+        summary = json.loads((evidence / "summary.json").read_bytes())
+        self.assertIs(summary["pass"], False)
+        self.assertIs(summary["full_suite"], False)
+        self.assertTrue((evidence / "test-failure.json").is_file())
+        self.assertEqual((evidence / "pytest.log").read_text(), "raw failed attempt")
+
+    def test_parameter_delimiters_remain_part_of_junit_test_name(self):
+        xml = (b'<testsuites><testsuite tests="1" failures="0" errors="0" skipped="0">'
+               b'<testcase classname="tests.unit.test_example" name="test_one[left::right]"/>'
+               b'</testsuite></testsuites>')
+        node = "tests/unit/test_example.py::test_one[left::right]"
+        self.assertEqual(junit_counts(xml, [node])["tests"], 1)
+        self.assertTrue(phase_guard.current_junit(xml, [node], 0)["identities_match"])
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 3 and sys.argv[1] == "--ci-stage":
-        stage = sys.argv[2]
-        stages = {"preflight": preflight, "prepare": prepare, "test": run_suite, "evidence": evidence_report}
-        require(stage in stages, "unknown_CI_stage")
-        base, evidence = ci_paths()
-        try:
-            configure_context()
-            stages[stage](base, evidence)
-        except Exception as exc:
-            save(evidence / (stage + "-failure.json"), {"stage": stage, "error_type": type(exc).__name__, "message": str(exc)})
-            raise
+    if "--ci-stage" in sys.argv or "--local" in sys.argv:
+        parser = argparse.ArgumentParser(description="Current verification entry and evidence driver")
+        mode = parser.add_mutually_exclusive_group(required=True)
+        mode.add_argument("--ci-stage", choices=("preflight", "prepare", "test", "evidence"))
+        mode.add_argument("--local", action="store_true")
+        parser.add_argument("--evidence-dir", type=Path)
+        args = parser.parse_args()
+        if args.local:
+            destination = args.evidence_dir or Path(tempfile.mkdtemp(prefix="sit-vc-local-"))
+            print("Local evidence: " + str(destination.resolve()), flush=True)
+            local_verify(destination)
+        else:
+            require(args.evidence_dir is None, "hosted_evidence_destination_is_fixed")
+            base, evidence = ci_paths()
+            stages = {"preflight": preflight, "prepare": prepare, "test": run_suite, "evidence": evidence_report}
+            try:
+                stages[args.ci_stage](base, evidence)
+            except (Exception, KeyboardInterrupt) as exc:
+                stage_failure(evidence, args.ci_stage, exc)
+                raise
     else:
         unittest.main()
