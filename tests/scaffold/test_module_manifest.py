@@ -8,6 +8,7 @@ and native-security test paths remain reservations, not executed tests.
 """
 
 import ast
+from functools import cache
 import copy
 import hashlib
 import json
@@ -19,6 +20,11 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools import check_scaffold_boundary as phase_guard
+
+@cache
+def current_stage():
+    """Resolve trusted local activation only during execution, never collection."""
+    return phase_guard.current_local_state(ROOT)["activation_stage"]
 
 PREFIX = "src/source_integrity_toolkit/"
 # PHASE_1_PLAN.md section 6: exact closed file list, including WU11 additions.
@@ -76,7 +82,7 @@ def blob(raw):
 def verify_manifest(manifest, files, owners):
     require(manifest["status"] == STATUS, "False implementation status")
     require(manifest["package_prefix"] == PREFIX, "Unexpected package prefix")
-    active = phase_guard.VC_ACTIVE
+    active = phase_guard.current_active(current_stage())
     rows = manifest["modules"]
     require(len(rows) == 48 and len({r[0] for r in rows}) == 48, "Duplicate/missing module")
     require({r[0] for r in rows} == EXPECTED == set(files), "Closed path set changed")
@@ -94,7 +100,7 @@ def verify_manifest(manifest, files, owners):
         if path not in active:
             require(blob(raw) == expected_blob, "Protected source bytes changed: " + path)
         else:
-            require(not phase_guard.current_live_issues(path, raw.decode("utf-8")),
+            require(not phase_guard.current_live_issues(path, raw.decode("utf-8"), stage=current_stage()),
                     "Forbidden live-module behavior")
         text = raw.decode("utf-8")
         tree = ast.parse(text)
@@ -202,21 +208,26 @@ class ModuleManifestTests(unittest.TestCase):
 
     def test_mutated_product_bytes_are_rejected(self):
         bad = dict(self.files)
-        bad["reporting/json_report.py"] += b"\ndef analyze():\n    return 42\n"
+        bad["io/publication.py"] += b"\ndef analyze():\n    return 42\n"
         with self.assertRaises(AssertionError):
             verify_manifest(self.manifest, bad, self.owners)
 
 
 
 class LiveModuleManifestTests(unittest.TestCase):
-    """Actual live-body/effect/owner controls, separate from historical bytes."""
+    """Direct AST/effect/owner controls, separate from checkout authorization.
+
+    Legal synthetic bodies isolate these checks. Current package/history
+    inspection independently freezes all W01 product bytes, including these
+    already operational analytical modules.
+    """
 
     @classmethod
     def setUpClass(cls):
         ModuleManifestTests.setUpClass.__func__(cls)
 
     def _assert_live_effect_control(self, path):
-        self.assertIn(path, phase_guard.VC_ACTIVE)
+        self.assertIn(path, phase_guard.current_active(current_stage()))
         verify_manifest(self.manifest, self.files, self.owners)
         legal = dict(self.files)
         legal[path] += b"\ndef analyze():\n    return 42\n"
@@ -228,7 +239,7 @@ class LiveModuleManifestTests(unittest.TestCase):
         verify_manifest(self.manifest, self.files, self.owners)
 
     def _assert_live_owner_control(self, path):
-        self.assertIn(path, phase_guard.VC_ACTIVE)
+        self.assertIn(path, phase_guard.current_active(current_stage()))
         verify_manifest(self.manifest, self.files, self.owners)
         legal = dict(self.files)
         legal[path] += b"\ndef analyze():\n    return 42\n"

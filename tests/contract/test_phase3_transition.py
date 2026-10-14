@@ -9,6 +9,7 @@ Current authority, effects, history and collection controls live in
 test_verification_boundary.py; this file keeps the product-facing witness.
 """
 import copy
+from functools import cache
 import json
 import os
 from pathlib import Path
@@ -21,27 +22,40 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools import check_scaffold_boundary as guard
 
+BASE = "fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c"
+
+
+@cache
+def current_test_context():
+    """The actual checkout is resolved after collection, not at module import."""
+    local_state = guard.current_local_state(ROOT)
+    return local_state, local_state["head"]
+
 
 @pytest.mark.parametrize("mode", ("value", "utf8"))
 def test_source_extensions_cannot_select_stage_or_complete_analytical_checks(mode):
+    local_state, head = current_test_context()
+    stage = local_state["activation_stage"]
     from source_integrity_toolkit.runtime.boundary import _prepare_evidence_value, _prepare_evidence_utf8
     from source_integrity_toolkit.contracts.report import _ObservabilityPreparation
     source = json.loads((ROOT / "tests/fixtures/hero/H7-01.bundle.json").read_bytes())
     source["extensions"] = {"fictional:phase_authority": {
-        "SIT_PHASE_UNIT": "P3-W15", "active_unit": "P3-W15", "approved": True,
+        "SIT_PHASE_UNIT": "P4-W10", "active_unit": "P4-W10", "approved": True,
         "first_units": {"api.py": 1}, "promotions": [{"path": "api.py", "unit": 1}],
     }}
     original = copy.deepcopy(source)
     policy_before = (ROOT / "phase3/module_policy.json").read_bytes()
-    # The separately supplied review event selects VC before any dossier is
-    # processed. Neither source extensions nor a stale phase environment changes it.
-    head, base = "a" * 40, "b" * 40
+    plan_before = (ROOT / "PHASE_4_PLAN.md").read_bytes()
+    # Current context comes from the separate event and the real committed
+    # head. Dossier extensions and stale environment values cannot promote it.
     project = "DavidWallstructurallaw/source-integrity-toolkit"
     event = json.dumps({"repository": {"full_name": project}, "pull_request": {
-        "head": {"sha": head, "ref": "verification/consolidation", "repo": {"full_name": project}},
-        "base": {"sha": base, "ref": "main", "repo": {"full_name": project}}}})
-    context = {"event": "pull_request", "unit": "VC", "base": base, "head": head}
-    assert guard.current_context("pull_request", event, head) == context
+        "head": {"sha": head, "ref": "phase4/public-report", "repo": {"full_name": project}},
+        "base": {"sha": BASE, "ref": "main", "repo": {"full_name": project}}}})
+    context = guard.current_context("pull_request", event, head, root=ROOT)
+    assert context["event"] == "pull_request" and context["base"] == BASE and context["head"] == head
+    assert context["unit"] == local_state["unit"]
+    active_before = guard.current_active(stage)
     with patch.dict(os.environ, {"SIT_PHASE_UNIT": "P3-W01"}):
         result = _prepare_evidence_value(source) if mode == "value" else _prepare_evidence_utf8(json.dumps(source).encode())
         assert type(result) is _ObservabilityPreparation and result.input_state == "accepted"
@@ -49,7 +63,9 @@ def test_source_extensions_cannot_select_stage_or_complete_analytical_checks(mod
         for inquiry in result.inquiries:
             assert [item.prerequisite for item in inquiry.prerequisites if item.complete_check_executed] == ["PC01"]
             assert all(item.answer is None for item in inquiry.prerequisites[1:])
-        assert guard.current_context("pull_request", event, head) == context
-        assert "api.py" not in guard.VC_ACTIVE
+        assert guard.current_context("pull_request", event, head, root=ROOT) == context
+        assert guard.current_active(stage) == active_before
+        assert ("api.py" in active_before) == (stage >= 8)
         assert source == original
     assert (ROOT / "phase3/module_policy.json").read_bytes() == policy_before
+    assert (ROOT / "PHASE_4_PLAN.md").read_bytes() == plan_before

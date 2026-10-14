@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+from functools import cache
 import shutil
 import subprocess
 import sys
@@ -15,6 +16,11 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools import check_scaffold_boundary as guard
 
+@cache
+def current_stage():
+    """Resolve trusted local activation only during execution, never collection."""
+    return guard.current_local_state(ROOT)["activation_stage"]
+
 
 class NoRuntimeImplementationTests(unittest.TestCase):
     def setUp(self):
@@ -25,7 +31,7 @@ class NoRuntimeImplementationTests(unittest.TestCase):
         self.package = self.root / "src/source_integrity_toolkit"
 
     def test_real_accepted_package_passes_all_guards(self):
-        result = guard.current_check_repository(ROOT)
+        result = guard.current_check_repository(ROOT, stage=current_stage())
         self.assertTrue(result["ok"], result)
         self.assertEqual(result["checked_modules"], 48)
 
@@ -40,12 +46,12 @@ class NoRuntimeImplementationTests(unittest.TestCase):
             path = self.package / name
             path.write_text("{}")
             with self.subTest(path=name):
-                self.assertFalse(guard.current_check_repository(self.root)["ok"])
+                self.assertFalse(guard.current_check_repository(self.root, stage=current_stage())["ok"])
             path.unlink()
 
     def test_missing_slot_fails(self):
         (self.package / "analysis/origins.py").unlink()
-        self.assertFalse(guard.current_check_repository(self.root)["ok"])
+        self.assertFalse(guard.current_check_repository(self.root, stage=current_stage())["ok"])
 
     def test_executable_body_is_detected_without_hash_check(self):
         for source in ('def calculate(x):\n    return 1\n', 'REGISTRY = {}\n',
@@ -58,13 +64,22 @@ class NoRuntimeImplementationTests(unittest.TestCase):
 
     def test_argument_inspection_before_refusal_fails_ast_and_tree(self):
         path = self.package / "api.py"
-        source = path.read_text().replace('    raise NotImplementedError(',
-                                         '    repr(options)\n    raise NotImplementedError(', 1)
-        self.assertIn("non_scaffold_body", guard.form_issues("api.py", source))
+        source = path.read_text()
+        before, file_function = source.split("def audit_file(", 1)
+        source = before + "def audit_file(" + file_function.replace(
+            "    raise NotImplementedError(",
+            "    repr(options)\n    raise NotImplementedError(", 1)
+        # audit_file stays an immediate refusal throughout P4, including after
+        # audit_bundle becomes live. The static refusal-shape probe is separate.
+        reserved = guard.SPECIAL_FORMS["api.py"]
+        self.assertEqual(guard.form_issues("api.py", reserved), [])
+        changed = reserved.replace("    raise NotImplementedError(",
+                                   "    repr(options)\n    raise NotImplementedError(", 1)
+        self.assertIn("non_scaffold_body", guard.form_issues("api.py", changed))
         path.write_text(source)
-        result = guard.current_check_repository(self.root)
+        result = guard.current_check_repository(self.root, stage=current_stage())
         self.assertFalse(result["ok"])
-        self.assertIn({"path": "api.py", "code": "non_scaffold_body"}, result["issues"])
+        self.assertTrue(any(issue["path"] == "api.py" for issue in result["issues"]), result)
 
     def test_decorator_default_and_annotation_side_effects_fail(self):
         sources = [
@@ -79,29 +94,29 @@ class NoRuntimeImplementationTests(unittest.TestCase):
         path = self.package / "__pycache__"
         path.mkdir(exist_ok=True)
         (path / "hidden.py").write_text("pass\n")
-        self.assertFalse(guard.current_check_repository(self.root)["ok"])
+        self.assertFalse(guard.current_check_repository(self.root, stage=current_stage())["ok"])
 
     def test_changed_literal_or_fake_report_is_rejected(self):
         self.assertTrue(guard.form_issues("contracts/constants.py", 'SCAFFOLD_VERSION="1.0.0"'))
         self.assertTrue(guard.form_issues("api.py", 'def audit_bundle(bundle, *, options=None):\n    return {"status":"success"}\n'))
 
     def test_syntax_error_and_oversize_do_not_crash_guard(self):
-        path = self.package / "reporting/json_report.py"
+        path = self.package / "io/publication.py"
         path.write_text("def (\n")
-        self.assertFalse(guard.current_check_repository(self.root)["ok"])
+        self.assertFalse(guard.current_check_repository(self.root, stage=current_stage())["ok"])
         path.write_text("#" * 20000)
-        self.assertFalse(guard.current_check_repository(self.root)["ok"])
+        self.assertFalse(guard.current_check_repository(self.root, stage=current_stage())["ok"])
 
     def test_extra_source_package_cannot_escape_inventory(self):
         (self.root / "src/shadow.py").write_text("pass\n")
-        self.assertFalse(guard.current_check_repository(self.root)["ok"])
+        self.assertFalse(guard.current_check_repository(self.root, stage=current_stage())["ok"])
 
     def test_real_guard_cli_is_not_removed_by_python_optimization(self):
         command = [sys.executable, "-I", "-B", "-O", str(ROOT / "tools/check_scaffold_boundary.py"),
-                   "--root", str(self.root), "--modules-only"]
+                   "--root", str(self.root), "--modules-only", "--unit", f"P4-W{current_stage():02d}"]
         positive = subprocess.run(command, capture_output=True, text=True, timeout=20)
         self.assertEqual(positive.returncode, 0, positive.stdout + positive.stderr)
-        (self.package / "reporting/json_report.py").write_text("ACTIVE = {}\n")
+        (self.package / "io/publication.py").write_text("ACTIVE = {}\n")
         negative = subprocess.run(command, capture_output=True, text=True, timeout=20)
         self.assertEqual(negative.returncode, 1)
         self.assertFalse(json.loads(negative.stdout)["ok"])
@@ -113,7 +128,7 @@ class W04R01LiveGuardTests(unittest.TestCase):
     setUp = NoRuntimeImplementationTests.setUp
 
     def _assert_current_copy(self):
-        result = guard.current_check_repository(self.root)
+        result = guard.current_check_repository(self.root, stage=current_stage())
         self.assertTrue(result["ok"], result)
         self.assertEqual(result["checked_modules"], 48)
 
@@ -123,7 +138,7 @@ class W04R01LiveGuardTests(unittest.TestCase):
         original = path.read_bytes()
         try:
             path.write_bytes(payload)
-            result = guard.current_check_repository(self.root)
+            result = guard.current_check_repository(self.root, stage=current_stage())
         finally:
             path.write_bytes(original)
         self._assert_current_copy()
@@ -132,7 +147,7 @@ class W04R01LiveGuardTests(unittest.TestCase):
     def _optimized_cli_mutation(self, relative, payload):
         self._assert_current_copy()
         command = [sys.executable, "-I", "-B", "-O", str(ROOT / "tools/check_scaffold_boundary.py"),
-                   "--root", str(self.root), "--modules-only"]
+                   "--root", str(self.root), "--modules-only", "--unit", f"P4-W{current_stage():02d}"]
         positive = subprocess.run(command, capture_output=True, text=True, timeout=20)
         self.assertEqual(positive.returncode, 0, positive.stdout + positive.stderr)
         self.assertTrue(json.loads(positive.stdout)["ok"])
@@ -158,8 +173,14 @@ class W04R01LiveGuardTests(unittest.TestCase):
         prefix = b"ACTIVE = {}\n#"
         equality = prefix + b"x" * (262144 - len(prefix))
         self.assertEqual(len(equality), 262144)
+        # The actual W01 package is byte-frozen, independently of whether a
+        # synthetic live body obeys its separate effect and size constraints.
+        self.assertEqual(guard.current_live_issues(
+            "graph/cycles.py", equality.decode(), stage=current_stage()), [])
         positive = self._mutation("graph/cycles.py", equality)
-        self.assertTrue(positive["ok"], positive)
+        self.assertFalse(positive["ok"], positive)
+        self.assertIn({"path": "graph/cycles.py", "code": "accepted_blob_changed"}, positive["issues"])
+        self.assertNotIn({"path": "graph/cycles.py", "code": "oversize_module"}, positive["issues"])
         excess = equality + b"x"
         self.assertEqual(len(excess), 262145)
         negative = self._mutation("graph/cycles.py", excess)
@@ -172,18 +193,18 @@ class W04R01LiveGuardTests(unittest.TestCase):
         self.assertIn({"path": "graph/cycles.py", "code": "forbidden_effect"}, result["issues"])
 
     def test_inert_size_ceiling_distinguishes_equal_and_one_byte_excess(self):
-        equality = self._mutation("reporting/json_report.py", b"#" * 16384)
+        equality = self._mutation("io/publication.py", b"#" * 16384)
         # A changed inert file must still fail its byte pin at this size.
         self.assertFalse(equality["ok"])
-        self.assertIn({"path": "reporting/json_report.py", "code": "accepted_blob_changed"}, equality["issues"])
-        self.assertNotIn({"path": "reporting/json_report.py", "code": "oversize_module"}, equality["issues"])
-        excess = self._mutation("reporting/json_report.py", b"#" * 16385)
+        self.assertIn({"path": "io/publication.py", "code": "accepted_blob_changed"}, equality["issues"])
+        self.assertNotIn({"path": "io/publication.py", "code": "oversize_module"}, equality["issues"])
+        excess = self._mutation("io/publication.py", b"#" * 16385)
         self.assertFalse(excess["ok"])
-        self.assertIn({"path": "reporting/json_report.py", "code": "oversize_module"}, excess["issues"])
+        self.assertIn({"path": "io/publication.py", "code": "oversize_module"}, excess["issues"])
 
     def test_real_optimized_cli_rejects_inert_body_independently_of_pin(self):
-        result = self._optimized_cli_mutation("reporting/json_report.py", b"ACTIVE = {}\n")
-        self.assertIn({"path": "reporting/json_report.py", "code": "non_scaffold_body"}, result["issues"])
+        result = self._optimized_cli_mutation("io/publication.py", b"ACTIVE = {}\n")
+        self.assertIn({"path": "io/publication.py", "code": "non_scaffold_body"}, result["issues"])
 
 if __name__ == "__main__":
     unittest.main()

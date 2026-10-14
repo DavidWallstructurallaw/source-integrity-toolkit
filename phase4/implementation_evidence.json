@@ -1,0 +1,137 @@
+{
+  "phase": "P4",
+  "current_unit": "P4-W01",
+  "status": "implementation_in_validation",
+  "owner_authorization": {
+    "instruction": "批准计划，启动 P4-W01",
+    "date": "2026-10-14",
+    "scope": "P4-W01 only; no W02 execution, merge, release or product activation",
+    "plan_sha256": "5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
+    "plan_header": "Approved exact draft bytes retained unchanged; approval is the user instruction, not this record."
+  },
+  "accepted_anchor": {
+    "head": "fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c",
+    "tree": "f6fbb8965520f33a09ca38cf413e11ca561110dd",
+    "parents": [
+      "2413a29b839b7e1de8f76a449762f031de19d52b",
+      "ce05c5dda9368182dbee074253d3a7c829af7719"
+    ],
+    "vc_run": 38128491330,
+    "post_merge_run": 38164028893
+  },
+  "changes": [
+    "Replace current VC authority in place with exact Phase 4 anchor, plan, ten owner path scopes and twelve activation boundaries.",
+    "Bind event/receipt identity to hash-verified actual head message and monotonic verified history stage; reject all-parent intermediate violations.",
+    "Preserve no-Git collection, original private installed witnesses, all 48 product bytes, workflow, pins, budgets and two public refusals.",
+    "Create 228 pending public obligation rows with exact source and frozen core pointers; no public/rendering completion claimed.",
+    "Hash-verify raw commit, tree and blob bytes; preserve audit_file binding as well as function bytes; reject hidden intermediate product effects."
+  ],
+  "guarantee_migrations": [
+    {
+      "files": [
+        "tests/scaffold/test_imports.py",
+        "tests/scaffold/test_module_manifest.py",
+        "tests/scaffold/test_no_runtime_implementation.py",
+        "tests/scaffold/test_layer_boundaries.py",
+        "tests/security/test_preparation_inertness.py",
+        "tests/contract/test_phase3_transition.py"
+      ],
+      "retained_test_definitions": 46,
+      "replacement": "Runtime stage helpers replace VC identity; permanent file/native slots replace future-report inert mutation fixtures; active reporting effects remain tested. Whole-package safe-body mutation still fails frozen bytes; isolated effect-positive control proves the effects checker can accept valid code."
+    },
+    {
+      "files": [
+        "tests/contract/test_phase2_transition.py",
+        "tests/integration/test_analytical_installed_runtime.py",
+        "tests/scaffold/test_ci_contract.py"
+      ],
+      "replacement": "Current unit/activation/head binding only. Original preparation and analytical child scripts, hero/limited/invalid/effects/installed-byte witnesses and both public refusals retained."
+    }
+  ],
+  "validation": {
+    "package_boundary": {
+      "result": "passed",
+      "stage": 1,
+      "checked_modules": 48,
+      "byte_protected_modules": 48
+    },
+    "bounded_driver": {
+      "result": "passed",
+      "tests": 46,
+      "successful_subtests": 25,
+      "elapsed_seconds": 58.94,
+      "scope": "All tests in V03, T07 and T08; working-tree diagnostic, not an exact hosted candidate",
+      "head": "64a9a856ad3460f84acb3967688cb99d61b75fcc",
+      "clean": false
+    },
+    "current_boundary": {
+      "first_attempt": {
+        "passed": 176,
+        "failed": 24,
+        "elapsed_seconds": 224.51
+      },
+      "retry": {
+        "result": "passed",
+        "tests": 208,
+        "elapsed_seconds": 242.61
+      },
+      "focused_retry": {
+        "result": "passed",
+        "tests": 50,
+        "elapsed_seconds": 49.59
+      },
+      "latest_increment": {
+        "result": "passed",
+        "tests": 6,
+        "elapsed_seconds": 5.2,
+        "scope": "audit_file body/decorator/rebinding, restored reporting effects, raw root/nested tree corruption"
+      },
+      "current_test_nodes": 210
+    },
+    "local_full": "pending on fixed checkpoint",
+    "hosted_four_profiles": "pending",
+    "cross_review": "completed with recorded fixes; independent reviewer tree finding addressed by root and direct regression tests",
+    "migrated_six_files": {
+      "result": "passed",
+      "tests": 128,
+      "successful_subtests": 79,
+      "elapsed_seconds": 72.67,
+      "collection_nodes": 128,
+      "collection_subprocess_calls": 0,
+      "scope": "V04-V07, T04, T09 working-tree diagnostics"
+    }
+  },
+  "failures_and_repairs": [
+    {
+      "finding": "Top-level stage lookup executed Git during test collection.",
+      "repair": "Moved stage lookup to cached runtime helpers; zero-Git collection witnesses retained.",
+      "verification": "zero-Git collection positive/poisoned/no-.git controls passed"
+    },
+    {
+      "finding": "First boundary run retained old CLI/metadata/error-precedence expectations; Git stripped invalid trailing footer spaces in the fixture.",
+      "repair": "Update expected current interface from independently read raw commit bytes; preserve verbatim footer input and check actual bytes; retain every rejection guarantee.",
+      "verification": "passed in boundary retry or latest focused regressions; final unified suite pending"
+    },
+    {
+      "finding": "Whole-file path scope alone omitted the narrow mixed-file semantic preservation and did not reject restored intermediate workflow or audit_file edits.",
+      "repair": "Compare accepted unaffected mixed-file segments without executing historical tests; enforce workflow security fields and exact audit_file on each snapshot.",
+      "verification": "passed in boundary retry or latest focused regressions; final unified suite pending"
+    },
+    {
+      "finding": "Pretty Git tree listing was not itself hash-verified.",
+      "repair": "Parse recursively hash-verified raw tree objects rooted at the verified commit; direct tree-response corruption counterexample added.",
+      "verification": "passed in boundary retry or latest focused regressions; final unified suite pending"
+    },
+    {
+      "finding": "Preserving an audit_file definition alone did not prevent later name rebinding.",
+      "repair": "Reject duplicate definitions and assignment/import/exception/pattern rebinding; reject current forbidden effects in each changed active product snapshot.",
+      "verification": "six focused latest-guard regressions passed"
+    }
+  ],
+  "remaining": {
+    "W02_to_W10": "not started",
+    "public_api_and_reports": "not implemented",
+    "file_native_cli_audit_release": "deferred"
+  },
+  "authority_notice": "Evidence only. This file cannot grant paths, stages, approvals or acceptance."
+}
