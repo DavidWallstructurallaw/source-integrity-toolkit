@@ -1,7 +1,7 @@
 {
   "phase": "P4",
   "current_unit": "P4-W01",
-  "status": "P4-W01 implementation complete; full local validation passed",
+  "status": "P4-W01 implementation complete; local test results verified; hosted review pending",
   "owner_authorization": {
     "instruction": "批准计划，启动 P4-W01",
     "date": "2026-10-14",
@@ -24,7 +24,8 @@
     "Bind event/receipt identity to hash-verified actual head message and monotonic verified history stage; reject all-parent intermediate violations.",
     "Preserve no-Git collection, original private installed witnesses, all 48 product bytes, workflow, pins, budgets and two public refusals.",
     "Create 228 pending public obligation rows with exact source and frozen core pointers; no public/rendering completion claimed.",
-    "Hash-verify raw commit, tree and blob bytes; preserve audit_file binding as well as function bytes; reject hidden intermediate product effects."
+    "Hash-verify raw commit, tree and blob bytes; preserve audit_file binding as well as function bytes; reject hidden intermediate product effects.",
+    "Reject missing, malformed, nonzero or incomplete raw preparation exit receipts instead of trusting prepare.ok alone."
   ],
   "guarantee_migrations": [
     {
@@ -90,7 +91,7 @@
       "unified_suite_result": "all 210 current boundary nodes included in successful full local suite"
     },
     "local_full": {
-      "result": "passed",
+      "result": "full test suite passed; original preparation receipt incomplete",
       "mode": "local",
       "head": "5c796eca68c1e8956cb0cea47b1c74e5471dfd04",
       "tree": "3e5779b0d639731bbd7418572a9f201cae21ac50",
@@ -120,14 +121,51 @@
       "summary_sha256": "aef68d61f87778e0ae194ba21e66fbd14bdac8ef070c3ea0226511946bdad8c5",
       "junit_sha256": "57aca3ae957e61ecec8f2d34c8ca17bc11986dfc7b354aba9600a541eff7e7a2",
       "pytest_log_sha256": "db7649da5d47678be694817a0b93cc70b3d1b5b32c534e6f6347a8b3da8cf887",
-      "hosted_matrix_attestation": false
+      "hosted_matrix_attestation": false,
+      "full_local_validation_attested": false,
+      "preparation_receipt_gap": {
+        "file": "pip-check-exit.json",
+        "exit_code": null,
+        "incomplete": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 0,
+        "finding": "prepare.json and summary.json report success, but the original dependency-check completion is not substantiated by retained raw evidence. Original files remain unchanged; cause not established.",
+        "independent_review": "p4w01-local-evidence-review.json",
+        "summary_pass_flag_is_not_sufficient": true
+      },
+      "separate_dependency_recheck": {
+        "head": "d0a8b6df23916c8e75fa9d98e29d1ca58fd349e0",
+        "clean": true,
+        "same_pinned_environment": true,
+        "driver": "current run() implementation",
+        "pip_check_exit": {
+          "exit_code": 0,
+          "incomplete": false,
+          "interrupted": false,
+          "timed_out": false,
+          "timeout_seconds": 180
+        },
+        "result": "No broken requirements found.",
+        "evidence_directory": "p4w01-pip-recheck-01",
+        "raw_sha256": {
+          "binding.json": "66c4861be7f5a9bab9cf39efe941d7f0f9e46bbb75431bb51353327b934d28bc",
+          "installed-exit.json": "37b18d2e9207b00f0fd7332c77d886594bccb86fe80254451804e1c105dc88f7",
+          "installed-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "installed.log": "df655c13ea5e45ccbdcc9b0c42666aaff6c179831e413af89ba03b1e58599c19",
+          "pip-check-exit.json": "37b18d2e9207b00f0fd7332c77d886594bccb86fe80254451804e1c105dc88f7",
+          "pip-check-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pip-check.log": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+          "scope.json": "623b5fe708bc4258239e88ae3b062cf48d3042ed4e696dcef7dbd2c71fe3d972"
+        },
+        "limitation": "Separate supplemental check only; does not repair or retrospectively attest the original incomplete receipt."
+      }
     },
     "hosted_four_profiles": {
       "status_at_publication": "pending",
       "record_location": "exact-head implementation PR checks and raw run artifacts",
       "note": "Subsequent hosted results are recorded externally, without a self-referential evidence commit. Local validation is not a hosted attestation."
     },
-    "cross_review": "completed with recorded fixes; independent reviewer tree finding addressed by root and direct regression tests",
+    "cross_review": "Implementation review and independent full-test/source/install evidence checks completed; original local pip-check receipt gap retained and separately rechecked.",
     "migrated_six_files": {
       "result": "passed",
       "tests": 128,
@@ -136,6 +174,19 @@
       "collection_nodes": 128,
       "collection_subprocess_calls": 0,
       "scope": "V04-V07, T04, T09 working-tree diagnostics"
+    },
+    "preparation_reconciliation_fix": {
+      "result": "passed",
+      "tests": 45,
+      "successful_subtests": 113,
+      "elapsed_seconds": 3.32,
+      "scope": "Entire V03 file after narrow raw preparation receipt reconciliation change; local working-tree diagnostic",
+      "clean": false,
+      "base_head": "d0a8b6df23916c8e75fa9d98e29d1ca58fd349e0",
+      "original_raw_evidence_rejected": "preparation_subprocess_not_successful:pip-check",
+      "supplemental_complete_records_accepted": true,
+      "log_sha256": "618d9c06cf1c64b5bb57eb1b56511661622cd3e7631142ce323f4287b441c473",
+      "junit_sha256": "52fcca0fad4c3c4d48dcf0318452a3ac54fb07f0921d52e499b8f1ba872b51fc"
     }
   },
   "failures_and_repairs": [
@@ -163,6 +214,11 @@
       "finding": "Preserving an audit_file definition alone did not prevent later name rebinding.",
       "repair": "Reject duplicate definitions and assignment/import/exception/pattern rebinding; reject current forbidden effects in each changed active product snapshot.",
       "verification": "passed in the final unified local suite; earlier attempt and focused diagnostic logs retained"
+    },
+    {
+      "finding": "Independent review found original local pip-check exit receipt incomplete while prepare/summary reported success. The cause of that raw gap is unknown; separately, evidence_report trusted prepare.ok without reconciling dependency command exits.",
+      "repair": "Preserve original raw evidence and qualified claims; add full-route raw preparation exit reconciliation and positive/negative regression coverage. Keep documentation route free of dependency execution. A separate same-environment pip check is supplemental only.",
+      "verification": "V03: 45 tests and 113 successful subtests, 3.32 seconds, exit 0. Original incomplete pip-check receipt is rejected by corrected validator; separate complete supplemental records accepted. Actual final hosted head evidence recorded externally on the implementation PR."
     }
   ],
   "remaining": {

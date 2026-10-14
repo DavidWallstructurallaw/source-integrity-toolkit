@@ -593,6 +593,22 @@ def emit_summary(evidence, summary):
             output.write("## Current Phase 4 verification\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
 
 
+def reconcile_preparation_commands(evidence, *, local=False):
+    """A stage success claim cannot replace its actual subprocess receipts."""
+    names = (("installed", "pip-check") if local else
+             ("venv", "pip-version", "download", "install", "pip-check", "installed"))
+    for name in names:
+        try:
+            record = json.loads((evidence / (name + "-exit.json")).read_bytes(), object_pairs_hook=unique)
+        except (OSError, UnicodeError, ValueError) as exc:
+            raise ValueError("preparation_subprocess_receipt_invalid:" + name) from exc
+        require(type(record) is dict and type(record.get("exit_code")) is int and
+                record["exit_code"] == 0 and record.get("timed_out") is False and
+                record.get("interrupted") is False and record.get("incomplete") is False,
+                "preparation_subprocess_not_successful:" + name)
+    return list(names)
+
+
 def evidence_report(base, evidence, *, local=False):
     summary = {"scope": "Current Phase 4 verification", "mode": "local" if local else "hosted",
                "pass": False, "full_suite": False, "hosted_matrix_attestation": False}
@@ -612,6 +628,8 @@ def evidence_report(base, evidence, *, local=False):
         prepared, tested = (bound_record(evidence, name, binding) for name in ("prepare.json", "test.json"))
         require(prepared.get("ok") is True and tested.get("ok") is True and
                 prepared.get("profile") == tested.get("profile") == risk["profile"], "required_stage_incomplete")
+        if risk["profile"] == "full":
+            summary["preparation_commands_completed"] = reconcile_preparation_commands(evidence, local=local)
         after = tracked_bytes()
         save(evidence / "tracked-after.json", after)
         summary["tracked_bytes_unchanged"] = json.loads((evidence / "tracked-before.json").read_bytes()) == after
@@ -624,6 +642,10 @@ def evidence_report(base, evidence, *, local=False):
         summary["guards_pass"] = True
         if risk["profile"] == "documentation":
             validate_documentation()
+            require(prepared.get("dependency_install_performed") is False and
+                    not any((evidence / (name + "-exit.json")).exists() for name in
+                            ("venv", "pip-version", "download", "install", "pip-check", "installed")),
+                    "unexpected_preparation_execution_on_documentation_route")
             require(tested.get("full_suite") is False and tested.get("collection_performed") is False,
                     "documentation_claimed_full_suite")
             require(not any((evidence / name).exists() for name in ("junit.xml", "collection.json", "pytest-exit.json")),
@@ -956,6 +978,105 @@ class DriverEvidenceTests(unittest.TestCase):
         self.assertIs(tested["full_suite"], False)
         self.assertIs(tested["collection_performed"], False)
         self.assertFalse((evidence / "junit.xml").exists())
+
+    def test_full_summary_reconciles_raw_preparation_despite_successful_stage_claims(self):
+        """Valid later-stage evidence cannot repair a missing earlier exit."""
+        for local in (True, False):
+            evidence = self.workspace()
+            binding = {"head": "a" * 40, "base": "b" * 40}
+            save(evidence / "binding.json", binding)
+            save(evidence / "preflight.json", {"binding": binding, "ok": True})
+            save(evidence / "prepare.json", {"binding": binding, "ok": True,
+                "profile": "full", "dependency_install_performed": not local})
+            save(evidence / "test.json", {"binding": binding, "ok": True, "profile": "full"})
+            save(evidence / "tracked-before.json", {})
+            nodes = [
+                "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+                "tests/integration/test_analytical_installed_runtime.py::test_clean_installed_analysis_original_heroes_and_completed_finite_case",
+            ]
+            save(evidence / "collection.json", {"binding": binding, "nodes": nodes,
+                "count": 2, "test_files": [node.split("::")[0] for node in nodes], "scopes": list(ALL_SCOPES)})
+            document = ET.Element("testsuites")
+            suite = ET.SubElement(document, "testsuite", tests="2", failures="0", errors="0", skipped="0")
+            for node in nodes:
+                parts = node.split("::")
+                ET.SubElement(suite, "testcase", classname=".".join(
+                    [parts[0][:-3].replace("/", "."), *parts[1:-1]]), name=parts[-1])
+            (evidence / "junit.xml").write_bytes(ET.tostring(document))
+            (evidence / "pytest.log").write_text("2 passed\n", encoding="utf-8")
+            complete = {"exit_code": 0, "timed_out": False, "interrupted": False,
+                        "incomplete": False, "timeout_seconds": 180}
+            save(evidence / "pytest-exit.json", {**complete, "timeout_seconds": 2400})
+            names = (["installed", "pip-check"] if local else
+                     ["venv", "pip-version", "download", "install", "pip-check", "installed"])
+            for name in names:
+                save(evidence / (name + "-exit.json"), complete)
+            archives = [{"name": name} for name in ("a.tar.gz", "a.whl", "b.whl")]
+            with mock.patch(__name__ + ".current_binding", return_value=binding), \
+                    mock.patch(__name__ + ".selected_profile", return_value=(binding, {"profile": "full"})), \
+                    mock.patch(__name__ + ".archive_inventories", return_value=archives), \
+                    mock.patch(__name__ + ".tracked_bytes", return_value={}), \
+                    mock.patch(__name__ + ".guard_command", return_value=["synthetic-guard"]), \
+                    mock.patch(__name__ + ".run"), \
+                    mock.patch(__name__ + ".policy"), \
+                    mock.patch(__name__ + ".entry_and_scope"), \
+                    mock.patch(__name__ + ".installed_receipts", return_value={}), \
+                    mock.patch(__name__ + ".emit_summary", side_effect=lambda path, value: save(path / "summary.json", value)):
+                evidence_report(evidence / "work", evidence, local=local)
+                positive = json.loads((evidence / "summary.json").read_bytes())
+                self.assertIs(positive["pass"], True)
+                self.assertEqual(positive["preparation_commands_completed"], names)
+                for name in names:
+                    path = evidence / (name + "-exit.json")
+                    mutations = [None, b"{", b"[]", b'{"exit_code":0,"exit_code":7}',
+                        json.dumps({**complete, "exit_code": False}).encode(),
+                        json.dumps({**complete, "exit_code": 7}).encode(),
+                        json.dumps({**complete, "exit_code": None, "incomplete": True}).encode(),
+                        json.dumps({**complete, "timed_out": True}).encode(),
+                        json.dumps({**complete, "interrupted": True}).encode(),
+                        json.dumps({**complete, "incomplete": True}).encode(),
+                        json.dumps({key: value for key, value in complete.items() if key != "incomplete"}).encode()]
+                    for index, raw in enumerate(mutations):
+                        with self.subTest(local=local, command=name, mutation=index):
+                            path.unlink()
+                            if raw is not None:
+                                path.write_bytes(raw)
+                            with self.assertRaisesRegex(ValueError, "^preparation_subprocess_"):
+                                evidence_report(evidence / "work", evidence, local=local)
+                            self.assertIs(json.loads((evidence / "summary.json").read_bytes())["pass"], False)
+                            self.assertIs(json.loads((evidence / "prepare.json").read_bytes())["ok"], True)
+                            save(path, complete)
+                evidence_report(evidence / "work", evidence, local=local)
+                self.assertIs(json.loads((evidence / "summary.json").read_bytes())["pass"], True)
+
+    def test_documentation_summary_has_no_preparation_execution(self):
+        evidence = self.workspace()
+        binding = {"head": "a" * 40}
+        save(evidence / "binding.json", binding)
+        save(evidence / "prepare.json", {"binding": binding, "ok": True,
+            "profile": "documentation", "dependency_install_performed": False})
+        save(evidence / "test.json", {"binding": binding, "ok": True,
+            "profile": "documentation", "full_suite": False, "collection_performed": False})
+        save(evidence / "tracked-before.json", {})
+        with mock.patch(__name__ + ".current_binding", return_value=binding), \
+                mock.patch(__name__ + ".selected_profile", return_value=(binding, {"profile": "documentation"})), \
+                mock.patch(__name__ + ".archive_inventories", return_value=[]), \
+                mock.patch(__name__ + ".tracked_bytes", return_value={}), \
+                mock.patch(__name__ + ".guard_command", return_value=["synthetic-guard"]), \
+                mock.patch(__name__ + ".run"), \
+                mock.patch(__name__ + ".policy"), \
+                mock.patch(__name__ + ".entry_and_scope"), \
+                mock.patch(__name__ + ".validate_documentation"), \
+                mock.patch(__name__ + ".reconcile_preparation_commands", side_effect=AssertionError("unexpected dependencies")), \
+                mock.patch(__name__ + ".emit_summary", side_effect=lambda path, value: save(path / "summary.json", value)):
+            evidence_report(evidence / "work", evidence)
+            summary = json.loads((evidence / "summary.json").read_bytes())
+            self.assertIs(summary["pass"], True)
+            self.assertIs(summary["full_suite"], False)
+            save(evidence / "pip-check-exit.json", {"exit_code": 0, "incomplete": False})
+            with self.assertRaisesRegex(ValueError, "unexpected_preparation_execution_on_documentation_route"):
+                evidence_report(evidence / "work", evidence)
+            self.assertIs(json.loads((evidence / "summary.json").read_bytes())["pass"], False)
 
     def test_documentation_still_requires_readable_nonempty_records(self):
         root = self.workspace()
