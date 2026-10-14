@@ -1,7 +1,7 @@
 {
   "phase": "P4",
   "current_unit": "P4-W01",
-  "status": "implementation_in_validation",
+  "status": "P4-W01 implementation complete; full local validation passed",
   "owner_authorization": {
     "instruction": "批准计划，启动 P4-W01",
     "date": "2026-10-14",
@@ -86,10 +86,47 @@
         "elapsed_seconds": 5.2,
         "scope": "audit_file body/decorator/rebinding, restored reporting effects, raw root/nested tree corruption"
       },
-      "current_test_nodes": 210
+      "current_test_nodes": 210,
+      "unified_suite_result": "all 210 current boundary nodes included in successful full local suite"
     },
-    "local_full": "pending on fixed checkpoint",
-    "hosted_four_profiles": "pending",
+    "local_full": {
+      "result": "passed",
+      "mode": "local",
+      "head": "5c796eca68c1e8956cb0cea47b1c74e5471dfd04",
+      "tree": "3e5779b0d639731bbd7418572a9f201cae21ac50",
+      "same_tree_remote_checkpoint": "d6bc330769d5fe382778521b24dec465a70f9cd6",
+      "python": "3.12.14",
+      "tests": 3772,
+      "successful_subtests": 445,
+      "test_files": 73,
+      "elapsed_suite_seconds": 1285.41,
+      "identities_match": true,
+      "tracked_bytes_unchanged": true,
+      "guards_pass": true,
+      "clean": true,
+      "archive_count": 6,
+      "installed_receipts": {
+        "w08": {
+          "reason": "Retained local unittest deletes its temporary receipt; exact JUnit result is required",
+          "receipt_persisted": false
+        },
+        "w14": {
+          "distributions": 3,
+          "modules": 48,
+          "receipt_persisted": true,
+          "sha256": "5d7bb0500313563da7c819c114e0d9e7197029da039a8512a7c50224b4ffa4a7"
+        }
+      },
+      "summary_sha256": "aef68d61f87778e0ae194ba21e66fbd14bdac8ef070c3ea0226511946bdad8c5",
+      "junit_sha256": "57aca3ae957e61ecec8f2d34c8ca17bc11986dfc7b354aba9600a541eff7e7a2",
+      "pytest_log_sha256": "db7649da5d47678be694817a0b93cc70b3d1b5b32c534e6f6347a8b3da8cf887",
+      "hosted_matrix_attestation": false
+    },
+    "hosted_four_profiles": {
+      "status_at_publication": "pending",
+      "record_location": "exact-head implementation PR checks and raw run artifacts",
+      "note": "Subsequent hosted results are recorded externally, without a self-referential evidence commit. Local validation is not a hosted attestation."
+    },
     "cross_review": "completed with recorded fixes; independent reviewer tree finding addressed by root and direct regression tests",
     "migrated_six_files": {
       "result": "passed",
@@ -105,27 +142,27 @@
     {
       "finding": "Top-level stage lookup executed Git during test collection.",
       "repair": "Moved stage lookup to cached runtime helpers; zero-Git collection witnesses retained.",
-      "verification": "zero-Git collection positive/poisoned/no-.git controls passed"
+      "verification": "passed in the final unified local suite; earlier attempt and focused diagnostic logs retained"
     },
     {
       "finding": "First boundary run retained old CLI/metadata/error-precedence expectations; Git stripped invalid trailing footer spaces in the fixture.",
       "repair": "Update expected current interface from independently read raw commit bytes; preserve verbatim footer input and check actual bytes; retain every rejection guarantee.",
-      "verification": "passed in boundary retry or latest focused regressions; final unified suite pending"
+      "verification": "passed in the final unified local suite; earlier attempt and focused diagnostic logs retained"
     },
     {
       "finding": "Whole-file path scope alone omitted the narrow mixed-file semantic preservation and did not reject restored intermediate workflow or audit_file edits.",
       "repair": "Compare accepted unaffected mixed-file segments without executing historical tests; enforce workflow security fields and exact audit_file on each snapshot.",
-      "verification": "passed in boundary retry or latest focused regressions; final unified suite pending"
+      "verification": "passed in the final unified local suite; earlier attempt and focused diagnostic logs retained"
     },
     {
       "finding": "Pretty Git tree listing was not itself hash-verified.",
       "repair": "Parse recursively hash-verified raw tree objects rooted at the verified commit; direct tree-response corruption counterexample added.",
-      "verification": "passed in boundary retry or latest focused regressions; final unified suite pending"
+      "verification": "passed in the final unified local suite; earlier attempt and focused diagnostic logs retained"
     },
     {
       "finding": "Preserving an audit_file definition alone did not prevent later name rebinding.",
       "repair": "Reject duplicate definitions and assignment/import/exception/pattern rebinding; reject current forbidden effects in each changed active product snapshot.",
-      "verification": "six focused latest-guard regressions passed"
+      "verification": "passed in the final unified local suite; earlier attempt and focused diagnostic logs retained"
     }
   ],
   "remaining": {
@@ -133,5 +170,7 @@
     "public_api_and_reports": "not implemented",
     "file_native_cli_audit_release": "deferred"
   },
-  "authority_notice": "Evidence only. This file cannot grant paths, stages, approvals or acceptance."
+  "authority_notice": "Evidence only. This file cannot grant paths, stages, approvals or acceptance.",
+  "validated_at_utc": "2026-10-14T08:20:10.974170+00:00",
+  "publication_note": "The published checkpoint d6bc330769d5fe382778521b24dec465a70f9cd6 has exactly the tested local tree. The next commit updates this evidence file only. Neither checkpoint grants W02 execution, phase acceptance, merge or release."
 }
