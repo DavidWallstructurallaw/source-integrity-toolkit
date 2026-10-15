@@ -168,3 +168,132 @@ class _AnalysisAborted(Exception):
 
     def __repr__(self) -> str:
         return "_AnalysisAborted()"
+
+
+# Phase 4 transport declarations. These are not report reasons or audit entry
+# points. The earlier private stopping classes above retain their exact meaning.
+def _transport_require(ok: bool) -> None:
+    if not ok:
+        raise TypeError("invalid_audit_transport")
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class AuditAbort(Exception):
+    """No conforming report can be delivered; retain only established states.
+
+    Publication is fixed to not_published in the in-memory Phase 4 surface.
+    Source records and original exceptions are never transport arguments.
+    """
+    processing_state: str
+    input_validation_state: str
+    reason_code: str
+    publication_state: str = "not_published"
+
+    def __post_init__(self) -> None:
+        _transport_require(type(self.processing_state) is str)
+        _transport_require(type(self.input_validation_state) is str)
+        _transport_require(type(self.reason_code) is str)
+        _transport_require(type(self.publication_state) is str)
+        _transport_require(self.input_validation_state in ("accepted", "not_completed"))
+        _transport_require(self.publication_state == "not_published")
+        _transport_require((self.processing_state, self.reason_code) in (
+            ("interrupted", "resource_limit_reached"), ("failed", "execution_failed")))
+
+    @property
+    def args(self) -> tuple:
+        return ("Audit could not be completed.",)
+
+    @property
+    def safe_message(self) -> str:
+        return "Audit could not be completed."
+
+    def __str__(self) -> str:
+        return "Audit could not be completed."
+
+    def __repr__(self) -> str:
+        return "AuditAbort()"
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class AuditCancelled(Exception):
+    """Caller cancellation, with no fabricated execution Reason code."""
+    input_validation_state: str
+    publication_state: str = "not_published"
+
+    def __post_init__(self) -> None:
+        _transport_require(type(self.input_validation_state) is str)
+        _transport_require(type(self.publication_state) is str)
+        _transport_require(self.input_validation_state in ("accepted", "not_completed"))
+        _transport_require(self.publication_state == "not_published")
+
+    @property
+    def args(self) -> tuple:
+        return ("Audit cancelled.",)
+
+    @property
+    def safe_message(self) -> str:
+        return "Audit cancelled."
+
+    def __str__(self) -> str:
+        return "Audit cancelled."
+
+    def __repr__(self) -> str:
+        return "AuditCancelled()"
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class AuditUsageError(ValueError):
+    """A fixed, payload-free trusted-invocation failure, before input access."""
+    @property
+    def code(self) -> str:
+        return "invalid_invocation"
+
+    @property
+    def args(self) -> tuple:
+        return ("Invalid audit invocation.",)
+
+    @property
+    def safe_message(self) -> str:
+        return "Invalid audit invocation."
+
+    def __str__(self) -> str:
+        return "Invalid audit invocation."
+
+    def __repr__(self) -> str:
+        return "AuditUsageError()"
+
+
+class _ReportFinalizationPort(_FinalizationPort, Protocol):
+    """Declaration for the same invocation's restricted report finalization.
+
+    Implemented only by project-owned runtime objects in the later composition
+    unit. No clock, I/O, caller callback, new ledger or configurable limit is
+    exposed. Output accounting is separate for the two fixed encodings.
+    """
+    def charge_output(self, encoding: str, byte_count: int) -> None:
+        ...
+
+    def reserve_report_witness(self, witnesses: int, members: int) -> None:
+        ...
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _ReportAborted(Exception):
+    """Private output-limit propagation without changing earlier stop classes."""
+    stop: _PreparationStop
+    limit_id: str | None = None
+
+    def __post_init__(self) -> None:
+        _transport_require(type(self.stop) is _PreparationStop)
+        _transport_require(self.stop.input_state in ("accepted", "not_completed"))
+        if self.stop.execution_state == "interrupted":
+            _transport_require(type(self.limit_id) is str and
+                               self.limit_id in _ANALYSIS_LIMIT_IDS + ("WU9-L14",))
+        else:
+            _transport_require(self.stop.execution_state == "failed" and self.limit_id is None)
+
+    def __str__(self) -> str:
+        return "report_finalization_stopped"
+
+    def __repr__(self) -> str:
+        return "_ReportAborted()"

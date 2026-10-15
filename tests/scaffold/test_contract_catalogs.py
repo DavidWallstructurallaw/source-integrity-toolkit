@@ -242,20 +242,24 @@ class ContractCatalogTests(unittest.TestCase):
         self.assertEqual(set(flat), set(groups[2]["ids"]))
 
     def test_schemas_are_documentation_only(self):
-        # Historical node name retained; bundle delivered, public report schema reserved.
+        # Historical node name retained; both repository structural schemas delivered.
         bundle_delivered = True
         paths = {p.relative_to(ROOT / "schemas").as_posix() for p in (ROOT / "schemas").rglob("*") if p.is_file()}
-        expected = {"README.md", "bundle/README.md", "report/README.md"}
+        expected = {"README.md", "bundle/README.md", "report/README.md",
+                    "report/sit-report-0.1.schema.json"}
         if bundle_delivered:
             expected.add("bundle/sit-bundle-0.1.schema.json")
         self.assertEqual(paths, expected)
         for name, contract in (("bundle", "sit-bundle/0.1"), ("report", "sit-report/0.1")):
             text = (ROOT / "schemas" / name / "README.md").read_text(encoding="utf-8")
             self.assertIn(contract, text)
-            if name == "report" or not bundle_delivered:
+            if name == "report":
+                self.assertIn("structural schema delivered", text)
+                self.assertIn("public audit execution remains unavailable", text)
+            elif not bundle_delivered:
                 self.assertIn("executable schema not delivered", text)
-        if bundle_delivered:
-            schema = json.loads((ROOT / "schemas/bundle/sit-bundle-0.1.schema.json").read_bytes(), object_pairs_hook=pairs_unique)
+        for name in (("bundle", "report") if bundle_delivered else ("report",)):
+            schema = json.loads((ROOT / f"schemas/{name}/sit-{name}-0.1.schema.json").read_bytes(), object_pairs_hook=pairs_unique)
             self.assertEqual(schema["$schema"], "https://json-schema.org/draft/2020-12/schema")
             stack = [schema]
             while stack:

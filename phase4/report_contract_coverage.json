@@ -1,12 +1,12 @@
 {
   "format": "sit-phase4-report-coverage/0.1",
-  "unit": "P4-W01",
-  "status": "pending_public_report_skeleton",
+  "unit": "P4-W02",
+  "status": "W02 representation contracts and independent exact reference verified; public pipeline/rendering obligations remain pending",
   "purpose": "Review-only source and obligation map. It grants no authority, selects no tests and is not imported by product code.",
   "phase4_plan": {
     "path": "PHASE_4_PLAN.md",
     "sha256": "5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
-    "owner_authorization": "Exact plan approved; execution authorized for P4-W01 only."
+    "owner_authorization": "Exact plan approved; user subsequently instructed 启动 P4-W02. Execution is authorized through P4-W02 only."
   },
   "accepted_core_baseline": {
     "head": "fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c",
@@ -11726,18 +11726,32 @@
       "source": "OBSERVABILITY_AND_REPORTING.md §§12.2,16.1,16.8; PHASE_4_PLAN.md §4.1",
       "planned_unit": "P4-W02",
       "required_behavior": "Exactly 16 root members and only permitted report/run/input-state pairings; diagnostic envelopes have empty analytical arrays; actual installed tool identity and fixed unknown times.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W02 declaration/local contract verified; actual public envelope execution pending W07/W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_contract.py::test_each_of_sixteen_root_members_is_required_and_typed",
+        "tests/contract/test_report_contract.py::test_all_four_diagnostic_state_combinations_preserve_actual_acceptance",
+        "tests/contract/test_report_contract.py::test_reference_envelope_is_accepted_by_both_independent_contract_surfaces"
+      ],
+      "execution_evidence": [
+        "p4w02-targeted-combined-01.log",
+        "p4w02-targeted-combined-01.xml"
+      ]
     },
     {
       "clause": "frozen_public_access",
       "source": "PHASE_4_PLAN.md §4.1",
       "planned_unit": "P4-W02",
       "required_behavior": "Read-only root attributes, immutable Mapping nested objects, tuple arrays, bounded native scalar types, immutable cached encoded bytes; no raw source, budget, prepared tree or private backing exposed.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W02 declaration and private immutable capture verified; delivered AuditReport and encoded caches pending W05-W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_contract.py::test_immutable_document_is_deeply_detached_and_has_no_mutable_mapping_backing",
+        "tests/contract/test_report_contract.py::test_public_report_type_is_declared_without_a_fabricated_success_constructor",
+        "tests/contract/test_report_contract.py::test_hostile_protocols_cannot_run_during_contract_or_transport_rejection"
+      ],
+      "execution_evidence": [
+        "p4w02-targeted-combined-01.log",
+        "p4w02-targeted-combined-01.xml"
+      ]
     },
     {
       "clause": "scope_and_population",
@@ -13657,9 +13671,1099 @@
     }
   ],
   "remaining_limits": [
-    "All public-envelope and rendering assertions are pending; schema/catalog membership is not behavior evidence.",
+    "W02 defines and directly tests representation contracts only. All 228 public-pipeline and rendering obligation rows remain pending until their actual behavior is exercised; schema membership or a constructed envelope does not close them.",
     "Original hero interruption under unchanged resource budgets is not full-field public completion.",
     "File/CLI/native/publication and release clauses remain separately deferred.",
     "Inherited private-core evidence and historical failures retain their original scopes; this map does not rewrite acceptance history."
-  ]
+  ],
+  "representation_choices": [
+    {
+      "area": "public_type",
+      "source": "PHASE_4_PLAN.md §4.1 and P4-W02 stop point",
+      "choice": "AuditReport declares 16 read-only named attributes and two cached-byte accessors. Its ordinary constructor rejects; no completion factory or public audit delivery exists in W02. Private validation/freezing accepts only exact bounded JSON-domain values through a project-owned accounting port."
+    },
+    {
+      "area": "input_reference",
+      "source": "OBSERVABILITY_AND_REPORTING.md §16.6; existing contracts/results.py _InputRef",
+      "choice": "Typed input links retain collection, identifier and nullable selector. Report-local references remain typed strings with the eight existing prefixes; text collision does not merge namespaces."
+    },
+    {
+      "area": "tool_identity",
+      "source": "REPOSITORY_ARCHITECTURE.md §18.3; pyproject.toml actual version",
+      "choice": "tool_name uses the adopted product title Source Integrity Toolkit; tool_version remains actual 0.1.0.dev0. This text is an implementation spelling of the existing identity, not a new metric or schema root."
+    },
+    {
+      "area": "profile_and_clock",
+      "source": "REPOSITORY_ARCHITECTURE.md §18.3; GOVERNANCE_AND_HANDOFF.md §22.2",
+      "choice": "run.qualifications fixes SIT-RP-0.1 and an explicit omitted-clock statement. Both run TimeValues are unknown/null/null with not_recorded_by_SIT-RP-0.1. Source-native TimeValue precision and offsets remain separate."
+    },
+    {
+      "area": "release_limits",
+      "source": "OBSERVABILITY_AND_REPORTING.md §16.8; PHASE_4_PLAN.md §4.4",
+      "choice": "Six fixed tool-owned statements preserve caller-supplied/offline basis, no external authentication, no live/content detection, no global score, no intervention and scope-specific unknown/qualification limits. Source text cannot replace the statements."
+    },
+    {
+      "area": "diagnostic_reasons",
+      "source": "OBSERVABILITY_AND_REPORTING.md §§12.2,16.1",
+      "choice": "Only the specified eight analytical arrays must be empty in diagnostic envelopes. A safe diagnostic Reason may have null scope_ref and empty input/affected-result links; parsed metadata must retain its acceptance limitations."
+    },
+    {
+      "area": "private_scope_anchor",
+      "source": "PHASE_4_PLAN.md §4.2; REPOSITORY_ARCHITECTURE.md §18.1",
+      "choice": "Private operation_anchor participates in later semantic identity. It is not added as a public Scope key; existing target references and typed payload carry the required operation meaning."
+    },
+    {
+      "area": "finding_projection",
+      "source": "OBSERVABILITY_AND_REPORTING.md §§18.1,19.2; PHASE_4_PLAN.md §4.2",
+      "choice": "Private result_refs/native_records are not copied into public Finding. Result witness_refs use Finding IDs and public Finding.witness carries finite evidence. No root witnesses array exists."
+    },
+    {
+      "area": "domain_projection",
+      "source": "OBSERVABILITY_AND_REPORTING.md §15; PHASE_4_PLAN.md §4.2",
+      "choice": "Public domains have the specified six keys, excluding not_applicable_result_refs. Actual per-inquiry aggregation into five global domains remains W03 work."
+    },
+    {
+      "area": "exact_numbers",
+      "source": "OBSERVABILITY_AND_REPORTING.md §16.5; REPOSITORY_ARCHITECTURE.md §§17.2,18.3",
+      "choice": "Runtime scalar integers are exact built-in int in the portable range; bool is never a count. Fractions keep original integer numerator/denominator. Optional display_decimal is omitted from this JSON profile. JSON Schema mathematical integer semantics are distinct from Python exact-type capture."
+    },
+    {
+      "area": "contract_schema_boundary",
+      "source": "PHASE_4_PLAN.md §§4.2,7.3",
+      "choice": "The report schema is a closed repository development contract with local references. Installed runtime does not read it or source files. No package-data, dependencies, input schema, input semantics or native file API change is made."
+    },
+    {
+      "area": "transport",
+      "source": "REPOSITORY_ARCHITECTURE.md §18.4; GOVERNANCE_AND_HANDOFF.md §22.3; PHASE_4_PLAN.md §4.1",
+      "choice": "AuditAbort exposes fixed processing/input/reason/publication states; AuditCancelled preserves input/publication state without a report reason; AuditUsageError uses invalid_invocation and fixed safe text. Phase 4 publication_state is not_published. Existing private stops remain unchanged."
+    },
+    {
+      "area": "bounded_declarations",
+      "source": "PHASE_4_PLAN.md P4-W02; REPOSITORY_ARCHITECTURE.md §19",
+      "choice": "Report validation/freezing prospectively charges a trusted restricted port. Output/witness port methods are declarations only; runtime/resources, output-limit wiring and the single-ledger public composition remain later units."
+    }
+  ],
+  "record_disclosure_projection_definitions": [
+    {
+      "field_key": "origin_boundary_disclosures",
+      "family": "SIT-M002",
+      "frozen_private_source": "analysis/origins.py:711-728",
+      "private_shape": {
+        "data": "AssessmentData",
+        "scope": "Scope",
+        "provenance": "Provenance",
+        "lifecycle_state": "enum_lifecycle_state",
+        "gaps?": {
+          "array": "Gap"
+        },
+        "qualification_state": {
+          "enum": [
+            "met",
+            "unmet"
+          ]
+        },
+        "reason_codes": {
+          "array": "ReasonCode"
+        }
+      },
+      "public_schema_definition": "OriginBoundaryFields",
+      "public_schema_pointer": "/$defs/OriginBoundaryFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "native_record",
+        "qualification_state",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record",
+          "qualification_state",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "ancestry_gap_disclosures",
+      "family": "SIT-M007",
+      "frozen_private_source": "analysis/origins.py:738-783",
+      "private_shape": {
+        "seed_ref": "Identifier",
+        "dimension": "enum_dimension",
+        "gaps": {
+          "array": {
+            "source": {
+              "collection": "str",
+              "identifier": "Identifier",
+              "selector": "str"
+            },
+            "reason_codes": {
+              "array": "ReasonCode"
+            }
+          }
+        },
+        "frontiers": {
+          "array": "Record (unresolved_reference)"
+        },
+        "coverage": {
+          "array": {
+            "coverage_ref": "Identifier",
+            "qualification_state": {
+              "enum": [
+                "met",
+                "unmet"
+              ]
+            },
+            "reason_codes": {
+              "array": "ReasonCode"
+            }
+          }
+        },
+        "witness_paths": {
+          "array": {
+            "nodes": {
+              "array": "Identifier"
+            },
+            "assertions": {
+              "array": "Identifier"
+            }
+          }
+        }
+      },
+      "public_schema_definition": "AncestryGapFields",
+      "public_schema_pointer": "/$defs/AncestryGapFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "coverage",
+        "dimension",
+        "frontiers",
+        "gaps",
+        "seed_ref",
+        "witness_paths"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "coverage",
+          "dimension",
+          "frontiers",
+          "gaps",
+          "seed_ref",
+          "witness_paths"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "independence_assessment_disclosures",
+      "family": "SIT-M003",
+      "frozen_private_source": "analysis/process_comparison.py:867-901",
+      "private_shape": {
+        "data": "AssertionData",
+        "scope": "Scope",
+        "provenance": "Provenance",
+        "asserted_at": "TimeValue",
+        "lifecycle_state": "enum_lifecycle_state",
+        "lifecycle_basis_ref_ids": {
+          "array": "Identifier"
+        },
+        "gaps?": {
+          "array": "Gap"
+        },
+        "extensions?": "Extensions [PRIVATE ONLY; never automatic public copy]"
+      },
+      "public_schema_definition": "IndependenceAssessmentFields",
+      "public_schema_pointer": "/$defs/IndependenceAssessmentFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "native_record",
+        "origin_qualification_state",
+        "process_qualification_state",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record"
+        ],
+        [
+          "native_record",
+          "origin_qualification_state",
+          "process_qualification_state",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "evaluator_overlap_disclosures",
+      "family": "SIT-M008",
+      "frozen_private_source": "analysis/evaluator_lineage.py:504-538",
+      "private_shape": {
+        "native_record": "Native = Inquiry | Record | Assertion | EvidenceReference (private full record, PUBLIC MUST SELECT)"
+      },
+      "public_schema_definition": "EvaluatorOverlapFields",
+      "public_schema_pointer": "/$defs/EvaluatorOverlapFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "common_ancestor_refs",
+        "left_object_refs",
+        "matching_family_labels",
+        "missing_family_model_refs",
+        "native_record",
+        "one_sided_ancestry",
+        "right_object_refs",
+        "roles",
+        "roles_complete",
+        "shared_object_refs"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record"
+        ],
+        [
+          "common_ancestor_refs",
+          "left_object_refs",
+          "matching_family_labels",
+          "missing_family_model_refs",
+          "native_record",
+          "one_sided_ancestry",
+          "right_object_refs",
+          "roles",
+          "roles_complete",
+          "shared_object_refs"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "externality_assessment_disclosures",
+      "family": "SIT-M009",
+      "frozen_private_source": "analysis/presence.py:681-705",
+      "private_shape": {
+        "spread_native_record": "Native = Inquiry | Record | Assertion | EvidenceReference (private full record, PUBLIC MUST SELECT)"
+      },
+      "public_schema_definition": "ExternalityAssessmentFields",
+      "public_schema_pointer": "/$defs/ExternalityAssessmentFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "native_record",
+        "qualification_state",
+        "qualified_externality",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record"
+        ],
+        [
+          "native_record",
+          "qualification_state",
+          "qualified_externality",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "externality_stage_links",
+      "family": "SIT-M009",
+      "frozen_private_source": "analysis/presence.py:706-726",
+      "private_shape": {
+        "spread_native_record": "Record (pipeline_record)",
+        "qualification_state": {
+          "enum": [
+            "met",
+            "unmet"
+          ]
+        },
+        "reason_codes": {
+          "array": "ReasonCode"
+        },
+        "externality_subject_refs": {
+          "array": "Identifier"
+        },
+        "mapping_assertion_refs": {
+          "array": "Identifier"
+        }
+      },
+      "public_schema_definition": "ExternalityStageFields",
+      "public_schema_pointer": "/$defs/ExternalityStageFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "externality_subject_refs",
+        "mapping_assertion_refs",
+        "native_record",
+        "qualification_state",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "externality_subject_refs",
+          "mapping_assertion_refs",
+          "native_record",
+          "qualification_state",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "pipeline_stage_disclosures",
+      "family": "SIT-M010",
+      "frozen_private_source": "analysis/presence.py:706-726",
+      "private_shape": {
+        "spread_native_record": "Record (pipeline_record)",
+        "qualification_state": {
+          "enum": [
+            "met",
+            "unmet"
+          ]
+        },
+        "reason_codes": {
+          "array": "ReasonCode"
+        }
+      },
+      "public_schema_definition": "PipelineStageFields",
+      "public_schema_pointer": "/$defs/PipelineStageFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "native_record",
+        "qualification_state",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record",
+          "qualification_state",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "cohort_transition_disclosures",
+      "family": "SIT-M010",
+      "frozen_private_source": "analysis/presence.py:728-738",
+      "private_shape": {
+        "spread_native_record": "Assertion (coverage)",
+        "stage_anchor": {
+          "alternatives": [
+            {
+              "tuple": []
+            },
+            {
+              "tuple": [
+                "run_key:str",
+                "stage_key:str",
+                "enum_stage"
+              ]
+            }
+          ]
+        },
+        "cohort_qualification_state": {
+          "enum": [
+            "met",
+            "unmet"
+          ]
+        },
+        "transition_qualification_state": {
+          "enum": [
+            "met",
+            "unmet"
+          ]
+        },
+        "reason_codes": {
+          "array": "ReasonCode"
+        }
+      },
+      "public_schema_definition": "CohortTransitionFields",
+      "public_schema_pointer": "/$defs/CohortTransitionFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "cohort_qualification_state",
+        "native_record",
+        "reason_codes",
+        "stage_anchor",
+        "transition_qualification_state"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "cohort_qualification_state",
+          "native_record",
+          "reason_codes",
+          "stage_anchor",
+          "transition_qualification_state"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "correction_route_disclosures",
+      "family": "SIT-M011",
+      "frozen_private_source": "analysis/correction_routes.py:455-480",
+      "private_shape": {
+        "native_record": "Native = Inquiry | Record | Assertion | EvidenceReference (private full record, PUBLIC MUST SELECT)"
+      },
+      "public_schema_definition": "CorrectionRouteFields",
+      "public_schema_pointer": "/$defs/CorrectionRouteFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "absence_description",
+        "action_type",
+        "authorized_route_recorded",
+        "authorized_route_state",
+        "declared_route_recorded",
+        "grant_matches_tuple",
+        "grant_qualification_state",
+        "grant_reason_codes",
+        "native_record",
+        "target_ref"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record"
+        ],
+        [
+          "absence_description",
+          "action_type",
+          "authorized_route_recorded",
+          "authorized_route_state",
+          "declared_route_recorded",
+          "native_record",
+          "target_ref"
+        ],
+        [
+          "grant_matches_tuple",
+          "grant_qualification_state",
+          "grant_reason_codes",
+          "native_record"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "correction_case_disclosures",
+      "family": "SIT-M012",
+      "frozen_private_source": "analysis/correction_outcomes.py:448-477",
+      "private_shape": {
+        "native_record": "Native = Inquiry | Record | Assertion | EvidenceReference (private full record, PUBLIC MUST SELECT)"
+      },
+      "public_schema_definition": "CorrectionCaseFields",
+      "public_schema_pointer": "/$defs/CorrectionCaseFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "documentary_state",
+        "explicit_removal",
+        "native_record",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record"
+        ],
+        [
+          "documentary_state",
+          "explicit_removal",
+          "native_record",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "correction_target_change_disclosures",
+      "family": "SIT-M012",
+      "frozen_private_source": "analysis/correction_outcomes.py:491-510",
+      "private_shape": {
+        "native_record": "Native = Inquiry | Record | Assertion | EvidenceReference (private full record, PUBLIC MUST SELECT)",
+        "case_rows": {
+          "array": {
+            "case_ref": "Identifier",
+            "declared": "bool",
+            "selected": "bool",
+            "change_event_refs": {
+              "array": "Identifier"
+            },
+            "qualified_change_event_refs": {
+              "array": "Identifier"
+            },
+            "documentary_state": {
+              "enum": [
+                "met",
+                "unknown"
+              ]
+            },
+            "requested_effect_state": {
+              "enum": [
+                "available",
+                "unavailable"
+              ]
+            },
+            "reason_codes": {
+              "array": "ReasonCode"
+            }
+          }
+        }
+      },
+      "public_schema_definition": "CorrectionTargetChangeFields",
+      "public_schema_pointer": "/$defs/CorrectionTargetChangeFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "case_rows",
+        "native_record"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "case_rows",
+          "native_record"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "reported_capacity_disclosures",
+      "family": "SIT-M012",
+      "frozen_private_source": "analysis/correction_outcomes.py:478-489",
+      "private_shape": {
+        "native_record": "Assertion (capacity)"
+      },
+      "public_schema_definition": "ReportedCapacityFields",
+      "public_schema_pointer": "/$defs/ReportedCapacityFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "documentary_state",
+        "native_record",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record"
+        ],
+        [
+          "documentary_state",
+          "native_record",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "corrective_independence_disclosures",
+      "family": "SIT-M013",
+      "frozen_private_source": "analysis/human_review.py:334-403",
+      "private_shape": {
+        "alternatives": [
+          "independence_assessment_disclosures shape",
+          {
+            "spread_native_record": "Native = Inquiry | Record | Assertion | EvidenceReference (private full record, PUBLIC MUST SELECT)"
+          }
+        ]
+      },
+      "public_schema_definition": "CorrectiveIndependenceFields",
+      "public_schema_pointer": "/$defs/CorrectiveIndependenceFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "contribution_status",
+        "documentary_state",
+        "identity_state",
+        "native_record",
+        "origin_qualification_state",
+        "process_qualification_state",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record"
+        ],
+        [
+          "contribution_status",
+          "documentary_state",
+          "identity_state",
+          "native_record",
+          "reason_codes"
+        ],
+        [
+          "native_record",
+          "origin_qualification_state",
+          "process_qualification_state",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "human_contribution_disclosures",
+      "family": "SIT-M013",
+      "frozen_private_source": "analysis/human_review.py:334-403",
+      "private_shape": {
+        "spread_native_record": "Native = Inquiry | Record | Assertion | EvidenceReference (private full record, PUBLIC MUST SELECT)"
+      },
+      "public_schema_definition": "HumanContributionFields",
+      "public_schema_pointer": "/$defs/HumanContributionFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "contribution_status",
+        "documentary_state",
+        "identity_state",
+        "native_record",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record"
+        ],
+        [
+          "contribution_status",
+          "documentary_state",
+          "identity_state",
+          "native_record",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "anomaly_context_disclosures",
+      "family": "SIT-M014",
+      "frozen_private_source": "analysis/context.py:444-477",
+      "private_shape": {
+        "native_record": "Record | Assertion",
+        "context_records": {
+          "array": "Record | Assertion | EvidenceReference"
+        },
+        "reason_codes": {
+          "array": "ReasonCode"
+        }
+      },
+      "public_schema_definition": "AnomalyContextFields",
+      "public_schema_pointer": "/$defs/AnomalyContextFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "context_records",
+        "native_record",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "context_records",
+          "native_record",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "contestation_disclosures",
+      "family": "SIT-M014",
+      "frozen_private_source": "analysis/context.py:444-477",
+      "private_shape": {
+        "native_record": "Record | Assertion",
+        "context_records": {
+          "array": "Record | Assertion | EvidenceReference"
+        },
+        "reason_codes": {
+          "array": "ReasonCode"
+        }
+      },
+      "public_schema_definition": "ContestationFields",
+      "public_schema_pointer": "/$defs/ContestationFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "context_records",
+        "native_record",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "context_records",
+          "native_record",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "tail_stage_result_links",
+      "family": "SIT-M014",
+      "frozen_private_source": "analysis/context.py:444-454",
+      "private_shape": {
+        "source_result_state": {
+          "enum": [
+            "available",
+            "unavailable",
+            "not_applicable",
+            "not_evaluated"
+          ]
+        },
+        "source_value_kind": {
+          "enum": [
+            "count",
+            "fraction",
+            "completion_interval",
+            "partition",
+            "incidence",
+            "record_disclosures",
+            "witness_collection"
+          ]
+        }
+      },
+      "public_schema_definition": "TailStageResultLinkFields",
+      "public_schema_pointer": "/$defs/TailStageResultLinkFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "source_result_state",
+        "source_value_kind"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "source_result_state",
+          "source_value_kind"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "coverage_disclosures",
+      "family": "SIT-M015",
+      "frozen_private_source": "validation/semantics.py:1017-1038",
+      "private_shape": {
+        "data": "AssessmentData",
+        "scope": "Scope",
+        "provenance": "Provenance",
+        "lifecycle_state": "enum_lifecycle_state",
+        "gaps?": {
+          "array": "Gap"
+        },
+        "qualification_state": {
+          "enum": [
+            "met",
+            "unmet"
+          ]
+        },
+        "reason_codes": {
+          "array": "ReasonCode"
+        }
+      },
+      "public_schema_definition": "CoverageFields",
+      "public_schema_pointer": "/$defs/CoverageFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "native_record",
+        "qualification_state",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record",
+          "qualification_state",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    },
+    {
+      "field_key": "documentary_basis_gap_disclosures",
+      "family": "SIT-M015",
+      "frozen_private_source": "validation/semantics.py:1017-1038",
+      "private_shape": {
+        "provenance": "Provenance",
+        "gaps?": {
+          "array": "Gap"
+        },
+        "qualification_state": {
+          "enum": [
+            "met",
+            "unmet"
+          ]
+        },
+        "reason_codes": {
+          "array": "ReasonCode"
+        }
+      },
+      "public_schema_definition": "DocumentaryBasisGapFields",
+      "public_schema_pointer": "/$defs/DocumentaryBasisGapFields",
+      "source_authority": "OBSERVABILITY_AND_REPORTING.md §§16.5–16.6,17; PHASE_4_PLAN.md §4.2",
+      "status": "closed_definition_present; projection_execution_pending_W03_W04",
+      "public_definition_fields": [
+        "native_record",
+        "qualification_state",
+        "reason_codes"
+      ],
+      "limitation": "A declaration and static source map; not evidence that a private record has been disclosed, assembled or rendered.",
+      "public_definition_variants": [
+        [
+          "native_record",
+          "qualification_state",
+          "reason_codes"
+        ]
+      ],
+      "variant_rule": "Each complete closed variant stands alone; the field union is an index, not permission to mix branches."
+    }
+  ],
+  "schema_shape_inventory": {
+    "path": "schemas/report/sit-report-0.1.schema.json",
+    "definitions": 195,
+    "all_references_local": true,
+    "schema_runtime_reads": false,
+    "validation_claim": "Finite structural checks for the declared keyword subset, plus independent Python contract checks. No general Draft metaschema/conformance certification.",
+    "closed_objects": 160,
+    "local_references": 586,
+    "sha256": "d285249028d1fbb03c1767360fe3c23f0d2efd74d893c5366ff10ac5e8884c4c"
+  },
+  "private_public_projection_definitions": [
+    {
+      "area": "analytical_outcome",
+      "private_source": "contracts/report.py _AnalyticalOutcome; contracts/evidence.py _PreparedBundle",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §§12,16.1; PHASE_4_PLAN.md §4.2",
+      "mapping": "Execution and actual input acceptance supply run/input_validation; accepted bundle/snapshot/predecessor supply input_identity. Results, capabilities, domains, Findings and witnesses are projected separately. Private prepared/raw trees, provider indexes, plan, job ledger and source execution objects are not serialized.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "scope",
+      "private_source": "contracts/results.py _Scope",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.2; REPOSITORY_ARCHITECTURE.md §18.1",
+      "mapping": "Public Scope keeps inquiry, claims, targets, dependency dimension, view, temporal basis, requested time, coverage and qualifications. Private operation_anchor remains an identity/sort key; actual operation meaning stays in existing target and typed payload fields.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "population",
+      "private_source": "contracts/results.py _Population, _CaseTarget",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.3",
+      "mapping": "Keep unit, scope, explicit membership, state, selection, basis, coverage and qualifications. Composite case targets retain case_ref/before_ref. Empty enumerated membership remains distinct from unestablished membership.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "basis",
+      "private_source": "contracts/results.py _BasisRef; contracts/evidence.py _BasisQualification, _CoverageQualification; accepted source records",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.6; PRIVACY_AND_DATA_HANDLING.md §4.2",
+      "mapping": "Resolve native source into explicit BasisEntry fields. Preserve basis_kind/attribution/method/support/availability/scope/time/lifecycle/qualifications and actual checks. No record dump, new provenance qualification or automatic source verification.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "result",
+      "private_source": "contracts/results.py _Result, _ResultRef, _ResultSet",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §§12.3,16.4,17",
+      "mapping": "Map each registered family/field and its exact scope slot to one Result; retain execution_state, result_state, origin, value_kind, value, population, basis/check/reason/Finding links and interpretation limits. Nonresults remain null. Conflicting equal slots are contract errors, not overwritten.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "count",
+      "private_source": "contracts/results.py _Count",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.5",
+      "mapping": "Use exact nonnegative integer value. Unit and member set remain in referenced Population; no float or boolean conversion.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "fraction",
+      "private_source": "contracts/results.py _Fraction",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.5; REPOSITORY_ARCHITECTURE.md §17.2",
+      "mapping": "Keep original numerator and denominator without reduction or decimal substitution. Registered fraction fields retain their specific denominator and bounds.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "partition",
+      "private_source": "contracts/results.py _Partition, _PartitionCategory",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.5",
+      "mapping": "Preserve category labels, member references, counts and common Population. Public total is the unchanged exclusive membership total, not a new analytical score.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "completion_interval",
+      "private_source": "contracts/results.py _CompletionInterval",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.5",
+      "mapping": "Keep exact endpoints, interval_kind, common Population and full partition. Public total/count relationships validate existing Y/F/U or D/O/M/U completion semantics without rerunning evidence qualification.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "incidence",
+      "private_source": "contracts/results.py _Incidence, _IncidenceRow",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.5; DEFINITIONS_AND_UNITS.md origin contribution definitions",
+      "mapping": "Keep each seed-to-origin membership and full origin-to-seed buckets/counts. Public total is the unchanged seed population N = len(memberships). Nonexclusive origin incidence remains in both directional lists and origin counts; sum(origin counts) can exceed N. No exclusive-normalization or cross-seed deduplication.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "record_disclosures",
+      "private_source": "contracts/results.py _RecordDisclosures, _Disclosure; 19 explicit owner payloads",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §§16.5,17; PRIVACY_AND_DATA_HANDLING.md §4",
+      "mapping": "Map source plus explicit field-specific selected payload plus qualifications. Full mapping is record_disclosure_projection_definitions, including closed native fragments. Tail-stage links use Result IDs; other source links use InputRef.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "reason",
+      "private_source": "contracts/results.py _Reason",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §12.4; REPOSITORY_ARCHITECTURE.md §18.1",
+      "mapping": "Retain code, scope, affected Results, input refs, detail and classification. Full ID-free body and anchor determine identity; matching code/detail alone does not authorize unioning affected Results or collapsing Findings.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "check",
+      "private_source": "contracts/results.py _PrerequisiteCheck",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §13",
+      "mapping": "Retain public id, check_id, scope_ref, state, input_refs, reason_refs and note. The private result_ref remains in the later identity anchor and inverse Result.check_refs, not a new public applies_to member. Preparatory pending facts are not promoted to executed Checks.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "capability",
+      "private_source": "contracts/report.py _Capability",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §16.7",
+      "mapping": "Keep each inquiry/family scope, complete Result list, exact four disjoint state lists, prerequisite checks, reasons and scope_note. Execution remains on linked Results and run metadata, not a new Capability field. Do not infer family completion from one available child.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "domains",
+      "private_source": "contracts/report.py _DomainOutcome",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §15; PHASE_4_PLAN.md §4.2",
+      "mapping": "Group the private per-inquiry references into exactly five global domain rows, preserving the six public members. not_applicable remains in Results/Capabilities and is not invented as a seventh domain field.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "private_finding",
+      "private_source": "contracts/report.py _PrivateFinding, _DetachedFindingWitness",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §18.1",
+      "mapping": "Preserve condition, observation kind, exact scope, witness/input material, basis, reasons, limitations, adverse associations and observed/not-observed meaning. Private result_refs become inverse public Result.witness_refs; native_records contribute only approved selected payload and basis. Dedup requires full body and anchor equality.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "witness_reference",
+      "private_source": "contracts/results.py _WitnessRef, _WitnessCollection; contracts/report.py _WitnessRecord",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §§18.1,19.2; PHASE_4_PLAN.md §4.2",
+      "mapping": "Resolve retained owner evidence to actual report Findings at its original context where a genuine registered condition is already proved, or account for duplicate inventory material in existing Population/Count/Basis/Check/disclosure positions. Never replace a positive trace by scoped_no_witness or attach it to a different target/coverage scope. Detailed six-owner mapping is recorded separately.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "graph_material",
+      "private_source": "graph/projections.py _GraphNode, _GraphEdge; graph/witnesses.py _GraphWitness; runtime/boundary.py _payload",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §18.1; REPOSITORY_ARCHITECTURE.md §18.1",
+      "mapping": "Graph nodes retain typed input ref/kind; edges retain source/target/source_ref/predicate/eligibility/reasons. Paths, cycles, examined material, frontiers, terminals and observations retain full native order and occurrence counts. Exact source selector and target recover edge identity; private tuple keys do not escape.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    },
+    {
+      "area": "preparation_and_stops",
+      "private_source": "contracts/report.py preparation/completion classes; contracts/execution.py private stop classes",
+      "normative_source": "OBSERVABILITY_AND_REPORTING.md §§12,16.1; GOVERNANCE_AND_HANDOFF.md §22.3",
+      "mapping": "Prepared indexes and completion evidence are private inputs to later composition, not public arrays. Real processing/acceptance state supplies the prescribed diagnostic envelope or safe transport. No partial report, source exception representation or fabricated time is introduced.",
+      "status": "representation defined in W02; general assembly/disclosure/runtime execution pending W03-W08"
+    }
+  ],
+  "witness_projection_definitions": [
+    {
+      "owner_form": "inventory_witness",
+      "private_source": "analysis/inventory.py _inventory_result and inventory witness construction",
+      "public_home": "The exact same scope Population membership and Count preserve this duplicate finite inventory; no synthetic Finding is created.",
+      "evidence": "inventory.py members/count derivation at accepted baseline; N17 reference mappings",
+      "execution_status": "definition and independent reference only; W03 implementation pending"
+    },
+    {
+      "owner_form": "comparison_witness",
+      "private_source": "analysis/process_comparison.py _selected_witness, _witness_refs, _comparison_results and _checks",
+      "public_home": "Members remain in the four existing populations; nullable assessment remains in source targets and actual assessment disclosure/reasons. Examined assessments remain in actual PC03 source selectors and basis. Any genuine matching private Finding also retains its full component at the unchanged owner scope. Do not invent independence from a missing assessment or deduplicate occurrence counts.",
+      "execution_status": "definition and independent reference only; W03 implementation pending"
+    },
+    {
+      "owner_form": "selected_members",
+      "private_source": "analysis/presence.py selection witness construction and _presence_results; analysis/context.py selection witness construction and _context_results",
+      "public_home": "Presence selection is the exact union of native and transition basis sources; the transition field retains the complete union. Context selection is the anomaly plus contestation basis union, excluding the separate tail-stage basis. No invented Population or blanket tail-stage source substitution. Same-scope original Findings retain their complete relevant component.",
+      "execution_status": "definition and independent reference only; W03 implementation pending"
+    },
+    {
+      "owner_form": "graph_witness",
+      "private_source": "graph/witnesses.py; analysis/origins.py _witness_refs; analysis/contribution_profile.py _witness_refs; runtime/boundary.py _payload",
+      "public_home": "Retain every ordered proof/trace component in an actual Finding at the original operation scope. Existing owner-proven paths may use the registered positive_witness/transformation_path_witness representation without new search. Do not attach a coverage trace to a narrower target-only Finding. No new condition or empty positive path is allowed.",
+      "reference_decision": "N15 retains all 20 original private Findings and adds two already-proven same-owner-context path/complete-trace representations. Origin scope has target_refs=[] and coverage=[P4-COVER]; the original PARENT Finding has targets=[P4-E1,P4-O1] and no coverage, so they are not conflated. Full-body/anchor dedup is required in later assembly.",
+      "execution_status": "independent reference projection only; general W03 implementation pending"
+    },
+    {
+      "owner_form": "human_review_witness",
+      "private_source": "analysis/human_review.py selection/source_refs, examined assessments and _human_review_results; analysis/findings.py _human_findings",
+      "public_home": "Members remain in the exact existing M013 Population. All original corrective_independence_disclosures rows, including primary and support rows, remain first; append one native-only selected-record row per examined_assessments item in original order, then one native-only row per source_refs slot in original order. Keep full source selectors and repeated slots. Never merge these rows, add input eligibility or create a Finding to house the selection. Actual same-owner private Findings retain their complete components as well.",
+      "scan_qualifications": [
+        "Examined assessment only; this scan does not establish applicability or qualification for the selected review scope."
+      ],
+      "source_slot_qualifications": [
+        "Actual owner selection/source reference slot; this record does not establish an applicable review or independent process."
+      ],
+      "qualification_rule": "These two arrays are fixed profile markers, not source-authored qualification overrides. Each appended row uses the existing closed native-only payload. Selected source fields retain the Inquiry target list and Assertion subjects/scope/dimension. They disclose which originals were actually examined, not a new comparison population or human-judgment count.",
+      "counterexample": "An unrelated independence assessment is retained in examined_assessments before relevance filtering even when no private human Finding exists. Basis/Checks alone cannot preserve it. Empty N15 likewise retains the actual Inquiry.target_object_refs source slot rather than claiming the root Inquiry Basis is the same selector.",
+      "member_count_accounting": "Original member_count is members length plus examined-assessment row occurrences plus source-slot row occurrences; no new public quantitative result is created.",
+      "sources": [
+        "OBSERVABILITY_AND_REPORTING.md §§16.5,17",
+        "DEFINITIONS_AND_UNITS.md §25.3",
+        "analysis/human_review.py:135-155,211-226,271-281"
+      ],
+      "execution_status": "representation defined and independent positive/mutant oracle; W03/W04 projection and W07 reservation integration pending"
+    },
+    {
+      "owner_form": "correction_outcome_witness",
+      "private_source": "analysis/correction_outcomes.py source slots and basis_entities; analysis/findings.py _outcome_findings",
+      "public_home": "Every case emits its actual case_handling_disclosure Finding with the full owner witness at its scope. Without cases, no case/event slots exist: source_refs is the Inquiry root, members are the already retained basis_entities, and any capacity is its existing reported_capacity_disclosures row. Do not infer that the human-review scan follows this different correction rule.",
+      "execution_status": "definition and independent reference only; general W03 implementation pending"
+    }
+  ],
+  "w02_verification": {
+    "tests": 1445,
+    "successful_subtests": 12,
+    "seconds": 28.53,
+    "scope": "Eight targeted files; includes all N01/N20, both narrow migrations and original private contracts/diagnostics. No full-suite or public audit completion claim.",
+    "new_contract_test_count": 953,
+    "new_oracle_test_count": 89,
+    "schema_test_claim": "AST-extracted finite test-side schema evaluator; no product import or execution; not general Draft certification",
+    "reference": {
+      "tests/fixtures/micro/phase4_public_cases.json": {
+        "bytes": 16543,
+        "sha256": "66fa953e6c11225f1848c2da02b4544b349f380b4f4293805058579e531e81bb"
+      },
+      "tests/golden/phase4_report_expectations.json": {
+        "bytes": 638421,
+        "sha256": "c1dbbbc7248e3c9f8d832a23619377daf5f658327dcdb5d7484d506652bbdfe0"
+      },
+      "tests/golden/phase4_reference_report.json": {
+        "bytes": 421307,
+        "sha256": "8b65b805bcc8fa8f0b2cb6701d5bd88b028142f7037c25166c90dbddbc61bf48"
+      },
+      "tests/golden/phase4_reference_report.md": {
+        "bytes": 564555,
+        "sha256": "776b2eaae10b3301681cb5a106753823bff5e4a9ff4a5a09325ed3a271f49bdd"
+      },
+      "tests/contract/test_report_test_oracles.py": {
+        "bytes": 18051,
+        "sha256": "2f8d1add11c82b5a60f3160e83b0e5e6866cd7ffcc9260bd10660e1e751bc3a4"
+      }
+    },
+    "pending": "All 228 field obligations retain their existing pending public-pipeline/rendering state; representation tests do not close assembly, execution, privacy or release acceptance."
+  }
 }
