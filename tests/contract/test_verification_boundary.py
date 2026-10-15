@@ -276,11 +276,20 @@ def module_sources():
     return {p.relative_to(package).as_posix(): p.read_bytes() for p in package.rglob("*.py")}
 
 
+@pytest.fixture(scope="module")
+def current_stage():
+    # Resolve actual checkout provenance only during test execution. Collection
+    # remains Git-free, and an earlier-owner repair cannot lower activation.
+    state = guard.current_local_state(ROOT)
+    return state["activation_stage"]
+
+
 @pytest.mark.parametrize("case", ["without_git", "git_blocked", "poisoned_git_output"])
 def test_current_test_loading_has_no_historical_blob_execution(tmp_path, case):
     paths = ["tests/scaffold/" + name + ".py" for name in (
         "test_imports", "test_module_manifest", "test_no_runtime_implementation",
         "test_layer_boundaries", "test_contract_catalogs", "test_ci_contract")]
+    paths.append("tests/contract/test_verification_boundary.py")
     root = ROOT
     if case == "without_git":
         root = tmp_path / "source-only"
@@ -374,20 +383,26 @@ def test_current_package_probe_cannot_substitute_for_checkout_authorization(repo
         guard.current_checkout(repo, ENTRY)
 
 
-def test_current_package_frozen_preparation_bytes_have_positive_and_negative_controls():
+def test_current_package_frozen_preparation_bytes_have_positive_and_negative_controls(current_stage):
     sources = module_sources()
-    assert {p: hashlib.sha256(raw).hexdigest() for p, raw in sources.items()} == SOURCE_SHA256
-    assert guard.current_module_issues(sources, stage=1) == []
-    for path in SOURCE_SHA256:
+    frozen = {path for path in SOURCE_SHA256
+              if path not in ACTIVATION or current_stage < ACTIVATION[path]}
+    assert set(sources) == set(SOURCE_SHA256)
+    assert {p: hashlib.sha256(sources[p]).hexdigest() for p in frozen} == {
+        p: SOURCE_SHA256[p] for p in frozen}
+    # The anchor test still checks all 48 original hashes. Current bytes remain
+    # pinned only until their independently transcribed activation boundary.
+    assert guard.current_module_issues(sources, stage=current_stage) == []
+    for path in frozen:
         changed = dict(sources)
         changed[path] += b'\n# unauthorized byte change\n'
-        assert (path, 'accepted_blob_changed') in guard.current_module_issues(changed, stage=1)
+        assert (path, 'accepted_blob_changed') in guard.current_module_issues(changed, stage=current_stage)
     for path in set(SOURCE_SHA256) - set(ACTIVATION):
         changed = dict(sources)
         changed[path] += b'\n# permanently frozen byte change\n'
         assert (path, 'accepted_blob_changed') in guard.current_module_issues(changed, stage=10)
     assert len(set(SOURCE_SHA256) - set(ACTIVATION)) == 36
-    assert guard.current_module_issues(sources, stage=1) == []
+    assert guard.current_module_issues(sources, stage=current_stage) == []
 
 
 @pytest.mark.parametrize("case,code", [
@@ -396,11 +411,11 @@ def test_current_package_frozen_preparation_bytes_have_positive_and_negative_con
     ("public_report", "non_scaffold_body"),
     ("encoding", "invalid_utf8"), ("active_size", "oversize_module"), ("inert_size", "oversize_module"),
 ])
-def test_current_module_ceiling_and_protected_slots(case, code):
+def test_current_module_ceiling_and_protected_slots(case, code, current_stage):
     sources = module_sources()
     assert len(sources) == 48
     assert len(ACTIVATION) == 12 and len(set(sources) - set(ACTIVATION)) == 36
-    assert guard.current_module_issues(sources) == []
+    assert guard.current_module_issues(sources, stage=current_stage) == []
     path = "graph/cycles.py"
     if case == "extra": path = "analysis/future.py"; sources[path] = b""
     elif case == "missing": del sources[path]
@@ -414,10 +429,10 @@ def test_current_module_ceiling_and_protected_slots(case, code):
         limit = 262144 if case == "active_size" else 16384
         if case == "inert_size": path = "reporting/json_report.py"
         sources[path] = b"#" * limit
-        assert (path, "oversize_module") not in guard.current_module_issues(sources)
+        assert (path, "oversize_module") not in guard.current_module_issues(sources, stage=current_stage)
         sources[path] += b"#"
-    assert (path, code) in guard.current_module_issues(sources)
-    assert guard.current_module_issues(module_sources()) == []
+    assert (path, code) in guard.current_module_issues(sources, stage=current_stage)
+    assert guard.current_module_issues(module_sources(), stage=current_stage) == []
 
 
 @pytest.mark.parametrize("path,reason", [
@@ -588,9 +603,9 @@ def test_current_checkout_rejects_out_of_scope_states(repo, case, reason):
     ("graph/cycles.py", b"from ..... import x\n", "relative_import_escape"),
     ("graph/cycles.py", b"from typing import *\n", "wildcard_import"),
 ])
-def test_current_live_effects_and_dependencies(path, payload, code):
+def test_current_live_effects_and_dependencies(path, payload, code, current_stage):
     sources = module_sources()
-    assert guard.current_module_issues(sources) == []
+    assert guard.current_module_issues(sources, stage=current_stage) == []
     sources[path] = payload
     assert code in guard.current_live_issues(path, payload.decode(), stage=1)
 

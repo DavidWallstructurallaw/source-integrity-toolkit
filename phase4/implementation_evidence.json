@@ -1,7 +1,7 @@
 {
   "phase": "P4",
   "current_unit": "P4-W02",
-  "status": "W02 implementation, independent reference and targeted validation complete; exact published-head hosted checks pending at this record",
+  "status": "W02 first hosted candidate failed; W01 verification-owner repair and W02 nested-variant coverage completion in progress; no acceptance claimed",
   "owner_authorization": {
     "instruction": "启动 P4-W02",
     "scope": "P4-W02 only; no W03 execution, merge, release or public API activation",
@@ -39,7 +39,7 @@
     "Record explicit private/public representation choices, including full owner-scope graph traces, whole-entity typed references, field-specific native selections and exact human-review scan/source-slot disclosure markers.",
     "Add an independently source-authored fully runnable private-core case and exact logical/JSON/Markdown reference, plus case-bound positive-before-mutant oracles. No product dump or renderer capture generated the expected output."
   ],
-  "changed_scope": "Exactly the fourteen P4-W02 paths listed by PHASE_4_PLAN.md; plan, workflow, dependency pins, budgets, input schema, analysis/graph/validation modules, API, renderers and runtime files remain frozen.",
+  "changed_scope": "The first W02 candidate changed exactly fourteen W02 paths. This W01-owned repair changes only tests/contract/test_verification_boundary.py and this shared evidence record under plan sections 7.2 and 9; prior W02 activation remains stage 2.",
   "guarantee_migrations": [
     {
       "path": "tests/contract/test_input_schema_mapping.py",
@@ -48,6 +48,11 @@
     {
       "path": "tests/scaffold/test_contract_catalogs.py",
       "migration": "Only report schema inventory and report README state assertions move to W02; historical catalog meaning remains unchanged."
+    },
+    {
+      "path": "tests/contract/test_verification_boundary.py",
+      "owner_unit": "P4-W01",
+      "migration": "Resolve actual activation_stage through validated current_local_state in a runtime-only module fixture. Pin all currently inactive or permanently frozen module bytes; preserve the independent 48-module accepted-anchor hashes, all permanent byte locks and explicit stage boundary probes. Pass actual stage into present-source baseline and ceiling checks. Include this file in all three Git-free collection modes."
     }
   ],
   "validation": {
@@ -247,6 +252,17 @@
       "status_at_record": "pending",
       "record_location": "PR #36 exact-head checks and raw workflow artifacts",
       "note": "Actual later hosted outcome is recorded externally without a self-referential evidence-only successor. No documentation-only exemption is used for W02."
+    },
+    "first_hosted_candidate": {
+      "head": "05d51fce76d2c30bc0ee970a47539e3dcdcfc66e",
+      "tree": "3de6469bad5a90ca5f0ca970acd55a04ca5ae438",
+      "run_id": 38672908042,
+      "attempt": 1,
+      "state_at_record": "Both Ubuntu profiles failed with 27 tests; both Windows profiles still in progress",
+      "passed_tests_per_completed_profile": 4789,
+      "failed_tests_per_completed_profile": 27,
+      "successful_subtests_per_completed_profile": 533,
+      "note": "Failure artifacts retained separately. No all-zero receipt set or full installed-witness completion is claimed."
     }
   },
   "failures_and_repairs": [
@@ -301,6 +317,22 @@
         "p4w02-oracle-final-review.json",
         "tests/contract/test_report_test_oracles.py"
       ]
+    },
+    {
+      "finding": "First W02 hosted head 05d51fce76d2c30bc0ee970a47539e3dcdcfc66e, run 38672908042 attempt 1, failed on both completed Ubuntu profiles: 27 failed, 4789 passed and 533 separate successful subtests. Current-source V02 checks still assumed stage 1 and falsely rejected the two W02-authorized contract files. Windows profiles were still running when this repair record was written.",
+      "owner_unit": "P4-W01",
+      "repair": "Use actual verified activation stage for current-source checks, with no guard, scope policy, authorization, source pin, workflow or dependency change. All 48 accepted-anchor hashes remain checked separately. New runtime fixture is covered by three Git-free collect-only modes.",
+      "validation_state": "Patch and independent read-only review completed; clean W01-owner checkout testing pending at this commit.",
+      "evidence": [
+        "p4w02-ci-38672908042",
+        "tests/contract/test_verification_boundary.py"
+      ]
+    },
+    {
+      "finding": "Independent W02 acceptance audit found that initial N01 outer-member matrices did not separately exercise every SelectedNative and nested disclosure object variant. The initial 1445-test targeted pass is retained but does not establish that omitted coverage.",
+      "owner_unit": "P4-W02",
+      "repair": "Add source-authored legal variants followed by missing/extra/type/state/value counterexamples and an explicit object-position coverage audit. Do not generate valid expected examples from the schema or product serialization.",
+      "validation_state": "Coverage completion in progress; no W03 or W04 implementation authorized."
     }
   ],
   "remaining": {
@@ -547,6 +579,6 @@
     }
   ],
   "authority_notice": "Evidence only. This file cannot grant paths, stages, approvals or acceptance.",
-  "validated_at_utc": "2026-10-15T02:44:05.675016+00:00",
-  "publication_note": "Targeted tests were run against the final W02 code/schema/tests before this evidence record was written. Exact source hashes are retained externally. Hosted final-head facts belong to the actual PR/run receipts, not this pre-publication record."
+  "validated_at_utc": "2026-10-15T03:17:04.556793+00:00",
+  "publication_note": "This is a W01-owner verification repair checkpoint, with W02 activation preserved. Source review is complete but isolated repair tests and later corrected W02 hosted matrix are pending. Original failed run remains evidence; this record is not acceptance."
 }
