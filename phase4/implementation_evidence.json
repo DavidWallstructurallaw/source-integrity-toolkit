@@ -1,7 +1,7 @@
 {
   "phase": "P4",
   "current_unit": "P4-W02",
-  "status": "W02 contracts, independent reference, complete nested controls and targeted validation verified; W01 verification-owner repair verified; final corrected published-head hosted matrix pending at this record",
+  "status": "W02 implementation and focused tests verified; both earlier hosted candidates retained as failures; W01 isolated-repository repair passed all 211 V02 tests; new exact published-head full matrix pending",
   "owner_authorization": {
     "instruction": "启动 P4-W02",
     "scope": "P4-W02 only; no W03 execution, merge, release or public API activation",
@@ -40,7 +40,7 @@
     "Add an independently source-authored fully runnable private-core case and exact logical/JSON/Markdown reference, plus case-bound positive-before-mutant oracles. No product dump or renderer capture generated the expected output.",
     "Complete independent positive/member/enum/array-item/state controls for all 160 closed schema object positions and 627 member positions. Reuse only read-only schema decoding in tests with before/after fresh-value and byte checks; product verdicts, source specimens and expected values are not cached."
   ],
-  "changed_scope": "First W02 candidate: exactly fourteen W02 paths. Follow-up W01-owner repair: only V02 and D05. This W02 follow-up: only N01, D04 and D05. The cumulative W02 execution adds no later-unit implementation; plan, product files outside P01/P02, workflow, dependency pins, budgets, API and renderers remain frozen.",
+  "changed_scope": "First W02 candidate: exactly fourteen W02 paths. Follow-up W01-owner repair: only V02 and D05. This W02 follow-up: only N01, D04 and D05. The cumulative W02 execution adds no later-unit implementation; plan, product files outside P01/P02, workflow, dependency pins, budgets, API and renderers remain frozen. A further W01-owner timeout repair is limited to V02 fixture setup/isolation and D05 evidence. Guard and all product/schema/oracle bytes remain unchanged.",
   "guarantee_migrations": [
     {
       "path": "tests/contract/test_input_schema_mapping.py",
@@ -262,7 +262,7 @@
     },
     "public_stop": "Both public audit functions retain immediate NotImplementedError, package exports remain the original three and version remains 0.1.0.dev0. N01 directly exercises both refusals.",
     "full_local_suite": "not run for W02; targeted checks do not claim all suites",
-    "hosted_four_profiles": "Corrected final-head matrix pending at this record; first candidate run 38672908042 failed and is separately retained.",
+    "hosted_four_profiles": "New fixture-repaired published-head matrix pending. Neither earlier W02 run was accepted: first had four assertion-failing profiles; second had three successes and one 2400-second incomplete Windows/Python 3.11 timeout.",
     "first_hosted_candidate": {
       "head": "05d51fce76d2c30bc0ee970a47539e3dcdcfc66e",
       "tree": "3de6469bad5a90ca5f0ca970acd55a04ca5ae438",
@@ -484,6 +484,205 @@
       "same_6217_ordered_test_identities": true,
       "N01_reader_fixtures_assertions_unchanged": true,
       "scope": "Test data reuse only; no product, guard, test selection, dependency or runtime limit changes."
+    },
+    "second_hosted_candidate": {
+      "head": "3b9d8a9ea5fc8c795859f74072f061efdea471e7",
+      "tree": "52c33972f46e202f3398a4d22250d6406d908e34",
+      "run_id": 38677156662,
+      "attempt": 1,
+      "overall_status": "completed",
+      "overall_conclusion": "failure",
+      "successful_profiles": [
+        {
+          "profile": "ubuntu-24.04-py3.11",
+          "review_pass": true,
+          "artifact": {
+            "api_digest_verified": true,
+            "id": 11946712611,
+            "job_id": 116233259507,
+            "members": 54,
+            "name": "phase3-ubuntu-24.04-py3.11-38677156662-1",
+            "sha256": "3ec1c384ddb2ae619e8fac0566edd746890ec609257c02c6d345a9a55b2dd66a"
+          },
+          "tests": 9588,
+          "successful_subtests": 533,
+          "source_files": 222,
+          "test_files": 75,
+          "review": {
+            "file": "p4w02-ci-38677156662/ubuntu-24.04-py3.11-independent-review.json",
+            "bytes": 22011,
+            "sha256": "5c15dd120a6d544850d026a337b81d9e355b2d234602bf25e1cea708cf229bd8"
+          }
+        },
+        {
+          "profile": "ubuntu-24.04-py3.13",
+          "review_pass": true,
+          "artifact": {
+            "api_digest_verified": true,
+            "id": 11947157128,
+            "job_id": 116233259226,
+            "members": 54,
+            "name": "phase3-ubuntu-24.04-py3.13-38677156662-1",
+            "sha256": "dcb5dbb9d6f22c02c25c13ae43e8c5d625bd3a19fb6f0e5bbdd05e921fac8b65"
+          },
+          "tests": 9588,
+          "successful_subtests": 533,
+          "source_files": 222,
+          "test_files": 75,
+          "review": {
+            "file": "p4w02-ci-38677156662/ubuntu-24.04-py3.13-independent-review.json",
+            "bytes": 22011,
+            "sha256": "f0c926d24b7753507e1bd068b22483a98678854980a7040870e6df1291aa516d"
+          }
+        },
+        {
+          "profile": "windows-2025-py3.13",
+          "review_pass": true,
+          "artifact": {
+            "api_digest_verified": true,
+            "id": 11946663478,
+            "job_id": 116233259244,
+            "members": 54,
+            "name": "phase3-windows-2025-py3.13-38677156662-1",
+            "sha256": "18b8c5658a16a6b984e547dcad1fa640802786b40fffc65a649afe1ef11463c7"
+          },
+          "tests": 9588,
+          "successful_subtests": 533,
+          "source_files": 222,
+          "test_files": 75,
+          "review": {
+            "file": "p4w02-ci-38677156662/windows-2025-py3.13-independent-review.json",
+            "bytes": 22043,
+            "sha256": "d27b8c1a7a51bf01ab1ba6978443a1c688342448e5b325a00c3c86b97bd84a0b"
+          }
+        }
+      ],
+      "failed_profile": {
+        "profile": "windows-2025-py3.11",
+        "artifact_id": 11947910949,
+        "artifact_sha256": "868d00a716b2a44a98b6a06ab9507504f155ef5824653fcf15846fa35626ca62",
+        "raw_files": 47,
+        "collected_tests": 9588,
+        "test_files": 75,
+        "source_hashes_before": 222,
+        "pytest_exit_code": null,
+        "timed_out": true,
+        "incomplete": true,
+        "interrupted": false,
+        "timeout_seconds": 2400,
+        "completed_command_exits_zero": 9,
+        "passed_tests": null,
+        "successful_subtests": null,
+        "missing": [
+          "junit.xml",
+          "test.json",
+          "tracked-after.json",
+          "both after-guard command records"
+        ],
+        "scope_note": "Quiet progress and retained installed witnesses cannot establish completed suite pass counts. The evidence-stage failure is earlier_stage_failed."
+      },
+      "failure_review": {
+        "file": "p4w02-ci-38677156662/second-ci-failure-review.json",
+        "bytes": 29181,
+        "sha256": "111b1cf992bee8dcc931cb9fe69b79d31aff83d17714ac8814fe6aefb1915245"
+      },
+      "timing_review": {
+        "file": "p4w02-ci-38677156662/successful-profile-timing-review.json",
+        "bytes": 165877,
+        "sha256": "c884a61017ba025cad8561f3458b65c16f9c3362c3654aa1dcd3081f498aab17"
+      }
+    },
+    "verification_fixture_repair": {
+      "owner_unit": "P4-W01",
+      "paths": [
+        "tests/contract/test_verification_boundary.py",
+        "phase4/implementation_evidence.json"
+      ],
+      "purpose": "Remove repeated real Git bootstrap preparation while preserving independent physical repositories, fresh HEAD/tree/clean checks and every original test body. No guard, verdict, AST or product cache.",
+      "status": "Complete V02 passed at clean local W01 repair checkpoint; new final published-head four-profile verification pending",
+      "baseline_head": "3b9d8a9ea5fc8c795859f74072f061efdea471e7",
+      "baseline_v02_sha256": "cfbe145cdf39d99265132241c2cf2addab16e1204e54e83365e2bcfb731d997d",
+      "local_before_setup_benchmark": {
+        "file": "p4w02-fixture-setup-before-benchmark.json",
+        "bytes": 759,
+        "sha256": "4bb967584d5580fb94c66a44491021e8705a79e942d59c8ea65405580a9dab74"
+      },
+      "local_copy_prototype_benchmark": {
+        "file": "p4w02-fixture-copy-prototype-benchmark.json",
+        "bytes": 877,
+        "sha256": "c01228672534bf7c002baab0df75dd17c7b90046908a99eebf210c465c7c6129"
+      },
+      "timing_limits": "Local three-sample setup measurements are only motivation. Successful-profile JUnit hotspots do not identify the active Windows 3.11 test at timeout; only a new full matrix can prove sufficient runtime.",
+      "narrow_isolation_check": {
+        "file": "p4w02-v02-seed-isolation-001-execution.json",
+        "bytes": 2293,
+        "sha256": "7c6ff80ffdfb138ee95dd03f7747ffb342d6a87bb4c3271e047e419cdb98aafa",
+        "scope": "Only the new destructive repository-copy isolation test; not full V02 or full suite",
+        "pytest_tests": 1,
+        "pytest_seconds": 1.39,
+        "exit_code": 0
+      },
+      "repaired_v02_sha256": "5a717fe0d5b0d02cd01243626e24644da6e1e30ebd7d617d18235223fa619df4",
+      "unchanged_test_bodies": "All 45 original test function bodies and decorators remain exactly AST-equal; all 210 original parameterized cases retained. One new copy-isolation case added.",
+      "complete_V02": {
+        "head": "d3940ead3805a903bbb711aa60f370225c81a9bb",
+        "tree": "2af7017455280ef022baf09d67475af261de915d",
+        "owner_unit": "P4-W01",
+        "activation_stage": 2,
+        "tests": 211,
+        "pytest_seconds": 411.58,
+        "junit": [
+          {
+            "errors": "0",
+            "failures": "0",
+            "hostname": "502c238e1080",
+            "name": "pytest",
+            "skipped": "0",
+            "tests": "211",
+            "time": "411.581",
+            "timestamp": "2026-10-14T21:26:45.281756-07:00"
+          }
+        ],
+        "exit_code": 0,
+        "timed_out": false,
+        "interrupted": false,
+        "incomplete": false,
+        "source_files_unchanged_before_after": 222,
+        "original_ordered_cases_retained": 210,
+        "new_isolation_cases": 1,
+        "review": {
+          "file": "p4w02-fixture-repair-local-review.json",
+          "bytes": 35249,
+          "sha256": "24b1d23231bdbcadf52ab72fbea03ffa7e56b74a3a6cd01358daa1739acb2f1f"
+        },
+        "raw": {
+          "p4w02-v02-seed-full-001-exit.json": {
+            "bytes": 954,
+            "sha256": "296b6e5d3404a8af6c6fd7af014400c6a1b499b22346d83470ea11dbd6f040f3"
+          },
+          "p4w02-v02-seed-full-001-source-after.json": {
+            "bytes": 24430,
+            "sha256": "26d2a35a00eb463337bc1b2992bac6611247afd79bb41a6dac7902416e01a0ce"
+          },
+          "p4w02-v02-seed-full-001-source-before.json": {
+            "bytes": 24430,
+            "sha256": "26d2a35a00eb463337bc1b2992bac6611247afd79bb41a6dac7902416e01a0ce"
+          },
+          "p4w02-v02-seed-full-001-stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "p4w02-v02-seed-full-001.log": {
+            "bytes": 272,
+            "sha256": "850a3ad3f11d84cbfde3825628a47c52e719a67e58f589caa5db3586987e9409"
+          },
+          "p4w02-v02-seed-full-001.xml": {
+            "bytes": 37760,
+            "sha256": "6bfea2064ce8a3749b1a15cfef9d7c7bdaf9c29ad0cfda759802204b4fc1c7be"
+          }
+        },
+        "scope": "Only complete V02 on the recorded clean local tree, not full suite or hosted acceptance. Subsequent local evidence-record update changes D05 only."
+      }
     }
   },
   "failures_and_repairs": [
@@ -576,6 +775,17 @@
           "change": "Supersession reason remains free source text even through SelectedRelationDetails union; reason enum controls restricted to Gap and UnresolvedReference.",
           "source": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md 3.3,6.9,6.12,8.3,9.6; four prose positives added."
         }
+      ]
+    },
+    {
+      "finding": "Second W02 hosted candidate Windows/Python 3.11 pytest exceeded the existing 2400-second suite budget; the other three profiles completed successfully. The failing profile has no final JUnit or passed count.",
+      "repair_owner_unit": "P4-W01",
+      "repair": "Replaced repeated bootstrap preparation with one delayed real seed and independent complete per-case copies; all original bodies, negatives, actual Git history and budget retained. Destructive copy-isolation control passed; all 211 V02 cases passed at the recorded clean local checkpoint. Windows runtime benefit is not yet established.",
+      "evidence": [
+        "p4w02-ci-38677156662/second-ci-failure-review.json",
+        "p4w02-ci-38677156662/successful-profile-timing-review.json",
+        "p4w02-fixture-setup-before-benchmark.json",
+        "p4w02-fixture-copy-prototype-benchmark.json"
       ]
     }
   ],
@@ -823,6 +1033,7 @@
     }
   ],
   "authority_notice": "Evidence only. This file cannot grant paths, stages, approvals or acceptance.",
-  "validated_at_utc": "2026-10-15T03:35:18.984279+00:00",
-  "publication_note": "This pre-publication record describes actual local focused verification and preserved first-run failures. The two repair commits retain their own W01/W02 path ownership and stage 2. Final exact-head history checks and hosted receipts are recorded externally in the PR/evidence package after publication, without a self-referential result commit."
+  "validated_at_utc": "2026-10-15T04:34:17.870579+00:00",
+  "publication_note": "This record preserves both failed hosted candidates and three successful profiles of the second run. The subsequent W01-owner setup repair retains activation stage 2. Its final exact-head hosted receipts will be recorded externally after publication without a self-referential success commit.",
+  "active_repair_owner_unit": "P4-W01"
 }

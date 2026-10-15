@@ -177,16 +177,86 @@ def git(root, *args, input_bytes=None):
         cwd=root, env=env, input=input_bytes, stderr=subprocess.PIPE, timeout=60)
 
 
-@pytest.fixture
-def repo(tmp_path):
-    path = tmp_path / "repository"
-    git(tmp_path, "clone", "--quiet", "--no-checkout", "--no-hardlinks", str(ROOT), str(path))
+def _bootstrap_identity(root):
+    # These are fresh Git reads for this exact root, not a cached guard verdict.
+    assert (root / '.git').is_dir() and not (root / '.git').is_symlink()
+    assert not (root / '.git/commondir').exists()
+    assert not (root / '.git/objects/info/alternates').exists()
+    assert git(root, 'rev-parse', 'HEAD').decode().strip() == ENTRY
+    assert git(root, 'rev-parse', 'HEAD^{tree}').decode().strip() == ENTRY_TREE
+    assert git(root, 'status', '--porcelain') == b''
+
+
+def _repository_file_hashes(root):
+    # Include the complete private .git directory, index, refs and objects.
+    # Generated seed repositories contain ordinary files, not shared links.
+    files = {}
+    for path in sorted(root.rglob('*')):
+        assert not path.is_symlink(), path
+        if path.is_file():
+            files[path.relative_to(root).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return files
+
+
+def _copy_bootstrap_repository(seed, path):
+    # copytree/copy2 creates separate files, including every Git object. Do not
+    # replace this with worktrees, shared clones, alternates or hard links.
+    shutil.copytree(seed, path)
+    _bootstrap_identity(path)
+    return path
+
+
+@pytest.fixture(scope='module')
+def repo_seed(tmp_path_factory):
+    # Deferred until a repository test executes: collection remains Git-free.
+    parent = tmp_path_factory.mktemp('p4-bootstrap-seed')
+    path = parent / 'repository'
+    git(parent, "clone", "--quiet", "--no-checkout", "--no-hardlinks", str(ROOT), str(path))
     git(path, "checkout", "--quiet", "--detach", ANCHOR)
     (path / PLAN).write_bytes((ROOT / PLAN).read_bytes())
     assert commit(path, "Synthetic P4 bootstrap") == ENTRY
     # Entry bytes and metadata are fixed independently of the mutable HEAD.
-    assert git(path, "rev-parse", "HEAD^{tree}").decode().strip() == ENTRY_TREE
-    return path
+    _bootstrap_identity(path)
+    original_files = _repository_file_hashes(path)
+    yield path
+    _bootstrap_identity(path)
+    assert _repository_file_hashes(path) == original_files
+
+
+@pytest.fixture
+def repo(tmp_path, repo_seed):
+    return _copy_bootstrap_repository(repo_seed, tmp_path / 'repository')
+
+
+def test_bootstrap_repository_copies_isolate_files_history_and_objects(repo_seed, tmp_path):
+    first = _copy_bootstrap_repository(repo_seed, tmp_path / 'first')
+    second = _copy_bootstrap_repository(repo_seed, tmp_path / 'second')
+    original_seed = _repository_file_hashes(repo_seed)
+    original_second = _repository_file_hashes(second)
+    assert set(original_seed) == set(original_second)
+    for name in original_seed:
+        assert not os.path.samefile(repo_seed / name, first / name)
+        assert not os.path.samefile(repo_seed / name, second / name)
+        assert not os.path.samefile(first / name, second / name)
+
+    tracked = first / 'README.md'
+    original_tracked = tracked.read_bytes()
+    tracked.write_bytes(original_tracked + b'\n# isolated synthetic repository change\n')
+    assert tracked.read_bytes() != original_tracked
+    git(first, 'replace', ENTRY, ANCHOR)
+    assert git(first, 'replace', '-l').decode().splitlines() == [ENTRY]
+    (first / '.git/shallow').write_text(ENTRY + '\n', encoding='ascii')
+    assert (first / '.git/shallow').read_text(encoding='ascii') == ENTRY + '\n'
+    loose = first / '.git/objects' / ENTRY[:2] / ENTRY[2:]
+    original_object = loose.read_bytes()
+    assert original_object
+    loose.chmod(loose.stat().st_mode | 0o200)
+    loose.write_bytes(original_object[:-1] + bytes([original_object[-1] ^ 1]))
+    assert loose.read_bytes() != original_object
+
+    for unchanged, original in ((repo_seed, original_seed), (second, original_second)):
+        _bootstrap_identity(unchanged)
+        assert _repository_file_hashes(unchanged) == original
 
 
 def edit(root, path, data=b"\n# synthetic P4 review change\n"):
