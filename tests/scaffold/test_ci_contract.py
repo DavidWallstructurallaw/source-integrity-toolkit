@@ -325,13 +325,15 @@ def configure_context():
                 ("GITHUB_EVENT_PATH", "GITHUB_EVENT_NAME", "SIT_REVIEW_HEAD")),
             "current_external_context_required")
     return phase_guard.current_context(os.environ["GITHUB_EVENT_NAME"],
-        Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes(), os.environ["SIT_REVIEW_HEAD"])
+        Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes(), os.environ["SIT_REVIEW_HEAD"], root=ROOT)
 
 
 def current_binding(*, local=False):
     head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     if local:
-        return {"mode": "local", "head": head, "python": sys.version,
+        state = phase_guard.current_local_state(ROOT)
+        require(state["head"] == head, "wrong_checked_commit")
+        return {"mode": "local", **state, "python": sys.version,
                 "platform": platform.platform(), "hosted_matrix_attestation": False}
     context = configure_context()
     require(os.environ.get("GITHUB_ACTIONS") == "true", "explicit Actions invocation required")
@@ -375,8 +377,8 @@ def entry_and_scope(evidence):
     history = phase_guard.current_history(ROOT, context["base"], context["head"], authority)
     checkout = phase_guard.current_checkout(ROOT, context["head"], authority)
     record = {"ok": True, **context, **checkout,
-        "accepted_head": phase_guard.VC_ACCEPTED_HEAD,
-        "accepted_tree": phase_guard.VC_ACCEPTED_TREE,
+        "accepted_head": phase_guard.P4_ACCEPTED_HEAD,
+        "accepted_tree": phase_guard.P4_ACCEPTED_TREE,
         "actual_entry_files": len(authority[0]), "intermediate_commits": history,
         "provenance": "Accepted Git anchor, every subsequent commit including merge sides, index and actual worktree"}
     save(evidence / "entry-and-scope.json", record)
@@ -387,9 +389,10 @@ def guard_command(tool, *, local=False):
     command = [sys.executable, "-B", "tools/" + tool + ".py"]
     if tool == "check_scaffold_boundary":
         if local:
-            command += ["--modules-only"]
+            state = phase_guard.current_local_state(ROOT)
+            command += ["--modules-only", "--stage", str(state["activation_stage"])]
         else:
-            command += ["--unit", "VC", "--event-name", os.environ["GITHUB_EVENT_NAME"],
+            command += ["--unit", configure_context()["unit"], "--event-name", os.environ["GITHUB_EVENT_NAME"],
                         "--event-file", os.environ["GITHUB_EVENT_PATH"], "--head", os.environ["SIT_REVIEW_HEAD"]]
     return command
 
@@ -411,7 +414,7 @@ def preflight(base, evidence):
     if risk["profile"] == "documentation":
         validate_documentation()
     save(evidence / "environment.json", {"binding": binding, "platform": platform.platform(),
-        "image_version": os.environ.get("ImageVersion"), "scope": "Current verification consolidation"})
+        "image_version": os.environ.get("ImageVersion"), "scope": "Current Phase 4 verification"})
     for tool in ("check_phase0_baseline", "check_scaffold_boundary"):
         run(guard_command(tool), evidence, tool + "-before")
     save(evidence / "preflight.json", {"binding": binding, "ok": True,
@@ -431,9 +434,9 @@ def selected_profile(evidence):
 
 def validate_documentation():
     """These records carry no authority, but their formats must remain readable."""
-    value = json.loads((ROOT / "verification/consolidation_map.json").read_bytes(), object_pairs_hook=unique)
-    require(isinstance(value, dict) and bool(value), "documentation_map_must_be_nonempty_object")
-    require(bool((ROOT / "VERIFICATION_CONSOLIDATION_COMPLETION.md").read_text(encoding="utf-8").strip()),
+    value = json.loads((ROOT / "phase4/implementation_evidence.json").read_bytes(), object_pairs_hook=unique)
+    require(isinstance(value, dict) and bool(value), "documentation_evidence_must_be_nonempty_object")
+    require(bool((ROOT / "PHASE_4_COMPLETION.md").read_text(encoding="utf-8").strip()),
             "documentation_completion_must_be_nonempty_utf8")
 
 
@@ -546,15 +549,19 @@ def installed_receipts(base, evidence, binding, archives, *, local=False):
             path.write_bytes(found[0].read_bytes())
         receipt = json.loads(path.read_bytes())
         require(receipt.get("head") == binding["head"] and receipt.get("ok") is True, "installed_receipt_head_or_result")
+        require(receipt.get("unit") == binding["unit"] and
+                type(receipt.get("activation_stage")) is int and
+                receipt.get("activation_stage") == binding["activation_stage"],
+                "installed_receipt_current_context_mismatch")
         runtime = receipt["runtime"]
         require(runtime["modules"] == modules and runtime["runtime_distributions"] == ["source-integrity-toolkit"] and
                 runtime["normal_effects"] == [] and runtime["negative_events"] == ["open", "socket.getaddrinfo", "ctypes.dlopen"] and
                 runtime["public_refusals"] == 2, "installed_runtime_boundary_incomplete")
         if label == "w08":
-            require(receipt["unit"] == "VC" and runtime["admitted_fixture_modes"] == 8 and
+            require(runtime["admitted_fixture_modes"] == 8 and
                     runtime["rejected_empty_modes"] == 2, "installed_preparation_modes_missing")
         else:
-            require(receipt["unit"] == "P3-W14" and len(runtime["hero_modes"]) == 8 and
+            require(len(runtime["hero_modes"]) == 8 and
                     len(runtime["completed_finite_modes"]) == 2 and runtime["invalid_modes"] == 2,
                     "installed_analysis_modes_missing")
             source_sets = {
@@ -580,14 +587,30 @@ def installed_receipts(base, evidence, binding, archives, *, local=False):
 
 def emit_summary(evidence, summary):
     save(evidence / "summary.json", summary)
-    print("VC_SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
+    print("P4_SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
     if os.environ.get("GITHUB_STEP_SUMMARY") and summary.get("mode") != "local":
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
-            output.write("## Current verification consolidation\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
+            output.write("## Current Phase 4 verification\n\n```json\n" + json.dumps(summary, indent=2) + "\n```\n")
+
+
+def reconcile_preparation_commands(evidence, *, local=False):
+    """A stage success claim cannot replace its actual subprocess receipts."""
+    names = (("installed", "pip-check") if local else
+             ("venv", "pip-version", "download", "install", "pip-check", "installed"))
+    for name in names:
+        try:
+            record = json.loads((evidence / (name + "-exit.json")).read_bytes(), object_pairs_hook=unique)
+        except (OSError, UnicodeError, ValueError) as exc:
+            raise ValueError("preparation_subprocess_receipt_invalid:" + name) from exc
+        require(type(record) is dict and type(record.get("exit_code")) is int and
+                record["exit_code"] == 0 and record.get("timed_out") is False and
+                record.get("interrupted") is False and record.get("incomplete") is False,
+                "preparation_subprocess_not_successful:" + name)
+    return list(names)
 
 
 def evidence_report(base, evidence, *, local=False):
-    summary = {"scope": "Current verification consolidation", "mode": "local" if local else "hosted",
+    summary = {"scope": "Current Phase 4 verification", "mode": "local" if local else "hosted",
                "pass": False, "full_suite": False, "hosted_matrix_attestation": False}
     try:
         binding = current_binding(local=local)
@@ -605,6 +628,8 @@ def evidence_report(base, evidence, *, local=False):
         prepared, tested = (bound_record(evidence, name, binding) for name in ("prepare.json", "test.json"))
         require(prepared.get("ok") is True and tested.get("ok") is True and
                 prepared.get("profile") == tested.get("profile") == risk["profile"], "required_stage_incomplete")
+        if risk["profile"] == "full":
+            summary["preparation_commands_completed"] = reconcile_preparation_commands(evidence, local=local)
         after = tracked_bytes()
         save(evidence / "tracked-after.json", after)
         summary["tracked_bytes_unchanged"] = json.loads((evidence / "tracked-before.json").read_bytes()) == after
@@ -617,6 +642,10 @@ def evidence_report(base, evidence, *, local=False):
         summary["guards_pass"] = True
         if risk["profile"] == "documentation":
             validate_documentation()
+            require(prepared.get("dependency_install_performed") is False and
+                    not any((evidence / (name + "-exit.json")).exists() for name in
+                            ("venv", "pip-version", "download", "install", "pip-check", "installed")),
+                    "unexpected_preparation_execution_on_documentation_route")
             require(tested.get("full_suite") is False and tested.get("collection_performed") is False,
                     "documentation_claimed_full_suite")
             require(not any((evidence / name).exists() for name in ("junit.xml", "collection.json", "pytest-exit.json")),
@@ -655,7 +684,7 @@ def stage_failure(evidence, stage, exc, *, local=False):
     save(evidence / (stage + "-failure.json"), failure)
     summary_path = evidence / "summary.json"
     summary = json.loads(summary_path.read_bytes()) if summary_path.exists() else {
-        "scope": "Current verification consolidation", "mode": "local" if local else "hosted"}
+        "scope": "Current Phase 4 verification", "mode": "local" if local else "hosted"}
     summary.update({"pass": False, "full_suite": False, "hosted_matrix_attestation": False, "failure": failure})
     emit_summary(evidence, summary)
 
@@ -704,6 +733,94 @@ class DriverEvidenceTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         return Path(temporary.name)
+
+    def test_actual_event_is_checked_against_repository_commit_context(self):
+        event_file = self.workspace() / "event.json"
+        event_file.write_bytes(b'{"actual":"event"}')
+        context = {"unit": "P4-W01", "activation_stage": 1, "head": "a" * 40,
+                   "base": "b" * 40, "event": "pull_request"}
+        with mock.patch.dict(os.environ, {"GITHUB_EVENT_NAME": "pull_request",
+                "GITHUB_EVENT_PATH": str(event_file), "SIT_REVIEW_HEAD": context["head"],
+                "SIT_PHASE_UNIT": "P4-W10"}), \
+                mock.patch.object(phase_guard, "current_context", return_value=context) as resolve:
+            self.assertEqual(configure_context(), context)
+        resolve.assert_called_once_with("pull_request", event_file.read_bytes(), context["head"], root=ROOT)
+
+    def test_local_binding_uses_verified_ancestry_without_hosted_attestation(self):
+        state = {"unit": "P4-W02", "activation_stage": 8, "head": "a" * 40,
+                 "base": "b" * 40, "clean": False}
+        with mock.patch.object(phase_guard, "current_local_state", return_value=state) as resolve, \
+                mock.patch.object(subprocess, "check_output", return_value=state["head"] + "\n"), \
+                mock.patch.dict(os.environ, {"SIT_PHASE_UNIT": "P4-W01", "GITHUB_RUN_ID": "123"}):
+            binding = current_binding(local=True)
+        resolve.assert_called_once_with(ROOT)
+        self.assertEqual({key: binding[key] for key in state}, state)
+        self.assertEqual(binding["mode"], "local")
+        self.assertIs(binding["hosted_matrix_attestation"], False)
+        self.assertNotIn("run_id", binding)
+
+    def test_local_package_probe_keeps_activation_after_earlier_unit_repair(self):
+        state = {"unit": "P4-W02", "activation_stage": 8, "head": "a" * 40}
+        with mock.patch.object(phase_guard, "current_local_state", return_value=state):
+            command = guard_command("check_scaffold_boundary", local=True)
+        self.assertEqual(command[-3:], ["--modules-only", "--stage", "8"])
+        self.assertNotIn("--unit", command)
+
+    def test_hosted_guard_unit_comes_from_verified_context(self):
+        context = {"unit": "P4-W01", "activation_stage": 1}
+        with mock.patch(__name__ + ".configure_context", return_value=context), \
+                mock.patch.dict(os.environ, {"GITHUB_EVENT_NAME": "pull_request",
+                    "GITHUB_EVENT_PATH": "actual-event.json", "SIT_REVIEW_HEAD": "a" * 40,
+                    "SIT_PHASE_UNIT": "P4-W10"}):
+            command = guard_command("check_scaffold_boundary")
+        self.assertEqual(command[command.index("--unit") + 1], "P4-W01")
+
+    def test_installed_receipts_bind_current_unit_activation_and_both_refusals(self):
+        evidence = self.workspace()
+        binding = {"head": "a" * 40, "unit": "P4-W01", "activation_stage": 1}
+        modules = {}
+        for path in sorted((ROOT / "src/source_integrity_toolkit").rglob("*.py")):
+            name = path.relative_to(ROOT / "src").as_posix().removesuffix(".py").replace("/", ".").removesuffix(".__init__")
+            modules[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+        self.assertEqual(len(modules), 48)
+        distributions = [{"name": "synthetic.tar.gz", "members": {"source": "synthetic"}},
+            {"name": "synthetic.whl", "members": {"module": "synthetic"}},
+            {"name": "synthetic.whl", "members": {"module": "synthetic"}}]
+        runtime = {"modules": modules, "runtime_distributions": ["source-integrity-toolkit"],
+            "normal_effects": [], "negative_events": ["open", "socket.getaddrinfo", "ctypes.dlopen"],
+            "public_refusals": 2}
+        w08 = {**binding, "ok": True, "distributions": distributions, "runtime": {
+            **runtime, "admitted_fixture_modes": 8, "rejected_empty_modes": 2}}
+        w14 = {**binding, "ok": True, "distributions": distributions, "runtime": {
+            **runtime, "hero_modes": list(range(8)), "completed_finite_modes": list(range(2)), "invalid_modes": 2}}
+        for field, paths in {
+                "test_sources": ["tests/integration/test_analytical_installed_runtime.py",
+                    "tests/integration/test_analytical_hero_inputs.py", "tests/integration/test_analytical_pipeline.py"],
+                "frozen_test_sources": ["tests/" + kind + "/" + case + suffix
+                    for case in ("H7-01", "H7-V01", "H7-V02", "H7-V03")
+                    for kind, suffix in (("fixtures/hero", ".bundle.json"), ("golden", ".logical.json"))],
+                }.items():
+            w14[field] = {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest() for path in paths}
+        records = {"w08": w08, "w14": w14}
+        for label, record in records.items():
+            save(evidence / (label + "-installed-runtime.json"), record)
+        self.assertEqual(set(installed_receipts(evidence, evidence, binding, distributions)), {"w08", "w14"})
+        for label in records:
+            for field, value, reason in (
+                    ("unit", "VC", "installed_receipt_current_context_mismatch"),
+                    ("unit", "P3-W14", "installed_receipt_current_context_mismatch"),
+                    ("activation_stage", 8, "installed_receipt_current_context_mismatch"),
+                    ("activation_stage", True, "installed_receipt_current_context_mismatch"),
+                    ("head", "b" * 40, "installed_receipt_head_or_result"),
+                    ("public_refusals", 1, "installed_runtime_boundary_incomplete")):
+                with self.subTest(label=label, field=field, value=value):
+                    changed = copy.deepcopy(records[label])
+                    (changed["runtime"] if field == "public_refusals" else changed)[field] = value
+                    save(evidence / (label + "-installed-runtime.json"), changed)
+                    with self.assertRaisesRegex(ValueError, "^" + reason + "$"):
+                        installed_receipts(evidence, evidence, binding, distributions)
+                    save(evidence / (label + "-installed-runtime.json"), records[label])
+        self.assertEqual(set(installed_receipts(evidence, evidence, binding, distributions)), {"w08", "w14"})
 
     def test_timeout_preserves_partial_stdout_stderr_and_status(self):
         evidence = self.workspace()
@@ -818,10 +935,12 @@ class DriverEvidenceTests(unittest.TestCase):
 
     def test_wrong_head_attempt_or_matrix_cannot_reuse_stage_record(self):
         evidence = self.workspace()
-        binding = {"head": "candidate", "run_attempt": "1", "matrix_python": "3.11"}
+        binding = {"head": "candidate", "run_attempt": "1", "matrix_python": "3.11",
+                   "unit": "P4-W01", "activation_stage": 1}
         save(evidence / "binding.json", binding)
         save(evidence / "preflight.json", {"binding": binding, "ok": True})
-        for field, value in (("head", "other"), ("run_attempt", "2"), ("matrix_python", "3.13")):
+        for field, value in (("head", "other"), ("run_attempt", "2"), ("matrix_python", "3.13"),
+                             ("unit", "P4-W02"), ("activation_stage", 8)):
             with self.subTest(field=field):
                 with self.assertRaisesRegex(ValueError, "identity_mismatch"):
                     bound_record(evidence, "preflight.json", {**binding, field: value})
@@ -860,17 +979,116 @@ class DriverEvidenceTests(unittest.TestCase):
         self.assertIs(tested["collection_performed"], False)
         self.assertFalse((evidence / "junit.xml").exists())
 
+    def test_full_summary_reconciles_raw_preparation_despite_successful_stage_claims(self):
+        """Valid later-stage evidence cannot repair a missing earlier exit."""
+        for local in (True, False):
+            evidence = self.workspace()
+            binding = {"head": "a" * 40, "base": "b" * 40}
+            save(evidence / "binding.json", binding)
+            save(evidence / "preflight.json", {"binding": binding, "ok": True})
+            save(evidence / "prepare.json", {"binding": binding, "ok": True,
+                "profile": "full", "dependency_install_performed": not local})
+            save(evidence / "test.json", {"binding": binding, "ok": True, "profile": "full"})
+            save(evidence / "tracked-before.json", {})
+            nodes = [
+                "tests/contract/test_phase2_transition.py::W08R01Tests::test_clean_installed_components_need_no_phase_policy_or_developer_tools",
+                "tests/integration/test_analytical_installed_runtime.py::test_clean_installed_analysis_original_heroes_and_completed_finite_case",
+            ]
+            save(evidence / "collection.json", {"binding": binding, "nodes": nodes,
+                "count": 2, "test_files": [node.split("::")[0] for node in nodes], "scopes": list(ALL_SCOPES)})
+            document = ET.Element("testsuites")
+            suite = ET.SubElement(document, "testsuite", tests="2", failures="0", errors="0", skipped="0")
+            for node in nodes:
+                parts = node.split("::")
+                ET.SubElement(suite, "testcase", classname=".".join(
+                    [parts[0][:-3].replace("/", "."), *parts[1:-1]]), name=parts[-1])
+            (evidence / "junit.xml").write_bytes(ET.tostring(document))
+            (evidence / "pytest.log").write_text("2 passed\n", encoding="utf-8")
+            complete = {"exit_code": 0, "timed_out": False, "interrupted": False,
+                        "incomplete": False, "timeout_seconds": 180}
+            save(evidence / "pytest-exit.json", {**complete, "timeout_seconds": 2400})
+            names = (["installed", "pip-check"] if local else
+                     ["venv", "pip-version", "download", "install", "pip-check", "installed"])
+            for name in names:
+                save(evidence / (name + "-exit.json"), complete)
+            archives = [{"name": name} for name in ("a.tar.gz", "a.whl", "b.whl")]
+            with mock.patch(__name__ + ".current_binding", return_value=binding), \
+                    mock.patch(__name__ + ".selected_profile", return_value=(binding, {"profile": "full"})), \
+                    mock.patch(__name__ + ".archive_inventories", return_value=archives), \
+                    mock.patch(__name__ + ".tracked_bytes", return_value={}), \
+                    mock.patch(__name__ + ".guard_command", return_value=["synthetic-guard"]), \
+                    mock.patch(__name__ + ".run"), \
+                    mock.patch(__name__ + ".policy"), \
+                    mock.patch(__name__ + ".entry_and_scope"), \
+                    mock.patch(__name__ + ".installed_receipts", return_value={}), \
+                    mock.patch(__name__ + ".emit_summary", side_effect=lambda path, value: save(path / "summary.json", value)):
+                evidence_report(evidence / "work", evidence, local=local)
+                positive = json.loads((evidence / "summary.json").read_bytes())
+                self.assertIs(positive["pass"], True)
+                self.assertEqual(positive["preparation_commands_completed"], names)
+                for name in names:
+                    path = evidence / (name + "-exit.json")
+                    mutations = [None, b"{", b"[]", b'{"exit_code":0,"exit_code":7}',
+                        json.dumps({**complete, "exit_code": False}).encode(),
+                        json.dumps({**complete, "exit_code": 7}).encode(),
+                        json.dumps({**complete, "exit_code": None, "incomplete": True}).encode(),
+                        json.dumps({**complete, "timed_out": True}).encode(),
+                        json.dumps({**complete, "interrupted": True}).encode(),
+                        json.dumps({**complete, "incomplete": True}).encode(),
+                        json.dumps({key: value for key, value in complete.items() if key != "incomplete"}).encode()]
+                    for index, raw in enumerate(mutations):
+                        with self.subTest(local=local, command=name, mutation=index):
+                            path.unlink()
+                            if raw is not None:
+                                path.write_bytes(raw)
+                            with self.assertRaisesRegex(ValueError, "^preparation_subprocess_"):
+                                evidence_report(evidence / "work", evidence, local=local)
+                            self.assertIs(json.loads((evidence / "summary.json").read_bytes())["pass"], False)
+                            self.assertIs(json.loads((evidence / "prepare.json").read_bytes())["ok"], True)
+                            save(path, complete)
+                evidence_report(evidence / "work", evidence, local=local)
+                self.assertIs(json.loads((evidence / "summary.json").read_bytes())["pass"], True)
+
+    def test_documentation_summary_has_no_preparation_execution(self):
+        evidence = self.workspace()
+        binding = {"head": "a" * 40}
+        save(evidence / "binding.json", binding)
+        save(evidence / "prepare.json", {"binding": binding, "ok": True,
+            "profile": "documentation", "dependency_install_performed": False})
+        save(evidence / "test.json", {"binding": binding, "ok": True,
+            "profile": "documentation", "full_suite": False, "collection_performed": False})
+        save(evidence / "tracked-before.json", {})
+        with mock.patch(__name__ + ".current_binding", return_value=binding), \
+                mock.patch(__name__ + ".selected_profile", return_value=(binding, {"profile": "documentation"})), \
+                mock.patch(__name__ + ".archive_inventories", return_value=[]), \
+                mock.patch(__name__ + ".tracked_bytes", return_value={}), \
+                mock.patch(__name__ + ".guard_command", return_value=["synthetic-guard"]), \
+                mock.patch(__name__ + ".run"), \
+                mock.patch(__name__ + ".policy"), \
+                mock.patch(__name__ + ".entry_and_scope"), \
+                mock.patch(__name__ + ".validate_documentation"), \
+                mock.patch(__name__ + ".reconcile_preparation_commands", side_effect=AssertionError("unexpected dependencies")), \
+                mock.patch(__name__ + ".emit_summary", side_effect=lambda path, value: save(path / "summary.json", value)):
+            evidence_report(evidence / "work", evidence)
+            summary = json.loads((evidence / "summary.json").read_bytes())
+            self.assertIs(summary["pass"], True)
+            self.assertIs(summary["full_suite"], False)
+            save(evidence / "pip-check-exit.json", {"exit_code": 0, "incomplete": False})
+            with self.assertRaisesRegex(ValueError, "unexpected_preparation_execution_on_documentation_route"):
+                evidence_report(evidence / "work", evidence)
+            self.assertIs(json.loads((evidence / "summary.json").read_bytes())["pass"], False)
+
     def test_documentation_still_requires_readable_nonempty_records(self):
         root = self.workspace()
-        (root / "verification").mkdir()
-        (root / "VERIFICATION_CONSOLIDATION_COMPLETION.md").write_text("Review record", encoding="utf-8")
+        (root / "phase4").mkdir()
+        (root / "PHASE_4_COMPLETION.md").write_text("Review record", encoding="utf-8")
         with mock.patch(__name__ + ".ROOT", root):
             for content in ("{", "{}", "[]", '{"a":1,"a":2}'):
                 with self.subTest(content=content):
-                    (root / "verification/consolidation_map.json").write_text(content, encoding="utf-8")
+                    (root / "phase4/implementation_evidence.json").write_text(content, encoding="utf-8")
                     with self.assertRaises(ValueError):
                         validate_documentation()
-            (root / "verification/consolidation_map.json").write_text('{"record":"readable"}', encoding="utf-8")
+            (root / "phase4/implementation_evidence.json").write_text('{"record":"readable"}', encoding="utf-8")
             validate_documentation()
 
     def test_early_context_failure_still_writes_failed_summary(self):
@@ -914,7 +1132,7 @@ if __name__ == "__main__":
         parser.add_argument("--evidence-dir", type=Path)
         args = parser.parse_args()
         if args.local:
-            destination = args.evidence_dir or Path(tempfile.mkdtemp(prefix="sit-vc-local-"))
+            destination = args.evidence_dir or Path(tempfile.mkdtemp(prefix="sit-p4-local-"))
             print("Local evidence: " + str(destination.resolve()), flush=True)
             local_verify(destination)
         else:

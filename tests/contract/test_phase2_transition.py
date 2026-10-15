@@ -141,9 +141,10 @@ print(json.dumps({'modules':loaded,'admitted_fixture_modes':8,'rejected_empty_mo
             inventory.append({"name": path.name, "bytes": path.stat().st_size,
                               "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "members": members})
         self.assertEqual(inventory[1]["members"], inventory[2]["members"])
-        record = {"head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+        state = guard.current_local_state(ROOT)
+        record = {**state,
                   "scope": "W08 clean installed preparation; no public audit or native-file certification",
-                  "unit": "VC", "ok": True, "runtime": result, "distributions": inventory}
+                  "ok": True, "runtime": result, "distributions": inventory}
         # Fixed developer evidence destination; no source payload or binary upload.
         destination = (Path(os.environ["RUNNER_TEMP"]) / "sit-p3/evidence" if os.environ.get("GITHUB_ACTIONS") == "true" else work)
         destination.mkdir(parents=True, exist_ok=True)

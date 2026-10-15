@@ -179,9 +179,11 @@ def test_clean_installed_analysis_original_heroes_and_completed_finite_case(inst
              ROOT / 'tests/integration/test_analytical_pipeline.py']
     fixture_paths = [ROOT / 'tests' / kind / (case + suffix) for case in hero.HEROES
                      for kind, suffix in (('fixtures/hero', '.bundle.json'), ('golden', '.logical.json'))]
-    record = {'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+    guard = _load('sit_current_installed_context', 'tools/check_scaffold_boundary.py')
+    state = guard.current_local_state(ROOT)
+    record = {**state,
         'scope': 'W14 installed private analysis; original hero stops are not completed golden certification',
-        'unit': 'P3-W14', 'ok': True, 'runtime': actual, 'distributions': inventories,
+        'ok': True, 'runtime': actual, 'distributions': inventories,
         'test_sources': {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
                          for path in paths},
         'frozen_test_sources': {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()

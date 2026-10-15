@@ -227,7 +227,11 @@ def test_no_runtime_schema_or_source_reads():
         text=(ROOT/f"src/source_integrity_toolkit/contracts/{name}.py").read_text()
         for forbidden in ("read_bytes(","read_text(","json.load(","urlopen(","open(","eval("):
             assert forbidden not in text
-    assert not (ROOT/"schemas/report/sit-report-0.1.schema.json").exists()
+    report = load("schemas/report/sit-report-0.1.schema.json")
+    assert report["$schema"] == "https://json-schema.org/draft/2020-12/schema"
+    assert report["$ref"] == "#/$defs/AuditReport"
+    assert report["$defs"]["AuditReport"]["additionalProperties"] is False
+    assert report["$defs"]["AuditReport"]["properties"]["contract_version"] == {"const": "sit-report/0.1"}
 
 
 def test_duplicate_schema_key_is_not_silently_overwritten():

@@ -1,0 +1,458 @@
+{
+  "description": "Independently named finite Phase 4 dossiers. These do not replace or modify any original H7 fixture or logical golden.",
+  "authorship": "Authored from the accepted specifications by the collaborating Codex assistant lineage. Not generated from product audit/rendering output; no independent external human audit or empirical source authentication is claimed.",
+  "sources": [
+    "PHASE_4_PLAN.md sections 4,5.4,6 P4-W02",
+    "OBSERVABILITY_AND_REPORTING.md sections 12-19",
+    "DEFINITIONS_AND_UNITS.md sections 20-24,27-28",
+    "REPOSITORY_ARCHITECTURE.md sections 17-19",
+    "GOVERNANCE_AND_HANDOFF.md sections 22.2,22.5",
+    "PRIVACY_AND_DATA_HANDLING.md section 4.2"
+  ],
+  "cases": [
+    {
+      "id": "P4-REFERENCE-ONE-ORIGIN",
+      "role": "Complete finite reference for the independent JSON and Markdown golden files.",
+      "derivation": "One explicitly selected EvidenceItem binds one Claim and one Artifact, with one affirmed acquisition-parent assertion to one documentary OriginEvent. One fully enumerated finite coverage assessment and one boundary assessment share supplied documentary support. No comparison, evaluator, pipeline, correction, anomaly or contestation records are supplied.",
+      "difference_from_original_heroes": "New identities and complete independent small dossier; no original H7 input is reduced, rewritten or described as having completed.",
+      "expected_core_facts": {
+        "seed_members": [
+          "P4-E1"
+        ],
+        "artifact_members": [
+          "P4-ART"
+        ],
+        "origin_members": [
+          "P4-O1"
+        ],
+        "per_seed_origins": {
+          "P4-E1": [
+            "P4-O1"
+          ]
+        },
+        "incidence_counts": {
+          "P4-O1": 1
+        },
+        "documentary_resolution_fraction": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "single_origin_contribution_hhi": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "immediate_dispositions": {
+          "inherited_only": [],
+          "origin_only": [
+            "P4-E1"
+          ],
+          "mixed": [],
+          "unresolved": []
+        },
+        "inherited_only_seed_fraction": {
+          "numerator": 0,
+          "denominator": 1
+        }
+      },
+      "disclosure_controls": {
+        "excluded_values": [
+          "P4-PRIVATE-DISPLAY-NOT-EXPORTED",
+          "P4-PRIVATE-EXCERPT-NOT-EXPORTED"
+        ],
+        "retained_method": "Inspect supplied acquisition record; literal ``` is data.",
+        "retained_qualification": "Caller-supplied documentary premise (合成例); no external authentication."
+      },
+      "dossier": {
+        "contract_version": "sit-bundle/0.1",
+        "bundle_id": "P4-BUNDLE-REFERENCE",
+        "snapshot_id": "P4-SNAPSHOT-REFERENCE-01",
+        "recorded_at": {
+          "state": "unknown",
+          "value": null,
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case."
+        },
+        "predecessor": null,
+        "inquiries": [
+          {
+            "id": "P4-I001",
+            "target_claim_refs": [
+              "P4-CLAIM"
+            ],
+            "target_object_refs": [],
+            "seed_artifact_refs": [
+              "P4-ART"
+            ],
+            "seed_evidence_refs": [
+              "P4-E1"
+            ],
+            "boundary": {
+              "description": "One fictional acquisition and its supplied contribution.",
+              "criterion": "Only the supplied finite record identities and typed bindings.",
+              "system_refs": []
+            },
+            "time_window": {
+              "start": {
+                "state": "unknown",
+                "value": null,
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case."
+              },
+              "end": {
+                "state": "unknown",
+                "value": null,
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case."
+              }
+            },
+            "as_of": {
+              "state": "unknown",
+              "value": null,
+              "precision": null,
+              "reason": "No occurrence time is supplied for this fictional reference case."
+            },
+            "dependency_dimensions": [
+              "acquisition"
+            ],
+            "coverage_assertion_refs": [
+              "P4-COVER"
+            ],
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            }
+          }
+        ],
+        "records": [
+          {
+            "id": "P4-ACTOR",
+            "kind": "actor",
+            "data": {
+              "actor_kind": "human",
+              "identity_disclosure": "pseudonymous",
+              "display_name": "P4-PRIVATE-DISPLAY-NOT-EXPORTED"
+            },
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            }
+          },
+          {
+            "id": "P4-ART",
+            "kind": "artifact",
+            "data": {
+              "artifact_kind": "document",
+              "work_key": "P4-WORK",
+              "version_label": "v1",
+              "locators": [],
+              "published_at": {
+                "state": "unknown",
+                "value": null,
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case."
+              },
+              "retrieved_at": {
+                "state": "unknown",
+                "value": null,
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case."
+              },
+              "content_evidence_refs": []
+            },
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            }
+          },
+          {
+            "id": "P4-CLAIM",
+            "kind": "claim",
+            "data": {
+              "claim_key": "P4-CLAIM-FAMILY",
+              "version_label": "v1",
+              "text": "A fictional sample was recorded.",
+              "context": "Only the supplied finite example."
+            },
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            }
+          },
+          {
+            "id": "P4-E1",
+            "kind": "evidence_item",
+            "data": {
+              "claim_ref": "P4-CLAIM",
+              "artifact_ref": "P4-ART",
+              "locator": "sample-1",
+              "epistemic_type": "fictional_example",
+              "description": "One explicitly supplied contribution."
+            },
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "documented_record",
+              "evidence_ref_ids": [
+                "P4-SUPPORT"
+              ],
+              "method": "Inspect supplied acquisition record; literal ``` is data.",
+              "qualifications": [
+                "Caller-supplied documentary premise (合成例); no external authentication."
+              ]
+            }
+          },
+          {
+            "id": "P4-O1",
+            "kind": "origin_event",
+            "data": {
+              "event_kind": "data_collection",
+              "event_key": "P4-ACQUISITION",
+              "performed_by_refs": [
+                "P4-ACTOR"
+              ],
+              "method_ref": "P4-ART",
+              "occurred_at": {
+                "state": "unknown",
+                "value": null,
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case."
+              },
+              "description": "One represented documentary acquisition boundary."
+            },
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "documented_record",
+              "evidence_ref_ids": [
+                "P4-SUPPORT"
+              ],
+              "method": "Inspect supplied acquisition record; literal ``` is data.",
+              "qualifications": [
+                "Caller-supplied documentary premise (合成例); no external authentication."
+              ]
+            }
+          }
+        ],
+        "assertions": [
+          {
+            "id": "P4-BOUND",
+            "assertion_kind": "assessment",
+            "scope": {
+              "inquiry_refs": [
+                "P4-I001"
+              ],
+              "claim_refs": [
+                "P4-CLAIM"
+              ],
+              "effective_window": {
+                "start": {
+                  "state": "unknown",
+                  "value": null,
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case."
+                },
+                "end": {
+                  "state": "unknown",
+                  "value": null,
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case."
+                }
+              }
+            },
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "documented_record",
+              "evidence_ref_ids": [
+                "P4-SUPPORT"
+              ],
+              "method": "Inspect supplied acquisition record; literal ``` is data.",
+              "qualifications": [
+                "Caller-supplied documentary premise (合成例); no external authentication."
+              ]
+            },
+            "asserted_at": {
+              "state": "unknown",
+              "value": null,
+              "precision": null,
+              "reason": "No occurrence time is supplied for this fictional reference case."
+            },
+            "lifecycle_state": "active",
+            "lifecycle_basis_ref_ids": [],
+            "data": {
+              "assessment_kind": "origin_boundary",
+              "subject_refs": [
+                "P4-O1"
+              ],
+              "details": {
+                "dimension": "acquisition",
+                "boundary_role": "documented_origin",
+                "coverage_ref": "P4-COVER",
+                "termination_reason": "This supplied finite acquisition record terminates here."
+              }
+            }
+          },
+          {
+            "id": "P4-COVER",
+            "assertion_kind": "assessment",
+            "scope": {
+              "inquiry_refs": [
+                "P4-I001"
+              ],
+              "claim_refs": [
+                "P4-CLAIM"
+              ],
+              "effective_window": {
+                "start": {
+                  "state": "unknown",
+                  "value": null,
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case."
+                },
+                "end": {
+                  "state": "unknown",
+                  "value": null,
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case."
+                }
+              }
+            },
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "documented_record",
+              "evidence_ref_ids": [
+                "P4-SUPPORT"
+              ],
+              "method": "Inspect supplied acquisition record; literal ``` is data.",
+              "qualifications": [
+                "Caller-supplied documentary premise (合成例); no external authentication."
+              ]
+            },
+            "asserted_at": {
+              "state": "unknown",
+              "value": null,
+              "precision": null,
+              "reason": "No occurrence time is supplied for this fictional reference case."
+            },
+            "lifecycle_state": "active",
+            "lifecycle_basis_ref_ids": [],
+            "data": {
+              "assessment_kind": "coverage",
+              "subject_refs": [
+                "P4-I001"
+              ],
+              "details": {
+                "coverage_kind": "upstream_history",
+                "state": "complete_for_scope",
+                "relation_types": [
+                  "derived_from",
+                  "copies",
+                  "syndicated_from",
+                  "summarizes",
+                  "translates",
+                  "quotes",
+                  "originates_from",
+                  "depends_on"
+                ],
+                "dimensions": [
+                  "acquisition"
+                ],
+                "member_refs": [
+                  "P4-E1",
+                  "P4-O1"
+                ],
+                "omitted_refs": [],
+                "universe_enumerated": true,
+                "scope_note": "Exactly these two records and all their permitted acquisition-parent predicates."
+              }
+            }
+          },
+          {
+            "id": "P4-PARENT",
+            "assertion_kind": "relation",
+            "scope": {
+              "inquiry_refs": [
+                "P4-I001"
+              ],
+              "claim_refs": [
+                "P4-CLAIM"
+              ],
+              "effective_window": {
+                "start": {
+                  "state": "unknown",
+                  "value": null,
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case."
+                },
+                "end": {
+                  "state": "unknown",
+                  "value": null,
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case."
+                }
+              }
+            },
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "documented_record",
+              "evidence_ref_ids": [
+                "P4-SUPPORT"
+              ],
+              "method": "Inspect supplied acquisition record; literal ``` is data.",
+              "qualifications": [
+                "Caller-supplied documentary premise (合成例); no external authentication."
+              ]
+            },
+            "asserted_at": {
+              "state": "unknown",
+              "value": null,
+              "precision": null,
+              "reason": "No occurrence time is supplied for this fictional reference case."
+            },
+            "lifecycle_state": "active",
+            "lifecycle_basis_ref_ids": [],
+            "data": {
+              "predicate": "originates_from",
+              "from_ref": "P4-E1",
+              "to_ref": "P4-O1",
+              "polarity": "affirmed",
+              "dimension": "acquisition",
+              "details": {}
+            }
+          }
+        ],
+        "evidence_references": [
+          {
+            "id": "P4-SUPPORT",
+            "reference_kind": "supplied_excerpt",
+            "availability": "supplied",
+            "artifact_ref": "P4-ART",
+            "record_ref": null,
+            "locator": null,
+            "excerpt": "P4-PRIVATE-EXCERPT-NOT-EXPORTED: fictional finite acquisition and its complete permitted parent history.",
+            "provided_by_ref": "P4-ACTOR",
+            "attestor_ref": null,
+            "scope_note": "Supplied fictional material; external authenticity is not examined."
+          }
+        ]
+      }
+    }
+  ]
+}

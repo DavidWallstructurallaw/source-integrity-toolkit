@@ -162,13 +162,14 @@ def test_untrusted_python_protocols_remain_unused_through_full_navigation(bad):
 def test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy(tmp_path, target):
     sys.path.insert(0, str(ROOT))
     from tools import check_scaffold_boundary as guard
-    unit = "VC"
-    assert guard.check_repository(ROOT, unit=unit)["ok"]
+    stage = guard.current_local_state(ROOT)["activation_stage"]
+    unit = f"P4-W{stage:02d}"
+    assert guard.current_check_repository(ROOT, stage=stage)["ok"]
     root = tmp_path / "isolated-probe"
     shutil.copytree(ROOT / "src/source_integrity_toolkit", root / "src/source_integrity_toolkit")
-    for name in ("PHASE_3_PLAN.md", "phase3/entry_manifest.json", "phase3/module_policy.json"):
-        dest = root / name; dest.parent.mkdir(parents=True, exist_ok=True); shutil.copyfile(ROOT / name, dest)
-    assert guard.check_repository(root, unit=unit)["ok"]
+    # The trusted repository supplies the verified stage. This package-only
+    # copy has no Git context and cannot self-authorize through copied records.
+    assert guard.current_check_repository(root, stage=stage)["ok"]
     changed = root / "src/source_integrity_toolkit" / target
     assert changed.is_file()
     payload = b'\nUNAUTHORIZED_RESULT = {"independent": True}\n'
@@ -176,5 +177,5 @@ def test_whole_package_guard_rejects_forbidden_implementation_in_temporary_copy(
         # Later authorized analytical bodies still cannot acquire network authority.
         payload += b'import socket\n'
     changed.write_bytes(changed.read_bytes() + payload)
-    assert not guard.check_repository(root, unit=unit)["ok"]
-    assert guard.check_repository(ROOT, unit=unit)["ok"]
+    assert not guard.current_check_repository(root, stage=stage)["ok"]
+    assert guard.current_check_repository(ROOT, stage=stage)["ok"]
