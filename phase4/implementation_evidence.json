@@ -1,7 +1,7 @@
 {
   "phase": "P4",
   "current_unit": "P4-W02",
-  "status": "W02 first hosted candidate failed; W01 verification-owner repair and W02 nested-variant coverage completion in progress; no acceptance claimed",
+  "status": "W02 contracts, independent reference, complete nested controls and targeted validation verified; W01 verification-owner repair verified; final corrected published-head hosted matrix pending at this record",
   "owner_authorization": {
     "instruction": "启动 P4-W02",
     "scope": "P4-W02 only; no W03 execution, merge, release or public API activation",
@@ -37,9 +37,10 @@
     "Declare fixed safe AuditAbort, AuditCancelled and AuditUsageError transports and later report-finalization port methods without changing the nine original private execution definitions or activating runtime composition.",
     "Add closed repository-only report schema: 195 definitions, 160 closed object shapes, 586 local references, 57 family/field bindings, seven value kinds, 19 typed disclosure payloads and six finite witness component forms.",
     "Record explicit private/public representation choices, including full owner-scope graph traces, whole-entity typed references, field-specific native selections and exact human-review scan/source-slot disclosure markers.",
-    "Add an independently source-authored fully runnable private-core case and exact logical/JSON/Markdown reference, plus case-bound positive-before-mutant oracles. No product dump or renderer capture generated the expected output."
+    "Add an independently source-authored fully runnable private-core case and exact logical/JSON/Markdown reference, plus case-bound positive-before-mutant oracles. No product dump or renderer capture generated the expected output.",
+    "Complete independent positive/member/enum/array-item/state controls for all 160 closed schema object positions and 627 member positions. Reuse only read-only schema decoding in tests with before/after fresh-value and byte checks; product verdicts, source specimens and expected values are not cached."
   ],
-  "changed_scope": "The first W02 candidate changed exactly fourteen W02 paths. This W01-owned repair changes only tests/contract/test_verification_boundary.py and this shared evidence record under plan sections 7.2 and 9; prior W02 activation remains stage 2.",
+  "changed_scope": "First W02 candidate: exactly fourteen W02 paths. Follow-up W01-owner repair: only V02 and D05. This W02 follow-up: only N01, D04 and D05. The cumulative W02 execution adds no later-unit implementation; plan, product files outside P01/P02, workflow, dependency pins, budgets, API and renderers remain frozen.",
   "guarantee_migrations": [
     {
       "path": "tests/contract/test_input_schema_mapping.py",
@@ -57,24 +58,24 @@
   ],
   "validation": {
     "targeted_final": {
-      "command": "PYTHONPATH=src ../p4w01-venv/bin/python -B -m pytest -q tests/contract/test_report_contract.py tests/contract/test_report_test_oracles.py tests/contract/test_input_schema_mapping.py tests/scaffold/test_contract_catalogs.py tests/contract/test_result_contract.py tests/contract/test_observability_preparation.py tests/contract/test_prerequisite_contract.py tests/security/test_input_diagnostics.py --junitxml=../p4w02-targeted-combined-01.xml",
-      "scope": "8 targeted files; W02 final source working tree; not a full-suite or hosted attestation",
-      "base_head": "f69cc5dd0a1de025dcf16ebdc4064cc1f20746b2",
-      "pytest_tests": 1445,
+      "command": "PYTHONPATH=src /workspace/scratch/4e5267fe5990/p4w01-venv/bin/python -B -m pytest tests/contract/test_report_contract.py tests/contract/test_report_test_oracles.py tests/contract/test_input_schema_mapping.py tests/scaffold/test_contract_catalogs.py tests/contract/test_result_contract.py tests/contract/test_observability_preparation.py tests/contract/test_prerequisite_contract.py tests/security/test_input_diagnostics.py -q --junitxml=/workspace/scratch/4e5267fe5990/p4w02-targeted-combined-03.xml",
+      "scope": "All eight targeted files after nested-variant coverage and schema decode reuse; not full suite or hosted acceptance. All 222 tracked bytes were identical before and after execution.",
+      "base_head": "6d83a70c52f0bab1626026228b525cee284095f9",
+      "pytest_tests": 6217,
       "successful_subtests": 12,
-      "pytest_seconds": 28.53,
+      "pytest_seconds": 83.33,
       "junit": {
         "name": "pytest",
         "errors": "0",
         "failures": "0",
         "skipped": "0",
-        "tests": "1457",
-        "time": "28.505",
-        "timestamp": "2026-10-14T19:42:04.245729-07:00",
+        "tests": "6229",
+        "time": "83.292",
+        "timestamp": "2026-10-14T20:32:28.623669-07:00",
         "hostname": "502c238e1080"
       },
       "junit_cases_by_classname": {
-        "tests.contract.test_report_contract": 953,
+        "tests.contract.test_report_contract": 5725,
         "tests.contract.test_report_test_oracles": 89,
         "tests.contract.test_input_schema_mapping": 75,
         "tests.scaffold.test_contract_catalogs.ContractCatalogTests": 11,
@@ -83,18 +84,31 @@
         "tests.contract.test_prerequisite_contract": 110,
         "tests.security.test_input_diagnostics": 32
       },
+      "same_ordered_test_identities_as_combined_02": true,
       "raw": {
-        "p4w02-targeted-combined-01.log": {
-          "bytes": 1710,
-          "sha256": "2255441e97b4731508ac0be6bafda1a148dfd4fa4c4bdb2b5cd0d685b9d17ee2"
+        "p4w02-targeted-combined-03-source-after.json": {
+          "bytes": 24430,
+          "sha256": "7843ede83502f2509a9a34ed068ab9f4026e58a2e617634d54985094d5a9bf52"
         },
-        "p4w02-targeted-combined-01.xml": {
-          "bytes": 244682,
-          "sha256": "5628c1f1010bb37e4c8e84be19d430a50da660d36129cb521219ceb09dfc8a4e"
+        "p4w02-targeted-combined-03-stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
-        "p4w02-package-boundary-final.json": {
-          "bytes": 1010,
-          "sha256": "6dc82959d2ce9a59f328f77fcf9bb4ce335ac25105a27176763f1e8be8c45f06"
+        "p4w02-targeted-combined-03.log": {
+          "bytes": 6992,
+          "sha256": "e4162dc6b236e0cd5e41b2e5c477b5b84186e264f6b5ab98e49f77f599e44b68"
+        },
+        "p4w02-targeted-combined-03-exit.json": {
+          "bytes": 792,
+          "sha256": "05fc158fa36ce52afe907d5fd01ef65a8d4987af4904861c2ad3bd719fc7f9b1"
+        },
+        "p4w02-targeted-combined-03-source-before.json": {
+          "bytes": 24430,
+          "sha256": "7843ede83502f2509a9a34ed068ab9f4026e58a2e617634d54985094d5a9bf52"
+        },
+        "p4w02-targeted-combined-03.xml": {
+          "bytes": 1134879,
+          "sha256": "41a835561f7957fcb56706f0b668ffd37b4fe050576dfc81a768b509143b7656"
         }
       },
       "legacy_private_definitions": {
@@ -248,21 +262,228 @@
     },
     "public_stop": "Both public audit functions retain immediate NotImplementedError, package exports remain the original three and version remains 0.1.0.dev0. N01 directly exercises both refusals.",
     "full_local_suite": "not run for W02; targeted checks do not claim all suites",
-    "hosted_four_profiles": {
-      "status_at_record": "pending",
-      "record_location": "PR #36 exact-head checks and raw workflow artifacts",
-      "note": "Actual later hosted outcome is recorded externally without a self-referential evidence-only successor. No documentation-only exemption is used for W02."
-    },
+    "hosted_four_profiles": "Corrected final-head matrix pending at this record; first candidate run 38672908042 failed and is separately retained.",
     "first_hosted_candidate": {
       "head": "05d51fce76d2c30bc0ee970a47539e3dcdcfc66e",
       "tree": "3de6469bad5a90ca5f0ca970acd55a04ca5ae438",
       "run_id": 38672908042,
       "attempt": 1,
-      "state_at_record": "Both Ubuntu profiles failed with 27 tests; both Windows profiles still in progress",
+      "state_at_record": "All four profiles completed failure; same 27 failures, 4789 passes and 533 separate successful subtests per profile. No timeouts, interruption, errors or skips.",
       "passed_tests_per_completed_profile": 4789,
       "failed_tests_per_completed_profile": 27,
       "successful_subtests_per_completed_profile": 533,
-      "note": "Failure artifacts retained separately. No all-zero receipt set or full installed-witness completion is claimed."
+      "note": "All four failed raw sets retained: 48 files each, complete 10 raw command exits (nine zero plus pytest=1), all 222 source hashes and exact test identities reconciled. W08/W14 individual installed witnesses are present but final driver reconciliation failed; no whole-run acceptance. Event digests agree within OS but differ across OS; raw events unavailable.",
+      "failed_profiles": 4,
+      "failed_test_categories": {
+        "frozen_preparation_bytes": 1,
+        "module_ceiling_and_protected_slots": 8,
+        "live_effects_and_dependencies": 18
+      },
+      "audit": {
+        "file": "p4w02-first-ci-failure-audit.json",
+        "bytes": 78635,
+        "sha256": "d73bfe4d64616e70089743cbc13fe1cb19e55f8c4bb6e7c3262436613923c504"
+      }
+    },
+    "targeted_initial": {
+      "command": "PYTHONPATH=src ../p4w01-venv/bin/python -B -m pytest -q tests/contract/test_report_contract.py tests/contract/test_report_test_oracles.py tests/contract/test_input_schema_mapping.py tests/scaffold/test_contract_catalogs.py tests/contract/test_result_contract.py tests/contract/test_observability_preparation.py tests/contract/test_prerequisite_contract.py tests/security/test_input_diagnostics.py --junitxml=../p4w02-targeted-combined-01.xml",
+      "scope": "8 targeted files; W02 final source working tree; not a full-suite or hosted attestation",
+      "base_head": "f69cc5dd0a1de025dcf16ebdc4064cc1f20746b2",
+      "pytest_tests": 1445,
+      "successful_subtests": 12,
+      "pytest_seconds": 28.53,
+      "junit": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "1457",
+        "time": "28.505",
+        "timestamp": "2026-10-14T19:42:04.245729-07:00",
+        "hostname": "502c238e1080"
+      },
+      "junit_cases_by_classname": {
+        "tests.contract.test_report_contract": 953,
+        "tests.contract.test_report_test_oracles": 89,
+        "tests.contract.test_input_schema_mapping": 75,
+        "tests.scaffold.test_contract_catalogs.ContractCatalogTests": 11,
+        "tests.contract.test_result_contract": 104,
+        "tests.contract.test_observability_preparation": 71,
+        "tests.contract.test_prerequisite_contract": 110,
+        "tests.security.test_input_diagnostics": 32
+      },
+      "raw": {
+        "p4w02-targeted-combined-01.log": {
+          "bytes": 1710,
+          "sha256": "2255441e97b4731508ac0be6bafda1a148dfd4fa4c4bdb2b5cd0d685b9d17ee2"
+        },
+        "p4w02-targeted-combined-01.xml": {
+          "bytes": 244682,
+          "sha256": "5628c1f1010bb37e4c8e84be19d430a50da660d36129cb521219ceb09dfc8a4e"
+        },
+        "p4w02-package-boundary-final.json": {
+          "bytes": 1010,
+          "sha256": "6dc82959d2ce9a59f328f77fcf9bb4ce335ac25105a27176763f1e8be8c45f06"
+        }
+      },
+      "legacy_private_definitions": {
+        "src/source_integrity_toolkit/contracts/report.py": {
+          "existing_definitions": 46,
+          "changed_or_missing_existing_definitions": [],
+          "current_sha256": "c170c0e4a60fd0b223e167c80df21bae5143e6d17b18bb7830ccf64ae66b0f01"
+        },
+        "src/source_integrity_toolkit/contracts/execution.py": {
+          "existing_definitions": 9,
+          "changed_or_missing_existing_definitions": [],
+          "current_sha256": "43e6351d5fae7a098b44868d9f7c3c340cfcb37d1c7fcef8c3b8008385deaf55"
+        }
+      },
+      "qualification": "Initial pass predates the identified nested-variant coverage gap; retained as historical scoped evidence, not full W02 acceptance."
+    },
+    "targeted_expanded_before_schema_reuse": {
+      "run": "targeted-combined-02",
+      "scope": "All eight targeted files after nested coverage expansion, before schema decode reuse optimization; no full suite or hosted acceptance.",
+      "base_head": "6d83a70c52f0bab1626026228b525cee284095f9",
+      "N01_sha256": "7fc5c54d756accf53c15120994287fec23eec28468076d8440dd730c0a4be09f",
+      "tests": 6217,
+      "successful_subtests": 12,
+      "seconds": 118.16,
+      "junit": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "6229",
+        "time": "118.116",
+        "timestamp": "2026-10-14T20:26:17.158773-07:00",
+        "hostname": "502c238e1080"
+      },
+      "by_classname": {
+        "tests.contract.test_report_contract": 5725,
+        "tests.contract.test_report_test_oracles": 89,
+        "tests.contract.test_input_schema_mapping": 75,
+        "tests.scaffold.test_contract_catalogs.ContractCatalogTests": 11,
+        "tests.contract.test_result_contract": 104,
+        "tests.contract.test_observability_preparation": 71,
+        "tests.contract.test_prerequisite_contract": 110,
+        "tests.security.test_input_diagnostics": 32
+      },
+      "raw": {
+        "p4w02-targeted-combined-02-exit.json": {
+          "bytes": 750,
+          "sha256": "3ef39fc879c30b01b66b1915e177b76b33d3f1187c213beaa2efc4bdeec193a1"
+        },
+        "p4w02-targeted-combined-02-stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "p4w02-targeted-combined-02.xml": {
+          "bytes": 1134880,
+          "sha256": "9d1816ba6800d8445a7863f803de9e5814b1fe4506816d9bd9112a8ca2ee6ad5"
+        },
+        "p4w02-targeted-combined-02.log": {
+          "bytes": 6993,
+          "sha256": "697812df99bd0f0b1b3a154d21bb93841a4c348e6e092b7b2f7e410d56c00583"
+        }
+      }
+    },
+    "verification_owner_repair": {
+      "state": {
+        "clean": true,
+        "unit": "P4-W01",
+        "activation_stage": 2,
+        "head": "6d83a70c52f0bab1626026228b525cee284095f9",
+        "base": "fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c"
+      },
+      "junit": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "210",
+        "time": "422.404",
+        "timestamp": "2026-10-14T20:17:32.485386-07:00",
+        "hostname": "502c238e1080"
+      },
+      "zero_git_collection_modes": [
+        {
+          "name": "test_current_test_loading_has_no_historical_blob_execution[without_git]",
+          "seconds": "6.344"
+        },
+        {
+          "name": "test_current_test_loading_has_no_historical_blob_execution[git_blocked]",
+          "seconds": "5.983"
+        },
+        {
+          "name": "test_current_test_loading_has_no_historical_blob_execution[poisoned_git_output]",
+          "seconds": "6.052"
+        }
+      ],
+      "slowest_cases": [
+        {
+          "name": "test_current_package_frozen_preparation_bytes_have_positive_and_negative_controls",
+          "seconds": 127.224
+        },
+        {
+          "name": "test_current_history_handles_missing_and_overridden_objects[missing_blob-current_malformed_object_record]",
+          "seconds": 24.963
+        },
+        {
+          "name": "test_current_package_probe_cannot_substitute_for_checkout_authorization",
+          "seconds": 10.693
+        },
+        {
+          "name": "test_current_git_metadata_rereads_root_and_state",
+          "seconds": 6.635
+        },
+        {
+          "name": "test_current_test_loading_has_no_historical_blob_execution[without_git]",
+          "seconds": 6.344
+        },
+        {
+          "name": "test_current_test_loading_has_no_historical_blob_execution[poisoned_git_output]",
+          "seconds": 6.052
+        },
+        {
+          "name": "test_current_test_loading_has_no_historical_blob_execution[git_blocked]",
+          "seconds": 5.983
+        },
+        {
+          "name": "test_current_module_ceiling_and_protected_slots[inert_size-oversize_module]",
+          "seconds": 5.791
+        }
+      ],
+      "raw": {
+        "p4w02-w01-repair-01.log": {
+          "bytes": 272,
+          "sha256": "ce774463f626681251881dde8748c29ef7df17ae04d5cde5e0b17e47dcf273d4"
+        },
+        "p4w02-w01-repair-01.xml": {
+          "bytes": 37608,
+          "sha256": "f9d020e69009d5ac409dc21a5abca5380c23b28c9cb8b1d08c9f59c3338e5ea0"
+        },
+        "p4w02-w01-repair-01-exit.json": {
+          "bytes": 377,
+          "sha256": "ade0f8c0dff82d7133d6499bea5ba5767d9e9b82139491b891d9dca6595f3020"
+        }
+      },
+      "scope": "Only full V02 file at clean W01 repair checkpoint; W02 product activation remains 2; not full suite/hosted acceptance."
+    },
+    "nested_coverage": {
+      "audit_file": "p4w02-contract-closed-object-coverage.json",
+      "bytes": 789627,
+      "sha256": "d18f7870b5e1fcad43c291170513f35841cfad16715360aa2ff34451ce835247",
+      "closed_object_locations": 160,
+      "member_locations": 627,
+      "all_current_N01_tests_executed_together": 5725
+    },
+    "schema_decode_reuse": {
+      "reason": "Initial Windows/Python 3.11 full run used 2171.87 of the unchanged 2400 seconds even before the repaired frozen-byte controls and extra nested tests. Reduce repeated read-only test schema decoding while retaining every case and assertion.",
+      "before_targeted_seconds": 118.16,
+      "after_targeted_seconds": 83.33,
+      "same_6217_ordered_test_identities": true,
+      "N01_reader_fixtures_assertions_unchanged": true,
+      "scope": "Test data reuse only; no product, guard, test selection, dependency or runtime limit changes."
     }
   },
   "failures_and_repairs": [
@@ -322,17 +543,40 @@
       "finding": "First W02 hosted head 05d51fce76d2c30bc0ee970a47539e3dcdcfc66e, run 38672908042 attempt 1, failed on both completed Ubuntu profiles: 27 failed, 4789 passed and 533 separate successful subtests. Current-source V02 checks still assumed stage 1 and falsely rejected the two W02-authorized contract files. Windows profiles were still running when this repair record was written.",
       "owner_unit": "P4-W01",
       "repair": "Use actual verified activation stage for current-source checks, with no guard, scope policy, authorization, source pin, workflow or dependency change. All 48 accepted-anchor hashes remain checked separately. New runtime fixture is covered by three Git-free collect-only modes.",
-      "validation_state": "Patch and independent read-only review completed; clean W01-owner checkout testing pending at this commit.",
+      "validation_state": "Clean local W01 repair checkpoint 6d83a70c52f0bab1626026228b525cee284095f9 passed all 210 V02 tests in 422.40s, including three Git-free collection modes; actual owner W01, activation stage 2, clean checkout. Corrected final hosted validation pending.",
       "evidence": [
         "p4w02-ci-38672908042",
         "tests/contract/test_verification_boundary.py"
-      ]
+      ],
+      "subsequent_observation": "All four initial hosted profiles ultimately failed with exactly the same 27 identities; Windows did not add a new failure class."
     },
     {
       "finding": "Independent W02 acceptance audit found that initial N01 outer-member matrices did not separately exercise every SelectedNative and nested disclosure object variant. The initial 1445-test targeted pass is retained but does not establish that omitted coverage.",
       "owner_unit": "P4-W02",
       "repair": "Add source-authored legal variants followed by missing/extra/type/state/value counterexamples and an explicit object-position coverage audit. Do not generate valid expected examples from the schema or product serialization.",
-      "validation_state": "Coverage completion in progress; no W03 or W04 implementation authorized."
+      "validation_state": "Completed: all 160 closed object positions and 627 members have explicit controls; final combined run executes all 5725 N01 tests and 492 other targeted tests, with 12 successful subtests."
+    },
+    {
+      "finding": "Expanded independent tests exposed three test-data/audit errors: absence-witness occurrence count 9 instead of 8; census included non-object Result conditions; supersession free-text reason was mistakenly treated as an enum through its union.",
+      "owner_unit": "P4-W02",
+      "repair": "Correct the independently source-proven count, enumerate only declared object positions, and keep supersession source prose unconstrained with four explicit positive controls. Product/schema bytes were not changed to fit the mistaken expectations.",
+      "evidence": [
+        {
+          "failure_log": "p4w02-contract-expanded-positives-001.log",
+          "change": "Absence witness member_count 9 -> 8",
+          "source": "graph/witnesses.py:_commit counts 1 start + 1 target + 2 examined nodes + 1 examined edge + 1 frontier + 1 terminal + 1 observation."
+        },
+        {
+          "failure_log": "p4w02-contract-expanded-positives-002.log",
+          "change": "Census excludes Result allOf field-binding rules without an object value shape.",
+          "source": "Only schema locations explicitly declaring type=object belong to the 160-object census; legal values unchanged."
+        },
+        {
+          "failure_log": "p4w02-contract-expanded-matrix-001.log",
+          "change": "Supersession reason remains free source text even through SelectedRelationDetails union; reason enum controls restricted to Gap and UnresolvedReference.",
+          "source": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md 3.3,6.9,6.12,8.3,9.6; four prose positives added."
+        }
+      ]
     }
   ],
   "remaining": {
@@ -579,6 +823,6 @@
     }
   ],
   "authority_notice": "Evidence only. This file cannot grant paths, stages, approvals or acceptance.",
-  "validated_at_utc": "2026-10-15T03:17:04.556793+00:00",
-  "publication_note": "This is a W01-owner verification repair checkpoint, with W02 activation preserved. Source review is complete but isolated repair tests and later corrected W02 hosted matrix are pending. Original failed run remains evidence; this record is not acceptance."
+  "validated_at_utc": "2026-10-15T03:35:18.984279+00:00",
+  "publication_note": "This pre-publication record describes actual local focused verification and preserved first-run failures. The two repair commits retain their own W01/W02 path ownership and stage 2. Final exact-head history checks and hosted receipts are recorded externally in the PR/evidence package after publication, without a self-referential result commit."
 }

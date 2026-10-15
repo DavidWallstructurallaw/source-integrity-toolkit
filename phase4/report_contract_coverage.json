@@ -11734,7 +11734,9 @@
       ],
       "execution_evidence": [
         "p4w02-targeted-combined-01.log",
-        "p4w02-targeted-combined-01.xml"
+        "p4w02-targeted-combined-01.xml",
+        "p4w02-targeted-combined-03.log",
+        "p4w02-targeted-combined-03.xml"
       ]
     },
     {
@@ -11750,7 +11752,9 @@
       ],
       "execution_evidence": [
         "p4w02-targeted-combined-01.log",
-        "p4w02-targeted-combined-01.xml"
+        "p4w02-targeted-combined-01.xml",
+        "p4w02-targeted-combined-03.log",
+        "p4w02-targeted-combined-03.xml"
       ]
     },
     {
@@ -14735,6 +14739,56 @@
     }
   ],
   "w02_verification": {
+    "tests": 6217,
+    "successful_subtests": 12,
+    "seconds": 83.33,
+    "scope": "All eight targeted files after nested-variant coverage and schema decode reuse; not full suite or hosted acceptance. All 222 tracked bytes were identical before and after execution.",
+    "new_contract_test_count": 5725,
+    "new_oracle_test_count": 89,
+    "schema_test_claim": "AST-extracted finite test-side schema evaluator; no product import or execution; not general Draft certification",
+    "reference": {
+      "tests/fixtures/micro/phase4_public_cases.json": {
+        "bytes": 16543,
+        "sha256": "66fa953e6c11225f1848c2da02b4544b349f380b4f4293805058579e531e81bb"
+      },
+      "tests/golden/phase4_report_expectations.json": {
+        "bytes": 638421,
+        "sha256": "c1dbbbc7248e3c9f8d832a23619377daf5f658327dcdb5d7484d506652bbdfe0"
+      },
+      "tests/golden/phase4_reference_report.json": {
+        "bytes": 421307,
+        "sha256": "8b65b805bcc8fa8f0b2cb6701d5bd88b028142f7037c25166c90dbddbc61bf48"
+      },
+      "tests/golden/phase4_reference_report.md": {
+        "bytes": 564555,
+        "sha256": "776b2eaae10b3301681cb5a106753823bff5e4a9ff4a5a09325ed3a271f49bdd"
+      },
+      "tests/contract/test_report_test_oracles.py": {
+        "bytes": 18051,
+        "sha256": "2f8d1add11c82b5a60f3160e83b0e5e6866cd7ffcc9260bd10660e1e751bc3a4"
+      }
+    },
+    "pending": "All 228 field obligations retain their existing pending public-pipeline/rendering state; representation tests do not close assembly, execution, privacy or release acceptance.",
+    "nested_contract_coverage": {
+      "closed_object_locations": 160,
+      "member_locations": 627,
+      "source_annotated_additional_examples": 294,
+      "disclosure_closed_branches": 29,
+      "all_members_have_positive_type_and_missing_or_optional_controls": true,
+      "all_objects_have_extra_member_controls": true,
+      "array_item_controls": true,
+      "audit_file": "p4w02-contract-closed-object-coverage.json",
+      "audit_sha256": "d18f7870b5e1fcad43c291170513f35841cfad16715360aa2ff34451ce835247",
+      "N01_sha256": "06327f21524b93248bfde00a4b0dafbd08886e3988cf2948f1e4cf6eb60b23fa"
+    },
+    "same_6217_test_identities_before_and_after_schema_decode_reuse": true,
+    "raw": [
+      "p4w02-targeted-combined-03.log",
+      "p4w02-targeted-combined-03.xml",
+      "p4w02-targeted-combined-03-exit.json"
+    ]
+  },
+  "w02_initial_targeted_verification": {
     "tests": 1445,
     "successful_subtests": 12,
     "seconds": 28.53,
@@ -14764,6 +14818,7 @@
         "sha256": "2f8d1add11c82b5a60f3160e83b0e5e6866cd7ffcc9260bd10660e1e751bc3a4"
       }
     },
-    "pending": "All 228 field obligations retain their existing pending public-pipeline/rendering state; representation tests do not close assembly, execution, privacy or release acceptance."
+    "pending": "All 228 field obligations retain their existing pending public-pipeline/rendering state; representation tests do not close assembly, execution, privacy or release acceptance.",
+    "qualification": "Initial local pass is retained, but independent review found omitted nested variant controls; superseded for coverage completeness by the final 6217-test targeted run."
   }
 }

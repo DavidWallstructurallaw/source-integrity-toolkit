@@ -61,6 +61,34 @@ def load_json(path):
     return json.loads(path.read_bytes(), object_pairs_hook=unique)
 
 
+_REPORT_SCHEMA = None
+
+
+def report_schema():
+    """Reuse only the file schema's decoded, test-read-only value."""
+    global _REPORT_SCHEMA
+    if _REPORT_SCHEMA is None:
+        _REPORT_SCHEMA = load_json(SCHEMA_PATH)
+    return _REPORT_SCHEMA
+
+
+@pytest.fixture(scope="module", autouse=True)
+def _verify_report_schema_remains_unchanged():
+    original_bytes = SCHEMA_PATH.read_bytes()
+    cached = report_schema()
+    fresh = load_json(SCHEMA_PATH)
+    assert cached == fresh
+    assert json.dumps(cached, sort_keys=True) == json.dumps(fresh, sort_keys=True)
+    try:
+        yield
+    finally:
+        fresh = load_json(SCHEMA_PATH)
+        assert report_schema() is cached
+        assert cached == fresh
+        assert json.dumps(cached, sort_keys=True) == json.dumps(fresh, sort_keys=True)
+        assert SCHEMA_PATH.read_bytes() == original_bytes
+
+
 def json_equal(left, right):
     """JSON scalar equality keeps booleans separate from numbers."""
     if type(left) in (int, float) and type(right) in (int, float):
@@ -253,14 +281,14 @@ def diagnostic_document(kind="processing_diagnostics", state="failed", input_sta
 
 
 def assert_both(document):
-    schema = load_json(SCHEMA_PATH)
+    schema = report_schema()
     assert schema_accepts(document, schema, schema)
     return validate(document)
 
 
 def assert_rejected(document, *, schema_too=True):
     if schema_too:
-        schema = load_json(SCHEMA_PATH)
+        schema = report_schema()
         assert not schema_accepts(document, schema, schema)
     with pytest.raises(TypeError):
         validate(document)
@@ -730,7 +758,7 @@ def validate_component(value, shape):
 
 
 def assert_component(value, shape):
-    schema = load_json(SCHEMA_PATH)
+    schema = report_schema()
     assert schema_accepts(value, schema["$defs"][shape], schema), shape
     port = validate_component(value, shape)
     assert port.units > 0 and port.checks > 0
@@ -739,7 +767,7 @@ def assert_component(value, shape):
 
 def reject_component(value, shape, *, schema_too=True):
     if schema_too:
-        schema = load_json(SCHEMA_PATH)
+        schema = report_schema()
         assert not schema_accepts(value, schema["$defs"][shape], schema), shape
     with pytest.raises(TypeError, match="^invalid_report_contract$"):
         validate_component(value, shape)
@@ -822,7 +850,7 @@ def test_python_count_rejects_integral_float_despite_json_schema_integer_semanti
     baseline = result_example()
     assert_component(baseline, "Result")
     baseline["value"] = 2.0
-    schema = load_json(SCHEMA_PATH)
+    schema = report_schema()
     assert schema_accepts(baseline, schema["$defs"]["Result"], schema)
     reject_component(baseline, "Result", schema_too=False)
 
@@ -1517,3 +1545,1205 @@ def test_scope_and_capability_owners_are_whole_inquiry_or_claim_entities(shape, 
     else:
         value[member]["selector"] = "boundary.system_refs"
     reject_component(value, shape)
+
+
+# W02 exhaustive nested/selected-object contract specimens and member controls.
+
+"""Independent literal candidates for N01; not a production projection.
+
+Sources: CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 3--6.12 and the
+previously admitted tests/fixtures/hero/H7-01.bundle.json. Source field names
+and enum members are transcribed here; public selection is explicitly written.
+No product constants, report schema, renderer or W04 disclosure code is used.
+The host N01 module supplies time_value() and provenance_example().
+"""
+
+
+def native_record_examples():
+    """Return independently authored selected-native and nested positives."""
+    source = "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md"
+    gap = {
+        "field": "data.version_label", "reason": "not_recorded",
+        "detail": "The supplied source does not record a version label.",
+    }
+    window = {
+        "start": time_value("known", "2026-01-01", "date"),
+        "end": time_value("known", "2026-01-31", "date"),
+    }
+    boundary = {
+        "description": "The represented answer and review workflow.",
+        "criterion": "An independently acquired observation lies outside this workflow.",
+        "system_refs": ["ART-1", "MODEL-1", "ACTOR-1", "EVAL-1"],
+    }
+    role = {
+        "role": "human_reviewer", "object_ref": "ACTOR-1",
+        "evidence_ref_ids": ["REF-1"],
+        "qualifications": ["The role is supplied metadata, not an independent vote."],
+    }
+    inquiry = {
+        "id": "INQ-1", "target_claim_refs": ["CLAIM-1"],
+        "target_object_refs": ["ART-1", "MODEL-1", "EVAL-1"],
+        "seed_artifact_refs": ["ART-1"], "seed_evidence_refs": ["EVID-1"],
+        "boundary": boundary, "time_window": window,
+        "as_of": time_value("known", "2026-01-31", "date"),
+        "dependency_dimensions": ["acquisition", "analytical_method"],
+        "coverage_assertion_refs": ["ASS-COVERAGE-1"],
+        "provenance": provenance_example(),
+    }
+    evidence = {
+        "id": "REF-1", "reference_kind": "supplied_excerpt",
+        "availability": "supplied", "artifact_ref": "ART-1",
+        "record_ref": None, "provided_by_ref": "ACTOR-1",
+        "attestor_ref": None,
+        "scope_note": "The supplied source excerpt supports this process description.",
+    }
+    submission = {
+        "submission_kind": "proposed_correction",
+        "summary": "The submitter proposes replacing the recorded review assignment.",
+    }
+    handling = {
+        "outcome": "accepted", "reason": "The supplied handling record accepts the request.",
+    }
+    change = {
+        "action_type": "replace_evaluator", "before_ref": "EVAL-1",
+        "after_ref": "EVAL-2", "after_absence_reason": None,
+        "linkage_description": "The supplied change links the old and new evaluation records.",
+    }
+    # Each payload is typed directly from the corresponding frozen source table.
+    # Suppressed fields are intentionally absent from these literal public bags.
+    data = {
+        "claim": {
+            "claim_key": "CLAIM-FAMILY-1", "version_label": "v1",
+            "context": "The statement concerns the declared inquiry and January window.",
+        },
+        "artifact": {
+            "artifact_kind": "document", "version_label": "v1",
+            "published_at": time_value("known", "2026-01-02", "date"),
+            "retrieved_at": time_value("known", "2026-01-03", "date"),
+            "content_evidence_refs": ["REF-1"],
+        },
+        "actor": {"actor_kind": "human", "identity_disclosure": "pseudonymous"},
+        "evidence_item": {
+            "claim_ref": "CLAIM-1", "artifact_ref": "ART-1",
+            "epistemic_type": "documentary_statement",
+            "description": "The source contributes a scoped documentary statement.",
+        },
+        "origin_event": {
+            "event_kind": "observation", "event_key": "OBSERVATION-1",
+            "performed_by_refs": ["ACTOR-1"], "method_ref": "ART-METHOD-1",
+            "occurred_at": time_value("known", "2026-01-02", "date"),
+            "description": "A supplied observation event with an attributed method.",
+        },
+        "model": {
+            "model_key": "MODEL-FAMILY-1", "version_label": "v1",
+            "family_label": "Declared family", "provider_ref": "ACTOR-ORG-1",
+        },
+        "evaluation": {
+            "evaluation_kind": "human_review", "target_refs": ["CLAIM-1", "ART-1"],
+            "role_bindings": [role], "result_refs": ["ART-RESULT-1"],
+            "occurred_at": time_value("known", "2026-01-05", "date"),
+            "review_contribution": "The reviewer supplied an external comparison record.",
+        },
+        "correction_channel": {
+            "owner_refs": ["ACTOR-1"], "target_refs": ["CLAIM-1", "EVAL-1"],
+            "declared_action_types": ["review", "replace_evaluator"],
+            "valid_window": window,
+        },
+        "correction_event_submission": {
+            "event_kind": "submission", "case_ref": None, "channel_ref": "CHANNEL-1",
+            "target_refs": ["EVAL-1"],
+            "occurred_at": time_value("known", "2026-01-06", "date"),
+            "details": submission,
+        },
+        "correction_event_handling": {
+            "event_kind": "handling", "case_ref": "CASE-1", "channel_ref": "CHANNEL-1",
+            "target_refs": ["EVAL-1"],
+            "occurred_at": time_value("known", "2026-01-07", "date"),
+            "details": handling,
+        },
+        "correction_event_change": {
+            "event_kind": "change", "case_ref": "CASE-1", "channel_ref": "CHANNEL-1",
+            "target_refs": ["EVAL-1"],
+            "occurred_at": time_value("known", "2026-01-08", "date"),
+            "details": change,
+        },
+        "pipeline_record": {
+            "subject_ref": "EVID-1", "run_key": "RUN-1", "stage_key": "STEP-1",
+            "stage": "preservation", "state": "occurred", "output_refs": ["ART-OUTPUT-1"],
+            "observed_at": time_value("known", "2026-01-09", "date"),
+            "linkage_kind": "use_record",
+            "detail": "The source records preservation of this contribution in the output.",
+        },
+        "anomaly": {
+            "inquiry_refs": ["INQ-1"], "claim_ref": None,
+            "original_context": "An observation does not fit the current claim classification.",
+            "context_evidence_ref": None, "classification_state": "unclassified",
+            "caller_label": None,
+            "comparison_note": "The caller supplied a comparison; no rarity estimate is inferred.",
+        },
+        "unresolved_reference": {
+            "expected_kinds": ["origin_event", "evidence_item"],
+            "reason": "outside_snapshot",
+            "description": "The referenced upstream process lies outside the supplied snapshot.",
+        },
+    }
+    # IDs, kinds and shape bindings are handwritten and independent of product
+    # RECORD_SHAPES; they provide the positive baseline for wrong-binding tests.
+    bindings = (
+        ("claim", "CLAIM-1", "claim", "SelectedClaimData", "6.1"),
+        ("artifact", "ART-1", "artifact", "SelectedArtifactData", "6.2"),
+        ("actor", "ACTOR-1", "actor", "SelectedActorData", "6.3"),
+        ("evidence_item", "EVID-1", "evidence_item", "SelectedEvidenceItemData", "6.4"),
+        ("origin_event", "ORIGIN-1", "origin_event", "SelectedOriginEventData", "6.5"),
+        ("model", "MODEL-1", "model", "SelectedModelData", "6.6"),
+        ("evaluation", "EVAL-1", "evaluation", "SelectedEvaluationData", "6.7"),
+        ("correction_channel", "CHANNEL-1", "correction_channel", "SelectedCorrectionChannelData", "6.8"),
+        ("correction_event_submission", "CASE-1", "correction_event", "SelectedCorrectionEventData", "6.9"),
+        ("correction_event_handling", "HANDLING-1", "correction_event", "SelectedCorrectionEventData", "6.9"),
+        ("correction_event_change", "CHANGE-1", "correction_event", "SelectedCorrectionEventData", "6.9"),
+        ("pipeline_record", "PIPE-1", "pipeline_record", "SelectedPipelineRecordData", "6.10"),
+        ("anomaly", "ANOMALY-1", "anomaly", "SelectedAnomalyData", "6.11"),
+        ("unresolved_reference", "UNRESOLVED-1", "unresolved_reference", "SelectedUnresolvedReferenceData", "6.12"),
+    )
+    examples = {
+        "gap": {"shape": "SelectedGap", "value": gap, "source": source + " §3.3"},
+        "boundary": {"shape": "SelectedBoundary", "value": boundary, "source": source + " §5"},
+        "role_binding": {"shape": "SelectedRoleBinding", "value": role, "source": source + " §6.7"},
+        "inquiry": {"shape": "SelectedInquiry", "value": inquiry, "source": source + " §5"},
+        "native_inquiry": {"shape": "SelectedNative", "value": inquiry, "source": source + " §5"},
+        "evidence_reference": {"shape": "SelectedEvidenceReference", "value": evidence, "source": source + " §4"},
+        "native_evidence_reference": {"shape": "SelectedNative", "value": evidence, "source": source + " §4"},
+        "submission_details": {"shape": "SelectedSubmissionDetails", "value": submission, "source": source + " §6.9"},
+        "handling_details": {"shape": "SelectedHandlingDetails", "value": handling, "source": source + " §6.9"},
+        "change_details": {"shape": "SelectedChangeDetails", "value": change, "source": source + " §6.9"},
+    }
+    for label, identifier, kind, shape, section in bindings:
+        origin = source + " §" + section
+        envelope = {"id": identifier, "kind": kind, "data": data[label],
+                    "provenance": provenance_example()}
+        examples["data_" + label] = {"shape": shape, "value": data[label], "source": origin}
+        examples["record_" + label] = {"shape": "SelectedRecord", "value": envelope, "source": origin}
+        examples["native_" + label] = {"shape": "SelectedNative", "value": envelope, "source": origin}
+    # Presence/absence are intentional source distinctions. No automatic labels,
+    # identifiers, locator fields or arbitrary extension fields are introduced.
+    examples.update({
+        "inquiry_gaps_present": {
+            "shape": "SelectedInquiry",
+            "value": {**inquiry, "gaps": [{"field": "coverage_assertion_refs",
+                       "reason": "not_examined", "detail": "Some dimensions were not examined."}]},
+            "source": source + " §§3.3,5",
+        },
+        "inquiry_gaps_empty": {
+            "shape": "SelectedInquiry", "value": {**inquiry, "gaps": []},
+            "source": source + " §§3.3,5",
+        },
+        "inquiry_window_note_present": {
+            "shape": "SelectedInquiry",
+            "value": {**inquiry, "time_window": {**window, "note": "January source window."}},
+            "source": source + " §§3.1,5",
+        },
+        "claim_content_ref_present": {
+            "shape": "SelectedClaimData", "value": {**data["claim"], "content_evidence_ref": "REF-1"},
+            "source": source + " §6.1",
+        },
+        "claim_unknown_version_with_gap": {
+            "shape": "SelectedRecord",
+            "value": {"id": "CLAIM-UNKNOWN", "kind": "claim",
+                      "data": {**data["claim"], "version_label": None},
+                      "provenance": provenance_example(), "gaps": [gap]},
+            "source": source + " §§3.3,6.1",
+        },
+        "record_gaps_empty": {
+            "shape": "SelectedRecord", "value": {**examples["record_actor"]["value"], "gaps": []},
+            "source": source + " §§3.3,6",
+        },
+        "change_explicit_removal": {
+            "shape": "SelectedChangeDetails",
+            "value": {"action_type": "retract", "before_ref": "EVAL-1", "after_ref": None,
+                      "after_absence_reason": "The source explicitly records removal of this evaluation.",
+                      "linkage_description": "The supplied removal event names the before-state."},
+            "source": source + " §6.9",
+        },
+        "anomaly_caller_classified": {
+            "shape": "SelectedAnomalyData",
+            "value": {**data["anomaly"], "classification_state": "caller_classified",
+                      "caller_label": "Caller supplied class"},
+            "source": source + " §6.11",
+        },
+        "anomaly_protected_context_with_gap": {
+            "shape": "SelectedRecord",
+            "value": {"id": "ANOMALY-PROTECTED", "kind": "anomaly",
+                      "data": {**data["anomaly"], "original_context": None,
+                               "context_evidence_ref": "REF-ATTESTATION"},
+                      "provenance": provenance_example(),
+                      "gaps": [{"field": "data.original_context", "reason": "withheld",
+                                "detail": "The original context survives through the protected reference."}]},
+            "source": source + " §§3.3,6.11",
+        },
+        "evidence_record_pointer": {
+            "shape": "SelectedEvidenceReference",
+            "value": {**evidence, "reference_kind": "record_pointer", "record_ref": "EVAL-1"},
+            "source": source + " §4.2",
+        },
+        "evidence_local_locator": {
+            "shape": "SelectedEvidenceReference",
+            "value": {**evidence, "reference_kind": "local_locator", "availability": "locator_only"},
+            "source": source + " §4.2 (inert source locator is not a selected member)",
+        },
+        "evidence_external_locator": {
+            "shape": "SelectedEvidenceReference",
+            "value": {**evidence, "reference_kind": "external_locator", "availability": "locator_only"},
+            "source": source + " §4.2 (inert source locator is not a selected member)",
+        },
+        "evidence_protected_attestation": {
+            "shape": "SelectedEvidenceReference",
+            "value": {**evidence, "reference_kind": "protected_attestation", "attestor_ref": "ACTOR-1",
+                      "scope_note": "A supplied attestation supports only its stated process scope."},
+            "source": source + " §4.2",
+        },
+        "evidence_protected_unavailable": {
+            "shape": "SelectedEvidenceReference",
+            "value": {**evidence, "reference_kind": "protected_attestation", "availability": "unavailable",
+                      "attestor_ref": "ACTOR-1",
+                      "gaps": [{"field": "excerpt", "reason": "unavailable",
+                                "detail": "The unavailable attestation is not inspectable support."}]},
+            "source": source + " §§3.3,4.2",
+        },
+        "evidence_protected_withheld": {
+            "shape": "SelectedEvidenceReference",
+            "value": {**evidence, "reference_kind": "protected_attestation", "availability": "withheld",
+                      "attestor_ref": "ACTOR-1",
+                      "gaps": [{"field": "excerpt", "reason": "withheld",
+                                "detail": "The attestation content is withheld from this snapshot."}]},
+            "source": source + " §§3.3,4.2",
+        },
+        "evidence_gaps_empty": {
+            "shape": "SelectedEvidenceReference", "value": {**evidence, "gaps": []},
+            "source": source + " §§3.3,4.1",
+        },
+        "selected_pipeline_record": {
+            "shape": "SelectedPipelineRecord", "value": examples["record_pipeline_record"]["value"],
+            "source": source + " §6.10",
+        },
+        "selected_unresolved_record": {
+            "shape": "SelectedUnresolvedRecord", "value": examples["record_unresolved_reference"]["value"],
+            "source": source + " §6.12",
+        },
+    })
+    # Explicit top-level optional-member inventory for deletion tests. The
+    # lists are source-authored, never read from schema.required/properties.
+    optional_by_shape = {
+        "SelectedInquiry": ("gaps",), "SelectedRecord": ("gaps",),
+        "SelectedNative": ("gaps",), "SelectedEvidenceReference": ("gaps",),
+        "SelectedClaimData": ("content_evidence_ref",),
+        "SelectedPipelineRecord": ("gaps",), "SelectedUnresolvedRecord": ("gaps",),
+    }
+    for example in examples.values():
+        example["optional"] = optional_by_shape.get(example["shape"], ())
+    return examples
+
+
+def selected_record(kind, event_kind=None):
+    """Convenience source-shaped fixture for the owner's disclosure examples.
+
+    Each call rebuilds literals. The caller can mutate its result independently.
+    CorrectionEvent callers explicitly select submission, handling or change.
+    """
+    if kind == "correction_event":
+        if event_kind not in ("submission", "handling", "change"):
+            raise ValueError("Specify one frozen CorrectionEvent subtype")
+        label = "record_correction_event_" + event_kind
+    else:
+        if event_kind is not None:
+            raise ValueError("event_kind only selects a CorrectionEvent subtype")
+        label = "record_" + kind
+    return native_record_examples()[label]["value"]
+
+
+def native_record_binding_cases():
+    """(baseline label, discriminator path, invalid value, source section).
+
+    Deep-copy the baseline, assert it accepts, then change just the given leaf.
+    Other source/data branches remain valid by themselves. These mismatches test
+    kind/data binding, not reference resolution, source loading or projection.
+    """
+    return (
+        ("record_claim", ("kind",), "artifact", "6.1--6.2"),
+        ("record_artifact", ("kind",), "actor", "6.2--6.3"),
+        ("record_actor", ("kind",), "evidence_item", "6.3--6.4"),
+        ("record_evidence_item", ("kind",), "origin_event", "6.4--6.5"),
+        ("record_origin_event", ("kind",), "model", "6.5--6.6"),
+        ("record_model", ("kind",), "evaluation", "6.6--6.7"),
+        ("record_evaluation", ("kind",), "correction_channel", "6.7--6.8"),
+        ("record_correction_channel", ("kind",), "correction_event", "6.8--6.9"),
+        ("record_correction_event_submission", ("kind",), "pipeline_record", "6.9--6.10"),
+        ("record_pipeline_record", ("kind",), "anomaly", "6.10--6.11"),
+        ("record_anomaly", ("kind",), "unresolved_reference", "6.11--6.12"),
+        ("record_unresolved_reference", ("kind",), "claim", "6.12,6.1"),
+        ("data_correction_event_submission", ("event_kind",), "handling", "6.9"),
+        ("data_correction_event_handling", ("event_kind",), "change", "6.9"),
+        ("data_correction_event_change", ("event_kind",), "handling", "6.9"),
+    )
+
+
+def native_record_enum_cases():
+    """Literal accepted enum candidates: (baseline, path, values, source).
+
+    Replace the selected leaf with each listed value on a fresh deep copy.
+    Dependent cases (correction kind, anomaly classification, reference kind /
+    availability) have complete positive examples above rather than unsafe
+    one-leaf enum substitutions. Role object IDs can require a matching source
+    object in W03; these N01 components check only their selected local shape.
+    """
+    return (
+        ("gap", ("reason",), ("not_recorded", "not_examined", "withheld", "unavailable",
+          "identity_ambiguous", "outside_snapshot", "not_applicable", "other"), "3.3"),
+        ("inquiry", ("dependency_dimensions", 0), ("acquisition", "analytical_method",
+          "model_ancestry", "evaluation_rubric", "organizational_control"), "5, definitions §9"),
+        ("data_artifact", ("artifact_kind",), ("document", "dataset", "answer", "reference_answer",
+          "rubric", "benchmark", "judgment", "observation_record", "execution_result", "other", "unknown"), "6.2"),
+        ("data_actor", ("actor_kind",), ("human", "organization", "software_agent", "unknown"), "6.3"),
+        ("data_actor", ("identity_disclosure",), ("named", "pseudonymous", "protected", "unknown"), "6.3"),
+        ("data_evidence_item", ("epistemic_type",), ("measurement", "testimony", "documentary_statement",
+          "estimate", "formal_derivation", "execution_result", "analytical_inference", "evaluative_judgment",
+          "allegation", "fictional_example", "unclassified"), "6.4"),
+        ("data_origin_event", ("event_kind",), ("observation", "data_collection", "testimony",
+          "documentary_issuance", "analysis", "formal_check", "execution", "other", "unknown"), "6.5"),
+        ("data_evaluation", ("evaluation_kind",), ("judgment", "formal_check", "execution", "empirical_review",
+          "human_review", "identity_process_review", "other", "unknown"), "6.7"),
+        ("role_binding", ("role",), ("candidate", "generator", "judge", "executor", "human_reviewer",
+          "reference_answer", "rubric", "validation_environment", "method_input"), "6.7"),
+        ("data_correction_channel", ("declared_action_types", 0), ("review", "amend", "annotate",
+          "retract", "rerun", "rollback", "replace_evaluator", "restrict_scope", "withdraw",
+          "metadata_correction", "other"), "6.8"),
+        ("submission_details", ("submission_kind",), ("objection", "proposed_correction", "appeal"), "6.9"),
+        ("handling_details", ("outcome",), ("acknowledged", "under_review", "accepted", "rejected",
+          "withdrawn", "failed", "unknown"), "6.9"),
+        ("change_details", ("action_type",), ("review", "amend", "annotate", "retract", "rerun", "rollback",
+          "replace_evaluator", "restrict_scope", "withdraw", "metadata_correction", "other"), "6.8--6.9"),
+        ("data_pipeline_record", ("stage",), ("admission", "preservation", "selection", "influence"), "6.10"),
+        ("data_pipeline_record", ("state",), ("occurred", "did_not_occur", "unknown"), "6.10"),
+        ("data_pipeline_record", ("linkage_kind",), ("use_record", "comparison_record", "experimental_attribution",
+          "declaration", "unspecified"), "6.10"),
+        ("data_unresolved_reference", ("expected_kinds", 0), ("claim", "artifact", "actor", "evidence_item",
+          "origin_event", "model", "evaluation", "correction_channel", "correction_event",
+          "pipeline_record", "anomaly"), "6.12"),
+        ("data_unresolved_reference", ("reason",), ("not_recorded", "not_examined", "withheld", "unavailable",
+          "identity_ambiguous", "outside_snapshot", "other"), "6.12"),
+    )
+
+
+"""Independent source-shaped selected assertion witnesses for N01 integration.
+
+Handwritten from CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md sections 7--9 and
+tests/contract/test_typed_records.py's already admitted fictional source pool.
+Public fields are an explicit selection: citation_locator and extensions are
+not copied. No schema, production registry, validator, or audit result supplies
+these example values. This file performs no validation or W04 projection.
+"""
+
+
+def _native_assertion_time():
+    return {"state": "unknown", "value": None, "precision": None,
+            "reason": "Not recorded in this fictional source."}
+
+
+def _native_assertion_window():
+    return {"start": _native_assertion_time(), "end": _native_assertion_time()}
+
+
+def _native_assertion_scope():
+    return {"inquiry_refs": ["inquiry"], "claim_refs": ["claim"],
+            "effective_window": _native_assertion_window()}
+
+
+def _native_assertion_provenance():
+    return {"attributed_to_ref": "actor", "basis_kind": "declaration",
+            "evidence_ref_ids": [], "method": "Supplied fictional source statement.",
+            "qualifications": ["The source statement is retained without qualification as a toolkit fact."]}
+
+
+def _native_assertion_envelope(identifier, kind, data):
+    return {"id": identifier, "assertion_kind": kind,
+            "scope": _native_assertion_scope(),
+            "provenance": _native_assertion_provenance(),
+            "asserted_at": _native_assertion_time(), "lifecycle_state": "active",
+            "lifecycle_basis_ref_ids": [], "data": copy.deepcopy(data)}
+
+
+def _native_relation_detail_examples():
+    # Each tuple is (minimal required fields, all selected optional fields,
+    # explicitly optional direct member names). None is not used for absence.
+    return {
+        "StanceDetails": ({}, {"note": "A supplied stance, not a truth judgment."},
+                          ("note",)),
+        "CitationDetails": ({}, {"note": "A source citation statement; no locator is selected."},
+                            ("note",)),
+        "TransformationDetails": ({}, {
+            "transformer_ref": "actor", "method_ref": "artifact",
+            "occurred_at": _native_assertion_time(), "portion_note": "The stated passage only."},
+            ("transformer_ref", "method_ref", "occurred_at", "portion_note")),
+        "OriginDetails": ({}, {"dependency_note": "The supplied acquisition link.",
+                                  "portion_note": "The claim-bound contribution only."},
+                          ("dependency_note", "portion_note")),
+        "AgentDetails": ({}, {"role_note": "The named source role only.",
+                                 "valid_window": _native_assertion_window()},
+                         ("role_note", "valid_window")),
+        "ModelDetails": ({}, {"stage_note": "The disclosed model derivation stage.",
+                                 "subset_descriptor": "The supplied finite subset.",
+                                 "occurred_at": _native_assertion_time()},
+                         ("stage_note", "subset_descriptor", "occurred_at")),
+        "RetrievalDetails": ({}, {"retrieval_time": _native_assertion_time(),
+                                     "portion_note": "The source's retrieved copy only."},
+                             ("retrieval_time", "portion_note")),
+        "RouteDetails": ({"action_type": "review", "valid_window": _native_assertion_window()},
+                         {"action_type": "review", "valid_window": _native_assertion_window(),
+                          "route_note": "Declared possibility; applicable authority is separate."},
+                         ("route_note",)),
+        "SupersessionDetails": ({"reason": "The source states this version succession."},
+                                {"reason": "The source states this version succession.",
+                                 "effective_at": _native_assertion_time()},
+                                ("effective_at",)),
+        "IdentityDetails": ({"identity_level": "artifact_version"},
+                            {"identity_level": "artifact_version",
+                             "identity_note": "Matching identity is attributed, not an implicit merge."},
+                            ("identity_note",)),
+    }
+
+
+# Explicitly transcribed predicate/endpoint/dimension/detail bindings, lineage
+# section 8.1; the identifiers denote the typed source pool in test_typed_records.
+NATIVE_RELATION_BINDINGS = (
+    ("supports", "e", "claim", None, "StanceDetails"),
+    ("contradicts", "e", "claim", None, "StanceDetails"),
+    ("describes", "e", "claim", None, "StanceDetails"),
+    ("qualifies", "e", "claim", None, "StanceDetails"),
+    ("contextualizes", "e", "claim", None, "StanceDetails"),
+    ("corroborates", "e", "e2", None, "StanceDetails"),
+    ("cites", "artifact", "artifact2", None, "CitationDetails"),
+    ("derived_from", "e", "e2", "acquisition", "TransformationDetails"),
+    ("copies", "e", "e2", "acquisition", "TransformationDetails"),
+    ("syndicated_from", "e", "e2", "acquisition", "TransformationDetails"),
+    ("summarizes", "e", "e2", "acquisition", "TransformationDetails"),
+    ("translates", "e", "e2", "acquisition", "TransformationDetails"),
+    ("quotes", "e", "e2", "acquisition", "TransformationDetails"),
+    ("originates_from", "e", "origin", "acquisition", "OriginDetails"),
+    ("depends_on", "origin", "origin2", "acquisition", "OriginDetails"),
+    ("generated_by", "artifact", "model", None, "AgentDetails"),
+    ("published_by", "artifact", "actor", None, "AgentDetails"),
+    ("model_derived_from", "model", "model2", "model_ancestry", "ModelDetails"),
+    ("trained_on", "model", "dataset", "model_ancestry", "ModelDetails"),
+    ("owned_by", "model", "actor", "organizational_control", "AgentDetails"),
+    ("retrieved_from", "artifact", "artifact2", None, "RetrievalDetails"),
+    ("propagates_to", "channel", "claim", None, "RouteDetails"),
+    ("supersedes", "claim", "claim2", None, "SupersessionDetails"),
+    ("same_identity_as", "artifact", "artifact2", None, "IdentityDetails"),
+)
+
+
+def selected_relation(predicate, polarity="affirmed", optional_present=True):
+    _, left, right, dimension, detail_kind = next(
+        row for row in NATIVE_RELATION_BINDINGS if row[0] == predicate)
+    detail_pair = _native_relation_detail_examples()[detail_kind]
+    data = {"predicate": predicate, "from_ref": left, "to_ref": right,
+            "polarity": polarity, "dimension": dimension,
+            "details": detail_pair[1 if optional_present else 0]}
+    return _native_assertion_envelope("r-" + predicate, "relation", data)
+
+
+NATIVE_ASSESSMENT_BINDINGS = (
+    ("origin_boundary", "OriginBoundaryDetails", ("origin",), "9.1"),
+    ("independence", "IndependenceDetails", ("origin", "origin2"), "9.2"),
+    ("coverage", "CoverageDetails", ("inquiry",), "9.3"),
+    ("classification", "ClassificationDetails", ("artifact",), "9.4"),
+    ("verification", "VerificationDetails", ("actor",), "9.5"),
+    ("externality", "ExternalityDetails", ("origin",), "9.6"),
+    ("authority", "AuthorityDetails", ("channel",), "9.7"),
+    ("capacity", "CapacityDetails", ("channel",), "9.8"),
+    ("conflict", "ConflictDetails", ("r-supports", "r-contradicts"), "9.9"),
+)
+
+
+def _native_assessment_details():
+    return {
+        "origin_boundary": {"dimension": "acquisition", "boundary_role": "declared_origin",
+                            "coverage_ref": "a-coverage", "termination_reason": "The supplied origin boundary only."},
+        "independence": {"comparison_form": "pairwise", "dimension": "acquisition",
+                         "conclusion": "independent_process", "examined_dependency_refs": ["r-depends_on"],
+                         "unexamined_dimensions": ["model_ancestry"], "coverage_ref": "a-coverage",
+                         "scope_note": "An attributed process comparison, not a runtime qualification."},
+        "coverage": {"coverage_kind": "upstream_history", "state": "complete_for_scope",
+                     "relation_types": ["originates_from"], "dimensions": ["acquisition"],
+                     "member_refs": ["e", "e2"], "omitted_refs": [], "universe_enumerated": True,
+                     "scope_note": "The supplied finite source population only."},
+        "classification": {"axis": "sil_governance_layer", "labels": ["verified"],
+                           "verification_assessment_refs": ["a-verification"],
+                           "scope_note": "The recorded governance classification only."},
+        "verification": {"verification_scope": "identity", "evaluation_ref": "evaluation",
+                         "reported_outcome": "verified", "valid_window": _native_assertion_window(),
+                         "scope_note": "A supplied verifier outcome; no toolkit authentication."},
+        "externality": {"boundary_inquiry_ref": "inquiry", "conclusion": "external",
+                        "grounding_basis": "The source describes acquisition outside the inquiry boundary.",
+                        "relevant_time": _native_assertion_time()},
+        "authority": {"target_refs": ["claim"], "action_types": ["review"],
+                      "valid_window": _native_assertion_window(), "authorized_by_ref": "actor",
+                      "grant_state": "denied", "authority_basis": "The supplied actor records a denial.",
+                      "coverage_ref": "a-coverage"},
+        "capacity": {"reported_capacity": "unmeasured", "unit": "cases",
+                     "horizon": _native_assertion_window(), "reported_load": "unmeasured",
+                     "scope_note": "Supplied descriptions; no adequacy calculation."},
+        "conflict": {"conflict_kind": "affirmation_denial", "resolution_state": "unresolved",
+                     "resolution_evaluation_ref": None, "scope_note": "Both supplied assertions remain present."},
+    }
+
+
+def selected_assessment(kind):
+    _, _, subjects, _ = next(row for row in NATIVE_ASSESSMENT_BINDINGS if row[0] == kind)
+    return _native_assertion_envelope("a-" + kind, "assessment", {
+        "assessment_kind": kind, "subject_refs": list(subjects),
+        "details": _native_assessment_details()[kind]})
+
+
+def native_assertion_examples():
+    """Return independent positive cases; optional marks only direct members.
+
+    A consumer can delete each present optional member as a positive control;
+    deletion of a present nonoptional member is a required-member mutant.
+    The minimal/all-present pairs avoid an empty-detail wrong-type blind spot.
+    """
+    cases = {}
+
+    def add(label, shape, value, section, optional=()):
+        cases[label] = {"shape": shape, "value": copy.deepcopy(value),
+                        "source": "CLAIMS_EVIDENCE_AND_LINEAGE_SPEC.md §" + section,
+                        "optional": tuple(optional)}
+
+    add("assertion_scope", "SelectedAssertionScope", _native_assertion_scope(), "7")
+    scope = _native_assertion_scope()
+    scope["claim_refs"] = []
+    add("assertion_scope.metadata", "SelectedAssertionScope", scope, "7")
+
+    for name, (minimal, present, optional) in _native_relation_detail_examples().items():
+        add("relation_details." + name + ".absent", "Selected" + name, minimal, "8.3", optional)
+        add("relation_details." + name + ".present", "Selected" + name, present, "8.3", optional)
+        add("relation_details_union." + name, "SelectedRelationDetails", present, "8.3", optional)
+
+    for predicate, _, _, _, _ in NATIVE_RELATION_BINDINGS:
+        assertion = selected_relation(predicate)
+        add("relation." + predicate, "SelectedAssertion", assertion, "7–8.3", ("gaps",))
+        add("relation_data." + predicate, "SelectedRelationData", assertion["data"], "8.1–8.3")
+        add("relation_denied." + predicate, "SelectedAssertion",
+            selected_relation(predicate, "denied", False), "7–8.3", ("gaps",))
+
+    # The six transformation predicates admit a separate material-history branch.
+    for predicate in ("derived_from", "copies", "syndicated_from", "summarizes", "translates", "quotes"):
+        assertion = selected_relation(predicate)
+        assertion["data"].update(from_ref="artifact", to_ref="artifact2", dimension=None)
+        assertion["scope"]["claim_refs"] = []
+        add("relation_material." + predicate, "SelectedAssertion", assertion, "7–8.1", ("gaps",))
+
+    for kind, shape, _, section in NATIVE_ASSESSMENT_BINDINGS:
+        assertion = selected_assessment(kind)
+        add("assessment." + kind, "SelectedAssertion", assertion, "7; " + section, ("gaps",))
+        add("assessment_data." + kind, "SelectedAssessmentData", assertion["data"], section)
+        add("assessment_details." + kind, "Selected" + shape, assertion["data"]["details"], section)
+        add("assessment_details_union." + kind, "SelectedAssessmentDetails", assertion["data"]["details"], section)
+
+    add("assertion_data.relation", "SelectedAssertionData", selected_relation("supports")["data"], "7–8")
+    add("assertion_data.assessment", "SelectedAssertionData", selected_assessment("coverage")["data"], "7; 9")
+    add("coverage_assertion", "SelectedCoverageAssertion", selected_assessment("coverage"), "7; 9.3", ("gaps",))
+    add("capacity_assertion", "SelectedCapacityAssertion", selected_assessment("capacity"), "7; 9.8", ("gaps",))
+
+    # Nullable factual fields remain present. Their selected assertion carries
+    # the exact source Gap required by the input contract, not an invented value.
+    nullable = (
+        ("origin_boundary", "coverage_ref", "OriginBoundaryDetails", "9.1"),
+        ("independence", "coverage_ref", "IndependenceDetails", "9.2"),
+        ("verification", "evaluation_ref", "VerificationDetails", "9.5"),
+        ("externality", "grounding_basis", "ExternalityDetails", "9.6"),
+        ("authority", "authority_basis", "AuthorityDetails", "9.7"),
+        ("authority", "coverage_ref", "AuthorityDetails", "9.7"),
+        ("capacity", "reported_capacity", "CapacityDetails", "9.8"),
+        ("capacity", "unit", "CapacityDetails", "9.8"),
+        ("capacity", "reported_load", "CapacityDetails", "9.8"),
+    )
+    for kind, member, shape, section in nullable:
+        assertion = selected_assessment(kind)
+        assertion["data"]["details"][member] = None
+        assertion["gaps"] = [{"field": "data.details." + member, "reason": "not_recorded",
+                              "detail": "This source field was not recorded."}]
+        add("assessment_null." + kind + "." + member, "SelectedAssertion", assertion,
+            "3.3; " + section, ("gaps",))
+        add("assessment_details_null." + kind + "." + member, "Selected" + shape,
+            assertion["data"]["details"], section)
+
+    resolved = selected_assessment("conflict")
+    resolved["data"]["details"].update(resolution_state="externally_resolved",
+                                     resolution_evaluation_ref="evaluation")
+    add("assessment.conflict.resolved", "SelectedAssertion", resolved, "9.9", ("gaps",))
+    add("assessment_details.conflict.resolved", "SelectedConflictDetails", resolved["data"]["details"], "9.9")
+
+    setwise = selected_assessment("independence")
+    setwise["data"]["subject_refs"].append("origin3")
+    setwise["data"]["details"]["comparison_form"] = "setwise"
+    add("assessment.independence.setwise", "SelectedAssertion", setwise, "9.2", ("gaps",))
+    add("assessment_data.independence.setwise", "SelectedAssessmentData", setwise["data"], "9.2")
+
+    for axis, labels in (
+        ("sil_data_role", ["surface_linguistic", "world_model", "judgment"]),
+        ("hdl_structure_role", ["surface_linguistic_structure", "world_structure", "judgment_structure"]),
+        ("sil_governance_layer", ["open_web", "verified", "contested", "judgment"]),
+    ):
+        details = _native_assessment_details()["classification"]
+        details.update(axis=axis, labels=labels)
+        add("assessment_details.classification." + axis, "SelectedClassificationDetails", details, "9.4")
+
+    for state in ("partial", "not_examined"):
+        details = _native_assessment_details()["coverage"]
+        details.update(state=state, universe_enumerated=False)
+        add("assessment_details.coverage." + state, "SelectedCoverageDetails", details, "9.3")
+
+    for lifecycle in ("withdrawn", "superseded"):
+        assertion = selected_relation("supports")
+        assertion["lifecycle_state"] = lifecycle
+        assertion["lifecycle_basis_ref_ids"] = ["support"]
+        assertion["provenance"]["qualifications"].append("The source records this explicit lifecycle change.")
+        add("assertion_lifecycle." + lifecycle, "SelectedAssertion", assertion, "7", ("gaps",))
+
+    return cases
+
+
+def native_assertion_mutant_suggestions():
+    """Single-member mutations against accepted baselines; do not execute them.
+
+    Each case has baseline, path (tuple of dict/list accesses), replacement,
+    category, and the frozen-source reason. General direct-member wrong types
+    should additionally use every example's explicit optional tuple above.
+    """
+    mutations = []
+
+    def mutation(baseline, path, value, category, reason):
+        mutations.append({"baseline": baseline, "path": path, "value": value,
+                          "category": category, "reason": reason})
+
+    for predicate, _, _, dimension, detail_kind in NATIVE_RELATION_BINDINGS:
+        baseline = "relation_data." + predicate
+        wrong_details = ({"identity_level": "artifact_version"}
+                         if detail_kind != "IdentityDetails" else {"action_type": "review", "valid_window": _native_assertion_window()})
+        mutation(baseline, ("details",), wrong_details, "kind", "§8.3: details must match this predicate family.")
+        mutation(baseline, ("polarity",), "unknown", "state", "§8.1: polarity is affirmed or denied.")
+        mutation(baseline, ("from_ref",), True, "wrongtype", "§8.1: source endpoint is an identifier.")
+        if predicate not in ("derived_from", "copies", "syndicated_from", "summarizes", "translates", "quotes"):
+            bad_dimension = "acquisition" if dimension is None else None
+            mutation(baseline, ("dimension",), bad_dimension, "value", "§8.1: this predicate binds dimension/null locally.")
+        else:
+            mutation(baseline, ("dimension",), "truth", "value", "§8.1: only the five core dimensions or null are allowed.")
+
+    for kind, _, _, section in NATIVE_ASSESSMENT_BINDINGS:
+        baseline = "assessment_data." + kind
+        replacement = (_native_assessment_details()["capacity"] if kind != "capacity"
+                       else _native_assessment_details()["coverage"])
+        mutation(baseline, ("details",), replacement, "kind", "§" + section + ": the assessment kind selects its detail shape.")
+        mutation(baseline, ("subject_refs",), "origin", "wrongtype", "§9: subjects form an array of distinct identifiers.")
+
+    for kind in ("origin_boundary", "authority", "coverage", "independence", "conflict"):
+        mutation("assessment_data." + kind, ("subject_refs",), [], "value", "§9: this assessment has an explicit nonzero subject cardinality.")
+    for kind in ("origin_boundary", "authority"):
+        mutation("assessment_data." + kind, ("subject_refs",), ["one", "two"], "value", "§9: exactly one subject is required.")
+    for kind in ("independence", "conflict"):
+        mutation("assessment_data." + kind, ("subject_refs",), ["one"], "value", "§9: at least two distinct subjects are required.")
+    mutation("assessment_data.independence", ("subject_refs",), ["origin", "origin2", "origin3"], "value", "§9.2: pairwise has exactly two subjects.")
+    mutation("assessment_data.independence.setwise", ("subject_refs",), ["origin"], "value", "§9.2: setwise still needs at least two subjects.")
+    mutation("assessment_details.classification.sil_data_role", ("labels",), ["verified"], "value", "§9.4: a governance label is not a data-role label.")
+    mutation("assessment_details.classification.hdl_structure_role", ("labels",), ["world_model"], "value", "§9.4: a data-role label is not a structure-role label.")
+    mutation("assessment_details.classification.sil_governance_layer", ("labels",), ["world_structure"], "value", "§9.4: a structure-role label is not a governance label.")
+    mutation("assessment_details.conflict", ("resolution_evaluation_ref",), "evaluation", "state", "§9.9: unresolved conflicts carry a null resolution reference.")
+    mutation("assessment_details.conflict.resolved", ("resolution_evaluation_ref",), None, "state", "§9.9: an external resolution requires its Evaluation reference.")
+    mutation("relation.supports", ("assertion_kind",), "assessment", "kind", "§7–9: the outer assertion kind binds its data union.")
+    mutation("assessment.coverage", ("assertion_kind",), "relation", "kind", "§7–9: the outer assertion kind binds its data union.")
+    mutation("relation_details.CitationDetails.present", ("citation_locator",), "private locator", "field", "Explicit selected-field policy excludes native citation locators.")
+    mutation("assessment.coverage", ("extensions",), {"private": "not selected"}, "field", "Explicit selected-field policy excludes input extensions.")
+    return mutations
+
+
+# Independently authored contract specimens. Frozen analytical owner functions
+# establish field meanings; D03 records the approved public reference spelling.
+def disclosure_field_examples():
+    cases = {}
+
+    def add(shape, value, field, source, branch=None):
+        label = shape if branch is None else shape + '.' + str(branch)
+        cases[label] = {'shape': shape, 'value': value, 'source': source,
+                        'field': field, 'branch': branch, 'optional': ()}
+
+    def qualified(native):
+        return {'native_record': native, 'qualification_state': 'met', 'reason_codes': []}
+
+    boundary = selected_assessment('origin_boundary')
+    coverage = selected_assessment('coverage')
+    comparison = selected_assessment('independence')
+    capacity = selected_assessment('capacity')
+    evaluation = selected_record('evaluation')
+    channel = selected_record('correction_channel')
+    change = selected_record('correction_event', 'change')
+    pipeline = selected_record('pipeline_record')
+    claim = selected_record('claim')
+    gap = {'source': input_ref('FRONTIER-1'), 'reason_codes': ['upstream_coverage_incomplete']}
+    gap_coverage = {'coverage_ref': input_ref('COVERAGE-1', 'assertions'),
+                    'qualification_state': 'unmet', 'reason_codes': ['upstream_coverage_incomplete']}
+    gap_path = {'nodes': [input_ref('E1'), input_ref('FRONTIER-1')],
+                'assertions': [input_ref('A-1', 'assertions')]}
+    one_sided = {'from_ref': input_ref('MODEL-1'), 'to_ref': input_ref('MODEL-2')}
+    anchor = {'run_key': 'RUN-1', 'stage_key': 'STAGE-1', 'stage': 'admission'}
+    case_row = {'case_ref': input_ref('CASE-1'), 'declared': True, 'selected': True,
+                'change_event_refs': [input_ref('CHANGE-1')],
+                'qualified_change_event_refs': [input_ref('CHANGE-1')],
+                'documentary_state': 'met', 'requested_effect_state': 'available', 'reason_codes': []}
+    for shape, value, source in (
+        ('GapSource', gap, 'analysis/origins.py:_gap_disclosure'),
+        ('GapCoverage', gap_coverage, 'analysis/origins.py:_gap_disclosure'),
+        ('GapWitnessPath', gap_path, 'analysis/origins.py:_gap_disclosure'),
+        ('OneSidedAncestry', one_sided, 'analysis/evaluator_lineage.py:_disclosures'),
+        ('StageAnchor', anchor, 'analysis/presence.py:_disclosures; D03 stage-anchor projection'),
+        ('CaseChangeRow', case_row, 'analysis/correction_outcomes.py:_disclosures'),
+    ):
+        cases[shape] = {'shape': shape, 'value': value, 'source': source, 'optional': ()}
+    add('OriginBoundaryFields', qualified(boundary), 'origin_boundary_disclosures',
+        'analysis/origins.py:_boundary_disclosure')
+    add('CoverageFields', qualified(coverage), 'coverage_disclosures', 'validation/semantics.py')
+    add('DocumentaryBasisGapFields', qualified(claim), 'documentary_basis_gap_disclosures',
+        'validation/semantics.py')
+    add('IndependenceAssessmentFields', {'native_record': comparison},
+        'independence_assessment_disclosures', 'analysis/process_comparison.py:_disclosures', 0)
+    comparison_fields = {'native_record': comparison, 'process_qualification_state': 'met',
+                         'origin_qualification_state': 'not_applicable', 'reason_codes': []}
+    add('IndependenceAssessmentFields', comparison_fields, 'independence_assessment_disclosures',
+        'analysis/process_comparison.py:_disclosures', 1)
+    add('AncestryGapFields', {'seed_ref': input_ref('E1'), 'dimension': 'acquisition',
+        'gaps': [gap], 'frontiers': [selected_record('unresolved_reference')],
+        'coverage': [gap_coverage], 'witness_paths': [gap_path]}, 'ancestry_gap_disclosures',
+        'analysis/origins.py:_gap_disclosure')
+    add('EvaluatorOverlapFields', {'native_record': evaluation}, 'evaluator_overlap_disclosures',
+        'analysis/evaluator_lineage.py:_disclosures', 0)
+    add('EvaluatorOverlapFields', {'native_record': evaluation, 'roles': ['judge', 'generator'],
+        'left_object_refs': [input_ref('MODEL-1')], 'right_object_refs': [input_ref('MODEL-2')],
+        'shared_object_refs': [], 'common_ancestor_refs': [input_ref('MODEL-0')],
+        'matching_family_labels': ['SOURCE-FAMILY'], 'missing_family_model_refs': [],
+        'one_sided_ancestry': [one_sided], 'roles_complete': True}, 'evaluator_overlap_disclosures',
+        'analysis/evaluator_lineage.py:_disclosures', 1)
+    add('ExternalityAssessmentFields', {'native_record': selected_assessment('conflict')},
+        'externality_assessment_disclosures', 'analysis/presence.py:_disclosures', 0)
+    externality = qualified(selected_assessment('externality'))
+    externality['qualified_externality'] = 'available'
+    add('ExternalityAssessmentFields', externality, 'externality_assessment_disclosures',
+        'analysis/presence.py:_disclosures', 1)
+    add('PipelineStageFields', qualified(pipeline), 'pipeline_stage_disclosures',
+        'analysis/presence.py:_disclosures')
+    external_stage = qualified(pipeline)
+    external_stage.update(externality_subject_refs=[input_ref('ANOMALY-1')],
+                          mapping_assertion_refs=[input_ref('MAP-1', 'assertions')])
+    add('ExternalityStageFields', external_stage, 'externality_stage_links',
+        'analysis/presence.py:_disclosures')
+    add('CohortTransitionFields', {'native_record': coverage, 'stage_anchor': anchor,
+        'cohort_qualification_state': 'met', 'transition_qualification_state': 'met', 'reason_codes': []},
+        'cohort_transition_disclosures', 'analysis/presence.py:_disclosures')
+    add('CorrectionRouteFields', {'native_record': claim}, 'correction_route_disclosures',
+        'analysis/correction_routes.py:_disclosures', 0)
+    add('CorrectionRouteFields', {'native_record': channel, 'target_ref': input_ref('CLAIM-1'),
+        'action_type': 'amend', 'declared_route_recorded': True, 'authorized_route_recorded': True,
+        'authorized_route_state': 'available', 'absence_description': 'positive_witness'},
+        'correction_route_disclosures', 'analysis/correction_routes.py:_disclosures', 1)
+    add('CorrectionRouteFields', {'native_record': selected_assessment('authority'),
+        'grant_qualification_state': 'met', 'grant_matches_tuple': True, 'grant_reason_codes': []},
+        'correction_route_disclosures', 'analysis/correction_routes.py:_disclosures', 2)
+    add('CorrectionCaseFields', {'native_record': selected_record('correction_event', 'submission')},
+        'correction_case_disclosures', 'analysis/correction_outcomes.py:_disclosures', 0)
+    add('CorrectionCaseFields', {'native_record': change, 'documentary_state': 'met',
+        'explicit_removal': False, 'reason_codes': []}, 'correction_case_disclosures',
+        'analysis/correction_outcomes.py:_disclosures', 1)
+    add('CorrectionTargetChangeFields', {'native_record': claim, 'case_rows': [case_row]},
+        'correction_target_change_disclosures', 'analysis/correction_outcomes.py:_disclosures')
+    add('ReportedCapacityFields', {'native_record': capacity}, 'reported_capacity_disclosures',
+        'analysis/correction_outcomes.py:_disclosures', 0)
+    add('ReportedCapacityFields', {'native_record': capacity, 'documentary_state': 'met', 'reason_codes': []},
+        'reported_capacity_disclosures', 'analysis/correction_outcomes.py:_disclosures', 1)
+    review = {'native_record': evaluation, 'contribution_status': 'recorded_human_contribution',
+              'documentary_state': 'met', 'identity_state': 'met', 'reason_codes': []}
+    for shape, field in (('HumanContributionFields', 'human_contribution_disclosures'),
+                         ('CorrectiveIndependenceFields', 'corrective_independence_disclosures')):
+        add(shape, {'native_record': evaluation}, field, 'analysis/human_review.py:_disclosures', 0)
+        add(shape, copy.deepcopy(review), field, 'analysis/human_review.py:_record', 1)
+    add('CorrectiveIndependenceFields', copy.deepcopy(comparison_fields), 'corrective_independence_disclosures',
+        'analysis/human_review.py:_disclosures; process_comparison.py:_disclosures', 2)
+    add('AnomalyContextFields', {'native_record': selected_record('anomaly'),
+        'context_records': [claim], 'reason_codes': []}, 'anomaly_context_disclosures',
+        'analysis/context.py:_disclosures')
+    add('ContestationFields', {'native_record': selected_relation('contradicts'),
+        'context_records': [claim], 'reason_codes': []}, 'contestation_disclosures',
+        'analysis/context.py:_disclosures')
+    add('TailStageResultLinkFields', {'source_result_state': 'available', 'source_value_kind': 'fraction'},
+        'tail_stage_result_links', 'analysis/context.py:_disclosures')
+    return cases
+
+
+def disclosure_result_example(case):
+    field = case['field']
+    family = next(family for family, candidate, _ in FIELD_CASES if candidate == field)
+    value = result_example(family, field, 'record_disclosures')
+    value['result_origin'] = 'attributed_record'
+    fields = copy.deepcopy(case['value'])
+    source = 'SIT-RES-000002' if field == 'tail_stage_result_links' else input_ref('SOURCE-1')
+    native = fields.get('native_record')
+    if native is not None:
+        collection = ('assertions' if 'assertion_kind' in native else
+                      'inquiries' if 'target_claim_refs' in native else
+                      'evidence_references' if 'reference_kind' in native else 'records')
+        source = input_ref(native['id'], collection)
+    value['value'] = {'records': [{'source': source, 'fields': fields,
+        'qualifications': ['Only this supplied finite source and explicit qualification are represented.']}]}
+    return value
+
+
+def additional_contract_examples():
+    cases = {}
+
+    def add(name, shape, value, source, optional=()):
+        cases[name] = {'shape': shape, 'value': value, 'source': source, 'optional': optional}
+
+    add('raw_file_digest', 'RawFileDigest', {'algorithm': 'sha256', 'value': '1' * 64,
+        'covered_material': 'Exact supplied file bytes.'}, 'Reporting 16.1; Runtime raw-file identity')
+    identity = component_examples()['InputIdentity']
+    identity.update(source_mode='local_file', raw_file_digest=copy.deepcopy(cases['raw_file_digest']['value']),
+                    declared_predecessor={'bundle_id': 'BUNDLE-1', 'snapshot_id': 'SNAPSHOT-0'})
+    add('local_file_identity', 'InputIdentity', identity, 'Reporting 16.1; W02 declarations only')
+    add('window.optional_note', 'TimeWindow', {'start': time_value(), 'end': time_value(),
+        'note': 'The source supplies neither bound.'}, 'Lineage 3.1', ('note',))
+    add('known_time.optional_reason', 'TimeValue', time_value('known', '2024-02-29', 'date',
+        'Original recorded source date.'), 'Lineage 3.1', ('reason',))
+    time = {name: time_value() for name in ('asserted_at', 'occurred_at', 'observed_at',
+                                           'published_at', 'retrieved_at', 'as_of')}
+    time.update(valid_window={'start': time_value(), 'end': time_value()},
+                time_window={'start': time_value(), 'end': time_value()})
+    add('basis.all_source_times', 'BasisTime', time, 'Reporting 16.3; Lineage 3.1,4,7', tuple(time))
+    scope = component_examples()['Scope']
+    scope.update(temporal_basis='time_specific', requested_time=time_value('known', '2024-02-29', 'date', None))
+    add('scope.time_specific', 'Scope', scope, 'Reporting 16.2; contracts/results.py:_Scope')
+    for kind in ('cycle', 'members', 'no_witness_in_examined_view'):
+        component = graph_component()
+        component.update(kind=kind, nodes=[], edges=[], member_count=0)
+        if kind == 'members':
+            component.update(members=[graph_node()], member_count=1)
+        elif kind == 'cycle':
+            edge = graph_edge()
+            edge.update(source=graph_node('O1', 'origin_event'), target=graph_node('O1', 'origin_event'),
+                        predicate='depends_on')
+            component.update(nodes=[graph_node('O1', 'origin_event'), graph_node('O1', 'origin_event')], edges=[edge],
+                members=[graph_node('O1', 'origin_event')], internal_edges=[copy.deepcopy(edge)], member_count=5)
+        else:
+            component.update(starts=[graph_node()], target=graph_node('UNREACHED-1'),
+                examined_nodes=[graph_node(), graph_node('O1', 'origin_event')],
+                examined_edges=[graph_edge()], frontiers=[graph_node('O1', 'origin_event')],
+                terminals=[graph_node('O1', 'origin_event')], observations=[graph_edge()], member_count=8)
+        add('graph.' + kind, 'GraphWitnessComponent', component, 'graph/witnesses.py:_commit and owner constructors')
+    add('audit.diagnostic', 'AuditReport', diagnostic_document(), 'Reporting 16.1')
+    return cases
+
+
+def extended_contract_examples():
+    cases = {}
+    for group in (native_record_examples(), native_assertion_examples(),
+                  disclosure_field_examples(), additional_contract_examples()):
+        for name, case in group.items():
+            assert name not in cases, name
+            cases[name] = case
+    return cases
+
+
+EXTENDED_CONTRACT_CASES = extended_contract_examples()
+
+
+@pytest.mark.parametrize('name', tuple(EXTENDED_CONTRACT_CASES))
+def test_each_nested_contract_branch_has_an_independent_positive(name):
+    case = EXTENDED_CONTRACT_CASES[name]
+    assert case['source']
+    assert_component(copy.deepcopy(case['value']), case['shape'])
+    if case['shape'] in ('SelectedInquiry', 'SelectedRecord', 'SelectedAssertion', 'SelectedEvidenceReference'):
+        assert_component(copy.deepcopy(case['value']), 'SelectedNative')
+
+
+@pytest.mark.parametrize('name,member', [(name, member)
+    for name, case in EXTENDED_CONTRACT_CASES.items() for member in case['value']
+    if case['shape'] not in ('SelectedNative', 'SelectedRelationDetails',
+        'SelectedAssessmentDetails', 'SelectedAssertionData')])
+@pytest.mark.parametrize('mutation', ('missing', 'wrong_type'))
+def test_each_nested_contract_branch_member_has_its_own_control(name, member, mutation):
+    case = EXTENDED_CONTRACT_CASES[name]
+    value = copy.deepcopy(case['value'])
+    assert_component(value, case['shape'])
+    if mutation == 'missing':
+        del value[member]
+        if member in case.get('optional', ()):
+            assert_component(value, case['shape'])
+            return
+    else:
+        value[member] = {'undeclared_member': 'not the declared member type'}
+    reject_component(value, case['shape'])
+
+
+@pytest.mark.parametrize('name', tuple(EXTENDED_CONTRACT_CASES))
+def test_each_nested_contract_branch_is_closed(name):
+    case = EXTENDED_CONTRACT_CASES[name]
+    value = copy.deepcopy(case['value'])
+    assert_component(value, case['shape'])
+    value['undeclared_member'] = 'No generic source export or extension slot.'
+    reject_component(value, case['shape'])
+
+
+# Closed vocabulary fields are fixed by the frozen input/report definitions.
+# Free source prose (method, note, detail, labels, capacity text) is not treated
+# as an enum. This list is independent of the schema keyword implementation.
+CLOSED_LITERAL_MEMBERS = frozenset(('kind', 'type', 'state', 'event_kind', 'assertion_kind',
+    'assessment_kind', 'predicate', 'polarity', 'stage', 'qualification_state',
+    'cohort_qualification_state', 'transition_qualification_state', 'process_qualification_state',
+    'origin_qualification_state', 'grant_qualification_state', 'documentary_state', 'identity_state',
+    'contribution_status', 'authorized_route_state', 'absence_description', 'requested_effect_state',
+    'source_result_state', 'source_value_kind', 'reference_kind', 'availability', 'artifact_kind',
+    'actor_kind', 'epistemic_type', 'evaluation_kind', 'role', 'submission_kind', 'outcome', 'action_type',
+    'classification_state', 'reason', 'lifecycle_state', 'dimension', 'identity_level', 'boundary_role',
+    'comparison_form', 'conclusion', 'coverage_kind', 'axis', 'verification_scope', 'reported_outcome',
+    'grant_state', 'conflict_kind', 'resolution_state', 'algorithm'))
+
+
+@pytest.mark.parametrize('name,member', [(name, member) for name, case in EXTENDED_CONTRACT_CASES.items()
+    for member, value in case['value'].items() if member in CLOSED_LITERAL_MEMBERS and type(value) is str
+    and (member != 'reason' or case['shape'] in ('SelectedGap', 'SelectedUnresolvedReferenceData'))])
+def test_nested_closed_vocabulary_cannot_acquire_an_invented_state(name, member):
+    case = EXTENDED_CONTRACT_CASES[name]
+    value = copy.deepcopy(case['value'])
+    assert_component(value, case['shape'])
+    value[member] = 'invented_contract_state'
+    reject_component(value, case['shape'])
+
+
+@pytest.mark.parametrize('name,member', (('handling_details', 'reason'),
+    ('relation_details.SupersessionDetails.present', 'reason'),
+    ('relation_details_union.SupersessionDetails', 'reason'),
+    ('assessment_details.externality', 'grounding_basis')))
+def test_selected_source_prose_is_not_reclassified_as_a_toolkit_enum(name, member):
+    # Lineage 6.9, 8.3, 9.6 declare source text here, unlike Gap.reason's enum.
+    case = EXTENDED_CONTRACT_CASES[name]
+    value = copy.deepcopy(case['value'])
+    assert_component(value, case['shape'])
+    value[member] = 'The source describes its own reason and limitation.'
+    assert_component(value, case['shape'])
+
+
+@pytest.mark.parametrize('name,member', [(name, member) for name, case in EXTENDED_CONTRACT_CASES.items()
+    for member, value in case['value'].items() if type(value) is list])
+def test_nested_array_member_items_keep_their_declared_scalar_or_object_type(name, member):
+    case = EXTENDED_CONTRACT_CASES[name]
+    value = copy.deepcopy(case['value'])
+    assert_component(value, case['shape'])
+    value[member] = [False]
+    reject_component(value, case['shape'])
+
+
+DISCLOSURE_BRANCH_CASES = {name: case for name, case in EXTENDED_CONTRACT_CASES.items() if 'field' in case}
+
+
+@pytest.mark.parametrize('name', tuple(DISCLOSURE_BRANCH_CASES))
+def test_each_disclosure_branch_is_available_under_its_registered_result_field(name):
+    case = DISCLOSURE_BRANCH_CASES[name]
+    result = disclosure_result_example(case)
+    assert_component(result, 'Result')
+    wrong = copy.deepcopy(result)
+    wrong['value']['records'][0]['source'] = (input_ref('SOURCE-1') if case['field'] ==
+        'tail_stage_result_links' else 'SIT-RES-000002')
+    reject_component(wrong, 'Result')
+
+
+@pytest.mark.parametrize('name', tuple(DISCLOSURE_BRANCH_CASES))
+@pytest.mark.parametrize('path,member', ((('value',), 'records'), (('value', 'records', 0), 'source'),
+    (('value', 'records', 0), 'fields'), (('value', 'records', 0), 'qualifications')))
+@pytest.mark.parametrize('mutation', ('missing', 'wrong_type', 'extra'))
+def test_each_field_specific_disclosure_container_and_row_is_closed_and_typed(name, path, member, mutation):
+    result = disclosure_result_example(DISCLOSURE_BRANCH_CASES[name])
+    assert_component(result, 'Result')
+    value = result
+    for part in path:
+        value = value[part]
+    if mutation == 'missing':
+        del value[member]
+    elif mutation == 'wrong_type':
+        value[member] = {'undeclared_member': 'wrong type'}
+    else:
+        value['undeclared_member'] = 'not a field-specific member'
+    reject_component(result, 'Result')
+
+
+def test_optional_scope_time_and_cohort_anchor_branches_are_not_silently_null_only():
+    scope = copy.deepcopy(EXTENDED_CONTRACT_CASES['scope.time_specific']['value'])
+    assert_component(scope, 'Scope')
+    scope['requested_time'] = None
+    reject_component(scope, 'Scope')
+    case = copy.deepcopy(DISCLOSURE_BRANCH_CASES['CohortTransitionFields']['value'])
+    assert_component(case, 'CohortTransitionFields')
+    case['stage_anchor'] = None
+    assert_component(case, 'CohortTransitionFields')
+
+
+def test_local_file_digest_rejects_wrong_algorithm_and_non_sha256_bytes():
+    baseline = copy.deepcopy(EXTENDED_CONTRACT_CASES['raw_file_digest']['value'])
+    assert_component(baseline, 'RawFileDigest')
+    for member, value in (('algorithm', 'sha1'), ('value', 'A' * 64), ('value', '1' * 63),
+                           ('value', '1' * 65), ('value', 'g' * 64), ('covered_material', '')):
+        changed = copy.deepcopy(baseline)
+        changed[member] = value
+        reject_component(changed, 'RawFileDigest')
+
+
+def test_interrupted_accepted_audit_has_a_positive_contract_before_illegal_state_mutation():
+    # A fully parsed input may stop before any family completes. This is a
+    # hand-authored local contract specimen, not a constructed public report.
+    document = diagnostic_document('audit_report', 'interrupted', 'accepted')
+    labels = ('Artifact and contribution inventory', 'Declared provenance and process metadata',
+        'Origin-resolution and scoped process-assessment evidence', 'Evaluator, correction-route and authority evidence',
+        'Boundary-qualified external input, stage histories and documented correction outcomes')
+    document['observability_domains'] = [{'level_index': index, 'label': label,
+        'available_result_refs': [], 'unavailable_result_refs': [], 'not_evaluated_result_refs': [],
+        'reason_refs': []} for index, label in enumerate(labels)]
+    assert_both(document)
+    document['input_validation']['state'] = 'not_completed'
+    assert_rejected(document)
+
+
+@pytest.mark.parametrize('baseline,path,replacement,source', native_record_binding_cases())
+def test_native_record_discriminator_selects_its_own_closed_payload(baseline, path, replacement, source):
+    case = EXTENDED_CONTRACT_CASES[baseline]
+    value = copy.deepcopy(case['value'])
+    assert_component(value, case['shape'])
+    owner = value
+    for part in path[:-1]:
+        owner = owner[part]
+    owner[path[-1]] = replacement
+    reject_component(value, case['shape'])
+
+
+@pytest.mark.parametrize('baseline,path,candidates,source', native_record_enum_cases())
+def test_source_native_record_enums_have_positive_values_before_an_invented_value(baseline, path, candidates, source):
+    case = EXTENDED_CONTRACT_CASES[baseline]
+    for replacement in candidates:
+        value = copy.deepcopy(case['value'])
+        owner = value
+        for part in path[:-1]:
+            owner = owner[part]
+        if type(owner) is list:
+            # A singleton positive avoids accidentally duplicating a second
+            # existing member while sweeping a distinct source enum value.
+            owner[:] = [replacement]
+        else:
+            owner[path[-1]] = replacement
+        assert_component(value, case['shape'])
+        owner[path[-1]] = 'invented_contract_state'
+        reject_component(value, case['shape'])
+
+
+@pytest.mark.parametrize('case', native_assertion_mutant_suggestions(),
+                         ids=lambda case: case['baseline'] + ':' + '.'.join(map(str, case['path'])))
+def test_native_assertion_discriminators_cardinality_and_states_are_bound_locally(case):
+    baseline = EXTENDED_CONTRACT_CASES[case['baseline']]
+    value = copy.deepcopy(baseline['value'])
+    assert_component(value, baseline['shape'])
+    owner = value
+    for part in case['path'][:-1]:
+        owner = owner[part]
+    owner[case['path'][-1]] = copy.deepcopy(case['value'])
+    reject_component(value, baseline['shape'])
+
+
+def closed_object_coverage():
+    """Inventory test destinations, never manufacture positive fixture values.
+
+    Object pointers come from the delivered schema; every value and optional
+    member list comes from independently handwritten source specimens above.
+    AllOf's repeated per-field record containers remain separately accounted.
+    """
+    schema = report_schema()
+    inventory = {}
+    old = {name: {'shape': name, 'value': value, 'source': 'Reporting 12–18; N01 component_examples',
+                  'optional': ('note',) if name == 'TimeWindow' else
+                              ('asserted_at',) if name == 'BasisTime' else ()}
+           for name, value in component_examples().items()}
+    for group_name, cases in (('component_examples', old), ('EXTENDED_CONTRACT_CASES', EXTENDED_CONTRACT_CASES)):
+        for name, case in cases.items():
+            shape = case['shape']
+            rule = schema['$defs'][shape]
+            pointer = '#/$defs/' + shape
+            branch = case.get('branch')
+            if branch is not None:
+                pointer += '/anyOf/' + str(branch)
+                rule = rule['anyOf'][branch]
+            if rule.get('type') != 'object':
+                continue
+            entry = inventory.setdefault(pointer, {'shape': shape, 'specimens': [], 'members': {},
+                'extra_member_test': ('test_every_fixed_component_rejects_an_extra_member'
+                    if group_name == 'component_examples' else 'test_each_nested_contract_branch_is_closed')})
+            entry['specimens'].append({'group': group_name, 'case': name, 'source': case['source']})
+            for member in case['value']:
+                if group_name == 'component_examples' and (shape, member) in (
+                        ('TimeWindow', 'note'), ('BasisTime', 'asserted_at')):
+                    continue
+                member_entry = entry['members'].setdefault(member, {'positive_cases': [], 'type_cases': [],
+                    'missing_rejected_cases': [], 'optional_omission_accepted_cases': []})
+                member_entry['positive_cases'].append(name)
+                member_entry['type_cases'].append(name)
+                key = 'optional_omission_accepted_cases' if member in case.get('optional', ()) else 'missing_rejected_cases'
+                member_entry[key].append(name)
+    for index, condition in enumerate(schema['$defs']['Result']['allOf']):
+        if condition.get('then', {}).get('properties', {}).get('value', {}).get('type') != 'object':
+            continue
+        field = condition.get('if', {}).get('properties', {}).get('field_key', {}).get('const')
+        cases = [(name, case) for name, case in DISCLOSURE_BRANCH_CASES.items() if case['field'] == field]
+        if not cases:
+            continue
+        base = '#/$defs/Result/allOf/' + str(index) + '/then/properties/value'
+        for suffix, members in (('', ('records',)), ('/properties/records/items', ('source', 'fields', 'qualifications'))):
+            inventory[base + suffix] = {'shape': 'Result field-specific container' if not suffix else 'Result field-specific row',
+                'field_key': field, 'specimens': [{'group': 'DISCLOSURE_BRANCH_CASES', 'case': name,
+                    'source': case['source']} for name, case in cases],
+                'members': {member: {'positive_cases': [name for name, _ in cases],
+                    'type_cases': [name for name, _ in cases], 'missing_rejected_cases': [name for name, _ in cases],
+                    'optional_omission_accepted_cases': []} for member in members},
+                'extra_member_test': 'test_each_field_specific_disclosure_container_and_row_is_closed_and_typed'}
+    return inventory
+
+
+def test_all_160_closed_schema_objects_have_explicit_positive_and_member_controls():
+    schema = report_schema()
+    objects = {}
+
+    def collect(rule, pointer):
+        if type(rule) is dict:
+            if rule.get('type') == 'object':
+                objects[pointer] = rule
+            for name, value in rule.items():
+                collect(value, pointer + '/' + name)
+        elif type(rule) is list:
+            for index, value in enumerate(rule):
+                collect(value, pointer + '/' + str(index))
+
+    collect(schema, '#')
+    coverage = closed_object_coverage()
+    assert len(objects) == 160  # frozen schema census, not an outcome-count gate
+    assert set(coverage) == set(objects), sorted(set(objects) - set(coverage))
+    for pointer, rule in objects.items():
+        assert rule['additionalProperties'] is False
+        entry = coverage[pointer]
+        assert entry['specimens'] and entry['extra_member_test'], pointer
+        assert set(entry['members']) == set(rule['properties']), pointer
+        for member, evidence in entry['members'].items():
+            assert evidence['positive_cases'] and evidence['type_cases'], (pointer, member)
+            if member in rule.get('required', ()):
+                assert evidence['missing_rejected_cases'], (pointer, member)
+            else:
+                assert evidence['optional_omission_accepted_cases'], (pointer, member)
