@@ -1,7 +1,7 @@
 {
   "format": "sit-phase4-report-coverage/0.1",
-  "unit": "P4-W05",
-  "status": "W05 exact internal JSON and bounded output accounting verified; public delivery, Markdown and whole-invocation integration remain pending",
+  "unit": "P4-W06",
+  "status": "W06 exact internal Markdown and independent JSON parity verified; public delivery and whole-invocation integration remain pending",
   "purpose": "Review-only source and obligation map. It grants no authority, selects no tests and is not imported by product code.",
   "phase4_plan": {
     "path": "PHASE_4_PLAN.md",
@@ -11929,18 +11929,70 @@
       "source": "GOVERNANCE_AND_HANDOFF.md §22.2; REPOSITORY_ARCHITECTURE.md §18.3",
       "planned_unit": "P4-W06",
       "required_behavior": "Exact fixed root layout and complete pretty-J blocks, per-Result reason details, half-up six-place line for each available fraction, safe dynamic fences and one final LF.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "verified_internal_renderers_W06",
+      "actual_test_nodes": [
+        "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
+        "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
+        "tests/contract/test_report_parity.py::test_diagnostic_envelopes_keep_empty_results_safe_diagnostics_and_actual_input_state",
+        "tests/contract/test_report_parity.py::test_fraction_display_uses_half_up_six_places_and_keeps_original_components",
+        "tests/contract/test_report_parity.py::test_nonresults_keep_null_value_reasons_and_never_gain_a_decimal",
+        "tests/contract/test_report_parity.py::test_available_completion_interval_retains_exact_endpoints_without_extra_decimal_line",
+        "tests/contract/test_report_parity.py::test_reason_details_follow_canonical_reason_order_without_reordering_result_refs",
+        "tests/contract/test_report_parity.py::test_independent_parser_rejects_each_substantive_omission",
+        "tests/contract/test_report_parity.py::test_counterevidence_is_retained_and_independent_parser_rejects_its_omission",
+        "tests/contract/test_report_parity.py::test_exact_layout_oracle_rejects_framing_and_presentation_mutants",
+        "tests/security/test_rendering.py::test_markup_canaries_stay_in_encoded_blocks_and_retain_exact_values",
+        "tests/security/test_rendering.py::test_fence_is_one_longer_than_longest_literal_backtick_run",
+        "tests/security/test_rendering.py::test_control_and_bidi_scalars_are_exposed_as_exact_lowercase_json_escapes",
+        "tests/security/test_rendering.py::test_multilingual_combining_forms_and_terminal_sequences_are_not_dropped",
+        "tests/security/test_rendering.py::test_result_and_repeated_reason_details_keep_source_text_inside_safe_blocks",
+        "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure"
+      ],
+      "execution_evidence": [
+        {
+          "file": "p4w06-targeted-001.xml",
+          "parity_cases": 30,
+          "rendering_security_cases": 26,
+          "zero_failures_errors_skips": true,
+          "json_reference_bytes": 421307,
+          "markdown_reference_bytes": 564555
+        }
+      ]
     },
     {
       "clause": "semantic_parity",
       "source": "OBSERVABILITY_AND_REPORTING.md §19.1; VALIDATION_PLAN.md SIT-VG017",
       "planned_unit": "P4-W06",
       "required_behavior": "Both representations encode the same selected frozen report; independent block decoding and oracles reject loss of unavailable siblings, scope, unknowns, reasons, contrary premises, denominator or attribution.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "verified_internal_renderers_W06",
+      "actual_test_nodes": [
+        "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
+        "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
+        "tests/contract/test_report_parity.py::test_diagnostic_envelopes_keep_empty_results_safe_diagnostics_and_actual_input_state",
+        "tests/contract/test_report_parity.py::test_fraction_display_uses_half_up_six_places_and_keeps_original_components",
+        "tests/contract/test_report_parity.py::test_nonresults_keep_null_value_reasons_and_never_gain_a_decimal",
+        "tests/contract/test_report_parity.py::test_available_completion_interval_retains_exact_endpoints_without_extra_decimal_line",
+        "tests/contract/test_report_parity.py::test_reason_details_follow_canonical_reason_order_without_reordering_result_refs",
+        "tests/contract/test_report_parity.py::test_independent_parser_rejects_each_substantive_omission",
+        "tests/contract/test_report_parity.py::test_counterevidence_is_retained_and_independent_parser_rejects_its_omission",
+        "tests/contract/test_report_parity.py::test_exact_layout_oracle_rejects_framing_and_presentation_mutants",
+        "tests/security/test_rendering.py::test_markup_canaries_stay_in_encoded_blocks_and_retain_exact_values",
+        "tests/security/test_rendering.py::test_fence_is_one_longer_than_longest_literal_backtick_run",
+        "tests/security/test_rendering.py::test_control_and_bidi_scalars_are_exposed_as_exact_lowercase_json_escapes",
+        "tests/security/test_rendering.py::test_multilingual_combining_forms_and_terminal_sequences_are_not_dropped",
+        "tests/security/test_rendering.py::test_result_and_repeated_reason_details_keep_source_text_inside_safe_blocks",
+        "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure"
+      ],
+      "execution_evidence": [
+        {
+          "file": "p4w06-targeted-001.xml",
+          "parity_cases": 30,
+          "rendering_security_cases": 26,
+          "zero_failures_errors_skips": true,
+          "json_reference_bytes": 421307,
+          "markdown_reference_bytes": 564555
+        }
+      ]
     },
     {
       "clause": "one_ledger_and_stops",
@@ -11979,6 +12031,32 @@
         ],
         "execution_evidence": "p4w05-targeted-001.xml",
         "scope": "Fixed 67108864 separate counters, actual remaining-space encoding/LF boundaries, first-cause and no-prefix return. No full64MiB encoding or W07 witness reconciliation claim."
+      },
+      "w06_component_evidence": {
+        "status": "both output encoders verified; witness/full invocation remains pending",
+        "actual_test_nodes": [
+          "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+          "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+          "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+          "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+          "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+          "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+          "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+          "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+          "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+          "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+          "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+          "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+          "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+          "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+          "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+          "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+          "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+          "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+          "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair"
+        ],
+        "execution_evidence": "p4w06-targeted-001.xml",
+        "scope": "Existing38cases and10Markdown additions; actual fixedcounter remaining-space limits, LF/framing, mid-output stops and no paired delivery. No full64MiB allocation claim."
       }
     },
     {
@@ -15302,5 +15380,147 @@
       "sha256": "9b584763bb0f8ac93ce778f76f215173d4b5bba4d356accf823e80bf7a2c0859"
     },
     "scope": "Internal exact JSON and existing-ledger output boundary only; seven-file focused execution, no public delivery or whole-invocation/Markdown parity claim."
+  },
+  "w06_verification": {
+    "execution": {
+      "command": [
+        "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/contract/test_report_parity.py",
+        "tests/security/test_rendering.py",
+        "tests/security/test_report_resource_limits.py",
+        "tests/contract/test_json_report.py",
+        "tests/contract/test_report_test_oracles.py",
+        "--junitxml=/workspace/scratch/4e5267fe5990/p4w06-targeted-001.xml"
+      ],
+      "started_at_utc": "2026-10-25T16:36:25.533181+00:00",
+      "elapsed_seconds": 35.059611011995,
+      "exit_code": 0,
+      "timeout_seconds": 900,
+      "timed_out": false,
+      "interrupted": false,
+      "incomplete": false,
+      "base_head": "98dd68b71f84dad3286355dfdb05d528f3bcfab1",
+      "source_files": 230,
+      "source_bytes_unchanged": true,
+      "scope": "Five named W06 Markdown/parity/rendering/output and prior JSON/oracle files; not a full suite or W07 public invocation."
+    },
+    "junit": {
+      "summary": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "341",
+        "time": "34.750",
+        "timestamp": "2026-10-25T10:36:25.718461-06:00",
+        "hostname": "d6921570ec2c"
+      },
+      "by_classname": {
+        "tests.contract.test_report_parity": 30,
+        "tests.security.test_rendering": 26,
+        "tests.security.test_report_resource_limits": 48,
+        "tests.contract.test_json_report": 148,
+        "tests.contract.test_report_test_oracles": 89
+      }
+    },
+    "actual_test_nodes": {
+      "tests/contract/test_report_parity.py": [
+        "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
+        "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
+        "tests/contract/test_report_parity.py::test_diagnostic_envelopes_keep_empty_results_safe_diagnostics_and_actual_input_state",
+        "tests/contract/test_report_parity.py::test_fraction_display_uses_half_up_six_places_and_keeps_original_components",
+        "tests/contract/test_report_parity.py::test_nonresults_keep_null_value_reasons_and_never_gain_a_decimal",
+        "tests/contract/test_report_parity.py::test_available_completion_interval_retains_exact_endpoints_without_extra_decimal_line",
+        "tests/contract/test_report_parity.py::test_reason_details_follow_canonical_reason_order_without_reordering_result_refs",
+        "tests/contract/test_report_parity.py::test_independent_parser_rejects_each_substantive_omission",
+        "tests/contract/test_report_parity.py::test_counterevidence_is_retained_and_independent_parser_rejects_its_omission",
+        "tests/contract/test_report_parity.py::test_exact_layout_oracle_rejects_framing_and_presentation_mutants"
+      ],
+      "tests/security/test_rendering.py": [
+        "tests/security/test_rendering.py::test_markup_canaries_stay_in_encoded_blocks_and_retain_exact_values",
+        "tests/security/test_rendering.py::test_fence_is_one_longer_than_longest_literal_backtick_run",
+        "tests/security/test_rendering.py::test_control_and_bidi_scalars_are_exposed_as_exact_lowercase_json_escapes",
+        "tests/security/test_rendering.py::test_multilingual_combining_forms_and_terminal_sequences_are_not_dropped",
+        "tests/security/test_rendering.py::test_result_and_repeated_reason_details_keep_source_text_inside_safe_blocks",
+        "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure"
+      ],
+      "tests/security/test_report_resource_limits.py": [
+        "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+        "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+        "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+        "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+        "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+        "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+        "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+        "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+        "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+        "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+        "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+        "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+        "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+        "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+        "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+        "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+        "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+        "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+        "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair"
+      ]
+    },
+    "final_product_and_test_bytes": {
+      "src/source_integrity_toolkit/reporting/escaping.py": {
+        "sha256": "c7219bd3e6d4b299574164522396065215933d140c3643a822c50df5bf1f018e",
+        "bytes": 17438
+      },
+      "src/source_integrity_toolkit/reporting/markdown_report.py": {
+        "sha256": "ae8eaa6ee6d1addc0df5ba294743a53703cbbd1014fc6f41e2ea759e48e170bc",
+        "bytes": 9019
+      },
+      "tests/contract/test_report_parity.py": {
+        "sha256": "762e28af92e365577d7134f170d129916206d16503ffe19b55510cf3f432bf86",
+        "bytes": 21344
+      },
+      "tests/security/test_rendering.py": {
+        "sha256": "8eae4b6e6ee552d982d5fec5b3afcf0b8112d9e518c23bf16b44f8ca449a129b",
+        "bytes": 9553
+      },
+      "tests/security/test_report_resource_limits.py": {
+        "sha256": "362aef2d4d2ce1546e81f1ff388a2dbc8422a86eb904c11f279c0dc537ffd5a1",
+        "bytes": 24878
+      }
+    },
+    "dual_renderer_probe": {
+      "exact_reference": true,
+      "markdown_bytes": 564555,
+      "json_bytes": 421307,
+      "markdown_sha256": "776b2eaae10b3301681cb5a106753823bff5e4a9ff4a5a09325ed3a271f49bdd",
+      "json_units": 3040258,
+      "markdown_units": 3982007,
+      "combined_units": 7022265,
+      "ledger_units": 7023292,
+      "output_counters": [
+        421307,
+        564555
+      ],
+      "elapsed_seconds": 2.2758739560013055,
+      "scope": "One real finalization ledger for both renderers; frozen input constructed separately; no W07 analysis/composition claim."
+    },
+    "independent_review": {
+      "file": "p4w06-independent-review.json",
+      "sha256": "7004d007ece6a09ed8465107eed957e5f01ddc4af0aaffc70e595583867d0990",
+      "status": "passed_no_blocking_findings"
+    },
+    "post_test_inheritance": {
+      "commit": "3525d294ac179e38948346188bd5e633a06b7a08",
+      "paths": [
+        "phase4/implementation_evidence.json",
+        "tests/contract/test_verification_boundary.py"
+      ],
+      "meaning": "Only separately verified V02/D05 repair bytes inherited after the run; all tested W06 product/test and related JSON/oracle bytes remain identical."
+    },
+    "scope": "Internal dual-renderer, independent parity, literal-data rendering and fixed output counter checks; no W07 full invocation or public delivery."
   }
 }

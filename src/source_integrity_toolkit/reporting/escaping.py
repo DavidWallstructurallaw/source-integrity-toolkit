@@ -305,3 +305,175 @@ def _encode_j(value, port, *, encoding='json'):
     writer = _JWriter(port, encoding)
     writer.value(value)
     return writer.finish()
+
+
+def _repeat_syntax(writer, token, count):
+    """Emit a tool-owned one-byte fence/indent token after its exact reserve."""
+    _require(type(token) is bytes and token in (b' ', b'`'))
+    _require(type(count) is int and count >= 0)
+    writer._reserve(count)
+    _byte_work(writer._port, count, 2)
+    fragment = token * count
+    writer._port.check()
+    writer._retain(fragment)
+
+
+def _fence_length(value, port):
+    """Scan the frozen value for the exact longest backtick run in pretty J.
+
+    J preserves literal backticks inside strings, while every string boundary
+    contains a quote and container syntax contains no backtick. A run can cross
+    scan blocks within one string, but cannot cross distinct strings or keys.
+    No encoded body is allocated or charged to an output counter by this pass.
+    """
+    port.charge(3)
+    pending = [('visit', value)]
+    active = set()
+    longest = 0
+    while pending:
+        port.charge(1)
+        action, current = pending.pop()
+        if action == 'leave':
+            port.charge(1)
+            active.remove(current)
+            continue
+        if action == 'object':
+            pairs, position = current
+            if position < len(pairs):
+                port.charge(2)
+                pair = pairs[position]
+                _require(type(pair) is tuple and len(pair) == 2 and type(pair[0]) is str)
+                port.charge(3)
+                pending.append(('object', (pairs, position + 1)))
+                pending.append(('visit', pair[1]))
+                pending.append(('visit', pair[0]))
+            continue
+        if action == 'array':
+            items, position = current
+            if position < len(items):
+                port.charge(3)
+                pending.append(('array', (items, position + 1)))
+                pending.append(('visit', items[position]))
+            continue
+        kind = type(current)
+        if kind is str:
+            run = 0
+            for start in range(0, len(current), 64):
+                size = min(64, len(current) - start)
+                _byte_work(port, size * 4, 1)
+                block = current[start:start + size]
+                _byte_work(port, size * 4, size + 1)
+                for char in block:
+                    code = ord(char)
+                    _require(not 0xD800 <= code <= 0xDFFF)
+                    run = run + 1 if char == '`' else 0
+                    longest = max(longest, run)
+                port.check()
+        elif kind is _ReportMapping or kind is tuple:
+            port.charge(3)
+            identity = id(current)
+            _require(identity not in active)
+            active.add(identity)
+            port.charge(2)
+            pending.append(('leave', identity))
+            if kind is _ReportMapping:
+                _require(type(current._pairs) is tuple)
+                pending.append(('object', (current._pairs, 0)))
+            else:
+                pending.append(('array', (current, 0)))
+        else:
+            _require(current is None or kind is bool or kind is int or kind is _Number)
+    port.check()
+    return max(3, longest + 1)
+
+
+def _write_pretty_j(writer, value):
+    """Emit pretty J directly into the caller's one counted output buffer."""
+    port = writer._port
+    port.charge(3)
+    pending = [('visit', (value, 0))]
+    active = set()
+    while pending:
+        port.charge(1)
+        action, current = pending.pop()
+        if action == 'object':
+            pairs, position, depth, identity = current
+            if position == len(pairs):
+                writer.literal(b'\n')
+                _repeat_syntax(writer, b' ', 2 * depth)
+                writer.literal(b'}')
+                port.charge(1)
+                active.remove(identity)
+                continue
+            if position:
+                writer.literal(b',\n')
+            _repeat_syntax(writer, b' ', 2 * (depth + 1))
+            port.charge(1)
+            key, child = pairs[position]
+            writer.string(key)
+            writer.literal(b': ')
+            port.charge(3)
+            pending.append(('object', (pairs, position + 1, depth, identity)))
+            pending.append(('visit', (child, depth + 1)))
+            continue
+        if action == 'array':
+            items, position, depth, identity = current
+            if position == len(items):
+                writer.literal(b'\n')
+                _repeat_syntax(writer, b' ', 2 * depth)
+                writer.literal(b']')
+                port.charge(1)
+                active.remove(identity)
+                continue
+            if position:
+                writer.literal(b',\n')
+            _repeat_syntax(writer, b' ', 2 * (depth + 1))
+            port.charge(3)
+            pending.append(('array', (items, position + 1, depth, identity)))
+            pending.append(('visit', (items[position], depth + 1)))
+            continue
+        value, depth = current
+        kind = type(value)
+        if value is None:
+            writer.literal(b'null')
+        elif kind is bool:
+            writer.literal(b'true' if value else b'false')
+        elif kind is int:
+            writer.integer(value)
+        elif kind is str:
+            writer.string(value)
+        elif kind is _Number:
+            writer.atom(value)
+        elif kind is _ReportMapping or kind is tuple:
+            port.charge(3)
+            identity = id(value)
+            _require(identity not in active)
+            active.add(identity)
+            if kind is _ReportMapping:
+                pairs = _sorted_report_pairs(value, port)
+                if not pairs:
+                    writer.literal(b'{}')
+                    port.charge(1)
+                    active.remove(identity)
+                else:
+                    writer.literal(b'{\n')
+                    port.charge(2)
+                    pending.append(('object', (pairs, 0, depth, identity)))
+            elif not value:
+                writer.literal(b'[]')
+                port.charge(1)
+                active.remove(identity)
+            else:
+                writer.literal(b'[\n')
+                port.charge(2)
+                pending.append(('array', (value, 0, depth, identity)))
+        else:
+            _require(False)
+    port.check()
+
+
+def _encode_pretty_j(value, port, *, encoding='markdown'):
+    """Private pretty-J component, with no terminal LF or Markdown framing."""
+    writer = _JWriter(port, encoding)
+    _write_pretty_j(writer, value)
+    return writer.finish()

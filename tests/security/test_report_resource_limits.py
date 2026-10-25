@@ -18,6 +18,7 @@ from source_integrity_toolkit.contracts.execution import (
     AuditAbort, AuditCancelled, _AnalysisAborted, _AuditCancelled, _ReportAborted,
 )
 from source_integrity_toolkit.reporting import escaping, json_report
+from source_integrity_toolkit.reporting import markdown_report
 from source_integrity_toolkit.runtime import diagnostics, resources
 
 
@@ -397,3 +398,162 @@ def test_report_abort_mapping_rejects_unknown_exception_without_private_protocol
     assert calls == []
     visible = str(stopped.value) + repr(stopped.value) + ''.join(traceback.format_exception(stopped.value))
     assert 'FICTIONAL_REPORT_EXCEPTION_SECRET_8392' not in visible
+
+
+_MARKDOWN_ROOTS = (
+    'contract_version', 'report_kind', 'report_id', 'run', 'input_identity',
+    'input_validation', 'scopes', 'populations', 'basis_index', 'capabilities',
+    'checks', 'observability_domains', 'results', 'findings', 'reasons',
+    'release_limits',
+)
+
+
+@pytest.fixture(scope='module')
+def markdown_reference(reference):
+    frozen, _ = reference
+    expected = (ROOT / 'tests/golden/phase4_reference_report.md').read_bytes()
+    return frozen, expected
+
+
+@pytest.fixture(scope='module')
+def small_markdown_document():
+    """Accepted diagnostic component derived from the independent reference.
+
+    It has no analytical rows. The one safe string deliberately needs a
+    four-backtick fence; its scalar spelling has no special JSON controls.
+    This fixture is not emitted by a renderer or an actual failed invocation.
+    """
+    document = json.loads((ROOT / 'tests/golden/phase4_reference_report.json').read_bytes())
+    document['report_kind'] = 'processing_diagnostics'
+    document['run']['processing_state'] = 'failed'
+    document['run']['completed_diagnostic_ids'] = []
+    document['run']['diagnostics'] = [{
+        'code': 'execution_failed', 'location': None,
+        'safe_message': 'Finite ``` fence and 雪 fixture.',
+        'qualifications': ['No source-quality conclusion.'],
+    }]
+    for key in ('scopes', 'populations', 'basis_index', 'capabilities', 'checks',
+                'observability_domains', 'results', 'findings', 'reasons'):
+        document[key] = []
+    frozen = report_contract._freeze_report_document(document, CapturePort())
+    # Independent literal layout plus stdlib pretty JSON is valid for these
+    # fixed scalars, which have none of J's special escaped control ranges.
+    expected = ('# Source Integrity Audit\n\n'
+                'Report kind: processing_diagnostics\n'
+                'Processing state: failed\nInput state: accepted\n\n')
+    for index, name in enumerate(_MARKDOWN_ROOTS):
+        body = json.dumps(document[name], ensure_ascii=False, sort_keys=True, indent=2)
+        fence = '````' if name == 'run' else '```'
+        expected += '## ' + name + '\n\n' + fence + 'json\n' + body + '\n' + fence + '\n'
+        if index < len(_MARKDOWN_ROOTS) - 1:
+            expected += '\n'
+    return frozen, expected.encode('utf-8')
+
+
+@pytest.mark.parametrize('extra', (-1, 0, 1))
+def test_markdown_final_lf_uses_actual_cap_without_prefix_delivery(clock, markdown_reference, extra):
+    frozen, expected = markdown_reference
+    assert expected.endswith(b'\n') and not expected.endswith(b'\n\n')
+    owner, _, real = encoding_context()
+    allowed = len(expected) + extra
+    real.charge_output('markdown', OUTPUT_LIMIT - allowed)
+    port = ObservedPort(real)
+    returned = []
+    if extra < 0:
+        with pytest.raises(_ReportAborted) as stopped:
+            returned.append(markdown_report._encode_markdown_report(frozen, port))
+        accepted = sum(count for _, count in port.accepted)
+        assert stopped.value.limit_id == 'WU9-L14' and returned == []
+        assert 0 < accepted <= allowed
+        assert accepted + port.attempted[-1][1] > allowed
+        assert counters(owner) == (0, OUTPUT_LIMIT - allowed + accepted)
+    else:
+        actual = markdown_report._encode_markdown_report(frozen, port)
+        assert actual == expected
+        assert counters(owner) == (0, OUTPUT_LIMIT - extra)
+        assert sum(count for _, count in port.accepted) == len(expected)
+    assert all(name == 'markdown' for name, _ in port.attempted)
+
+
+def test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds(clock, small_markdown_document):
+    frozen, expected = small_markdown_document
+    assert b'````json\n' in expected and b'\n      "code": ' in expected
+    owner, _, real = encoding_context()
+    real.charge_output('markdown', OUTPUT_LIMIT - len(expected))
+    port = ObservedPort(real)
+    actual = markdown_report._encode_markdown_report(frozen, port)
+    assert actual == expected and counters(owner) == (0, OUTPUT_LIMIT)
+    assert sum(count for _, count in port.accepted) == len(expected)
+    with pytest.raises(_ReportAborted) as stopped:
+        real.charge_output('markdown', 1)
+    assert stopped.value.limit_id == 'WU9-L14'
+
+
+@pytest.mark.parametrize('boundary', ('work', 'time', 'failure', 'cancel'))
+def test_markdown_mid_output_stop_returns_no_partial_bytes(clock, small_markdown_document, boundary):
+    frozen, expected = small_markdown_document
+    owner, _, real = encoding_context()
+    class StopDuringMarkdown(ObservedPort):
+        def charge_output(self, encoding, count):
+            super().charge_output(encoding, count)
+            if len(self.accepted) == 5:
+                if boundary == 'work':
+                    self.delegate.charge(owner.remaining)
+                elif boundary == 'time':
+                    clock[0] += 60_000_000_001
+                elif boundary == 'failure':
+                    owner.fail()
+                else:
+                    owner.cancel()
+    port = StopDuringMarkdown(real)
+    returned = []
+    stopped_type = _AuditCancelled if boundary == 'cancel' else _AnalysisAborted
+    with pytest.raises(stopped_type) as stopped:
+        returned.append(markdown_report._encode_markdown_report(frozen, port))
+    assert returned == [] and len(port.accepted) == 5
+    charged = sum(count for _, count in port.accepted)
+    assert 0 < charged < len(expected)
+    assert counters(owner) == (0, charged)
+    public = diagnostics._report_abort(stopped.value)
+    assert public.input_validation_state == 'accepted' and public.publication_state == 'not_published'
+    assert type(public) is (AuditCancelled if boundary == 'cancel' else AuditAbort)
+    if boundary != 'cancel':
+        assert public.reason_code == ('execution_failed' if boundary == 'failure' else 'resource_limit_reached')
+    for name in ('json', 'markdown'):
+        with pytest.raises(stopped_type) as repeated:
+            port.charge_output(name, 0)
+        assert repeated.value is stopped.value
+
+
+def test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts(clock, small_markdown_document):
+    frozen, expected_markdown = small_markdown_document
+    owner, finalizer, port = encoding_context()
+    start, initial_work = owner._start, owner.used
+    json_bytes = json_report._encode_json_report(frozen, port)
+    after_json = owner.used
+    assert initial_work < after_json and counters(owner) == (len(json_bytes), 0)
+    markdown_bytes = markdown_report._encode_markdown_report(frozen, port)
+    assert markdown_bytes == expected_markdown
+    assert owner._start == start and owner.used > after_json
+    assert counters(owner) == (len(json_bytes), len(expected_markdown))
+    assert owner.remaining == 10_000_000 - owner.used
+    finalizer.check()
+    with pytest.raises(TypeError, match='AuditReport is delivered only by audit_bundle'):
+        report_contract.AuditReport()
+
+
+def test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair(clock, small_markdown_document):
+    frozen, expected_markdown = small_markdown_document
+    owner, _, port = encoding_context()
+    json_bytes = json_report._encode_json_report(frozen, port)
+    assert json_bytes.endswith(b'\n')
+    port.charge_output('markdown', OUTPUT_LIMIT - len(expected_markdown) + 1)
+    returned_pairs = []
+    with pytest.raises(_ReportAborted) as stopped:
+        markdown_bytes = markdown_report._encode_markdown_report(frozen, port)
+        returned_pairs.append((json_bytes, markdown_bytes))
+    assert returned_pairs == [] and counters(owner)[0] == len(json_bytes)
+    assert stopped.value.limit_id == 'WU9-L14'
+    public = diagnostics._report_abort(stopped.value)
+    assert public.input_validation_state == 'accepted' and public.publication_state == 'not_published'
+    assert not hasattr(public, 'report') and not hasattr(public, 'prefix')
