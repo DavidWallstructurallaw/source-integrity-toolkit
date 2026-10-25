@@ -1777,19 +1777,19 @@ def _report_type(value, kind):
             (kind == 'null' and value is None))
 
 
-def _report_matches(value, specification, port):
+def _report_matches(value, specification, port, fields=None):
     try:
-        _report_schema(value, specification, port)
+        _report_schema(value, specification, port, fields)
     except _ReportContractError:
         return False
     return True
 
 
-def _report_schema(value, specification, port):
+def _report_schema(value, specification, port, fields=None):
     """Interpret only the compiled local report grammar, never supplied schemas.
 
     This private fixed-contract walker accepts only the keyword subset used in
-    the pinned report declaration. Every alternative, scalar scan, member
+    the pinned report declaration. Every executed alternative, scalar scan, member
     examination and collection comparison consumes the caller's existing port.
     """
     port.charge(1)
@@ -1797,11 +1797,18 @@ def _report_schema(value, specification, port):
         _report_require(False)
     if specification is True:
         return
+    # A same-value schema alternative reuses only this immutable object's
+    # field lookup table, never a validation result or source qualification.
+    if type(value) is _ReportMapping and fields is None:
+        fields = _report_fields(value, port)
     if '$ref' in specification:
         reference = specification['$ref']
         name = reference.removeprefix('#/$defs/')
         _report_require(reference.startswith('#/$defs/') and name in _REPORT_SHAPES)
-        _report_shape(value, name, port)
+        _report_shape(value, name, port, fields)
+        if len(specification) == 1:
+            port.check()
+            return
     if 'type' in specification:
         kinds = specification['type']
         kinds = (kinds,) if type(kinds) is str else kinds
@@ -1822,17 +1829,29 @@ def _report_schema(value, specification, port):
             successes = 0
             for branch in specification[key]:
                 port.charge(1)
-                successes += int(_report_matches(value, branch, port))
+                matched = _report_matches(value, branch, port, fields)
+                successes += int(matched)
+                if key == 'allOf' and not matched:
+                    _report_require(False)
+                if key == 'anyOf' and matched:
+                    break
+                if key == 'oneOf' and successes > 1:
+                    _report_require(False)
             _report_require(successes == len(specification[key]) if key == 'allOf' else
                             successes >= 1 if key == 'anyOf' else successes == 1)
     if 'not' in specification:
-        _report_require(not _report_matches(value, specification['not'], port))
+        _report_require(not _report_matches(value, specification['not'], port, fields))
     if 'if' in specification:
-        which = 'then' if _report_matches(value, specification['if'], port) else 'else'
+        which = 'then' if _report_matches(value, specification['if'], port, fields) else 'else'
         if which in specification:
-            _report_schema(value, specification[which], port)
+            _report_schema(value, specification[which], port, fields)
     if type(value) is str:
-        _report_text_work(value, port)
+        # Capture already checked Unicode scalar validity. This pass performs
+        # only actual grammar constraints, with no no-op re-scan of text.
+        port.charge(3)
+        if not any(key in specification for key in ('minLength', 'maxLength', 'pattern')):
+            port.check()
+            return
         _report_require(len(value) >= specification.get('minLength', 0))
         if 'maxLength' in specification:
             _report_require(len(value) <= specification['maxLength'])
@@ -1852,7 +1871,10 @@ def _report_schema(value, specification, port):
         if 'exclusiveMaximum' in specification:
             _report_require(value < specification['exclusiveMaximum'])
     elif type(value) is tuple:
-        port.charge(2)
+        port.charge(7)
+        if not any(key in specification for key in ('minItems', 'maxItems', 'prefixItems', 'items', 'uniqueItems', 'contains')):
+            port.check()
+            return
         _report_require(len(value) >= specification.get('minItems', 0))
         if 'maxItems' in specification:
             _report_require(len(value) <= specification['maxItems'])
@@ -1874,7 +1896,10 @@ def _report_schema(value, specification, port):
             if 'maxContains' in specification:
                 _report_require(matches <= specification['maxContains'])
     elif type(value) is _ReportMapping:
-        fields = _report_fields(value, port)
+        port.charge(8)
+        if not any(key in specification for key in ('minProperties', 'maxProperties', 'required', 'properties', 'propertyNames', 'additionalProperties', 'dependentRequired')):
+            port.check()
+            return
         _report_require(len(fields) >= specification.get('minProperties', 0))
         if 'maxProperties' in specification:
             _report_require(len(fields) <= specification['maxProperties'])
@@ -1882,14 +1907,22 @@ def _report_schema(value, specification, port):
             port.charge(1)
             _report_require(name in fields)
         properties = specification.get('properties', {})
-        for name, child in fields.items():
-            _byte_work(port, 4 * len(name), 2)
-            if 'propertyNames' in specification:
-                _report_schema(name, specification['propertyNames'], port)
-            if name in properties:
-                _report_schema(child, properties[name], port)
-            elif 'additionalProperties' in specification:
-                _report_schema(child, specification['additionalProperties'], port)
+        if 'propertyNames' in specification or 'additionalProperties' in specification:
+            for name, child in fields.items():
+                _byte_work(port, 4 * len(name), 2)
+                if 'propertyNames' in specification:
+                    _report_schema(name, specification['propertyNames'], port)
+                if name in properties:
+                    _report_schema(child, properties[name], port)
+                elif 'additionalProperties' in specification:
+                    _report_schema(child, specification['additionalProperties'], port)
+        else:
+            # Conditional overlays address their named fields only; the main
+            # closed object grammar still examines every actual member.
+            for name, childspec in properties.items():
+                _byte_work(port, 4 * len(name), 2)
+                if name in fields:
+                    _report_schema(fields[name], childspec, port)
         for name, required in specification.get('dependentRequired', {}).items():
             port.charge(1)
             if name in fields:
@@ -1899,11 +1932,13 @@ def _report_schema(value, specification, port):
     port.check()
 
 
-def _report_shape(value, shape, port):
+def _report_shape(value, shape, port, fields=None):
     _report_require(type(shape) is str)
     _report_require(shape in _REPORT_SHAPES)
-    _report_schema(value, _REPORT_SHAPES[shape], port)
-    _report_semantics(value, shape, port)
+    if type(value) is _ReportMapping and fields is None:
+        fields = _report_fields(value, port)
+    _report_schema(value, _REPORT_SHAPES[shape], port, fields)
+    _report_semantics(value, shape, port, fields)
 
 
 def _validate_report_component(value, shape, port):
@@ -2130,7 +2165,7 @@ def _report_root(fields, port):
                 _report_require(validation['state'] != 'accepted')
 
 
-def _report_semantics(value, shape, port):
+def _report_semantics(value, shape, port, fields=None):
     """Validate finite local relations after their exact closed shape passes.
 
     No input lookup, graph search, analysis, rendering, ID allocation or public
@@ -2142,7 +2177,8 @@ def _report_semantics(value, shape, port):
         return
     if type(value) is not _ReportMapping:
         return
-    fields = _report_fields(value, port)
+    if fields is None:
+        fields = _report_fields(value, port)
     if shape == 'TimeValue':
         _report_time(fields, port)
     elif shape == 'Run':
@@ -2433,3 +2469,620 @@ _REPORT_SHAPES = {
     'FindingWitness': {'type': 'object', 'properties': {'input_refs': {'type': 'array', 'items': {'$ref': '#/$defs/InputRef'}, 'uniqueItems': True}, 'components': {'type': 'array', 'items': {'$ref': '#/$defs/WitnessComponent'}}}, 'additionalProperties': False, 'required': ['input_refs', 'components']},
     'Finding': {'type': 'object', 'properties': {'id': {'$ref': '#/$defs/FindingId'}, 'observation_kind': {'type': 'string', 'enum': ['positive_witness', 'no_witness_in_examined_view', 'bounded_absence_under_declared_coverage', 'attributed_observation', 'qualification_gap', 'recorded_conflict']}, 'condition_code': {'type': 'string', 'enum': ['shared_origin_witness', 'citation_path_witness', 'transformation_path_witness', 'model_mediated_derivation_witness', 'view_cycle_witness', 'assurance_loop_limitation', 'evaluator_overlap_witness', 'family_label_match', 'provenance_gap', 'verification_scope_limitation', 'independence_record_conflict', 'correction_dependency_witness', 'correction_route_limitation', 'case_handling_disclosure', 'linked_change_disclosure', 'downstream_change_undocumented', 'externality_stage_limitation', 'recorded_stage_exclusion', 'anomaly_or_contestation_disclosure', 'attributed_external_observation', 'scoped_no_witness', 'recorded_data_conflict']}, 'diagnostic_refs': {'type': 'array', 'items': {'$ref': '#/$defs/DiagnosticId'}, 'uniqueItems': True}, 'threat_family_refs': {'type': 'array', 'items': {'type': 'string', 'enum': ['SIT-TH001', 'SIT-TH002', 'SIT-TH003', 'SIT-TH004', 'SIT-TH005', 'SIT-TH006', 'SIT-TH007', 'SIT-TH008', 'SIT-TH009', 'SIT-TH010', 'SIT-TH011', 'SIT-TH012', 'SIT-TH013', 'SIT-TH014']}, 'uniqueItems': True}, 'scope_ref': {'$ref': '#/$defs/ScopeId'}, 'population_refs': {'type': 'array', 'items': {'$ref': '#/$defs/PopulationId'}, 'uniqueItems': True}, 'basis_refs': {'type': 'array', 'items': {'$ref': '#/$defs/BasisId'}, 'uniqueItems': True}, 'witness': {'$ref': '#/$defs/FindingWitness'}, 'contrary_input_refs': {'type': 'array', 'items': {'$ref': '#/$defs/InputRef'}, 'uniqueItems': True}, 'reason_refs': {'type': 'array', 'items': {'$ref': '#/$defs/ReasonId'}, 'uniqueItems': True}, 'statement': {'type': 'string', 'minLength': 1}, 'interpretation_limit': {'type': 'string', 'minLength': 1}}, 'additionalProperties': False, 'required': ['id', 'observation_kind', 'condition_code', 'diagnostic_refs', 'threat_family_refs', 'scope_ref', 'population_refs', 'basis_refs', 'witness', 'contrary_input_refs', 'reason_refs', 'statement', 'interpretation_limit']},
 }
+
+# W03 selected projection and reference closure. These are internal, charged
+# construction seams. They do not select source fields, run an audit, or create
+# a deliverable AuditReport. Disclosure selection remains the runtime owner.
+_REPORT_REFERENCE_COLLECTIONS = (
+    ('ScopeId', 'scopes'), ('PopulationId', 'populations'),
+    ('BasisId', 'basis_index'), ('CapabilityId', 'capabilities'),
+    ('CheckId', 'checks'), ('ResultId', 'results'),
+    ('FindingId', 'findings'), ('ReasonId', 'reasons'),
+)
+_REPORT_SELECTION_LINK_TYPES = (
+    _InputRef, _Scope, _Population, _BasisRef, _ResultRef, _WitnessRef,
+    _Reason, _PrerequisiteCheck,
+)
+_REPORT_SELECTED_BASIS_FIELDS = (
+    'basis_kind', 'asserter_ref', 'attestor_ref', 'method', 'support_refs',
+    'availability', 'scope', 'time', 'lifecycle', 'qualifications', 'check_refs',
+)
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _SelectedReportDisclosure:
+    """Immutable selected fields linked to actual trusted analytical owners.
+
+    The constructor alone confers no source authenticity or run completion.
+    Its constructing owner must prospectively charge validation/allocation;
+    arbitrary dictionaries enter only through the bounded capture below.
+    """
+    basis_entries: tuple
+    disclosures: tuple
+    finding_witnesses: tuple
+    owner_witnesses: tuple = ()
+
+    def __post_init__(self):
+        for rows, owner_type in (
+                (self.basis_entries, _BasisRef),
+                (self.disclosures, _ResultRef),
+                (self.finding_witnesses, _PrivateFinding),
+                (self.owner_witnesses, _WitnessRecord)):
+            _report_require(type(rows) is tuple)
+            for row in rows:
+                _report_require(type(row) is tuple and len(row) == 2)
+                _report_require(type(row[0]) is owner_type and
+                                type(row[1]) is _ReportMapping)
+
+
+def _copy_selected_report_value(value, port):
+    """Detach selected containers, preserving only the fixed symbolic links.
+
+    Explicit stacks reject cycles and mutable/private source-tree leaves.
+    Typed references stay symbolic until assembly assigns local identities.
+    Strings that resemble an identifier are ordinary strings at this seam.
+    """
+    result, active = [], set()
+    pending = [('visit', value, result)]
+    while pending:
+        port.charge(1)
+        operation, current, destination = pending.pop()
+        if operation in ('object', 'array'):
+            children, identity = current
+            port.charge(2 * len(children) + 2)
+            if operation == 'object':
+                destination.append(_ReportMapping(tuple((k, v[0]) for k, v in children)))
+            else:
+                destination.append(tuple(v[0] for v in children))
+            active.remove(identity)
+            continue
+        kind = type(current)
+        if kind in _REPORT_SELECTION_LINK_TYPES:
+            port.charge(len(_REPORT_SELECTION_LINK_TYPES) + 1)
+            if kind is _Scope:
+                _charge_scope(current, port)
+            else:
+                _charge_link(current, port)
+            destination.append(current)
+        elif current is None or kind is bool or kind is int or kind is str:
+            port.charge(2)
+            if kind is str:
+                _report_text_work(current, port)
+            elif kind is int:
+                _report_require(-9007199254740991 <= current <= 9007199254740991)
+            destination.append(current)
+        else:
+            _report_require(kind in (dict, list, tuple, _ReportMapping))
+            identity = id(current)
+            port.charge(3)
+            _report_require(identity not in active)
+            active.add(identity)
+            if kind is dict or kind is _ReportMapping:
+                if kind is dict:
+                    port.charge(2 * len(current) + 1)
+                    pairs = tuple(current.items())
+                else:
+                    pairs = current._pairs
+                    _report_require(type(pairs) is tuple)
+                children, seen, source_values = [], set(), []
+                for pair in pairs:
+                    port.charge(4)
+                    _report_require(type(pair) is tuple and len(pair) == 2)
+                    name, child = pair
+                    _report_text_work(name, port)
+                    _byte_work(port, 4 * len(name), 2)
+                    _report_require(name not in seen)
+                    seen.add(name)
+                    children.append((name, []))
+                    source_values.append(child)
+                pending.append(('object', (children, identity), destination))
+                for position in range(len(children) - 1, -1, -1):
+                    port.charge(2)
+                    pending.append(('visit', source_values[position], children[position][1]))
+            else:
+                port.charge(2 * len(current) + 1)
+                children = [[] for unused in current]
+                pending.append(('array', (children, identity), destination))
+                for position in range(len(children) - 1, -1, -1):
+                    port.charge(2)
+                    pending.append(('visit', current[position], children[position]))
+    port.check()
+    _report_require(len(result) == 1)
+    return result[0]
+
+
+def _validate_selected_report_disclosure(selection, port):
+    """Check the closed selected-field seam without interpreting owner facts."""
+    _report_require(type(selection) is _SelectedReportDisclosure)
+    for rows, owner_type, expected in (
+            (selection.basis_entries, _BasisRef, _REPORT_SELECTED_BASIS_FIELDS),
+            (selection.disclosures, _ResultRef, ('records',)),
+            (selection.finding_witnesses, _PrivateFinding, ('input_refs', 'components')),
+            (selection.owner_witnesses, _WitnessRecord, ('input_refs', 'components'))):
+        _report_require(type(rows) is tuple)
+        seen = set()
+        for row in rows:
+            port.charge(5)
+            _report_require(type(row) is tuple and len(row) == 2)
+            owner, selected = row
+            _report_require(type(owner) is owner_type and type(selected) is _ReportMapping)
+            identity = id(owner)
+            _report_require(identity not in seen)
+            seen.add(identity)
+            fields = _report_fields(selected, port)
+            port.charge(len(fields) + len(expected) + 1)
+            _report_require(set(fields) == set(expected))
+            # Rechecking a private immutable carrier still visits every leaf;
+            # no cached validity grants acceptance to another invocation.
+            _copy_selected_report_value(selected, port)
+            if owner_type is _ResultRef:
+                _report_require(type(fields['records']) is tuple)
+            elif owner_type in (_PrivateFinding, _WitnessRecord):
+                _report_require(type(fields['input_refs']) is tuple and
+                                type(fields['components']) is tuple)
+    port.check()
+
+
+def _capture_report_disclosure(basis_entries, disclosures, finding_witnesses,
+                               port, *, owner_witnesses=()):
+    """Capture an explicitly selected internal projection, never raw records."""
+    captured = []
+    for rows, owner_type in ((basis_entries, _BasisRef), (disclosures, _ResultRef),
+                            (finding_witnesses, _PrivateFinding),
+                            (owner_witnesses, _WitnessRecord)):
+        _report_require(type(rows) is tuple)
+        copied = []
+        for row in rows:
+            port.charge(4)
+            _report_require(type(row) is tuple and len(row) == 2)
+            owner, fields = row
+            _report_require(type(owner) is owner_type)
+            frozen = _copy_selected_report_value(fields, port)
+            _report_require(type(frozen) is _ReportMapping)
+            copied.append((owner, frozen))
+        port.charge(len(copied) + 1)
+        captured.append(tuple(copied))
+    port.charge(12 + 4 * sum(len(rows) for rows in captured))
+    selection = _SelectedReportDisclosure(*captured)
+    _validate_selected_report_disclosure(selection, port)
+    return selection
+
+
+def _report_lookup(identifier, index, port):
+    _report_require(type(identifier) is str)
+    _byte_work(port, 4 * len(identifier), 2)
+    _report_require(identifier in index)
+    return index[identifier]
+
+_REPORT_NATIVE_LINK_FIELDS = {
+    'SelectedProvenance': ('attributed_to_ref', 'evidence_ref_ids'),
+    'SelectedEvidenceReference': ('artifact_ref', 'record_ref', 'provided_by_ref', 'attestor_ref'),
+    'SelectedInquiry': ('target_claim_refs', 'target_object_refs', 'seed_artifact_refs', 'seed_evidence_refs', 'coverage_assertion_refs'),
+    'SelectedBoundary': ('system_refs',),
+    'SelectedClaimData': ('content_evidence_ref',),
+    'SelectedArtifactData': ('content_evidence_refs',),
+    'SelectedEvidenceItemData': ('claim_ref', 'artifact_ref'),
+    'SelectedOriginEventData': ('performed_by_refs', 'method_ref'),
+    'SelectedModelData': ('provider_ref',),
+    'SelectedEvaluationData': ('target_refs', 'result_refs'),
+    'SelectedRoleBinding': ('object_ref', 'evidence_ref_ids'),
+    'SelectedCorrectionChannelData': ('owner_refs', 'target_refs'),
+    'SelectedCorrectionEventData': ('case_ref', 'channel_ref', 'target_refs'),
+    'SelectedChangeDetails': ('before_ref', 'after_ref'),
+    'SelectedPipelineRecordData': ('subject_ref', 'output_refs'),
+    'SelectedAnomalyData': ('inquiry_refs', 'claim_ref', 'context_evidence_ref'),
+    'SelectedAssertion': ('lifecycle_basis_ref_ids',),
+    'SelectedAssertionScope': ('inquiry_refs', 'claim_refs'),
+    'SelectedRelationData': ('from_ref', 'to_ref'),
+    'SelectedTransformationDetails': ('transformer_ref', 'method_ref'),
+    'SelectedAssessmentData': ('subject_refs',),
+    'SelectedOriginBoundaryDetails': ('coverage_ref',),
+    'SelectedIndependenceDetails': ('examined_dependency_refs', 'coverage_ref'),
+    'SelectedCoverageDetails': ('member_refs', 'omitted_refs'),
+    'SelectedClassificationDetails': ('verification_assessment_refs',),
+    'SelectedVerificationDetails': ('evaluation_ref',),
+    'SelectedExternalityDetails': ('boundary_inquiry_ref',),
+    'SelectedAuthorityDetails': ('target_refs', 'authorized_by_ref', 'coverage_ref'),
+    'SelectedConflictDetails': ('resolution_evaluation_ref',),
+}
+
+
+def _report_native_references(value, shape, source_ids, port):
+    """Close native snapshot IDs retained inside selected source shapes.
+
+    These native IDs are not report-local links. The selected source schema
+    has already fixed the field vocabulary; only its reference slots are
+    considered. Unresolved-reference records remain actual input records.
+    """
+    if not shape.startswith('Selected') or type(value) is not _ReportMapping:
+        return
+    fields = _report_fields(value, port)
+    for name in _REPORT_NATIVE_LINK_FIELDS.get(shape, ()):
+        _byte_work(port, 4 * len(name), 2)
+        child = fields.get(name)
+        refs = child if type(child) is tuple else (child,)
+        for reference in refs:
+            port.charge(1)
+            if reference is not None:
+                _report_lookup(reference, source_ids, port)
+    own_collection = {'SelectedInquiry': 'inquiries', 'SelectedRecord': 'records',
+                      'SelectedAssertion': 'assertions',
+                      'SelectedEvidenceReference': 'evidence_references'}.get(shape)
+    if own_collection is not None:
+        source = _report_lookup(fields['id'], source_ids, port)
+        _report_require(source.collection == own_collection)
+
+
+def _report_reference_branch(value, specification, port):
+    """Choose a structural branch of the already validated fixed grammar.
+
+    Reference discovery does not repeat local numeric, uniqueness and text
+    validation. Closed object keys and immediate discriminators select native
+    unions; their nested references are then visited under that exact shape.
+    This predicate is not a report validator and is never an acceptance gate.
+    """
+    port.charge(1)
+    if type(specification) is bool:
+        return specification
+    if '$ref' in specification:
+        name = specification['$ref'].removeprefix('#/$defs/')
+        if not _report_reference_branch(value, _REPORT_SHAPES[name], port):
+            return False
+    if 'type' in specification:
+        kinds = specification['type']
+        kinds = (kinds,) if type(kinds) is str else kinds
+        port.charge(len(kinds))
+        if not any(_report_type(value, kind) for kind in kinds):
+            return False
+    if 'const' in specification and not _report_equal(value, specification['const'], port):
+        return False
+    if 'enum' in specification:
+        port.charge(len(specification['enum']))
+        if not any(_report_equal(value, item, port) for item in specification['enum']):
+            return False
+    for branch in specification.get('allOf', ()):
+        if not _report_reference_branch(value, branch, port):
+            return False
+    for choice in ('anyOf', 'oneOf'):
+        if choice in specification:
+            matched = False
+            for branch in specification[choice]:
+                port.charge(1)
+                if _report_reference_branch(value, branch, port):
+                    matched = True
+                    break
+            if not matched:
+                return False
+    if type(value) is _ReportMapping:
+        fields = _report_fields(value, port)
+        properties = specification.get('properties', {})
+        for name in specification.get('required', ()):
+            _byte_work(port, 4 * len(name), 1)
+            if name not in fields:
+                return False
+        if specification.get('additionalProperties') is False:
+            for name in fields:
+                _byte_work(port, 4 * len(name), 1)
+                if name not in properties:
+                    return False
+        for name, childspec in properties.items():
+            _byte_work(port, 4 * len(name), 1)
+            if name not in fields:
+                continue
+            child = fields[name]
+            # A disclosure may have the same outer keys but a different
+            # native-record kind. Follow structural discriminators inside
+            # its body while omitting already checked scalar arithmetic,
+            # text scanning and collection-uniqueness work.
+            if not _report_reference_branch(child, childspec, port):
+                return False
+    elif type(value) is tuple:
+        prefix = specification.get('prefixItems', ())
+        for position, child in enumerate(value):
+            port.charge(1)
+            childspec = prefix[position] if position < len(prefix) else specification.get('items', True)
+            if not _report_reference_branch(child, childspec, port):
+                return False
+    return True
+
+
+def _report_schema_has_links(specification, memo, active, port):
+    """Memoize only fixed grammar topology for this closure pass.
+
+    No document value, input fact or validation outcome is stored. This avoids
+    revisiting the grammar's many scalar/enum/arithmetic constraints after the
+    full shape validation has already executed those constraints.
+    """
+    port.charge(3)
+    if type(specification) is bool:
+        return False
+    identity = id(specification)
+    if identity in memo:
+        return memo[identity]
+    _report_require(identity not in active)
+    active.add(identity)
+    linked = False
+    if '$ref' in specification:
+        name = specification['$ref'].removeprefix('#/$defs/')
+        port.charge(12)
+        if (name in tuple(row[0] for row in _REPORT_REFERENCE_COLLECTIONS) or
+                name == 'InputRef' or name in _REPORT_NATIVE_LINK_FIELDS or
+                name in ('GraphNode', 'SelectedInquiry', 'SelectedRecord',
+                         'SelectedAssertion', 'SelectedEvidenceReference')):
+            linked = True
+        else:
+            linked = _report_schema_has_links(_REPORT_SHAPES[name], memo, active, port)
+    for key in ('allOf', 'anyOf', 'oneOf', 'prefixItems'):
+        for child in specification.get(key, ()):
+            port.charge(1)
+            linked = _report_schema_has_links(child, memo, active, port) or linked
+    for key in ('then', 'else', 'items', 'additionalProperties'):
+        if key in specification:
+            linked = _report_schema_has_links(specification[key], memo, active, port) or linked
+    for child in specification.get('properties', {}).values():
+        port.charge(1)
+        linked = _report_schema_has_links(child, memo, active, port) or linked
+    active.remove(identity)
+    memo[identity] = linked
+    return linked
+
+
+def _walk_report_references(document, indexes, inputs, source_ids, port):
+    """Follow only schema-declared links, not strings or linked target bodies.
+
+    A local Reason/Result cycle never recurses: each leaf resolves once into
+    the separately indexed collection. Schema alternatives are selected by
+    their actual closed branch, preserving inert source strings verbatim.
+    """
+    pending = [(document, {'$ref': '#/$defs/AuditReport'})]
+    reference_grammar, active_grammar = {}, set()
+    while pending:
+        value, specification = pending.pop()
+        port.charge(2)
+        if not _report_schema_has_links(specification, reference_grammar, active_grammar, port):
+            continue
+        if type(specification) is bool:
+            continue
+        if '$ref' in specification:
+            name = specification['$ref'].removeprefix('#/$defs/')
+            port.charge(2)
+            if name in indexes:
+                _report_lookup(value, indexes[name], port)
+                continue
+            if name == 'InputRef':
+                fields = _report_fields(value, port)
+                reference = _InputRef(fields['collection'], fields['identifier'], fields['selector'])
+                _resolve_input(reference, inputs, port)
+                continue
+            if name == 'GraphNode':
+                node = _report_fields(value, port)
+                reference = _report_fields(node['ref'], port)
+                source = _report_lookup(reference['identifier'], source_ids, port)
+                _report_require(source.collection == reference['collection'] and
+                                source.kind == node['kind'])
+            _report_native_references(value, name, source_ids, port)
+            pending.append((value, _REPORT_SHAPES[name]))
+        for branch in specification.get('allOf', ()):
+            port.charge(1)
+            pending.append((value, branch))
+        for choice in ('anyOf', 'oneOf'):
+            for branch in specification.get(choice, ()):
+                port.charge(1)
+                if (_report_schema_has_links(branch, reference_grammar, active_grammar, port) and
+                        _report_reference_branch(value, branch, port)):
+                    pending.append((value, branch))
+        if 'if' in specification:
+            selected = 'then' if _report_matches(value, specification['if'], port) else 'else'
+            if selected in specification:
+                pending.append((value, specification[selected]))
+        if type(value) is _ReportMapping:
+            fields = _report_fields(value, port)
+            for name, subspec in specification.get('properties', {}).items():
+                _byte_work(port, 4 * len(name), 2)
+                if name in fields:
+                    pending.append((fields[name], subspec))
+        elif type(value) is tuple:
+            prefix = specification.get('prefixItems', ())
+            for position, child in enumerate(value):
+                port.charge(1)
+                if position < len(prefix):
+                    pending.append((child, prefix[position]))
+                elif 'items' in specification:
+                    pending.append((child, specification['items']))
+    port.check()
+
+
+def _report_union_fields(rows, name, port):
+    union = set()
+    for row in rows:
+        for value in row[name]:
+            _byte_work(port, 4 * len(value), 2)
+            union.add(value)
+    return union
+
+
+def _report_equal_refs(values, expected, port):
+    actual = set()
+    for value in values:
+        _byte_work(port, 4 * len(value), 2)
+        _report_require(value not in actual)
+        actual.add(value)
+    port.charge(len(actual) + len(expected) + 1)
+    _report_require(actual == expected)
+
+
+def _validate_report_references(document, prepared, port):
+    """Close a schema-checked frozen document against its actual source input.
+
+    This validates report representation and joins; it does not re-derive
+    evidence or promote supplied source states. The caller must first use
+    _freeze_report_document. Diagnostic-only documents may have no accepted
+    prepared input and therefore cannot resolve an input reference.
+    """
+    _report_require(type(document) is _ReportMapping)
+    _report_require(prepared is None or type(prepared) is _PreparedBundle)
+    root = _report_fields(document, port)
+    inputs = {} if prepared is None else _input_index(prepared, port)
+    source_ids = {}
+    for entity in inputs.values():
+        _byte_work(port, 4 * len(entity.identifier), 3)
+        _report_require(entity.identifier not in source_ids)
+        source_ids[entity.identifier] = entity
+    indexes, collections = {}, {}
+    for shape, name in _REPORT_REFERENCE_COLLECTIONS:
+        index, rows = {}, []
+        for item in root[name]:
+            row = _report_fields(item, port)
+            _byte_work(port, 4 * len(row['id']), 2)
+            _report_require(row['id'] not in index)
+            index[row['id']] = row
+            rows.append(row)
+        indexes[shape], collections[name] = index, rows
+    _walk_report_references(document, indexes, inputs, source_ids, port)
+    if root['report_kind'] != 'audit_report':
+        port.check()
+        return
+    _report_require(prepared is not None)
+    scopes, populations = indexes['ScopeId'], indexes['PopulationId']
+    results, checks = indexes['ResultId'], indexes['CheckId']
+    findings, reasons = indexes['FindingId'], indexes['ReasonId']
+    by_inquiry_family, check_owners = {}, {}
+    for scope in scopes.values():
+        inquiry = _report_fields(scope['inquiry_ref'], port)
+        for claim in scope['claim_refs']:
+            ref = _report_fields(claim, port)
+            entity = inputs[(ref['collection'], ref['identifier'])]
+            _report_require(entity.kind == 'claim')
+        port.charge(2)
+        _report_require(inquiry['collection'] == 'inquiries')
+    for row in results.values():
+        scope = scopes[row['scope_ref']]
+        inquiry = _report_fields(scope['inquiry_ref'], port)['identifier']
+        _byte_work(port, 4 * (len(inquiry) + len(row['diagnostic_id'])), 3)
+        key = (inquiry, row['diagnostic_id'])
+        by_inquiry_family.setdefault(key, []).append(row)
+        for ref in row['population_refs']:
+            population = populations[ref]
+            _report_require(population['scope_ref'] == row['scope_ref'])
+            port.charge(2)
+        seen_codes = set()
+        for ref in row['check_refs']:
+            check = checks[ref]
+            _byte_work(port, 4 * len(check['check_id']), 2)
+            _report_require(check['check_id'] not in seen_codes)
+            seen_codes.add(check['check_id'])
+            _report_require(check['scope_ref'] == row['scope_ref'])
+            _byte_work(port, 4 * len(ref), 3)
+            _report_require(ref not in check_owners)
+            check_owners[ref] = row['id']
+        for ref in row['reason_refs']:
+            reason = reasons[ref]
+            _report_require(reason['scope_ref'] == row['scope_ref'])
+            port.charge(len(reason['affected_result_refs']) + 2)
+            _report_require(row['id'] in reason['affected_result_refs'])
+        for ref in row['witness_refs']:
+            _report_require(findings[ref]['scope_ref'] == row['scope_ref'])
+            port.charge(2)
+        if row['result_state'] == 'available':
+            kind, value = row['value_kind'], row['value']
+            if kind in ('count', 'fraction'):
+                _report_require(bool(row['population_refs']))
+                matched = False
+                for reference in row['population_refs']:
+                    port.charge(6)
+                    population = populations[reference]
+                    if population['membership_state'] != 'enumerated_for_scope':
+                        continue
+                    count = len(population['member_refs'])
+                    if kind == 'count':
+                        matched = matched or value == count
+                    else:
+                        fields = _report_fields(value, port)
+                        denominator = count * count if row['field_key'] == 'single_origin_contribution_hhi' else count
+                        matched = matched or (count > 0 and fields['denominator'] == denominator)
+                _report_require(matched)
+            elif kind in ('partition', 'incidence', 'completion_interval'):
+                fields = _report_fields(value, port)
+                _report_require(fields['population_ref'] in row['population_refs'])
+                population = populations[fields['population_ref']]
+                _report_require(population['membership_state'] == 'enumerated_for_scope')
+                if kind in ('partition', 'incidence'):
+                    _report_require(fields['total'] == len(population['member_refs']))
+                if kind == 'completion_interval':
+                    for endpoint in ('lower', 'upper'):
+                        fraction = _report_fields(fields[endpoint], port)
+                        _report_require(fraction['denominator'] == len(population['member_refs']))
+                if kind == 'partition':
+                    members = _report_join(tuple(_report_fields(c, port)['member_refs']
+                                                 for c in fields['categories']), port)
+                    _report_require(_report_same_members(members, population['member_refs'], port))
+            elif kind == 'witness_collection':
+                fields = _report_fields(value, port)
+                _report_equal_refs(fields['witness_refs'], set(row['witness_refs']), port)
+        if row['execution_state'] == 'completed':
+            port.charge(3 * len(row['check_refs']) + 4)
+            states = {checks[ref]['check_id']: checks[ref]['state'] for ref in row['check_refs']}
+            _report_require(all(code in states for code in ('PC01', 'PC02', 'PC24')))
+            _report_require(states['PC01'] == states['PC24'] == 'met')
+    for reason in reasons.values():
+        for ref in reason['affected_result_refs']:
+            port.charge(2)
+            _report_require(results[ref]['scope_ref'] == reason['scope_ref'])
+    for finding in findings.values():
+        for ref in finding['population_refs']:
+            port.charge(2)
+            _report_require(populations[ref]['scope_ref'] == finding['scope_ref'])
+        for ref in finding['reason_refs']:
+            port.charge(2)
+            _report_require(reasons[ref]['scope_ref'] == finding['scope_ref'])
+    seen_capabilities = set()
+    for capability in collections['capabilities']:
+        inquiry = _report_fields(capability['inquiry_ref'], port)['identifier']
+        family = capability['diagnostic_id']
+        _byte_work(port, 4 * (len(inquiry) + len(family)), 4)
+        key = (inquiry, family)
+        _report_require(key not in seen_capabilities)
+        seen_capabilities.add(key)
+        expected = by_inquiry_family.get(key, ())
+        _report_require(bool(expected))
+        port.charge(len(FAMILIES) + len(expected) + 2)
+        binding = FAMILY_PREPARATION_BINDINGS[FAMILIES.index(family)]
+        actual_fields = {row['field_key'] for row in expected}
+        port.charge(len(binding[1]) + len(actual_fields) + 1)
+        _report_require(actual_fields == set(binding[1]))
+        port.charge(2 * len(expected) + 2)
+        _report_equal_refs(capability['result_refs'], {r['id'] for r in expected}, port)
+        _report_equal_refs(capability['scope_refs'], {r['scope_ref'] for r in expected}, port)
+        _report_equal_refs(capability['check_refs'], _report_union_fields(expected, 'check_refs', port), port)
+        _report_equal_refs(capability['reason_refs'], _report_union_fields(expected, 'reason_refs', port), port)
+        for state in ('available', 'unavailable', 'not_applicable', 'not_evaluated'):
+            port.charge(len(expected) + 1)
+            _report_equal_refs(capability[state + '_result_refs'],
+                               {r['id'] for r in expected if r['result_state'] == state}, port)
+    port.charge(len(inputs) + 1)
+    inquiries = [entity.identifier for entity in inputs.values() if entity.collection == 'inquiries']
+    port.charge(16 * len(inquiries) + len(seen_capabilities) + 2)
+    _report_require(seen_capabilities == {(inquiry, family) for inquiry in inquiries for family in FAMILIES})
+    run = _report_fields(root['run'], port)
+    completed = []
+    for family in FAMILIES:
+        port.charge(len(results) + 1)
+        selected = [row for row in results.values() if row['diagnostic_id'] == family]
+        port.charge(len(selected) + 1)
+        if selected and all(row['execution_state'] == 'completed' for row in selected):
+            completed.append(family)
+    _report_require(_report_equal(tuple(completed), run['completed_diagnostic_ids'], port))
+    for domain_value in root['observability_domains']:
+        domain = _report_fields(domain_value, port)
+        selected = []
+        for row in results.values():
+            port.charge(len(FAMILIES) + 2)
+            binding = FAMILY_PREPARATION_BINDINGS[FAMILIES.index(row['diagnostic_id'])]
+            if domain['level_index'] in binding[3]:
+                selected.append(row)
+        for state in ('available', 'unavailable', 'not_evaluated'):
+            port.charge(len(selected) + 1)
+            _report_equal_refs(domain[state + '_result_refs'],
+                               {r['id'] for r in selected if r['result_state'] == state}, port)
+        _report_equal_refs(domain['reason_refs'], _report_union_fields(selected, 'reason_refs', port), port)
+    port.check()

@@ -1,12 +1,12 @@
 {
   "format": "sit-phase4-report-coverage/0.1",
-  "unit": "P4-W02",
-  "status": "W02 representation contracts and independent exact reference verified; public pipeline/rendering obligations remain pending",
+  "unit": "P4-W03",
+  "status": "W03 bounded internal assembly, semantic identity and reference closure verified; public pipeline/rendering obligations remain pending",
   "purpose": "Review-only source and obligation map. It grants no authority, selects no tests and is not imported by product code.",
   "phase4_plan": {
     "path": "PHASE_4_PLAN.md",
     "sha256": "5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
-    "owner_authorization": "Exact plan approved; user subsequently instructed 启动 P4-W02. Execution is authorized through P4-W02 only."
+    "owner_authorization": "Exact plan approved; user instructed 很好，继续 W03. Execution authorized through P4-W03 only."
   },
   "accepted_core_baseline": {
     "head": "fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c",
@@ -11762,45 +11762,84 @@
       "source": "OBSERVABILITY_AND_REPORTING.md §§16.2–16.3; PHASE_4_PLAN.md §4.2",
       "planned_unit": "P4-W03",
       "required_behavior": "Exact claims, targets, dimension, graph view, time, population unit, member sets and coverage preserved; empty enumerated and unestablished remain distinct; operation anchor remains private.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W03 internal assembly verified by actual targeted execution; public runtime projection remains pending W04/W07/W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_assembly.py::test_real_private_reference_assembles_exact_independent_logical_document",
+        "tests/contract/test_report_identity.py::test_same_scope_anchor_keeps_different_qualification_bodies",
+        "tests/contract/test_report_identity.py::test_same_population_anchor_keeps_different_qualification_bodies"
+      ],
+      "execution_evidence": [
+        "p4w03-targeted-002.log",
+        "p4w03-targeted-002.xml"
+      ]
     },
     {
       "clause": "result_semantics",
       "source": "OBSERVABILITY_AND_REPORTING.md §§12.3–12.5,16.4–16.5,17",
       "planned_unit": "P4-W03",
       "required_behavior": "Preserve all 57 registered leaves, allowed execution/result-state pairs, native attribution, null non-results, original exact fractions, denominators, members and material reasons.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W03 internal assembly verified by actual targeted execution; public runtime projection remains pending W04/W07/W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_assembly.py::test_real_private_reference_assembles_exact_independent_logical_document",
+        "tests/contract/test_report_assembly.py::test_available_completion_interval_uses_exact_shared_population",
+        "tests/contract/test_report_assembly.py::test_available_witness_collection_links_same_actual_finding",
+        "tests/contract/test_report_assembly.py::test_reference_validator_rejects_independent_single_reference_mutants"
+      ],
+      "execution_evidence": [
+        "p4w03-targeted-002.log",
+        "p4w03-targeted-002.xml"
+      ]
     },
     {
       "clause": "local_ids_and_dedup",
       "source": "REPOSITORY_ARCHITECTURE.md §18.1; GOVERNANCE_AND_HANDOFF.md §22.5",
       "planned_unit": "P4-W03",
       "required_behavior": "Constant SIT-RPT-000001; eight existing sequential ID prefixes; semantic-key ordering, full-body dedup, anchor link cycles, distinct source IDs and unequal-slot failure.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W03 internal assembly verified by actual targeted execution; public runtime projection remains pending W04/W07/W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_identity.py::test_each_local_collection_has_its_own_sequential_identity",
+        "tests/contract/test_report_identity.py::test_discovery_order_does_not_allocate_report_ids",
+        "tests/contract/test_report_identity.py::test_input_entity_permutation_preserves_same_logical_report",
+        "tests/contract/test_report_identity.py::test_identical_result_and_explanatory_nodes_share_existing_ids",
+        "tests/contract/test_report_identity.py::test_unequal_semantic_body_for_one_result_slot_is_an_error",
+        "tests/contract/test_report_identity.py::test_reason_result_cycles_close_without_recursive_body_naming",
+        "tests/contract/test_report_identity.py::test_distinct_input_ids_do_not_merge_identical_selected_basis_bodies",
+        "tests/contract/test_report_identity.py::test_selected_native_qualification_sequence_is_not_sorted_or_deduplicated"
+      ],
+      "execution_evidence": [
+        "p4w03-targeted-002.log",
+        "p4w03-targeted-002.xml"
+      ]
     },
     {
       "clause": "five_global_domains",
       "source": "OBSERVABILITY_AND_REPORTING.md §15; PHASE_4_PLAN.md §4.2",
       "planned_unit": "P4-W03",
       "required_behavior": "Aggregate private per-inquiry domains into exactly five report-global audit entries; preserve the six named domain members and avoid adding a not_applicable domain field.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W03 internal assembly verified by actual targeted execution; public runtime projection remains pending W04/W07/W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_assembly.py::test_two_independent_inquiries_keep_thirty_capabilities_but_five_global_domains"
+      ],
+      "execution_evidence": [
+        "p4w03-targeted-002.log",
+        "p4w03-targeted-002.xml"
+      ]
     },
     {
       "clause": "capability_partitions",
       "source": "OBSERVABILITY_AND_REPORTING.md §16.7",
       "planned_unit": "P4-W03",
       "required_behavior": "All 15 families per inquiry, scope-local prerequisite instances and exact four-way result partitions; no strongest-child summary or global completion shortcut.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W03 internal assembly verified by actual targeted execution; public runtime projection remains pending W04/W07/W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_assembly.py::test_reference_partitions_and_target_kinds_are_independently_closed",
+        "tests/contract/test_report_assembly.py::test_two_independent_inquiries_keep_thirty_capabilities_but_five_global_domains",
+        "tests/contract/test_report_assembly.py::test_reference_validator_rejects_independent_single_reference_mutants"
+      ],
+      "execution_evidence": [
+        "p4w03-targeted-002.log",
+        "p4w03-targeted-002.xml"
+      ]
     },
     {
       "clause": "basis_projection",
@@ -11816,9 +11855,19 @@
       "source": "OBSERVABILITY_AND_REPORTING.md §§18.1,19.2; PHASE_4_PLAN.md §4.2",
       "planned_unit": "P4-W03",
       "required_behavior": "Result witness references resolve to actual report Finding IDs and finite witness contents; private native_records/result_refs do not become new public Finding members; no root witnesses array.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W03 internal assembly verified by actual targeted execution; public runtime projection remains pending W04/W07/W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_assembly.py::test_owner_only_trace_and_human_review_scan_material_are_preserved",
+        "tests/contract/test_report_assembly.py::test_two_hop_retained_owner_path_does_not_require_an_equal_private_finding",
+        "tests/contract/test_report_assembly.py::test_two_same_scope_path_trace_pairs_keep_distinct_supporting_metadata",
+        "tests/contract/test_report_assembly.py::test_unrelated_same_scope_absence_keeps_own_material_family_and_basis",
+        "tests/contract/test_report_identity.py::test_small_trace_homes_keep_own_result_links_across_discovery_orders",
+        "tests/contract/test_report_identity.py::test_small_same_finding_keeps_both_sequentially_appended_traces"
+      ],
+      "execution_evidence": [
+        "p4w03-targeted-002.log",
+        "p4w03-targeted-002.xml"
+      ]
     },
     {
       "clause": "disclosure_selection",
@@ -14820,5 +14869,166 @@
     },
     "pending": "All 228 field obligations retain their existing pending public-pipeline/rendering state; representation tests do not close assembly, execution, privacy or release acceptance.",
     "qualification": "Initial local pass is retained, but independent review found omitted nested variant controls; superseded for coverage completeness by the final 6217-test targeted run."
+  },
+  "w03_verification": {
+    "execution": {
+      "command": [
+        "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/contract/test_report_contract.py",
+        "tests/contract/test_report_assembly.py",
+        "tests/contract/test_report_identity.py",
+        "tests/contract/test_report_test_oracles.py",
+        "tests/contract/test_result_contract.py",
+        "--junitxml=/workspace/scratch/4e5267fe5990/p4w03-targeted-002.xml"
+      ],
+      "started_at_utc": "2026-10-25T06:53:28.806620+00:00",
+      "elapsed_seconds": 71.38994021100007,
+      "exit_code": 0,
+      "timeout_seconds": 900,
+      "timed_out": false,
+      "interrupted": false,
+      "incomplete": false,
+      "source_files": 224,
+      "source_bytes_unchanged": true,
+      "scope": "Five explicitly named W03 and related contract files; not a complete suite or hosted matrix."
+    },
+    "junit": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "5982",
+      "time": "70.779",
+      "timestamp": "2026-10-25T00:53:28.931807-06:00",
+      "hostname": "d6921570ec2c"
+    },
+    "cases_by_classname": {
+      "tests.contract.test_report_contract": 5725,
+      "tests.contract.test_report_assembly": 48,
+      "tests.contract.test_report_identity": 16,
+      "tests.contract.test_report_test_oracles": 89,
+      "tests.contract.test_result_contract": 104
+    },
+    "raw": {
+      "p4w03-targeted-002.log": {
+        "bytes": 6752,
+        "sha256": "56a716581f58ae38b0432a35f1848e66212006475d352219fb6227cd991f59fe"
+      },
+      "p4w03-targeted-002-stderr.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "p4w03-targeted-002.xml": {
+        "bytes": 1097486,
+        "sha256": "e6d6c512cb0d78f44799ce131e5681ea7c613bf180564e00668f85ade83b82ce"
+      },
+      "p4w03-targeted-002-exit.json": {
+        "bytes": 807,
+        "sha256": "59853a24e959cd05538fadec0ba55ba3a16a3ac9035d1394e369446397b08e0a"
+      },
+      "p4w03-targeted-002-source-before.json": {
+        "bytes": 24654,
+        "sha256": "a732da9020950563cd6d63a74abf9b4277bc332bc7030f1fd094d5a93cfb36da"
+      },
+      "p4w03-targeted-002-source-after.json": {
+        "bytes": 24654,
+        "sha256": "a732da9020950563cd6d63a74abf9b4277bc332bc7030f1fd094d5a93cfb36da"
+      },
+      "p4w03-package-boundary-final.json": {
+        "bytes": 1177,
+        "sha256": "5a39aee4b8d06e53c6fdf2b955b512d5237fbc729ee1de65e97ae56d67e7ba82"
+      }
+    },
+    "legacy_definitions": {
+      "src/source_integrity_toolkit/contracts/report.py": {
+        "accepted_private_core": {
+          "existing_definitions": 46,
+          "changed_definitions": []
+        },
+        "accepted_W02": {
+          "existing_definitions": 72,
+          "changed_definitions": [
+            "_report_matches",
+            "_report_schema",
+            "_report_shape",
+            "_report_semantics"
+          ]
+        }
+      },
+      "src/source_integrity_toolkit/reporting/assemble.py": {
+        "accepted_private_core": {
+          "existing_definitions": 0,
+          "changed_definitions": []
+        },
+        "accepted_W02": {
+          "existing_definitions": 0,
+          "changed_definitions": []
+        }
+      }
+    },
+    "products_and_new_tests": {
+      "src/source_integrity_toolkit/contracts/report.py": {
+        "bytes": 252463,
+        "sha256": "d4ae2530f55afd994b80e7b9fe36d7fa1b0f662652fb9f22a23fa5556a52d6c1"
+      },
+      "src/source_integrity_toolkit/reporting/assemble.py": {
+        "bytes": 58453,
+        "sha256": "4a88a8a21fa820b2a5fc370ebbdfcd2be56f892ceae1b690fc2e95a35194da7c"
+      },
+      "tests/contract/test_report_assembly.py": {
+        "bytes": 61053,
+        "sha256": "a34721a824fbbaa7fd60d2e36f39951e80c5793d0a5117c65c8a9f22b0198ee6"
+      },
+      "tests/contract/test_report_identity.py": {
+        "bytes": 29285,
+        "sha256": "4d49303eb019632f9baeebcd4fc4da500e22e930f06bcd15d0c55ff85538cab8"
+      }
+    },
+    "package_boundary": {
+      "ok": true,
+      "checked_modules": 48,
+      "issues": [],
+      "activation_stage": 3,
+      "promoted_modules": [
+        "analysis/context.py",
+        "analysis/contribution_profile.py",
+        "analysis/correction_outcomes.py",
+        "analysis/correction_routes.py",
+        "analysis/evaluator_lineage.py",
+        "analysis/findings.py",
+        "analysis/human_review.py",
+        "analysis/inventory.py",
+        "analysis/origins.py",
+        "analysis/presence.py",
+        "analysis/process_comparison.py",
+        "contracts/bundle.py",
+        "contracts/constants.py",
+        "contracts/evidence.py",
+        "contracts/execution.py",
+        "contracts/report.py",
+        "contracts/results.py",
+        "graph/cycles.py",
+        "graph/projections.py",
+        "graph/traversal.py",
+        "graph/witnesses.py",
+        "io/input_file.py",
+        "reporting/assemble.py",
+        "runtime/boundary.py",
+        "runtime/diagnostics.py",
+        "runtime/resources.py",
+        "validation/limits.py",
+        "validation/references.py",
+        "validation/semantics.py",
+        "validation/structure.py"
+      ],
+      "protected_modules": 18,
+      "entry_byte_protected_modules": 45,
+      "scope": "current package inspection only; no checkout authorization or analytical conformance claim"
+    },
+    "scope": "Five named contract files only. Trusted selected-disclosure fixtures are not a public invocation or W04 selector."
   }
 }
