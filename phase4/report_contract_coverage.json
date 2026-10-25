@@ -1,12 +1,12 @@
 {
   "format": "sit-phase4-report-coverage/0.1",
-  "unit": "P4-W03",
-  "status": "W03 bounded internal assembly, semantic identity and reference closure verified; public pipeline/rendering obligations remain pending",
+  "unit": "P4-W04",
+  "status": "W04 actual internal selected-field disclosure and assembly verified on bounded real outcomes; public delivery and rendering remain pending",
   "purpose": "Review-only source and obligation map. It grants no authority, selects no tests and is not imported by product code.",
   "phase4_plan": {
     "path": "PHASE_4_PLAN.md",
     "sha256": "5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
-    "owner_authorization": "Exact plan approved; user instructed 很好，继续 W03. Execution authorized through P4-W03 only."
+    "owner_authorization": "User instructed W04继续; approved plan permits necessary repairs under their original owner scope. No W05+, merge or release authorization."
   },
   "accepted_core_baseline": {
     "head": "fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c",
@@ -11818,7 +11818,7 @@
       "required_behavior": "Aggregate private per-inquiry domains into exactly five report-global audit entries; preserve the six named domain members and avoid adding a not_applicable domain field.",
       "status": "W03 internal assembly verified by actual targeted execution; public runtime projection remains pending W04/W07/W08",
       "actual_test_nodes": [
-        "tests/contract/test_report_assembly.py::test_two_independent_inquiries_keep_thirty_capabilities_but_five_global_domains"
+        "tests/contract/test_report_assembly.py::test_small_two_inquiries_keep_all_families_and_five_global_domains"
       ],
       "execution_evidence": [
         "p4w03-targeted-002.log",
@@ -11833,7 +11833,7 @@
       "status": "W03 internal assembly verified by actual targeted execution; public runtime projection remains pending W04/W07/W08",
       "actual_test_nodes": [
         "tests/contract/test_report_assembly.py::test_reference_partitions_and_target_kinds_are_independently_closed",
-        "tests/contract/test_report_assembly.py::test_two_independent_inquiries_keep_thirty_capabilities_but_five_global_domains",
+        "tests/contract/test_report_assembly.py::test_small_two_inquiries_keep_all_families_and_five_global_domains",
         "tests/contract/test_report_assembly.py::test_reference_validator_rejects_independent_single_reference_mutants"
       ],
       "execution_evidence": [
@@ -11846,9 +11846,15 @@
       "source": "OBSERVABILITY_AND_REPORTING.md §16.6; PRIVACY_AND_DATA_HANDLING.md §4.2",
       "planned_unit": "P4-W04",
       "required_behavior": "Bounded explicit selection of source-native basis, attestor/asserter, method, support, availability, time/lifecycle and qualifications with actual checks; no requalification or full-record export.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W04 actual internal selector and assembly verified; public invocation remains pending W07/W08",
+      "actual_test_nodes": [
+        "tests/contract/test_report_assembly.py::test_runtime_disclosure_assembles_exact_independent_reference",
+        "tests/security/test_report_disclosure.py::test_required_basis_attribution_support_availability_and_limits_remain"
+      ],
+      "execution_evidence": [
+        "p4w04-targeted-001.log",
+        "p4w04-targeted-001.xml"
+      ]
     },
     {
       "clause": "witness_finding_links",
@@ -11874,9 +11880,20 @@
       "source": "PRIVACY_AND_DATA_HANDLING.md §§4.1–4.4; PHASE_4_PLAN.md §4.4",
       "planned_unit": "P4-W04",
       "required_behavior": "One explicit projection feeds both formats; exclude automatic full records, excerpts, contact/display names, identity keys, extensions and local paths; preserve required IDs, context, method, native outcomes and qualifications.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "W04 actual internal selector and assembly verified; public invocation remains pending W07/W08",
+      "actual_test_nodes": [
+        "tests/security/test_report_disclosure.py::test_excluded_source_values_are_absent_from_complete_report",
+        "tests/security/test_report_disclosure.py::test_selected_fragments_do_not_export_full_source_containers",
+        "tests/security/test_report_disclosure.py::test_required_context_method_and_ordered_qualifications_remain",
+        "tests/security/test_report_disclosure.py::test_native_correction_outcomes_keep_attribution_and_do_not_set_run_state",
+        "tests/security/test_report_disclosure.py::test_two_protected_seed_paths_preserve_one_common_origin",
+        "tests/security/test_report_disclosure.py::test_withheld_frontier_does_not_become_an_independent_or_unrelated_origin",
+        "tests/contract/test_report_assembly.py::test_runtime_review_scan_and_repeated_source_slots_keep_owner_order"
+      ],
+      "execution_evidence": [
+        "p4w04-targeted-001.log",
+        "p4w04-targeted-001.xml"
+      ]
     },
     {
       "clause": "canonical_json",
@@ -15030,5 +15047,89 @@
       "scope": "current package inspection only; no checkout authorization or analytical conformance claim"
     },
     "scope": "Five named contract files only. Trusted selected-disclosure fixtures are not a public invocation or W04 selector."
+  },
+  "w04_verification": {
+    "targeted": {
+      "execution": {
+        "command": [
+          "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/contract/test_report_assembly.py",
+          "tests/contract/test_report_identity.py",
+          "tests/security/test_report_disclosure.py",
+          "tests/contract/test_report_test_oracles.py",
+          "--junitxml=/workspace/scratch/4e5267fe5990/p4w04-targeted-001.xml"
+        ],
+        "started_at_utc": "2026-10-25T07:57:29.452245+00:00",
+        "elapsed_seconds": 73.28405752199978,
+        "exit_code": 0,
+        "timeout_seconds": 900,
+        "timed_out": false,
+        "interrupted": false,
+        "incomplete": false,
+        "base_head": "95a8462105e5e5c5cfb3ab7f24cbf8b8cb37611f",
+        "source_files": 226,
+        "source_bytes_unchanged": true,
+        "scope": "Four explicitly named W04 integration/privacy and related identity/oracle files; not a complete suite or hosted matrix."
+      },
+      "junit": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "186",
+        "time": "73.047",
+        "timestamp": "2026-10-25T01:57:29.593002-06:00",
+        "hostname": "d6921570ec2c"
+      },
+      "cases_by_classname": {
+        "tests.contract.test_report_assembly": 55,
+        "tests.contract.test_report_identity": 16,
+        "tests.security.test_report_disclosure": 26,
+        "tests.contract.test_report_test_oracles": 89
+      },
+      "final_product_and_test_bytes": {
+        "src/source_integrity_toolkit/reporting/assemble.py": {
+          "bytes": 58955,
+          "sha256": "bdd408f03a36985f6aa098ac9ea56f5ee8522be67b30cc943accf8b599ac4e8f"
+        },
+        "src/source_integrity_toolkit/runtime/disclosure.py": {
+          "bytes": 38666,
+          "sha256": "0ee0cb170bc017fd80bd45ee7a5f42fc5b83b598c7204ad2ae0bf08cd9b57a43"
+        },
+        "tests/contract/test_report_assembly.py": {
+          "bytes": 71321,
+          "sha256": "4c7ce1b290cd89651ff1310ba5d4af13ea189617a92240e779f58132835df711"
+        },
+        "tests/security/test_report_disclosure.py": {
+          "bytes": 16111,
+          "sha256": "a82c6e85e5940c8be218a4183e28c64cca8f17e4574ac056e4c794038be83c72"
+        },
+        "tests/fixtures/adversarial/phase4_report_cases.json": {
+          "bytes": 64693,
+          "sha256": "09bd8226afc4e68522d827f02d14fd3bbd6a5b65c2c9edc08cc982d8ca1f5ff5"
+        }
+      },
+      "post_test_inheritance": {
+        "paths": [
+          "phase4/implementation_evidence.json",
+          "tests/contract/test_verification_boundary.py",
+          "tools/check_scaffold_boundary.py"
+        ],
+        "repair_commit": "8db88278a99fed8c32d8323853ce5063b07fb2f9",
+        "meaning": "Only the separately tested W01 guard/test/evidence repair was inherited after this product run. All W04 product, fixture and test bytes are identical."
+      }
+    },
+    "evidence_pointer_correction": {
+      "old": "tests/contract/test_report_assembly.py::test_two_independent_inquiries_keep_thirty_capabilities_but_five_global_domains",
+      "actual": "tests/contract/test_report_assembly.py::test_small_two_inquiries_keep_all_families_and_five_global_domains",
+      "meaning": "Corrects a stale W03 evidence pointer only. The actual accepted compact-case test is unchanged."
+    },
+    "static_mapping_review": "47 concrete native/time field rules and five variant dispatch maps match the frozen schema. This mapping review does not claim actual execution of every public obligation or every variant.",
+    "implementation": "All nineteen registered disclosure field branches and six retained witness forms use explicit selected fields. No runtime schema or generic source-record export.",
+    "pending": "All 228 public-pipeline/rendering obligation rows remain pending W09; W07 shared invocation and W08 public delivery are not represented by these component tests."
   }
 }

@@ -1,11 +1,12 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""W03 assembly controls with an independently authored reference document.
+"""W03 assembly and W04 disclosure integration with an independent reference.
 
 The selected bodies below are a trusted, case-specific test fixture for the
-future disclosure owner. They are read from W02's independent expectations,
-never from assembler output. This does not test or implement W04 selection,
-public audit delivery, a second production budget, or either renderer.
+W03 assembly controls. They are read from W02's independent expectations,
+never from assembler output. Separate W04 controls use the actual runtime
+selector and assembler under one supplied finite component port. Neither
+path claims public audit delivery, whole-invocation integration or rendering.
 """
 import copy
 from dataclasses import replace
@@ -23,6 +24,7 @@ from source_integrity_toolkit.contracts.results import (
     _BasisRef, _InputRef, _RecordDisclosures,
 )
 from source_integrity_toolkit.reporting import assemble
+from source_integrity_toolkit.runtime import disclosure as disclosure_runtime
 from source_integrity_toolkit.runtime.boundary import _analyze_value
 
 
@@ -267,6 +269,15 @@ def reference_assembly(reference_outcome):
     return frozen, _plain(frozen), selected, port.units
 
 
+@pytest.fixture(scope='module')
+def runtime_reference_assembly(reference_outcome):
+    """Actual W04 selection and W03 assembly, with no expected bodies as input."""
+    port = RecordingPort()
+    frozen = disclosure_runtime._assemble_selected_report(reference_outcome, port)
+    assert port.units > 0 and port.checks > 0
+    return frozen, _plain(frozen), port.units
+
+
 def _assert_partitions(document):
     results = {row['id']: row for row in document['results']}
     for capability in document['capabilities']:
@@ -313,6 +324,10 @@ def _assert_report_links(document):
 
 def test_real_private_reference_assembles_exact_independent_logical_document(reference_assembly):
     frozen, actual, _, units = reference_assembly
+    _assert_complete_reference(frozen, actual, units)
+
+
+def _assert_complete_reference(frozen, actual, units):
     _strict_equal(actual, _reference_document())
     assert type(frozen) is contract._ReportMapping
     assert set(actual) == set(ROOT_FIELDS)
@@ -322,6 +337,26 @@ def test_real_private_reference_assembles_exact_independent_logical_document(ref
         'checks': 671, 'results': 78, 'findings': 22, 'reasons': 38,
     }
     assert len({row['field_key'] for row in actual['results']}) == 57
+
+
+def test_runtime_disclosure_assembles_exact_independent_reference(runtime_reference_assembly):
+    frozen, actual, units = runtime_reference_assembly
+    _assert_complete_reference(frozen, actual, units)
+    _assert_partitions(actual)
+    _assert_report_links(actual)
+
+
+@pytest.mark.parametrize('allowance', (0, 1024))
+def test_runtime_disclosure_and_assembly_obey_supplied_port(reference_outcome,
+                                                          runtime_reference_assembly,
+                                                          allowance):
+    # The same real outcome first completed through the conforming runtime
+    # path above. A finite stop must propagate instead of allocating a fresh
+    # report port or returning a partially selected document.
+    port = RecordingPort(stop_after=allowance)
+    with pytest.raises(RuntimeError, match='^controlled_assembly_stop$'):
+        disclosure_runtime._assemble_selected_report(reference_outcome, port)
+    assert port.units <= allowance
 
 
 def test_reference_partitions_and_target_kinds_are_independently_closed(reference_assembly):
@@ -449,6 +484,10 @@ def test_small_two_inquiries_keep_all_families_and_five_global_domains():
     selected = _selected_disclosure(outcome, references)
     port = RecordingPort()
     actual = _plain(_assemble(outcome, selected, port))
+    _assert_two_inquiry_material(actual, port.units)
+
+
+def _assert_two_inquiry_material(actual, units):
     _assert_partitions(actual)
     _assert_report_links(actual)
     assert len(actual['capabilities']) == 30
@@ -472,7 +511,18 @@ def test_small_two_inquiries_keep_all_families_and_five_global_domains():
         if linked:
             assert {scopes[results[identifier]['scope_ref']]['inquiry_ref']['identifier']
                     for identifier in linked} == {'P4-I001', 'P4B-I001'}
-    assert 0 < port.units <= 10_000_000
+    assert 0 < units <= 10_000_000
+
+
+def test_runtime_disclosure_preserves_two_independent_inquiry_selections():
+    dossier, _ = _two_compact_inquiry_case()
+    outcome = _analyze_value(dossier)
+    assert type(outcome) is contract._AnalyticalOutcome
+    assert outcome.execution_state == 'completed'
+    assert len(outcome.plan.jobs) == 32 and len(outcome.results) == 120
+    port = RecordingPort()
+    actual = _plain(disclosure_runtime._assemble_selected_report(outcome, port))
+    _assert_two_inquiry_material(actual, port.units)
 
 
 @pytest.mark.parametrize('allowance', (0, 1, 32, 1024))
@@ -878,6 +928,19 @@ def test_two_hop_retained_owner_path_does_not_require_an_equal_private_finding()
     _assert_report_links(actual)
 
 
+def test_runtime_disclosure_retains_actual_two_hop_owner_proof():
+    outcome = _analyze_value(_two_hop_dossier())
+    assert type(outcome) is contract._AnalyticalOutcome
+    assert outcome.execution_state == 'completed'
+    assert len(outcome.plan.jobs) == 25 and len(outcome.results) == 87
+    port = RecordingPort()
+    actual = _plain(disclosure_runtime._assemble_selected_report(outcome, port))
+    _assert_two_hop_material(actual)
+    _assert_partitions(actual)
+    _assert_report_links(actual)
+    assert 0 < port.units <= 10_000_000
+
+
 # The following are explicitly constructed trusted component controls. They
 # exercise value projection and linking, not a complete analytical envelope.
 def _interval_component(reference_outcome):
@@ -1175,3 +1238,139 @@ def test_unrelated_same_scope_absence_keeps_own_material_family_and_basis(refere
         assert findings[links[0]]['diagnostic_refs'] == (family,)
         assert all(component['kind'] in ('path', 'complete_trace')
                    for component in findings[links[0]]['witness']['components'])
+
+
+def _review_scan_dossier():
+    """Small actual input with two assessments and repeated review role slots."""
+    dossier = _reference_dossier()
+    dossier['bundle_id'] = 'W04-BUNDLE-SCAN-SLOTS'
+    dossier['snapshot_id'] = 'W04-SNAPSHOT-SCAN-SLOTS'
+    actor = next(row for row in dossier['records'] if row['id'] == 'P4-ACTOR')
+    other = copy.deepcopy(actor)
+    other['id'] = 'W04-OTHER'
+    dossier['records'].append(other)
+    role = {'role': 'human_reviewer', 'object_ref': 'P4-ACTOR',
+            'evidence_ref_ids': ['P4-SUPPORT'],
+            'qualifications': ['Repeated original owner role slot; no additional human is inferred.']}
+    dossier['records'].append({
+        'id': 'W04-REVIEW', 'kind': 'evaluation',
+        'data': {'evaluation_kind': 'human_review', 'target_refs': ['P4-ART'],
+                 'role_bindings': [copy.deepcopy(role), dict(copy.deepcopy(role), role='judge')],
+                 'result_refs': [], 'occurred_at': copy.deepcopy(dossier['recorded_at']),
+                 'review_contribution': 'Recorded review contribution with two supplied role slots.'},
+        'provenance': copy.deepcopy(actor['provenance']),
+    })
+    dossier['inquiries'][0]['target_object_refs'] = ['W04-REVIEW']
+    original = next(row for row in dossier['assertions'] if row['id'] == 'P4-BOUND')
+    for suffix in ('B', 'A'):
+        assessment = copy.deepcopy(original)
+        assessment['id'] = 'W04-SCAN-' + suffix
+        assessment['data'] = {
+            'assessment_kind': 'independence', 'subject_refs': ['P4-ACTOR', 'W04-OTHER'],
+            'details': {'comparison_form': 'pairwise', 'dimension': 'organizational_control',
+                       'conclusion': 'unknown', 'examined_dependency_refs': [],
+                       'unexamined_dimensions': ['acquisition'], 'coverage_ref': None,
+                       'scope_note': 'Supplied scan context only; no applicable acquisition assessment.'},
+        }
+        assessment['gaps'] = [{'field': 'data.details.coverage_ref', 'reason': 'not_examined',
+                              'detail': 'No coverage assessment is supplied for this other dimension.'}]
+        dossier['assertions'].append(assessment)
+    return dossier
+
+
+@pytest.fixture(scope='module')
+def review_scan_outcome():
+    dossier = _review_scan_dossier()
+    original = copy.deepcopy(dossier)
+    outcome = _analyze_value(dossier)
+    assert dossier == original
+    assert type(outcome) is contract._AnalyticalOutcome
+    assert outcome.execution_state == 'completed'
+    return outcome
+
+
+def _reverse_review_payload(payload):
+    if payload[0] != 'human_review_witness':
+        return payload
+    kind, members, assessments, slots, count = payload
+    return kind, members, tuple(reversed(assessments)), tuple(reversed(slots)), count
+
+
+def _selected_input_value(value):
+    """Read only this selected component's frozen JSON and typed input links."""
+    if type(value) is _InputRef:
+        return _source(value)
+    if type(value) is contract._ReportMapping:
+        return {name: _selected_input_value(value[name]) for name in value}
+    if type(value) is tuple:
+        return [_selected_input_value(item) for item in value]
+    assert value is None or type(value) in (str, bool, int)
+    return value
+
+
+@pytest.mark.parametrize('owner_order', ('actual', 'reversed_component'))
+def test_runtime_review_scan_and_repeated_source_slots_keep_owner_order(review_scan_outcome,
+                                                                       owner_order):
+    outcome = review_scan_outcome
+    if owner_order == 'reversed_component':
+        # Explicit trusted detached-owner component variant, backed by the
+        # same real prepared input. This alternative order is not attributed
+        # to the current analytical implementation or reservation ledger.
+        witnesses = tuple(replace(row, payload=tuple(_reverse_review_payload(part)
+            for part in row.payload)) for row in outcome.witnesses)
+        findings = tuple(replace(row, witness=replace(row.witness,
+            owner_witnesses=tuple(_reverse_review_payload(part)
+                for part in row.witness.owner_witnesses))) for row in outcome.findings)
+        outcome = replace(outcome, witnesses=witnesses, findings=findings)
+    owner = next(row for row in outcome.witnesses
+                 if any(part[0] == 'human_review_witness' for part in row.payload))
+    payload = next(part for part in owner.payload if part[0] == 'human_review_witness')
+    _, members, assessments, slots, count = payload
+    assert [ref.identifier for ref in members] == ['W04-REVIEW']
+    expected_scan = ['W04-SCAN-A', 'W04-SCAN-B']
+    expected_slots = [
+        {'collection': 'inquiries', 'identifier': 'P4-I001', 'selector': 'target_object_refs'},
+        {'collection': 'records', 'identifier': 'W04-REVIEW', 'selector': None},
+        {'collection': 'records', 'identifier': 'P4-ACTOR', 'selector': None},
+        {'collection': 'records', 'identifier': 'P4-ACTOR', 'selector': None},
+    ]
+    if owner_order == 'reversed_component':
+        expected_scan.reverse()
+        expected_slots.reverse()
+    assert [ref.identifier for ref in assessments] == expected_scan
+    assert [_source(ref) for ref in slots] == expected_slots
+    assert count == len(members) + len(assessments) + len(slots) == 7
+    original = next(row for row in outcome.results
+                    if row.ref.field_key == 'corrective_independence_disclosures')
+    port = RecordingPort()
+    selected = disclosure_runtime._select_report_disclosure(outcome, port)
+    body = next(body for ref, body in selected.disclosures
+                if ref.field_key == 'corrective_independence_disclosures')
+    rows = _selected_input_value(body)['records']
+    primary_count = len(original.value.records)
+    assert [row['source'] for row in rows[:primary_count]] == [
+        _source(row.source) for row in original.value.records]
+    scan_rows = rows[primary_count:primary_count + 2]
+    source_rows = rows[primary_count + 2:]
+    assert [row['source'] for row in scan_rows] == [
+        {'collection': 'assertions', 'identifier': identifier, 'selector': None}
+        for identifier in expected_scan]
+    assert [row['source'] for row in source_rows] == expected_slots
+    assert all(row['qualifications'] == [
+        'Examined assessment only; this scan does not establish applicability or qualification for the selected review scope.']
+        for row in scan_rows)
+    assert all(row['qualifications'] == [
+        'Actual owner selection/source reference slot; this record does not establish an applicable review or independent process.']
+        for row in source_rows)
+    for row in scan_rows + source_rows:
+        assert set(row['fields']) == {'native_record'}
+        assert row['fields']['native_record']['id'] == row['source']['identifier']
+    actor_rows = [row for row in source_rows if row['source']['identifier'] == 'P4-ACTOR']
+    assert len(actor_rows) == 2 and actor_rows[0] == actor_rows[1]
+    review_row = next(row for row in source_rows if row['source']['identifier'] == 'W04-REVIEW')
+    roles = review_row['fields']['native_record']['data']['role_bindings']
+    assert [role['role'] for role in roles] == ['human_reviewer', 'judge']
+    assert [role['object_ref'] for role in roles] == ['P4-ACTOR', 'P4-ACTOR']
+    assert roles[0]['qualifications'] == [
+        'Repeated original owner role slot; no additional human is inferred.']
+    assert 0 < port.units <= 10_000_000

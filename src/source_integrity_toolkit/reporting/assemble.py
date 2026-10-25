@@ -866,7 +866,7 @@ def _assemble_witnesses(assembly):
             if len(consumed[id(record)]) != len(record.payload):
                 selected_records.append((record, related, selected, canonical, targets))
         else:
-            _witness_home(record, related, assembly)
+            _witness_home(record, related, assembly, consumed[id(record)])
         for ref in record.refs:
             key = _anchor(ref, port)
             _charge_key(key, port)
@@ -1033,7 +1033,7 @@ def _material_refs(value, port):
     return tuple(refs)
 
 
-def _witness_home(record, related, assembly):
+def _witness_home(record, related, assembly, represented=()):
     """Owner material has explicit homes, without inventing carrier Findings."""
     port = assembly.port
     allowed = ('inventory_witness', 'comparison_witness', 'selected_members',
@@ -1056,10 +1056,18 @@ def _witness_home(record, related, assembly):
             for row in _field(selected, 'records', port):
                 homes.append(_as_input(_field(row, 'source', port), port))
     keys = _ref_keys(homes, port)
-    for ref in _material_refs(record.payload, port):
-        key = _anchor(ref, port)
-        _charge_key((key, keys), port)
-        _require(key in keys)
+    for index, payload in enumerate(record.payload):
+        port.charge(2)
+        # These indices come from exact same-Scope matches to owner components
+        # in Findings whose selected witnesses were already checked in finding().
+        # Their ordered source slots have that concrete public home, including
+        # nullable correction-case fields absent from a Result's root references.
+        if index in represented:
+            continue
+        for ref in _material_refs((payload,), port):
+            key = _anchor(ref, port)
+            _charge_key((key, keys), port)
+            _require(key in keys)
 
 
 def _trace_home(group, assembly):
