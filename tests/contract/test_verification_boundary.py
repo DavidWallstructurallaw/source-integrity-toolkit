@@ -489,7 +489,7 @@ def test_current_module_ceiling_and_protected_slots(case, code, current_stage):
     path = "graph/cycles.py"
     if case == "extra": path = "analysis/future.py"; sources[path] = b""
     elif case == "missing": del sources[path]
-    elif case == "protected": path = "reporting/json_report.py"; sources[path] = b"ACTIVE = {}\n"
+    elif case == "protected": path = "io/output_directory.py"; sources[path] = b"ACTIVE = {}\n"
     elif case == "public_report":
         path = "api.py"
         sources[path] = b'def audit_bundle(x):\n    return {"report_kind": "audit_report"}\n'
@@ -497,7 +497,7 @@ def test_current_module_ceiling_and_protected_slots(case, code, current_stage):
     elif case == "encoding": sources[path] = b"\xff"
     else:
         limit = 262144 if case == "active_size" else 16384
-        if case == "inert_size": path = "reporting/json_report.py"
+        if case == "inert_size": path = "io/output_directory.py"
         sources[path] = b"#" * limit
         assert (path, "oversize_module") not in guard.current_module_issues(sources, stage=current_stage)
         sources[path] += b"#"
