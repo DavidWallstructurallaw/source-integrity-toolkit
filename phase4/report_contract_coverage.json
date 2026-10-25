@@ -1,7 +1,7 @@
 {
   "format": "sit-phase4-report-coverage/0.1",
-  "unit": "P4-W04",
-  "status": "W04 actual internal selected-field disclosure and assembly verified on bounded real outcomes; public delivery and rendering remain pending",
+  "unit": "P4-W05",
+  "status": "W05 exact internal JSON and bounded output accounting verified; public delivery, Markdown and whole-invocation integration remain pending",
   "purpose": "Review-only source and obligation map. It grants no authority, selects no tests and is not imported by product code.",
   "phase4_plan": {
     "path": "PHASE_4_PLAN.md",
@@ -11900,9 +11900,29 @@
       "source": "REPOSITORY_ARCHITECTURE.md §§17.2–17.4,18.3; GOVERNANCE_AND_HANDOFF.md §22.1",
       "planned_unit": "P4-W05",
       "required_behavior": "J plus one LF; exact scalar/key/control encoding, native ordered arrays, portable integer values and original rational components; optional JSON display_decimal omitted.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "verified_internal_encoder_W05",
+      "actual_test_nodes": [
+        "tests/contract/test_json_report.py::test_actual_selected_report_matches_independent_reference_bytes",
+        "tests/contract/test_json_report.py::test_report_wrapper_adds_exactly_one_lf_to_j",
+        "tests/contract/test_json_report.py::test_exact_scalar_types_and_empty_containers",
+        "tests/contract/test_json_report.py::test_keys_use_unicode_scalar_order_without_normalization",
+        "tests/contract/test_json_report.py::test_every_required_control_scalar_has_lowercase_long_escape",
+        "tests/contract/test_json_report.py::test_allowed_scalars_adjacent_to_control_ranges_keep_utf8",
+        "tests/contract/test_json_report.py::test_quotes_backslash_slash_multilingual_and_combining_forms",
+        "tests/contract/test_json_report.py::test_exact_private_atoms_use_literal_shortest_representations",
+        "tests/contract/test_json_report.py::test_original_fractions_ordered_arrays_and_duplicate_occurrences_survive",
+        "tests/contract/test_json_report.py::test_encoder_rejects_untrusted_types_before_custom_protocols",
+        "tests/contract/test_json_report.py::test_invalid_trusted_components_fail_without_values_in_exception",
+        "tests/contract/test_json_report.py::test_report_entry_requires_frozen_project_root"
+      ],
+      "execution_evidence": [
+        {
+          "file": "p4w05-targeted-001.xml",
+          "tests_in_json_file": 148,
+          "zero_failures_errors_skips": true,
+          "reference_bytes": 421307
+        }
+      ]
     },
     {
       "clause": "exact_markdown",
@@ -11938,7 +11958,28 @@
       "required_behavior": "Reconcile private retained witness reservations with public Finding/member occurrences without double reserve or lost members; separate encoded-byte limits for JSON and Markdown, no clipping.",
       "status": "pending",
       "actual_test_nodes": [],
-      "execution_evidence": []
+      "execution_evidence": [],
+      "w05_component_evidence": {
+        "status": "output_encoding_component_verified; full witness/composition obligation remains pending",
+        "actual_test_nodes": [
+          "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+          "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+          "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+          "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+          "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+          "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+          "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+          "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+          "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+          "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+          "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+          "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+          "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+          "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols"
+        ],
+        "execution_evidence": "p4w05-targeted-001.xml",
+        "scope": "Fixed 67108864 separate counters, actual remaining-space encoding/LF boundaries, first-cause and no-prefix return. No full64MiB encoding or W07 witness reconciliation claim."
+      }
     },
     {
       "clause": "public_invocation",
@@ -15131,5 +15172,135 @@
     "static_mapping_review": "47 concrete native/time field rules and five variant dispatch maps match the frozen schema. This mapping review does not claim actual execution of every public obligation or every variant.",
     "implementation": "All nineteen registered disclosure field branches and six retained witness forms use explicit selected fields. No runtime schema or generic source-record export.",
     "pending": "All 228 public-pipeline/rendering obligation rows remain pending W09; W07 shared invocation and W08 public delivery are not represented by these component tests."
+  },
+  "w05_verification": {
+    "execution": {
+      "command": [
+        "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/contract/test_json_report.py",
+        "tests/security/test_report_resource_limits.py",
+        "tests/contract/test_report_test_oracles.py",
+        "tests/security/test_input_resource_limits.py",
+        "tests/security/test_analytical_resource_limits.py",
+        "tests/security/test_input_diagnostics.py",
+        "tests/security/test_analytical_diagnostics.py",
+        "--junitxml=/workspace/scratch/4e5267fe5990/p4w05-targeted-001.xml"
+      ],
+      "started_at_utc": "2026-10-25T12:07:49.098267+00:00",
+      "elapsed_seconds": 10.06384003399944,
+      "exit_code": 0,
+      "timeout_seconds": 900,
+      "timed_out": false,
+      "interrupted": false,
+      "incomplete": false,
+      "base_head": "dfbbbac7a187cbb7a37d775ea7fbc786b82d1110",
+      "source_files": 228,
+      "source_bytes_unchanged": true,
+      "scope": "Seven named W05 JSON/output boundary and prior private resource/diagnostic/oracle files; not a whole suite, installed witness, or hosted matrix."
+    },
+    "junit": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "432",
+      "time": "9.770",
+      "timestamp": "2026-10-25T06:07:49.242461-06:00",
+      "hostname": "d6921570ec2c"
+    },
+    "cases_by_classname": {
+      "tests.contract.test_json_report": 148,
+      "tests.security.test_report_resource_limits": 38,
+      "tests.contract.test_report_test_oracles": 89,
+      "tests.security.test_input_resource_limits": 36,
+      "tests.security.test_analytical_resource_limits": 60,
+      "tests.security.test_input_diagnostics": 32,
+      "tests.security.test_analytical_diagnostics": 29
+    },
+    "tested_product_and_test_bytes": {
+      "src/source_integrity_toolkit/contracts/execution.py": {
+        "sha256": "54d861f22b787ac2530d4f1efaef92d846a94e462b81465e81c103c3b1e0d735",
+        "bytes": 11231
+      },
+      "src/source_integrity_toolkit/reporting/escaping.py": {
+        "sha256": "8c47f867653aa28277d063fdb40f872475ddb1f14f7d368b1106940405820b22",
+        "bytes": 10969
+      },
+      "src/source_integrity_toolkit/reporting/json_report.py": {
+        "sha256": "a7d07c8ad10c2b501518c2ec6314d82e12a03256e32cc3c7f6ca4560869f2eba",
+        "bytes": 1064
+      },
+      "src/source_integrity_toolkit/runtime/resources.py": {
+        "sha256": "118d735face412cefc8bb37ebcf1962966fa774313904809d8c5a7528f21a6f3",
+        "bytes": 16699
+      },
+      "src/source_integrity_toolkit/runtime/diagnostics.py": {
+        "sha256": "52534edea796e1bd091cff2fabb297dde1cadd3a1ae20f93e036955b7913b10f",
+        "bytes": 9437
+      },
+      "tests/contract/test_json_report.py": {
+        "sha256": "b727c6f75c6e098ca2491ccfd111c4951ef871717d8debba45a602bddba081f1",
+        "bytes": 10790
+      },
+      "tests/security/test_report_resource_limits.py": {
+        "sha256": "722b14062652ba9abd9b70970fba5cbf6155e9c0dd15d9f81eed482b3dc2c965",
+        "bytes": 16947
+      }
+    },
+    "actual_test_nodes": {
+      "tests/contract/test_json_report.py": [
+        "tests/contract/test_json_report.py::test_actual_selected_report_matches_independent_reference_bytes",
+        "tests/contract/test_json_report.py::test_report_wrapper_adds_exactly_one_lf_to_j",
+        "tests/contract/test_json_report.py::test_exact_scalar_types_and_empty_containers",
+        "tests/contract/test_json_report.py::test_keys_use_unicode_scalar_order_without_normalization",
+        "tests/contract/test_json_report.py::test_every_required_control_scalar_has_lowercase_long_escape",
+        "tests/contract/test_json_report.py::test_allowed_scalars_adjacent_to_control_ranges_keep_utf8",
+        "tests/contract/test_json_report.py::test_quotes_backslash_slash_multilingual_and_combining_forms",
+        "tests/contract/test_json_report.py::test_exact_private_atoms_use_literal_shortest_representations",
+        "tests/contract/test_json_report.py::test_original_fractions_ordered_arrays_and_duplicate_occurrences_survive",
+        "tests/contract/test_json_report.py::test_encoder_rejects_untrusted_types_before_custom_protocols",
+        "tests/contract/test_json_report.py::test_invalid_trusted_components_fail_without_values_in_exception",
+        "tests/contract/test_json_report.py::test_report_entry_requires_frozen_project_root"
+      ],
+      "tests/security/test_report_resource_limits.py": [
+        "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+        "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+        "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+        "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+        "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+        "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+        "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+        "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+        "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+        "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+        "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+        "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+        "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+        "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols"
+      ]
+    },
+    "reference_probe": {
+      "exact_reference": true,
+      "bytes": 421307,
+      "assembly_units": 6740573,
+      "encoder_units": 2768497,
+      "total_units": 9509070,
+      "output": {
+        "json": 421307,
+        "markdown": 0
+      },
+      "elapsed_seconds": 3.0059238750000077,
+      "sha256": "8b65b805bcc8fa8f0b2cb6701d5bd88b028142f7037c25166c90dbddbc61bf48"
+    },
+    "independent_review": {
+      "status": "passed_no_blocking_findings",
+      "file": "p4w05-independent-review.json",
+      "sha256": "9b584763bb0f8ac93ce778f76f215173d4b5bba4d356accf823e80bf7a2c0859"
+    },
+    "scope": "Internal exact JSON and existing-ledger output boundary only; seven-file focused execution, no public delivery or whole-invocation/Markdown parity claim."
   }
 }

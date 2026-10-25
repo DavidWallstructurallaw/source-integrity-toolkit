@@ -1,10 +1,26 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Non-operational Phase 1 slot: reporting/json_report.
+"""Owner: REPORT_PRESENTATION. Exact JSON bytes for one frozen report.
 
-Owner: REPORT_PRESENTATION.
-Authority: REPOSITORY_ARCHITECTURE.md sections 5-10 and 16-20;
-PHASE_1_PLAN.md sections 4 and 6.
-Specification adopted; scaffold slot present; behavior unimplemented.
-No validation, traversal, scoring, rendering, I/O or native binding is provided.
+The caller supplies the already validated, selected logical document and its
+restricted same-context encoding port. No source projection, analytical work,
+new budget, public AuditReport construction or filesystem access occurs here.
 """
+from ..contracts.report import _ReportMapping, _ReportContractError
+from .escaping import _JWriter
+
+
+def _encode_json_report(document, port):
+    """Return J(document) and exactly one LF, both under the JSON byte cap.
+
+    A partial encoding is never returned. This internal component alone is
+    not public report delivery; the Markdown sibling and final consistency
+    checks still belong to subsequent approved work units.
+    """
+    port.charge(1)
+    if type(document) is not _ReportMapping:
+        raise _ReportContractError('invalid_report_contract') from None
+    writer = _JWriter(port, 'json')
+    writer.value(document)
+    writer.literal(b'\n')
+    return writer.finish()

@@ -263,16 +263,23 @@ class AuditUsageError(ValueError):
         return "AuditUsageError()"
 
 
-class _ReportFinalizationPort(_FinalizationPort, Protocol):
-    """Declaration for the same invocation's restricted report finalization.
+class _ReportEncodingPort(_FinalizationPort, Protocol):
+    """Restricted byte accounting on the existing finalization ledger.
 
-    Implemented only by project-owned runtime objects in the later composition
-    unit. No clock, I/O, caller callback, new ledger or configurable limit is
-    exposed. Output accounting is separate for the two fixed encodings.
+    The runtime supplies this internal port; renderers cannot create a ledger,
+    choose a limit or reset the invocation deadline. Charge each prospective
+    encoded fragment before allocation. The two fixed encodings count separately.
     """
     def charge_output(self, encoding: str, byte_count: int) -> None:
         ...
 
+
+class _ReportFinalizationPort(_ReportEncodingPort, Protocol):
+    """Later composition adds witness accounting to bounded report encoding.
+
+    This declaration does not activate runtime composition or report delivery.
+    No clock, I/O, caller callback, new ledger or configurable limit is exposed.
+    """
     def reserve_report_witness(self, witnesses: int, members: int) -> None:
         ...
 

@@ -6,7 +6,8 @@ SIT-RP-0.1 section 19 and Phase 2 section 3.1: fixed 10,000,000 total,
 1,024 prepaid emergency units inside that total, cooperative sixty seconds.
 The analytical factory adds per-job accounting and witness reservations.
 The boundary composes these ledgers into private analytical orchestration.
-No report, I/O or public invocation is implemented here.
+The optional report-encoding port reuses the existing finalization ledger.
+No report construction, I/O or public invocation is implemented here.
 Only the zero-argument project factory creates a context. Tests patch the fixed
 clock symbol outside the product; no caller-supplied clock/limit is accepted.
 This is not isolation from malicious same-process mutation or hard real time.
@@ -16,7 +17,7 @@ from time import monotonic_ns
 from ..contracts.execution import (
     _PreparationStop, _PreparationAborted, _AuditCancelled,
     _STRUCTURAL_CODES, _PREPARATION_LIMIT_IDS, _CONSTRAINT_CODES,
-    _AnalysisAborted, _ANALYSIS_LIMIT_IDS,
+    _AnalysisAborted, _ANALYSIS_LIMIT_IDS, _ReportAborted,
 )
 
 from ..validation.limits import _WitnessLedger
@@ -24,6 +25,7 @@ from ..validation.limits import _WitnessLedger
 _WORK_LIMIT = 10_000_000
 _EMERGENCY_RESERVE = 1_024
 _DEADLINE_NS = 60_000_000_000
+_REPORT_OUTPUT_LIMIT = 67_108_864
 
 
 @dataclass(slots=True, repr=False, eq=False)
@@ -198,6 +200,25 @@ class _BoundedFinalization:
 
 
 @dataclass(slots=True, repr=False, eq=False)
+class _BoundedReportEncoding:
+    """Current report-only port over the owner's existing finalization ledger.
+
+    It cannot begin jobs, create another port, reset counters, change limits,
+    record acceptance or spend another emergency reserve.
+    """
+    _owner: object
+
+    def check(self) -> None:
+        self._owner._report_encoding_check(self)
+
+    def charge(self, units: int) -> None:
+        self._owner._report_encoding_charge(self, units)
+
+    def charge_output(self, encoding: str, byte_count: int) -> None:
+        self._owner._report_output_charge(self, encoding, byte_count)
+
+
+@dataclass(slots=True, repr=False, eq=False)
 class _WitnessJobAccounting:
     """The shared witness quota always charges the currently active job."""
     _owner: object
@@ -235,6 +256,9 @@ class _AnalysisBudget(_PreparationBudget):
     _witness_ledger: object = field(default=None, init=False)
     _stop_kind: str | None = field(default=None, init=False)
     _finalization_blocked: bool = field(default=False, init=False)
+    _report_encoder: object = field(default=None, init=False)
+    _json_output_bytes: int = field(default=0, init=False)
+    _markdown_output_bytes: int = field(default=0, init=False)
 
     def _clock_check(self) -> None:
         now = self._now()
@@ -379,6 +403,54 @@ class _AnalysisBudget(_PreparationBudget):
         if units > _WORK_LIMIT - self._used:
             self._stop("global", "WU9-L11")
         self._used += units
+
+    def begin_report_encoding(self, finalizer: object) -> _BoundedReportEncoding:
+        """One report encoding capability, authenticated by the current port.
+
+        This does not call begin_finalization, create a ledger, reset elapsed
+        time or clear a prior cause. The old private finalization path is
+        unchanged. Runtime composition and report delivery remain separate.
+        """
+        self._finalization_check(finalizer)
+        if self._report_encoder is not None:
+            self.fail()
+        self._finalization_charge(finalizer, 2)
+        encoder = _BoundedReportEncoding(self)
+        self._report_encoder = encoder
+        return encoder
+
+    def _report_encoding_check(self, port: object) -> None:
+        if type(port) is not _BoundedReportEncoding or self._report_encoder is not port:
+            self.fail()
+        self._finalization_check(self._finalizer)
+
+    def _report_encoding_charge(self, port: object, units: int) -> None:
+        self._report_encoding_check(port)
+        self._finalization_charge(self._finalizer, units)
+
+    def _report_output_charge(self, port: object, encoding: str, byte_count: int) -> None:
+        self._report_encoding_check(port)
+        # Exact types precede equality and arithmetic on supplied arguments.
+        if (type(encoding) is not str or encoding not in ("json", "markdown") or
+                type(byte_count) is not int or byte_count < 0):
+            self.fail()
+        # Counter inspection, bounded addition and retained update are work.
+        # The renderer separately charges its byte visits, encoding and copies.
+        self._finalization_charge(self._finalizer, 3)
+        used = self._json_output_bytes if encoding == "json" else self._markdown_output_bytes
+        if byte_count > _REPORT_OUTPUT_LIMIT - used:
+            self._finalization_blocked = True
+            self._raise_existing()
+            self._stop_kind = "output"
+            self._cause = _ReportAborted(
+                _PreparationStop(self._state, "interrupted", "resource_limit_reached"),
+                "WU9-L14",
+            )
+            raise self._cause from None
+        if encoding == "json":
+            self._json_output_bytes += byte_count
+        else:
+            self._markdown_output_bytes += byte_count
 
 
 def _new_analysis_budget() -> _AnalysisBudget:

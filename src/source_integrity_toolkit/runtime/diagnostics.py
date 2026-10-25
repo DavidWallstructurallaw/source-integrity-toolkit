@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from ..contracts.execution import (
     _PreparationAborted, _AuditCancelled, _STRUCTURAL_CODES,
     _PREPARATION_LIMIT_IDS, _AnalysisAborted, _ANALYSIS_LIMIT_IDS,
+    _ReportAborted, AuditAbort, AuditCancelled,
 )
 from .resources import _PreparationBudget, _AnalysisBudget
 
@@ -147,3 +148,25 @@ def _emergency_analytical_diagnostic(budget: object) -> object:
     if type(budget) is not _AnalysisBudget:
         raise TypeError("invalid_private_budget") from None
     return _analytical_diagnostic(budget.take_emergency())
+
+
+def _report_abort(cause: object) -> object:
+    """Fixed public transport for a known stop, without exposing source values.
+
+    This output-boundary mapping neither changes the earlier private diagnostic
+    helpers nor constructs a report. The exact stored first cause is supplied
+    by the runtime; cancellation remains its separate transport.
+    """
+    if type(cause) is _AuditCancelled:
+        return AuditCancelled(cause.input_state)
+    if type(cause) not in (_AnalysisAborted, _ReportAborted):
+        raise TypeError("unrecognized_private_stop") from None
+    stop = cause.stop
+    return AuditAbort(stop.execution_state, stop.input_state, stop.reason_code)
+
+
+def _emergency_report_abort(budget: object) -> object:
+    """Spend the same invocation's one prepaid reserve for a safe report abort."""
+    if type(budget) is not _AnalysisBudget:
+        raise TypeError("invalid_private_budget") from None
+    return _report_abort(budget.take_emergency())
