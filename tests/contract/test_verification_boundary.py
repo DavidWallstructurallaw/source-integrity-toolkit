@@ -1332,3 +1332,64 @@ def test_two_ordered_branches_cannot_combine_to_authorize_skipped_unit(repo):
     merged = git(repo, 'rev-parse', 'HEAD').decode().strip()
     with pytest.raises(ValueError, match='^current_unit_out_of_order$'):
         guard.current_history(repo, ANCHOR, merged)
+
+
+def test_current_source_checks_parse_fresh_after_mutation_and_restoration(current_stage, monkeypatch):
+    sources = module_sources()
+    path = 'contracts/report.py'
+    marker = 'fresh_source_observation_for_guard'
+    good = sources[path] + ('\n# ' + marker + '\n').encode()
+    bad = good + b'\ndef prohibited_probe():\n    return open("private")\n'
+    observed = []
+    original_parse = guard.ast.parse
+
+    def parse(source, *args, **kwargs):
+        if isinstance(source, str) and marker in source:
+            observed.append('bad' if 'prohibited_probe' in source else 'good')
+        return original_parse(source, *args, **kwargs)
+
+    monkeypatch.setattr(guard.ast, 'parse', parse)
+    for raw, expected, observation in (
+        (good, [], 'good'),
+        (bad, [(path, 'forbidden_effect')], 'bad'),
+        (good, [], 'good'),
+    ):
+        sources[path] = raw
+        first = len(observed)
+        assert guard.current_module_issues(sources, stage=current_stage) == expected
+        assert observed[first:] and set(observed[first:]) == {observation}
+        first = len(observed)
+        assert guard.current_live_issues(path, raw.decode(), stage=current_stage) == [
+            code for unused, code in expected]
+        assert observed[first:] and set(observed[first:]) == {observation}
+
+    # A previous acyclic result must not authorize the next source mapping.
+    graph = {'reporting/escaping.py': '', 'reporting/json_report.py': 'from . import escaping\n'}
+    assert guard.phase3_import_cycle_issues(graph) == []
+    graph['reporting/escaping.py'] = 'from . import json_report\n'
+    assert guard.phase3_import_cycle_issues(graph) == ['import_cycle']
+    graph['reporting/escaping.py'] = ''
+    assert guard.phase3_import_cycle_issues(graph) == []
+
+
+def test_current_module_analysis_keeps_all_dependency_effect_and_syntax_diagnostics(current_stage):
+    sources = module_sources()
+    assert guard.current_module_issues(sources, stage=current_stage) == []
+    changed = dict(sources)
+    changed['contracts/report.py'] = b'import socket\n\ndef prohibited_probe():\n    return open("private")\n'
+    changed['cli.py'] = b'import socket\n'
+    unchanged_scaffold_failures = {
+        ('cli.py', 'accepted_blob_changed'),
+        ('cli.py', 'non_scaffold_body'),
+        ('cli.py', 'unapproved_import'),
+    }
+    assert set(guard.current_module_issues(changed, stage=current_stage)) == unchanged_scaffold_failures | {
+        ('contracts/report.py', 'forbidden_effect'),
+        ('contracts/report.py', 'unapproved_import'),
+    }
+    changed['contracts/report.py'] = b'def (\n'
+    assert set(guard.current_module_issues(changed, stage=current_stage)) == unchanged_scaffold_failures | {
+        ('contracts/report.py', 'invalid_python'),
+        ('src/source_integrity_toolkit', 'invalid_python'),
+    }
+    assert guard.current_module_issues(sources, stage=current_stage) == []

@@ -273,6 +273,12 @@ def _dependency_issues(path, source, active, prefix="", *, stage=1):
     except (SyntaxError, ValueError, RecursionError):
         return ["invalid_python"]
     targets, issues = phase3_import_targets(path, tree)
+    return _dependency_target_issues(path, targets, issues, active, prefix, stage=stage)
+
+
+def _dependency_target_issues(path, targets, import_issues, active, prefix="", *, stage=1):
+    """Apply every dependency rule to targets parsed by the current caller."""
+    issues = list(import_issues)
     by_name = {module_name(p): p for p in EXPECTED_PATHS}
     for target in targets:
         if target in SAFE_IMPORTS or (path == "runtime/resources.py" and target == "time"):
@@ -296,14 +302,20 @@ def _dependency_issues(path, source, active, prefix="", *, stage=1):
 
 
 def phase3_import_cycle_issues(sources):
-    by_name = {module_name(p): p for p in sources}
-    dependencies = {}
+    targets_by_path = {}
     for path, source in sources.items():
         try:
             targets, _ = phase3_import_targets(path, ast.parse(source))
         except (SyntaxError, ValueError, RecursionError):
             return ["invalid_python"]
-        dependencies[path] = {by_name[t] for t in targets if t in by_name}
+        targets_by_path[path] = targets
+    return _import_target_cycle_issues(targets_by_path)
+
+
+def _import_target_cycle_issues(targets_by_path):
+    by_name = {module_name(p): p for p in targets_by_path}
+    dependencies = {path: {by_name[t] for t in targets if t in by_name}
+                    for path, targets in targets_by_path.items()}
     try:
         tuple(TopologicalSorter(dependencies).static_order())
     except CycleError:
@@ -313,11 +325,16 @@ def phase3_import_cycle_issues(sources):
 
 def _source_effect_issues(path, source):
     """Conservative static effect checks, independent of development stage."""
-    issues = []
     try:
         tree = ast.parse(source)
     except (SyntaxError, ValueError, RecursionError):
         return ["invalid_python"]
+    return _source_tree_effect_issues(path, tree)
+
+
+def _source_tree_effect_issues(path, tree):
+    """Read-only checks on this invocation's freshly parsed source tree."""
+    issues = []
     for node in ast.walk(tree):
         if isinstance(node, ast.Name) and node.id in FORBIDDEN_NAMES:
             issues.append("forbidden_effect")
@@ -993,7 +1010,13 @@ def current_live_issues(path, source, stage=1):
     active = current_active(stage)
     if path not in active:
         return ["unapproved_live_module"]
-    return sorted(set(_dependency_issues(path, source, active, stage=stage) + _source_effect_issues(path, source)))
+    try:
+        tree = ast.parse(source)
+    except (SyntaxError, ValueError, RecursionError):
+        return ["invalid_python"]
+    targets, import_issues = phase3_import_targets(path, tree)
+    return sorted(set(_dependency_target_issues(path, targets, import_issues, active, stage=stage)
+                      + _source_tree_effect_issues(path, tree)))
 
 def current_layer_issues(path, source, stage=1):
     active = current_active(stage)
@@ -1003,7 +1026,10 @@ def current_layer_issues(path, source, stage=1):
 def current_module_issues(sources, stage=1):
     """All 48 baseline bodies stay pinned until their explicit activation stage."""
     active = current_active(stage)
-    issues, decoded = [], {}
+    # Trees and targets exist only within this call. Every source is read and
+    # parsed anew on the next invocation; no authorization verdict is cached.
+    issues, decoded, targets_by_path = [], {}, {}
+    invalid_cycle_source = False
     for path in sorted(set(sources) | set(EXPECTED_PATHS)):
         if path not in EXPECTED_PATHS:
             issues.append((path, "unexpected_module")); continue
@@ -1019,8 +1045,21 @@ def current_module_issues(sources, stage=1):
         except UnicodeDecodeError:
             issues.append((path, "invalid_utf8")); continue
         decoded[path] = source
-        codes = (current_live_issues(path, source, stage)
-                 if path in active else _phase2_layer_issues(path, source) + form_issues(path, source))
+        try:
+            tree = ast.parse(source)
+        except (SyntaxError, ValueError, RecursionError):
+            invalid_cycle_source = True
+            codes = ["invalid_python"]
+        else:
+            targets, import_issues = phase3_import_targets(path, tree)
+            targets_by_path[path] = targets
+            if path in active:
+                codes = (_dependency_target_issues(path, targets, import_issues, active, stage=stage)
+                         + _source_tree_effect_issues(path, tree))
+            else:
+                # Scaffold comparison removes docstrings from its own parse;
+                # never let it mutate the tree used for dependency inspection.
+                codes = _phase2_layer_issues(path, source) + form_issues(path, source)
         issues.extend((path, code) for code in codes)
     if stage >= 8 and "__init__.py" in decoded:
         try:
@@ -1037,7 +1076,9 @@ def current_module_issues(sources, stage=1):
                 issues.append(("api.py", "accepted_audit_file_changed"))
         except (SyntaxError, ValueError):
             issues.append(("api.py", "invalid_python"))
-    issues.extend(("src/" + PACKAGE, code) for code in phase3_import_cycle_issues(decoded))
+    cycle_issues = (["invalid_python"] if invalid_cycle_source
+                    else _import_target_cycle_issues(targets_by_path))
+    issues.extend(("src/" + PACKAGE, code) for code in cycle_issues)
     return sorted(set(issues))
 
 
