@@ -1377,7 +1377,7 @@ def test_runtime_review_scan_and_repeated_source_slots_keep_owner_order(review_s
 
 
 def test_empty_seed_dimension_preserves_completed_trace_and_unavailable_ratios():
-    """Reporting 10.7/18.2: an empty typed search cannot invent a ratio zero."""
+    """Reporting W4-10/18.2: an empty typed search cannot invent a ratio zero."""
     source = _reference_dossier()
     source['bundle_id'] = 'P4-EMPTY-SEED-ACQUISITION'
     source['snapshot_id'] = 'P4-EMPTY-SEED-ACQUISITION-01'
@@ -1431,8 +1431,13 @@ def test_empty_seed_dimension_preserves_completed_trace_and_unavailable_ratios()
         assert result['execution_state'] == 'completed'
         assert result['result_state'] == 'unavailable' and result['value'] is None
         assert 'zero_denominator' in {reasons[ref]['code'] for ref in result['reason_refs']}
-        assert finding['id'] in result['witness_refs']
         assert all(ref in findings for ref in result['witness_refs'])
+    for field in ('reached_origin_record_count', 'documentary_origin_boundary_record_count',
+                  'origin_boundary_disclosures', 'unresolved_frontier_reference_count',
+                  'unqualified_terminal_record_count', 'seed_items_with_unresolved_ancestry_count',
+                  'ancestry_gap_disclosures'):
+        result = next(row for row in document['results'] if row['field_key'] == field)
+        assert result['witness_refs'] == [finding['id']]
     _assert_partitions(document)
     _assert_report_links(document)
 

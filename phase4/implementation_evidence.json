@@ -15,9 +15,10 @@
     "phase4/implementation_evidence.json"
   ],
   "source_basis": [
-    "OBSERVABILITY_AND_REPORTING.md section10.7: empty seed inventory is zero; HHI and seed fractions unavailable for zero denominator.",
+    "OBSERVABILITY_AND_REPORTING.md W4-10: empty seed inventory is zero; HHI and seed fractions unavailable for zero denominator.",
     "OBSERVABILITY_AND_REPORTING.md section18.2: scoped_no_witness means a completed typed search found no eligible witness at its declared scope; no threat-family pass.",
-    "PHASE_4_PLAN.md section4.2 and W03: preserve all retained witness content in formal report homes without enhancing analytical conclusions."
+    "PHASE_4_PLAN.md section4.2 and W03: preserve all retained witness content in formal report homes without enhancing analytical conclusions.",
+    "OBSERVABILITY_AND_REPORTING.md section19.2: retained Result witness references point to Finding identities carrying the finite evidence."
   ],
   "diagnosis": {
     "earlier_head": "e2cd1217ac7873c338d1d0503c0cdef259ce2f3c",
@@ -28,7 +29,13 @@
   "validation": {
     "status": "pending_after_real_W03_commit",
     "planned_scope": "Complete tests/contract/test_report_assembly.py on this clean checkpoint; source hashes before/after, logs, JUnit and exit receipt retained externally.",
-    "no_claim": "No new full suite, hosted CI or W07/public delivery success claimed."
+    "no_claim": "No new full suite, hosted CI or W07/public delivery success claimed.",
+    "first_attempt": {
+      "head": "44cf17b1a41693a35a8cac3ea92db83e48fb858b",
+      "actual": "68 passed, 1 failed, exit1, 230source hashes unchanged",
+      "reason": "The new test wrongly required unavailable ratios to carry the empty trace; original analytical Results attach that trace to M002/M007 counts/disclosures. Product projection already succeeded. Corrected only that expectation to the seven actual declared owner fields, retaining unavailable/null/zero_denominator checks.",
+      "raw_evidence": "External p4w07-w03-repair/focused-001.*"
+    }
   },
   "previous_checkpoint": {
     "phase": "P4",
