@@ -785,9 +785,29 @@ def _component_matches_path(path, trace, assembly):
     return bool(path['edges'])
 
 
+def _empty_completed_trace(component, port):
+    """An exact already completed empty search, without inventing coverage."""
+    port.charge(4)
+    if (component['kind'] != 'complete_trace' or component['member_count'] != 0 or
+            component['target'] is not None):
+        return False
+    for name in ('nodes', 'members', 'starts', 'examined_nodes', 'frontiers', 'terminals',
+            'edges', 'internal_edges', 'exit_edges', 'examined_edges', 'observations'):
+        port.charge(2)
+        if component[name]:
+            return False
+    return True
+
+
 def _proof_metadata(component, view, port):
     port.charge(8)
     kind = component['kind']
+    if kind == 'complete_trace':
+        _require(_empty_completed_trace(component, port))
+        return 'scoped_no_witness', 'no_witness_in_examined_view', (), (
+            'The completed typed search had no selected starting members in this examined supplied view.'), (
+            'The retained complete trace has no examined members. This does not establish '
+            'outside-world absence or independence and does not supply a nonzero ratio denominator.')
     if kind == 'path':
         _require(bool(component['edges']) and all(edge['eligible'] is True for edge in component['edges']))
         _require(view in ('citation', 'material_transformation', 'claim_origin'))
@@ -904,8 +924,13 @@ def _assemble_witnesses(assembly):
     for group in groups:
         scope, components = group['scope'], group['components']
         context = _proof_context(scope, port)
-        primaries = [part for part in components if part['kind'] in ('path', 'cycle', 'no_witness_in_examined_view')]
-        traces = [part for part in components if part['kind'] == 'complete_trace']
+        primaries, traces = [], []
+        for part in components:
+            port.charge(2)
+            if part['kind'] in ('path', 'cycle', 'no_witness_in_examined_view') or _empty_completed_trace(part, port):
+                primaries.append(part)
+            elif part['kind'] == 'complete_trace':
+                traces.append(part)
         _require(len(primaries) + len(traces) == len(components))
         for trace in traces:
             candidates = []

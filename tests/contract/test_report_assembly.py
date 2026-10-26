@@ -1374,3 +1374,78 @@ def test_runtime_review_scan_and_repeated_source_slots_keep_owner_order(review_s
     assert roles[0]['qualifications'] == [
         'Repeated original owner role slot; no additional human is inferred.']
     assert 0 < port.units <= 10_000_000
+
+
+def test_empty_seed_dimension_preserves_completed_trace_and_unavailable_ratios():
+    """Reporting 10.7/18.2: an empty typed search cannot invent a ratio zero."""
+    source = _reference_dossier()
+    source['bundle_id'] = 'P4-EMPTY-SEED-ACQUISITION'
+    source['snapshot_id'] = 'P4-EMPTY-SEED-ACQUISITION-01'
+    inquiry = source['inquiries'][0]
+    inquiry['dependency_dimensions'] = ['acquisition']
+    for name in ('seed_artifact_refs', 'seed_evidence_refs', 'coverage_assertion_refs'):
+        inquiry[name] = []
+    source['records'] = [row for row in source['records']
+                         if row['id'] in ('P4-ACTOR', 'P4-CLAIM')]
+    source['assertions'] = []
+    source['evidence_references'] = []
+    before = copy.deepcopy(source)
+    outcome = _analyze_value(source)
+    assert type(outcome) is contract._AnalyticalOutcome
+    assert outcome.execution_state == 'completed'
+    assert source == before
+    traces = [part for record in outcome.witnesses for part in record.payload
+              if part[0] == 'graph_witness']
+    assert len(traces) == 1 and traces[0][1] == 'complete_trace'
+    assert traces[0][-1] == 0
+    port = RecordingPort()
+    document = _plain(disclosure_runtime._assemble_selected_report(outcome, port))
+    assert document['run']['processing_state'] == 'completed'
+    assert document['input_validation'] == {'state': 'accepted', 'diagnostics': []}
+    assert len(document['capabilities']) == 15
+    reasons = {row['id']: row for row in document['reasons']}
+    findings = {row['id']: row for row in document['findings']}
+    empty = [row for row in document['findings']
+             if any(part['kind'] == 'complete_trace' for part in row['witness']['components']
+                    if part['type'] == 'graph_witness')]
+    assert len(empty) == 1
+    finding = empty[0]
+    assert finding['condition_code'] == 'scoped_no_witness'
+    assert finding['observation_kind'] == 'no_witness_in_examined_view'
+    assert finding['threat_family_refs'] == []
+    assert len(finding['witness']['components']) == 1
+    component = finding['witness']['components'][0]
+    assert component['type'] == 'graph_witness' and component['kind'] == 'complete_trace'
+    assert component['member_count'] == 0 and component['target'] is None
+    for name in ('nodes', 'members', 'starts', 'examined_nodes', 'frontiers', 'terminals',
+                 'edges', 'internal_edges', 'exit_edges', 'examined_edges', 'observations'):
+        assert component[name] == []
+    assert 'no selected starting members' in finding['statement']
+    assert 'does not establish outside-world absence or independence' in finding['interpretation_limit']
+    assert 'does not supply a nonzero ratio denominator' in finding['interpretation_limit']
+    for field in ('single_origin_contribution_hhi', 'documentary_origin_resolution_fraction',
+                  'inherited_only_seed_fraction'):
+        selected = [row for row in document['results'] if row['field_key'] == field]
+        assert len(selected) == 1
+        result = selected[0]
+        assert result['execution_state'] == 'completed'
+        assert result['result_state'] == 'unavailable' and result['value'] is None
+        assert 'zero_denominator' in {reasons[ref]['code'] for ref in result['reason_refs']}
+        assert finding['id'] in result['witness_refs']
+        assert all(ref in findings for ref in result['witness_refs'])
+    _assert_partitions(document)
+    _assert_report_links(document)
+
+
+@pytest.mark.parametrize('field', [
+    'nodes', 'members', 'starts', 'examined_nodes', 'frontiers', 'terminals',
+    'edges', 'internal_edges', 'exit_edges', 'examined_edges', 'observations',
+    'target', 'member_count',
+])
+def test_nonempty_trace_cannot_use_empty_search_projection(field):
+    component = {name: () for name in ('nodes', 'members', 'starts', 'examined_nodes',
+        'frontiers', 'terminals', 'edges', 'internal_edges', 'exit_edges', 'examined_edges', 'observations')}
+    component.update(kind='complete_trace', target=None, member_count=0)
+    assert assemble._empty_completed_trace(component, RecordingPort()) is True
+    component[field] = 1 if field == 'member_count' else (('one_retained_occurrence',),)
+    assert assemble._empty_completed_trace(component, RecordingPort()) is False
