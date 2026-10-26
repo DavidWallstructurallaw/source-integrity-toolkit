@@ -53,7 +53,7 @@ def installed_runtime(tmp_path_factory):
     packaging.test_source_distribution_inventory(distributions)
     packaging.test_wheel_inventory_and_metadata(distributions)
     work = tmp_path_factory.mktemp('w14-installed')
-    # Reuse the existing offline clean-runtime and public-refusal checks.
+    # Reuse the existing offline clean-runtime, public API and file refusal checks.
     packaging.test_wheel_installs_without_developer_tools(distributions, work)
     rebuild = tmp_path_factory.mktemp('w14-rebuild')
     packaging.test_source_distribution_rebuilds_same_package(distributions, rebuild)
@@ -61,7 +61,7 @@ def installed_runtime(tmp_path_factory):
     inventory = [_inventory(path) for path in (distributions[1], distributions[2], rebuilt)]
     assert inventory[1]['members'] == inventory[2]['members']
     python = work / 'runtime' / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
-    return work, python, inventory
+    return work, python, inventory, (distributions[1], distributions[2], rebuilt)
 
 
 _CHILD = r'''
@@ -82,7 +82,7 @@ from source_integrity_toolkit.runtime import boundary,resources
 from source_integrity_toolkit.contracts.report import _AnalyticalOutcome
 import source_integrity_toolkit as package
 assert package.__version__=='0.1.0.dev0'
-assert set(package.__all__)=={'audit_bundle','audit_file','__version__'}
+assert set(package.__all__)=={'audit_bundle','audit_file','__version__','AuditReport','AuditAbort','AuditCancelled','AuditUsageError'}
 assert resources._WORK_LIMIT==10_000_000 and resources._JOB_WORK_LIMIT==1_000_000
 assert resources._DEADLINE_NS==60_000_000_000
 events=[]
@@ -128,10 +128,10 @@ for mode in ('value','utf8'):
 for fn in (boundary._analyze_value,boundary._analyze_utf8):
     bad=fn({} if fn is boundary._analyze_value else b'{}')
     assert bad.input_state=='rejected' and not hasattr(bad,'results')
-for call,args in ((package.audit_bundle,(object(),)),(package.audit_file,(object(),object()))):
-    try:call(*args,options=object())
-    except NotImplementedError:pass
-    else:raise AssertionError('public_audit_activated')
+public=_public_witness(payload['public']['source'],payload['public']['expected'])
+try:package.audit_file(object(),object(),options=object())
+except NotImplementedError:pass
+else:raise AssertionError('file_audit_activated')
 assert events==[]
 for probe in (lambda:open('FICTIONAL_MUST_NOT_OPEN','rb'),
               lambda:socket.getaddrinfo('fictional.invalid',443),
@@ -140,13 +140,14 @@ for probe in (lambda:open('FICTIONAL_MUST_NOT_OPEN','rb'),
     except RuntimeError:pass
 assert events==['open','socket.getaddrinfo','ctypes.dlopen']
 print(json.dumps({'modules':loaded,'hero_modes':heroes,'completed_finite_modes':completed,
-    'normal_effects':[],'negative_events':events,'public_refusals':2,'invalid_modes':2,
+    'normal_effects':[],'negative_events':events,'public_refusals':1,'public_audit':public,'invalid_modes':2,
     'runtime_distributions':['source-integrity-toolkit']}))
 '''
 
 
 def test_clean_installed_analysis_original_heroes_and_completed_finite_case(installed_runtime):
-    work, python, inventories = installed_runtime
+    work, python, inventories, distribution_paths = installed_runtime
+    public = _load('sit_w08_public_installed_witness', 'tests/integration/test_public_installed_runtime.py')
     hero = _load('sit_w14_hero_assertions', 'tests/integration/test_analytical_hero_inputs.py')
     finite = _load('sit_w14_independent_finite_source', 'tests/integration/test_analytical_pipeline.py')
     modules = {}
@@ -164,9 +165,9 @@ def test_clean_installed_analysis_original_heroes_and_completed_finite_case(inst
         'reached_origin_record_count': 1, 'documentary_origin_boundary_record_count': 1},
         'memberships': {'e': ['origin'], 'e2': ['origin']}, 'hhi': [4, 4]}
     payload = {'modules': modules, 'heroes': heroes, 'finite_source': finite._documented_value(),
-               'finite_expectations': expectations}
+               'finite_expectations': expectations, 'public': public.public_payload()}
     # The helper is developer assertion code, sent to -c; it is not installed.
-    script = inspect.getsource(hero._hero_analysis) + '\n' + _CHILD
+    script = public.public_script() + inspect.getsource(hero._hero_analysis) + '\n' + _CHILD
     run = subprocess.run([str(python), '-I', '-B', '-c', script], cwd=work,
         input=json.dumps(payload).encode('utf-8'), capture_output=True, timeout=600)
     assert run.returncode == 0, run.stderr.decode(errors='replace')
@@ -175,6 +176,13 @@ def test_clean_installed_analysis_original_heroes_and_completed_finite_case(inst
     assert actual['modules'] == modules and len(actual['hero_modes']) == 8
     assert len(actual['completed_finite_modes']) == 2
     assert actual['normal_effects'] == []
+    public_installs = [{'mode': 'direct_wheel', 'source_archive': distribution_paths[1].name,
+        'source_archive_sha256': inventories[1]['sha256'],
+        'runtime': {name: actual[name] for name in ('modules', 'runtime_distributions',
+            'normal_effects', 'negative_events', 'public_refusals', 'public_audit')}}]
+    public_installs.extend(public.additional_installed_public_witnesses(work, distribution_paths, modules))
+    assert [row['mode'] for row in public_installs] == ['direct_wheel', 'sdist', 'rebuilt_wheel']
+    assert all(row['runtime']['public_audit'] == actual['public_audit'] for row in public_installs)
     paths = [Path(__file__), ROOT / 'tests/integration/test_analytical_hero_inputs.py',
              ROOT / 'tests/integration/test_analytical_pipeline.py']
     fixture_paths = [ROOT / 'tests' / kind / (case + suffix) for case in hero.HEROES
@@ -182,7 +190,9 @@ def test_clean_installed_analysis_original_heroes_and_completed_finite_case(inst
     guard = _load('sit_current_installed_context', 'tools/check_scaffold_boundary.py')
     state = guard.current_local_state(ROOT)
     record = {**state,
-        'scope': 'W14 installed private analysis; original hero stops are not completed golden certification',
+        'scope': 'Installed private analysis and three P4-W08 public install paths; original hero stops are not completed golden certification',
+        'public_test_sources': {'tests/integration/test_public_installed_runtime.py': hashlib.sha256((ROOT / 'tests/integration/test_public_installed_runtime.py').read_bytes()).hexdigest()},
+        'public_installations': public_installs,
         'ok': True, 'runtime': actual, 'distributions': inventories,
         'test_sources': {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
                          for path in paths},

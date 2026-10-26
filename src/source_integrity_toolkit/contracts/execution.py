@@ -274,7 +274,7 @@ class AuditCancelled(_AuditCancelledFields):
 
 
 @dataclass(frozen=True, slots=True, repr=False, eq=False)
-class AuditUsageError(ValueError):
+class _AuditUsageErrorFields(ValueError):
     """A fixed, payload-free trusted-invocation failure, before input access."""
     @property
     def code(self) -> str:
@@ -293,6 +293,20 @@ class AuditUsageError(ValueError):
 
     def __repr__(self) -> str:
         return "AuditUsageError()"
+
+
+class AuditUsageError(_AuditUsageErrorFields):
+    """Immutable safe usage failure with normal traceback propagation."""
+    __slots__ = ()
+
+    def __setattr__(self, name, value):
+        if type(name) is str and name == "__traceback__":
+            Exception.with_traceback(self, value)
+            return
+        raise AttributeError("AuditUsageError fields are immutable.")
+
+    def __delattr__(self, name):
+        raise AttributeError("AuditUsageError fields are immutable.")
 
 
 class _ReportEncodingPort(_FinalizationPort, Protocol):

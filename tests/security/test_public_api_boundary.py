@@ -1,6 +1,6 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""P4-W07 internal invocation safety before the public API is activated.
+"""P4-W08 public invocation safety and retained W07 effect controls.
 
 Observers cover exercised Python effects in a warmed process. They do not claim
 hostile same-process isolation, native file validation or future CLI behavior.
@@ -16,8 +16,8 @@ from types import MappingProxyType
 import pytest
 
 from source_integrity_toolkit import api
-from source_integrity_toolkit.contracts.execution import AuditAbort, AuditCancelled
-from source_integrity_toolkit.contracts.report import AuditReport
+from source_integrity_toolkit import AuditAbort, AuditCancelled, AuditUsageError
+from source_integrity_toolkit import AuditReport
 from source_integrity_toolkit.runtime import boundary, resources
 
 
@@ -59,7 +59,7 @@ def finite_input():
     "root", "dict_subclass", "key_subclass", "string_subclass", "list_subclass",
     "nested_object", "generator", "cycle",
 ))
-def test_internal_invocation_rejects_hostile_input_without_executing_protocols(kind, capsys):
+def test_public_invocation_rejects_hostile_input_without_executing_protocols(kind, capsys):
     calls = []
 
     def touched(*args, **kwargs):
@@ -102,7 +102,7 @@ def test_internal_invocation_rejects_hostile_input_without_executing_protocols(k
         source["extensions"] = {"fictional:private": generator()}
     else:
         source["extensions"] = {"fictional:cycle": source}
-    result = boundary._audit_value(source)
+    result = api.audit_bundle(source)
     assert type(result) is AuditReport
     assert result.report_kind == "validation_diagnostics"
     assert result.input_validation["state"] == "rejected"
@@ -114,7 +114,7 @@ def test_internal_invocation_rejects_hostile_input_without_executing_protocols(k
 
 
 @pytest.mark.parametrize("fault", ("opaque", "memory", "cancel"))
-def test_internal_native_fault_surface_does_not_format_or_retain_source_exception(fault, monkeypatch, capsys):
+def test_public_native_fault_surface_does_not_format_or_retain_source_exception(fault, monkeypatch, capsys):
     calls = []
 
     class Opaque(Exception):
@@ -137,7 +137,7 @@ def test_internal_native_fault_surface_does_not_format_or_retain_source_exceptio
     source = finite_input()
     before = copy.deepcopy(source)
     try:
-        result = boundary._audit_value(source)
+        result = api.audit_bundle(source)
     except (AuditAbort, AuditCancelled) as error:
         if fault == "cancel":
             assert type(error) is AuditCancelled
@@ -159,11 +159,11 @@ def test_internal_native_fault_surface_does_not_format_or_retain_source_exceptio
     assert capsys.readouterr() == ("", "")
 
 
-def test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes(monkeypatch):
+def test_public_report_contains_only_frozen_disclosure_and_two_cached_bytes(monkeypatch):
     source = finite_input()
     source["extensions"] = {"fictional:private": {"secret": CANARY}}
     before = copy.deepcopy(source)
-    report = boundary._audit_value(source)
+    report = api.audit_bundle(source)
     assert type(report) is AuditReport
     assert report.run["processing_state"] == "completed"
     assert report.input_validation["state"] == "accepted"
@@ -208,7 +208,7 @@ def test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes(mo
             assert type(value) in (str, bool, int, type(None))
 
 
-def test_w07_public_entry_points_still_refuse_without_touching_arguments():
+def test_public_usage_and_file_refusals_leave_hostile_arguments_untouched():
     calls = []
 
     class Hostile:
@@ -218,7 +218,7 @@ def test_w07_public_entry_points_still_refuse_without_touching_arguments():
         __repr__ = __str__ = __iter__ = __len__ = __fspath__ = touched
 
     hostile = Hostile()
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(AuditUsageError, match="^Invalid audit invocation\\.$"):
         api.audit_bundle(hostile, options=hostile)
     with pytest.raises(NotImplementedError):
         api.audit_file(hostile, hostile, options=hostile)
@@ -229,13 +229,13 @@ PROBE = r'''
 import sys,json,ctypes,socket,subprocess,os,builtins,io
 import encodings.idna
 sys.path.insert(0,sys.argv[1])
-from source_integrity_toolkit.runtime.boundary import _audit_value
-from source_integrity_toolkit.contracts.report import AuditReport
+from source_integrity_toolkit import audit_bundle
+from source_integrity_toolkit import AuditReport
 source=json.loads(sys.stdin.buffer.read());mode=sys.argv[2];events=[]
 # Warm trusted imports before observing the entire subsequent invocation.
 # Negative controls exercise each observer directly and need no audit replay.
 if mode=='success':
-    warm=_audit_value(source)
+    warm=audit_bundle(source)
     assert type(warm) is AuditReport and warm.run['processing_state']=='completed'
 before=json.dumps(source,sort_keys=True)
 def audit(event,args):
@@ -253,11 +253,11 @@ try:
     elif mode=='negative-native': ctypes.CDLL('FICTIONAL_MUST_NOT_LOAD')
     elif mode=='negative-process': subprocess.Popen([sys.executable,'-c','pass'])
     else:
-        report=_audit_value(source)
+        report=audit_bundle(source)
         assert type(report) is AuditReport and report.run['processing_state']=='completed'
         assert report.to_json_bytes()==warm.to_json_bytes()
         assert report.to_markdown_bytes()==warm.to_markdown_bytes()
-        rejected=_audit_value({'fictional:source':source})
+        rejected=audit_bundle({'fictional:source':source})
         assert type(rejected) is AuditReport and rejected.input_validation['state']=='rejected'
         assert json.dumps(source,sort_keys=True)==before
 except RuntimeError:
@@ -272,7 +272,7 @@ print(json.dumps({'events':events,'ok':True}))
     ("negative-network", "socket.getaddrinfo"), ("negative-native", "ctypes.dlopen"),
     ("negative-process", "subprocess.Popen"),
 ))
-def test_internal_complete_invocation_has_no_observed_file_network_native_or_process_effect(mode, event):
+def test_public_complete_invocation_has_no_observed_file_network_native_or_process_effect(mode, event):
     source = finite_input()
     source["extensions"] = {"fictional:untrusted": {
         "path": "../" + CANARY, "$ref": "https://fictional.invalid/schema",
@@ -284,3 +284,70 @@ def test_internal_complete_invocation_has_no_observed_file_network_native_or_pro
     assert run.returncode == 0, run.stderr.decode(errors="replace")
     assert json.loads(run.stdout) == {"ok": True, "events": [] if event is None else [event]}
     assert run.stderr == b"" and CANARY.encode() not in run.stdout
+
+
+@pytest.mark.parametrize("kind", (
+    "opaque_options", "dict_subclass", "text_key_subclass", "collision_key",
+    "hostile_value", "unknown_key", "too_many_keys", "list_options",
+))
+def test_hostile_options_are_rejected_before_dossier_or_runtime_access(kind, monkeypatch, capsys):
+    calls = []
+
+    def touched(*args, **kwargs):
+        calls.append("caller_protocol")
+        raise AssertionError("options executed a caller protocol")
+
+    class Hostile:
+        __str__ = __repr__ = __iter__ = __bool__ = __eq__ = touched
+        __len__ = __getitem__ = __int__ = __float__ = __index__ = touched
+        __fspath__ = __copy__ = __deepcopy__ = touched
+
+    class HostileDict(dict):
+        __str__ = __repr__ = __iter__ = __len__ = items = keys = values = touched
+        __getitem__ = __contains__ = touched
+
+    class HostileText(str):
+        __str__ = __repr__ = __iter__ = __len__ = __eq__ = touched
+        __hash__ = str.__hash__
+
+    class CollisionKey(Hostile):
+        def __hash__(self):
+            # Building the caller-owned dict is outside the observed operation.
+            # A lookup for this literal during validation would invoke __eq__.
+            calls.append("caller_hash")
+            return hash("raw_file_digest")
+
+    if kind == "opaque_options":
+        options = Hostile()
+    elif kind == "dict_subclass":
+        options = HostileDict(raw_file_digest=False)
+    elif kind == "text_key_subclass":
+        options = {HostileText("raw_file_digest"): False}
+    elif kind == "collision_key":
+        options = {CollisionKey(): False}
+    elif kind == "hostile_value":
+        options = {"raw_file_digest": Hostile()}
+    elif kind == "unknown_key":
+        options = {CANARY: Hostile()}
+    elif kind == "too_many_keys":
+        options = {"raw_file_digest": False, CANARY: Hostile()}
+    else:
+        options = [Hostile()]
+    calls.clear()
+    dossier = HostileDict()
+
+    def runtime_forbidden(*args, **kwargs):
+        calls.append("runtime")
+        raise AssertionError("invalid options reached the invocation")
+
+    monkeypatch.setattr(api, "_audit_value", runtime_forbidden)
+    monkeypatch.setattr(boundary, "_new_analysis_budget", runtime_forbidden)
+    with pytest.raises(AuditUsageError) as captured:
+        api.audit_bundle(dossier, options=options)
+    error = captured.value
+    assert type(error) is AuditUsageError
+    assert error.code == "invalid_invocation"
+    assert str(error) == error.safe_message == "Invalid audit invocation."
+    assert error.args == ("Invalid audit invocation.",)
+    assert CANARY not in repr(error) + str(error.args) + "".join(traceback.format_exception(error))
+    assert calls == [] and capsys.readouterr() == ("", "")

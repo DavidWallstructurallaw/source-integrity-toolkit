@@ -1,6 +1,6 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""W07 real internal memory composition, before W08 public API activation.
+"""W08 real public memory composition, retaining W07 private regression.
 
 The finite dossier below is independently authored from the bundle contract.
 Its empty seed/dimension populations have literal expectations, not snapshots
@@ -18,7 +18,7 @@ import re
 import pytest
 
 from source_integrity_toolkit.contracts import report as contract
-from source_integrity_toolkit.contracts.execution import AuditAbort
+from source_integrity_toolkit import AuditAbort, audit_bundle
 from source_integrity_toolkit.runtime import boundary, resources
 
 
@@ -140,7 +140,7 @@ def completed():
     patch = pytest.MonkeyPatch()
     try:
         patch.setattr(boundary, '_new_analysis_budget', observe)
-        report = boundary._audit_value(source)
+        report = audit_bundle(source)
     finally:
         patch.undo()
     assert source == before
@@ -213,7 +213,7 @@ def test_explicit_dimension_empty_seed_ratios_complete_as_unavailable():
     source = _minimal_value()
     source['inquiries'][0]['dependency_dimensions'] = ['acquisition']
     before = copy.deepcopy(source)
-    report = boundary._audit_value(source)
+    report = audit_bundle(source)
     document = _assert_complete_formats(report)
     assert source == before
     assert document['run']['processing_state'] == 'completed'
@@ -276,7 +276,7 @@ def test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime(complet
 def test_source_mutation_after_delivery_cannot_change_report_or_encodings():
     source = _minimal_value()
     before = copy.deepcopy(source)
-    report = boundary._audit_value(source)
+    report = audit_bundle(source)
     assert source == before
     json_raw, markdown_raw = report.to_json_bytes(), report.to_markdown_bytes()
     source['inquiries'][0]['target_claim_refs'].clear()
@@ -321,7 +321,7 @@ def test_structural_rejection_delivers_complete_safe_diagnostic_formats(mutation
     else:
         source['inquiries'][0]['target_claim_refs'] = ['PRIVATE-MISSING-CLAIM']
     before = copy.deepcopy(source)
-    report = boundary._audit_value(source)
+    report = audit_bundle(source)
     document = _assert_complete_formats(report)
     assert source == before
     assert document['report_kind'] == 'validation_diagnostics'
@@ -355,7 +355,7 @@ def test_full_reference_is_subject_to_the_actual_whole_invocation_limit(monkeypa
 
     monkeypatch.setattr(boundary, '_new_analysis_budget', observe)
     try:
-        report = boundary._audit_value(source)
+        report = audit_bundle(source)
     except AuditAbort as stopped:
         assert stopped.processing_state == 'interrupted'
         assert stopped.input_validation_state == 'accepted'

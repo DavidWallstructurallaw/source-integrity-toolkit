@@ -2,7 +2,42 @@
 
 A local, supplied-evidence toolkit for examining source lineage, evidence independence, external presence and corrective capacity in AI-native information systems.
 
-**Status: Phase 3 private analysis and verification consolidation are accepted; [PR #35](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/35) is merged. [Phase 4](PHASE_4_PLAN.md) is approved, and P4-W01 is the current verification bootstrap. Public auditing remains unavailable.** The package remains installable as `0.1.0.dev0`. This work unit changes verification and planning records while preserving all 48 product modules at the accepted merge. Both public audit calls still raise `NotImplementedError`; CLI auditing still refuses with exit 1 without reading dossiers or producing reports.
+**Status: public in-memory auditing is available on the Phase 4 development branch through P4-W08.** `audit_bundle` accepts a caller-prepared dossier and returns an immutable report with complete JSON and Markdown bytes when the existing resource limits permit delivery. The package remains `0.1.0.dev0`; [PR #36](https://github.com/DavidWallstructurallaw/source-integrity-toolkit/pull/36) is a draft. Field-by-field public obligation closure and final four-environment acceptance remain for W09 and W10. `audit_file` still immediately raises `NotImplementedError`; CLI auditing still refuses with exit 1 without reading dossiers or producing reports.
+
+## In-memory use
+
+Prepare `dossier` as an exact built-in `dict` following the [bundle contract](schemas/bundle/sit-bundle-0.1.schema.json). Input capture and validation occur inside the audit call; callers must not mutate their containers concurrently.
+
+```python
+from source_integrity_toolkit import (
+    audit_bundle, AuditAbort, AuditCancelled, AuditUsageError,
+)
+
+try:
+    report = audit_bundle(dossier)
+except AuditUsageError:
+    # Correct the invocation options before trying again.
+    raise
+except AuditCancelled:
+    # Cancellation has no partial report to consume.
+    raise
+except AuditAbort as error:
+    # Only fixed safe state and reason fields are exposed.
+    print(error.input_validation_state, error.reason_code)
+else:
+    print(report.report_kind, report.run["processing_state"])
+    print(report.input_validation["state"])
+    json_bytes = report.to_json_bytes()
+    markdown_bytes = report.to_markdown_bytes()
+```
+
+Check the report states before interpreting results. A delivered report may describe rejected input, an interrupted audit or a processing failure. Completed analysis may legitimately contain unavailable results. A safe `AuditAbort` means a complete conforming report could not be delivered. `AuditCancelled` preserves cancellation separately.
+
+The 16 report roots are read-only named attributes, nested objects are immutable mappings, and arrays are tuples. Both byte methods return the encodings completed during that same call; reading them performs no new analysis, encoding or I/O. The toolkit does not write or publish those bytes. Report fields can remain identifying, so successful delivery provides no anonymization or permission-to-publish guarantee.
+
+`options=None`, `options={}` and `options={"raw_file_digest": False}` are equivalent. No other option is supported for in-memory input. `True`, unknown keys, custom mappings, non-boolean values and caller callbacks raise `AuditUsageError` before the dossier is accessed. Input records cannot configure budgets, clocks or execution policy.
+
+The package exports `audit_bundle`, `audit_file`, `AuditReport`, `AuditAbort`, `AuditCancelled`, `AuditUsageError` and `__version__`. File capture, native adapters, CLI auditing and formal release remain later work.
 
 
 ## Intended purpose
@@ -23,9 +58,9 @@ The private analysis accepts exact built-in values or supplied UTF-8 bytes and e
 
 All 228 field obligations have accepted owner-local core evidence. W14 added source-clause and counterexample checks. W15 identified and repaired the missing `dimension_not_selected` distinction for empty dimension selection, with exact paired value/UTF-8 tests and separate absent-subject/incomplete-role controls. The 228 historical rows remain unchanged and do not close public-envelope, rendering or release clauses. See [phase3/obligation_coverage.json](phase3/obligation_coverage.json) for the per-obligation evidence and remaining duties.
 
-The accepted Phase 4 entry is `fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c`, tree `f6fbb8965520f33a09ca38cf413e11ca561110dd`. It is the normal merge of PR #35 and preserves the directly tested VC candidate's exact tree. The owner approved the exact [PHASE_4_PLAN.md](PHASE_4_PLAN.md) bytes and authorized P4-W01 only. The plan's authoring-time draft header is historical; the later approval and current execution are recorded separately in [phase4/implementation_evidence.json](phase4/implementation_evidence.json).
+The accepted Phase 4 entry is `fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c`, tree `f6fbb8965520f33a09ca38cf413e11ca561110dd`. It is the normal merge of PR #35 and preserves the directly tested VC candidate's exact tree. The owner approved the exact [PHASE_4_PLAN.md](PHASE_4_PLAN.md) bytes and subsequently authorized W01 through W08. The plan's authoring-time draft header is historical; later approvals and current execution are recorded separately in [phase4/implementation_evidence.json](phase4/implementation_evidence.json).
 
-P4-W01 establishes the ten work units' closed path and activation policy, current event/history checks, retained direct test controls and a [pending report coverage map](phase4/report_contract_coverage.json). It implements no report schema, renderer, public audit or native adapter. Later units will introduce the frozen report contract, privacy projection, JSON/Markdown and finally `audit_bundle` under their approved scopes when the owner authorizes their execution. The report coverage map starts with all 228 public-envelope/rendering obligations pending; inherited private-core evidence does not close them. File auditing, CLI auditing and release remain later work.
+W01 established the ten work units' closed path and activation policy. W02 through W07 added the report contract, explicit projection and disclosure, exact JSON/Markdown encodings and same-invocation budget integration. W08 activates the public memory API and migrates the former refusal checks to actual public behavior. The [report coverage map](phase4/report_contract_coverage.json) keeps all 228 field obligations distinct from this interface checkpoint; their public-envelope/rendering closure is W09 work. W10 retains final installation/platform acceptance and handoff. File auditing, CLI auditing and release require their later approved stages.
 
 ## Developer installation and checks
 
@@ -38,9 +73,9 @@ python -B tests/scaffold/test_ci_contract.py --local --evidence-dir ../sit-p4-lo
 
 Choose a new evidence directory for each attempt. The entry verifies the actual tool versions, current module/workflow boundaries and frozen Phase 0 baseline, explicitly collects all five directories (scaffold, security, contract, unit and integration), runs the complete suite with third-party pytest plugin autoload disabled, and reconciles exact collected identities with JUnit. Successful subtest events are counted separately. It checks tracked bytes before/after and retains raw logs, failure records, distribution inventories and available installed-runtime evidence. Missing directories, an empty collection, failure/error/skip outcomes or incomplete evidence fail the command. The complete-suite process budget is 2,400 seconds.
 
-This local command requires no `SIT_PHASE_UNIT` or fabricated GitHub event. It checks the local working tree and records its source hashes. It cannot attest hosted context, authorize a checkout or replace the four required hosted profiles. The retained preparation installation test asserts its complete witness locally, but its persistent W08 receipt is emitted only on an actual Actions run; local evidence states that limit. Use the resulting `summary.json` and raw logs to inspect the attempt, including a failed or timed-out attempt.
+This local command requires no `SIT_PHASE_UNIT` or fabricated GitHub event. It checks the local working tree and records its source hashes. It cannot attest hosted context, authorize a checkout or replace the four required hosted profiles. Installed-runtime receipts record the actual tested distribution, module hashes, inputs, independent expectations and execution scope. Use the resulting `summary.json` and raw logs to inspect the attempt, including a failed or timed-out attempt.
 
-Dependency installation is a developer operation and may access the package index. The installed product has zero third-party runtime dependencies. Package construction, clean offline installation, all 48 installed module hashes, private preparation and analytical witnesses, and public refusals remain tested. The product never imports developer guards, catalogs or tests. Six former historical wrappers now contain their current assertions directly; normal test collection does not fetch or execute historical Git blobs. Some developer boundary tests intentionally use real temporary Git repositories. Building and using the installed package does not require that history.
+Dependency installation is a developer operation and may access the package index. The installed product has zero third-party runtime dependencies. Package construction, clean offline installation, all 48 installed module hashes, private preparation and analytical witnesses, actual public memory reports, and the remaining file/CLI refusals are tested. The product never imports developer guards, catalogs or tests. Six former historical wrappers now contain their current assertions directly; normal test collection does not fetch or execute historical Git blobs. Some developer boundary tests intentionally use real temporary Git repositories. Building and using the installed package does not require that history.
 
 Bare `pytest` retains its older scaffold-only configuration. Use the current entry above for complete local verification. Existing targeted pytest invocations are useful diagnostics and must be reported with their actual selected scope.
 
@@ -60,7 +95,7 @@ Phase 4 records each current candidate's actual collection and result. Its final
 
 Current Phase 4 work and actual validation status are in [phase4/implementation_evidence.json](phase4/implementation_evidence.json); the scoped verification and toolchain review is in [phase4/ci_review.md](phase4/ci_review.md). [VERIFICATION_CONSOLIDATION_COMPLETION.md](VERIFICATION_CONSOLIDATION_COMPLETION.md) and the one-time [consolidation map](verification/consolidation_map.json) preserve their original checkpoint wording; later PR acceptance and merge records establish VC completion. These maps are review artifacts, never product input or an approval switch for current verification. Historical stage evidence remains in [PHASE_3_COMPLETION.md](PHASE_3_COMPLETION.md), [phase3/implementation_evidence.json](phase3/implementation_evidence.json) and their immutable Git history. The complete pre-retirement test implementation is available at `3ac5128e4744e2d3708400e3cb1875a9cd4ed0e1`; inspect any historical replay in an isolated checkout with its original tooling and label it as historical investigation. Earlier failed attempts and missing W01-W07 raw ZIPs and some W08 profile artifacts remain disclosed. Existing CI artifacts contain JSON/XML/log records, not the wheel/sdist archive bytes or original GitHub event payloads. W08 temporary-archive member corroboration and W14 exact archive records have different evidence scope; no whole-archive reproducibility claim is made. The different VC event digests between runner groups have no established byte-level explanation.
 
-Windows Server component tests do not certify a future Windows 11/NTFS native adapter. Public audit/report output, CLI auditing, native file adapters and release remain unfinished. The product's 60-second cooperative deadline and existing work quotas are unchanged; a safe resource interruption is not certification of unperformed analysis.
+Windows Server component tests do not certify a future Windows 11/NTFS native adapter. Public in-memory report delivery is implemented; per-field public acceptance, final platform acceptance, CLI auditing, native file adapters and release remain unfinished. The product's 60-second cooperative deadline and existing work quotas are unchanged; a safe resource interruption is not certification of unperformed analysis.
 
 ## Specifications, security and rights
 

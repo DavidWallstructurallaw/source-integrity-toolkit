@@ -431,13 +431,26 @@ def test_private_outcome_is_immutable_and_has_no_public_report_or_options(full_o
     for name in ('report_kind', 'report_contract', 'report_id', 'schema_version', 'run',
                  'input_validation', 'overall_level', 'max_level', 'to_json'):
         assert not hasattr(out, name)
-    assert public.__all__ == ('audit_bundle', 'audit_file', '__version__')
+    assert public.__all__ == ('audit_bundle', 'audit_file', '__version__', 'AuditReport',
+                              'AuditAbort', 'AuditCancelled', 'AuditUsageError')
     for finding in out.findings:
         assert not hasattr(finding.witness, 'job_port') and not hasattr(finding.witness, 'prepared')
     assert not hasattr(public, '_analyze_value') and not hasattr(public, '_analyze_utf8')
     assert tuple(inspect.signature(boundary._analyze_value).parameters) == ('value',)
     assert tuple(inspect.signature(boundary._analyze_utf8).parameters) == ('raw',)
-    with pytest.raises(NotImplementedError):
-        public.audit_bundle(cases._minimal_value())
+    source = cases._minimal_value()
+    before = copy.deepcopy(source)
+    delivered = public.audit_bundle(source)
+    assert type(delivered) is public.AuditReport
+    assert delivered.report_kind == 'audit_report'
+    assert delivered.run['processing_state'] == 'completed'
+    assert delivered.input_validation['state'] == 'accepted'
+    document = json.loads(delivered.to_json_bytes())
+    assert document['input_identity']['bundle_id'] == 'bundle'
+    assert len(document['capabilities']) == 15
+    assert len(document['observability_domains']) == 5
+    assert b'"processing_state": "completed"' in delivered.to_markdown_bytes()
+    assert b'"bundle_id": "bundle"' in delivered.to_markdown_bytes()
+    assert source == before
     with pytest.raises(NotImplementedError):
         public.audit_file(object(), object())

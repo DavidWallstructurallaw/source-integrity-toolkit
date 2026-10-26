@@ -16,6 +16,7 @@ import ast
 import argparse
 from email.parser import BytesParser
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -529,12 +530,61 @@ def archive_inventories(base):
     return archives
 
 
+def installed_public_expectations():
+    """Read the developer witness's literal input, never product audit output."""
+    path = ROOT / "tests/integration/test_public_installed_runtime.py"
+    spec = importlib.util.spec_from_file_location("sit_public_receipt_expectations", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    payload = module.public_payload()
+    return payload, list(module.PUBLIC_ROOTS)
+
+
+def validate_installed_public(runtime, modules, payload, roots):
+    require(runtime["modules"] == modules and
+            runtime["runtime_distributions"] == ["source-integrity-toolkit"] and
+            runtime["normal_effects"] == [] and
+            runtime["negative_events"] == ["open", "socket.getaddrinfo", "ctypes.dlopen"] and
+            type(runtime["public_refusals"]) is int and
+            runtime["public_refusals"] == 1, "installed_runtime_boundary_incomplete")
+    public = runtime.get("public_audit", {})
+    expected = payload["expected"]
+    digest = lambda value: hashlib.sha256(json.dumps(
+        value, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+    require(public.get("case_id") == expected["bundle_id"] and
+            public.get("input_sha256") == digest(payload["source"]) and
+            public.get("expectations_sha256") == digest(expected) and
+            public.get("report_kind") == "audit_report" and
+            public.get("processing_state") == "completed" and
+            public.get("input_state") == "accepted" and public.get("root_members") == roots and
+            public.get("family_ids") == expected["family_ids"] and
+            public.get("counts") == expected["counts"] and
+            all(type(value) is int for value in public["counts"].values()) and
+            public.get("unavailable_fractions") == expected["unavailable_fractions"] and
+            type(public.get("basis_total")) is int and
+            public["basis_total"] == expected["basis_total"] and
+            public.get("basis_members") == expected["basis_members"] and
+            public.get("source_unchanged") is True and
+            public.get("detached_after_source_clear") is True and
+            public.get("immutable_roots_and_nested") is True and
+            type(public.get("cached_identity_reads")) is int and
+            public["cached_identity_reads"] == 3, "installed_public_semantics_missing")
+    for encoding in ("json", "markdown"):
+        value = public.get(encoding, {})
+        require(type(value.get("bytes")) is int and 0 < value["bytes"] <= 67_108_864 and
+                type(value.get("sha256")) is str and
+                re.fullmatch(r"[0-9a-f]{64}", value["sha256"]) is not None and
+                value["sha256"] == value.get("independent_sha256"),
+                "installed_public_encoding_missing")
+
+
 def installed_receipts(base, evidence, binding, archives, *, local=False):
     modules = {}
     for path in sorted((ROOT / "src/source_integrity_toolkit").rglob("*.py")):
         name = path.relative_to(ROOT / "src").as_posix().removesuffix(".py").replace("/", ".").removesuffix(".__init__")
         modules[name] = hashlib.sha256(path.read_bytes()).hexdigest()
     require(len(modules) == 48, "installed_module_set_changed")
+    payload, roots = installed_public_expectations()
     results = {}
     for label in ("w08", "w14"):
         name = label + "-installed-runtime.json"
@@ -554,9 +604,11 @@ def installed_receipts(base, evidence, binding, archives, *, local=False):
                 receipt.get("activation_stage") == binding["activation_stage"],
                 "installed_receipt_current_context_mismatch")
         runtime = receipt["runtime"]
-        require(runtime["modules"] == modules and runtime["runtime_distributions"] == ["source-integrity-toolkit"] and
-                runtime["normal_effects"] == [] and runtime["negative_events"] == ["open", "socket.getaddrinfo", "ctypes.dlopen"] and
-                runtime["public_refusals"] == 2, "installed_runtime_boundary_incomplete")
+        validate_installed_public(runtime, modules, payload, roots)
+        public_source = "tests/integration/test_public_installed_runtime.py"
+        require(receipt.get("public_test_sources") == {
+            public_source: hashlib.sha256((ROOT / public_source).read_bytes()).hexdigest()},
+            "installed_public_source_changed")
         if label == "w08":
             require(runtime["admitted_fixture_modes"] == 8 and
                     runtime["rejected_empty_modes"] == 2, "installed_preparation_modes_missing")
@@ -580,6 +632,18 @@ def installed_receipts(base, evidence, binding, archives, *, local=False):
                 distributions[1]["members"] == distributions[2]["members"], "installed_rebuild_inventory_mismatch")
         require(all(any(r["name"] == a["name"] and r["members"] == a["members"] for a in archives)
                     for r in distributions), "installed_inventory_not_in_current_builds")
+        if label == "w14":
+            installations = receipt.get("public_installations", [])
+            require([row.get("mode") for row in installations] ==
+                    ["direct_wheel", "sdist", "rebuilt_wheel"], "installed_public_distribution_modes_missing")
+            for row, archive_index in zip(installations, (1, 0, 2)):
+                archive = distributions[archive_index]
+                require(row.get("source_archive") == archive["name"] and
+                        row.get("source_archive_sha256") == archive["sha256"],
+                        "installed_public_archive_mismatch")
+                validate_installed_public(row["runtime"], modules, payload, roots)
+                require(row["runtime"]["public_audit"] == runtime["public_audit"],
+                        "installed_public_distribution_results_differ")
         results[label] = {"receipt_persisted": True, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                           "modules": len(modules), "distributions": len(distributions)}
     return results
@@ -776,23 +840,45 @@ class DriverEvidenceTests(unittest.TestCase):
         self.assertEqual(command[command.index("--unit") + 1], "P4-W01")
 
     def test_installed_receipts_bind_current_unit_activation_and_both_refusals(self):
+        # Retained identity: W08 replaces only bundle refusal with actual public
+        # semantic/encoding receipts; the file refusal and all old bindings stay.
         evidence = self.workspace()
-        binding = {"head": "a" * 40, "unit": "P4-W01", "activation_stage": 1}
+        binding = {"head": "a" * 40, "unit": "P4-W08", "activation_stage": 8}
         modules = {}
         for path in sorted((ROOT / "src/source_integrity_toolkit").rglob("*.py")):
             name = path.relative_to(ROOT / "src").as_posix().removesuffix(".py").replace("/", ".").removesuffix(".__init__")
             modules[name] = hashlib.sha256(path.read_bytes()).hexdigest()
         self.assertEqual(len(modules), 48)
-        distributions = [{"name": "synthetic.tar.gz", "members": {"source": "synthetic"}},
-            {"name": "synthetic.whl", "members": {"module": "synthetic"}},
-            {"name": "synthetic.whl", "members": {"module": "synthetic"}}]
+        distributions = [{"name": "synthetic.tar.gz", "members": {"source": "synthetic"}, "sha256": "a" * 64},
+            {"name": "synthetic.whl", "members": {"module": "synthetic"}, "sha256": "b" * 64},
+            {"name": "synthetic.whl", "members": {"module": "synthetic"}, "sha256": "b" * 64}]
+        payload, roots = installed_public_expectations()
+        expected = payload["expected"]
+        digest = lambda value: hashlib.sha256(json.dumps(value,
+            sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+        public = {"case_id": expected["bundle_id"], "input_sha256": digest(payload["source"]),
+            "expectations_sha256": digest(expected), "report_kind": "audit_report",
+            "processing_state": "completed", "input_state": "accepted", "root_members": roots,
+            "family_ids": expected["family_ids"], "counts": expected["counts"],
+            "unavailable_fractions": expected["unavailable_fractions"],
+            "basis_total": expected["basis_total"], "basis_members": expected["basis_members"],
+            "source_unchanged": True, "detached_after_source_clear": True,
+            "immutable_roots_and_nested": True, "cached_identity_reads": 3,
+            "json": {"bytes": 123, "sha256": "c" * 64, "independent_sha256": "c" * 64},
+            "markdown": {"bytes": 456, "sha256": "d" * 64, "independent_sha256": "d" * 64}}
         runtime = {"modules": modules, "runtime_distributions": ["source-integrity-toolkit"],
             "normal_effects": [], "negative_events": ["open", "socket.getaddrinfo", "ctypes.dlopen"],
-            "public_refusals": 2}
-        w08 = {**binding, "ok": True, "distributions": distributions, "runtime": {
-            **runtime, "admitted_fixture_modes": 8, "rejected_empty_modes": 2}}
-        w14 = {**binding, "ok": True, "distributions": distributions, "runtime": {
-            **runtime, "hero_modes": list(range(8)), "completed_finite_modes": list(range(2)), "invalid_modes": 2}}
+            "public_refusals": 1, "public_audit": public}
+        source = "tests/integration/test_public_installed_runtime.py"
+        shared = {**binding, "ok": True, "distributions": distributions,
+                  "public_test_sources": {source: hashlib.sha256((ROOT / source).read_bytes()).hexdigest()}}
+        w08 = {**shared, "runtime": {**runtime, "admitted_fixture_modes": 8, "rejected_empty_modes": 2}}
+        w14 = {**shared, "runtime": {**runtime, "hero_modes": list(range(8)),
+            "completed_finite_modes": list(range(2)), "invalid_modes": 2}}
+        w14["public_installations"] = [
+            {"mode": mode, "source_archive": distributions[index]["name"],
+             "source_archive_sha256": distributions[index]["sha256"], "runtime": copy.deepcopy(runtime)}
+            for mode, index in (("direct_wheel", 1), ("sdist", 0), ("rebuilt_wheel", 2))]
         for field, paths in {
                 "test_sources": ["tests/integration/test_analytical_installed_runtime.py",
                     "tests/integration/test_analytical_hero_inputs.py", "tests/integration/test_analytical_pipeline.py"],
@@ -809,10 +895,12 @@ class DriverEvidenceTests(unittest.TestCase):
             for field, value, reason in (
                     ("unit", "VC", "installed_receipt_current_context_mismatch"),
                     ("unit", "P3-W14", "installed_receipt_current_context_mismatch"),
-                    ("activation_stage", 8, "installed_receipt_current_context_mismatch"),
+                    ("activation_stage", 7, "installed_receipt_current_context_mismatch"),
                     ("activation_stage", True, "installed_receipt_current_context_mismatch"),
                     ("head", "b" * 40, "installed_receipt_head_or_result"),
-                    ("public_refusals", 1, "installed_runtime_boundary_incomplete")):
+                    ("public_refusals", 2, "installed_runtime_boundary_incomplete"),
+                    ("public_refusals", True, "installed_runtime_boundary_incomplete"),
+                    ("public_test_sources", {}, "installed_public_source_changed")):
                 with self.subTest(label=label, field=field, value=value):
                     changed = copy.deepcopy(records[label])
                     (changed["runtime"] if field == "public_refusals" else changed)[field] = value
@@ -820,6 +908,37 @@ class DriverEvidenceTests(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, "^" + reason + "$"):
                         installed_receipts(evidence, evidence, binding, distributions)
                     save(evidence / (label + "-installed-runtime.json"), records[label])
+            for field, value in (("processing_state", "interrupted"), ("input_state", "rejected"),
+                    ("input_sha256", "0" * 64), ("expectations_sha256", "0" * 64),
+                    ("counts", {}), ("counts", {key: False for key in expected["counts"]}),
+                    ("family_ids", []), ("root_members", []),
+                    ("unavailable_fractions", []), ("basis_members", []),
+                    ("source_unchanged", False), ("cached_identity_reads", True)):
+                with self.subTest(label=label, public_field=field):
+                    changed = copy.deepcopy(records[label])
+                    changed["runtime"]["public_audit"][field] = value
+                    save(evidence / (label + "-installed-runtime.json"), changed)
+                    with self.assertRaisesRegex(ValueError, "^installed_public_semantics_missing$"):
+                        installed_receipts(evidence, evidence, binding, distributions)
+                    save(evidence / (label + "-installed-runtime.json"), records[label])
+            for encoding in ("json", "markdown"):
+                with self.subTest(label=label, encoding=encoding):
+                    changed = copy.deepcopy(records[label])
+                    changed["runtime"]["public_audit"][encoding]["independent_sha256"] = "0" * 64
+                    save(evidence / (label + "-installed-runtime.json"), changed)
+                    with self.assertRaisesRegex(ValueError, "^installed_public_encoding_missing$"):
+                        installed_receipts(evidence, evidence, binding, distributions)
+                    save(evidence / (label + "-installed-runtime.json"), records[label])
+        for mutation, reason in (
+                (lambda row: row["public_installations"].pop(), "installed_public_distribution_modes_missing"),
+                (lambda row: row["public_installations"][1].update(source_archive_sha256="0" * 64), "installed_public_archive_mismatch"),
+                (lambda row: row["public_installations"][2]["runtime"]["public_audit"].update(processing_state="failed"), "installed_public_semantics_missing")):
+            changed = copy.deepcopy(w14)
+            mutation(changed)
+            save(evidence / "w14-installed-runtime.json", changed)
+            with self.assertRaisesRegex(ValueError, "^" + reason + "$"):
+                installed_receipts(evidence, evidence, binding, distributions)
+            save(evidence / "w14-installed-runtime.json", w14)
         self.assertEqual(set(installed_receipts(evidence, evidence, binding, distributions)), {"w08", "w14"})
 
     def test_timeout_preserves_partial_stdout_stderr_and_status(self):

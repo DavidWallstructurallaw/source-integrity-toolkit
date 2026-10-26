@@ -1,9 +1,9 @@
 {
   "phase": "P4",
-  "current_unit": "P4-W02",
-  "activation_stage": 7,
-  "status": "Preventive original-owner W02 boundary assertion repair verified at clean activation stage7; the original refusal path passed its exact targeted test, and the future stage8 delivery path awaits W08 candidate verification.",
-  "owner_authorization": "Approved PHASE_4_PLAN.md, explicit user instruction to continue W07, and original-owner repair authorization in plan section 9; plan hash 5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
+  "current_unit": "P4-W08",
+  "activation_stage": 8,
+  "status": "W08 public in-memory audit implementation prepared; actual complete scoped and installed verification still pending.",
+  "owner_authorization": "Approved PHASE_4_PLAN.md and explicit user instruction W08 继续.",
   "previous_checkpoint": {
     "phase": "P4",
     "current_unit": "P4-W03",
@@ -6433,5 +6433,603 @@
         "bytes": 25564
       }
     }
-  }
+  },
+  "w08_checkpoint": {
+    "owner": "P4-W08",
+    "activation_stage": 8,
+    "inherited_checkpoint": "f2e4b2a8b8b6eb7aed4c6215e8504cc7ee1daaa2",
+    "authorization": "Approved PHASE_4_PLAN.md and explicit user instruction W08 继续.",
+    "plan_sha256": "5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
+    "changed_scope": [
+      "README.md",
+      "phase4/implementation_evidence.json",
+      "phase4/report_contract_coverage.json",
+      "src/source_integrity_toolkit/__init__.py",
+      "src/source_integrity_toolkit/api.py",
+      "src/source_integrity_toolkit/contracts/execution.py",
+      "tests/contract/test_analytical_observability.py",
+      "tests/contract/test_phase2_transition.py",
+      "tests/contract/test_public_api.py",
+      "tests/integration/test_analytical_installed_runtime.py",
+      "tests/integration/test_preparation_capability_boundary.py",
+      "tests/integration/test_public_audit.py",
+      "tests/integration/test_public_installed_runtime.py",
+      "tests/scaffold/test_api_stubs.py",
+      "tests/scaffold/test_ci_contract.py",
+      "tests/scaffold/test_packaging.py",
+      "tests/security/test_public_api_boundary.py",
+      "tests/security/test_scaffold_inertness.py"
+    ],
+    "implementation": [
+      "Public audit_bundle checks exact trusted invocation options before dossier access and calls the existing same-invocation runtime.",
+      "Seven public names, exact signatures, immutable sixteen-root report and cached JSON/Markdown access are exposed at development version 0.1.0.dev0.",
+      "None, empty exact dict and raw_file_digest=False select the same behavior; true, unknown keys and hostile types fail with fixed AuditUsageError.",
+      "AuditUsageError permits normal traceback propagation while retaining fixed payload-free message/code and immutable public fields.",
+      "Legacy refusal assertions migrate to direct public behavior; original file/CLI refusals and effect observers remain.",
+      "Existing installed preparation/analysis witnesses retain their scopes and add public delivery in direct-wheel, sdist and rebuilt-wheel clean installations."
+    ],
+    "remaining": [
+      "All 228 field obligation rows and public-envelope/rendering verified counts retain their prior values; W09 closes those obligations using their actual evidence.",
+      "Original full-reference/hero completion is limited by unchanged budgets; finite successful witnesses do not replace original hero outcomes.",
+      "Final four-profile candidate acceptance and raw-evidence review remain W10 work.",
+      "File/native/CLI audit execution, merge, release, tags and version promotion remain outside W08."
+    ],
+    "previous_state": {
+      "current_unit": "P4-W02",
+      "activation_stage": 7,
+      "status": "Preventive original-owner W02 boundary assertion repair verified at clean activation stage7; the original refusal path passed its exact targeted test, and the future stage8 delivery path awaits W08 candidate verification.",
+      "owner_authorization": "Approved PHASE_4_PLAN.md, explicit user instruction to continue W07, and original-owner repair authorization in plan section 9; plan hash 5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48"
+    },
+    "scoped_runs": [
+      {
+        "execution": {
+          "command": [
+            "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/contract/test_public_api.py",
+            "tests/security/test_public_api_boundary.py",
+            "-k",
+            "exports or signatures or invalid_options or safe_failures or direct_report or hostile_options or usage_and_file_refusals",
+            "--junitxml=/workspace/scratch/4e5267fe5990/p4w08-public-fast-001.xml"
+          ],
+          "exit_code": 1,
+          "elapsed_seconds": 0.8179823909995321,
+          "source_files": [
+            "src/source_integrity_toolkit/api.py",
+            "src/source_integrity_toolkit/__init__.py",
+            "src/source_integrity_toolkit/contracts/execution.py",
+            "tests/contract/test_public_api.py",
+            "tests/security/test_public_api_boundary.py"
+          ],
+          "source_unchanged": true,
+          "scope": "Only cheap public export/signature/usage/transport and hostile-options controls; no complete audit invocation selected."
+        },
+        "distinct_case_count": 36,
+        "case_counts": {
+          "passed": 35,
+          "failure": 1,
+          "error": 0,
+          "skipped": 0
+        },
+        "junit_suite_tests_including_any_subtests": 36,
+        "junit_seconds": 0.459,
+        "identities_sha256": "9514697ee3c2ad30adb423ee55711afcccb9c3f171da6e7cf5dde23f3f829a50",
+        "raw": [
+          {
+            "file": "p4w08-public-fast-001-exit.json",
+            "sha256": "6a211afa813a909cfca725d2cd3f28d9bb4bccb5437f1f6b631cf81819e45613",
+            "bytes": 918
+          },
+          {
+            "file": "p4w08-public-fast-001.xml",
+            "sha256": "e20dc44140c8ae44fa7fc58a6525b12c0ea983df194bf293152515e2388fba90",
+            "bytes": 6421
+          },
+          {
+            "file": "p4w08-public-fast-001.log",
+            "sha256": "74c4387a37553964afc632c499e3b47e0692f33161909c25ab7e56fc4f4da350",
+            "bytes": 954
+          },
+          {
+            "file": "p4w08-public-fast-001-source-before.json",
+            "sha256": "42545bd31040ee31517501ff063a07248c75b617d39b3c61b53c5758dbc7eba7",
+            "bytes": 574
+          },
+          {
+            "file": "p4w08-public-fast-001-source-after.json",
+            "sha256": "42545bd31040ee31517501ff063a07248c75b617d39b3c61b53c5758dbc7eba7",
+            "bytes": 574
+          }
+        ],
+        "source_files": 5,
+        "source_hashes_unchanged": true,
+        "passed_in_recorded_scope": false
+      },
+      {
+        "execution": {
+          "command": [
+            "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/contract/test_public_api.py",
+            "tests/security/test_public_api_boundary.py",
+            "-k",
+            "exports or signatures or invalid_options or safe_failures or direct_report or hostile_options or usage_and_file_refusals",
+            "--junitxml=/workspace/scratch/4e5267fe5990/p4w08-public-fast-002.xml"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.6166829379999399,
+          "source_files": [
+            "src/source_integrity_toolkit/api.py",
+            "src/source_integrity_toolkit/__init__.py",
+            "src/source_integrity_toolkit/contracts/execution.py",
+            "tests/contract/test_public_api.py",
+            "tests/security/test_public_api_boundary.py"
+          ],
+          "source_unchanged": true,
+          "scope": "Only cheap public export/signature/usage/transport and hostile-options controls; no complete audit invocation selected."
+        },
+        "distinct_case_count": 36,
+        "case_counts": {
+          "passed": 36,
+          "failure": 0,
+          "error": 0,
+          "skipped": 0
+        },
+        "junit_suite_tests_including_any_subtests": 36,
+        "junit_seconds": 0.328,
+        "identities_sha256": "9514697ee3c2ad30adb423ee55711afcccb9c3f171da6e7cf5dde23f3f829a50",
+        "raw": [
+          {
+            "file": "p4w08-public-fast-002-exit.json",
+            "sha256": "4db84b655497a72b35680e45b005ecbc6186bd5bfe687504ae7182cd7e106c17",
+            "bytes": 918
+          },
+          {
+            "file": "p4w08-public-fast-002.xml",
+            "sha256": "90ff21521e49fed9edb011b300bccb756339ba4a7321fe73cf5a89d47d49e443",
+            "bytes": 5769
+          },
+          {
+            "file": "p4w08-public-fast-002.log",
+            "sha256": "317297473832c20c7b2f9e5e33e0738e61b1c9c858737546753656c5d0dae996",
+            "bytes": 114
+          },
+          {
+            "file": "p4w08-public-fast-002-source-before.json",
+            "sha256": "51576f20875c5f90b49f56f146634b69748ec0415519fdea4aaeb2e692fd90e5",
+            "bytes": 574
+          },
+          {
+            "file": "p4w08-public-fast-002-source-after.json",
+            "sha256": "51576f20875c5f90b49f56f146634b69748ec0415519fdea4aaeb2e692fd90e5",
+            "bytes": 574
+          }
+        ],
+        "source_files": 5,
+        "source_hashes_unchanged": true,
+        "passed_in_recorded_scope": true
+      }
+    ],
+    "installed_receipts": [],
+    "supporting_receipts": {
+      "public_test_migration": [
+        {
+          "raw": {
+            "file": "p4w08-public-tests-migration.json",
+            "sha256": "dc2663da8863d6f6f04afc3e5b710156d6534ba457984b4b88487c55bc25c69f",
+            "bytes": 3582
+          },
+          "record": {
+            "owner": "P4-W08",
+            "base": "d1b812315364576d0099518abd5ae152531c8fc8",
+            "paths": [
+              "tests/contract/test_public_api.py",
+              "tests/security/test_public_api_boundary.py",
+              "tests/integration/test_public_audit.py"
+            ],
+            "source_hashes": {
+              "tests/contract/test_public_api.py": "7ca5422483ee15d0b9b98b8435bf672ea1bc60be3478559aafe3454f9830248a",
+              "tests/security/test_public_api_boundary.py": "1b6c15adebb20e193f54cf46bf4c2b5b9076016b730d18d14cfc028f05192ed3",
+              "tests/integration/test_public_audit.py": "74d905212c0366794b21f6d9823f2b39187be3c8d20c77f84d612d3f79bab5ac"
+            },
+            "base_hashes": {
+              "tests/security/test_public_api_boundary.py": "5d588685427287a425fdf6fb2c29297209c933e6b1c8705b5d4c31e56da45cc9",
+              "tests/integration/test_public_audit.py": "af149a79c3de6843b407aa2134ab2d2c7db712256f3f173146666f53da2e564d"
+            },
+            "N06": {
+              "new_cases": 31,
+              "purpose": "Exact public export order/signatures, three real legal options with shared reports, all 16 read-only roots and byte caches, 21 invalid option cases rejected before runtime, public safe exception/contextmanager identity, constructor refusal."
+            },
+            "N11": {
+              "old_cases": 20,
+              "new_cases": 28,
+              "renamed_tests": {
+                "test_internal_invocation_rejects_hostile_input_without_executing_protocols": "test_public_invocation_rejects_hostile_input_without_executing_protocols",
+                "test_internal_native_fault_surface_does_not_format_or_retain_source_exception": "test_public_native_fault_surface_does_not_format_or_retain_source_exception",
+                "test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes": "test_public_report_contains_only_frozen_disclosure_and_two_cached_bytes",
+                "test_w07_public_entry_points_still_refuse_without_touching_arguments": "test_public_usage_and_file_refusals_leave_hostile_arguments_untouched",
+                "test_internal_complete_invocation_has_no_observed_file_network_native_or_process_effect": "test_public_complete_invocation_has_no_observed_file_network_native_or_process_effect"
+              },
+              "retained": "All original input/fault/cache/effect assertions and all six observer negative controls; actual invocation now through public api.audit_bundle. audit_file hostile refusal unchanged.",
+              "added": "Eight hostile options controls prove no dossier/runtime/custom repr/hash/equality protocol use."
+            },
+            "N12": {
+              "cases": 14,
+              "retained_test_names_and_order": true,
+              "private_entry_regression_ast_unchanged": true,
+              "inherited_w07_python313_repair_test_ast_unchanged": true,
+              "change": "Five original complete/rejection/stop invocation call sites now use package audit_bundle; independently authored finite inputs, semantic assertions, exact-format oracles, same-ledger observations, original private regression and full-reference real budget outcome unchanged."
+            },
+            "validation": {
+              "quick_run": "p4w08-public-fast-002",
+              "result": "36 passed, 23 deselected; cheap surface and option controls only",
+              "source_scope": "5 relevant files before/after hashes unchanged",
+              "first_attempt": "p4w08-public-fast-001 retained: 35 passed, 1 failed because new N06 constructor-message regex omitted existing final period; corrected expected literal without product change.",
+              "full_public_execution": "Await root final frozen-source verification.",
+              "subsequent_N11_strengthening": "The collision-key custom hash now records calls; caller dictionary construction is excluded by clearing only setup calls before the public invocation. Root final frozen run covers the added observer."
+            }
+          }
+        }
+      ],
+      "legacy_refusal_migration": [
+        {
+          "raw": {
+            "file": "p4w08-refusal-migration.json",
+            "sha256": "ec8c451cc9b3220578ec0fc0f23d5b48fd0d7da2fd0105d96b4b2172e741609e",
+            "bytes": 7646
+          },
+          "record": {
+            "base_head": "e9b6bfd3f65de31841606a7b1d44e0fe4cb3282d",
+            "owner": "P4-W08",
+            "scope": [
+              "T01",
+              "T02",
+              "T03",
+              "T05",
+              "T06"
+            ],
+            "files": {
+              "tests/scaffold/test_api_stubs.py": {
+                "before_sha256": "0441d0bbb735e70225331099c5c01688b24af1877eb63ef12796de00bab9974a",
+                "after_sha256": "cbac5ab7257f94d215a856b5125786115df3f215bebc358dac1a223ab3de05b1",
+                "original_test_function_count": 5,
+                "original_ordered_test_function_names_preserved": true,
+                "changed_functions": [
+                  "test_first_executable_statement_is_refusal",
+                  "test_hostile_arguments_and_options_remain_untouched",
+                  "test_plain_bundle_remains_unchanged"
+                ],
+                "unchanged_function_count": 3,
+                "migration": [
+                  "The audit_file immediate-raise AST case is unchanged. The obsolete audit_bundle immediate-raise AST parameter is removed because W08 activates execution; its pre-input safety moves to the existing hostile arguments/options case and dedicated N06 options-first tests.",
+                  "Both hostile argument identities remain. Bundle now requires exact AuditUsageError/fixed message without invoking the hostile object; file keeps NotImplementedError and its original message.",
+                  "The original opaque mutable source remains the same object with identical nested content after a real validation_diagnostics rejection; both JSON and Markdown independently expose rejected state.",
+                  "Original file bytes/output-directory checks and both exact keyword-only signatures are unchanged."
+                ]
+              },
+              "tests/scaffold/test_packaging.py": {
+                "before_sha256": "cfc891098830d9adf1f2ee3a0c3bcc06e884fb00f356aa5a8e1822feb1aa5d93",
+                "after_sha256": "5a62c98eea65ce8130b9bad0f9133f13185966b46a27ec179a7861a5fa7514f0",
+                "original_test_function_count": 9,
+                "original_ordered_test_function_names_preserved": true,
+                "changed_functions": [
+                  "test_wheel_installs_without_developer_tools"
+                ],
+                "unchanged_function_count": 11,
+                "migration": [
+                  "Only the explicitly approved clean-wheel test body changes. Exact version, zero developer/runtime dependencies, clean offline venv installation, sit version/help/audit exit and no output-directory creation remain.",
+                  "Bundle invalid options now produce fixed safe usage failure; audit_file remains immediately refused.",
+                  "One independently authored finite dossier executes through the installed public API, asserting accepted/completed audit_report, 15 capabilities/five domains, immutable bytes and independently stated bundle/status fields in both formats. Input bytes remain unchanged.",
+                  "All other build/inventory/canary/rebuild/platform metadata functions and tests remain AST-identical."
+                ]
+              },
+              "tests/security/test_scaffold_inertness.py": {
+                "before_sha256": "7179bb00e004e833d7448172cae2068f912e25adb3860c7d5fba9d46396619ba",
+                "after_sha256": "fad05f940189ac8fe9680246832d3bea42d0b49a82d72553027c7a0885b245ee",
+                "original_test_function_count": 8,
+                "original_ordered_test_function_names_preserved": true,
+                "changed_functions": [
+                  "ScaffoldInertnessTests.test_imports_api_and_cli_are_inert"
+                ],
+                "unchanged_function_count": 8,
+                "migration": [
+                  "PROBE retains all application-stack filesystem/network/process/native/environment observers, loader exceptions, hostile protocol traps, input/output/package-byte checks and existing direct negative mutations.",
+                  "Two file refusals retain their exact message. The two old bundle calls now require safe usage failures before input access.",
+                  "A hostile nested object with valid options must produce a safe complete rejected report without executing caller protocols.",
+                  "One independently authored finite source completes through the public API under the same observer, with expected accepted/completed state, 15 capabilities/five domains and JSON/Markdown bundle/status checks. No source mutation is allowed.",
+                  "Counts now record two file refusals, two usage failures and two actual reports separately. CLI version/help/audit refusal behavior remains exact.",
+                  "All negative tests remain identical. Import-time negatives terminate before the complete audit; the hostile bundle mutation still triggers the same observer before the finite-success path."
+                ]
+              },
+              "tests/integration/test_preparation_capability_boundary.py": {
+                "before_sha256": "aaa25f2a0fd256d116599e135d975ba7a77ffb6a6ae468495342ba4e358e74f6",
+                "after_sha256": "c757f20cc1cc3d6abfdb160fa6a766242f07fd0046ee9e67be15280542260300",
+                "original_test_function_count": 10,
+                "original_ordered_test_function_names_preserved": true,
+                "changed_functions": [
+                  "test_capture_admission_and_navigation_are_distinct_private_components"
+                ],
+                "unchanged_function_count": 9,
+                "migration": [
+                  "All original capture/admission/navigation type and rejection assertions remain. Existing frozen hero, fault, quota and effects controls remain AST-identical.",
+                  "The tail public boundary now checks the exact seven exports and a real accepted/completed report from the original sparse case, its 15 capabilities/five domains, both encoded bundle/status fields and unchanged source."
+                ]
+              },
+              "tests/contract/test_analytical_observability.py": {
+                "before_sha256": "8c9f4ebeb9764a2e5c4ba98c38dfd98e1e8d9b57c26f37624c7cf8dd52631312",
+                "after_sha256": "ed307fd5243ea47e1561bd7ae797691ff710ed97f5b2009f012332da03de83c6",
+                "original_test_function_count": 18,
+                "original_ordered_test_function_names_preserved": true,
+                "changed_functions": [
+                  "test_private_outcome_is_immutable_and_has_no_public_report_or_options"
+                ],
+                "unchanged_function_count": 21,
+                "migration": [
+                  "All private frozen outcome, no public-field/method, no source/port retention, hidden private exports and exact private signatures remain.",
+                  "Only the tail public boundary changes to exact seven exports and a real accepted/completed minimal report, 15 capabilities/five domains, both encoded bundle/status fields and unchanged source.",
+                  "The original audit_file immediate-refusal assertion remains. Every other test/helper is AST-identical."
+                ]
+              }
+            },
+            "parameterized_case_change": {
+              "removed_obsolete_case": "tests/scaffold/test_api_stubs.py::test_first_executable_statement_is_refusal[audit_bundle]",
+              "preserved_case": "tests/scaffold/test_api_stubs.py::test_first_executable_statement_is_refusal[audit_file]",
+              "reason": "W08 authorizes real in-memory execution. options-before-input safety is directly exercised by the existing hostile-options case and the new N06 boundary suite."
+            },
+            "validation": {
+              "syntax": "All five files and their changed embedded subprocess scripts parse successfully.",
+              "execution": "No owner test execution. Root will run the actual combined W08 checkpoint with the pinned environment; no new test result is claimed.",
+              "additional_complete_invocations": {
+                "T02": 1,
+                "T03_positive_probe": 1,
+                "T05_changed_node": 1,
+                "T06_changed_node": 1
+              },
+              "recommended_scope": [
+                "tests/scaffold/test_api_stubs.py",
+                "tests/scaffold/test_packaging.py",
+                "tests/security/test_scaffold_inertness.py",
+                "tests/integration/test_preparation_capability_boundary.py::test_capture_admission_and_navigation_are_distinct_private_components",
+                "tests/contract/test_analytical_observability.py::test_private_outcome_is_immutable_and_has_no_public_report_or_options"
+              ]
+            }
+          }
+        }
+      ],
+      "installed_migration": [
+        {
+          "raw": {
+            "file": "p4w08-installed-migration.json",
+            "sha256": "e8181b9f6b1be5ae022b6912d2f4d19859be2e7ea837faaeaf7689649fa335fe",
+            "bytes": 4358
+          },
+          "record": {
+            "files": {
+              "tests/scaffold/test_ci_contract.py": {
+                "old_top_level_defs": 37,
+                "preserved_top_level_defs": [
+                  "require",
+                  "unique",
+                  "read_workflow",
+                  "CiContractTests",
+                  "junit_counts",
+                  "JunitAccountingTests",
+                  "save",
+                  "run",
+                  "tracked_bytes",
+                  "tool_python",
+                  "prepare_tools",
+                  "policy",
+                  "configure_context",
+                  "current_binding",
+                  "bound_record",
+                  "ci_paths",
+                  "entry_and_scope",
+                  "guard_command",
+                  "initialize_evidence",
+                  "preflight",
+                  "selected_profile",
+                  "validate_documentation",
+                  "prepare",
+                  "suite_paths",
+                  "collection_check",
+                  "reconcile_suite",
+                  "suite_environment",
+                  "execute_suite",
+                  "run_suite",
+                  "archive_inventories",
+                  "emit_summary",
+                  "reconcile_preparation_commands",
+                  "evidence_report",
+                  "stage_failure",
+                  "local_verify"
+                ],
+                "changed_top_level_defs": [
+                  "installed_receipts",
+                  "DriverEvidenceTests"
+                ],
+                "removed_top_level_defs": [],
+                "before_sha256": "6070b92b44855cb0b4568ec4854bd3d5e06604cdca84d9951c0d8ce155b4a605",
+                "after_sha256": "d6e91cc44ad2967d4feaca45d3f9bb696e439c8ed2caa0a5e777de4deaf895ce"
+              },
+              "tests/contract/test_phase2_transition.py": {
+                "old_top_level_defs": 2,
+                "preserved_top_level_defs": [
+                  "Phase2TransitionTests"
+                ],
+                "changed_top_level_defs": [
+                  "W08R01Tests"
+                ],
+                "removed_top_level_defs": [],
+                "before_sha256": "d476a8ba0ddba20a07d5b1670125d99824b1a5354ba20391fdc9982164671819",
+                "after_sha256": "4d2e6ff10d19820b33185d7fad76fa52fcf609a7d37f9cd32b439bf5d7455b22"
+              },
+              "tests/integration/test_analytical_installed_runtime.py": {
+                "old_top_level_defs": 4,
+                "preserved_top_level_defs": [
+                  "_load",
+                  "_inventory"
+                ],
+                "changed_top_level_defs": [
+                  "installed_runtime",
+                  "test_clean_installed_analysis_original_heroes_and_completed_finite_case"
+                ],
+                "removed_top_level_defs": [],
+                "before_sha256": "434cb51f159da5ec71025e35130befe9ecbff95d5a8d613d1eaf897142ccafcb",
+                "after_sha256": "64f83d86e57b8ca52c85775cd89c50e448acebaa2fad291ef88c5d4495ff43c6"
+              },
+              "tests/integration/test_public_installed_runtime.py": {
+                "old_top_level_defs": 0,
+                "preserved_top_level_defs": [],
+                "changed_top_level_defs": [],
+                "removed_top_level_defs": [],
+                "before_sha256": null,
+                "after_sha256": "092cab24b2820f62c23973307231ff8af012001c9e619fc14ff01cb2c08efe01"
+              }
+            },
+            "status": "frozen_for_root_scoped_verification",
+            "preserved": "No previous top-level definition or installed witness identity removed. Core preparation, original hero, finite private arithmetic, invalid inputs, effect observers, module hashes and three archive inventories remain. Only public refusal and corresponding receipt semantics are migrated.",
+            "actual_public_paths": [
+              "direct_wheel",
+              "sdist_via_external_pinned_build_host_to_clean_target_purelib",
+              "sdist_rebuilt_wheel"
+            ],
+            "runtime_limit": "One public invocation for each existing preparation/analysis installed witness and one for each of two added install paths. No extra hero run or independent build matrix.",
+            "witness_scope": "Literal finite inventory, basis identities, unavailable fractions and families; complete JSON/Markdown bytes independently encoded from all sixteen public attributes. This is not all 228 obligation closure.",
+            "early_collection_attempt": {
+              "node": "CurrentVerificationTests::test_installed_receipts_bind_current_unit_activation_and_both_refusals",
+              "exit_code": 4,
+              "result": "No tests ran; wrong test class in scratch command. Correct class DriverEvidenceTests used next."
+            },
+            "receipt_control_001": {
+              "passed": 1,
+              "successful_subtests": 40,
+              "junit": "p4w08-installed-receipt-control-001.xml"
+            },
+            "receipt_control_002": {
+              "passed": 1,
+              "successful_subtests": 44,
+              "junit": "p4w08-installed-receipt-control-002.xml"
+            },
+            "public_helper_smoke": "p4w08-installed-public-smoke-001.json",
+            "full_installed_verification": "not_yet_run; root will execute committed current scope",
+            "hosted_windows": "not_run_locally; no claim made"
+          }
+        }
+      ],
+      "product_smoke": [
+        {
+          "raw": {
+            "file": "p4w08-product-smoke.json",
+            "sha256": "ce00618b52024f60745fb855ce55c991965928f5e4a9e50220b40d169b50bd8a",
+            "bytes": 2508
+          },
+          "record": {
+            "scope": "Small product smoke only, not full W08 acceptance",
+            "head": "e9b6bfd3f65de31841606a7b1d44e0fe4cb3282d",
+            "exports": [
+              "audit_bundle",
+              "audit_file",
+              "__version__",
+              "AuditReport",
+              "AuditAbort",
+              "AuditCancelled",
+              "AuditUsageError"
+            ],
+            "signature": "(bundle: object, *, options: object = None) -> source_integrity_toolkit.contracts.report.AuditReport",
+            "invalid_options_before_runtime": 5,
+            "valid_option_forms": 3,
+            "usage_contextmanager_preserves_identity": true,
+            "usage_fields_immutable": true,
+            "real_rejected_report": "validation_diagnostics",
+            "json_bytes": 2207,
+            "markdown_bytes": 2906,
+            "audit_file_bytes_unchanged": true,
+            "modules": {
+              "ok": true,
+              "checked_modules": 48,
+              "issues": [],
+              "activation_stage": 8,
+              "promoted_modules": [
+                "__init__.py",
+                "analysis/context.py",
+                "analysis/contribution_profile.py",
+                "analysis/correction_outcomes.py",
+                "analysis/correction_routes.py",
+                "analysis/evaluator_lineage.py",
+                "analysis/findings.py",
+                "analysis/human_review.py",
+                "analysis/inventory.py",
+                "analysis/origins.py",
+                "analysis/presence.py",
+                "analysis/process_comparison.py",
+                "api.py",
+                "contracts/bundle.py",
+                "contracts/constants.py",
+                "contracts/evidence.py",
+                "contracts/execution.py",
+                "contracts/report.py",
+                "contracts/results.py",
+                "graph/cycles.py",
+                "graph/projections.py",
+                "graph/traversal.py",
+                "graph/witnesses.py",
+                "io/input_file.py",
+                "reporting/assemble.py",
+                "reporting/escaping.py",
+                "reporting/json_report.py",
+                "reporting/markdown_report.py",
+                "runtime/boundary.py",
+                "runtime/diagnostics.py",
+                "runtime/disclosure.py",
+                "runtime/resources.py",
+                "validation/limits.py",
+                "validation/references.py",
+                "validation/semantics.py",
+                "validation/structure.py"
+              ],
+              "protected_modules": 12,
+              "entry_byte_protected_modules": 36,
+              "scope": "current package inspection only; no checkout authorization or analytical conformance claim"
+            },
+            "source_hashes": {
+              "src/source_integrity_toolkit/api.py": "1ce3a72b8cc064718133b75e4991e14ac4d56072cdf6f2017af292e449789f7f",
+              "src/source_integrity_toolkit/__init__.py": "79cb024eb81bcef26a8dc94100b995e27f6207e7b2aac343eab7c57e488532d0",
+              "src/source_integrity_toolkit/contracts/execution.py": "d11944bc016528f8642701f5ba6df49bb98697911edb2dd537fdd19dcae5a390"
+            }
+          }
+        }
+      ]
+    },
+    "notes": [],
+    "status": "pending",
+    "status_meaning": "W08 public in-memory audit implementation prepared; actual complete scoped and installed verification still pending.",
+    "recorded_at_utc": "2026-10-26T05:02:10.535014+00:00",
+    "evidence_scope": "Only explicitly recorded runs, source scopes and installed receipts are claimed. No new full-suite or four-profile success follows from this record.",
+    "reviewed_source_hashes": {
+      "README.md": "6710253de63e02fe8b4214a43cca208e197b564252a819468efaaebbc330e5f2",
+      "src/source_integrity_toolkit/__init__.py": "79cb024eb81bcef26a8dc94100b995e27f6207e7b2aac343eab7c57e488532d0",
+      "src/source_integrity_toolkit/api.py": "1ce3a72b8cc064718133b75e4991e14ac4d56072cdf6f2017af292e449789f7f",
+      "src/source_integrity_toolkit/contracts/execution.py": "d11944bc016528f8642701f5ba6df49bb98697911edb2dd537fdd19dcae5a390",
+      "tests/contract/test_analytical_observability.py": "ed307fd5243ea47e1561bd7ae797691ff710ed97f5b2009f012332da03de83c6",
+      "tests/contract/test_phase2_transition.py": "4d2e6ff10d19820b33185d7fad76fa52fcf609a7d37f9cd32b439bf5d7455b22",
+      "tests/contract/test_public_api.py": "7ca5422483ee15d0b9b98b8435bf672ea1bc60be3478559aafe3454f9830248a",
+      "tests/integration/test_analytical_installed_runtime.py": "64f83d86e57b8ca52c85775cd89c50e448acebaa2fad291ef88c5d4495ff43c6",
+      "tests/integration/test_preparation_capability_boundary.py": "c757f20cc1cc3d6abfdb160fa6a766242f07fd0046ee9e67be15280542260300",
+      "tests/integration/test_public_audit.py": "74d905212c0366794b21f6d9823f2b39187be3c8d20c77f84d612d3f79bab5ac",
+      "tests/integration/test_public_installed_runtime.py": "092cab24b2820f62c23973307231ff8af012001c9e619fc14ff01cb2c08efe01",
+      "tests/scaffold/test_api_stubs.py": "cbac5ab7257f94d215a856b5125786115df3f215bebc358dac1a223ab3de05b1",
+      "tests/scaffold/test_ci_contract.py": "d6e91cc44ad2967d4feaca45d3f9bb696e439c8ed2caa0a5e777de4deaf895ce",
+      "tests/scaffold/test_packaging.py": "5a62c98eea65ce8130b9bad0f9133f13185966b46a27ec179a7861a5fa7514f0",
+      "tests/security/test_public_api_boundary.py": "1b6c15adebb20e193f54cf46bf4c2b5b9076016b730d18d14cfc028f05192ed3",
+      "tests/security/test_scaffold_inertness.py": "fad05f940189ac8fe9680246832d3bea42d0b49a82d72553027c7a0885b245ee"
+    }
+  },
+  "historical_top_level_scope": "All pre-existing checkpoint changes, validation, package_boundary, failures, remaining, unchanged_boundaries, timestamps, publication note and original-owner repair fields retain their original historical scope. Current W08 facts are in w08_checkpoint; no previous record is recursively copied or erased."
 }

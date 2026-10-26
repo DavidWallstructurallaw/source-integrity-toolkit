@@ -53,8 +53,21 @@ def test_capture_admission_and_navigation_are_distinct_private_components():
     out = _prepare_evidence_value(source)
     assert type(out) is _ObservabilityPreparation and type(out.prepared) is _PreparedBundle
     import source_integrity_toolkit as toolkit
-    assert set(toolkit.__all__) == {"audit_bundle", "audit_file", "__version__"}
-    with pytest.raises(NotImplementedError): toolkit.audit_bundle(source)
+    assert toolkit.__all__ == ("audit_bundle", "audit_file", "__version__", "AuditReport",
+                               "AuditAbort", "AuditCancelled", "AuditUsageError")
+    original = copy.deepcopy(source)
+    public = toolkit.audit_bundle(source)
+    assert type(public) is toolkit.AuditReport
+    assert public.report_kind == "audit_report"
+    assert public.run["processing_state"] == "completed"
+    assert public.input_validation["state"] == "accepted"
+    document = json.loads(public.to_json_bytes())
+    assert document["input_identity"]["bundle_id"] == "bundle"
+    assert len(document["capabilities"]) == 15
+    assert len(document["observability_domains"]) == 5
+    assert b'"processing_state": "completed"' in public.to_markdown_bytes()
+    assert b'"bundle_id": "bundle"' in public.to_markdown_bytes()
+    assert source == original
 
 
 @pytest.mark.parametrize("mode", ["value", "bytes"])
