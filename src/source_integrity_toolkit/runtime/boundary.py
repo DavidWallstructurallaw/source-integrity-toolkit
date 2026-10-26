@@ -6,7 +6,8 @@ Private capture, preparation and complete bounded analytical orchestration.
 The existing preparation seams retain their return types. Analytical admission
 uses the same helpers and accepts only after its full finite structural job
 plan. One execution context owns admission, current-job work and delivery.
-No public auditing, file access, options, callbacks or report export is added.
+Internal complete reports use that same context through both encodings.
+Public API activation, file access, options and callbacks remain separate.
 """
 from ..contracts.execution import _PreparationAborted, _AuditCancelled
 from ..io.input_file import _decode_utf8
@@ -862,7 +863,24 @@ def _matching_witnesses(profile, ref, port):
     return tuple(selected)
 
 
-def _detach_witnesses(profile, port):
+def _detached_payload(witness, port, payload_cache):
+    """Preserve one owner's retained occurrence within this current job.
+
+    This cache is only immutable representation reuse. It performs no new
+    qualification and never survives the owning job. Distinct witness objects
+    remain distinct even when their payload values happen to compare equal.
+    """
+    for old, value in payload_cache:
+        port.charge(1)
+        if old is witness:
+            return value
+    payload = _payload(witness, port)
+    port.charge(1)
+    payload_cache.append((witness, payload))
+    return payload
+
+
+def _detach_witnesses(profile, port, payload_cache=None):
     from ..contracts.report import _WitnessRecord
     refs, seen, records = [], set(), []
     for result in profile.results:
@@ -875,21 +893,14 @@ def _detach_witnesses(profile, port):
                 refs.append(ref)
     # Each symbolic anchor retains exactly its actual owner payload. Shared
     # payload tuples are immutable; no new witness reservation is invented.
-    payload_cache = []
+    if payload_cache is None:
+        port.charge(1)
+        payload_cache = []
     for ref in refs:
         selected = _matching_witnesses(profile, ref, port)
         parts, members = [], 0
         for witness in selected:
-            cached = None
-            for old, value in payload_cache:
-                port.charge(1)
-                if old is witness:
-                    cached = value
-                    break
-            if cached is None:
-                cached = _payload(witness, port)
-                port.charge(1)
-                payload_cache.append((witness, cached))
+            cached = _detached_payload(witness, port, payload_cache)
             port.charge(2)
             parts.append(cached)
             members += witness.member_count
@@ -899,12 +910,15 @@ def _detach_witnesses(profile, port):
     return tuple(records)
 
 
-def _detach_findings(findings, port):
+def _detach_findings(findings, port, payload_cache=None):
     from ..contracts.report import _DetachedFindingWitness, _PrivateFinding
     output = []
+    if payload_cache is None:
+        port.charge(1)
+        payload_cache = []
     for finding in findings:
         witness = finding.witness
-        payloads = tuple(_payload(value, port) for value in witness.owner_witnesses)
+        payloads = tuple(_detached_payload(value, port, payload_cache) for value in witness.owner_witnesses)
         for source in witness.input_refs:
             _charge_link(source, port)
         port.charge(len(payloads) + len(witness.input_refs) + 10)
@@ -1042,8 +1056,10 @@ def _execute_job(prepared, spec, ledger, port):
         profiles.extend(profile.facts.stage_profiles)
     port.charge(1)
     profiles.append(profile)
+    port.charge(1)
+    payload_cache = []
     for local in profiles:
-        witnesses = _detach_witnesses(local, port)
+        witnesses = _detach_witnesses(local, port, payload_cache)
         _commit_job(port, local.results, (), witnesses)
     # Completed owner cells survive a later findings interruption in this same
     # current job. No result can be supplied by an earlier semantic cache.
@@ -1056,7 +1072,7 @@ def _execute_job(prepared, spec, ledger, port):
         graph_requests = ((query, start, target),)
     finding_profile = _finding_owner._findings(prepared, context, ledger, port,
         stage_profiles=(profile,), graph_requests=graph_requests)
-    findings = _detach_findings(finding_profile.findings, port)
+    findings = _detach_findings(finding_profile.findings, port, payload_cache)
     _commit_job(port, (), findings, ())
     return port._committed
 
@@ -1071,8 +1087,67 @@ def _analyze_utf8(raw: object):
     return _run_analysis(raw, supplied_utf8=True)
 
 
+from ..contracts.report import _JobOutcome
+
+
+def _assemble_analysis(prepared, plan, job_outcomes, results, findings, witnesses,
+                       port, execution_state='completed'):
+    """Retain the original call-time lookup of the private contract owner."""
+    from ..contracts.report import _assemble_analysis as assemble
+    return assemble(prepared, plan, job_outcomes, results, findings, witnesses,
+        port, execution_state=execution_state)
+
+
+def _complete_analysis(prepared, plan, budget):
+    """Finish the existing private analytical schedule on its caller's ledger.
+
+    The finalizer is returned to the trusted composition owner, never retained
+    by an outcome or offered as a caller-controlled extension point.
+    """
+    results, findings, witnesses, job_outcomes = [], [], [], []
+    interrupted = None
+    for index, spec in enumerate(plan.jobs):
+        job = budget.start_job()
+        try:
+            _execute_job(prepared, spec, budget.witnesses, job)
+            budget.finish_job(job)
+        except _AnalysisAborted:
+            if budget._stop_kind not in ('job', 'witness'):
+                raise
+            interrupted = index
+        committed = job._committed or ((), (), ())
+        # Already paid immutable tuples move to the delivery collector.
+        # Collection allocation is charged to finalization if stopped.
+        if interrupted is not None:
+            break
+        budget.charge(sum(len(items) for items in committed) + 10)
+        results.extend(committed[0]); findings.extend(committed[1]); witnesses.extend(committed[2])
+        job_outcomes.append(_JobOutcome(spec, tuple(result.ref for result in committed[0]), 'completed',
+            spec.operation_key[0] == 'no_subject'))
+    port = budget.begin_finalization()
+    if interrupted is not None:
+        port.charge(sum(len(items) for items in committed) + 10)
+        results.extend(committed[0]); findings.extend(committed[1]); witnesses.extend(committed[2])
+        for index in range(interrupted, len(plan.jobs)):
+            spec = plan.jobs[index]
+            existing = committed[0] if index == interrupted else ()
+            done = tuple(result.ref.field_key for result in existing if result.ref.diagnostic_id == spec.family)
+            port.charge(len(done) * len(spec.field_keys) + len(done) + 1)
+            missing = tuple(field for field in spec.field_keys if field not in done)
+            state = 'interrupted' if index == interrupted else 'not_performed'
+            unexecuted = _planned_nonresults(prepared, spec, port, execution=state,
+                code='resource_limit_reached', fields=missing)
+            port.charge(len(unexecuted) + len(existing) + 8)
+            results.extend(unexecuted)
+            job_outcomes.append(_JobOutcome(spec, tuple(result.ref for result in existing + unexecuted), state,
+                spec.operation_key[0] == 'no_subject'))
+    port.charge(len(results) + len(findings) + len(witnesses) + len(job_outcomes) + 5)
+    outcome = _assemble_analysis(prepared, plan, tuple(job_outcomes), tuple(results), tuple(findings),
+        tuple(witnesses), port, execution_state='interrupted' if interrupted is not None else 'completed')
+    return outcome, port
+
+
 def _run_analysis(value: object, *, supplied_utf8: bool):
-    from ..contracts.report import _JobOutcome, _assemble_analysis
     budget = None
     try:
         budget = _new_analysis_budget()
@@ -1080,46 +1155,8 @@ def _run_analysis(value: object, *, supplied_utf8: bool):
             prepared = _admit(value, supplied_utf8=supplied_utf8, budget=budget)
             plan = _plan_analysis(prepared, budget)
             budget.record_input_acceptance()
-            results, findings, witnesses, job_outcomes = [], [], [], []
-            interrupted = None
-            for index, spec in enumerate(plan.jobs):
-                job = budget.start_job()
-                try:
-                    _execute_job(prepared, spec, budget.witnesses, job)
-                    budget.finish_job(job)
-                except _AnalysisAborted:
-                    if budget._stop_kind not in ('job', 'witness'):
-                        raise
-                    interrupted = index
-                committed = job._committed or ((), (), ())
-                # Already paid immutable tuples move to the delivery collector.
-                # Collection allocation is charged to finalization if stopped.
-                if interrupted is not None:
-                    break
-                budget.charge(sum(len(items) for items in committed) + 10)
-                results.extend(committed[0]); findings.extend(committed[1]); witnesses.extend(committed[2])
-                job_outcomes.append(_JobOutcome(spec, tuple(result.ref for result in committed[0]), 'completed',
-                    spec.operation_key[0] == 'no_subject'))
-            port = budget.begin_finalization()
-            if interrupted is not None:
-                port.charge(sum(len(items) for items in committed) + 10)
-                results.extend(committed[0]); findings.extend(committed[1]); witnesses.extend(committed[2])
-                for index in range(interrupted, len(plan.jobs)):
-                    spec = plan.jobs[index]
-                    existing = committed[0] if index == interrupted else ()
-                    done = tuple(result.ref.field_key for result in existing if result.ref.diagnostic_id == spec.family)
-                    port.charge(len(done) * len(spec.field_keys) + len(done) + 1)
-                    missing = tuple(field for field in spec.field_keys if field not in done)
-                    state = 'interrupted' if index == interrupted else 'not_performed'
-                    unexecuted = _planned_nonresults(prepared, spec, port, execution=state,
-                        code='resource_limit_reached', fields=missing)
-                    port.charge(len(unexecuted) + len(existing) + 8)
-                    results.extend(unexecuted)
-                    job_outcomes.append(_JobOutcome(spec, tuple(result.ref for result in existing + unexecuted), state,
-                        spec.operation_key[0] == 'no_subject'))
-            port.charge(len(results) + len(findings) + len(witnesses) + len(job_outcomes) + 5)
-            return _assemble_analysis(prepared, plan, tuple(job_outcomes), tuple(results), tuple(findings),
-                tuple(witnesses), port, execution_state='interrupted' if interrupted is not None else 'completed')
+            outcome, unused_port = _complete_analysis(prepared, plan, budget)
+            return outcome
         except (_PreparationAborted, _AnalysisAborted, _AuditCancelled):
             raise
         except KeyboardInterrupt:
@@ -1128,3 +1165,88 @@ def _run_analysis(value: object, *, supplied_utf8: bool):
             budget.fail()
     except (_PreparationAborted, _AnalysisAborted, _AuditCancelled) as cause:
         return _analytical_diagnostic(cause) if budget is None else _emergency_analytical_diagnostic(budget)
+
+
+# The Phase 4 composition seam remains internal until the separately authorized
+# public API activation. All work below consumes the very same invocation.
+from ..contracts.execution import _ReportAborted, AuditAbort, AuditCancelled
+from ..contracts.report import _deliver_report
+from ..reporting.assemble import _assemble_diagnostic
+from ..reporting.json_report import _encode_json_report, _verify_json_report
+from ..reporting.markdown_report import _encode_markdown_report, _verify_markdown_report
+from ..reporting.escaping import _CachedEncodingPort
+from .disclosure import _assemble_selected_report
+from .diagnostics import _report_abort, _emergency_report_abort
+
+
+def _complete_report(document, port):
+    """Both complete encodings and their consistency precede atomic delivery."""
+    port = _CachedEncodingPort(port)
+    json_bytes = _encode_json_report(document, port)
+    markdown_bytes = _encode_markdown_report(document, port)
+    _verify_json_report(document, json_bytes, port)
+    _verify_markdown_report(document, markdown_bytes, port)
+    report = _deliver_report(document, json_bytes, markdown_bytes, port)
+    port.check()
+    return report
+
+
+def _stopped_report(budget, cause, prepared):
+    """Attempt one charged diagnostic, or spend the existing emergency reserve.
+
+    A failed assembly or encoder is terminal. It cannot restart report work or
+    hide a known accepted input behind an unfinished-admission envelope.
+    """
+    if type(cause) is not _AuditCancelled and budget._phase in ('admission', 'analysis'):
+        try:
+            try:
+                finalizer = budget.begin_diagnostic_finalization()
+                port = budget.begin_report_encoding(finalizer)
+                retained = prepared if budget.input_state == 'accepted' else None
+                document = _assemble_diagnostic(cause, port, prepared=retained)
+                return _complete_report(document, port)
+            except (_PreparationAborted, _AnalysisAborted, _ReportAborted, _AuditCancelled):
+                raise
+            except KeyboardInterrupt:
+                budget.cancel()
+            except Exception:
+                budget.fail()
+        except (_PreparationAborted, _AnalysisAborted, _ReportAborted, _AuditCancelled):
+            pass
+    raise _emergency_report_abort(budget) from None
+
+
+def _audit_value(value: object):
+    """Internal complete in-process report invocation with one fixed budget.
+
+    No options, caller port, callbacks, files or network are accepted. The
+    returned report owns only the frozen selected document and complete bytes.
+    Preparation, every analytical job, disclosure, assembly and both renderers
+    retain one ledger, start time and reserve through the last delivery check.
+    """
+    try:
+        budget = _new_analysis_budget()
+    except (_PreparationAborted, _AnalysisAborted, _AuditCancelled) as cause:
+        raise _report_abort(cause) from None
+    except KeyboardInterrupt:
+        raise AuditCancelled('not_completed') from None
+    except Exception:
+        raise AuditAbort('failed', 'not_completed', 'execution_failed') from None
+    prepared = None
+    try:
+        try:
+            prepared = _admit(value, supplied_utf8=False, budget=budget)
+            plan = _plan_analysis(prepared, budget)
+            budget.record_input_acceptance()
+            outcome, finalizer = _complete_analysis(prepared, plan, budget)
+            port = budget.begin_report_encoding(finalizer)
+            document = _assemble_selected_report(outcome, port, reserve_witnesses=True)
+            return _complete_report(document, port)
+        except (_PreparationAborted, _AnalysisAborted, _ReportAborted, _AuditCancelled):
+            raise
+        except KeyboardInterrupt:
+            budget.cancel()
+        except Exception:
+            budget.fail()
+    except (_PreparationAborted, _AnalysisAborted, _ReportAborted, _AuditCancelled) as cause:
+        return _stopped_report(budget, cause, prepared)

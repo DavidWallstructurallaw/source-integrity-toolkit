@@ -171,16 +171,58 @@ def test_wheel_installs_without_developer_tools(distributions, tmp_path):
     command([sys.executable, "-m", "pip", "--python", str(python), "--isolated", "install",
              "--no-index", "--no-deps", "--no-cache-dir", str(wheel)], cwd=tmp_path)
     script = """import importlib.metadata as m
+import json
 import source_integrity_toolkit as s
 assert s.__version__ == '0.1.0.dev0'
 assert {d.metadata['Name'] for d in m.distributions()} == {'source-integrity-toolkit'}
-for call, args in ((s.audit_bundle, (object(),)), (s.audit_file, (object(), object()))):
-    try:
-        call(*args, options=object())
-    except NotImplementedError:
-        pass
-    else:
-        raise AssertionError('Stub returned a value')
+assert s.__all__ == ('audit_bundle', 'audit_file', '__version__', 'AuditReport',
+                     'AuditAbort', 'AuditCancelled', 'AuditUsageError')
+try:
+    s.audit_bundle(object(), options=object())
+except s.AuditUsageError as error:
+    assert str(error) == 'Invalid audit invocation.' and error.code == 'invalid_invocation'
+else:
+    raise AssertionError('Invalid invocation returned a value')
+try:
+    s.audit_file(object(), object(), options=object())
+except NotImplementedError:
+    pass
+else:
+    raise AssertionError('File stub returned a value')
+# Independent finite source is supplied by this harness; the installed product
+# does not read developer fixtures or schema files.
+unknown = {'state': 'unknown', 'value': None, 'precision': None,
+           'reason': 'Fictional timing not supplied.'}
+provenance = {'attributed_to_ref': 'A', 'basis_kind': 'declaration',
+              'evidence_ref_ids': [], 'method': 'Finite fictional public boundary.',
+              'qualifications': []}
+source = {'contract_version': 'sit-bundle/0.1', 'bundle_id': 'W08-INSTALLED',
+          'snapshot_id': 'S1', 'recorded_at': unknown, 'predecessor': None,
+          'inquiries': [{'id': 'I', 'target_claim_refs': ['C'], 'target_object_refs': [],
+            'seed_artifact_refs': [], 'seed_evidence_refs': [],
+            'boundary': {'description': 'Fictional boundary.',
+                         'criterion': 'Submitted records only.', 'system_refs': []},
+            'time_window': {'start': unknown, 'end': unknown}, 'as_of': unknown,
+            'dependency_dimensions': [], 'coverage_assertion_refs': [], 'provenance': provenance}],
+          'records': [{'id': 'A', 'kind': 'actor', 'provenance': provenance,
+            'data': {'actor_kind': 'human', 'identity_disclosure': 'pseudonymous',
+                     'display_name': 'Fictional actor.'}},
+            {'id': 'C', 'kind': 'claim', 'provenance': provenance,
+             'data': {'claim_key': 'claim', 'version_label': 'v1', 'text': 'Fictional claim.',
+                      'context': 'Finite public boundary.'}}],
+          'assertions': [], 'evidence_references': []}
+before = json.dumps(source, sort_keys=True)
+report = s.audit_bundle(source)
+assert type(report) is s.AuditReport and report.report_kind == 'audit_report'
+assert report.run['processing_state'] == 'completed'
+assert report.input_validation['state'] == 'accepted'
+assert type(report.to_json_bytes()) is type(report.to_markdown_bytes()) is bytes
+document = json.loads(report.to_json_bytes())
+assert document['input_identity']['bundle_id'] == 'W08-INSTALLED'
+assert len(document['capabilities']) == 15 and len(document['observability_domains']) == 5
+assert b'"processing_state": "completed"' in report.to_markdown_bytes()
+assert b'"bundle_id": "W08-INSTALLED"' in report.to_markdown_bytes()
+assert json.dumps(source, sort_keys=True) == before
 print('CLEAN_RUNTIME_OK')
 """
     result = command([str(python), "-I", "-B", "-c", script], cwd=tmp_path)

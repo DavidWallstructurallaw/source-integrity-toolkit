@@ -117,7 +117,8 @@ class Bomb:
         refuse("argument_attribute")
 
 out, err = io.StringIO(), io.StringIO()
-result = {"ok": False, "imports": 0, "api_refusals": 0, "violations": violations}
+result = {"ok": False, "imports": 0, "api_refusals": 0,
+          "bundle_usage_failures": 0, "bundle_reports": 0, "violations": violations}
 try:
     with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
         names = []
@@ -135,10 +136,8 @@ try:
         from source_integrity_toolkit import cli
         expected = "Source Integrity Toolkit audit is not implemented in the Phase 1 scaffold."
         for operation in (
-                lambda: sit.audit_bundle(Bomb(), options=Bomb()),
                 lambda: sit.audit_file(Bomb(), Bomb(), options=Bomb()),
-                lambda: sit.audit_file(request["input"], request["output"]),
-                lambda: sit.audit_bundle({"CANARY": [Bomb()]}, options={"raw_file_digest": True})):
+                lambda: sit.audit_file(request["input"], request["output"])):
             try:
                 operation()
             except NotImplementedError as exc:
@@ -147,6 +146,62 @@ try:
                 result["api_refusals"] += 1
             else:
                 raise ProbeViolation("audit_did_not_refuse")
+        for operation in (
+                lambda: sit.audit_bundle(Bomb(), options=Bomb()),
+                lambda: sit.audit_bundle({"CANARY": [Bomb()]}, options={"raw_file_digest": True})):
+            try:
+                operation()
+            except sit.AuditUsageError as exc:
+                if str(exc) != "Invalid audit invocation." or exc.code != "invalid_invocation":
+                    raise ProbeViolation("unsafe_usage_failure")
+                result["bundle_usage_failures"] += 1
+            else:
+                raise ProbeViolation("invalid_options_accepted")
+        rejected = sit.audit_bundle({"CANARY": [Bomb()]})
+        if (type(rejected) is not sit.AuditReport or
+                rejected.report_kind != "validation_diagnostics" or
+                rejected.input_validation["state"] != "rejected"):
+            raise ProbeViolation("hostile_input_accepted")
+        if (json.loads(rejected.to_json_bytes())["input_validation"]["state"] != "rejected" or
+                b'"state": "rejected"' not in rejected.to_markdown_bytes()):
+            raise ProbeViolation("rejected_formats_missing")
+        result["bundle_reports"] += 1
+        # Independent, finite dossier: one claim inquiry, no seeds or dimensions.
+        unknown = {"state": "unknown", "value": None, "precision": None,
+                   "reason": "Fictional timing not supplied."}
+        provenance = {"attributed_to_ref": "A", "basis_kind": "declaration",
+                      "evidence_ref_ids": [], "method": "Finite fictional public boundary.",
+                      "qualifications": []}
+        source = {"contract_version": "sit-bundle/0.1", "bundle_id": "W08-SCAFFOLD",
+                  "snapshot_id": "S1", "recorded_at": unknown, "predecessor": None,
+                  "inquiries": [{"id": "I", "target_claim_refs": ["C"], "target_object_refs": [],
+                    "seed_artifact_refs": [], "seed_evidence_refs": [],
+                    "boundary": {"description": "Fictional boundary.",
+                                 "criterion": "Submitted records only.", "system_refs": []},
+                    "time_window": {"start": unknown, "end": unknown}, "as_of": unknown,
+                    "dependency_dimensions": [], "coverage_assertion_refs": [], "provenance": provenance}],
+                  "records": [{"id": "A", "kind": "actor", "provenance": provenance,
+                    "data": {"actor_kind": "human", "identity_disclosure": "pseudonymous",
+                             "display_name": "Fictional actor."}},
+                    {"id": "C", "kind": "claim", "provenance": provenance,
+                     "data": {"claim_key": "claim", "version_label": "v1", "text": "Fictional claim.",
+                              "context": "Finite public boundary."}}],
+                  "assertions": [], "evidence_references": []}
+        before = json.dumps(source, sort_keys=True)
+        delivered = sit.audit_bundle(source)
+        if (type(delivered) is not sit.AuditReport or delivered.report_kind != "audit_report" or
+                delivered.run["processing_state"] != "completed" or
+                delivered.input_validation["state"] != "accepted"):
+            raise ProbeViolation("public_delivery_missing")
+        document = json.loads(delivered.to_json_bytes())
+        markdown = delivered.to_markdown_bytes()
+        if (document["input_identity"]["bundle_id"] != "W08-SCAFFOLD" or
+                len(document["capabilities"]) != 15 or len(document["observability_domains"]) != 5 or
+                b'"processing_state": "completed"' not in markdown or
+                b'"bundle_id": "W08-SCAFFOLD"' not in markdown or
+                before != json.dumps(source, sort_keys=True)):
+            raise ProbeViolation("public_content_changed")
+        result["bundle_reports"] += 1
         if out.getvalue() or err.getvalue():
             raise ProbeViolation("unexpected_import_or_api_output")
         if cli.main(["--version"]) != 0:
@@ -285,7 +340,9 @@ print("DATACLASS_HELPER_READY")
         result = run_probe()
         self.assertTrue(result["ok"], result)
         self.assertEqual(result["imports"], 48)
-        self.assertEqual(result["api_refusals"], 4)
+        self.assertEqual(result["api_refusals"], 2)
+        self.assertEqual(result["bundle_usage_failures"], 2)
+        self.assertEqual(result["bundle_reports"], 2)
         self.assertEqual(result["violations"], [])
         self.assertTrue(result["input_unchanged"] and result["output_unchanged"])
         self.assertTrue(result["package_paths_unchanged"])

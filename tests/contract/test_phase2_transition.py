@@ -77,7 +77,9 @@ class W08R01Tests(unittest.TestCase):
         self.assertEqual(len(modules), 48)
         fixtures = [json.loads((ROOT / "tests/fixtures/hero" / (name + ".bundle.json")).read_bytes())
                     for name in ("H7-01", "H7-V01", "H7-V02", "H7-V03")]
-        script = r'''
+        public_spec = importlib.util.spec_from_file_location("sit_public_installed_witness", ROOT / "tests/integration/test_public_installed_runtime.py")
+        public = importlib.util.module_from_spec(public_spec); public_spec.loader.exec_module(public)
+        script = public.public_script() + r'''
 import sys,json,hashlib,importlib,importlib.metadata,dataclasses,socket,ctypes
 import encodings.idna
 from pathlib import Path
@@ -108,19 +110,19 @@ for source in payload['fixtures']:
         assert not hasattr(result,'results') and not hasattr(result,'max_level')
 assert _prepare_evidence_value({}).input_state=='rejected'
 assert _prepare_evidence_utf8(b'{}').input_state=='rejected'
-for call,args in ((package.audit_bundle,(object(),)),(package.audit_file,(object(),object()))):
-    try:call(*args,options=object())
-    except NotImplementedError:pass
-    else:raise AssertionError('public_audit_activated')
+public=_public_witness(payload['public']['source'],payload['public']['expected'])
+try:package.audit_file(object(),object(),options=object())
+except NotImplementedError:pass
+else:raise AssertionError('file_audit_activated')
 assert events==[]
 for probe in (lambda:open('FICTIONAL_MUST_NOT_OPEN','rb'),lambda:socket.getaddrinfo('fictional.invalid',443),lambda:ctypes.CDLL('FICTIONAL_MUST_NOT_LOAD')):
     try:probe()
     except RuntimeError:pass
 assert events==['open','socket.getaddrinfo','ctypes.dlopen']
-print(json.dumps({'modules':loaded,'admitted_fixture_modes':8,'rejected_empty_modes':2,'public_refusals':2,'normal_effects':[],'negative_events':events,'runtime_distributions':['source-integrity-toolkit']}))
+print(json.dumps({'modules':loaded,'admitted_fixture_modes':8,'rejected_empty_modes':2,'public_refusals':1,'public_audit':public,'normal_effects':[],'negative_events':events,'runtime_distributions':['source-integrity-toolkit']}))
 '''
         run = subprocess.run([str(python), "-I", "-B", "-c", script], cwd=runtime_work,
-            input=json.dumps({"modules": modules, "fixtures": fixtures}).encode(), capture_output=True, timeout=90)
+            input=json.dumps({"modules": modules, "fixtures": fixtures, "public": public.public_payload()}).encode(), capture_output=True, timeout=90)
         self.assertEqual(run.returncode, 0, run.stderr.decode(errors="replace"))
         self.assertEqual(run.stderr, b"")
         result = json.loads(run.stdout)
@@ -141,9 +143,11 @@ print(json.dumps({'modules':loaded,'admitted_fixture_modes':8,'rejected_empty_mo
             inventory.append({"name": path.name, "bytes": path.stat().st_size,
                               "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "members": members})
         self.assertEqual(inventory[1]["members"], inventory[2]["members"])
-        record = {"head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
-                  "scope": "W08 clean installed preparation; no public audit or native-file certification",
-                  "unit": "VC", "ok": True, "runtime": result, "distributions": inventory}
+        state = guard.current_local_state(ROOT)
+        record = {**state,
+                  "scope": "Clean installed preparation and P4-W08 public report; no native-file certification",
+                  "public_test_sources": {"tests/integration/test_public_installed_runtime.py": hashlib.sha256((ROOT / "tests/integration/test_public_installed_runtime.py").read_bytes()).hexdigest()},
+                  "ok": True, "runtime": result, "distributions": inventory}
         # Fixed developer evidence destination; no source payload or binary upload.
         destination = (Path(os.environ["RUNNER_TEMP"]) / "sit-p3/evidence" if os.environ.get("GITHUB_ACTIONS") == "true" else work)
         destination.mkdir(parents=True, exist_ok=True)

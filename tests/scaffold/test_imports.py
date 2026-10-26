@@ -7,6 +7,7 @@ The literal file list is the accepted 48-module layout, not a runtime registry.
 """
 
 import ast
+from functools import cache
 import importlib
 import os
 from pathlib import Path
@@ -21,6 +22,10 @@ from tools import check_scaffold_boundary as phase_guard
 PACKAGE_FILES = ('__init__.py', 'analysis/__init__.py', 'analysis/context.py', 'analysis/contribution_profile.py', 'analysis/correction_outcomes.py', 'analysis/correction_routes.py', 'analysis/evaluator_lineage.py', 'analysis/findings.py', 'analysis/human_review.py', 'analysis/inventory.py', 'analysis/origins.py', 'analysis/presence.py', 'analysis/process_comparison.py', 'api.py', 'cli.py', 'contracts/__init__.py', 'contracts/bundle.py', 'contracts/constants.py', 'contracts/evidence.py', 'contracts/execution.py', 'contracts/report.py', 'contracts/results.py', 'graph/__init__.py', 'graph/cycles.py', 'graph/projections.py', 'graph/traversal.py', 'graph/witnesses.py', 'io/__init__.py', 'io/input_file.py', 'io/output_directory.py', 'io/platform_linux.py', 'io/platform_windows.py', 'io/publication.py', 'reporting/__init__.py', 'reporting/assemble.py', 'reporting/escaping.py', 'reporting/json_report.py', 'reporting/markdown_report.py', 'runtime/__init__.py', 'runtime/boundary.py', 'runtime/diagnostics.py', 'runtime/disclosure.py', 'runtime/resources.py', 'validation/__init__.py', 'validation/limits.py', 'validation/references.py', 'validation/semantics.py', 'validation/structure.py')
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGE_ROOT = ROOT / "src" / "source_integrity_toolkit"
+@cache
+def current_stage():
+    """Resolve trusted local activation only during execution, never collection."""
+    return phase_guard.current_local_state(ROOT)["activation_stage"]
 
 
 def module_name(path):
@@ -39,11 +44,11 @@ def test_each_planned_module_imports(path):
 
 def test_exact_package_file_set_and_inert_slots():
     assert {p.relative_to(PACKAGE_ROOT).as_posix() for p in PACKAGE_ROOT.rglob("*.py")} == set(PACKAGE_FILES)
-    active = phase_guard.VC_ACTIVE
+    active = phase_guard.current_active(current_stage())
     for relative in set(PACKAGE_FILES) - {"__init__.py", "api.py", "cli.py", "contracts/constants.py"}:
         source = (PACKAGE_ROOT / relative).read_text(encoding="utf-8")
         if relative in active:
-            assert not phase_guard.current_live_issues(relative, source)
+            assert not phase_guard.current_live_issues(relative, source, stage=current_stage())
         else:
             tree = ast.parse(source)
             assert len(tree.body) == 1
@@ -51,7 +56,7 @@ def test_exact_package_file_set_and_inert_slots():
             assert isinstance(tree.body[0].value, ast.Constant)
             assert isinstance(tree.body[0].value.value, str)
             assert "behavior unimplemented" in tree.body[0].value.value
-    result = phase_guard.current_check_repository(ROOT)
+    result = phase_guard.current_check_repository(ROOT, stage=current_stage())
     assert result["ok"], result
 
 

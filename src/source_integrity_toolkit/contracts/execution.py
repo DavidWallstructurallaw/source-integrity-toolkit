@@ -168,3 +168,205 @@ class _AnalysisAborted(Exception):
 
     def __repr__(self) -> str:
         return "_AnalysisAborted()"
+
+
+# Phase 4 transport declarations. These are not report reasons or audit entry
+# points. The earlier private stopping classes above retain their exact meaning.
+def _transport_require(ok: bool) -> None:
+    if not ok:
+        raise TypeError("invalid_audit_transport")
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _AuditAbortFields(Exception):
+    """No conforming report can be delivered; retain only established states.
+
+    Publication is fixed to not_published in the in-memory Phase 4 surface.
+    Source records and original exceptions are never transport arguments.
+    """
+    processing_state: str
+    input_validation_state: str
+    reason_code: str
+    publication_state: str = "not_published"
+
+    def __post_init__(self) -> None:
+        _transport_require(type(self.processing_state) is str)
+        _transport_require(type(self.input_validation_state) is str)
+        _transport_require(type(self.reason_code) is str)
+        _transport_require(type(self.publication_state) is str)
+        _transport_require(self.input_validation_state in ("accepted", "rejected", "not_completed"))
+        _transport_require(self.publication_state == "not_published")
+        if self.processing_state == "rejected":
+            _transport_require(self.input_validation_state == "rejected" and
+                               self.reason_code == "input_not_accepted")
+        else:
+            _transport_require((self.processing_state, self.reason_code) in (
+                ("interrupted", "resource_limit_reached"), ("failed", "execution_failed")))
+
+    @property
+    def args(self) -> tuple:
+        return ("Audit could not be completed.",)
+
+    @property
+    def safe_message(self) -> str:
+        return "Audit could not be completed."
+
+    def __str__(self) -> str:
+        return "Audit could not be completed."
+
+    def __repr__(self) -> str:
+        return "AuditAbort()"
+
+
+class AuditAbort(_AuditAbortFields):
+    """Immutable public fields with normal Python traceback propagation."""
+    __slots__ = ()
+
+    def __setattr__(self, name, value):
+        if type(name) is str and name == "__traceback__":
+            Exception.with_traceback(self, value)
+            return
+        raise AttributeError("AuditAbort fields are immutable.")
+
+    def __delattr__(self, name):
+        raise AttributeError("AuditAbort fields are immutable.")
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _AuditCancelledFields(Exception):
+    """Caller cancellation, with no fabricated execution Reason code."""
+    input_validation_state: str
+    publication_state: str = "not_published"
+
+    def __post_init__(self) -> None:
+        _transport_require(type(self.input_validation_state) is str)
+        _transport_require(type(self.publication_state) is str)
+        _transport_require(self.input_validation_state in ("accepted", "not_completed"))
+        _transport_require(self.publication_state == "not_published")
+
+    @property
+    def args(self) -> tuple:
+        return ("Audit cancelled.",)
+
+    @property
+    def safe_message(self) -> str:
+        return "Audit cancelled."
+
+    def __str__(self) -> str:
+        return "Audit cancelled."
+
+    def __repr__(self) -> str:
+        return "AuditCancelled()"
+
+
+class AuditCancelled(_AuditCancelledFields):
+    """Immutable public fields with normal Python traceback propagation."""
+    __slots__ = ()
+
+    def __setattr__(self, name, value):
+        if type(name) is str and name == "__traceback__":
+            Exception.with_traceback(self, value)
+            return
+        raise AttributeError("AuditCancelled fields are immutable.")
+
+    def __delattr__(self, name):
+        raise AttributeError("AuditCancelled fields are immutable.")
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _AuditUsageErrorFields(ValueError):
+    """A fixed, payload-free trusted-invocation failure, before input access."""
+    @property
+    def code(self) -> str:
+        return "invalid_invocation"
+
+    @property
+    def args(self) -> tuple:
+        return ("Invalid audit invocation.",)
+
+    @property
+    def safe_message(self) -> str:
+        return "Invalid audit invocation."
+
+    def __str__(self) -> str:
+        return "Invalid audit invocation."
+
+    def __repr__(self) -> str:
+        return "AuditUsageError()"
+
+
+class AuditUsageError(_AuditUsageErrorFields):
+    """Immutable safe usage failure with normal traceback propagation."""
+    __slots__ = ()
+
+    def __setattr__(self, name, value):
+        if type(name) is str and name == "__traceback__":
+            Exception.with_traceback(self, value)
+            return
+        raise AttributeError("AuditUsageError fields are immutable.")
+
+    def __delattr__(self, name):
+        raise AttributeError("AuditUsageError fields are immutable.")
+
+
+class _ReportEncodingPort(_FinalizationPort, Protocol):
+    """Restricted byte accounting on the existing finalization ledger.
+
+    The runtime supplies this internal port; renderers cannot create a ledger,
+    choose a limit or reset the invocation deadline. Charge each prospective
+    encoded fragment before allocation. The two fixed encodings count separately.
+    """
+    def charge_output(self, encoding: str, byte_count: int) -> None:
+        ...
+
+
+class _ReportFinalizationPort(_ReportEncodingPort, Protocol):
+    """One invocation's restricted report encoding and witness accounting.
+
+    The semantic owner supplies only newly retained report occurrences.
+    No clock, I/O, caller callback, new ledger or configurable limit is exposed.
+    """
+    def reserve_report_witness(self, witnesses: int, members: int) -> None:
+        ...
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _ReportDeliveryStop:
+    """A rejected input's diagnostic could not be completely delivered.
+
+    Structural rejection remains an established input fact. A subsequent
+    delivery guard or defect determines this transport's processing reason;
+    it does not turn the rejected input into accepted or unexamined input.
+    The older private preparation and analysis stop combinations stay fixed.
+    """
+    input_state: str
+    execution_state: str
+    reason_code: str
+
+    def __post_init__(self) -> None:
+        _transport_require(type(self.input_state) is str and self.input_state == "rejected")
+        _transport_require(type(self.execution_state) is str and type(self.reason_code) is str)
+        _transport_require((self.execution_state, self.reason_code) in (
+            ("interrupted", "resource_limit_reached"), ("failed", "execution_failed")))
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _ReportAborted(Exception):
+    """Private report-delivery propagation without changing earlier stops."""
+    stop: _PreparationStop | _ReportDeliveryStop
+    limit_id: str | None = None
+
+    def __post_init__(self) -> None:
+        _transport_require(type(self.stop) in (_PreparationStop, _ReportDeliveryStop))
+        _transport_require(self.stop.input_state in ("accepted", "rejected", "not_completed"))
+        if self.stop.execution_state == "interrupted":
+            _transport_require(type(self.limit_id) is str and
+                               self.limit_id in _ANALYSIS_LIMIT_IDS + ("WU9-L14",))
+        else:
+            _transport_require(self.stop.execution_state == "failed" and self.limit_id is None)
+
+    def __str__(self) -> str:
+        return "report_finalization_stopped"
+
+    def __repr__(self) -> str:
+        return "_ReportAborted()"

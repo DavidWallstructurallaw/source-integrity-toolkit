@@ -1,16 +1,17 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Immediate refusal tests; none validate or analyze a dossier."""
+"""Public in-memory activation and the retained immediate file refusal."""
 
 import ast
 import builtins
 import inspect
+import json
 import os
 from pathlib import Path
 
 import pytest
 
-from source_integrity_toolkit import audit_bundle, audit_file
+from source_integrity_toolkit import AuditReport, AuditUsageError, audit_bundle, audit_file
 
 MESSAGE = "Source Integrity Toolkit audit is not implemented in the Phase 1 scaffold."
 
@@ -24,7 +25,7 @@ class Hostile:
     keys = items = values = read = write = touched
 
 
-@pytest.mark.parametrize("function", [audit_bundle, audit_file])
+@pytest.mark.parametrize("function", [audit_file])
 def test_first_executable_statement_is_refusal(function):
     tree = ast.parse(inspect.getsource(function))
     body = tree.body[0].body
@@ -40,16 +41,23 @@ def test_hostile_arguments_and_options_remain_untouched(function, monkeypatch):
     with monkeypatch.context() as patch:
         patch.setattr(builtins, "open", obj.touched)
         patch.setattr(os, "open", obj.touched)
-        with pytest.raises(NotImplementedError) as caught:
+        failure = AuditUsageError if function is audit_bundle else NotImplementedError
+        with pytest.raises(failure) as caught:
             function(*args, options=obj)
-    assert str(caught.value) == MESSAGE
+    assert str(caught.value) == ("Invalid audit invocation." if function is audit_bundle else MESSAGE)
 
 
 def test_plain_bundle_remains_unchanged():
     bundle = {"opaque": [1, None, {"text": "fictional"}]}
     nested = bundle["opaque"]
-    with pytest.raises(NotImplementedError, match="not implemented"):
-        audit_bundle(bundle)
+    report = audit_bundle(bundle)
+    assert type(report) is AuditReport
+    assert report.report_kind == "validation_diagnostics"
+    assert report.input_validation["state"] == "rejected"
+    document = json.loads(report.to_json_bytes())
+    assert document["report_kind"] == "validation_diagnostics"
+    assert document["input_validation"]["state"] == "rejected"
+    assert b'"state": "rejected"' in report.to_markdown_bytes()
     assert bundle == {"opaque": [1, None, {"text": "fictional"}]}
     assert bundle["opaque"] is nested
 

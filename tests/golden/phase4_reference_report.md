@@ -1,0 +1,19262 @@
+# Source Integrity Audit
+
+Report kind: audit_report
+Processing state: completed
+Input state: accepted
+
+## contract_version
+
+```json
+"sit-report/0.1"
+```
+
+## report_kind
+
+```json
+"audit_report"
+```
+
+## report_id
+
+```json
+"SIT-RPT-000001"
+```
+
+## run
+
+```json
+{
+  "completed_diagnostic_ids": [
+    "SIT-M001",
+    "SIT-M002",
+    "SIT-M003",
+    "SIT-M004",
+    "SIT-M005",
+    "SIT-M006",
+    "SIT-M007",
+    "SIT-M008",
+    "SIT-M009",
+    "SIT-M010",
+    "SIT-M011",
+    "SIT-M012",
+    "SIT-M013",
+    "SIT-M014",
+    "SIT-M015"
+  ],
+  "diagnostics": [],
+  "finished_at": {
+    "precision": null,
+    "reason": "not_recorded_by_SIT-RP-0.1",
+    "state": "unknown",
+    "value": null
+  },
+  "input_contract_version": "sit-bundle/0.1",
+  "processing_state": "completed",
+  "qualifications": [
+    "SIT-RP-0.1",
+    "Wall-clock start and finish times are not recorded by SIT-RP-0.1."
+  ],
+  "requested_diagnostic_ids": [
+    "SIT-M001",
+    "SIT-M002",
+    "SIT-M003",
+    "SIT-M004",
+    "SIT-M005",
+    "SIT-M006",
+    "SIT-M007",
+    "SIT-M008",
+    "SIT-M009",
+    "SIT-M010",
+    "SIT-M011",
+    "SIT-M012",
+    "SIT-M013",
+    "SIT-M014",
+    "SIT-M015"
+  ],
+  "started_at": {
+    "precision": null,
+    "reason": "not_recorded_by_SIT-RP-0.1",
+    "state": "unknown",
+    "value": null
+  },
+  "tool_name": "Source Integrity Toolkit",
+  "tool_version": "0.1.0.dev0"
+}
+```
+
+## input_identity
+
+```json
+{
+  "bundle_id": "P4-BUNDLE-REFERENCE",
+  "declared_predecessor": null,
+  "input_contract_version": "sit-bundle/0.1",
+  "qualifications": [
+    "In-process input has no raw file digest; no canonical object fingerprint is invented."
+  ],
+  "raw_file_digest": null,
+  "snapshot_id": "P4-SNAPSHOT-REFERENCE-01",
+  "source_mode": "in_process"
+}
+```
+
+## input_validation
+
+```json
+{
+  "diagnostics": [],
+  "state": "accepted"
+}
+```
+
+## scopes
+
+```json
+[
+  {
+    "claim_refs": [],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": null,
+    "id": "SIT-SCP-000001",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Explicit supplied seed positions only; no dimension, graph eligibility, historical reconstruction or complete outside-world source inventory is asserted."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "stance_contestation",
+    "id": "SIT-SCP-000002",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Supplied Inquiry/Claim context; null-Claim anomalies keep their structural null. Every linked stage retains its separate original cohort scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": null,
+    "id": "SIT-SCP-000003",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Explicit supplied seed positions only; no dimension, graph eligibility, historical reconstruction or complete outside-world source inventory is asserted."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": null,
+    "id": "SIT-SCP-000004",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Native exact subject/key and declared finite coverage only; no implicit stage sequence or temporal persistence."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": null,
+    "id": "SIT-SCP-000005",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "The structural job key identifies the exact planned operation; no outside-world absence is inferred."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "assertion_assurance",
+    "id": "SIT-SCP-000006",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Explicit named metadata population only; omitted dimensions/views are not generalized."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "correction_outcomes",
+    "id": "SIT-SCP-000007",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Exact relevant selected submissions and their case_ref-linked events. Whole-case counts remain separate from an explicitly selected declared-target display subset."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "pipeline_stages",
+    "id": "SIT-SCP-000008",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Native exact subject/key and declared finite coverage only; no implicit stage sequence or temporal persistence."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "pipeline_stages",
+    "id": "SIT-SCP-000009",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Native exact subject/key and declared finite coverage only; no implicit stage sequence or temporal persistence."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "stance_contestation",
+    "id": "SIT-SCP-000010",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Supplied Inquiry/Claim context; null-Claim anomalies keep their structural null. Every linked stage retains its separate original cohort scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "stance_contestation",
+    "id": "SIT-SCP-000011",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Supplied Inquiry/Claim context; null-Claim anomalies keep their structural null. Every linked stage retains its separate original cohort scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "stance_contestation",
+    "id": "SIT-SCP-000012",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Supplied Inquiry/Claim context; null-Claim anomalies keep their structural null. Every linked stage retains its separate original cohort scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "stance_contestation",
+    "id": "SIT-SCP-000013",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Supplied Inquiry/Claim context; null-Claim anomalies keep their structural null. Every linked stage retains its separate original cohort scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "stance_contestation",
+    "id": "SIT-SCP-000014",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Supplied Inquiry/Claim context; null-Claim anomalies keep their structural null. Every linked stage retains its separate original cohort scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "stance_contestation",
+    "id": "SIT-SCP-000015",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Supplied Inquiry/Claim context; null-Claim anomalies keep their structural null. Every linked stage retains its separate original cohort scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "stance_contestation",
+    "id": "SIT-SCP-000016",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Supplied Inquiry/Claim context; null-Claim anomalies keep their structural null. Every linked stage retains its separate original cohort scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": "acquisition",
+    "graph_view": null,
+    "id": "SIT-SCP-000017",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "One supplied assessment, or an explicitly absent requested comparison. Selected exact Claims are a scoped query; the unchanged native assessment retains its full original scope. Snapshot structure does not reconstruct unknown lifecycle history."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": "acquisition",
+    "graph_view": null,
+    "id": "SIT-SCP-000018",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Selected actual review/process subjects only; the comparison owner retains each complete native comparison set and scope."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      }
+    ],
+    "dependency_dimension": "acquisition",
+    "graph_view": "claim_origin",
+    "id": "SIT-SCP-000019",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Complete finite supplied view only; current snapshot does not reconstruct lifecycle history or hidden roots."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      }
+    ],
+    "dependency_dimension": "acquisition",
+    "graph_view": "claim_origin",
+    "id": "SIT-SCP-000020",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Immediate EvidenceItem layer only; distant ancestry and semantic novelty are outside this result."
+    ],
+    "requested_time": null,
+    "target_refs": [],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "assertion_assurance",
+    "id": "SIT-SCP-000021",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Finite supplied input selection; omitted dimensions and unexamined histories remain outside this observation."
+    ],
+    "requested_time": null,
+    "target_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": null,
+    "graph_view": "assertion_assurance",
+    "id": "SIT-SCP-000022",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Finite supplied input selection; omitted dimensions and unexamined histories remain outside this observation."
+    ],
+    "requested_time": null,
+    "target_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "temporal_basis": "snapshot_structural"
+  },
+  {
+    "claim_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "coverage_refs": [],
+    "dependency_dimension": "acquisition",
+    "graph_view": "claim_origin",
+    "id": "SIT-SCP-000023",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "qualifications": [
+      "Finite supplied input selection; omitted dimensions and unexamined histories remain outside this observation."
+    ],
+    "requested_time": null,
+    "target_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "temporal_basis": "snapshot_structural"
+  }
+]
+```
+
+## populations
+
+```json
+[
+  {
+    "basis_refs": [
+      "SIT-BAS-000007",
+      "SIT-BAS-000008",
+      "SIT-BAS-000014",
+      "SIT-BAS-000015"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000001",
+    "member_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ART",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Complete finite ID set at these supplied positions; an empty set is a record inventory zero, never zero actual or independent sources."
+    ],
+    "scope_ref": "SIT-SCP-000001",
+    "selection_rule": "A(I): resolved explicit seed Artifacts union resolved Artifact bindings of every Inquiry seed EvidenceItem.",
+    "unit": "artifact_record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000007",
+      "SIT-BAS-000008",
+      "SIT-BAS-000014",
+      "SIT-BAS-000015"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000002",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Complete finite ID set at these supplied positions; an empty set is a record inventory zero, never zero actual or independent sources."
+    ],
+    "scope_ref": "SIT-SCP-000001",
+    "selection_rule": "Resolved explicit Artifact seeds lacking any seed EvidenceItem binding in this entire Inquiry.",
+    "unit": "artifact_record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000007",
+      "SIT-BAS-000008",
+      "SIT-BAS-000014",
+      "SIT-BAS-000015"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000003",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Complete finite ID set at these supplied positions; an empty set is a record inventory zero, never zero actual or independent sources."
+    ],
+    "scope_ref": "SIT-SCP-000001",
+    "selection_rule": "U_A(I): unique unresolved Artifact reference IDs at the same explicit Inquiry seed source positions.",
+    "unit": "unresolved_reference"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000004",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world consensus or anomaly denominator."
+    ],
+    "scope_ref": "SIT-SCP-000002",
+    "selection_rule": "Exact finite supplied context records; stage references retain M010 populations separately.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000007",
+      "SIT-BAS-000008",
+      "SIT-BAS-000014",
+      "SIT-BAS-000015"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000005",
+    "member_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ART",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Complete finite ID set at these supplied positions; an empty set is a record inventory zero, never zero actual or independent sources."
+    ],
+    "scope_ref": "SIT-SCP-000003",
+    "selection_rule": "A(I,C): unique resolved Artifact IDs bound by E(I,C); unresolved endpoints are excluded.",
+    "unit": "artifact_record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000007",
+      "SIT-BAS-000008",
+      "SIT-BAS-000014",
+      "SIT-BAS-000015"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000006",
+    "member_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Complete finite ID set at these supplied positions; an empty set is a record inventory zero, never zero actual or independent sources."
+    ],
+    "scope_ref": "SIT-SCP-000003",
+    "selection_rule": "E(I,C): explicitly listed resolved seed EvidenceItem IDs whose exact Claim binding is C.",
+    "unit": "evidence_item"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000007",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Unestablished native membership is retained as a declaration; it supplies no numerical denominator."
+    ],
+    "scope_ref": "SIT-SCP-000004",
+    "selection_rule": "Exact native assessment subjects or the unchanged full member_refs of the selected finite coverage.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000008",
+    "member_refs": [
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000006",
+    "selection_rule": "Explicit named EvidenceReference IDs, deduplicated within this snapshot.",
+    "unit": "evidence_reference"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000009",
+    "member_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000006",
+    "selection_rule": "Explicit named coverage Assertion IDs, deduplicated within this snapshot.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000010",
+    "member_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-ACTOR",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-ART",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000006",
+    "selection_rule": "Explicit named record IDs, deduplicated within this snapshot.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000011",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world or all-downstream completeness."
+    ],
+    "scope_ref": "SIT-SCP-000007",
+    "selection_rule": "Exact whole-case documentary_linked_change_target_count; finite supplied membership under Definitions 20.2/27.2. A downstream display subset neither replaces this unit nor changes its count.",
+    "unit": "case_target"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000012",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world or all-downstream completeness."
+    ],
+    "scope_ref": "SIT-SCP-000007",
+    "selection_rule": "Exact whole-case cases_with_documentary_linked_change_count; finite supplied membership under Definitions 20.2/27.2. A downstream display subset neither replaces this unit nor changes its count.",
+    "unit": "correction_case"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000013",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world or all-downstream completeness."
+    ],
+    "scope_ref": "SIT-SCP-000007",
+    "selection_rule": "Exact whole-case correction_case_record_count; finite supplied membership under Definitions 20.2/27.2. A downstream display subset neither replaces this unit nor changes its count.",
+    "unit": "correction_case"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000014",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world or all-downstream completeness."
+    ],
+    "scope_ref": "SIT-SCP-000007",
+    "selection_rule": "Exact whole-case linked_change_event_record_count; finite supplied membership under Definitions 20.2/27.2. A downstream display subset neither replaces this unit nor changes its count.",
+    "unit": "correction_change_record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000015",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world or all-downstream completeness."
+    ],
+    "scope_ref": "SIT-SCP-000007",
+    "selection_rule": "Exact whole-case handling_event_record_count; finite supplied membership under Definitions 20.2/27.2. A downstream display subset neither replaces this unit nor changes its count.",
+    "unit": "handling_event"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000016",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world or all-downstream completeness."
+    ],
+    "scope_ref": "SIT-SCP-000007",
+    "selection_rule": "Exact whole-case correction_case_disclosures; finite supplied membership under Definitions 20.2/27.2. A downstream display subset neither replaces this unit nor changes its count.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000017",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world or all-downstream completeness."
+    ],
+    "scope_ref": "SIT-SCP-000007",
+    "selection_rule": "Exact whole-case correction_target_change_disclosures; finite supplied membership under Definitions 20.2/27.2. A downstream display subset neither replaces this unit nor changes its count.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000018",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world or all-downstream completeness."
+    ],
+    "scope_ref": "SIT-SCP-000007",
+    "selection_rule": "Exact whole-case reported_capacity_disclosures; finite supplied membership under Definitions 20.2/27.2. A downstream display subset neither replaces this unit nor changes its count.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000019",
+    "member_refs": [],
+    "membership_state": "unestablished",
+    "qualifications": [
+      "Unestablished native membership is retained as a declaration; it supplies no numerical denominator."
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "selection_rule": "Exact native assessment subjects or the unchanged full member_refs of the selected finite coverage.",
+    "unit": "pipeline_member"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000020",
+    "member_refs": [],
+    "membership_state": "unestablished",
+    "qualifications": [
+      "Unestablished native membership is retained as a declaration; it supplies no numerical denominator."
+    ],
+    "scope_ref": "SIT-SCP-000009",
+    "selection_rule": "Exact native assessment subjects or the unchanged full member_refs of the selected finite coverage.",
+    "unit": "pipeline_member"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000021",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world consensus or anomaly denominator."
+    ],
+    "scope_ref": "SIT-SCP-000010",
+    "selection_rule": "Exact finite supplied context records; stage references retain M010 populations separately.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000022",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world consensus or anomaly denominator."
+    ],
+    "scope_ref": "SIT-SCP-000011",
+    "selection_rule": "Exact finite supplied context records; stage references retain M010 populations separately.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000023",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world consensus or anomaly denominator."
+    ],
+    "scope_ref": "SIT-SCP-000012",
+    "selection_rule": "Exact finite supplied context records; stage references retain M010 populations separately.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000024",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world consensus or anomaly denominator."
+    ],
+    "scope_ref": "SIT-SCP-000013",
+    "selection_rule": "Exact finite supplied context records; stage references retain M010 populations separately.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000025",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world consensus or anomaly denominator."
+    ],
+    "scope_ref": "SIT-SCP-000014",
+    "selection_rule": "Exact finite supplied context records; stage references retain M010 populations separately.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000026",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world consensus or anomaly denominator."
+    ],
+    "scope_ref": "SIT-SCP-000015",
+    "selection_rule": "Exact finite supplied context records; stage references retain M010 populations separately.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000027",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "No outside-world consensus or anomaly denominator."
+    ],
+    "scope_ref": "SIT-SCP-000016",
+    "selection_rule": "Exact finite supplied context records; stage references retain M010 populations separately.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000006",
+      "SIT-BAS-000009"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000028",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "An absent assessment does not establish an empty comparison population. Compatible unresolved members remain placeholders."
+    ],
+    "scope_ref": "SIT-SCP-000017",
+    "selection_rule": "Exactly the subject_refs of this identified supplied independence assessment; no seed, pair union or inferred set.",
+    "unit": "comparison_member"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000006",
+      "SIT-BAS-000009"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000029",
+    "member_refs": [],
+    "membership_state": "unestablished",
+    "qualifications": [
+      "An absent assessment does not establish an empty comparison population. Compatible unresolved members remain placeholders."
+    ],
+    "scope_ref": "SIT-SCP-000017",
+    "selection_rule": "Exactly the subject_refs of this identified supplied independence assessment; no seed, pair union or inferred set.",
+    "unit": "comparison_member"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000006",
+      "SIT-BAS-000009"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000030",
+    "member_refs": [],
+    "membership_state": "unestablished",
+    "qualifications": [
+      "An absent assessment does not establish an empty comparison population. Compatible unresolved members remain placeholders."
+    ],
+    "scope_ref": "SIT-SCP-000017",
+    "selection_rule": "Exactly the subject_refs of this identified supplied independence assessment; no seed, pair union or inferred set.",
+    "unit": "origin_event"
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "coverage_refs": [],
+    "id": "SIT-POP-000031",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "This finite supplied selection confers no outside-world completeness."
+    ],
+    "scope_ref": "SIT-SCP-000018",
+    "selection_rule": "Exactly the requested actual subjects, or the explicit Evaluation targets of this Inquiry; no all-record cohort or hidden human-judgment population.",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000032",
+    "member_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000019",
+    "selection_rule": "The complete explicit Claim-bound E(I,C), without dropping unresolved or multiple-origin rows.",
+    "unit": "evidence_item"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000033",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000019",
+    "selection_rule": "Unique exact supplied IDs after every explicit seed and relevant branch was examined: seed_items_with_unresolved_ancestry_count",
+    "unit": "evidence_item"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000034",
+    "member_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000019",
+    "selection_rule": "Unique exact supplied IDs after every explicit seed and relevant branch was examined: documentary_origin_boundary_record_count",
+    "unit": "origin_event"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000035",
+    "member_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000019",
+    "selection_rule": "Unique exact supplied IDs after every explicit seed and relevant branch was examined: reached_origin_record_count",
+    "unit": "origin_event"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000036",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000019",
+    "selection_rule": "Exact source records with completed owner-local disclosures: ancestry_gap_disclosures",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000037",
+    "member_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000019",
+    "selection_rule": "Exact source records with completed owner-local disclosures: origin_boundary_disclosures",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000038",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000019",
+    "selection_rule": "Unique exact supplied IDs after every explicit seed and relevant branch was examined: unqualified_terminal_record_count",
+    "unit": "record"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000039",
+    "member_refs": [],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000019",
+    "selection_rule": "Unique exact supplied IDs after every explicit seed and relevant branch was examined: unresolved_frontier_reference_count",
+    "unit": "unresolved_reference"
+  },
+  {
+    "basis_refs": [],
+    "coverage_refs": [],
+    "id": "SIT-POP-000040",
+    "member_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "membership_state": "enumerated_for_scope",
+    "qualifications": [
+      "Each explicit source ID is counted once; this is not a claim that the external universe is complete."
+    ],
+    "scope_ref": "SIT-SCP-000020",
+    "selection_rule": "The complete explicit Claim-bound E(I,C), without dropping unresolved or multiple-origin rows.",
+    "unit": "evidence_item"
+  }
+]
+```
+
+## basis_index
+
+````json
+[
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "documented_record",
+    "check_refs": [
+      "SIT-CHK-000224",
+      "SIT-CHK-000225",
+      "SIT-CHK-000226",
+      "SIT-CHK-000231",
+      "SIT-CHK-000232",
+      "SIT-CHK-000233",
+      "SIT-CHK-000234",
+      "SIT-CHK-000235",
+      "SIT-CHK-000239",
+      "SIT-CHK-000240",
+      "SIT-CHK-000241",
+      "SIT-CHK-000242",
+      "SIT-CHK-000298",
+      "SIT-CHK-000299",
+      "SIT-CHK-000300",
+      "SIT-CHK-000305",
+      "SIT-CHK-000306",
+      "SIT-CHK-000307",
+      "SIT-CHK-000308",
+      "SIT-CHK-000309",
+      "SIT-CHK-000310",
+      "SIT-CHK-000311",
+      "SIT-CHK-000312",
+      "SIT-CHK-000313",
+      "SIT-CHK-000343",
+      "SIT-CHK-000344",
+      "SIT-CHK-000345",
+      "SIT-CHK-000350",
+      "SIT-CHK-000351",
+      "SIT-CHK-000352",
+      "SIT-CHK-000353",
+      "SIT-CHK-000354",
+      "SIT-CHK-000358",
+      "SIT-CHK-000359",
+      "SIT-CHK-000360",
+      "SIT-CHK-000361",
+      "SIT-CHK-000398",
+      "SIT-CHK-000399",
+      "SIT-CHK-000400",
+      "SIT-CHK-000405",
+      "SIT-CHK-000406",
+      "SIT-CHK-000407",
+      "SIT-CHK-000408",
+      "SIT-CHK-000409",
+      "SIT-CHK-000413",
+      "SIT-CHK-000414",
+      "SIT-CHK-000415",
+      "SIT-CHK-000416"
+    ],
+    "id": "SIT-BAS-000001",
+    "lifecycle": {
+      "basis_refs": [],
+      "state": "active"
+    },
+    "method": "Inspect supplied acquisition record; literal ``` is data.",
+    "qualifications": [
+      "Caller-supplied documentary premise (合成例); no external authentication."
+    ],
+    "scope": {
+      "claim_refs": [
+        {
+          "collection": "records",
+          "identifier": "P4-CLAIM",
+          "selector": null
+        }
+      ],
+      "effective_window": {
+        "end": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        },
+        "start": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        }
+      },
+      "inquiry_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    },
+    "source": {
+      "collection": "assertions",
+      "identifier": "P4-BOUND",
+      "selector": null
+    },
+    "support_refs": [
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "time": {
+      "asserted_at": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "documented_record",
+    "check_refs": [
+      "SIT-CHK-000224",
+      "SIT-CHK-000225",
+      "SIT-CHK-000226",
+      "SIT-CHK-000231",
+      "SIT-CHK-000232",
+      "SIT-CHK-000233",
+      "SIT-CHK-000234",
+      "SIT-CHK-000235",
+      "SIT-CHK-000236",
+      "SIT-CHK-000237",
+      "SIT-CHK-000238",
+      "SIT-CHK-000239",
+      "SIT-CHK-000240",
+      "SIT-CHK-000241",
+      "SIT-CHK-000242",
+      "SIT-CHK-000279",
+      "SIT-CHK-000280",
+      "SIT-CHK-000281",
+      "SIT-CHK-000286",
+      "SIT-CHK-000287",
+      "SIT-CHK-000288",
+      "SIT-CHK-000289",
+      "SIT-CHK-000290",
+      "SIT-CHK-000291",
+      "SIT-CHK-000292",
+      "SIT-CHK-000293",
+      "SIT-CHK-000294",
+      "SIT-CHK-000295",
+      "SIT-CHK-000296",
+      "SIT-CHK-000297",
+      "SIT-CHK-000343",
+      "SIT-CHK-000344",
+      "SIT-CHK-000345",
+      "SIT-CHK-000350",
+      "SIT-CHK-000351",
+      "SIT-CHK-000352",
+      "SIT-CHK-000353",
+      "SIT-CHK-000354",
+      "SIT-CHK-000355",
+      "SIT-CHK-000356",
+      "SIT-CHK-000357",
+      "SIT-CHK-000358",
+      "SIT-CHK-000359",
+      "SIT-CHK-000360",
+      "SIT-CHK-000361",
+      "SIT-CHK-000398",
+      "SIT-CHK-000399",
+      "SIT-CHK-000400",
+      "SIT-CHK-000405",
+      "SIT-CHK-000406",
+      "SIT-CHK-000407",
+      "SIT-CHK-000408",
+      "SIT-CHK-000409",
+      "SIT-CHK-000410",
+      "SIT-CHK-000411",
+      "SIT-CHK-000412",
+      "SIT-CHK-000413",
+      "SIT-CHK-000414",
+      "SIT-CHK-000415",
+      "SIT-CHK-000416"
+    ],
+    "id": "SIT-BAS-000002",
+    "lifecycle": {
+      "basis_refs": [],
+      "state": "active"
+    },
+    "method": "Inspect supplied acquisition record; literal ``` is data.",
+    "qualifications": [
+      "Caller-supplied documentary premise (合成例); no external authentication."
+    ],
+    "scope": {
+      "claim_refs": [
+        {
+          "collection": "records",
+          "identifier": "P4-CLAIM",
+          "selector": null
+        }
+      ],
+      "effective_window": {
+        "end": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        },
+        "start": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        }
+      },
+      "inquiry_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    },
+    "source": {
+      "collection": "assertions",
+      "identifier": "P4-COVER",
+      "selector": null
+    },
+    "support_refs": [
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "time": {
+      "asserted_at": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "documented_record",
+    "check_refs": [
+      "SIT-CHK-000226",
+      "SIT-CHK-000231",
+      "SIT-CHK-000232",
+      "SIT-CHK-000233",
+      "SIT-CHK-000234",
+      "SIT-CHK-000235",
+      "SIT-CHK-000236",
+      "SIT-CHK-000237",
+      "SIT-CHK-000238",
+      "SIT-CHK-000239",
+      "SIT-CHK-000240",
+      "SIT-CHK-000241",
+      "SIT-CHK-000242",
+      "SIT-CHK-000345",
+      "SIT-CHK-000350",
+      "SIT-CHK-000351",
+      "SIT-CHK-000352",
+      "SIT-CHK-000353",
+      "SIT-CHK-000354",
+      "SIT-CHK-000355",
+      "SIT-CHK-000356",
+      "SIT-CHK-000357",
+      "SIT-CHK-000358",
+      "SIT-CHK-000359",
+      "SIT-CHK-000360",
+      "SIT-CHK-000361",
+      "SIT-CHK-000400",
+      "SIT-CHK-000405",
+      "SIT-CHK-000406",
+      "SIT-CHK-000407",
+      "SIT-CHK-000408",
+      "SIT-CHK-000409",
+      "SIT-CHK-000410",
+      "SIT-CHK-000411",
+      "SIT-CHK-000412",
+      "SIT-CHK-000413",
+      "SIT-CHK-000414",
+      "SIT-CHK-000415",
+      "SIT-CHK-000416"
+    ],
+    "id": "SIT-BAS-000003",
+    "lifecycle": {
+      "basis_refs": [],
+      "state": "active"
+    },
+    "method": "Inspect supplied acquisition record; literal ``` is data.",
+    "qualifications": [
+      "Caller-supplied documentary premise (合成例); no external authentication."
+    ],
+    "scope": {
+      "claim_refs": [
+        {
+          "collection": "records",
+          "identifier": "P4-CLAIM",
+          "selector": null
+        }
+      ],
+      "effective_window": {
+        "end": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        },
+        "start": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        }
+      },
+      "inquiry_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    },
+    "source": {
+      "collection": "assertions",
+      "identifier": "P4-PARENT",
+      "selector": null
+    },
+    "support_refs": [
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "time": {
+      "asserted_at": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": "supplied",
+    "basis_kind": null,
+    "check_refs": [],
+    "id": "SIT-BAS-000004",
+    "lifecycle": null,
+    "method": null,
+    "qualifications": [
+      "Supplied fictional material; external authenticity is not examined."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "evidence_references",
+      "identifier": "P4-SUPPORT",
+      "selector": null
+    },
+    "support_refs": [],
+    "time": {}
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "declaration",
+    "check_refs": [],
+    "id": "SIT-BAS-000005",
+    "lifecycle": null,
+    "method": "Independently authored finite Phase 4 reference case.",
+    "qualifications": [
+      "Supplied declaration; no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "support_refs": [],
+    "time": {
+      "as_of": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      },
+      "time_window": {
+        "end": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        },
+        "start": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        }
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "declaration",
+    "check_refs": [
+      "SIT-CHK-000227",
+      "SIT-CHK-000228",
+      "SIT-CHK-000229",
+      "SIT-CHK-000230",
+      "SIT-CHK-000317",
+      "SIT-CHK-000318",
+      "SIT-CHK-000319",
+      "SIT-CHK-000320",
+      "SIT-CHK-000346",
+      "SIT-CHK-000347",
+      "SIT-CHK-000348",
+      "SIT-CHK-000349",
+      "SIT-CHK-000401",
+      "SIT-CHK-000402",
+      "SIT-CHK-000403",
+      "SIT-CHK-000404"
+    ],
+    "id": "SIT-BAS-000006",
+    "lifecycle": null,
+    "method": "Independently authored finite Phase 4 reference case.",
+    "qualifications": [
+      "Supplied declaration; no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": "dependency_dimensions"
+    },
+    "support_refs": [],
+    "time": {
+      "as_of": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      },
+      "time_window": {
+        "end": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        },
+        "start": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        }
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "declaration",
+    "check_refs": [],
+    "id": "SIT-BAS-000007",
+    "lifecycle": null,
+    "method": "Independently authored finite Phase 4 reference case.",
+    "qualifications": [
+      "Supplied declaration; no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": "seed_artifact_refs"
+    },
+    "support_refs": [],
+    "time": {
+      "as_of": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      },
+      "time_window": {
+        "end": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        },
+        "start": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        }
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "declaration",
+    "check_refs": [],
+    "id": "SIT-BAS-000008",
+    "lifecycle": null,
+    "method": "Independently authored finite Phase 4 reference case.",
+    "qualifications": [
+      "Supplied declaration; no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": "seed_evidence_refs"
+    },
+    "support_refs": [],
+    "time": {
+      "as_of": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      },
+      "time_window": {
+        "end": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        },
+        "start": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        }
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "declaration",
+    "check_refs": [
+      "SIT-CHK-000227",
+      "SIT-CHK-000228",
+      "SIT-CHK-000229",
+      "SIT-CHK-000230",
+      "SIT-CHK-000317",
+      "SIT-CHK-000318",
+      "SIT-CHK-000319",
+      "SIT-CHK-000320",
+      "SIT-CHK-000346",
+      "SIT-CHK-000347",
+      "SIT-CHK-000348",
+      "SIT-CHK-000349",
+      "SIT-CHK-000401",
+      "SIT-CHK-000402",
+      "SIT-CHK-000403",
+      "SIT-CHK-000404"
+    ],
+    "id": "SIT-BAS-000009",
+    "lifecycle": null,
+    "method": "Independently authored finite Phase 4 reference case.",
+    "qualifications": [
+      "Supplied declaration; no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": "target_claim_refs"
+    },
+    "support_refs": [],
+    "time": {
+      "as_of": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      },
+      "time_window": {
+        "end": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        },
+        "start": {
+          "precision": null,
+          "reason": "No occurrence time is supplied for this fictional reference case.",
+          "state": "unknown",
+          "value": null
+        }
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "declaration",
+    "check_refs": [],
+    "id": "SIT-BAS-000010",
+    "lifecycle": null,
+    "method": "Independently authored finite Phase 4 reference case.",
+    "qualifications": [
+      "Supplied declaration; no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "support_refs": [],
+    "time": {}
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "declaration",
+    "check_refs": [],
+    "id": "SIT-BAS-000011",
+    "lifecycle": null,
+    "method": "Independently authored finite Phase 4 reference case.",
+    "qualifications": [
+      "Supplied declaration; no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "records",
+      "identifier": "P4-ART",
+      "selector": null
+    },
+    "support_refs": [],
+    "time": {
+      "published_at": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      },
+      "retrieved_at": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      }
+    }
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "declaration",
+    "check_refs": [],
+    "id": "SIT-BAS-000012",
+    "lifecycle": null,
+    "method": "Independently authored finite Phase 4 reference case.",
+    "qualifications": [
+      "Supplied declaration; no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "records",
+      "identifier": "P4-CLAIM",
+      "selector": null
+    },
+    "support_refs": [],
+    "time": {}
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "documented_record",
+    "check_refs": [],
+    "id": "SIT-BAS-000013",
+    "lifecycle": null,
+    "method": "Inspect supplied acquisition record; literal ``` is data.",
+    "qualifications": [
+      "Caller-supplied documentary premise (合成例); no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "records",
+      "identifier": "P4-E1",
+      "selector": null
+    },
+    "support_refs": [
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "time": {}
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "documented_record",
+    "check_refs": [],
+    "id": "SIT-BAS-000014",
+    "lifecycle": null,
+    "method": "Inspect supplied acquisition record; literal ``` is data.",
+    "qualifications": [
+      "Caller-supplied documentary premise (合成例); no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "records",
+      "identifier": "P4-E1",
+      "selector": "data.artifact_ref"
+    },
+    "support_refs": [
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "time": {}
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "documented_record",
+    "check_refs": [],
+    "id": "SIT-BAS-000015",
+    "lifecycle": null,
+    "method": "Inspect supplied acquisition record; literal ``` is data.",
+    "qualifications": [
+      "Caller-supplied documentary premise (合成例); no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "records",
+      "identifier": "P4-E1",
+      "selector": "data.claim_ref"
+    },
+    "support_refs": [
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "time": {}
+  },
+  {
+    "asserter_ref": {
+      "collection": "records",
+      "identifier": "P4-ACTOR",
+      "selector": null
+    },
+    "attestor_ref": null,
+    "availability": null,
+    "basis_kind": "documented_record",
+    "check_refs": [],
+    "id": "SIT-BAS-000016",
+    "lifecycle": null,
+    "method": "Inspect supplied acquisition record; literal ``` is data.",
+    "qualifications": [
+      "Caller-supplied documentary premise (合成例); no external authentication."
+    ],
+    "scope": null,
+    "source": {
+      "collection": "records",
+      "identifier": "P4-O1",
+      "selector": null
+    },
+    "support_refs": [
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "time": {
+      "occurred_at": {
+        "precision": null,
+        "reason": "No occurrence time is supplied for this fictional reference case.",
+        "state": "unknown",
+        "value": null
+      }
+    }
+  }
+]
+````
+
+## capabilities
+
+```json
+[
+  {
+    "available_result_refs": [
+      "SIT-RES-000001",
+      "SIT-RES-000002",
+      "SIT-RES-000003",
+      "SIT-RES-000004",
+      "SIT-RES-000005"
+    ],
+    "check_refs": [
+      "SIT-CHK-000001",
+      "SIT-CHK-000002",
+      "SIT-CHK-000003",
+      "SIT-CHK-000004",
+      "SIT-CHK-000005",
+      "SIT-CHK-000079",
+      "SIT-CHK-000080",
+      "SIT-CHK-000081",
+      "SIT-CHK-000082",
+      "SIT-CHK-000083",
+      "SIT-CHK-000157",
+      "SIT-CHK-000158",
+      "SIT-CHK-000159",
+      "SIT-CHK-000160",
+      "SIT-CHK-000161",
+      "SIT-CHK-000594",
+      "SIT-CHK-000595",
+      "SIT-CHK-000596",
+      "SIT-CHK-000597",
+      "SIT-CHK-000598"
+    ],
+    "diagnostic_id": "SIT-M001",
+    "id": "SIT-CAP-000001",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [],
+    "result_refs": [
+      "SIT-RES-000001",
+      "SIT-RES-000002",
+      "SIT-RES-000003",
+      "SIT-RES-000004",
+      "SIT-RES-000005"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000001",
+      "SIT-SCP-000003"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000006",
+      "SIT-RES-000007",
+      "SIT-RES-000008"
+    ],
+    "check_refs": [
+      "SIT-CHK-000006",
+      "SIT-CHK-000007",
+      "SIT-CHK-000008",
+      "SIT-CHK-000084",
+      "SIT-CHK-000085",
+      "SIT-CHK-000086",
+      "SIT-CHK-000162",
+      "SIT-CHK-000163",
+      "SIT-CHK-000164",
+      "SIT-CHK-000193",
+      "SIT-CHK-000194",
+      "SIT-CHK-000195",
+      "SIT-CHK-000224",
+      "SIT-CHK-000225",
+      "SIT-CHK-000226",
+      "SIT-CHK-000279",
+      "SIT-CHK-000280",
+      "SIT-CHK-000281",
+      "SIT-CHK-000298",
+      "SIT-CHK-000299",
+      "SIT-CHK-000300",
+      "SIT-CHK-000314",
+      "SIT-CHK-000315",
+      "SIT-CHK-000316",
+      "SIT-CHK-000343",
+      "SIT-CHK-000344",
+      "SIT-CHK-000345",
+      "SIT-CHK-000398",
+      "SIT-CHK-000399",
+      "SIT-CHK-000400",
+      "SIT-CHK-000599",
+      "SIT-CHK-000600",
+      "SIT-CHK-000601"
+    ],
+    "diagnostic_id": "SIT-M002",
+    "id": "SIT-CAP-000002",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [],
+    "result_refs": [
+      "SIT-RES-000006",
+      "SIT-RES-000007",
+      "SIT-RES-000008"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000019"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000009"
+    ],
+    "check_refs": [
+      "SIT-CHK-000009",
+      "SIT-CHK-000010",
+      "SIT-CHK-000011",
+      "SIT-CHK-000012",
+      "SIT-CHK-000087",
+      "SIT-CHK-000088",
+      "SIT-CHK-000089",
+      "SIT-CHK-000090",
+      "SIT-CHK-000165",
+      "SIT-CHK-000166",
+      "SIT-CHK-000167",
+      "SIT-CHK-000168",
+      "SIT-CHK-000196",
+      "SIT-CHK-000197",
+      "SIT-CHK-000198",
+      "SIT-CHK-000199",
+      "SIT-CHK-000227",
+      "SIT-CHK-000228",
+      "SIT-CHK-000229",
+      "SIT-CHK-000230",
+      "SIT-CHK-000282",
+      "SIT-CHK-000283",
+      "SIT-CHK-000284",
+      "SIT-CHK-000285",
+      "SIT-CHK-000301",
+      "SIT-CHK-000302",
+      "SIT-CHK-000303",
+      "SIT-CHK-000304",
+      "SIT-CHK-000317",
+      "SIT-CHK-000318",
+      "SIT-CHK-000319",
+      "SIT-CHK-000320",
+      "SIT-CHK-000346",
+      "SIT-CHK-000347",
+      "SIT-CHK-000348",
+      "SIT-CHK-000349",
+      "SIT-CHK-000401",
+      "SIT-CHK-000402",
+      "SIT-CHK-000403",
+      "SIT-CHK-000404",
+      "SIT-CHK-000453",
+      "SIT-CHK-000454",
+      "SIT-CHK-000455",
+      "SIT-CHK-000456",
+      "SIT-CHK-000602",
+      "SIT-CHK-000603",
+      "SIT-CHK-000604",
+      "SIT-CHK-000605"
+    ],
+    "diagnostic_id": "SIT-M003",
+    "id": "SIT-CAP-000003",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000022",
+      "SIT-RSN-000023",
+      "SIT-RSN-000024",
+      "SIT-RSN-000025"
+    ],
+    "result_refs": [
+      "SIT-RES-000009",
+      "SIT-RES-000010",
+      "SIT-RES-000011",
+      "SIT-RES-000012"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000017"
+    ],
+    "unavailable_result_refs": [
+      "SIT-RES-000010",
+      "SIT-RES-000011",
+      "SIT-RES-000012"
+    ]
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000013",
+      "SIT-RES-000014",
+      "SIT-RES-000015",
+      "SIT-RES-000016"
+    ],
+    "check_refs": [
+      "SIT-CHK-000013",
+      "SIT-CHK-000014",
+      "SIT-CHK-000015",
+      "SIT-CHK-000016",
+      "SIT-CHK-000091",
+      "SIT-CHK-000092",
+      "SIT-CHK-000093",
+      "SIT-CHK-000094",
+      "SIT-CHK-000169",
+      "SIT-CHK-000170",
+      "SIT-CHK-000171",
+      "SIT-CHK-000172",
+      "SIT-CHK-000200",
+      "SIT-CHK-000201",
+      "SIT-CHK-000202",
+      "SIT-CHK-000203",
+      "SIT-CHK-000231",
+      "SIT-CHK-000232",
+      "SIT-CHK-000233",
+      "SIT-CHK-000234",
+      "SIT-CHK-000286",
+      "SIT-CHK-000287",
+      "SIT-CHK-000288",
+      "SIT-CHK-000289",
+      "SIT-CHK-000305",
+      "SIT-CHK-000306",
+      "SIT-CHK-000307",
+      "SIT-CHK-000308",
+      "SIT-CHK-000321",
+      "SIT-CHK-000322",
+      "SIT-CHK-000323",
+      "SIT-CHK-000324",
+      "SIT-CHK-000350",
+      "SIT-CHK-000351",
+      "SIT-CHK-000352",
+      "SIT-CHK-000353",
+      "SIT-CHK-000405",
+      "SIT-CHK-000406",
+      "SIT-CHK-000407",
+      "SIT-CHK-000408",
+      "SIT-CHK-000606",
+      "SIT-CHK-000607",
+      "SIT-CHK-000608",
+      "SIT-CHK-000609"
+    ],
+    "diagnostic_id": "SIT-M004",
+    "id": "SIT-CAP-000004",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [],
+    "result_refs": [
+      "SIT-RES-000013",
+      "SIT-RES-000014",
+      "SIT-RES-000015",
+      "SIT-RES-000016"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000019"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000017"
+    ],
+    "check_refs": [
+      "SIT-CHK-000017",
+      "SIT-CHK-000095",
+      "SIT-CHK-000173",
+      "SIT-CHK-000204",
+      "SIT-CHK-000235",
+      "SIT-CHK-000290",
+      "SIT-CHK-000309",
+      "SIT-CHK-000325",
+      "SIT-CHK-000354",
+      "SIT-CHK-000409",
+      "SIT-CHK-000459",
+      "SIT-CHK-000610"
+    ],
+    "diagnostic_id": "SIT-M005",
+    "id": "SIT-CAP-000005",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [],
+    "result_refs": [
+      "SIT-RES-000017"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000019"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000018",
+      "SIT-RES-000020"
+    ],
+    "check_refs": [
+      "SIT-CHK-000018",
+      "SIT-CHK-000019",
+      "SIT-CHK-000020",
+      "SIT-CHK-000096",
+      "SIT-CHK-000097",
+      "SIT-CHK-000098",
+      "SIT-CHK-000174",
+      "SIT-CHK-000175",
+      "SIT-CHK-000176",
+      "SIT-CHK-000205",
+      "SIT-CHK-000206",
+      "SIT-CHK-000207",
+      "SIT-CHK-000236",
+      "SIT-CHK-000237",
+      "SIT-CHK-000238",
+      "SIT-CHK-000291",
+      "SIT-CHK-000292",
+      "SIT-CHK-000293",
+      "SIT-CHK-000326",
+      "SIT-CHK-000327",
+      "SIT-CHK-000328",
+      "SIT-CHK-000355",
+      "SIT-CHK-000356",
+      "SIT-CHK-000357",
+      "SIT-CHK-000410",
+      "SIT-CHK-000411",
+      "SIT-CHK-000412",
+      "SIT-CHK-000460",
+      "SIT-CHK-000461",
+      "SIT-CHK-000462",
+      "SIT-CHK-000611",
+      "SIT-CHK-000612",
+      "SIT-CHK-000613"
+    ],
+    "diagnostic_id": "SIT-M006",
+    "id": "SIT-CAP-000006",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [
+      "SIT-RES-000019"
+    ],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000015"
+    ],
+    "result_refs": [
+      "SIT-RES-000018",
+      "SIT-RES-000019",
+      "SIT-RES-000020"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000020"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000021",
+      "SIT-RES-000022",
+      "SIT-RES-000023",
+      "SIT-RES-000024"
+    ],
+    "check_refs": [
+      "SIT-CHK-000021",
+      "SIT-CHK-000022",
+      "SIT-CHK-000023",
+      "SIT-CHK-000024",
+      "SIT-CHK-000099",
+      "SIT-CHK-000100",
+      "SIT-CHK-000101",
+      "SIT-CHK-000102",
+      "SIT-CHK-000177",
+      "SIT-CHK-000178",
+      "SIT-CHK-000179",
+      "SIT-CHK-000180",
+      "SIT-CHK-000208",
+      "SIT-CHK-000209",
+      "SIT-CHK-000210",
+      "SIT-CHK-000211",
+      "SIT-CHK-000239",
+      "SIT-CHK-000240",
+      "SIT-CHK-000241",
+      "SIT-CHK-000242",
+      "SIT-CHK-000294",
+      "SIT-CHK-000295",
+      "SIT-CHK-000296",
+      "SIT-CHK-000297",
+      "SIT-CHK-000310",
+      "SIT-CHK-000311",
+      "SIT-CHK-000312",
+      "SIT-CHK-000313",
+      "SIT-CHK-000329",
+      "SIT-CHK-000330",
+      "SIT-CHK-000331",
+      "SIT-CHK-000332",
+      "SIT-CHK-000358",
+      "SIT-CHK-000359",
+      "SIT-CHK-000360",
+      "SIT-CHK-000361",
+      "SIT-CHK-000413",
+      "SIT-CHK-000414",
+      "SIT-CHK-000415",
+      "SIT-CHK-000416",
+      "SIT-CHK-000614",
+      "SIT-CHK-000615",
+      "SIT-CHK-000616",
+      "SIT-CHK-000617"
+    ],
+    "diagnostic_id": "SIT-M007",
+    "id": "SIT-CAP-000007",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [],
+    "result_refs": [
+      "SIT-RES-000021",
+      "SIT-RES-000022",
+      "SIT-RES-000023",
+      "SIT-RES-000024"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000019"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [],
+    "check_refs": [
+      "SIT-CHK-000025",
+      "SIT-CHK-000026",
+      "SIT-CHK-000027",
+      "SIT-CHK-000028",
+      "SIT-CHK-000103",
+      "SIT-CHK-000104",
+      "SIT-CHK-000105",
+      "SIT-CHK-000106",
+      "SIT-CHK-000618",
+      "SIT-CHK-000619",
+      "SIT-CHK-000620",
+      "SIT-CHK-000621"
+    ],
+    "diagnostic_id": "SIT-M008",
+    "id": "SIT-CAP-000008",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [
+      "SIT-RES-000025",
+      "SIT-RES-000026",
+      "SIT-RES-000027",
+      "SIT-RES-000028"
+    ],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000027",
+      "SIT-RSN-000028",
+      "SIT-RSN-000029",
+      "SIT-RSN-000030"
+    ],
+    "result_refs": [
+      "SIT-RES-000025",
+      "SIT-RES-000026",
+      "SIT-RES-000027",
+      "SIT-RES-000028"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000005"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000030"
+    ],
+    "check_refs": [
+      "SIT-CHK-000029",
+      "SIT-CHK-000030",
+      "SIT-CHK-000107",
+      "SIT-CHK-000108",
+      "SIT-CHK-000243",
+      "SIT-CHK-000244",
+      "SIT-CHK-000362",
+      "SIT-CHK-000363",
+      "SIT-CHK-000417",
+      "SIT-CHK-000418",
+      "SIT-CHK-000465",
+      "SIT-CHK-000466",
+      "SIT-CHK-000622",
+      "SIT-CHK-000623"
+    ],
+    "diagnostic_id": "SIT-M009",
+    "id": "SIT-CAP-000009",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000020",
+      "SIT-RSN-000021"
+    ],
+    "result_refs": [
+      "SIT-RES-000029",
+      "SIT-RES-000030"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000004"
+    ],
+    "unavailable_result_refs": [
+      "SIT-RES-000029"
+    ]
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000032",
+      "SIT-RES-000034"
+    ],
+    "check_refs": [
+      "SIT-CHK-000031",
+      "SIT-CHK-000032",
+      "SIT-CHK-000033",
+      "SIT-CHK-000034",
+      "SIT-CHK-000035",
+      "SIT-CHK-000036",
+      "SIT-CHK-000037",
+      "SIT-CHK-000109",
+      "SIT-CHK-000110",
+      "SIT-CHK-000111",
+      "SIT-CHK-000112",
+      "SIT-CHK-000113",
+      "SIT-CHK-000114",
+      "SIT-CHK-000115",
+      "SIT-CHK-000467",
+      "SIT-CHK-000468",
+      "SIT-CHK-000469",
+      "SIT-CHK-000470",
+      "SIT-CHK-000471",
+      "SIT-CHK-000472",
+      "SIT-CHK-000473",
+      "SIT-CHK-000498",
+      "SIT-CHK-000499",
+      "SIT-CHK-000500",
+      "SIT-CHK-000501",
+      "SIT-CHK-000502",
+      "SIT-CHK-000503",
+      "SIT-CHK-000504",
+      "SIT-CHK-000529",
+      "SIT-CHK-000530",
+      "SIT-CHK-000531",
+      "SIT-CHK-000532",
+      "SIT-CHK-000533",
+      "SIT-CHK-000534",
+      "SIT-CHK-000535",
+      "SIT-CHK-000624",
+      "SIT-CHK-000625",
+      "SIT-CHK-000626",
+      "SIT-CHK-000627",
+      "SIT-CHK-000628",
+      "SIT-CHK-000629",
+      "SIT-CHK-000630"
+    ],
+    "diagnostic_id": "SIT-M010",
+    "id": "SIT-CAP-000010",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000001",
+      "SIT-RSN-000002",
+      "SIT-RSN-000003",
+      "SIT-RSN-000004",
+      "SIT-RSN-000005",
+      "SIT-RSN-000006",
+      "SIT-RSN-000007",
+      "SIT-RSN-000008",
+      "SIT-RSN-000009",
+      "SIT-RSN-000010",
+      "SIT-RSN-000011",
+      "SIT-RSN-000012",
+      "SIT-RSN-000013",
+      "SIT-RSN-000014",
+      "SIT-RSN-000038"
+    ],
+    "result_refs": [
+      "SIT-RES-000031",
+      "SIT-RES-000032",
+      "SIT-RES-000033",
+      "SIT-RES-000034",
+      "SIT-RES-000035",
+      "SIT-RES-000036",
+      "SIT-RES-000037"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000008",
+      "SIT-SCP-000009"
+    ],
+    "unavailable_result_refs": [
+      "SIT-RES-000031",
+      "SIT-RES-000033",
+      "SIT-RES-000035",
+      "SIT-RES-000036",
+      "SIT-RES-000037"
+    ]
+  },
+  {
+    "available_result_refs": [],
+    "check_refs": [
+      "SIT-CHK-000038",
+      "SIT-CHK-000039",
+      "SIT-CHK-000040",
+      "SIT-CHK-000116",
+      "SIT-CHK-000117",
+      "SIT-CHK-000118",
+      "SIT-CHK-000631",
+      "SIT-CHK-000632",
+      "SIT-CHK-000633"
+    ],
+    "diagnostic_id": "SIT-M011",
+    "id": "SIT-CAP-000011",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [
+      "SIT-RES-000038",
+      "SIT-RES-000039",
+      "SIT-RES-000040"
+    ],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000031",
+      "SIT-RSN-000032",
+      "SIT-RSN-000033"
+    ],
+    "result_refs": [
+      "SIT-RES-000038",
+      "SIT-RES-000039",
+      "SIT-RES-000040"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000005"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000041",
+      "SIT-RES-000042",
+      "SIT-RES-000043",
+      "SIT-RES-000044",
+      "SIT-RES-000045",
+      "SIT-RES-000046",
+      "SIT-RES-000047",
+      "SIT-RES-000048"
+    ],
+    "check_refs": [
+      "SIT-CHK-000041",
+      "SIT-CHK-000042",
+      "SIT-CHK-000043",
+      "SIT-CHK-000044",
+      "SIT-CHK-000045",
+      "SIT-CHK-000046",
+      "SIT-CHK-000047",
+      "SIT-CHK-000048",
+      "SIT-CHK-000119",
+      "SIT-CHK-000120",
+      "SIT-CHK-000121",
+      "SIT-CHK-000122",
+      "SIT-CHK-000123",
+      "SIT-CHK-000124",
+      "SIT-CHK-000125",
+      "SIT-CHK-000126",
+      "SIT-CHK-000181",
+      "SIT-CHK-000182",
+      "SIT-CHK-000183",
+      "SIT-CHK-000184",
+      "SIT-CHK-000185",
+      "SIT-CHK-000186",
+      "SIT-CHK-000187",
+      "SIT-CHK-000188",
+      "SIT-CHK-000212",
+      "SIT-CHK-000213",
+      "SIT-CHK-000214",
+      "SIT-CHK-000215",
+      "SIT-CHK-000216",
+      "SIT-CHK-000217",
+      "SIT-CHK-000218",
+      "SIT-CHK-000219",
+      "SIT-CHK-000245",
+      "SIT-CHK-000246",
+      "SIT-CHK-000247",
+      "SIT-CHK-000248",
+      "SIT-CHK-000249",
+      "SIT-CHK-000250",
+      "SIT-CHK-000251",
+      "SIT-CHK-000252",
+      "SIT-CHK-000333",
+      "SIT-CHK-000334",
+      "SIT-CHK-000335",
+      "SIT-CHK-000336",
+      "SIT-CHK-000337",
+      "SIT-CHK-000338",
+      "SIT-CHK-000339",
+      "SIT-CHK-000340",
+      "SIT-CHK-000364",
+      "SIT-CHK-000365",
+      "SIT-CHK-000366",
+      "SIT-CHK-000367",
+      "SIT-CHK-000368",
+      "SIT-CHK-000369",
+      "SIT-CHK-000370",
+      "SIT-CHK-000371",
+      "SIT-CHK-000419",
+      "SIT-CHK-000420",
+      "SIT-CHK-000421",
+      "SIT-CHK-000422",
+      "SIT-CHK-000423",
+      "SIT-CHK-000424",
+      "SIT-CHK-000425",
+      "SIT-CHK-000426",
+      "SIT-CHK-000560",
+      "SIT-CHK-000561",
+      "SIT-CHK-000562",
+      "SIT-CHK-000563",
+      "SIT-CHK-000564",
+      "SIT-CHK-000565",
+      "SIT-CHK-000566",
+      "SIT-CHK-000567",
+      "SIT-CHK-000634",
+      "SIT-CHK-000635",
+      "SIT-CHK-000636",
+      "SIT-CHK-000637",
+      "SIT-CHK-000638",
+      "SIT-CHK-000639",
+      "SIT-CHK-000640",
+      "SIT-CHK-000641"
+    ],
+    "diagnostic_id": "SIT-M012",
+    "id": "SIT-CAP-000012",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [],
+    "result_refs": [
+      "SIT-RES-000041",
+      "SIT-RES-000042",
+      "SIT-RES-000043",
+      "SIT-RES-000044",
+      "SIT-RES-000045",
+      "SIT-RES-000046",
+      "SIT-RES-000047",
+      "SIT-RES-000048"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000007"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000049",
+      "SIT-RES-000050"
+    ],
+    "check_refs": [
+      "SIT-CHK-000049",
+      "SIT-CHK-000050",
+      "SIT-CHK-000127",
+      "SIT-CHK-000128",
+      "SIT-CHK-000253",
+      "SIT-CHK-000254",
+      "SIT-CHK-000341",
+      "SIT-CHK-000342",
+      "SIT-CHK-000372",
+      "SIT-CHK-000373",
+      "SIT-CHK-000427",
+      "SIT-CHK-000428",
+      "SIT-CHK-000457",
+      "SIT-CHK-000458",
+      "SIT-CHK-000463",
+      "SIT-CHK-000464",
+      "SIT-CHK-000568",
+      "SIT-CHK-000569",
+      "SIT-CHK-000642",
+      "SIT-CHK-000643"
+    ],
+    "diagnostic_id": "SIT-M013",
+    "id": "SIT-CAP-000013",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000026"
+    ],
+    "result_refs": [
+      "SIT-RES-000049",
+      "SIT-RES-000050"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000018"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000051",
+      "SIT-RES-000052",
+      "SIT-RES-000053",
+      "SIT-RES-000054",
+      "SIT-RES-000055",
+      "SIT-RES-000056",
+      "SIT-RES-000057",
+      "SIT-RES-000058",
+      "SIT-RES-000059",
+      "SIT-RES-000060",
+      "SIT-RES-000061",
+      "SIT-RES-000062",
+      "SIT-RES-000063",
+      "SIT-RES-000064",
+      "SIT-RES-000065",
+      "SIT-RES-000066",
+      "SIT-RES-000067",
+      "SIT-RES-000068",
+      "SIT-RES-000069",
+      "SIT-RES-000070",
+      "SIT-RES-000071",
+      "SIT-RES-000072",
+      "SIT-RES-000073",
+      "SIT-RES-000074"
+    ],
+    "check_refs": [
+      "SIT-CHK-000051",
+      "SIT-CHK-000052",
+      "SIT-CHK-000053",
+      "SIT-CHK-000054",
+      "SIT-CHK-000055",
+      "SIT-CHK-000056",
+      "SIT-CHK-000057",
+      "SIT-CHK-000058",
+      "SIT-CHK-000059",
+      "SIT-CHK-000060",
+      "SIT-CHK-000061",
+      "SIT-CHK-000062",
+      "SIT-CHK-000063",
+      "SIT-CHK-000064",
+      "SIT-CHK-000065",
+      "SIT-CHK-000066",
+      "SIT-CHK-000067",
+      "SIT-CHK-000068",
+      "SIT-CHK-000069",
+      "SIT-CHK-000070",
+      "SIT-CHK-000071",
+      "SIT-CHK-000072",
+      "SIT-CHK-000073",
+      "SIT-CHK-000074",
+      "SIT-CHK-000129",
+      "SIT-CHK-000130",
+      "SIT-CHK-000131",
+      "SIT-CHK-000132",
+      "SIT-CHK-000133",
+      "SIT-CHK-000134",
+      "SIT-CHK-000135",
+      "SIT-CHK-000136",
+      "SIT-CHK-000137",
+      "SIT-CHK-000138",
+      "SIT-CHK-000139",
+      "SIT-CHK-000140",
+      "SIT-CHK-000141",
+      "SIT-CHK-000142",
+      "SIT-CHK-000143",
+      "SIT-CHK-000144",
+      "SIT-CHK-000145",
+      "SIT-CHK-000146",
+      "SIT-CHK-000147",
+      "SIT-CHK-000148",
+      "SIT-CHK-000149",
+      "SIT-CHK-000150",
+      "SIT-CHK-000151",
+      "SIT-CHK-000152",
+      "SIT-CHK-000255",
+      "SIT-CHK-000256",
+      "SIT-CHK-000257",
+      "SIT-CHK-000258",
+      "SIT-CHK-000259",
+      "SIT-CHK-000260",
+      "SIT-CHK-000261",
+      "SIT-CHK-000262",
+      "SIT-CHK-000263",
+      "SIT-CHK-000264",
+      "SIT-CHK-000265",
+      "SIT-CHK-000266",
+      "SIT-CHK-000267",
+      "SIT-CHK-000268",
+      "SIT-CHK-000269",
+      "SIT-CHK-000270",
+      "SIT-CHK-000271",
+      "SIT-CHK-000272",
+      "SIT-CHK-000273",
+      "SIT-CHK-000274",
+      "SIT-CHK-000275",
+      "SIT-CHK-000276",
+      "SIT-CHK-000277",
+      "SIT-CHK-000278",
+      "SIT-CHK-000374",
+      "SIT-CHK-000375",
+      "SIT-CHK-000376",
+      "SIT-CHK-000377",
+      "SIT-CHK-000378",
+      "SIT-CHK-000379",
+      "SIT-CHK-000380",
+      "SIT-CHK-000381",
+      "SIT-CHK-000382",
+      "SIT-CHK-000383",
+      "SIT-CHK-000384",
+      "SIT-CHK-000385",
+      "SIT-CHK-000386",
+      "SIT-CHK-000387",
+      "SIT-CHK-000388",
+      "SIT-CHK-000389",
+      "SIT-CHK-000390",
+      "SIT-CHK-000391",
+      "SIT-CHK-000392",
+      "SIT-CHK-000393",
+      "SIT-CHK-000394",
+      "SIT-CHK-000395",
+      "SIT-CHK-000396",
+      "SIT-CHK-000397",
+      "SIT-CHK-000429",
+      "SIT-CHK-000430",
+      "SIT-CHK-000431",
+      "SIT-CHK-000432",
+      "SIT-CHK-000433",
+      "SIT-CHK-000434",
+      "SIT-CHK-000435",
+      "SIT-CHK-000436",
+      "SIT-CHK-000437",
+      "SIT-CHK-000438",
+      "SIT-CHK-000439",
+      "SIT-CHK-000440",
+      "SIT-CHK-000441",
+      "SIT-CHK-000442",
+      "SIT-CHK-000443",
+      "SIT-CHK-000444",
+      "SIT-CHK-000445",
+      "SIT-CHK-000446",
+      "SIT-CHK-000447",
+      "SIT-CHK-000448",
+      "SIT-CHK-000449",
+      "SIT-CHK-000450",
+      "SIT-CHK-000451",
+      "SIT-CHK-000452",
+      "SIT-CHK-000474",
+      "SIT-CHK-000475",
+      "SIT-CHK-000476",
+      "SIT-CHK-000477",
+      "SIT-CHK-000478",
+      "SIT-CHK-000479",
+      "SIT-CHK-000480",
+      "SIT-CHK-000481",
+      "SIT-CHK-000482",
+      "SIT-CHK-000483",
+      "SIT-CHK-000484",
+      "SIT-CHK-000485",
+      "SIT-CHK-000486",
+      "SIT-CHK-000487",
+      "SIT-CHK-000488",
+      "SIT-CHK-000489",
+      "SIT-CHK-000490",
+      "SIT-CHK-000491",
+      "SIT-CHK-000492",
+      "SIT-CHK-000493",
+      "SIT-CHK-000494",
+      "SIT-CHK-000495",
+      "SIT-CHK-000496",
+      "SIT-CHK-000497",
+      "SIT-CHK-000505",
+      "SIT-CHK-000506",
+      "SIT-CHK-000507",
+      "SIT-CHK-000508",
+      "SIT-CHK-000509",
+      "SIT-CHK-000510",
+      "SIT-CHK-000511",
+      "SIT-CHK-000512",
+      "SIT-CHK-000513",
+      "SIT-CHK-000514",
+      "SIT-CHK-000515",
+      "SIT-CHK-000516",
+      "SIT-CHK-000517",
+      "SIT-CHK-000518",
+      "SIT-CHK-000519",
+      "SIT-CHK-000520",
+      "SIT-CHK-000521",
+      "SIT-CHK-000522",
+      "SIT-CHK-000523",
+      "SIT-CHK-000524",
+      "SIT-CHK-000525",
+      "SIT-CHK-000526",
+      "SIT-CHK-000527",
+      "SIT-CHK-000528",
+      "SIT-CHK-000536",
+      "SIT-CHK-000537",
+      "SIT-CHK-000538",
+      "SIT-CHK-000539",
+      "SIT-CHK-000540",
+      "SIT-CHK-000541",
+      "SIT-CHK-000542",
+      "SIT-CHK-000543",
+      "SIT-CHK-000544",
+      "SIT-CHK-000545",
+      "SIT-CHK-000546",
+      "SIT-CHK-000547",
+      "SIT-CHK-000548",
+      "SIT-CHK-000549",
+      "SIT-CHK-000550",
+      "SIT-CHK-000551",
+      "SIT-CHK-000552",
+      "SIT-CHK-000553",
+      "SIT-CHK-000554",
+      "SIT-CHK-000555",
+      "SIT-CHK-000556",
+      "SIT-CHK-000557",
+      "SIT-CHK-000558",
+      "SIT-CHK-000559",
+      "SIT-CHK-000570",
+      "SIT-CHK-000571",
+      "SIT-CHK-000572",
+      "SIT-CHK-000573",
+      "SIT-CHK-000574",
+      "SIT-CHK-000575",
+      "SIT-CHK-000576",
+      "SIT-CHK-000577",
+      "SIT-CHK-000578",
+      "SIT-CHK-000579",
+      "SIT-CHK-000580",
+      "SIT-CHK-000581",
+      "SIT-CHK-000582",
+      "SIT-CHK-000583",
+      "SIT-CHK-000584",
+      "SIT-CHK-000585",
+      "SIT-CHK-000586",
+      "SIT-CHK-000587",
+      "SIT-CHK-000588",
+      "SIT-CHK-000589",
+      "SIT-CHK-000590",
+      "SIT-CHK-000591",
+      "SIT-CHK-000592",
+      "SIT-CHK-000593",
+      "SIT-CHK-000644",
+      "SIT-CHK-000645",
+      "SIT-CHK-000646",
+      "SIT-CHK-000647",
+      "SIT-CHK-000648",
+      "SIT-CHK-000649",
+      "SIT-CHK-000650",
+      "SIT-CHK-000651",
+      "SIT-CHK-000652",
+      "SIT-CHK-000653",
+      "SIT-CHK-000654",
+      "SIT-CHK-000655",
+      "SIT-CHK-000656",
+      "SIT-CHK-000657",
+      "SIT-CHK-000658",
+      "SIT-CHK-000659",
+      "SIT-CHK-000660",
+      "SIT-CHK-000661",
+      "SIT-CHK-000662",
+      "SIT-CHK-000663",
+      "SIT-CHK-000664",
+      "SIT-CHK-000665",
+      "SIT-CHK-000666",
+      "SIT-CHK-000667"
+    ],
+    "diagnostic_id": "SIT-M014",
+    "id": "SIT-CAP-000014",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [],
+    "result_refs": [
+      "SIT-RES-000051",
+      "SIT-RES-000052",
+      "SIT-RES-000053",
+      "SIT-RES-000054",
+      "SIT-RES-000055",
+      "SIT-RES-000056",
+      "SIT-RES-000057",
+      "SIT-RES-000058",
+      "SIT-RES-000059",
+      "SIT-RES-000060",
+      "SIT-RES-000061",
+      "SIT-RES-000062",
+      "SIT-RES-000063",
+      "SIT-RES-000064",
+      "SIT-RES-000065",
+      "SIT-RES-000066",
+      "SIT-RES-000067",
+      "SIT-RES-000068",
+      "SIT-RES-000069",
+      "SIT-RES-000070",
+      "SIT-RES-000071",
+      "SIT-RES-000072",
+      "SIT-RES-000073",
+      "SIT-RES-000074"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000002",
+      "SIT-SCP-000010",
+      "SIT-SCP-000011",
+      "SIT-SCP-000012",
+      "SIT-SCP-000013",
+      "SIT-SCP-000014",
+      "SIT-SCP-000015",
+      "SIT-SCP-000016"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000075",
+      "SIT-RES-000076",
+      "SIT-RES-000077",
+      "SIT-RES-000078"
+    ],
+    "check_refs": [
+      "SIT-CHK-000075",
+      "SIT-CHK-000076",
+      "SIT-CHK-000077",
+      "SIT-CHK-000078",
+      "SIT-CHK-000153",
+      "SIT-CHK-000154",
+      "SIT-CHK-000155",
+      "SIT-CHK-000156",
+      "SIT-CHK-000189",
+      "SIT-CHK-000190",
+      "SIT-CHK-000191",
+      "SIT-CHK-000192",
+      "SIT-CHK-000220",
+      "SIT-CHK-000221",
+      "SIT-CHK-000222",
+      "SIT-CHK-000223",
+      "SIT-CHK-000668",
+      "SIT-CHK-000669",
+      "SIT-CHK-000670",
+      "SIT-CHK-000671"
+    ],
+    "diagnostic_id": "SIT-M015",
+    "id": "SIT-CAP-000015",
+    "inquiry_ref": {
+      "collection": "inquiries",
+      "identifier": "P4-I001",
+      "selector": null
+    },
+    "not_applicable_result_refs": [],
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000016",
+      "SIT-RSN-000017",
+      "SIT-RSN-000018",
+      "SIT-RSN-000019",
+      "SIT-RSN-000034",
+      "SIT-RSN-000035",
+      "SIT-RSN-000036",
+      "SIT-RSN-000037"
+    ],
+    "result_refs": [
+      "SIT-RES-000075",
+      "SIT-RES-000076",
+      "SIT-RES-000077",
+      "SIT-RES-000078"
+    ],
+    "scope_note": "Every planned field and exact represented scope for this Inquiry remains separately linked; no strongest-result summary or outside-world completeness is inferred.",
+    "scope_refs": [
+      "SIT-SCP-000006"
+    ],
+    "unavailable_result_refs": []
+  }
+]
+```
+
+## checks
+
+```json
+[
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000001",
+    "input_refs": [],
+    "note": "The owner received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000003",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000002",
+    "input_refs": [],
+    "note": "The owner received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000003",
+    "input_refs": [],
+    "note": "The owner received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000004",
+    "input_refs": [],
+    "note": "The owner received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000003",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000005",
+    "input_refs": [],
+    "note": "The owner received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000006",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle; it does not re-execute admission.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000007",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle; it does not re-execute admission.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000008",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle; it does not re-execute admission.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000009",
+    "input_refs": [],
+    "note": "The component received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000010",
+    "input_refs": [],
+    "note": "The component received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000011",
+    "input_refs": [],
+    "note": "The component received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000012",
+    "input_refs": [],
+    "note": "The component received the complete admitted immutable snapshot.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000013",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000014",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000015",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000016",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000017",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000018",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000019",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000020",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000021",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle; it does not re-execute admission.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000022",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle; it does not re-execute admission.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000023",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle; it does not re-execute admission.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000024",
+    "input_refs": [],
+    "note": "This private owner received the admitted immutable PreparedBundle; it does not re-execute admission.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000025",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "The same invocation completed admission before this scheduled structural scope explanation.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000026",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "The same invocation completed admission before this scheduled structural scope explanation.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000027",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "The same invocation completed admission before this scheduled structural scope explanation.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000028",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "The same invocation completed admission before this scheduled structural scope explanation.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000029",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000030",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000031",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000032",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000033",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000034",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000035",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000036",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000037",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000038",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "The same invocation completed admission before this scheduled structural scope explanation.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000039",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "The same invocation completed admission before this scheduled structural scope explanation.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000040",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "The same invocation completed admission before this scheduled structural scope explanation.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000041",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000042",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000043",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000044",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000045",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000046",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000047",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000048",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000049",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000050",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000051",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000052",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000053",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000054",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000055",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000056",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000057",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000058",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000059",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000060",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000061",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000062",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000063",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000064",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000065",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000066",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000067",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000068",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000069",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000070",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000071",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000072",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000073",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000074",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000075",
+    "input_refs": [],
+    "note": "The same invocation completed structural admission and its full analytical plan before acceptance.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000076",
+    "input_refs": [],
+    "note": "The same invocation completed structural admission and its full analytical plan before acceptance.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000077",
+    "input_refs": [],
+    "note": "The same invocation completed structural admission and its full analytical plan before acceptance.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC01",
+    "id": "SIT-CHK-000078",
+    "input_refs": [],
+    "note": "The same invocation completed structural admission and its full analytical plan before acceptance.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000079",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000003",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000080",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000081",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000082",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000003",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000083",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000084",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000085",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000086",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000087",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000088",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000089",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000090",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000091",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000092",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000093",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000094",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000095",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000096",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000097",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000098",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000099",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000100",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000101",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000102",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000103",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000104",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000105",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000106",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000107",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000108",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000109",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000110",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000111",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000112",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000113",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000114",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000115",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000116",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000117",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000118",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000119",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000120",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000121",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000122",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000123",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000124",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000125",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000126",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000127",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000128",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000129",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000130",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000131",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000132",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000133",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000134",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000135",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000136",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000137",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000138",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000139",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000140",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000141",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000142",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000143",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000144",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000145",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000146",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000147",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000148",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000149",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000150",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000151",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000152",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000153",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000154",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000155",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC02",
+    "id": "SIT-CHK-000156",
+    "input_refs": [],
+    "note": "Exact operation scope comparison; supplied evidence is not authenticated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000157",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "The Inquiry seed positions and exact Claim bindings were completely enumerated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000003",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000158",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "The Inquiry seed positions and exact Claim bindings were completely enumerated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000159",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "The Inquiry seed positions and exact Claim bindings were completely enumerated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000160",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "The Inquiry seed positions and exact Claim bindings were completely enumerated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000003",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000161",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "The Inquiry seed positions and exact Claim bindings were completely enumerated.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000162",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000163",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000164",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000165",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000166",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000167",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000168",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000169",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000170",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000171",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000172",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000173",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000174",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000175",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000176",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000177",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000178",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000179",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000180",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000181",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_object_refs"
+      }
+    ],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000182",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_object_refs"
+      }
+    ],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000183",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_object_refs"
+      }
+    ],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000184",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_object_refs"
+      }
+    ],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000185",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_object_refs"
+      }
+    ],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000186",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_object_refs"
+      }
+    ],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000187",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_object_refs"
+      }
+    ],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000188",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_object_refs"
+      }
+    ],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000189",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Explicit trusted component fact from SOURCE_INVENTORY; this component does not execute that provider.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000190",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Explicit trusted component fact from SOURCE_INVENTORY; this component does not execute that provider.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000191",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Explicit trusted component fact from SOURCE_INVENTORY; this component does not execute that provider.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC03",
+    "id": "SIT-CHK-000192",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_artifact_refs"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "seed_evidence_refs"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.artifact_ref"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "data.claim_ref"
+      }
+    ],
+    "note": "Explicit trusted component fact from SOURCE_INVENTORY; this component does not execute that provider.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000193",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000194",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000195",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000196",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000197",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000198",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000199",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000200",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000201",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000202",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000203",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000204",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000205",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000206",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000207",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite population selection or local typed-edge eligibility.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000208",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000209",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000210",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000211",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Executed owner-local finite selection/edge eligibility; documentary and ancestry limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000212",
+    "input_refs": [],
+    "note": "This owner uses admitted native case_ref/before/after identities without relying on a RelationAssertion as a current affirmative premise.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000213",
+    "input_refs": [],
+    "note": "This owner uses admitted native case_ref/before/after identities without relying on a RelationAssertion as a current affirmative premise.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000214",
+    "input_refs": [],
+    "note": "This owner uses admitted native case_ref/before/after identities without relying on a RelationAssertion as a current affirmative premise.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000215",
+    "input_refs": [],
+    "note": "This owner uses admitted native case_ref/before/after identities without relying on a RelationAssertion as a current affirmative premise.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000216",
+    "input_refs": [],
+    "note": "This owner uses admitted native case_ref/before/after identities without relying on a RelationAssertion as a current affirmative premise.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000217",
+    "input_refs": [],
+    "note": "This owner uses admitted native case_ref/before/after identities without relying on a RelationAssertion as a current affirmative premise.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000218",
+    "input_refs": [],
+    "note": "This owner uses admitted native case_ref/before/after identities without relying on a RelationAssertion as a current affirmative premise.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000219",
+    "input_refs": [],
+    "note": "This owner uses admitted native case_ref/before/after identities without relying on a RelationAssertion as a current affirmative premise.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000220",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": "provenance.evidence_ref_ids"
+      }
+    ],
+    "note": "Explicit trusted component fact from GRAPH_VIEW_CONTRACT; this component does not execute that provider.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "unmet"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000221",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": "provenance.evidence_ref_ids"
+      }
+    ],
+    "note": "Explicit trusted component fact from GRAPH_VIEW_CONTRACT; this component does not execute that provider.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "unmet"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000222",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": "provenance.evidence_ref_ids"
+      }
+    ],
+    "note": "Explicit trusted component fact from GRAPH_VIEW_CONTRACT; this component does not execute that provider.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "unmet"
+  },
+  {
+    "check_id": "PC04",
+    "id": "SIT-CHK-000223",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": "provenance.evidence_ref_ids"
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": "provenance.evidence_ref_ids"
+      }
+    ],
+    "note": "Explicit trusted component fact from GRAPH_VIEW_CONTRACT; this component does not execute that provider.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "unmet"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000224",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000225",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000226",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000227",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000228",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000229",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000230",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000231",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000232",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000233",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000234",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000235",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000236",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000237",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000238",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000239",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000240",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000241",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000242",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      },
+      {
+        "collection": "evidence_references",
+        "identifier": "P4-SUPPORT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000243",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000244",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000245",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000246",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000247",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000248",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000249",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000250",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000251",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000252",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000253",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000254",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000255",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000256",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000257",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000258",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000259",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000260",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000261",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000262",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000263",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000264",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000265",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000266",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000267",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000268",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000269",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000270",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000271",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000272",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000273",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000274",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000275",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000276",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000277",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC05",
+    "id": "SIT-CHK-000278",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000279",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000280",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000281",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000282",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000283",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000284",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000285",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000286",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000287",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000288",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000289",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000290",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000291",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000292",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000293",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000294",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000295",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000296",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC06",
+    "id": "SIT-CHK-000297",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000298",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000299",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000300",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000301",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000302",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000303",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000304",
+    "input_refs": [],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000305",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000306",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000307",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000308",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000309",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000310",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000311",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000312",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC07",
+    "id": "SIT-CHK-000313",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000314",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000315",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000316",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000317",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000318",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000319",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000320",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000321",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000322",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000323",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000324",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000325",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000326",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000327",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000328",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000329",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000330",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000331",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000332",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      },
+      {
+        "collection": "records",
+        "identifier": "P4-O1",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000333",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000334",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000335",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000336",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000337",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000338",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000339",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000340",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000341",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC08",
+    "id": "SIT-CHK-000342",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000343",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000344",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000345",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000346",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000347",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000348",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000349",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000350",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000351",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000352",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000353",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000354",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000355",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000356",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000357",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000358",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000359",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000360",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000361",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000362",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000363",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000364",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000365",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000366",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000367",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000368",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000369",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000370",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000371",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000372",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000373",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000374",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000375",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000376",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000377",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000378",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000379",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000380",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000381",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000382",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000383",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000384",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000385",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000386",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000387",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000388",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000389",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000390",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000391",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000392",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000393",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000394",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000395",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000396",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC09",
+    "id": "SIT-CHK-000397",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000398",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000399",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000400",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000401",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000402",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000403",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000404",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000405",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000406",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000407",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000408",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000409",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000410",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000411",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000412",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual scoped premise qualifications; individual source-bound facts are retained.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000413",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000414",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000415",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000416",
+    "input_refs": [
+      {
+        "collection": "assertions",
+        "identifier": "P4-BOUND",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-COVER",
+        "selector": null
+      },
+      {
+        "collection": "assertions",
+        "identifier": "P4-PARENT",
+        "selector": null
+      }
+    ],
+    "note": "Actual finite candidate checks, with individual source-bound facts retained. Failed candidates remain excluded or disclosed; they do not invalidate the completed inventory count or become actual-world roots.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000417",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000418",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "met"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000419",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000420",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000421",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000422",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000423",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000424",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000425",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000426",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000427",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000428",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000429",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000430",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000431",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000432",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000433",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000434",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000435",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000436",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000437",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000438",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000439",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000440",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000441",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000442",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000443",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000444",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000445",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000446",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000447",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000448",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000449",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000450",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000451",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC10",
+    "id": "SIT-CHK-000452",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC11",
+    "id": "SIT-CHK-000453",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC11",
+    "id": "SIT-CHK-000454",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC11",
+    "id": "SIT-CHK-000455",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC11",
+    "id": "SIT-CHK-000456",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "dependency_dimensions"
+      },
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": "target_claim_refs"
+      }
+    ],
+    "note": "Executed exact comparison prerequisite; native declarations, supporting material and limitations remain separate.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC11",
+    "id": "SIT-CHK-000457",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC11",
+    "id": "SIT-CHK-000458",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC12",
+    "id": "SIT-CHK-000459",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "note": "Whole supplied seed population; no resolved-subset fallback.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC13",
+    "id": "SIT-CHK-000460",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "note": "Whole supplied seed population; no resolved-subset fallback.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC13",
+    "id": "SIT-CHK-000461",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "note": "Whole supplied seed population; no resolved-subset fallback.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC13",
+    "id": "SIT-CHK-000462",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-E1",
+        "selector": null
+      }
+    ],
+    "note": "Whole supplied seed population; no resolved-subset fallback.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC14",
+    "id": "SIT-CHK-000463",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC14",
+    "id": "SIT-CHK-000464",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC15",
+    "id": "SIT-CHK-000465",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC15",
+    "id": "SIT-CHK-000466",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000467",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000468",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000469",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000470",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000471",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000472",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000473",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000474",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000475",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000476",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000477",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000478",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000479",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000480",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000481",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000482",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000483",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000484",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000485",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000486",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000487",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000488",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000489",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000490",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000491",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000492",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000493",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000494",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000495",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000496",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC16",
+    "id": "SIT-CHK-000497",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000498",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000499",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000500",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000501",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000502",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000503",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000504",
+    "input_refs": [],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000505",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000506",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000507",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000508",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000509",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000510",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000511",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000512",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000513",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000514",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000515",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000516",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000517",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000518",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000519",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000520",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000521",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000522",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000523",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000524",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000525",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000526",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000527",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC17",
+    "id": "SIT-CHK-000528",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000529",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000530",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000531",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "unknown"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000532",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000533",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000534",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000535",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "note": "Executed field-specific source, boundary, finite membership or baseline check. Individual native disclosures survive unmet stronger prerequisites.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000536",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000537",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000538",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000539",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000540",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000541",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000542",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000543",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000544",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000545",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000546",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000547",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000548",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000549",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000550",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000551",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000552",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000553",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000554",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000555",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000556",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000557",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000558",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC18",
+    "id": "SIT-CHK-000559",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC21",
+    "id": "SIT-CHK-000560",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC21",
+    "id": "SIT-CHK-000561",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC21",
+    "id": "SIT-CHK-000562",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC21",
+    "id": "SIT-CHK-000563",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC21",
+    "id": "SIT-CHK-000564",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC21",
+    "id": "SIT-CHK-000565",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC21",
+    "id": "SIT-CHK-000566",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC21",
+    "id": "SIT-CHK-000567",
+    "input_refs": [],
+    "note": "Executed case relevance and exact case_ref enumeration, including the explicitly empty finite inventory. PC21 concerns documentary endpoints/linkage only; no authority or substantive-success inference.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "not_applicable"
+  },
+  {
+    "check_id": "PC22",
+    "id": "SIT-CHK-000568",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "met"
+  },
+  {
+    "check_id": "PC22",
+    "id": "SIT-CHK-000569",
+    "input_refs": [],
+    "note": "Executed review/process prerequisite. PC22 records disclosure of native contribution, identity and dependency limits, including the absence of an applicable comparison.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000570",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000571",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000572",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000573",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000574",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000575",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000576",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000577",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000578",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000579",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000580",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000581",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000582",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000583",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000584",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000585",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000586",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000587",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000588",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000589",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000590",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000591",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000592",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC23",
+    "id": "SIT-CHK-000593",
+    "input_refs": [],
+    "note": "Context retention is executed independently of native truth or documentary qualification. PC16-PC18 are supplied only by the original requested M010 execution.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000594",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000003",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000595",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000596",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000597",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000003",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000598",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000001",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000599",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000600",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000601",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000602",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000603",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000604",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000605",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000017",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000606",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000607",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000608",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000609",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000610",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000611",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000612",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000613",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000614",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000615",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000616",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000617",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000618",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000619",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000620",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000621",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000622",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000623",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000004",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000624",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000625",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000626",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000009",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000627",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000628",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000629",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000630",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000008",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000631",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000632",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000633",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000005",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000634",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000635",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000636",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000637",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000638",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000639",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000640",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000641",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000007",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000642",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000643",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000018",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000644",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000645",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000646",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000647",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000648",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000649",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000650",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000651",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000652",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000653",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000654",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000655",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000656",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000657",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000658",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000659",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000660",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000002",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000661",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000010",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000662",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000011",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000663",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000012",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000664",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000013",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000665",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000014",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000666",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000015",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000667",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000016",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000668",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000669",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000670",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  },
+  {
+    "check_id": "PC24",
+    "id": "SIT-CHK-000671",
+    "input_refs": [],
+    "note": "Owner-recorded finite processing is complete.",
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000006",
+    "state": "met"
+  }
+]
+```
+
+## observability_domains
+
+```json
+[
+  {
+    "available_result_refs": [
+      "SIT-RES-000001",
+      "SIT-RES-000002",
+      "SIT-RES-000003",
+      "SIT-RES-000004",
+      "SIT-RES-000005"
+    ],
+    "label": "Artifact and contribution inventory",
+    "level_index": 0,
+    "not_evaluated_result_refs": [],
+    "reason_refs": [],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000006",
+      "SIT-RES-000007",
+      "SIT-RES-000008",
+      "SIT-RES-000018",
+      "SIT-RES-000020",
+      "SIT-RES-000021",
+      "SIT-RES-000022",
+      "SIT-RES-000023",
+      "SIT-RES-000024",
+      "SIT-RES-000075",
+      "SIT-RES-000076",
+      "SIT-RES-000077",
+      "SIT-RES-000078"
+    ],
+    "label": "Declared provenance and process metadata",
+    "level_index": 1,
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000015",
+      "SIT-RSN-000016",
+      "SIT-RSN-000017",
+      "SIT-RSN-000018",
+      "SIT-RSN-000019",
+      "SIT-RSN-000034",
+      "SIT-RSN-000035",
+      "SIT-RSN-000036",
+      "SIT-RSN-000037"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000006",
+      "SIT-RES-000007",
+      "SIT-RES-000008",
+      "SIT-RES-000009",
+      "SIT-RES-000013",
+      "SIT-RES-000014",
+      "SIT-RES-000015",
+      "SIT-RES-000016",
+      "SIT-RES-000017",
+      "SIT-RES-000018",
+      "SIT-RES-000020"
+    ],
+    "label": "Origin-resolution and scoped process-assessment evidence",
+    "level_index": 2,
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000015",
+      "SIT-RSN-000022",
+      "SIT-RSN-000023",
+      "SIT-RSN-000024",
+      "SIT-RSN-000025"
+    ],
+    "unavailable_result_refs": [
+      "SIT-RES-000010",
+      "SIT-RES-000011",
+      "SIT-RES-000012"
+    ]
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000049",
+      "SIT-RES-000050",
+      "SIT-RES-000075",
+      "SIT-RES-000076",
+      "SIT-RES-000077",
+      "SIT-RES-000078"
+    ],
+    "label": "Evaluator, correction-route and authority evidence",
+    "level_index": 3,
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000016",
+      "SIT-RSN-000017",
+      "SIT-RSN-000018",
+      "SIT-RSN-000019",
+      "SIT-RSN-000026",
+      "SIT-RSN-000027",
+      "SIT-RSN-000028",
+      "SIT-RSN-000029",
+      "SIT-RSN-000030",
+      "SIT-RSN-000031",
+      "SIT-RSN-000032",
+      "SIT-RSN-000033",
+      "SIT-RSN-000034",
+      "SIT-RSN-000035",
+      "SIT-RSN-000036",
+      "SIT-RSN-000037"
+    ],
+    "unavailable_result_refs": []
+  },
+  {
+    "available_result_refs": [
+      "SIT-RES-000030",
+      "SIT-RES-000032",
+      "SIT-RES-000034",
+      "SIT-RES-000041",
+      "SIT-RES-000042",
+      "SIT-RES-000043",
+      "SIT-RES-000044",
+      "SIT-RES-000045",
+      "SIT-RES-000046",
+      "SIT-RES-000047",
+      "SIT-RES-000048",
+      "SIT-RES-000051",
+      "SIT-RES-000052",
+      "SIT-RES-000053",
+      "SIT-RES-000054",
+      "SIT-RES-000055",
+      "SIT-RES-000056",
+      "SIT-RES-000057",
+      "SIT-RES-000058",
+      "SIT-RES-000059",
+      "SIT-RES-000060",
+      "SIT-RES-000061",
+      "SIT-RES-000062",
+      "SIT-RES-000063",
+      "SIT-RES-000064",
+      "SIT-RES-000065",
+      "SIT-RES-000066",
+      "SIT-RES-000067",
+      "SIT-RES-000068",
+      "SIT-RES-000069",
+      "SIT-RES-000070",
+      "SIT-RES-000071",
+      "SIT-RES-000072",
+      "SIT-RES-000073",
+      "SIT-RES-000074"
+    ],
+    "label": "Boundary-qualified external input, stage histories and documented correction outcomes",
+    "level_index": 4,
+    "not_evaluated_result_refs": [],
+    "reason_refs": [
+      "SIT-RSN-000001",
+      "SIT-RSN-000002",
+      "SIT-RSN-000003",
+      "SIT-RSN-000004",
+      "SIT-RSN-000005",
+      "SIT-RSN-000006",
+      "SIT-RSN-000007",
+      "SIT-RSN-000008",
+      "SIT-RSN-000009",
+      "SIT-RSN-000010",
+      "SIT-RSN-000011",
+      "SIT-RSN-000012",
+      "SIT-RSN-000013",
+      "SIT-RSN-000014",
+      "SIT-RSN-000020",
+      "SIT-RSN-000021",
+      "SIT-RSN-000038"
+    ],
+    "unavailable_result_refs": [
+      "SIT-RES-000029",
+      "SIT-RES-000031",
+      "SIT-RES-000033",
+      "SIT-RES-000035",
+      "SIT-RES-000036",
+      "SIT-RES-000037"
+    ]
+  }
+]
+```
+
+## results
+
+### SIT-RES-000001: claim_artifact_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000007",
+    "SIT-BAS-000008",
+    "SIT-BAS-000014",
+    "SIT-BAS-000015"
+  ],
+  "check_refs": [
+    "SIT-CHK-000001",
+    "SIT-CHK-000079",
+    "SIT-CHK-000157",
+    "SIT-CHK-000594"
+  ],
+  "diagnostic_id": "SIT-M001",
+  "execution_state": "completed",
+  "field_key": "claim_artifact_record_count",
+  "id": "SIT-RES-000001",
+  "interpretation_limit": "Finite supplied record inventory only. Contributions remain distinct by ID; unresolved references remain unresolved. Counts do not establish actual sources, truth, authenticity, independence, historical applicability or an end-to-end analytical run.",
+  "population_refs": [
+    "SIT-POP-000005"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000003",
+  "value": 1,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000002: claim_unassigned_seed_artifact_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000007",
+    "SIT-BAS-000008",
+    "SIT-BAS-000014",
+    "SIT-BAS-000015"
+  ],
+  "check_refs": [
+    "SIT-CHK-000002",
+    "SIT-CHK-000080",
+    "SIT-CHK-000158",
+    "SIT-CHK-000595"
+  ],
+  "diagnostic_id": "SIT-M001",
+  "execution_state": "completed",
+  "field_key": "claim_unassigned_seed_artifact_record_count",
+  "id": "SIT-RES-000002",
+  "interpretation_limit": "Finite supplied record inventory only. Contributions remain distinct by ID; unresolved references remain unresolved. Counts do not establish actual sources, truth, authenticity, independence, historical applicability or an end-to-end analytical run.",
+  "population_refs": [
+    "SIT-POP-000002"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000001",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000003: nominal_seed_artifact_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000007",
+    "SIT-BAS-000008",
+    "SIT-BAS-000014",
+    "SIT-BAS-000015"
+  ],
+  "check_refs": [
+    "SIT-CHK-000003",
+    "SIT-CHK-000081",
+    "SIT-CHK-000159",
+    "SIT-CHK-000596"
+  ],
+  "diagnostic_id": "SIT-M001",
+  "execution_state": "completed",
+  "field_key": "nominal_seed_artifact_record_count",
+  "id": "SIT-RES-000003",
+  "interpretation_limit": "Finite supplied record inventory only. Contributions remain distinct by ID; unresolved references remain unresolved. Counts do not establish actual sources, truth, authenticity, independence, historical applicability or an end-to-end analytical run.",
+  "population_refs": [
+    "SIT-POP-000001"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000001",
+  "value": 1,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000004: seed_evidence_item_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000007",
+    "SIT-BAS-000008",
+    "SIT-BAS-000014",
+    "SIT-BAS-000015"
+  ],
+  "check_refs": [
+    "SIT-CHK-000004",
+    "SIT-CHK-000082",
+    "SIT-CHK-000160",
+    "SIT-CHK-000597"
+  ],
+  "diagnostic_id": "SIT-M001",
+  "execution_state": "completed",
+  "field_key": "seed_evidence_item_count",
+  "id": "SIT-RES-000004",
+  "interpretation_limit": "Finite supplied record inventory only. Contributions remain distinct by ID; unresolved references remain unresolved. Counts do not establish actual sources, truth, authenticity, independence, historical applicability or an end-to-end analytical run.",
+  "population_refs": [
+    "SIT-POP-000006"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000003",
+  "value": 1,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000005: unresolved_seed_artifact_reference_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000007",
+    "SIT-BAS-000008",
+    "SIT-BAS-000014",
+    "SIT-BAS-000015"
+  ],
+  "check_refs": [
+    "SIT-CHK-000005",
+    "SIT-CHK-000083",
+    "SIT-CHK-000161",
+    "SIT-CHK-000598"
+  ],
+  "diagnostic_id": "SIT-M001",
+  "execution_state": "completed",
+  "field_key": "unresolved_seed_artifact_reference_count",
+  "id": "SIT-RES-000005",
+  "interpretation_limit": "Finite supplied record inventory only. Contributions remain distinct by ID; unresolved references remain unresolved. Counts do not establish actual sources, truth, authenticity, independence, historical applicability or an end-to-end analytical run.",
+  "population_refs": [
+    "SIT-POP-000003"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000001",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000006: documentary_origin_boundary_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000006",
+    "SIT-CHK-000084",
+    "SIT-CHK-000162",
+    "SIT-CHK-000193",
+    "SIT-CHK-000224",
+    "SIT-CHK-000279",
+    "SIT-CHK-000298",
+    "SIT-CHK-000314",
+    "SIT-CHK-000343",
+    "SIT-CHK-000398",
+    "SIT-CHK-000599"
+  ],
+  "diagnostic_id": "SIT-M002",
+  "execution_state": "completed",
+  "field_key": "documentary_origin_boundary_record_count",
+  "id": "SIT-RES-000006",
+  "interpretation_limit": "Exact supplied record inventory after complete finite examination. A zero is not zero actual roots; a documentary boundary is not process independence or complete history for every reaching seed. Snapshot evidence, native labels, opaque identity, gaps and all relevant branches remain attributable.",
+  "population_refs": [
+    "SIT-POP-000034"
+  ],
+  "reason_refs": [],
+  "result_origin": "qualification_check",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": 1,
+  "value_kind": "count",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000007: origin_boundary_disclosures
+
+````json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000007",
+    "SIT-CHK-000085",
+    "SIT-CHK-000163",
+    "SIT-CHK-000194",
+    "SIT-CHK-000225",
+    "SIT-CHK-000280",
+    "SIT-CHK-000299",
+    "SIT-CHK-000315",
+    "SIT-CHK-000344",
+    "SIT-CHK-000399",
+    "SIT-CHK-000600"
+  ],
+  "diagnostic_id": "SIT-M002",
+  "execution_state": "completed",
+  "field_key": "origin_boundary_disclosures",
+  "id": "SIT-RES-000007",
+  "interpretation_limit": "Exact supplied record inventory after complete finite examination. A zero is not zero actual roots; a documentary boundary is not process independence or complete history for every reaching seed. Snapshot evidence, native labels, opaque identity, gaps and all relevant branches remain attributable.",
+  "population_refs": [
+    "SIT-POP-000037"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": {
+    "records": [
+      {
+        "fields": {
+          "native_record": {
+            "asserted_at": {
+              "precision": null,
+              "reason": "No occurrence time is supplied for this fictional reference case.",
+              "state": "unknown",
+              "value": null
+            },
+            "assertion_kind": "assessment",
+            "data": {
+              "assessment_kind": "origin_boundary",
+              "details": {
+                "boundary_role": "documented_origin",
+                "coverage_ref": "P4-COVER",
+                "dimension": "acquisition",
+                "termination_reason": "This supplied finite acquisition record terminates here."
+              },
+              "subject_refs": [
+                "P4-O1"
+              ]
+            },
+            "id": "P4-BOUND",
+            "lifecycle_basis_ref_ids": [],
+            "lifecycle_state": "active",
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "documented_record",
+              "evidence_ref_ids": [
+                "P4-SUPPORT"
+              ],
+              "method": "Inspect supplied acquisition record; literal ``` is data.",
+              "qualifications": [
+                "Caller-supplied documentary premise (合成例); no external authentication."
+              ]
+            },
+            "scope": {
+              "claim_refs": [
+                "P4-CLAIM"
+              ],
+              "effective_window": {
+                "end": {
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case.",
+                  "state": "unknown",
+                  "value": null
+                },
+                "start": {
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case.",
+                  "state": "unknown",
+                  "value": null
+                }
+              },
+              "inquiry_refs": [
+                "P4-I001"
+              ]
+            }
+          },
+          "qualification_state": "met",
+          "reason_codes": []
+        },
+        "qualifications": [
+          "Attributed documentary support only; no authentication or positive-edge eligibility.",
+          "Lifecycle and relation polarity are retained; documentary qualification does not make a current positive premise.",
+          "Caller-supplied documentary premise (合成例); no external authentication."
+        ],
+        "source": {
+          "collection": "assertions",
+          "identifier": "P4-BOUND",
+          "selector": null
+        }
+      }
+    ]
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+````
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000008: reached_origin_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000008",
+    "SIT-CHK-000086",
+    "SIT-CHK-000164",
+    "SIT-CHK-000195",
+    "SIT-CHK-000226",
+    "SIT-CHK-000281",
+    "SIT-CHK-000300",
+    "SIT-CHK-000316",
+    "SIT-CHK-000345",
+    "SIT-CHK-000400",
+    "SIT-CHK-000601"
+  ],
+  "diagnostic_id": "SIT-M002",
+  "execution_state": "completed",
+  "field_key": "reached_origin_record_count",
+  "id": "SIT-RES-000008",
+  "interpretation_limit": "Exact supplied record inventory after complete finite examination. A zero is not zero actual roots; a documentary boundary is not process independence or complete history for every reaching seed. Snapshot evidence, native labels, opaque identity, gaps and all relevant branches remain attributable.",
+  "population_refs": [
+    "SIT-POP-000035"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": 1,
+  "value_kind": "count",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000009: independence_assessment_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000006",
+    "SIT-BAS-000009"
+  ],
+  "check_refs": [
+    "SIT-CHK-000009",
+    "SIT-CHK-000087",
+    "SIT-CHK-000165",
+    "SIT-CHK-000196",
+    "SIT-CHK-000227",
+    "SIT-CHK-000282",
+    "SIT-CHK-000301",
+    "SIT-CHK-000317",
+    "SIT-CHK-000346",
+    "SIT-CHK-000401",
+    "SIT-CHK-000453",
+    "SIT-CHK-000602"
+  ],
+  "diagnostic_id": "SIT-M003",
+  "execution_state": "completed",
+  "field_key": "independence_assessment_disclosures",
+  "id": "SIT-RES-000009",
+  "interpretation_limit": "Members of this exact supplied comparison only; qualification is reported separately. Native conclusions and basis remain attributed, not toolkit verification. No statistical independence, transitivity, union or sum across comparisons, global independent-source count, or qualification of unexamined dimensions follows. Origin qualification additionally requires every listed OriginEvent boundary under every selected exact Claim and dimension.",
+  "population_refs": [
+    "SIT-POP-000028"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000022"
+  ],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000017",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000009"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "This exact supplied comparison retains the identified prerequisite limitation. A missing qualification is not zero independent members or a conclusion about other comparisons.",
+    "id": "SIT-RSN-000022",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000017"
+  }
+]
+```
+
+### SIT-RES-000010: qualified_origin_set_member_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000006",
+    "SIT-BAS-000009"
+  ],
+  "check_refs": [
+    "SIT-CHK-000010",
+    "SIT-CHK-000088",
+    "SIT-CHK-000166",
+    "SIT-CHK-000197",
+    "SIT-CHK-000228",
+    "SIT-CHK-000283",
+    "SIT-CHK-000302",
+    "SIT-CHK-000318",
+    "SIT-CHK-000347",
+    "SIT-CHK-000402",
+    "SIT-CHK-000454",
+    "SIT-CHK-000603"
+  ],
+  "diagnostic_id": "SIT-M003",
+  "execution_state": "completed",
+  "field_key": "qualified_origin_set_member_count",
+  "id": "SIT-RES-000010",
+  "interpretation_limit": "Members of this exact supplied comparison only; qualification is reported separately. Native conclusions and basis remain attributed, not toolkit verification. No statistical independence, transitivity, union or sum across comparisons, global independent-source count, or qualification of unexamined dimensions follows. Origin qualification additionally requires every listed OriginEvent boundary under every selected exact Claim and dimension.",
+  "population_refs": [
+    "SIT-POP-000030"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000023"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000017",
+  "value": null,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000010"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "This exact supplied comparison retains the identified prerequisite limitation. A missing qualification is not zero independent members or a conclusion about other comparisons.",
+    "id": "SIT-RSN-000023",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000017"
+  }
+]
+```
+
+### SIT-RES-000011: qualified_process_set_member_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000006",
+    "SIT-BAS-000009"
+  ],
+  "check_refs": [
+    "SIT-CHK-000011",
+    "SIT-CHK-000089",
+    "SIT-CHK-000167",
+    "SIT-CHK-000198",
+    "SIT-CHK-000229",
+    "SIT-CHK-000284",
+    "SIT-CHK-000303",
+    "SIT-CHK-000319",
+    "SIT-CHK-000348",
+    "SIT-CHK-000403",
+    "SIT-CHK-000455",
+    "SIT-CHK-000604"
+  ],
+  "diagnostic_id": "SIT-M003",
+  "execution_state": "completed",
+  "field_key": "qualified_process_set_member_count",
+  "id": "SIT-RES-000011",
+  "interpretation_limit": "Members of this exact supplied comparison only; qualification is reported separately. Native conclusions and basis remain attributed, not toolkit verification. No statistical independence, transitivity, union or sum across comparisons, global independent-source count, or qualification of unexamined dimensions follows. Origin qualification additionally requires every listed OriginEvent boundary under every selected exact Claim and dimension.",
+  "population_refs": [
+    "SIT-POP-000029"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000024"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000017",
+  "value": null,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000011"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "This exact supplied comparison retains the identified prerequisite limitation. A missing qualification is not zero independent members or a conclusion about other comparisons.",
+    "id": "SIT-RSN-000024",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000017"
+  }
+]
+```
+
+### SIT-RES-000012: submitted_comparison_member_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000006",
+    "SIT-BAS-000009"
+  ],
+  "check_refs": [
+    "SIT-CHK-000012",
+    "SIT-CHK-000090",
+    "SIT-CHK-000168",
+    "SIT-CHK-000199",
+    "SIT-CHK-000230",
+    "SIT-CHK-000285",
+    "SIT-CHK-000304",
+    "SIT-CHK-000320",
+    "SIT-CHK-000349",
+    "SIT-CHK-000404",
+    "SIT-CHK-000456",
+    "SIT-CHK-000605"
+  ],
+  "diagnostic_id": "SIT-M003",
+  "execution_state": "completed",
+  "field_key": "submitted_comparison_member_count",
+  "id": "SIT-RES-000012",
+  "interpretation_limit": "Members of this exact supplied comparison only; qualification is reported separately. Native conclusions and basis remain attributed, not toolkit verification. No statistical independence, transitivity, union or sum across comparisons, global independent-source count, or qualification of unexamined dimensions follows. Origin qualification additionally requires every listed OriginEvent boundary under every selected exact Claim and dimension.",
+  "population_refs": [
+    "SIT-POP-000029"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000025"
+  ],
+  "result_origin": "inventory",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000017",
+  "value": null,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000012"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "This exact supplied comparison retains the identified prerequisite limitation. A missing qualification is not zero independent members or a conclusion about other comparisons.",
+    "id": "SIT-RSN-000025",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000017"
+  }
+]
+```
+
+### SIT-RES-000013: documentary_origin_resolution_fraction
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000013",
+    "SIT-CHK-000091",
+    "SIT-CHK-000169",
+    "SIT-CHK-000200",
+    "SIT-CHK-000231",
+    "SIT-CHK-000286",
+    "SIT-CHK-000305",
+    "SIT-CHK-000321",
+    "SIT-CHK-000350",
+    "SIT-CHK-000405",
+    "SIT-CHK-000606"
+  ],
+  "diagnostic_id": "SIT-M004",
+  "execution_state": "completed",
+  "field_key": "documentary_origin_resolution_fraction",
+  "id": "SIT-RES-000013",
+  "interpretation_limit": "Full supplied EvidenceItem population and caller-selected granularity in the explicit snapshot/time scope. Origin incidences are nonexclusive, never allocation weights. HHI measures represented contribution frequency, not reliability, truth or process independence. Immediate inheritance concerns only the represented evidence layer, not semantic novelty. Completion intervals are finite-record classification intervals, not statistical confidence intervals or bounds on hidden origins.",
+  "population_refs": [
+    "SIT-POP-000032"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": {
+    "denominator": 1,
+    "numerator": 1
+  },
+  "value_kind": "fraction",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Decimal display: 1/1 = 1.000000
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000014: origin_incidence_counts
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000014",
+    "SIT-CHK-000092",
+    "SIT-CHK-000170",
+    "SIT-CHK-000201",
+    "SIT-CHK-000232",
+    "SIT-CHK-000287",
+    "SIT-CHK-000306",
+    "SIT-CHK-000322",
+    "SIT-CHK-000351",
+    "SIT-CHK-000406",
+    "SIT-CHK-000607"
+  ],
+  "diagnostic_id": "SIT-M004",
+  "execution_state": "completed",
+  "field_key": "origin_incidence_counts",
+  "id": "SIT-RES-000014",
+  "interpretation_limit": "Full supplied EvidenceItem population and caller-selected granularity in the explicit snapshot/time scope. Origin incidences are nonexclusive, never allocation weights. HHI measures represented contribution frequency, not reliability, truth or process independence. Immediate inheritance concerns only the represented evidence layer, not semantic novelty. Completion intervals are finite-record classification intervals, not statistical confidence intervals or bounds on hidden origins.",
+  "population_refs": [
+    "SIT-POP-000032"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": {
+    "memberships": [
+      {
+        "member_ref": {
+          "collection": "records",
+          "identifier": "P4-E1",
+          "selector": null
+        },
+        "origin_refs": [
+          {
+            "collection": "records",
+            "identifier": "P4-O1",
+            "selector": null
+          }
+        ]
+      }
+    ],
+    "nonexclusive": true,
+    "origin_counts": [
+      {
+        "count": 1,
+        "member_refs": [
+          {
+            "collection": "records",
+            "identifier": "P4-E1",
+            "selector": null
+          }
+        ],
+        "origin_ref": {
+          "collection": "records",
+          "identifier": "P4-O1",
+          "selector": null
+        }
+      }
+    ],
+    "population_ref": "SIT-POP-000032",
+    "total": 1
+  },
+  "value_kind": "incidence",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000015: per_seed_origin_memberships
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000015",
+    "SIT-CHK-000093",
+    "SIT-CHK-000171",
+    "SIT-CHK-000202",
+    "SIT-CHK-000233",
+    "SIT-CHK-000288",
+    "SIT-CHK-000307",
+    "SIT-CHK-000323",
+    "SIT-CHK-000352",
+    "SIT-CHK-000407",
+    "SIT-CHK-000608"
+  ],
+  "diagnostic_id": "SIT-M004",
+  "execution_state": "completed",
+  "field_key": "per_seed_origin_memberships",
+  "id": "SIT-RES-000015",
+  "interpretation_limit": "Full supplied EvidenceItem population and caller-selected granularity in the explicit snapshot/time scope. Origin incidences are nonexclusive, never allocation weights. HHI measures represented contribution frequency, not reliability, truth or process independence. Immediate inheritance concerns only the represented evidence layer, not semantic novelty. Completion intervals are finite-record classification intervals, not statistical confidence intervals or bounds on hidden origins.",
+  "population_refs": [
+    "SIT-POP-000032"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": {
+    "memberships": [
+      {
+        "member_ref": {
+          "collection": "records",
+          "identifier": "P4-E1",
+          "selector": null
+        },
+        "origin_refs": [
+          {
+            "collection": "records",
+            "identifier": "P4-O1",
+            "selector": null
+          }
+        ]
+      }
+    ],
+    "nonexclusive": true,
+    "origin_counts": [
+      {
+        "count": 1,
+        "member_refs": [
+          {
+            "collection": "records",
+            "identifier": "P4-E1",
+            "selector": null
+          }
+        ],
+        "origin_ref": {
+          "collection": "records",
+          "identifier": "P4-O1",
+          "selector": null
+        }
+      }
+    ],
+    "population_ref": "SIT-POP-000032",
+    "total": 1
+  },
+  "value_kind": "incidence",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000016: seed_origin_dispositions
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000016",
+    "SIT-CHK-000094",
+    "SIT-CHK-000172",
+    "SIT-CHK-000203",
+    "SIT-CHK-000234",
+    "SIT-CHK-000289",
+    "SIT-CHK-000308",
+    "SIT-CHK-000324",
+    "SIT-CHK-000353",
+    "SIT-CHK-000408",
+    "SIT-CHK-000609"
+  ],
+  "diagnostic_id": "SIT-M004",
+  "execution_state": "completed",
+  "field_key": "seed_origin_dispositions",
+  "id": "SIT-RES-000016",
+  "interpretation_limit": "Full supplied EvidenceItem population and caller-selected granularity in the explicit snapshot/time scope. Origin incidences are nonexclusive, never allocation weights. HHI measures represented contribution frequency, not reliability, truth or process independence. Immediate inheritance concerns only the represented evidence layer, not semantic novelty. Completion intervals are finite-record classification intervals, not statistical confidence intervals or bounds on hidden origins.",
+  "population_refs": [
+    "SIT-POP-000032"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": {
+    "categories": [
+      {
+        "count": 0,
+        "label": "unresolved_or_conflicted",
+        "member_refs": []
+      },
+      {
+        "count": 0,
+        "label": "contains_baseline_or_scope_cut",
+        "member_refs": []
+      },
+      {
+        "count": 0,
+        "label": "contains_declared_origin",
+        "member_refs": []
+      },
+      {
+        "count": 0,
+        "label": "multiple_documented_origins",
+        "member_refs": []
+      },
+      {
+        "count": 1,
+        "label": "single_documented_origin",
+        "member_refs": [
+          {
+            "collection": "records",
+            "identifier": "P4-E1",
+            "selector": null
+          }
+        ]
+      }
+    ],
+    "population_ref": "SIT-POP-000032",
+    "total": 1
+  },
+  "value_kind": "partition",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000017: single_origin_contribution_hhi
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000017",
+    "SIT-CHK-000095",
+    "SIT-CHK-000173",
+    "SIT-CHK-000204",
+    "SIT-CHK-000235",
+    "SIT-CHK-000290",
+    "SIT-CHK-000309",
+    "SIT-CHK-000325",
+    "SIT-CHK-000354",
+    "SIT-CHK-000409",
+    "SIT-CHK-000459",
+    "SIT-CHK-000610"
+  ],
+  "diagnostic_id": "SIT-M005",
+  "execution_state": "completed",
+  "field_key": "single_origin_contribution_hhi",
+  "id": "SIT-RES-000017",
+  "interpretation_limit": "Full supplied EvidenceItem population and caller-selected granularity in the explicit snapshot/time scope. Origin incidences are nonexclusive, never allocation weights. HHI measures represented contribution frequency, not reliability, truth or process independence. Immediate inheritance concerns only the represented evidence layer, not semantic novelty. Completion intervals are finite-record classification intervals, not statistical confidence intervals or bounds on hidden origins.",
+  "population_refs": [
+    "SIT-POP-000032"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": {
+    "denominator": 1,
+    "numerator": 1
+  },
+  "value_kind": "fraction",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Decimal display: 1/1 = 1.000000
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000018: immediate_evidence_layer_dispositions
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000018",
+    "SIT-CHK-000096",
+    "SIT-CHK-000174",
+    "SIT-CHK-000205",
+    "SIT-CHK-000236",
+    "SIT-CHK-000291",
+    "SIT-CHK-000326",
+    "SIT-CHK-000355",
+    "SIT-CHK-000410",
+    "SIT-CHK-000460",
+    "SIT-CHK-000611"
+  ],
+  "diagnostic_id": "SIT-M006",
+  "execution_state": "completed",
+  "field_key": "immediate_evidence_layer_dispositions",
+  "id": "SIT-RES-000018",
+  "interpretation_limit": "Full supplied EvidenceItem population and caller-selected granularity in the explicit snapshot/time scope. Origin incidences are nonexclusive, never allocation weights. HHI measures represented contribution frequency, not reliability, truth or process independence. Immediate inheritance concerns only the represented evidence layer, not semantic novelty. Completion intervals are finite-record classification intervals, not statistical confidence intervals or bounds on hidden origins.",
+  "population_refs": [
+    "SIT-POP-000040"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000020",
+  "value": {
+    "categories": [
+      {
+        "count": 0,
+        "label": "inherited_only_at_evidence_layer",
+        "member_refs": []
+      },
+      {
+        "count": 1,
+        "label": "direct_origin_link_only",
+        "member_refs": [
+          {
+            "collection": "records",
+            "identifier": "P4-E1",
+            "selector": null
+          }
+        ]
+      },
+      {
+        "count": 0,
+        "label": "mixed_direct_and_inherited",
+        "member_refs": []
+      },
+      {
+        "count": 0,
+        "label": "unresolved_at_evidence_layer",
+        "member_refs": []
+      }
+    ],
+    "population_ref": "SIT-POP-000040",
+    "total": 1
+  },
+  "value_kind": "partition",
+  "witness_refs": [
+    "SIT-FND-000021"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000019: inherited_only_completion_interval
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000019",
+    "SIT-CHK-000097",
+    "SIT-CHK-000175",
+    "SIT-CHK-000206",
+    "SIT-CHK-000237",
+    "SIT-CHK-000292",
+    "SIT-CHK-000327",
+    "SIT-CHK-000356",
+    "SIT-CHK-000411",
+    "SIT-CHK-000461",
+    "SIT-CHK-000612"
+  ],
+  "diagnostic_id": "SIT-M006",
+  "execution_state": "completed",
+  "field_key": "inherited_only_completion_interval",
+  "id": "SIT-RES-000019",
+  "interpretation_limit": "Full supplied EvidenceItem population and caller-selected granularity in the explicit snapshot/time scope. Origin incidences are nonexclusive, never allocation weights. HHI measures represented contribution frequency, not reliability, truth or process independence. Immediate inheritance concerns only the represented evidence layer, not semantic novelty. Completion intervals are finite-record classification intervals, not statistical confidence intervals or bounds on hidden origins.",
+  "population_refs": [
+    "SIT-POP-000040"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000015"
+  ],
+  "result_origin": "graph_derivation",
+  "result_state": "not_applicable",
+  "scope_ref": "SIT-SCP-000020",
+  "value": null,
+  "value_kind": "completion_interval",
+  "witness_refs": [
+    "SIT-FND-000021"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000019"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "completion_interval_not_needed",
+    "detail": "Exact scoped contribution limitation; positive records and the full denominator remain visible.",
+    "id": "SIT-RSN-000015",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000020"
+  }
+]
+```
+
+### SIT-RES-000020: inherited_only_seed_fraction
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000020",
+    "SIT-CHK-000098",
+    "SIT-CHK-000176",
+    "SIT-CHK-000207",
+    "SIT-CHK-000238",
+    "SIT-CHK-000293",
+    "SIT-CHK-000328",
+    "SIT-CHK-000357",
+    "SIT-CHK-000412",
+    "SIT-CHK-000462",
+    "SIT-CHK-000613"
+  ],
+  "diagnostic_id": "SIT-M006",
+  "execution_state": "completed",
+  "field_key": "inherited_only_seed_fraction",
+  "id": "SIT-RES-000020",
+  "interpretation_limit": "Full supplied EvidenceItem population and caller-selected granularity in the explicit snapshot/time scope. Origin incidences are nonexclusive, never allocation weights. HHI measures represented contribution frequency, not reliability, truth or process independence. Immediate inheritance concerns only the represented evidence layer, not semantic novelty. Completion intervals are finite-record classification intervals, not statistical confidence intervals or bounds on hidden origins.",
+  "population_refs": [
+    "SIT-POP-000040"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000020",
+  "value": {
+    "denominator": 1,
+    "numerator": 0
+  },
+  "value_kind": "fraction",
+  "witness_refs": [
+    "SIT-FND-000021"
+  ]
+}
+```
+
+Decimal display: 0/1 = 0.000000
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000021: ancestry_gap_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000021",
+    "SIT-CHK-000099",
+    "SIT-CHK-000177",
+    "SIT-CHK-000208",
+    "SIT-CHK-000239",
+    "SIT-CHK-000294",
+    "SIT-CHK-000310",
+    "SIT-CHK-000329",
+    "SIT-CHK-000358",
+    "SIT-CHK-000413",
+    "SIT-CHK-000614"
+  ],
+  "diagnostic_id": "SIT-M007",
+  "execution_state": "completed",
+  "field_key": "ancestry_gap_disclosures",
+  "id": "SIT-RES-000021",
+  "interpretation_limit": "Exact supplied record inventory after complete finite examination. A zero is not zero actual roots; a documentary boundary is not process independence or complete history for every reaching seed. Snapshot evidence, native labels, opaque identity, gaps and all relevant branches remain attributable.",
+  "population_refs": [
+    "SIT-POP-000036"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000022: seed_items_with_unresolved_ancestry_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000022",
+    "SIT-CHK-000100",
+    "SIT-CHK-000178",
+    "SIT-CHK-000209",
+    "SIT-CHK-000240",
+    "SIT-CHK-000295",
+    "SIT-CHK-000311",
+    "SIT-CHK-000330",
+    "SIT-CHK-000359",
+    "SIT-CHK-000414",
+    "SIT-CHK-000615"
+  ],
+  "diagnostic_id": "SIT-M007",
+  "execution_state": "completed",
+  "field_key": "seed_items_with_unresolved_ancestry_count",
+  "id": "SIT-RES-000022",
+  "interpretation_limit": "Exact supplied record inventory after complete finite examination. A zero is not zero actual roots; a documentary boundary is not process independence or complete history for every reaching seed. Snapshot evidence, native labels, opaque identity, gaps and all relevant branches remain attributable.",
+  "population_refs": [
+    "SIT-POP-000033"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000023: unqualified_terminal_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000023",
+    "SIT-CHK-000101",
+    "SIT-CHK-000179",
+    "SIT-CHK-000210",
+    "SIT-CHK-000241",
+    "SIT-CHK-000296",
+    "SIT-CHK-000312",
+    "SIT-CHK-000331",
+    "SIT-CHK-000360",
+    "SIT-CHK-000415",
+    "SIT-CHK-000616"
+  ],
+  "diagnostic_id": "SIT-M007",
+  "execution_state": "completed",
+  "field_key": "unqualified_terminal_record_count",
+  "id": "SIT-RES-000023",
+  "interpretation_limit": "Exact supplied record inventory after complete finite examination. A zero is not zero actual roots; a documentary boundary is not process independence or complete history for every reaching seed. Snapshot evidence, native labels, opaque identity, gaps and all relevant branches remain attributable.",
+  "population_refs": [
+    "SIT-POP-000038"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000024: unresolved_frontier_reference_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000024",
+    "SIT-CHK-000102",
+    "SIT-CHK-000180",
+    "SIT-CHK-000211",
+    "SIT-CHK-000242",
+    "SIT-CHK-000297",
+    "SIT-CHK-000313",
+    "SIT-CHK-000332",
+    "SIT-CHK-000361",
+    "SIT-CHK-000416",
+    "SIT-CHK-000617"
+  ],
+  "diagnostic_id": "SIT-M007",
+  "execution_state": "completed",
+  "field_key": "unresolved_frontier_reference_count",
+  "id": "SIT-RES-000024",
+  "interpretation_limit": "Exact supplied record inventory after complete finite examination. A zero is not zero actual roots; a documentary boundary is not process independence or complete history for every reaching seed. Snapshot evidence, native labels, opaque identity, gaps and all relevant branches remain attributable.",
+  "population_refs": [
+    "SIT-POP-000039"
+  ],
+  "reason_refs": [],
+  "result_origin": "graph_derivation",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000019",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": [
+    "SIT-FND-000020"
+  ]
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000025: evaluator_overlap_disclosures
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000025",
+    "SIT-CHK-000103",
+    "SIT-CHK-000618"
+  ],
+  "diagnostic_id": "SIT-M008",
+  "execution_state": "completed",
+  "field_key": "evaluator_overlap_disclosures",
+  "id": "SIT-RES-000025",
+  "interpretation_limit": "No eligible subject tuple was supplied for this finite operation.",
+  "population_refs": [],
+  "reason_refs": [
+    "SIT-RSN-000027"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "not_applicable",
+  "scope_ref": "SIT-SCP-000005",
+  "value": null,
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000025"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000027",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  }
+]
+```
+
+### SIT-RES-000026: evaluator_overlap_witnesses
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000026",
+    "SIT-CHK-000104",
+    "SIT-CHK-000619"
+  ],
+  "diagnostic_id": "SIT-M008",
+  "execution_state": "completed",
+  "field_key": "evaluator_overlap_witnesses",
+  "id": "SIT-RES-000026",
+  "interpretation_limit": "No eligible subject tuple was supplied for this finite operation.",
+  "population_refs": [],
+  "reason_refs": [
+    "SIT-RSN-000028"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "not_applicable",
+  "scope_ref": "SIT-SCP-000005",
+  "value": null,
+  "value_kind": "witness_collection",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000026"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000028",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  }
+]
+```
+
+### SIT-RES-000027: matching_family_label_count
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000027",
+    "SIT-CHK-000105",
+    "SIT-CHK-000620"
+  ],
+  "diagnostic_id": "SIT-M008",
+  "execution_state": "completed",
+  "field_key": "matching_family_label_count",
+  "id": "SIT-RES-000027",
+  "interpretation_limit": "No eligible subject tuple was supplied for this finite operation.",
+  "population_refs": [],
+  "reason_refs": [
+    "SIT-RSN-000029"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "not_applicable",
+  "scope_ref": "SIT-SCP-000005",
+  "value": null,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000027"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000029",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  }
+]
+```
+
+### SIT-RES-000028: shared_recorded_ancestor_count
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000028",
+    "SIT-CHK-000106",
+    "SIT-CHK-000621"
+  ],
+  "diagnostic_id": "SIT-M008",
+  "execution_state": "completed",
+  "field_key": "shared_recorded_ancestor_count",
+  "id": "SIT-RES-000028",
+  "interpretation_limit": "No eligible subject tuple was supplied for this finite operation.",
+  "population_refs": [],
+  "reason_refs": [
+    "SIT-RSN-000030"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "not_applicable",
+  "scope_ref": "SIT-SCP-000005",
+  "value": null,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000028"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000030",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  }
+]
+```
+
+### SIT-RES-000029: externality_assessment_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000029",
+    "SIT-CHK-000107",
+    "SIT-CHK-000243",
+    "SIT-CHK-000362",
+    "SIT-CHK-000417",
+    "SIT-CHK-000465",
+    "SIT-CHK-000622"
+  ],
+  "diagnostic_id": "SIT-M009",
+  "execution_state": "completed",
+  "field_key": "externality_assessment_disclosures",
+  "id": "SIT-RES-000029",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000007"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000020"
+  ],
+  "result_origin": "attributed_record",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000004",
+  "value": null,
+  "value_kind": "record_disclosures",
+  "witness_refs": [
+    "SIT-FND-000001"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000029"
+    ],
+    "classification": "evidence_gap",
+    "code": "externality_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000020",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000004"
+  }
+]
+```
+
+### SIT-RES-000030: externality_stage_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000030",
+    "SIT-CHK-000108",
+    "SIT-CHK-000244",
+    "SIT-CHK-000363",
+    "SIT-CHK-000418",
+    "SIT-CHK-000466",
+    "SIT-CHK-000623"
+  ],
+  "diagnostic_id": "SIT-M009",
+  "execution_state": "completed",
+  "field_key": "externality_stage_links",
+  "id": "SIT-RES-000030",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000007"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000021"
+  ],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000004",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": [
+    "SIT-FND-000002"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000030"
+    ],
+    "classification": "evidence_gap",
+    "code": "externality_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000021",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000004"
+  }
+]
+```
+
+### SIT-RES-000031: cohort_transition_completion_interval
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000031",
+    "SIT-CHK-000109",
+    "SIT-CHK-000467",
+    "SIT-CHK-000498",
+    "SIT-CHK-000529",
+    "SIT-CHK-000624"
+  ],
+  "diagnostic_id": "SIT-M010",
+  "execution_state": "completed",
+  "field_key": "cohort_transition_completion_interval",
+  "id": "SIT-RES-000031",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000020"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000005",
+    "SIT-RSN-000012"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000009",
+  "value": null,
+  "value_kind": "completion_interval",
+  "witness_refs": [
+    "SIT-FND-000011",
+    "SIT-FND-000014"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000031"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000005",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000031"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000012",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  }
+]
+```
+
+### SIT-RES-000032: cohort_transition_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000032",
+    "SIT-CHK-000110",
+    "SIT-CHK-000468",
+    "SIT-CHK-000499",
+    "SIT-CHK-000530",
+    "SIT-CHK-000625"
+  ],
+  "diagnostic_id": "SIT-M010",
+  "execution_state": "completed",
+  "field_key": "cohort_transition_disclosures",
+  "id": "SIT-RES-000032",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000020"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000006",
+    "SIT-RSN-000013",
+    "SIT-RSN-000038"
+  ],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000009",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": [
+    "SIT-FND-000012",
+    "SIT-FND-000015",
+    "SIT-FND-000017"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000032"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000006",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000032"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000013",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000032"
+    ],
+    "classification": "evidence_gap",
+    "code": "transition_baseline_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000038",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  }
+]
+```
+
+### SIT-RES-000033: cohort_transition_fraction
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000033",
+    "SIT-CHK-000111",
+    "SIT-CHK-000469",
+    "SIT-CHK-000500",
+    "SIT-CHK-000531",
+    "SIT-CHK-000626"
+  ],
+  "diagnostic_id": "SIT-M010",
+  "execution_state": "completed",
+  "field_key": "cohort_transition_fraction",
+  "id": "SIT-RES-000033",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000020"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000007",
+    "SIT-RSN-000014"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000009",
+  "value": null,
+  "value_kind": "fraction",
+  "witness_refs": [
+    "SIT-FND-000013",
+    "SIT-FND-000016"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000033"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000007",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000033"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000014",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  }
+]
+```
+
+### SIT-RES-000034: pipeline_stage_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000034",
+    "SIT-CHK-000112",
+    "SIT-CHK-000470",
+    "SIT-CHK-000501",
+    "SIT-CHK-000532",
+    "SIT-CHK-000627"
+  ],
+  "diagnostic_id": "SIT-M010",
+  "execution_state": "completed",
+  "field_key": "pipeline_stage_disclosures",
+  "id": "SIT-RES-000034",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000019"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000001",
+    "SIT-RSN-000008"
+  ],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000008",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": [
+    "SIT-FND-000003",
+    "SIT-FND-000007"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000034"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000001",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000034"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000008",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  }
+]
+```
+
+### SIT-RES-000035: stage_member_partition
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000035",
+    "SIT-CHK-000113",
+    "SIT-CHK-000471",
+    "SIT-CHK-000502",
+    "SIT-CHK-000533",
+    "SIT-CHK-000628"
+  ],
+  "diagnostic_id": "SIT-M010",
+  "execution_state": "completed",
+  "field_key": "stage_member_partition",
+  "id": "SIT-RES-000035",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000019"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000002",
+    "SIT-RSN-000009"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000008",
+  "value": null,
+  "value_kind": "partition",
+  "witness_refs": [
+    "SIT-FND-000004",
+    "SIT-FND-000008"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000035"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000002",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000035"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000009",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  }
+]
+```
+
+### SIT-RES-000036: stage_occurrence_completion_interval
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000036",
+    "SIT-CHK-000114",
+    "SIT-CHK-000472",
+    "SIT-CHK-000503",
+    "SIT-CHK-000534",
+    "SIT-CHK-000629"
+  ],
+  "diagnostic_id": "SIT-M010",
+  "execution_state": "completed",
+  "field_key": "stage_occurrence_completion_interval",
+  "id": "SIT-RES-000036",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000019"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000003",
+    "SIT-RSN-000010"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000008",
+  "value": null,
+  "value_kind": "completion_interval",
+  "witness_refs": [
+    "SIT-FND-000005",
+    "SIT-FND-000009"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000036"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000003",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000036"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000010",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  }
+]
+```
+
+### SIT-RES-000037: stage_occurrence_fraction
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000037",
+    "SIT-CHK-000115",
+    "SIT-CHK-000473",
+    "SIT-CHK-000504",
+    "SIT-CHK-000535",
+    "SIT-CHK-000630"
+  ],
+  "diagnostic_id": "SIT-M010",
+  "execution_state": "completed",
+  "field_key": "stage_occurrence_fraction",
+  "id": "SIT-RES-000037",
+  "interpretation_limit": "Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+  "population_refs": [
+    "SIT-POP-000019"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000004",
+    "SIT-RSN-000011"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "unavailable",
+  "scope_ref": "SIT-SCP-000008",
+  "value": null,
+  "value_kind": "fraction",
+  "witness_refs": [
+    "SIT-FND-000006",
+    "SIT-FND-000010"
+  ]
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000037"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000004",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000037"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000011",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  }
+]
+```
+
+### SIT-RES-000038: applicable_authorized_route_witnesses
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000038",
+    "SIT-CHK-000116",
+    "SIT-CHK-000631"
+  ],
+  "diagnostic_id": "SIT-M011",
+  "execution_state": "completed",
+  "field_key": "applicable_authorized_route_witnesses",
+  "id": "SIT-RES-000038",
+  "interpretation_limit": "No eligible subject tuple was supplied for this finite operation.",
+  "population_refs": [],
+  "reason_refs": [
+    "SIT-RSN-000031"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "not_applicable",
+  "scope_ref": "SIT-SCP-000005",
+  "value": null,
+  "value_kind": "witness_collection",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000038"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000031",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  }
+]
+```
+
+### SIT-RES-000039: correction_route_disclosures
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000039",
+    "SIT-CHK-000117",
+    "SIT-CHK-000632"
+  ],
+  "diagnostic_id": "SIT-M011",
+  "execution_state": "completed",
+  "field_key": "correction_route_disclosures",
+  "id": "SIT-RES-000039",
+  "interpretation_limit": "No eligible subject tuple was supplied for this finite operation.",
+  "population_refs": [],
+  "reason_refs": [
+    "SIT-RSN-000032"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "not_applicable",
+  "scope_ref": "SIT-SCP-000005",
+  "value": null,
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000039"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000032",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  }
+]
+```
+
+### SIT-RES-000040: declared_correction_route_witnesses
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000040",
+    "SIT-CHK-000118",
+    "SIT-CHK-000633"
+  ],
+  "diagnostic_id": "SIT-M011",
+  "execution_state": "completed",
+  "field_key": "declared_correction_route_witnesses",
+  "id": "SIT-RES-000040",
+  "interpretation_limit": "No eligible subject tuple was supplied for this finite operation.",
+  "population_refs": [],
+  "reason_refs": [
+    "SIT-RSN-000033"
+  ],
+  "result_origin": "qualification_check",
+  "result_state": "not_applicable",
+  "scope_ref": "SIT-SCP-000005",
+  "value": null,
+  "value_kind": "witness_collection",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000040"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000033",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  }
+]
+```
+
+### SIT-RES-000041: cases_with_documentary_linked_change_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000041",
+    "SIT-CHK-000119",
+    "SIT-CHK-000181",
+    "SIT-CHK-000212",
+    "SIT-CHK-000245",
+    "SIT-CHK-000333",
+    "SIT-CHK-000364",
+    "SIT-CHK-000419",
+    "SIT-CHK-000560",
+    "SIT-CHK-000634"
+  ],
+  "diagnostic_id": "SIT-M012",
+  "execution_state": "completed",
+  "field_key": "cases_with_documentary_linked_change_count",
+  "id": "SIT-RES-000041",
+  "interpretation_limit": "Finite supplied case and process-evidence inventory only. Native handling outcomes are nonexclusive records. Documentary linkage establishes neither substantive correctness nor authority, causal success, complete downstream propagation or sustained capacity. Missing change evidence leaves the requested effect unavailable. Reported capacity, load, unit and horizon remain supplied statements without normalization or an adequacy formula.",
+  "population_refs": [
+    "SIT-POP-000012"
+  ],
+  "reason_refs": [],
+  "result_origin": "qualification_check",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000007",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000042: correction_case_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000042",
+    "SIT-CHK-000120",
+    "SIT-CHK-000182",
+    "SIT-CHK-000213",
+    "SIT-CHK-000246",
+    "SIT-CHK-000334",
+    "SIT-CHK-000365",
+    "SIT-CHK-000420",
+    "SIT-CHK-000561",
+    "SIT-CHK-000635"
+  ],
+  "diagnostic_id": "SIT-M012",
+  "execution_state": "completed",
+  "field_key": "correction_case_disclosures",
+  "id": "SIT-RES-000042",
+  "interpretation_limit": "Finite supplied case and process-evidence inventory only. Native handling outcomes are nonexclusive records. Documentary linkage establishes neither substantive correctness nor authority, causal success, complete downstream propagation or sustained capacity. Missing change evidence leaves the requested effect unavailable. Reported capacity, load, unit and horizon remain supplied statements without normalization or an adequacy formula.",
+  "population_refs": [
+    "SIT-POP-000016"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000007",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000043: correction_case_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000043",
+    "SIT-CHK-000121",
+    "SIT-CHK-000183",
+    "SIT-CHK-000214",
+    "SIT-CHK-000247",
+    "SIT-CHK-000335",
+    "SIT-CHK-000366",
+    "SIT-CHK-000421",
+    "SIT-CHK-000562",
+    "SIT-CHK-000636"
+  ],
+  "diagnostic_id": "SIT-M012",
+  "execution_state": "completed",
+  "field_key": "correction_case_record_count",
+  "id": "SIT-RES-000043",
+  "interpretation_limit": "Finite supplied case and process-evidence inventory only. Native handling outcomes are nonexclusive records. Documentary linkage establishes neither substantive correctness nor authority, causal success, complete downstream propagation or sustained capacity. Missing change evidence leaves the requested effect unavailable. Reported capacity, load, unit and horizon remain supplied statements without normalization or an adequacy formula.",
+  "population_refs": [
+    "SIT-POP-000013"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000007",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000044: correction_target_change_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000044",
+    "SIT-CHK-000122",
+    "SIT-CHK-000184",
+    "SIT-CHK-000215",
+    "SIT-CHK-000248",
+    "SIT-CHK-000336",
+    "SIT-CHK-000367",
+    "SIT-CHK-000422",
+    "SIT-CHK-000563",
+    "SIT-CHK-000637"
+  ],
+  "diagnostic_id": "SIT-M012",
+  "execution_state": "completed",
+  "field_key": "correction_target_change_disclosures",
+  "id": "SIT-RES-000044",
+  "interpretation_limit": "Finite supplied case and process-evidence inventory only. Native handling outcomes are nonexclusive records. Documentary linkage establishes neither substantive correctness nor authority, causal success, complete downstream propagation or sustained capacity. Missing change evidence leaves the requested effect unavailable. Reported capacity, load, unit and horizon remain supplied statements without normalization or an adequacy formula.",
+  "population_refs": [
+    "SIT-POP-000017"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000007",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000045: documentary_linked_change_target_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000045",
+    "SIT-CHK-000123",
+    "SIT-CHK-000185",
+    "SIT-CHK-000216",
+    "SIT-CHK-000249",
+    "SIT-CHK-000337",
+    "SIT-CHK-000368",
+    "SIT-CHK-000423",
+    "SIT-CHK-000564",
+    "SIT-CHK-000638"
+  ],
+  "diagnostic_id": "SIT-M012",
+  "execution_state": "completed",
+  "field_key": "documentary_linked_change_target_count",
+  "id": "SIT-RES-000045",
+  "interpretation_limit": "Finite supplied case and process-evidence inventory only. Native handling outcomes are nonexclusive records. Documentary linkage establishes neither substantive correctness nor authority, causal success, complete downstream propagation or sustained capacity. Missing change evidence leaves the requested effect unavailable. Reported capacity, load, unit and horizon remain supplied statements without normalization or an adequacy formula.",
+  "population_refs": [
+    "SIT-POP-000011"
+  ],
+  "reason_refs": [],
+  "result_origin": "qualification_check",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000007",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000046: handling_event_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000046",
+    "SIT-CHK-000124",
+    "SIT-CHK-000186",
+    "SIT-CHK-000217",
+    "SIT-CHK-000250",
+    "SIT-CHK-000338",
+    "SIT-CHK-000369",
+    "SIT-CHK-000424",
+    "SIT-CHK-000565",
+    "SIT-CHK-000639"
+  ],
+  "diagnostic_id": "SIT-M012",
+  "execution_state": "completed",
+  "field_key": "handling_event_record_count",
+  "id": "SIT-RES-000046",
+  "interpretation_limit": "Finite supplied case and process-evidence inventory only. Native handling outcomes are nonexclusive records. Documentary linkage establishes neither substantive correctness nor authority, causal success, complete downstream propagation or sustained capacity. Missing change evidence leaves the requested effect unavailable. Reported capacity, load, unit and horizon remain supplied statements without normalization or an adequacy formula.",
+  "population_refs": [
+    "SIT-POP-000015"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000007",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000047: linked_change_event_record_count
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000047",
+    "SIT-CHK-000125",
+    "SIT-CHK-000187",
+    "SIT-CHK-000218",
+    "SIT-CHK-000251",
+    "SIT-CHK-000339",
+    "SIT-CHK-000370",
+    "SIT-CHK-000425",
+    "SIT-CHK-000566",
+    "SIT-CHK-000640"
+  ],
+  "diagnostic_id": "SIT-M012",
+  "execution_state": "completed",
+  "field_key": "linked_change_event_record_count",
+  "id": "SIT-RES-000047",
+  "interpretation_limit": "Finite supplied case and process-evidence inventory only. Native handling outcomes are nonexclusive records. Documentary linkage establishes neither substantive correctness nor authority, causal success, complete downstream propagation or sustained capacity. Missing change evidence leaves the requested effect unavailable. Reported capacity, load, unit and horizon remain supplied statements without normalization or an adequacy formula.",
+  "population_refs": [
+    "SIT-POP-000014"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000007",
+  "value": 0,
+  "value_kind": "count",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000048: reported_capacity_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000048",
+    "SIT-CHK-000126",
+    "SIT-CHK-000188",
+    "SIT-CHK-000219",
+    "SIT-CHK-000252",
+    "SIT-CHK-000340",
+    "SIT-CHK-000371",
+    "SIT-CHK-000426",
+    "SIT-CHK-000567",
+    "SIT-CHK-000641"
+  ],
+  "diagnostic_id": "SIT-M012",
+  "execution_state": "completed",
+  "field_key": "reported_capacity_disclosures",
+  "id": "SIT-RES-000048",
+  "interpretation_limit": "Finite supplied case and process-evidence inventory only. Native handling outcomes are nonexclusive records. Documentary linkage establishes neither substantive correctness nor authority, causal success, complete downstream propagation or sustained capacity. Missing change evidence leaves the requested effect unavailable. Reported capacity, load, unit and horizon remain supplied statements without normalization or an adequacy formula.",
+  "population_refs": [
+    "SIT-POP-000018"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000007",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000049: corrective_independence_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000049",
+    "SIT-CHK-000127",
+    "SIT-CHK-000253",
+    "SIT-CHK-000341",
+    "SIT-CHK-000372",
+    "SIT-CHK-000427",
+    "SIT-CHK-000457",
+    "SIT-CHK-000463",
+    "SIT-CHK-000568",
+    "SIT-CHK-000642"
+  ],
+  "diagnostic_id": "SIT-M013",
+  "execution_state": "completed",
+  "field_key": "corrective_independence_disclosures",
+  "id": "SIT-RES-000049",
+  "interpretation_limit": "Attributed supplied review and exact process assessment only. A human title, employer, endpoint or recorded contribution establishes neither independence nor renewable human judgment. A qualified procedure does not establish institutional execution. Unexamined dimensions and protected or unresolved dependencies remain unestablished; formal checks and execution retain their own constraint kinds. No total independent-human capacity or judgment score follows.",
+  "population_refs": [
+    "SIT-POP-000031"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000026"
+  ],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000018",
+  "value": {
+    "records": [
+      {
+        "fields": {
+          "native_record": {
+            "as_of": {
+              "precision": null,
+              "reason": "No occurrence time is supplied for this fictional reference case.",
+              "state": "unknown",
+              "value": null
+            },
+            "boundary": {
+              "criterion": "Only the supplied finite record identities and typed bindings.",
+              "description": "One fictional acquisition and its supplied contribution.",
+              "system_refs": []
+            },
+            "coverage_assertion_refs": [
+              "P4-COVER"
+            ],
+            "dependency_dimensions": [
+              "acquisition"
+            ],
+            "id": "P4-I001",
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            },
+            "seed_artifact_refs": [
+              "P4-ART"
+            ],
+            "seed_evidence_refs": [
+              "P4-E1"
+            ],
+            "target_claim_refs": [
+              "P4-CLAIM"
+            ],
+            "target_object_refs": [],
+            "time_window": {
+              "end": {
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case.",
+                "state": "unknown",
+                "value": null
+              },
+              "start": {
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case.",
+                "state": "unknown",
+                "value": null
+              }
+            }
+          }
+        },
+        "qualifications": [
+          "Actual owner selection/source reference slot; this record does not establish an applicable review or independent process."
+        ],
+        "source": {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": "target_object_refs"
+        }
+      }
+    ]
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000049"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "The supplied review/process record retains this exact qualification limit. Visible contribution does not resolve missing process evidence or dependencies.",
+    "id": "SIT-RSN-000026",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000018"
+  }
+]
+```
+
+### SIT-RES-000050: human_contribution_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000050",
+    "SIT-CHK-000128",
+    "SIT-CHK-000254",
+    "SIT-CHK-000342",
+    "SIT-CHK-000373",
+    "SIT-CHK-000428",
+    "SIT-CHK-000458",
+    "SIT-CHK-000464",
+    "SIT-CHK-000569",
+    "SIT-CHK-000643"
+  ],
+  "diagnostic_id": "SIT-M013",
+  "execution_state": "completed",
+  "field_key": "human_contribution_disclosures",
+  "id": "SIT-RES-000050",
+  "interpretation_limit": "Attributed supplied review and exact process assessment only. A human title, employer, endpoint or recorded contribution establishes neither independence nor renewable human judgment. A qualified procedure does not establish institutional execution. Unexamined dimensions and protected or unresolved dependencies remain unestablished; formal checks and execution retain their own constraint kinds. No total independent-human capacity or judgment score follows.",
+  "population_refs": [
+    "SIT-POP-000031"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000018",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000051: anomaly_context_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000051",
+    "SIT-CHK-000129",
+    "SIT-CHK-000255",
+    "SIT-CHK-000374",
+    "SIT-CHK-000429",
+    "SIT-CHK-000474",
+    "SIT-CHK-000505",
+    "SIT-CHK-000536",
+    "SIT-CHK-000570",
+    "SIT-CHK-000644"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "anomaly_context_disclosures",
+  "id": "SIT-RES-000051",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000004"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000002",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000052: anomaly_context_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000052",
+    "SIT-CHK-000130",
+    "SIT-CHK-000256",
+    "SIT-CHK-000375",
+    "SIT-CHK-000430",
+    "SIT-CHK-000475",
+    "SIT-CHK-000506",
+    "SIT-CHK-000537",
+    "SIT-CHK-000571",
+    "SIT-CHK-000645"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "anomaly_context_disclosures",
+  "id": "SIT-RES-000052",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000021"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000010",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000053: anomaly_context_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000053",
+    "SIT-CHK-000131",
+    "SIT-CHK-000257",
+    "SIT-CHK-000376",
+    "SIT-CHK-000431",
+    "SIT-CHK-000476",
+    "SIT-CHK-000507",
+    "SIT-CHK-000538",
+    "SIT-CHK-000572",
+    "SIT-CHK-000646"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "anomaly_context_disclosures",
+  "id": "SIT-RES-000053",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000022"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000011",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000054: anomaly_context_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000054",
+    "SIT-CHK-000132",
+    "SIT-CHK-000258",
+    "SIT-CHK-000377",
+    "SIT-CHK-000432",
+    "SIT-CHK-000477",
+    "SIT-CHK-000508",
+    "SIT-CHK-000539",
+    "SIT-CHK-000573",
+    "SIT-CHK-000647"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "anomaly_context_disclosures",
+  "id": "SIT-RES-000054",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000023"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000012",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000055: anomaly_context_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000055",
+    "SIT-CHK-000133",
+    "SIT-CHK-000259",
+    "SIT-CHK-000378",
+    "SIT-CHK-000433",
+    "SIT-CHK-000478",
+    "SIT-CHK-000509",
+    "SIT-CHK-000540",
+    "SIT-CHK-000574",
+    "SIT-CHK-000648"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "anomaly_context_disclosures",
+  "id": "SIT-RES-000055",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000024"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000013",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000056: anomaly_context_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000056",
+    "SIT-CHK-000134",
+    "SIT-CHK-000260",
+    "SIT-CHK-000379",
+    "SIT-CHK-000434",
+    "SIT-CHK-000479",
+    "SIT-CHK-000510",
+    "SIT-CHK-000541",
+    "SIT-CHK-000575",
+    "SIT-CHK-000649"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "anomaly_context_disclosures",
+  "id": "SIT-RES-000056",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000025"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000014",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000057: anomaly_context_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000057",
+    "SIT-CHK-000135",
+    "SIT-CHK-000261",
+    "SIT-CHK-000380",
+    "SIT-CHK-000435",
+    "SIT-CHK-000480",
+    "SIT-CHK-000511",
+    "SIT-CHK-000542",
+    "SIT-CHK-000576",
+    "SIT-CHK-000650"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "anomaly_context_disclosures",
+  "id": "SIT-RES-000057",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000026"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000015",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000058: anomaly_context_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000058",
+    "SIT-CHK-000136",
+    "SIT-CHK-000262",
+    "SIT-CHK-000381",
+    "SIT-CHK-000436",
+    "SIT-CHK-000481",
+    "SIT-CHK-000512",
+    "SIT-CHK-000543",
+    "SIT-CHK-000577",
+    "SIT-CHK-000651"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "anomaly_context_disclosures",
+  "id": "SIT-RES-000058",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000027"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000016",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000059: contestation_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000059",
+    "SIT-CHK-000137",
+    "SIT-CHK-000263",
+    "SIT-CHK-000382",
+    "SIT-CHK-000437",
+    "SIT-CHK-000482",
+    "SIT-CHK-000513",
+    "SIT-CHK-000544",
+    "SIT-CHK-000578",
+    "SIT-CHK-000652"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "contestation_disclosures",
+  "id": "SIT-RES-000059",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000004"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000002",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000060: contestation_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000060",
+    "SIT-CHK-000138",
+    "SIT-CHK-000264",
+    "SIT-CHK-000383",
+    "SIT-CHK-000438",
+    "SIT-CHK-000483",
+    "SIT-CHK-000514",
+    "SIT-CHK-000545",
+    "SIT-CHK-000579",
+    "SIT-CHK-000653"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "contestation_disclosures",
+  "id": "SIT-RES-000060",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000021"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000010",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000061: contestation_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000061",
+    "SIT-CHK-000139",
+    "SIT-CHK-000265",
+    "SIT-CHK-000384",
+    "SIT-CHK-000439",
+    "SIT-CHK-000484",
+    "SIT-CHK-000515",
+    "SIT-CHK-000546",
+    "SIT-CHK-000580",
+    "SIT-CHK-000654"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "contestation_disclosures",
+  "id": "SIT-RES-000061",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000022"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000011",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000062: contestation_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000062",
+    "SIT-CHK-000140",
+    "SIT-CHK-000266",
+    "SIT-CHK-000385",
+    "SIT-CHK-000440",
+    "SIT-CHK-000485",
+    "SIT-CHK-000516",
+    "SIT-CHK-000547",
+    "SIT-CHK-000581",
+    "SIT-CHK-000655"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "contestation_disclosures",
+  "id": "SIT-RES-000062",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000023"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000012",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000063: contestation_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000063",
+    "SIT-CHK-000141",
+    "SIT-CHK-000267",
+    "SIT-CHK-000386",
+    "SIT-CHK-000441",
+    "SIT-CHK-000486",
+    "SIT-CHK-000517",
+    "SIT-CHK-000548",
+    "SIT-CHK-000582",
+    "SIT-CHK-000656"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "contestation_disclosures",
+  "id": "SIT-RES-000063",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000024"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000013",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000064: contestation_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000064",
+    "SIT-CHK-000142",
+    "SIT-CHK-000268",
+    "SIT-CHK-000387",
+    "SIT-CHK-000442",
+    "SIT-CHK-000487",
+    "SIT-CHK-000518",
+    "SIT-CHK-000549",
+    "SIT-CHK-000583",
+    "SIT-CHK-000657"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "contestation_disclosures",
+  "id": "SIT-RES-000064",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000025"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000014",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000065: contestation_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000065",
+    "SIT-CHK-000143",
+    "SIT-CHK-000269",
+    "SIT-CHK-000388",
+    "SIT-CHK-000443",
+    "SIT-CHK-000488",
+    "SIT-CHK-000519",
+    "SIT-CHK-000550",
+    "SIT-CHK-000584",
+    "SIT-CHK-000658"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "contestation_disclosures",
+  "id": "SIT-RES-000065",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000026"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000015",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000066: contestation_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000066",
+    "SIT-CHK-000144",
+    "SIT-CHK-000270",
+    "SIT-CHK-000389",
+    "SIT-CHK-000444",
+    "SIT-CHK-000489",
+    "SIT-CHK-000520",
+    "SIT-CHK-000551",
+    "SIT-CHK-000585",
+    "SIT-CHK-000659"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "contestation_disclosures",
+  "id": "SIT-RES-000066",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000027"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000016",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000067: tail_stage_result_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000067",
+    "SIT-CHK-000145",
+    "SIT-CHK-000271",
+    "SIT-CHK-000390",
+    "SIT-CHK-000445",
+    "SIT-CHK-000490",
+    "SIT-CHK-000521",
+    "SIT-CHK-000552",
+    "SIT-CHK-000586",
+    "SIT-CHK-000660"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "tail_stage_result_links",
+  "id": "SIT-RES-000067",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000004"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000002",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000068: tail_stage_result_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000068",
+    "SIT-CHK-000146",
+    "SIT-CHK-000272",
+    "SIT-CHK-000391",
+    "SIT-CHK-000446",
+    "SIT-CHK-000491",
+    "SIT-CHK-000522",
+    "SIT-CHK-000553",
+    "SIT-CHK-000587",
+    "SIT-CHK-000661"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "tail_stage_result_links",
+  "id": "SIT-RES-000068",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000021"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000010",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000069: tail_stage_result_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000069",
+    "SIT-CHK-000147",
+    "SIT-CHK-000273",
+    "SIT-CHK-000392",
+    "SIT-CHK-000447",
+    "SIT-CHK-000492",
+    "SIT-CHK-000523",
+    "SIT-CHK-000554",
+    "SIT-CHK-000588",
+    "SIT-CHK-000662"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "tail_stage_result_links",
+  "id": "SIT-RES-000069",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000022"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000011",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000070: tail_stage_result_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000070",
+    "SIT-CHK-000148",
+    "SIT-CHK-000274",
+    "SIT-CHK-000393",
+    "SIT-CHK-000448",
+    "SIT-CHK-000493",
+    "SIT-CHK-000524",
+    "SIT-CHK-000555",
+    "SIT-CHK-000589",
+    "SIT-CHK-000663"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "tail_stage_result_links",
+  "id": "SIT-RES-000070",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000023"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000012",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000071: tail_stage_result_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000071",
+    "SIT-CHK-000149",
+    "SIT-CHK-000275",
+    "SIT-CHK-000394",
+    "SIT-CHK-000449",
+    "SIT-CHK-000494",
+    "SIT-CHK-000525",
+    "SIT-CHK-000556",
+    "SIT-CHK-000590",
+    "SIT-CHK-000664"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "tail_stage_result_links",
+  "id": "SIT-RES-000071",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000024"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000013",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000072: tail_stage_result_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000072",
+    "SIT-CHK-000150",
+    "SIT-CHK-000276",
+    "SIT-CHK-000395",
+    "SIT-CHK-000450",
+    "SIT-CHK-000495",
+    "SIT-CHK-000526",
+    "SIT-CHK-000557",
+    "SIT-CHK-000591",
+    "SIT-CHK-000665"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "tail_stage_result_links",
+  "id": "SIT-RES-000072",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000025"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000014",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000073: tail_stage_result_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000073",
+    "SIT-CHK-000151",
+    "SIT-CHK-000277",
+    "SIT-CHK-000396",
+    "SIT-CHK-000451",
+    "SIT-CHK-000496",
+    "SIT-CHK-000527",
+    "SIT-CHK-000558",
+    "SIT-CHK-000592",
+    "SIT-CHK-000666"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "tail_stage_result_links",
+  "id": "SIT-RES-000073",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000026"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000015",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000074: tail_stage_result_links
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000005"
+  ],
+  "check_refs": [
+    "SIT-CHK-000074",
+    "SIT-CHK-000152",
+    "SIT-CHK-000278",
+    "SIT-CHK-000397",
+    "SIT-CHK-000452",
+    "SIT-CHK-000497",
+    "SIT-CHK-000528",
+    "SIT-CHK-000559",
+    "SIT-CHK-000593",
+    "SIT-CHK-000667"
+  ],
+  "diagnostic_id": "SIT-M014",
+  "execution_state": "completed",
+  "field_key": "tail_stage_result_links",
+  "id": "SIT-RES-000074",
+  "interpretation_limit": "Exact supplied context and attributed statements only. Unclassified anomalies may lack a Claim. No automatic rarity, demographic, ideological, truth, motive, suppression or equal-weight vote inference. Protected content remains withheld. Stance does not alter source membership or provenance qualification. Stage links retain the original M010 cohort and scope; no second retention metric or final-only suppression percentage is computed.",
+  "population_refs": [
+    "SIT-POP-000027"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000016",
+  "value": {
+    "records": []
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000075: coverage_disclosures
+
+````json
+{
+  "basis_refs": [
+    "SIT-BAS-000002"
+  ],
+  "check_refs": [
+    "SIT-CHK-000075",
+    "SIT-CHK-000153",
+    "SIT-CHK-000189",
+    "SIT-CHK-000220",
+    "SIT-CHK-000668"
+  ],
+  "diagnostic_id": "SIT-M015",
+  "execution_state": "completed",
+  "field_key": "coverage_disclosures",
+  "id": "SIT-RES-000075",
+  "interpretation_limit": "Owner-local inventory of explicitly named supplied records only. Native labels and availability are not authentication, graph eligibility, universal completeness, or an end-to-end analytical execution; Actual same-job PC03 and PC04 provider facts are linked.",
+  "population_refs": [
+    "SIT-POP-000009"
+  ],
+  "reason_refs": [],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000006",
+  "value": {
+    "records": [
+      {
+        "fields": {
+          "native_record": {
+            "asserted_at": {
+              "precision": null,
+              "reason": "No occurrence time is supplied for this fictional reference case.",
+              "state": "unknown",
+              "value": null
+            },
+            "assertion_kind": "assessment",
+            "data": {
+              "assessment_kind": "coverage",
+              "details": {
+                "coverage_kind": "upstream_history",
+                "dimensions": [
+                  "acquisition"
+                ],
+                "member_refs": [
+                  "P4-E1",
+                  "P4-O1"
+                ],
+                "omitted_refs": [],
+                "relation_types": [
+                  "derived_from",
+                  "copies",
+                  "syndicated_from",
+                  "summarizes",
+                  "translates",
+                  "quotes",
+                  "originates_from",
+                  "depends_on"
+                ],
+                "scope_note": "Exactly these two records and all their permitted acquisition-parent predicates.",
+                "state": "complete_for_scope",
+                "universe_enumerated": true
+              },
+              "subject_refs": [
+                "P4-I001"
+              ]
+            },
+            "id": "P4-COVER",
+            "lifecycle_basis_ref_ids": [],
+            "lifecycle_state": "active",
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "documented_record",
+              "evidence_ref_ids": [
+                "P4-SUPPORT"
+              ],
+              "method": "Inspect supplied acquisition record; literal ``` is data.",
+              "qualifications": [
+                "Caller-supplied documentary premise (合成例); no external authentication."
+              ]
+            },
+            "scope": {
+              "claim_refs": [
+                "P4-CLAIM"
+              ],
+              "effective_window": {
+                "end": {
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case.",
+                  "state": "unknown",
+                  "value": null
+                },
+                "start": {
+                  "precision": null,
+                  "reason": "No occurrence time is supplied for this fictional reference case.",
+                  "state": "unknown",
+                  "value": null
+                }
+              },
+              "inquiry_refs": [
+                "P4-I001"
+              ]
+            }
+          },
+          "qualification_state": "met",
+          "reason_codes": []
+        },
+        "qualifications": [
+          "Completeness is attributed only to the exact supplied kind, subjects, predicates, dimension and finite member area."
+        ],
+        "source": {
+          "collection": "assertions",
+          "identifier": "P4-COVER",
+          "selector": null
+        }
+      }
+    ]
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+````
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000076: declared_basis_inventory
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000076",
+    "SIT-CHK-000154",
+    "SIT-CHK-000190",
+    "SIT-CHK-000221",
+    "SIT-CHK-000669"
+  ],
+  "diagnostic_id": "SIT-M015",
+  "execution_state": "completed",
+  "field_key": "declared_basis_inventory",
+  "id": "SIT-RES-000076",
+  "interpretation_limit": "Owner-local inventory of explicitly named supplied records only. Native labels and availability are not authentication, graph eligibility, universal completeness, or an end-to-end analytical execution; Actual same-job PC03 and PC04 provider facts are linked.",
+  "population_refs": [
+    "SIT-POP-000010"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000006",
+  "value": {
+    "categories": [
+      {
+        "count": 4,
+        "label": "declaration",
+        "member_refs": [
+          {
+            "collection": "inquiries",
+            "identifier": "P4-I001",
+            "selector": null
+          },
+          {
+            "collection": "records",
+            "identifier": "P4-ACTOR",
+            "selector": null
+          },
+          {
+            "collection": "records",
+            "identifier": "P4-ART",
+            "selector": null
+          },
+          {
+            "collection": "records",
+            "identifier": "P4-CLAIM",
+            "selector": null
+          }
+        ]
+      },
+      {
+        "count": 5,
+        "label": "documented_record",
+        "member_refs": [
+          {
+            "collection": "assertions",
+            "identifier": "P4-BOUND",
+            "selector": null
+          },
+          {
+            "collection": "assertions",
+            "identifier": "P4-COVER",
+            "selector": null
+          },
+          {
+            "collection": "assertions",
+            "identifier": "P4-PARENT",
+            "selector": null
+          },
+          {
+            "collection": "records",
+            "identifier": "P4-E1",
+            "selector": null
+          },
+          {
+            "collection": "records",
+            "identifier": "P4-O1",
+            "selector": null
+          }
+        ]
+      },
+      {
+        "count": 0,
+        "label": "upstream_inference",
+        "member_refs": []
+      },
+      {
+        "count": 0,
+        "label": "protected_attestation",
+        "member_refs": []
+      },
+      {
+        "count": 0,
+        "label": "unspecified",
+        "member_refs": []
+      }
+    ],
+    "population_ref": "SIT-POP-000010",
+    "total": 9
+  },
+  "value_kind": "partition",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+### SIT-RES-000077: documentary_basis_gap_disclosures
+
+```json
+{
+  "basis_refs": [
+    "SIT-BAS-000001",
+    "SIT-BAS-000002",
+    "SIT-BAS-000003",
+    "SIT-BAS-000005",
+    "SIT-BAS-000010",
+    "SIT-BAS-000011",
+    "SIT-BAS-000012",
+    "SIT-BAS-000013",
+    "SIT-BAS-000016"
+  ],
+  "check_refs": [
+    "SIT-CHK-000077",
+    "SIT-CHK-000155",
+    "SIT-CHK-000191",
+    "SIT-CHK-000222",
+    "SIT-CHK-000670"
+  ],
+  "diagnostic_id": "SIT-M015",
+  "execution_state": "completed",
+  "field_key": "documentary_basis_gap_disclosures",
+  "id": "SIT-RES-000077",
+  "interpretation_limit": "Owner-local inventory of explicitly named supplied records only. Native labels and availability are not authentication, graph eligibility, universal completeness, or an end-to-end analytical execution; Actual same-job PC03 and PC04 provider facts are linked.",
+  "population_refs": [
+    "SIT-POP-000010"
+  ],
+  "reason_refs": [
+    "SIT-RSN-000016",
+    "SIT-RSN-000017",
+    "SIT-RSN-000018",
+    "SIT-RSN-000019",
+    "SIT-RSN-000034",
+    "SIT-RSN-000035",
+    "SIT-RSN-000036",
+    "SIT-RSN-000037"
+  ],
+  "result_origin": "attributed_record",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000006",
+  "value": {
+    "records": [
+      {
+        "fields": {
+          "native_record": {
+            "data": {
+              "actor_kind": "human",
+              "identity_disclosure": "pseudonymous"
+            },
+            "id": "P4-ACTOR",
+            "kind": "actor",
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            }
+          },
+          "qualification_state": "unmet",
+          "reason_codes": [
+            "documentary_basis_incomplete",
+            "support_uninspectable"
+          ]
+        },
+        "qualifications": [
+          "Attributed documentary support only; no authentication or positive-edge eligibility.",
+          "Supplied declaration; no external authentication."
+        ],
+        "source": {
+          "collection": "records",
+          "identifier": "P4-ACTOR",
+          "selector": null
+        }
+      },
+      {
+        "fields": {
+          "native_record": {
+            "data": {
+              "artifact_kind": "document",
+              "content_evidence_refs": [],
+              "published_at": {
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case.",
+                "state": "unknown",
+                "value": null
+              },
+              "retrieved_at": {
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case.",
+                "state": "unknown",
+                "value": null
+              },
+              "version_label": "v1"
+            },
+            "id": "P4-ART",
+            "kind": "artifact",
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            }
+          },
+          "qualification_state": "unmet",
+          "reason_codes": [
+            "documentary_basis_incomplete",
+            "support_uninspectable"
+          ]
+        },
+        "qualifications": [
+          "Attributed documentary support only; no authentication or positive-edge eligibility.",
+          "Supplied declaration; no external authentication."
+        ],
+        "source": {
+          "collection": "records",
+          "identifier": "P4-ART",
+          "selector": null
+        }
+      },
+      {
+        "fields": {
+          "native_record": {
+            "data": {
+              "claim_key": "P4-CLAIM-FAMILY",
+              "context": "Only the supplied finite example.",
+              "version_label": "v1"
+            },
+            "id": "P4-CLAIM",
+            "kind": "claim",
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            }
+          },
+          "qualification_state": "unmet",
+          "reason_codes": [
+            "documentary_basis_incomplete",
+            "support_uninspectable"
+          ]
+        },
+        "qualifications": [
+          "Attributed documentary support only; no authentication or positive-edge eligibility.",
+          "Supplied declaration; no external authentication."
+        ],
+        "source": {
+          "collection": "records",
+          "identifier": "P4-CLAIM",
+          "selector": null
+        }
+      },
+      {
+        "fields": {
+          "native_record": {
+            "as_of": {
+              "precision": null,
+              "reason": "No occurrence time is supplied for this fictional reference case.",
+              "state": "unknown",
+              "value": null
+            },
+            "boundary": {
+              "criterion": "Only the supplied finite record identities and typed bindings.",
+              "description": "One fictional acquisition and its supplied contribution.",
+              "system_refs": []
+            },
+            "coverage_assertion_refs": [
+              "P4-COVER"
+            ],
+            "dependency_dimensions": [
+              "acquisition"
+            ],
+            "id": "P4-I001",
+            "provenance": {
+              "attributed_to_ref": "P4-ACTOR",
+              "basis_kind": "declaration",
+              "evidence_ref_ids": [],
+              "method": "Independently authored finite Phase 4 reference case.",
+              "qualifications": [
+                "Supplied declaration; no external authentication."
+              ]
+            },
+            "seed_artifact_refs": [
+              "P4-ART"
+            ],
+            "seed_evidence_refs": [
+              "P4-E1"
+            ],
+            "target_claim_refs": [
+              "P4-CLAIM"
+            ],
+            "target_object_refs": [],
+            "time_window": {
+              "end": {
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case.",
+                "state": "unknown",
+                "value": null
+              },
+              "start": {
+                "precision": null,
+                "reason": "No occurrence time is supplied for this fictional reference case.",
+                "state": "unknown",
+                "value": null
+              }
+            }
+          },
+          "qualification_state": "unmet",
+          "reason_codes": [
+            "documentary_basis_incomplete",
+            "support_uninspectable"
+          ]
+        },
+        "qualifications": [
+          "Attributed documentary support only; no authentication or positive-edge eligibility.",
+          "Supplied declaration; no external authentication."
+        ],
+        "source": {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      }
+    ]
+  },
+  "value_kind": "record_disclosures",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "documentary_basis_incomplete",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000016",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "documentary_basis_incomplete",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000017",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ACTOR",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "documentary_basis_incomplete",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000018",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ART",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "documentary_basis_incomplete",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000019",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "support_uninspectable",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000034",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "support_uninspectable",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000035",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ACTOR",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "support_uninspectable",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000036",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ART",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "support_uninspectable",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000037",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  }
+]
+```
+
+### SIT-RES-000078: reference_availability_inventory
+
+```json
+{
+  "basis_refs": [],
+  "check_refs": [
+    "SIT-CHK-000078",
+    "SIT-CHK-000156",
+    "SIT-CHK-000192",
+    "SIT-CHK-000223",
+    "SIT-CHK-000671"
+  ],
+  "diagnostic_id": "SIT-M015",
+  "execution_state": "completed",
+  "field_key": "reference_availability_inventory",
+  "id": "SIT-RES-000078",
+  "interpretation_limit": "Owner-local inventory of explicitly named supplied records only. Native labels and availability are not authentication, graph eligibility, universal completeness, or an end-to-end analytical execution; Actual same-job PC03 and PC04 provider facts are linked.",
+  "population_refs": [
+    "SIT-POP-000008"
+  ],
+  "reason_refs": [],
+  "result_origin": "inventory",
+  "result_state": "available",
+  "scope_ref": "SIT-SCP-000006",
+  "value": {
+    "categories": [
+      {
+        "count": 1,
+        "label": "supplied",
+        "member_refs": [
+          {
+            "collection": "evidence_references",
+            "identifier": "P4-SUPPORT",
+            "selector": null
+          }
+        ]
+      },
+      {
+        "count": 0,
+        "label": "locator_only",
+        "member_refs": []
+      },
+      {
+        "count": 0,
+        "label": "withheld",
+        "member_refs": []
+      },
+      {
+        "count": 0,
+        "label": "unavailable",
+        "member_refs": []
+      }
+    ],
+    "population_ref": "SIT-POP-000008",
+    "total": 1
+  },
+  "value_kind": "partition",
+  "witness_refs": []
+}
+```
+
+Reason details
+
+```json
+[]
+```
+
+## findings
+
+```json
+[
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M009"
+    ],
+    "id": "SIT-FND-000001",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000007"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000020"
+    ],
+    "scope_ref": "SIT-SCP-000004",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M009"
+    ],
+    "id": "SIT-FND-000002",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000007"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000021"
+    ],
+    "scope_ref": "SIT-SCP-000004",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000003",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000019"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000001"
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000004",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000019"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000002"
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000005",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000019"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000003"
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000006",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000019"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000004"
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000007",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000019"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000008"
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000008",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000019"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000009"
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000009",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000019"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000010"
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000010",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000019"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000011"
+    ],
+    "scope_ref": "SIT-SCP-000008",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000011",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000020"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000005"
+    ],
+    "scope_ref": "SIT-SCP-000009",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000012",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000020"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000006"
+    ],
+    "scope_ref": "SIT-SCP-000009",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000013",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000020"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000007"
+    ],
+    "scope_ref": "SIT-SCP-000009",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000014",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000020"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000012"
+    ],
+    "scope_ref": "SIT-SCP-000009",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000015",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000020"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000013"
+    ],
+    "scope_ref": "SIT-SCP-000009",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000016",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000020"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000014"
+    ],
+    "scope_ref": "SIT-SCP-000009",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000005"
+    ],
+    "condition_code": "externality_stage_limitation",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M010"
+    ],
+    "id": "SIT-FND-000017",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Supplied boundary and stage observations only. Unknowns remain in the full declared cohort. Native conclusions, use records and experimental attributions are not toolkit authentication or causal estimates. No date, human label, missing log, multiplied funnel, global Presence score or adequate-renewal claim follows. Transition quantities require the same exact members and one evidenced admission baseline; influence has no such transition.",
+    "observation_kind": "qualification_gap",
+    "population_refs": [
+      "SIT-POP-000020"
+    ],
+    "reason_refs": [
+      "SIT-RSN-000038"
+    ],
+    "scope_ref": "SIT-SCP-000009",
+    "statement": "This exact externality, stage or transition result retains an unresolved qualification; other stage results keep their own state.",
+    "threat_family_refs": [
+      "SIT-TH012"
+    ],
+    "witness": {
+      "components": [
+        {
+          "member_count": 1,
+          "members": [
+            {
+              "collection": "inquiries",
+              "identifier": "P4-I001",
+              "selector": null
+            }
+          ],
+          "type": "selected_members"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "inquiries",
+          "identifier": "P4-I001",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000001",
+      "SIT-BAS-000004"
+    ],
+    "condition_code": "scoped_no_witness",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [],
+    "id": "SIT-FND-000018",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Examined nodes, predicates, observations and unknown frontiers remain in the finite witness. No outside-world independence or passed threat check follows.",
+    "observation_kind": "no_witness_in_examined_view",
+    "population_refs": [],
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000021",
+    "statement": "The completed typed search found no eligible witness between these endpoints in this examined supplied view.",
+    "threat_family_refs": [],
+    "witness": {
+      "components": [
+        {
+          "edges": [],
+          "examined_edges": [],
+          "examined_nodes": [
+            {
+              "kind": "assertion",
+              "ref": {
+                "collection": "assertions",
+                "identifier": "P4-BOUND",
+                "selector": null
+              }
+            }
+          ],
+          "exit_edges": [],
+          "frontiers": [],
+          "internal_edges": [],
+          "kind": "no_witness_in_examined_view",
+          "member_count": 5,
+          "members": [],
+          "nodes": [],
+          "observations": [
+            {
+              "eligible": false,
+              "predicate": null,
+              "reason_codes": [
+                "scope_unestablished"
+              ],
+              "source": {
+                "kind": "assertion",
+                "ref": {
+                  "collection": "assertions",
+                  "identifier": "P4-BOUND",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-BOUND",
+                "selector": "provenance.evidence_ref_ids"
+              },
+              "target": {
+                "kind": "evidence_reference",
+                "ref": {
+                  "collection": "evidence_references",
+                  "identifier": "P4-SUPPORT",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "starts": [
+            {
+              "kind": "assertion",
+              "ref": {
+                "collection": "assertions",
+                "identifier": "P4-BOUND",
+                "selector": null
+              }
+            }
+          ],
+          "target": {
+            "kind": "evidence_reference",
+            "ref": {
+              "collection": "evidence_references",
+              "identifier": "P4-SUPPORT",
+              "selector": null
+            }
+          },
+          "terminals": [
+            {
+              "kind": "assertion",
+              "ref": {
+                "collection": "assertions",
+                "identifier": "P4-BOUND",
+                "selector": null
+              }
+            }
+          ],
+          "type": "graph_witness"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "assertions",
+          "identifier": "P4-BOUND",
+          "selector": null
+        },
+        {
+          "collection": "evidence_references",
+          "identifier": "P4-SUPPORT",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000003",
+      "SIT-BAS-000004"
+    ],
+    "condition_code": "scoped_no_witness",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [],
+    "id": "SIT-FND-000019",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Examined nodes, predicates, observations and unknown frontiers remain in the finite witness. No outside-world independence or passed threat check follows.",
+    "observation_kind": "no_witness_in_examined_view",
+    "population_refs": [],
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000022",
+    "statement": "The completed typed search found no eligible witness between these endpoints in this examined supplied view.",
+    "threat_family_refs": [],
+    "witness": {
+      "components": [
+        {
+          "edges": [],
+          "examined_edges": [],
+          "examined_nodes": [
+            {
+              "kind": "assertion",
+              "ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              }
+            }
+          ],
+          "exit_edges": [],
+          "frontiers": [],
+          "internal_edges": [],
+          "kind": "no_witness_in_examined_view",
+          "member_count": 5,
+          "members": [],
+          "nodes": [],
+          "observations": [
+            {
+              "eligible": false,
+              "predicate": null,
+              "reason_codes": [
+                "scope_unestablished"
+              ],
+              "source": {
+                "kind": "assertion",
+                "ref": {
+                  "collection": "assertions",
+                  "identifier": "P4-PARENT",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": "provenance.evidence_ref_ids"
+              },
+              "target": {
+                "kind": "evidence_reference",
+                "ref": {
+                  "collection": "evidence_references",
+                  "identifier": "P4-SUPPORT",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "starts": [
+            {
+              "kind": "assertion",
+              "ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              }
+            }
+          ],
+          "target": {
+            "kind": "evidence_reference",
+            "ref": {
+              "collection": "evidence_references",
+              "identifier": "P4-SUPPORT",
+              "selector": null
+            }
+          },
+          "terminals": [
+            {
+              "kind": "assertion",
+              "ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              }
+            }
+          ],
+          "type": "graph_witness"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "assertions",
+          "identifier": "P4-PARENT",
+          "selector": null
+        },
+        {
+          "collection": "evidence_references",
+          "identifier": "P4-SUPPORT",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000001",
+      "SIT-BAS-000002",
+      "SIT-BAS-000003",
+      "SIT-BAS-000004",
+      "SIT-BAS-000005",
+      "SIT-BAS-000013",
+      "SIT-BAS-000016"
+    ],
+    "condition_code": "transformation_path_witness",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M002",
+      "SIT-M004",
+      "SIT-M005",
+      "SIT-M007"
+    ],
+    "id": "SIT-FND-000020",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Citation and material paths do not create Claim-specific acquisition dependence, independent corroboration or a syndication accusation.",
+    "observation_kind": "positive_witness",
+    "population_refs": [],
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000019",
+    "statement": "An eligible explicit path connects these exact endpoints in the named typed view.",
+    "threat_family_refs": [
+      "SIT-TH002"
+    ],
+    "witness": {
+      "components": [
+        {
+          "edges": [
+            {
+              "eligible": true,
+              "predicate": "originates_from",
+              "reason_codes": [],
+              "source": {
+                "kind": "evidence_item",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-E1",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              },
+              "target": {
+                "kind": "origin_event",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-O1",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "examined_edges": [],
+          "examined_nodes": [],
+          "exit_edges": [],
+          "frontiers": [],
+          "internal_edges": [],
+          "kind": "path",
+          "member_count": 3,
+          "members": [],
+          "nodes": [
+            {
+              "kind": "evidence_item",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-E1",
+                "selector": null
+              }
+            },
+            {
+              "kind": "origin_event",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-O1",
+                "selector": null
+              }
+            }
+          ],
+          "observations": [],
+          "starts": [],
+          "target": null,
+          "terminals": [],
+          "type": "graph_witness"
+        },
+        {
+          "edges": [],
+          "examined_edges": [
+            {
+              "eligible": true,
+              "predicate": "originates_from",
+              "reason_codes": [],
+              "source": {
+                "kind": "evidence_item",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-E1",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              },
+              "target": {
+                "kind": "origin_event",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-O1",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "examined_nodes": [
+            {
+              "kind": "evidence_item",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-E1",
+                "selector": null
+              }
+            },
+            {
+              "kind": "origin_event",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-O1",
+                "selector": null
+              }
+            }
+          ],
+          "exit_edges": [],
+          "frontiers": [],
+          "internal_edges": [],
+          "kind": "complete_trace",
+          "member_count": 6,
+          "members": [],
+          "nodes": [],
+          "observations": [
+            {
+              "eligible": true,
+              "predicate": "originates_from",
+              "reason_codes": [],
+              "source": {
+                "kind": "evidence_item",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-E1",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              },
+              "target": {
+                "kind": "origin_event",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-O1",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "starts": [
+            {
+              "kind": "evidence_item",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-E1",
+                "selector": null
+              }
+            }
+          ],
+          "target": null,
+          "terminals": [
+            {
+              "kind": "origin_event",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-O1",
+                "selector": null
+              }
+            }
+          ],
+          "type": "graph_witness"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "assertions",
+          "identifier": "P4-PARENT",
+          "selector": null
+        },
+        {
+          "collection": "evidence_references",
+          "identifier": "P4-SUPPORT",
+          "selector": null
+        },
+        {
+          "collection": "records",
+          "identifier": "P4-E1",
+          "selector": null
+        },
+        {
+          "collection": "records",
+          "identifier": "P4-O1",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000001",
+      "SIT-BAS-000002",
+      "SIT-BAS-000003",
+      "SIT-BAS-000004",
+      "SIT-BAS-000005",
+      "SIT-BAS-000013",
+      "SIT-BAS-000016"
+    ],
+    "condition_code": "transformation_path_witness",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [
+      "SIT-M006"
+    ],
+    "id": "SIT-FND-000021",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Citation and material paths do not create Claim-specific acquisition dependence, independent corroboration or a syndication accusation.",
+    "observation_kind": "positive_witness",
+    "population_refs": [],
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000020",
+    "statement": "An eligible explicit path connects these exact endpoints in the named typed view.",
+    "threat_family_refs": [
+      "SIT-TH002"
+    ],
+    "witness": {
+      "components": [
+        {
+          "edges": [
+            {
+              "eligible": true,
+              "predicate": "originates_from",
+              "reason_codes": [],
+              "source": {
+                "kind": "evidence_item",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-E1",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              },
+              "target": {
+                "kind": "origin_event",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-O1",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "examined_edges": [],
+          "examined_nodes": [],
+          "exit_edges": [],
+          "frontiers": [],
+          "internal_edges": [],
+          "kind": "path",
+          "member_count": 3,
+          "members": [],
+          "nodes": [
+            {
+              "kind": "evidence_item",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-E1",
+                "selector": null
+              }
+            },
+            {
+              "kind": "origin_event",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-O1",
+                "selector": null
+              }
+            }
+          ],
+          "observations": [],
+          "starts": [],
+          "target": null,
+          "terminals": [],
+          "type": "graph_witness"
+        },
+        {
+          "edges": [],
+          "examined_edges": [
+            {
+              "eligible": true,
+              "predicate": "originates_from",
+              "reason_codes": [],
+              "source": {
+                "kind": "evidence_item",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-E1",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              },
+              "target": {
+                "kind": "origin_event",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-O1",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "examined_nodes": [
+            {
+              "kind": "evidence_item",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-E1",
+                "selector": null
+              }
+            },
+            {
+              "kind": "origin_event",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-O1",
+                "selector": null
+              }
+            }
+          ],
+          "exit_edges": [],
+          "frontiers": [],
+          "internal_edges": [],
+          "kind": "complete_trace",
+          "member_count": 5,
+          "members": [],
+          "nodes": [],
+          "observations": [
+            {
+              "eligible": true,
+              "predicate": "originates_from",
+              "reason_codes": [],
+              "source": {
+                "kind": "evidence_item",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-E1",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              },
+              "target": {
+                "kind": "origin_event",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-O1",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "starts": [
+            {
+              "kind": "evidence_item",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-E1",
+                "selector": null
+              }
+            }
+          ],
+          "target": null,
+          "terminals": [],
+          "type": "graph_witness"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "assertions",
+          "identifier": "P4-PARENT",
+          "selector": null
+        },
+        {
+          "collection": "evidence_references",
+          "identifier": "P4-SUPPORT",
+          "selector": null
+        },
+        {
+          "collection": "records",
+          "identifier": "P4-E1",
+          "selector": null
+        },
+        {
+          "collection": "records",
+          "identifier": "P4-O1",
+          "selector": null
+        }
+      ]
+    }
+  },
+  {
+    "basis_refs": [
+      "SIT-BAS-000003",
+      "SIT-BAS-000004",
+      "SIT-BAS-000013",
+      "SIT-BAS-000016"
+    ],
+    "condition_code": "transformation_path_witness",
+    "contrary_input_refs": [],
+    "diagnostic_refs": [],
+    "id": "SIT-FND-000022",
+    "interpretation_limit": "Conditional on the exact supplied scope, versions, premises and evidence basis. This finite observation cannot establish motive, censorship, authenticity, substantive truth, independence outside the examined dimension, causal success or a universal threat verdict. Threat associations are nonexclusive explanatory links, with no incident total or severity. No source contact, quarantine, removal, down-weighting, sanction or other intervention follows. Citation and material paths do not create Claim-specific acquisition dependence, independent corroboration or a syndication accusation.",
+    "observation_kind": "positive_witness",
+    "population_refs": [],
+    "reason_refs": [],
+    "scope_ref": "SIT-SCP-000023",
+    "statement": "An eligible explicit path connects these exact endpoints in the named typed view.",
+    "threat_family_refs": [
+      "SIT-TH002"
+    ],
+    "witness": {
+      "components": [
+        {
+          "edges": [
+            {
+              "eligible": true,
+              "predicate": "originates_from",
+              "reason_codes": [],
+              "source": {
+                "kind": "evidence_item",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-E1",
+                  "selector": null
+                }
+              },
+              "source_ref": {
+                "collection": "assertions",
+                "identifier": "P4-PARENT",
+                "selector": null
+              },
+              "target": {
+                "kind": "origin_event",
+                "ref": {
+                  "collection": "records",
+                  "identifier": "P4-O1",
+                  "selector": null
+                }
+              }
+            }
+          ],
+          "examined_edges": [],
+          "examined_nodes": [],
+          "exit_edges": [],
+          "frontiers": [],
+          "internal_edges": [],
+          "kind": "path",
+          "member_count": 3,
+          "members": [],
+          "nodes": [
+            {
+              "kind": "evidence_item",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-E1",
+                "selector": null
+              }
+            },
+            {
+              "kind": "origin_event",
+              "ref": {
+                "collection": "records",
+                "identifier": "P4-O1",
+                "selector": null
+              }
+            }
+          ],
+          "observations": [],
+          "starts": [],
+          "target": null,
+          "terminals": [],
+          "type": "graph_witness"
+        }
+      ],
+      "input_refs": [
+        {
+          "collection": "assertions",
+          "identifier": "P4-PARENT",
+          "selector": null
+        },
+        {
+          "collection": "evidence_references",
+          "identifier": "P4-SUPPORT",
+          "selector": null
+        },
+        {
+          "collection": "records",
+          "identifier": "P4-E1",
+          "selector": null
+        },
+        {
+          "collection": "records",
+          "identifier": "P4-O1",
+          "selector": null
+        }
+      ]
+    }
+  }
+]
+```
+
+## reasons
+
+```json
+[
+  {
+    "affected_result_refs": [
+      "SIT-RES-000034"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000001",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000035"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000002",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000036"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000003",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000037"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000004",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000031"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000005",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000032"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000006",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000033"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_anchor_missing",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000007",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000034"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000008",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000035"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000009",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000036"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000010",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000037"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000011",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000008"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000031"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000012",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000032"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000013",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000033"
+    ],
+    "classification": "evidence_gap",
+    "code": "cohort_universe_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000014",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000019"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "completion_interval_not_needed",
+    "detail": "Exact scoped contribution limitation; positive records and the full denominator remain visible.",
+    "id": "SIT-RSN-000015",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000020"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "documentary_basis_incomplete",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000016",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "documentary_basis_incomplete",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000017",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ACTOR",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "documentary_basis_incomplete",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000018",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ART",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "documentary_basis_incomplete",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000019",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000029"
+    ],
+    "classification": "evidence_gap",
+    "code": "externality_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000020",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000004"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000030"
+    ],
+    "classification": "evidence_gap",
+    "code": "externality_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000021",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000004"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000009"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "This exact supplied comparison retains the identified prerequisite limitation. A missing qualification is not zero independent members or a conclusion about other comparisons.",
+    "id": "SIT-RSN-000022",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000017"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000010"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "This exact supplied comparison retains the identified prerequisite limitation. A missing qualification is not zero independent members or a conclusion about other comparisons.",
+    "id": "SIT-RSN-000023",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000017"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000011"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "This exact supplied comparison retains the identified prerequisite limitation. A missing qualification is not zero independent members or a conclusion about other comparisons.",
+    "id": "SIT-RSN-000024",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000017"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000012"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "This exact supplied comparison retains the identified prerequisite limitation. A missing qualification is not zero independent members or a conclusion about other comparisons.",
+    "id": "SIT-RSN-000025",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000017"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000049"
+    ],
+    "classification": "evidence_gap",
+    "code": "missing_comparison_assessment",
+    "detail": "The supplied review/process record retains this exact qualification limit. Visible contribution does not resolve missing process evidence or dependencies.",
+    "id": "SIT-RSN-000026",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000018"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000025"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000027",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000026"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000028",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000027"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000029",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000028"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000030",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000038"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000031",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000039"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000032",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000040"
+    ],
+    "classification": "structural_inapplicability",
+    "code": "no_applicable_subject",
+    "detail": "No eligible subject tuple was supplied for this finite operation.",
+    "id": "SIT-RSN-000033",
+    "input_refs": [],
+    "scope_ref": "SIT-SCP-000005"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "support_uninspectable",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000034",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "support_uninspectable",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000035",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ACTOR",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "support_uninspectable",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000036",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-ART",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000077"
+    ],
+    "classification": "evidence_gap",
+    "code": "support_uninspectable",
+    "detail": "The attributed named record retains this local qualification; its native inventory label is unchanged.",
+    "id": "SIT-RSN-000037",
+    "input_refs": [
+      {
+        "collection": "records",
+        "identifier": "P4-CLAIM",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000006"
+  },
+  {
+    "affected_result_refs": [
+      "SIT-RES-000032"
+    ],
+    "classification": "evidence_gap",
+    "code": "transition_baseline_unestablished",
+    "detail": "This exact boundary/stage/cohort question retains the supplied limitation; no missing evidence is converted into a negative observation or a smaller denominator.",
+    "id": "SIT-RSN-000038",
+    "input_refs": [
+      {
+        "collection": "inquiries",
+        "identifier": "P4-I001",
+        "selector": null
+      }
+    ],
+    "scope_ref": "SIT-SCP-000009"
+  }
+]
+```
+
+## release_limits
+
+```json
+[
+  "Offline analysis of caller-supplied records only.",
+  "Source identity, authenticity and external events are not independently authenticated.",
+  "No live monitoring or active content-level poisoning, injection or authorship detection was performed.",
+  "No universal truth, integrity, independence or safety score is produced.",
+  "No automatic intervention, source contact or changes to the audited system are performed.",
+  "Scope-specific evidence gaps and qualifications remain as recorded; missing records do not establish outside-world absence."
+]
+```

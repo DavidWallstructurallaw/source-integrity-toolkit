@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Software dependency-direction tests; no source graph is evaluated."""
 import sys
+from functools import cache
 import unittest
 from pathlib import Path
 
@@ -9,37 +10,42 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools import check_scaffold_boundary as guard
 
+@cache
+def current_stage():
+    """Resolve trusted local activation only during execution, never collection."""
+    return guard.current_local_state(ROOT)["activation_stage"]
+
 
 class LayerBoundaryTests(unittest.TestCase):
     def test_accepted_imports_have_no_layer_errors(self):
         for path in guard.EXPECTED_PATHS:
             with self.subTest(path=path):
                 source = (ROOT / "src/source_integrity_toolkit" / path).read_text(encoding="utf-8")
-                self.assertEqual(guard.current_layer_issues(path, source), [])
+                self.assertEqual(guard.current_layer_issues(path, source, stage=current_stage()), [])
 
     def test_allowed_architecture_direction_does_not_authorize_behavior(self):
         source = "from ..contracts import evidence\n"
-        self.assertEqual(guard.current_layer_issues("analysis/origins.py", source), [])
+        self.assertEqual(guard.current_layer_issues("analysis/origins.py", source, stage=current_stage()), [])
         self.assertTrue(guard.form_issues("analysis/origins.py", source))
 
     def test_reporting_cannot_recompute_analysis(self):
         self.assertIn("layer_violation", guard.current_layer_issues(
-            "reporting/json_report.py", "from ..analysis.origins import trace\n"))
+            "reporting/json_report.py", "from ..analysis.origins import trace\n", stage=current_stage()))
 
     def test_lower_layers_cannot_import_runtime_authority(self):
         for path in ("contracts/bundle.py", "validation/structure.py", "graph/traversal.py"):
             with self.subTest(path=path):
-                self.assertIn("layer_violation", guard.current_layer_issues(path, "from ..runtime.boundary import run\n"))
+                self.assertIn("layer_violation", guard.current_layer_issues(path, "from ..runtime.boundary import run\n", stage=current_stage()))
 
     def test_cross_project_native_network_and_oracle_imports_fail(self):
         for name in ("recursive_integrity_toolkit", "integrity_core", "ctypes", "socket",
                      "requests", "subprocess", "tests.golden", "scaffold", "tools"):
             with self.subTest(name=name):
-                self.assertIn("unapproved_import", guard.current_layer_issues("api.py", f"import {name}\n"))
+                self.assertIn("unapproved_import", guard.current_layer_issues("api.py", f"import {name}\n", stage=current_stage()))
 
     def test_relative_escape_and_wildcard_fail(self):
-        self.assertIn("relative_import_escape", guard.current_layer_issues("api.py", "from ...x import y\n"))
-        self.assertIn("wildcard_import", guard.current_layer_issues("analysis/origins.py", "from ..contracts import *\n"))
+        self.assertIn("relative_import_escape", guard.current_layer_issues("api.py", "from ...x import y\n", stage=current_stage()))
+        self.assertIn("wildcard_import", guard.current_layer_issues("analysis/origins.py", "from ..contracts import *\n", stage=current_stage()))
 
     def test_import_cycle_detection_has_positive_and_negative_controls(self):
         positive = {"analysis/origins.py": "from . import inventory\n", "analysis/inventory.py": '"""slot"""\n'}
