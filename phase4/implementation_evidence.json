@@ -2,7 +2,7 @@
   "phase": "P4",
   "current_unit": "P4-W02",
   "activation_stage": 7,
-  "status": "Preventive original-owner W02 boundary assertion repair prepared at verified activation stage7; clean-checkpoint targeted test and future stage8 path verification pending.",
+  "status": "Preventive original-owner W02 boundary assertion repair verified at clean activation stage7; the original refusal path passed its exact targeted test, and the future stage8 delivery path awaits W08 candidate verification.",
   "owner_authorization": "Approved PHASE_4_PLAN.md, explicit user instruction to continue W07, and original-owner repair authorization in plan section 9; plan hash 5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
   "previous_checkpoint": {
     "phase": "P4",
@@ -6368,10 +6368,70 @@
       "case_identity_retained": true
     },
     "verification": {
-      "status": "pending_clean_stage7_targeted_run",
-      "future_stage8_path": "W08 final candidate targeted integration is required; not yet run."
+      "status": "passed_clean_stage7_targeted_test",
+      "actual": {
+        "head": "9329aeeab6958895100e33ac997b8db6dbadd65d",
+        "command": [
+          "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "-o",
+          "addopts=",
+          "tests/contract/test_report_contract.py::test_w02_keeps_both_public_audit_functions_in_their_existing_refusal_state",
+          "--junitxml=/workspace/scratch/4e5267fe5990/p4w08-prior-ci/w02-activation-repair/focused.xml"
+        ],
+        "python": "Python 3.12.14",
+        "duration_seconds": 10.495207797999683,
+        "exit_code": 0,
+        "junit": [
+          {
+            "name": "pytest",
+            "errors": "0",
+            "failures": "0",
+            "skipped": "0",
+            "tests": "1",
+            "time": "10.194",
+            "timestamp": "2026-10-26T16:01:10.202781+11:00",
+            "hostname": "6b04d9b59a2f"
+          }
+        ],
+        "source_files": 232,
+        "source_hashes_unchanged": true,
+        "stage": 7,
+        "scope": "Exact original test at verified clean stage7; stage8 branch awaits W08 candidate execution."
+      },
+      "future_stage8_path": "W08 final candidate targeted integration is required; not yet run.",
+      "source_delta_after_test": "Only D05 receives these observed results; every other tested source byte is unchanged."
     },
     "unchanged": "No product, N12, API, scope guard, schema, golden, vocabulary, limit, dependency or workflow change.",
-    "recorded_at_utc": "2026-10-26T05:00:53.289315+00:00"
+    "recorded_at_utc": "2026-10-26T05:01:36.433531+00:00",
+    "raw_evidence": {
+      "pretest-checkpoint.json": {
+        "sha256": "210605a3953379e7df9cb9c9b0b2db59184f4e6c45738ff5c543e132f95171ef",
+        "bytes": 3553
+      },
+      "verification.json": {
+        "sha256": "08ec9fb3ff6cb0a73f2219b3a514c4b1155e965c64fd75488e6f365cb42013e7",
+        "bytes": 948
+      },
+      "focused.xml": {
+        "sha256": "513a18bcdb2c35af7e06efd8983d8fc476e4acd5bc8be46f75afc33a7b1480cb",
+        "bytes": 404
+      },
+      "focused.log": {
+        "sha256": "0f4c85b64d2d14c60ae507e39272fdec6b7e93163620e2172dba97cec975f820",
+        "bytes": 99
+      },
+      "source-before.json": {
+        "sha256": "227d88688c2fe6bf061928e3b211677d4679b5200372fc381e563d0b867e2d5f",
+        "bytes": 25564
+      },
+      "source-after.json": {
+        "sha256": "227d88688c2fe6bf061928e3b211677d4679b5200372fc381e563d0b867e2d5f",
+        "bytes": 25564
+      }
+    }
   }
 }
