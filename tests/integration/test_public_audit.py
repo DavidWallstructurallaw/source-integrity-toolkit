@@ -9,6 +9,7 @@ against its frozen logical document; the larger W02 reference retains its
 original independent goldens and its real same-invocation budget outcome.
 """
 import copy
+from dataclasses import FrozenInstanceError
 import importlib.util
 import json
 from pathlib import Path
@@ -259,13 +260,17 @@ def test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime(complet
         assert report.report_id == document['report_id']
     assert (owner.used, owner._last) == (original_used, original_last)
     assert set(type(report).__slots__) == {'_document', '_json_bytes', '_markdown_bytes'}
-    with pytest.raises(TypeError):
+    original_results = report.results
+    with pytest.raises((TypeError, FrozenInstanceError)):
         report.results = ()
+    assert report.results is original_results
     with pytest.raises(TypeError):
         report.results[0]['value'] = 99
     with pytest.raises(TypeError):
         report.run['requested_diagnostic_ids'][0] = 'altered'
     assert report.to_json_bytes() is json_raw
+    assert report.to_markdown_bytes() is markdown_raw
+    assert (owner.used, owner._last) == (original_used, original_last)
 
 
 def test_source_mutation_after_delivery_cannot_change_report_or_encodings():

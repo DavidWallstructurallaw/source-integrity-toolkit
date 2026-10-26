@@ -2,7 +2,7 @@
   "phase": "P4",
   "current_unit": "P4-W07",
   "activation_stage": 7,
-  "status": "W07 internal same-invocation composition implemented and locally verified by the recorded primary run and scoped constructor closure; published-head hosted verification remains pending",
+  "status": "W07 local implementation and scoped verification retained; hosted Python3.13 immutability-test mismatch diagnosed and repaired without product changes; corrected local Python3.12 affected control passes, corrected hosted Python3.13 remains pending.",
   "owner_authorization": "Approved PHASE_4_PLAN.md, explicit user instruction to continue W07, and original-owner repair authorization in plan section 9; plan hash 5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
   "previous_checkpoint": {
     "phase": "P4",
@@ -6093,5 +6093,259 @@
   "unchanged_boundaries": "No budget, deadline, reserve, output cap, workflow, pin, runtime dependency, analytical algorithm, vocabulary, frozen plan/schema/golden, API activation or module-inventory change.",
   "authority_notice": "Evidence records describe observed work; they do not grant scope, select tests or authorize execution.",
   "validated_at_utc": "2026-10-26T03:59:54.742093+00:00",
-  "publication_note": "Local W03 repair commit IDs and tested source bytes are retained here. Remote Git commit bindings and eventual W07 hosted results belong to external publication receipts; no self-referential success commit is claimed."
+  "publication_note": "Local W03 repair commit IDs and tested source bytes are retained here. Remote Git commit bindings and eventual W07 hosted results belong to external publication receipts; no self-referential success commit is claimed.",
+  "python313_immutability_repair": {
+    "owner": "P4-W07",
+    "activation_stage": 7,
+    "authorized_basis": "Approved PHASE_4_PLAN.md section9 permits normal original-owner implementation/test-wiring fixes without repeated approval; W08 continuation exposed the completed W07 hosted results.",
+    "previous_status": "W07 internal same-invocation composition implemented and locally verified by the recorded primary run and scoped constructor closure; published-head hosted verification remains pending",
+    "base_head": "e9b6bfd3f65de31841606a7b1d44e0fe4cb3282d",
+    "changed_paths": [
+      "tests/integration/test_public_audit.py",
+      "phase4/implementation_evidence.json"
+    ],
+    "root_cause": "N12 expects only TypeError when assigning report.results. On both CPython 3.13.16 profiles, the frozen slots dataclass correctly rejects this assignment with dataclasses.FrozenInstanceError, an AttributeError subclass. The product remains immutable; the test assumes a particular Python minor exception class not required by the plan.",
+    "hosted_failure": {
+      "status": "diagnosed",
+      "run_id": 40267314989,
+      "run_attempt": 1,
+      "head": "e9b6bfd3f65de31841606a7b1d44e0fe4cb3282d",
+      "reviewed_at_utc": "2026-10-26T04:55:32.659710+00:00",
+      "profiles": [
+        {
+          "profile": "w07-ubuntu-py313",
+          "artifact_id": 12627088940,
+          "zip_sha256": "5c3cf8e5070651369bf08d5bb95c5820b640c73f6807c3978f4618d1fafdaa5d",
+          "github_artifact_digest_matches": true,
+          "binding": {
+            "activation_stage": 7,
+            "base": "fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c",
+            "event": "pull_request",
+            "event_sha256": "bdfe5d47b0c5a493afa8c2480654eaf43ac4fed7b59938609105bb780a6b1ec7",
+            "head": "e9b6bfd3f65de31841606a7b1d44e0fe4cb3282d",
+            "matrix_os": "ubuntu-24.04",
+            "matrix_python": "3.13",
+            "mode": "hosted",
+            "python": "3.13.16 (main, Oct  1 2026, 02:37:54) [GCC 13.3.0]",
+            "run_attempt": "1",
+            "run_id": "40267314989",
+            "unit": "P4-W07"
+          },
+          "collected_count": 10069,
+          "junit_distinct_testcases": 10069,
+          "passed_cases": 10068,
+          "failed_cases": 1,
+          "successful_subtest_events": 533,
+          "junit_suite_attributes": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "1",
+              "skipped": "0",
+              "tests": "10602",
+              "time": "1608.311",
+              "timestamp": "2026-10-26T04:07:29.873487+00:00",
+              "hostname": "runnervmtai0g"
+            }
+          ],
+          "identity_set_matches_collection": true,
+          "failures": [
+            {
+              "class": "tests.integration.test_public_audit",
+              "name": "test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+              "message": "dataclasses.FrozenInstanceError: cannot assign to field 'results'"
+            }
+          ],
+          "exit": {
+            "exit_code": 1,
+            "incomplete": false,
+            "interrupted": false,
+            "timed_out": false,
+            "timeout_seconds": 2400
+          },
+          "test_failure": {
+            "error_type": "ValueError",
+            "message": "accumulated_suite_failed",
+            "stage": "test"
+          },
+          "evidence_failure": {
+            "error_type": "ValueError",
+            "message": "earlier_stage_failed",
+            "stage": "evidence"
+          },
+          "installed_receipts_present": [
+            "w08-installed-runtime.json",
+            "w14-installed-runtime.json"
+          ]
+        },
+        {
+          "profile": "w07-windows-py313",
+          "artifact_id": 12628436653,
+          "zip_sha256": "eed3f4f432160d32378fce586cc10b5991013cd648d967d33088260fe45a539e",
+          "github_artifact_digest_matches": true,
+          "binding": {
+            "activation_stage": 7,
+            "base": "fdad8c3449d2d223420c5d52bb9b4c1e863a9e3c",
+            "event": "pull_request",
+            "event_sha256": "e026cec0d80fba8b67e5cac5783865c8f08f92b3657bc26079faf318473a5e44",
+            "head": "e9b6bfd3f65de31841606a7b1d44e0fe4cb3282d",
+            "matrix_os": "windows-2025",
+            "matrix_python": "3.13",
+            "mode": "hosted",
+            "python": "3.13.16 (tags/v3.13.16:cbc944f, Sep 30 2026, 19:17:50) [MSC v.1944 64 bit (AMD64)]",
+            "run_attempt": "1",
+            "run_id": "40267314989",
+            "unit": "P4-W07"
+          },
+          "collected_count": 10069,
+          "junit_distinct_testcases": 10069,
+          "passed_cases": 10068,
+          "failed_cases": 1,
+          "successful_subtest_events": 533,
+          "junit_suite_attributes": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "1",
+              "skipped": "0",
+              "tests": "10602",
+              "time": "2300.669",
+              "timestamp": "2026-10-26T04:08:27.594059+00:00",
+              "hostname": "runnervmdaln5"
+            }
+          ],
+          "identity_set_matches_collection": true,
+          "failures": [
+            {
+              "class": "tests.integration.test_public_audit",
+              "name": "test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+              "message": "dataclasses.FrozenInstanceError: cannot assign to field 'results'"
+            }
+          ],
+          "exit": {
+            "exit_code": 1,
+            "incomplete": false,
+            "interrupted": false,
+            "timed_out": false,
+            "timeout_seconds": 2400
+          },
+          "test_failure": {
+            "error_type": "ValueError",
+            "message": "accumulated_suite_failed",
+            "stage": "test"
+          },
+          "evidence_failure": {
+            "error_type": "ValueError",
+            "message": "earlier_stage_failed",
+            "stage": "evidence"
+          },
+          "installed_receipts_present": [
+            "w08-installed-runtime.json",
+            "w14-installed-runtime.json"
+          ]
+        }
+      ],
+      "other_profiles_scope": "Both Python 3.11 jobs succeeded according to jobs API. Their raw artifacts were not downloaded by this investigation.",
+      "root_cause": "N12 expects only TypeError when assigning report.results. On both CPython 3.13.16 profiles, the frozen slots dataclass correctly rejects this assignment with dataclasses.FrozenInstanceError, an AttributeError subclass. The product remains immutable; the test assumes a particular Python minor exception class not required by the plan.",
+      "candidate_fix": {
+        "owner": "P4-W07",
+        "paths": [
+          "tests/integration/test_public_audit.py",
+          "phase4/implementation_evidence.json"
+        ],
+        "change": "Accept exactly TypeError and FrozenInstanceError for root property assignment, with explicit unchanged root identity, both output caches and ledger/time assertions. Retain nested item mutation and no-runtime-reentry controls.",
+        "product_change_needed": false,
+        "w08_impact": "Close the inherited test defect before claiming W08 hosted success; normal W08 activation can proceed under its approved scope.",
+        "verification": "Target the affected N12 function locally on existing CPython3.12.14. Retain actual failed3.13 artifacts and leave corrected3.13 hosted success pending."
+      },
+      "timing_note": "Windows3.13 completed2300.669 JUnit seconds under unchanged2400-second suite timeout; no timeout occurred.",
+      "scope_limitations": [
+        "No CI rerun triggered.",
+        "Diagnosis did not modify product code or relax behavior.",
+        "No final installed/public API or final-phase acceptance claimed.",
+        "Artifact ZIP digest, CRC, binding and exact collection/JUnit identity reconciliation checked; installed receipt files were not independently audited in this failure diagnosis."
+      ]
+    },
+    "repair": "The report.results assignment must continue to fail. Its assertion accepts only TypeError and dataclasses.FrozenInstanceError, the actual supported interpreter outcomes. It additionally asserts the original results tuple identity, both encoding cache identities and owner work/time state remain unchanged. Existing nested mutation and no-runtime-reentry checks remain intact.",
+    "definition_preservation": {
+      "original_top_level_definitions": 18,
+      "changed_definition": "test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+      "other_17_definitions_AST_unchanged": true,
+      "original_case_identities_preserved": true
+    },
+    "local_verification": {
+      "command": [
+        "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "--junitxml=/workspace/scratch/4e5267fe5990/p4w08-prior-ci/repair-focused.xml"
+      ],
+      "cwd": "/workspace/scratch/4e5267fe5990/source-integrity-toolkit-w08-prior-repair",
+      "exit_code": 0,
+      "duration_seconds": 6.4378322750017105,
+      "python": "Python 3.12.14",
+      "junit_suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1",
+          "time": "6.148",
+          "timestamp": "2026-10-26T15:55:51.658095+11:00",
+          "hostname": "6b04d9b59a2f"
+        }
+      ],
+      "source_files": 232,
+      "source_hashes_unchanged": true,
+      "base_head": "e9b6bfd3f65de31841606a7b1d44e0fe4cb3282d",
+      "scope": "One affected N12 immutable-report and cache/no-reentry test; no whole-suite or Python3.13 success claim."
+    },
+    "raw_evidence": {
+      "diagnosis.json": {
+        "sha256": "164afdf8cddb340cba686565671a5ee0ea7d6a3b47804e4fa25f0500f453bf73",
+        "bytes": 6354
+      },
+      "repair-verification.json": {
+        "sha256": "ee24239e4c4f47bbc961f5ea6b532bd9424d770b50fb4f3c1f775fac0b1351d1",
+        "bytes": 1023
+      },
+      "repair-focused.xml": {
+        "sha256": "df21d1074e922c363bb6d469b7e7a8720c491c5fc5c7decb278125b65b746159",
+        "bytes": 397
+      },
+      "repair-focused.log": {
+        "sha256": "076473d7a6c81a72c2c66927e274e567046a1ae3975703aafadbf10e1151adf5",
+        "bytes": 98
+      },
+      "repair-source-before.json": {
+        "sha256": "cfbc32e2b5ff9169a03ba6991aa940a700bb0da9b601436d87f5ba0bf24e10ad",
+        "bytes": 25564
+      },
+      "repair-source-after.json": {
+        "sha256": "cfbc32e2b5ff9169a03ba6991aa940a700bb0da9b601436d87f5ba0bf24e10ad",
+        "bytes": 25564
+      },
+      "w07-ubuntu-py313.zip": {
+        "sha256": "5c3cf8e5070651369bf08d5bb95c5820b640c73f6807c3978f4618d1fafdaa5d",
+        "bytes": 367157
+      },
+      "w07-windows-py313.zip": {
+        "sha256": "eed3f4f432160d32378fce586cc10b5991013cd648d967d33088260fe45a539e",
+        "bytes": 375479
+      }
+    },
+    "unchanged": "All product bytes, schemas, goldens, limits, workflow, pins, plan, API activation and other tests remain unchanged by this repair.",
+    "scope_limitations": [
+      "No local Python3.13 executable was available or installed; local evidence is Python3.12.14 only.",
+      "No old failed hosted run is reclassified as success.",
+      "The next current-candidate hosted matrix supplies corrected Python3.13 evidence; no rerun was triggered by this repair."
+    ],
+    "recorded_at_utc": "2026-10-26T04:56:38.928921+00:00"
+  }
 }
