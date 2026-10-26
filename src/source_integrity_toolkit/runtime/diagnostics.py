@@ -1,6 +1,6 @@
 # Copyright 2026 Xiangyu Guo
 # SPDX-License-Identifier: Apache-2.0
-"""Owner: RUNTIME_BOUNDARY. Fixed private input-stop records only.
+"""Owner: RUNTIME_BOUNDARY. Fixed private stops and safe report transports.
 
 No arbitrary source, key, ID, exception, locator or method string is accepted.
 No report envelope, logging, rendering, serialization or I/O is implemented.
@@ -159,7 +159,7 @@ def _report_abort(cause: object) -> object:
     """
     if type(cause) is _AuditCancelled:
         return AuditCancelled(cause.input_state)
-    if type(cause) not in (_AnalysisAborted, _ReportAborted):
+    if type(cause) not in (_PreparationAborted, _AnalysisAborted, _ReportAborted):
         raise TypeError("unrecognized_private_stop") from None
     stop = cause.stop
     return AuditAbort(stop.execution_state, stop.input_state, stop.reason_code)
@@ -169,4 +169,4 @@ def _emergency_report_abort(budget: object) -> object:
     """Spend the same invocation's one prepaid reserve for a safe report abort."""
     if type(budget) is not _AnalysisBudget:
         raise TypeError("invalid_private_budget") from None
-    return _report_abort(budget.take_emergency())
+    return _report_abort(budget.take_report_emergency())

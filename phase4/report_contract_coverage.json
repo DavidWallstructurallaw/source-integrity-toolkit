@@ -1,7 +1,7 @@
 {
   "format": "sit-phase4-report-coverage/0.1",
-  "unit": "P4-W06",
-  "status": "W06 exact internal Markdown and independent JSON parity verified; public delivery and whole-invocation integration remain pending",
+  "unit": "P4-W07",
+  "status": "W07 internal whole-invocation report composition and safe stopping verified; public API activation and all 228 public field obligations remain pending",
   "purpose": "Review-only source and obligation map. It grants no authority, selects no tests and is not imported by product code.",
   "phase4_plan": {
     "path": "PHASE_4_PLAN.md",
@@ -11726,36 +11726,120 @@
       "source": "OBSERVABILITY_AND_REPORTING.md §§12.2,16.1,16.8; PHASE_4_PLAN.md §4.1",
       "planned_unit": "P4-W02",
       "required_behavior": "Exactly 16 root members and only permitted report/run/input-state pairings; diagnostic envelopes have empty analytical arrays; actual installed tool identity and fixed unknown times.",
-      "status": "W02 declaration/local contract verified; actual public envelope execution pending W07/W08",
+      "status": "verified_internal_same_invocation_W07; public API and field-by-field public obligations remain pending W08/W09",
       "actual_test_nodes": [
         "tests/contract/test_report_contract.py::test_each_of_sixteen_root_members_is_required_and_typed",
         "tests/contract/test_report_contract.py::test_all_four_diagnostic_state_combinations_preserve_actual_acceptance",
-        "tests/contract/test_report_contract.py::test_reference_envelope_is_accepted_by_both_independent_contract_surfaces"
+        "tests/contract/test_report_contract.py::test_reference_envelope_is_accepted_by_both_independent_contract_surfaces",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+        "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline"
       ],
       "execution_evidence": [
         "p4w02-targeted-combined-01.log",
         "p4w02-targeted-combined-01.xml",
         "p4w02-targeted-combined-03.log",
-        "p4w02-targeted-combined-03.xml"
-      ]
+        "p4w02-targeted-combined-03.xml",
+        {
+          "unit": "P4-W07",
+          "primary": "p4w07-targeted-001.xml",
+          "scoped_closure": "p4w07-constructor-closure-001.xml",
+          "scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution."
+        }
+      ],
+      "w07_previous_status": "W02 declaration/local contract verified; actual public envelope execution pending W07/W08",
+      "w07_internal_evidence": {
+        "status": "verified_at_internal_composition_boundary",
+        "actual_test_nodes": [
+          "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+          "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+          "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+          "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+          "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+          "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+          "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+          "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+          "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+          "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+          "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline"
+        ],
+        "execution_evidence": [
+          "p4w07-targeted-001.xml",
+          "p4w07-constructor-closure-001.xml"
+        ],
+        "validation_scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution.",
+        "public_activation_claimed": false
+      }
     },
     {
       "clause": "frozen_public_access",
       "source": "PHASE_4_PLAN.md §4.1",
       "planned_unit": "P4-W02",
       "required_behavior": "Read-only root attributes, immutable Mapping nested objects, tuple arrays, bounded native scalar types, immutable cached encoded bytes; no raw source, budget, prepared tree or private backing exposed.",
-      "status": "W02 declaration and private immutable capture verified; delivered AuditReport and encoded caches pending W05-W08",
+      "status": "verified_internal_same_invocation_W07; public API and field-by-field public obligations remain pending W08/W09",
       "actual_test_nodes": [
         "tests/contract/test_report_contract.py::test_immutable_document_is_deeply_detached_and_has_no_mutable_mapping_backing",
         "tests/contract/test_report_contract.py::test_public_report_type_is_declared_without_a_fabricated_success_constructor",
-        "tests/contract/test_report_contract.py::test_hostile_protocols_cannot_run_during_contract_or_transport_rejection"
+        "tests/contract/test_report_contract.py::test_hostile_protocols_cannot_run_during_contract_or_transport_rejection",
+        "tests/contract/test_report_contract.py::test_w07_abort_retains_rejection_when_diagnostic_pair_cannot_be_delivered",
+        "tests/contract/test_report_contract.py::test_w07_delivered_report_attributes_and_nested_values_remain_immutable",
+        "tests/contract/test_report_contract.py::test_w07_generic_serialization_cannot_dump_private_report_byte_caches",
+        "tests/contract/test_report_contract.py::test_w07_rejection_transport_extension_does_not_allow_invented_state_pairs",
+        "tests/contract/test_report_contract.py::test_w07_safe_transport_traceback_slot_rejects_invalid_values_and_hostile_names",
+        "tests/contract/test_report_contract.py::test_w07_safe_transports_cross_contextmanager_with_original_exception_identity",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/security/test_public_api_boundary.py::test_internal_complete_invocation_has_no_observed_file_network_native_or_process_effect",
+        "tests/security/test_public_api_boundary.py::test_internal_invocation_rejects_hostile_input_without_executing_protocols",
+        "tests/security/test_public_api_boundary.py::test_internal_native_fault_surface_does_not_format_or_retain_source_exception",
+        "tests/security/test_public_api_boundary.py::test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes",
+        "tests/security/test_public_api_boundary.py::test_w07_public_entry_points_still_refuse_without_touching_arguments"
       ],
       "execution_evidence": [
         "p4w02-targeted-combined-01.log",
         "p4w02-targeted-combined-01.xml",
         "p4w02-targeted-combined-03.log",
-        "p4w02-targeted-combined-03.xml"
-      ]
+        "p4w02-targeted-combined-03.xml",
+        {
+          "unit": "P4-W07",
+          "primary": "p4w07-targeted-001.xml",
+          "scoped_closure": "p4w07-constructor-closure-001.xml",
+          "scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution."
+        }
+      ],
+      "w07_previous_status": "W02 declaration and private immutable capture verified; delivered AuditReport and encoded caches pending W05-W08",
+      "w07_internal_evidence": {
+        "status": "verified_at_internal_composition_boundary",
+        "actual_test_nodes": [
+          "tests/contract/test_report_contract.py::test_w07_abort_retains_rejection_when_diagnostic_pair_cannot_be_delivered",
+          "tests/contract/test_report_contract.py::test_w07_delivered_report_attributes_and_nested_values_remain_immutable",
+          "tests/contract/test_report_contract.py::test_w07_generic_serialization_cannot_dump_private_report_byte_caches",
+          "tests/contract/test_report_contract.py::test_w07_rejection_transport_extension_does_not_allow_invented_state_pairs",
+          "tests/contract/test_report_contract.py::test_w07_safe_transport_traceback_slot_rejects_invalid_values_and_hostile_names",
+          "tests/contract/test_report_contract.py::test_w07_safe_transports_cross_contextmanager_with_original_exception_identity",
+          "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+          "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+          "tests/security/test_public_api_boundary.py::test_internal_complete_invocation_has_no_observed_file_network_native_or_process_effect",
+          "tests/security/test_public_api_boundary.py::test_internal_invocation_rejects_hostile_input_without_executing_protocols",
+          "tests/security/test_public_api_boundary.py::test_internal_native_fault_surface_does_not_format_or_retain_source_exception",
+          "tests/security/test_public_api_boundary.py::test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes",
+          "tests/security/test_public_api_boundary.py::test_w07_public_entry_points_still_refuse_without_touching_arguments"
+        ],
+        "execution_evidence": [
+          "p4w07-targeted-001.xml",
+          "p4w07-constructor-closure-001.xml"
+        ],
+        "validation_scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution.",
+        "public_activation_claimed": false
+      }
     },
     {
       "clause": "scope_and_population",
@@ -11900,7 +11984,7 @@
       "source": "REPOSITORY_ARCHITECTURE.md §§17.2–17.4,18.3; GOVERNANCE_AND_HANDOFF.md §22.1",
       "planned_unit": "P4-W05",
       "required_behavior": "J plus one LF; exact scalar/key/control encoding, native ordered arrays, portable integer values and original rational components; optional JSON display_decimal omitted.",
-      "status": "verified_internal_encoder_W05",
+      "status": "verified_internal_same_invocation_W07; public API and field-by-field public obligations remain pending W08/W09",
       "actual_test_nodes": [
         "tests/contract/test_json_report.py::test_actual_selected_report_matches_independent_reference_bytes",
         "tests/contract/test_json_report.py::test_report_wrapper_adds_exactly_one_lf_to_j",
@@ -11913,7 +11997,17 @@
         "tests/contract/test_json_report.py::test_original_fractions_ordered_arrays_and_duplicate_occurrences_survive",
         "tests/contract/test_json_report.py::test_encoder_rejects_untrusted_types_before_custom_protocols",
         "tests/contract/test_json_report.py::test_invalid_trusted_components_fail_without_values_in_exception",
-        "tests/contract/test_json_report.py::test_report_entry_requires_frozen_project_root"
+        "tests/contract/test_json_report.py::test_report_entry_requires_frozen_project_root",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats"
       ],
       "execution_evidence": [
         {
@@ -11921,15 +12015,55 @@
           "tests_in_json_file": 148,
           "zero_failures_errors_skips": true,
           "reference_bytes": 421307
+        },
+        {
+          "unit": "P4-W07",
+          "primary": "p4w07-targeted-001.xml",
+          "scoped_closure": "p4w07-constructor-closure-001.xml",
+          "scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution."
         }
-      ]
+      ],
+      "w07_previous_status": "verified_internal_encoder_W05",
+      "w07_internal_evidence": {
+        "status": "verified_at_internal_composition_boundary",
+        "actual_test_nodes": [
+          "tests/contract/test_json_report.py::test_actual_selected_report_matches_independent_reference_bytes",
+          "tests/contract/test_json_report.py::test_allowed_scalars_adjacent_to_control_ranges_keep_utf8",
+          "tests/contract/test_json_report.py::test_encoder_rejects_untrusted_types_before_custom_protocols",
+          "tests/contract/test_json_report.py::test_every_required_control_scalar_has_lowercase_long_escape",
+          "tests/contract/test_json_report.py::test_exact_private_atoms_use_literal_shortest_representations",
+          "tests/contract/test_json_report.py::test_exact_scalar_types_and_empty_containers",
+          "tests/contract/test_json_report.py::test_invalid_trusted_components_fail_without_values_in_exception",
+          "tests/contract/test_json_report.py::test_keys_use_unicode_scalar_order_without_normalization",
+          "tests/contract/test_json_report.py::test_original_fractions_ordered_arrays_and_duplicate_occurrences_survive",
+          "tests/contract/test_json_report.py::test_quotes_backslash_slash_multilingual_and_combining_forms",
+          "tests/contract/test_json_report.py::test_report_entry_requires_frozen_project_root",
+          "tests/contract/test_json_report.py::test_report_wrapper_adds_exactly_one_lf_to_j",
+          "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+          "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+          "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+          "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+          "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+          "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+          "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+          "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+          "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+          "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats"
+        ],
+        "execution_evidence": [
+          "p4w07-targeted-001.xml",
+          "p4w07-constructor-closure-001.xml"
+        ],
+        "validation_scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution.",
+        "public_activation_claimed": false
+      }
     },
     {
       "clause": "exact_markdown",
       "source": "GOVERNANCE_AND_HANDOFF.md §22.2; REPOSITORY_ARCHITECTURE.md §18.3",
       "planned_unit": "P4-W06",
       "required_behavior": "Exact fixed root layout and complete pretty-J blocks, per-Result reason details, half-up six-place line for each available fraction, safe dynamic fences and one final LF.",
-      "status": "verified_internal_renderers_W06",
+      "status": "verified_internal_same_invocation_W07; public API and field-by-field public obligations remain pending W08/W09",
       "actual_test_nodes": [
         "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
         "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
@@ -11946,7 +12080,17 @@
         "tests/security/test_rendering.py::test_control_and_bidi_scalars_are_exposed_as_exact_lowercase_json_escapes",
         "tests/security/test_rendering.py::test_multilingual_combining_forms_and_terminal_sequences_are_not_dropped",
         "tests/security/test_rendering.py::test_result_and_repeated_reason_details_keep_source_text_inside_safe_blocks",
-        "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure"
+        "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats"
       ],
       "execution_evidence": [
         {
@@ -11956,15 +12100,59 @@
           "zero_failures_errors_skips": true,
           "json_reference_bytes": 421307,
           "markdown_reference_bytes": 564555
+        },
+        {
+          "unit": "P4-W07",
+          "primary": "p4w07-targeted-001.xml",
+          "scoped_closure": "p4w07-constructor-closure-001.xml",
+          "scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution."
         }
-      ]
+      ],
+      "w07_previous_status": "verified_internal_renderers_W06",
+      "w07_internal_evidence": {
+        "status": "verified_at_internal_composition_boundary",
+        "actual_test_nodes": [
+          "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
+          "tests/contract/test_report_parity.py::test_available_completion_interval_retains_exact_endpoints_without_extra_decimal_line",
+          "tests/contract/test_report_parity.py::test_counterevidence_is_retained_and_independent_parser_rejects_its_omission",
+          "tests/contract/test_report_parity.py::test_diagnostic_envelopes_keep_empty_results_safe_diagnostics_and_actual_input_state",
+          "tests/contract/test_report_parity.py::test_exact_layout_oracle_rejects_framing_and_presentation_mutants",
+          "tests/contract/test_report_parity.py::test_fraction_display_uses_half_up_six_places_and_keeps_original_components",
+          "tests/contract/test_report_parity.py::test_independent_parser_rejects_each_substantive_omission",
+          "tests/contract/test_report_parity.py::test_nonresults_keep_null_value_reasons_and_never_gain_a_decimal",
+          "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
+          "tests/contract/test_report_parity.py::test_reason_details_follow_canonical_reason_order_without_reordering_result_refs",
+          "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+          "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+          "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+          "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+          "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+          "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+          "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+          "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+          "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+          "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+          "tests/security/test_rendering.py::test_control_and_bidi_scalars_are_exposed_as_exact_lowercase_json_escapes",
+          "tests/security/test_rendering.py::test_fence_is_one_longer_than_longest_literal_backtick_run",
+          "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure",
+          "tests/security/test_rendering.py::test_markup_canaries_stay_in_encoded_blocks_and_retain_exact_values",
+          "tests/security/test_rendering.py::test_multilingual_combining_forms_and_terminal_sequences_are_not_dropped",
+          "tests/security/test_rendering.py::test_result_and_repeated_reason_details_keep_source_text_inside_safe_blocks"
+        ],
+        "execution_evidence": [
+          "p4w07-targeted-001.xml",
+          "p4w07-constructor-closure-001.xml"
+        ],
+        "validation_scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution.",
+        "public_activation_claimed": false
+      }
     },
     {
       "clause": "semantic_parity",
       "source": "OBSERVABILITY_AND_REPORTING.md §19.1; VALIDATION_PLAN.md SIT-VG017",
       "planned_unit": "P4-W06",
       "required_behavior": "Both representations encode the same selected frozen report; independent block decoding and oracles reject loss of unavailable siblings, scope, unknowns, reasons, contrary premises, denominator or attribution.",
-      "status": "verified_internal_renderers_W06",
+      "status": "verified_internal_same_invocation_W07; public API and field-by-field public obligations remain pending W08/W09",
       "actual_test_nodes": [
         "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
         "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
@@ -11981,7 +12169,49 @@
         "tests/security/test_rendering.py::test_control_and_bidi_scalars_are_exposed_as_exact_lowercase_json_escapes",
         "tests/security/test_rendering.py::test_multilingual_combining_forms_and_terminal_sequences_are_not_dropped",
         "tests/security/test_rendering.py::test_result_and_repeated_reason_details_keep_source_text_inside_safe_blocks",
-        "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure"
+        "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+        "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+        "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+        "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+        "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+        "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+        "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+        "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+        "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+        "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+        "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+        "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+        "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+        "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+        "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+        "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+        "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+        "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+        "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+        "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+        "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+        "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+        "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+        "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+        "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+        "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+        "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+        "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+        "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+        "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+        "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+        "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+        "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
       ],
       "execution_evidence": [
         {
@@ -11991,26 +12221,255 @@
           "zero_failures_errors_skips": true,
           "json_reference_bytes": 421307,
           "markdown_reference_bytes": 564555
+        },
+        {
+          "unit": "P4-W07",
+          "primary": "p4w07-targeted-001.xml",
+          "scoped_closure": "p4w07-constructor-closure-001.xml",
+          "scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution."
         }
-      ]
+      ],
+      "w07_previous_status": "verified_internal_renderers_W06",
+      "w07_internal_evidence": {
+        "status": "verified_at_internal_composition_boundary",
+        "actual_test_nodes": [
+          "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
+          "tests/contract/test_report_parity.py::test_available_completion_interval_retains_exact_endpoints_without_extra_decimal_line",
+          "tests/contract/test_report_parity.py::test_counterevidence_is_retained_and_independent_parser_rejects_its_omission",
+          "tests/contract/test_report_parity.py::test_diagnostic_envelopes_keep_empty_results_safe_diagnostics_and_actual_input_state",
+          "tests/contract/test_report_parity.py::test_exact_layout_oracle_rejects_framing_and_presentation_mutants",
+          "tests/contract/test_report_parity.py::test_fraction_display_uses_half_up_six_places_and_keeps_original_components",
+          "tests/contract/test_report_parity.py::test_independent_parser_rejects_each_substantive_omission",
+          "tests/contract/test_report_parity.py::test_nonresults_keep_null_value_reasons_and_never_gain_a_decimal",
+          "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
+          "tests/contract/test_report_parity.py::test_reason_details_follow_canonical_reason_order_without_reordering_result_refs",
+          "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+          "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+          "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+          "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+          "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+          "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+          "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+          "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+          "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+          "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+          "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+          "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+          "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+          "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+          "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+          "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+          "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+          "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+          "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+          "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+          "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+          "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+          "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+          "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+          "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+          "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+          "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+          "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+          "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+          "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+          "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+          "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+          "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+          "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+          "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+          "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+          "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+          "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+          "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+          "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+          "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+          "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
+        ],
+        "execution_evidence": [
+          "p4w07-targeted-001.xml",
+          "p4w07-constructor-closure-001.xml"
+        ],
+        "validation_scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution.",
+        "public_activation_claimed": false
+      }
     },
     {
       "clause": "one_ledger_and_stops",
       "source": "REPOSITORY_ARCHITECTURE.md §19; GOVERNANCE_AND_HANDOFF.md §22.3; PHASE_4_PLAN.md §4.4",
       "planned_unit": "P4-W07",
       "required_behavior": "Original ledger, deadline and 1024-unit emergency reserve span capture through both encodings/parity; preserve first established stop and real acceptance state; no restarted budget or successful partial report.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": []
+      "status": "verified_internal_same_invocation_W07; public API and field-by-field public obligations remain pending W08/W09",
+      "actual_test_nodes": [
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+        "tests/security/test_public_api_boundary.py::test_internal_complete_invocation_has_no_observed_file_network_native_or_process_effect",
+        "tests/security/test_public_api_boundary.py::test_internal_invocation_rejects_hostile_input_without_executing_protocols",
+        "tests/security/test_public_api_boundary.py::test_internal_native_fault_surface_does_not_format_or_retain_source_exception",
+        "tests/security/test_public_api_boundary.py::test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes",
+        "tests/security/test_public_api_boundary.py::test_w07_public_entry_points_still_refuse_without_touching_arguments",
+        "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+        "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+        "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+        "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+        "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+        "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+        "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+        "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+        "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+        "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+        "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+        "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+        "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+        "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+        "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+        "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+        "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+        "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+        "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+        "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+        "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+        "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+        "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+        "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+        "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+        "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+        "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+        "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+        "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+        "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+        "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+        "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
+      ],
+      "execution_evidence": [
+        {
+          "unit": "P4-W07",
+          "primary": "p4w07-targeted-001.xml",
+          "scoped_closure": "p4w07-constructor-closure-001.xml",
+          "scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution."
+        }
+      ],
+      "w07_previous_status": "pending",
+      "w07_internal_evidence": {
+        "status": "verified_at_internal_composition_boundary",
+        "actual_test_nodes": [
+          "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+          "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+          "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+          "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+          "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+          "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+          "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+          "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+          "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+          "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+          "tests/security/test_public_api_boundary.py::test_internal_complete_invocation_has_no_observed_file_network_native_or_process_effect",
+          "tests/security/test_public_api_boundary.py::test_internal_invocation_rejects_hostile_input_without_executing_protocols",
+          "tests/security/test_public_api_boundary.py::test_internal_native_fault_surface_does_not_format_or_retain_source_exception",
+          "tests/security/test_public_api_boundary.py::test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes",
+          "tests/security/test_public_api_boundary.py::test_w07_public_entry_points_still_refuse_without_touching_arguments",
+          "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+          "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+          "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+          "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+          "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+          "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+          "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+          "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+          "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+          "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+          "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+          "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+          "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+          "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+          "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+          "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+          "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+          "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+          "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+          "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+          "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+          "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+          "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+          "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+          "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+          "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+          "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+          "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+          "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+          "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+          "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+          "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
+        ],
+        "execution_evidence": [
+          "p4w07-targeted-001.xml",
+          "p4w07-constructor-closure-001.xml"
+        ],
+        "validation_scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution.",
+        "public_activation_claimed": false
+      }
     },
     {
       "clause": "witness_and_output_limits",
       "source": "PRIVACY_AND_DATA_HANDLING.md WU9-L13,WU9-L14; PHASE_4_PLAN.md §4.4",
       "planned_unit": "P4-W07",
       "required_behavior": "Reconcile private retained witness reservations with public Finding/member occurrences without double reserve or lost members; separate encoded-byte limits for JSON and Markdown, no clipping.",
-      "status": "pending",
-      "actual_test_nodes": [],
-      "execution_evidence": [],
+      "status": "verified_internal_same_invocation_W07; public API and field-by-field public obligations remain pending W08/W09",
+      "actual_test_nodes": [
+        "tests/contract/test_report_assembly.py::test_w07_exact_private_owner_credits_and_new_occurrences",
+        "tests/contract/test_report_assembly.py::test_w07_final_finding_dedup_precedes_witness_quota",
+        "tests/contract/test_report_assembly.py::test_w07_nonpath_primary_keeps_same_owner_trace_accounting",
+        "tests/contract/test_report_assembly.py::test_w07_quota_enabled_reference_preserves_independent_bytes",
+        "tests/contract/test_report_assembly.py::test_w07_unbound_equal_component_cannot_borrow_an_owner_credit",
+        "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+        "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+        "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+        "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+        "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+        "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+        "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+        "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+        "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+        "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+        "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+        "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+        "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+        "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+        "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+        "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+        "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+        "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+        "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+        "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+        "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+        "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+        "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+        "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+        "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+        "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+        "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+        "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+        "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+        "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+        "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+        "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
+      ],
+      "execution_evidence": [
+        {
+          "unit": "P4-W07",
+          "primary": "p4w07-targeted-001.xml",
+          "scoped_closure": "p4w07-constructor-closure-001.xml",
+          "scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution."
+        }
+      ],
       "w05_component_evidence": {
         "status": "output_encoding_component_verified; full witness/composition obligation remains pending",
         "actual_test_nodes": [
@@ -12057,6 +12516,55 @@
         ],
         "execution_evidence": "p4w06-targeted-001.xml",
         "scope": "Existing38cases and10Markdown additions; actual fixedcounter remaining-space limits, LF/framing, mid-output stops and no paired delivery. No full64MiB allocation claim."
+      },
+      "w07_previous_status": "pending",
+      "w07_internal_evidence": {
+        "status": "verified_at_internal_composition_boundary",
+        "actual_test_nodes": [
+          "tests/contract/test_report_assembly.py::test_w07_exact_private_owner_credits_and_new_occurrences",
+          "tests/contract/test_report_assembly.py::test_w07_final_finding_dedup_precedes_witness_quota",
+          "tests/contract/test_report_assembly.py::test_w07_nonpath_primary_keeps_same_owner_trace_accounting",
+          "tests/contract/test_report_assembly.py::test_w07_quota_enabled_reference_preserves_independent_bytes",
+          "tests/contract/test_report_assembly.py::test_w07_unbound_equal_component_cannot_borrow_an_owner_credit",
+          "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+          "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+          "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+          "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+          "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+          "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+          "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+          "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+          "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+          "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+          "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+          "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+          "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+          "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+          "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+          "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+          "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+          "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+          "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+          "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+          "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+          "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+          "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+          "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+          "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+          "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+          "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+          "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+          "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+          "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+          "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+          "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
+        ],
+        "execution_evidence": [
+          "p4w07-targeted-001.xml",
+          "p4w07-constructor-closure-001.xml"
+        ],
+        "validation_scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution.",
+        "public_activation_claimed": false
       }
     },
     {
@@ -15522,5 +16030,1400 @@
       "meaning": "Only separately verified V02/D05 repair bytes inherited after the run; all tested W06 product/test and related JSON/oracle bytes remain identical."
     },
     "scope": "Internal dual-renderer, independent parity, literal-data rendering and fixed output counter checks; no W07 full invocation or public delivery."
+  },
+  "w07_verification": {
+    "targeted_identity_closure": {
+      "status": "all_original_targeted_identities_have_passing_evidence",
+      "primary": {
+        "execution": {
+          "command": [
+            "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/contract/test_report_contract.py",
+            "tests/contract/test_report_assembly.py",
+            "tests/contract/test_json_report.py",
+            "tests/contract/test_report_parity.py",
+            "tests/security/test_report_disclosure.py",
+            "tests/security/test_rendering.py",
+            "tests/security/test_report_resource_limits.py",
+            "tests/security/test_public_api_boundary.py",
+            "tests/integration/test_public_audit.py",
+            "tests/contract/test_report_test_oracles.py",
+            "--junitxml=/workspace/scratch/4e5267fe5990/p4w07-targeted-001.xml"
+          ],
+          "started_at_utc": "2026-10-26T03:45:20.936916+00:00",
+          "elapsed_seconds": 489.8466227079998,
+          "exit_code": 1,
+          "timeout_seconds": 1200,
+          "timed_out": false,
+          "interrupted": false,
+          "incomplete": false,
+          "base_head": "944298a1df694c5ae9a67109f6a238444c408ea2",
+          "source_files": 232,
+          "source_bytes_unchanged": true,
+          "scope": "Ten named W07 report, encoding, budget, internal complete-invocation and security files; not a full suite or public API activation. Private regressions have their separate 146-test receipt."
+        },
+        "execution_raw": {
+          "file": "p4w07-targeted-001-exit.json",
+          "sha256": "0e814b505c4f4fe9fd29b63d2487a5f4690bd581c69e283a30190d564d157dd7",
+          "bytes": 1195
+        },
+        "junit": {
+          "case_count": 6276,
+          "counts": {
+            "passed": 6275,
+            "failure": 1,
+            "error": 0,
+            "skipped": 0
+          },
+          "junit_seconds": 489.114,
+          "suite_attributes": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "1",
+              "skipped": "0",
+              "tests": "6276",
+              "time": "489.114",
+              "timestamp": "2026-10-26T14:45:21.147701+11:00",
+              "hostname": "6b04d9b59a2f"
+            }
+          ],
+          "raw": {
+            "file": "p4w07-targeted-001.xml",
+            "sha256": "fe4a649612b2e520b2cd3b981ecf59327c33617dbfb2540722c9dd99433c89d8",
+            "bytes": 1146676
+          }
+        },
+        "cases_by_classname": {
+          "tests.contract.test_json_report": 148,
+          "tests.contract.test_report_assembly": 79,
+          "tests.contract.test_report_contract": 5742,
+          "tests.contract.test_report_parity": 30,
+          "tests.contract.test_report_test_oracles": 89,
+          "tests.integration.test_public_audit": 14,
+          "tests.security.test_public_api_boundary": 20,
+          "tests.security.test_rendering": 26,
+          "tests.security.test_report_disclosure": 26,
+          "tests.security.test_report_resource_limits": 102
+        },
+        "failed_case_ids": [
+          "tests.security.test_report_resource_limits::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts"
+        ],
+        "raw": [
+          {
+            "file": "p4w07-targeted-001.log",
+            "sha256": "fdacb76dbec559138dbb1f1924bff261fd00317899aef70d46d43c1e78a4f4d4",
+            "bytes": 9072
+          },
+          {
+            "file": "p4w07-targeted-001-stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "file": "p4w07-targeted-001.xml",
+            "sha256": "fe4a649612b2e520b2cd3b981ecf59327c33617dbfb2540722c9dd99433c89d8",
+            "bytes": 1146676
+          }
+        ]
+      },
+      "scoped_constructor_closure": {
+        "execution": {
+          "command": [
+            "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/contract/test_report_contract.py::test_public_report_type_is_declared_without_a_fabricated_success_constructor",
+            "tests/contract/test_report_contract.py::test_w07_delivered_report_attributes_and_nested_values_remain_immutable",
+            "tests/contract/test_report_contract.py::test_w07_generic_serialization_cannot_dump_private_report_byte_caches",
+            "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+            "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+            "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+            "--junitxml=/workspace/scratch/4e5267fe5990/p4w07-constructor-closure-001.xml"
+          ],
+          "started_at_utc": "2026-10-26T03:55:27.260062+00:00",
+          "elapsed_seconds": 15.90230425000027,
+          "exit_code": 0,
+          "timeout_seconds": 1200,
+          "timed_out": false,
+          "interrupted": false,
+          "incomplete": false,
+          "base_head": "944298a1df694c5ae9a67109f6a238444c408ea2",
+          "source_files": 232,
+          "source_bytes_unchanged": true,
+          "scope": "Six direct controls close the sole full focused regression failure after four AuditReport constructor defaults restore the existing rejection message; includes real complete and unavailable invocation. This is scoped repair verification, not a full suite rerun."
+        },
+        "execution_raw": {
+          "file": "p4w07-constructor-closure-001-exit.json",
+          "sha256": "f214dce539bb9cc3848a9b5e4a4877d5bd1fa0cc3dc795d5a33ed7ebe697e8da",
+          "bytes": 1525
+        },
+        "junit": {
+          "case_count": 6,
+          "counts": {
+            "passed": 6,
+            "failure": 0,
+            "error": 0,
+            "skipped": 0
+          },
+          "junit_seconds": 15.528,
+          "suite_attributes": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "0",
+              "skipped": "0",
+              "tests": "6",
+              "time": "15.528",
+              "timestamp": "2026-10-26T14:55:27.488662+11:00",
+              "hostname": "6b04d9b59a2f"
+            }
+          ],
+          "raw": {
+            "file": "p4w07-constructor-closure-001.xml",
+            "sha256": "84e3c611cd3ee4df17bc608e1141aa797f0d44087967d2bcca4cdf6033bee5e1",
+            "bytes": 1159
+          }
+        },
+        "cases_by_classname": {
+          "tests.contract.test_report_contract": 3,
+          "tests.integration.test_public_audit": 2,
+          "tests.security.test_report_resource_limits": 1
+        },
+        "failed_case_ids": [],
+        "raw": [
+          {
+            "file": "p4w07-constructor-closure-001.log",
+            "sha256": "242b5a8b02a404b9de8fcc7db639121e9941a1eab1afc458f16c8099f56617ff",
+            "bytes": 99
+          },
+          {
+            "file": "p4w07-constructor-closure-001-stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "file": "p4w07-constructor-closure-001.xml",
+            "sha256": "84e3c611cd3ee4df17bc608e1141aa797f0d44087967d2bcca4cdf6033bee5e1",
+            "bytes": 1159
+          }
+        ]
+      },
+      "distinct_original_identities_closed": 6276,
+      "closed_failure_ids": [
+        "tests.security.test_report_resource_limits::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts"
+      ],
+      "new_full_green_run_claimed": false,
+      "scope": "The original ten-file run retains its one constructor-message failure. Only four P01 dataclass defaults changed afterward, with unchanged assertions; the selected closure reruns the failed case and constructor, immutability, generic-serialization and actual complete-invocation controls. This is scoped closure, not a new all-green ten-file execution.",
+      "source_files_during_primary": 232,
+      "primary_source_hashes_equal": true,
+      "closure_source_hashes_equal": true,
+      "changed_after_primary": [
+        "src/source_integrity_toolkit/contracts/report.py"
+      ],
+      "pre_patch_P01_exactly_reconstructed": true,
+      "constructor_repair": {
+        "changed_files": [
+          "src/source_integrity_toolkit/contracts/report.py"
+        ],
+        "before_sha256": "820a057eba8a0cbc414da261c19d4d2fa0ab4ccaab77570768beeffb54fe0913",
+        "after_sha256": "3e3fc661eeb30dbd15cd23ede62104c42897c900d27d4108332fbe4666ba30b6",
+        "all_other_231_file_hashes_unchanged": true,
+        "reason": "Restore original fixed rejection message for AuditReport() and partial direct constructors. Completed internal construction still supplies all four values and retains all validation.",
+        "scope": "Four constructor field defaults only; no old test assertion changed, no renderer/resource/runtime path changed.",
+        "patch": "--- tested/src/source_integrity_toolkit/contracts/report.py\n+++ corrected/src/source_integrity_toolkit/contracts/report.py\n@@ -1532,10 +1532,10 @@\n     the two already complete immutable byte strings. No budget, source tree,\n     prepared snapshot, private index or encoder is retained by this interface.\n     \"\"\"\n-    _document: MappingProxyType\n-    _json_bytes: bytes\n-    _markdown_bytes: bytes\n-    _seal: InitVar[object]\n+    _document: MappingProxyType = None\n+    _json_bytes: bytes = None\n+    _markdown_bytes: bytes = None\n+    _seal: InitVar[object] = None\n \n     def __post_init__(self, _seal):\n         if (type(_seal) is not _ReportDeliverySeal or\n"
+      },
+      "constructor_repair_raw": {
+        "file": "p4w07-constructor-repair.json",
+        "sha256": "45f16bba05f7df463ee48a38dc892c970104e4af1b032861c8c4327044527a0c",
+        "bytes": 1325
+      },
+      "final_product_and_test_bytes": {
+        "src/source_integrity_toolkit/__init__.py": "0fdc19062761d6b718ff371557376483f7c8e7bbf7f3c347bcae576587513b97",
+        "src/source_integrity_toolkit/analysis/__init__.py": "2bcd171bde6b0b6c92c3a048cff959780e2e0616f468158b4b97d8967bf7e956",
+        "src/source_integrity_toolkit/analysis/context.py": "40cb6afefd1c187eaa8afe6555971d55da4cecba8ce3b157c83b42552e56a736",
+        "src/source_integrity_toolkit/analysis/contribution_profile.py": "4eccb7e682f8a8ce67192da1f7ccd3ced314b2f92e2cd2637444e9553ee502ed",
+        "src/source_integrity_toolkit/analysis/correction_outcomes.py": "11a09a667f6a2c6552a980875bf6f09255714582318263bc743db5907259af78",
+        "src/source_integrity_toolkit/analysis/correction_routes.py": "4935dd55e0f4b47b49b4e50d02b73dd816387fa93cdb6bc447ee8dde0c619c0f",
+        "src/source_integrity_toolkit/analysis/evaluator_lineage.py": "71e8a96caf3d25e9b6f130c99243ab5df16ab5a3407e8b39ac08f583a93c0cdd",
+        "src/source_integrity_toolkit/analysis/findings.py": "e983a368d3544998b2a4879a82e1a3366f20da074651a1084dc758bc569ff34b",
+        "src/source_integrity_toolkit/analysis/human_review.py": "bcff22f09add6285a2bcd744ab1e77d1d878f2a92eb1effb738564fe3716a3aa",
+        "src/source_integrity_toolkit/analysis/inventory.py": "6179f29dbff1afccb939d225947d57f9b9c1b4b03875f4ba992e993560087313",
+        "src/source_integrity_toolkit/analysis/origins.py": "de77914facb7cfabc7390dcd84cbbc80c8c9823f67d3e2bcb8e826ec21b7fac0",
+        "src/source_integrity_toolkit/analysis/presence.py": "69b3447fa721f97ce0aa5d488a22e6798ffa2012e1ec73a047e4da1141e8c518",
+        "src/source_integrity_toolkit/analysis/process_comparison.py": "9d0777bf4fdd422f4392657c3407970c47093de4992cf3837c9a3fe6e3d7e9d0",
+        "src/source_integrity_toolkit/api.py": "8808d7ef4a0db2f6e314c82fddd4b51cce164a165afaf43e6d626663f6f6768d",
+        "src/source_integrity_toolkit/cli.py": "0c3ee9522fbdf1774a707ec14ed630ce34a901da1f83f63b8aee0f25393d26bc",
+        "src/source_integrity_toolkit/contracts/__init__.py": "5a5c57d26930d12c3de59e180987f740b915e9eb17fd18a2daf29a6f91985432",
+        "src/source_integrity_toolkit/contracts/bundle.py": "7509a30f008de4ade02543bea26ccc4bd3d5843ae62f75b1841e2e61bcb903da",
+        "src/source_integrity_toolkit/contracts/constants.py": "d4bee68c62ba495e6aca1fdba352b013f9cc4ed7c3583b61092af234827ad486",
+        "src/source_integrity_toolkit/contracts/evidence.py": "1b9be04cde9674cb250b34c9d6acfb43bfd35beb19f8ebbe9304f714ef3fc611",
+        "src/source_integrity_toolkit/contracts/execution.py": "1e3a8f146569db22893b80669d50cf53be2eb396b1525caef66c68ab93a40c06",
+        "src/source_integrity_toolkit/contracts/report.py": "3e3fc661eeb30dbd15cd23ede62104c42897c900d27d4108332fbe4666ba30b6",
+        "src/source_integrity_toolkit/contracts/results.py": "565b4aa8d1053931b0b69b1af686b563427dce2b27be8215e916fbc18d335a11",
+        "src/source_integrity_toolkit/graph/__init__.py": "3db1c2c13cc1ae2bfb1a049894a04f7d27d7e6874d2079f1348d910aa0f5c943",
+        "src/source_integrity_toolkit/graph/cycles.py": "350e986d14aa6452c3a334eb4288d0d1b1105bdea6b0786c0ffc59380d8c5db9",
+        "src/source_integrity_toolkit/graph/projections.py": "b3aa1df29751c0001446af84abcbbde84820576ecb39bc34ff693485b9aea76d",
+        "src/source_integrity_toolkit/graph/traversal.py": "95f9f8a3eec1828f458256c1438fbd169f615c9698daaca176776b803d54f8f7",
+        "src/source_integrity_toolkit/graph/witnesses.py": "40682c09e9d3b53d0d36c5204961eb16739d13b392be68c4bf9698cbd1c31b9f",
+        "src/source_integrity_toolkit/io/__init__.py": "252ed1b29bff2517bc3ce909f4695d0f67c4baf0f1d7707708124107fbba783b",
+        "src/source_integrity_toolkit/io/input_file.py": "5628507c0989e94a3b5b5401e570b19256c940204859da9e938178ea261dea1f",
+        "src/source_integrity_toolkit/io/output_directory.py": "d27ae40d53b09355a0e3e137d490d1c2d1352edf67821c985bd0c79096b605ac",
+        "src/source_integrity_toolkit/io/platform_linux.py": "b63420614f26fc52ebe4e7d9af4d12782fd7374dc4780c420e0e4bdbe6091544",
+        "src/source_integrity_toolkit/io/platform_windows.py": "31e5f7b304d4455d5d60222f2077eefd284edce341c47524ac85de84f690b4c0",
+        "src/source_integrity_toolkit/io/publication.py": "ec5124c4f8f1db6d0f8a0d83ad6a62c28646d34c47740f706d1b47871480661d",
+        "src/source_integrity_toolkit/reporting/__init__.py": "f9db2edfae16c1062a74fcff49d6b5a68b25e35b108413cb1b2bab115ef9dcaa",
+        "src/source_integrity_toolkit/reporting/assemble.py": "6db4f8707ccac48ac1a434d0144b991c9f043a48dda9a3b34011c72763eaf4a1",
+        "src/source_integrity_toolkit/reporting/escaping.py": "a23088d560d616ede7f9a31254e7a96ff4b78c08afcb5b34047f52db87d3b8d2",
+        "src/source_integrity_toolkit/reporting/json_report.py": "8c047f778534e9e2febbd4cb1d5f413adc72ebca13fe80db179bdbadd10f6ee1",
+        "src/source_integrity_toolkit/reporting/markdown_report.py": "e1e40d1669b7b9df09814fef33f9f3408961031f59368f8d89a34e7e2e434994",
+        "src/source_integrity_toolkit/runtime/__init__.py": "6bcbe18cb7295bd3339cf426931bdb29ed89edb348575d5deb070f008dec72c7",
+        "src/source_integrity_toolkit/runtime/boundary.py": "7a497488f4524589c8de0a3ba5a10474fe5f4319c7f6eda9365e9e417a805d39",
+        "src/source_integrity_toolkit/runtime/diagnostics.py": "39660879b726b128db96079a32e3bf5bc55bbd98609384f711c408fd59999b22",
+        "src/source_integrity_toolkit/runtime/disclosure.py": "40a79d5288b4cc11ceaf26f57adb3ac85b3a9bdd6ff5870edb9047a64e13e88a",
+        "src/source_integrity_toolkit/runtime/resources.py": "a6c6ac966cc039e79d94569ec9139ba5088bc21a354750cefed8910487d6287f",
+        "src/source_integrity_toolkit/validation/__init__.py": "0688a44d77c520368899546cc30531aad2849443c12941b536539bab5aac218e",
+        "src/source_integrity_toolkit/validation/limits.py": "f01e4e5cbc076b07440df19ed2524db549849fcc6cd9834648437ee61a5e53c8",
+        "src/source_integrity_toolkit/validation/references.py": "7ab63627c068b38364f5c47a6731903fc55bc9d86318bed4f182d9602418df7b",
+        "src/source_integrity_toolkit/validation/semantics.py": "f98ce60e55d88f543c94a1e260d0172939eb061a983ade4a05f906f7df42ec5d",
+        "src/source_integrity_toolkit/validation/structure.py": "bf2e61a236539b4b8bada935b39c46203bb8ccad4102e79730e9f84ba52fa315",
+        "tests/contract/README.md": "2ae135e0af60280fdb9f52d4f1a523cb97f7f06d161b8b8735198ad52db38d5d",
+        "tests/contract/test_analytical_basis.py": "f7563868b123857392c527de73d5d82b5020ab4ab11a763dae2d5f083e0d07c7",
+        "tests/contract/test_analytical_mutants.py": "5c953d82e58c9ca4d33daf09162ade376be999749089e9268b980c33653f6bfe",
+        "tests/contract/test_analytical_obligations.py": "8ddeb9753a6ceb0e2512338d0f2517ac1775eacec9f5f17da65f0a4a34b17005",
+        "tests/contract/test_analytical_observability.py": "8c9f4ebeb9764a2e5c4ba98c38dfd98e1e8d9b57c26f37624c7cf8dd52631312",
+        "tests/contract/test_analytical_temporal.py": "d16eed9fc0f014df0dc85d9ee09b75006c9ab37358de8ecb3061a4c3f41f7220",
+        "tests/contract/test_assertion_contract.py": "042ccafe57679ba35a89abea8a99623690090549b5fb3a2fc5236dba295c34ed",
+        "tests/contract/test_bundle_contract.py": "c92290224416ac97e6980af31e9f556d233c1260b34c139bc89b4fc0d6e58e4b",
+        "tests/contract/test_evidence_basis.py": "c3ac52a65f4bdf92f10431d0c4838735f711d11887f05396688306848f698569",
+        "tests/contract/test_finding_boundaries.py": "fc3380b204ac6dca2be00511970a8c8f84904216cde1aaac3b8ba33d038ea187",
+        "tests/contract/test_graph_views.py": "6fc9c300af293a5e2360fbf661215288186379024366cf358f9e30d29b566f65",
+        "tests/contract/test_input_schema_mapping.py": "ed373d60350b2ac371e84a3c8688c54f66b42274bcd8c50f13692beb559c3110",
+        "tests/contract/test_json_report.py": "b727c6f75c6e098ca2491ccfd111c4951ef871717d8debba45a602bddba081f1",
+        "tests/contract/test_normalization_profile.py": "26f01d230f349995334b6892285def1774dcd10051a3dc7a05d9a4cd424e4a8d",
+        "tests/contract/test_observability_preparation.py": "d15b84850cd8d97752298fcbb8a14339ed835ae6d9790c1a7f045331cb245bcb",
+        "tests/contract/test_phase2_transition.py": "d476a8ba0ddba20a07d5b1670125d99824b1a5354ba20391fdc9982164671819",
+        "tests/contract/test_phase3_transition.py": "79dda9fa8645fe39023c8eefaaa4de0debb7b745c93a6f1a1dce7fba3683c4a0",
+        "tests/contract/test_prerequisite_contract.py": "88ff508c2de74118344bdd47dc8cc4da09ee9d5cee16cace2243ab16cf2974f7",
+        "tests/contract/test_report_assembly.py": "3eae54d14134b90211e85bb9307ebd7668df7fb7ff3b88c5e4dc40c6e21a2c5f",
+        "tests/contract/test_report_contract.py": "858a694b3da8a8afcc2eef2a5a2c6f6e433a55653999854226ea4d00f7dc7045",
+        "tests/contract/test_report_identity.py": "4d49303eb019632f9baeebcd4fc4da500e22e930f06bcd15d0c55ff85538cab8",
+        "tests/contract/test_report_parity.py": "762e28af92e365577d7134f170d129916206d16503ffe19b55510cf3f432bf86",
+        "tests/contract/test_report_test_oracles.py": "2f8d1add11c82b5a60f3160e83b0e5e6866cd7ffcc9260bd10660e1e751bc3a4",
+        "tests/contract/test_result_contract.py": "f378232238789284732791b770655ba550748545a36f1ba6eef63240b90303d4",
+        "tests/contract/test_temporal_contract.py": "a900f41109fd5688b636cad6cea7f2777a841ddf17a7c3b86fa0cc8d91efce10",
+        "tests/contract/test_typed_records.py": "be6ed6b73c6f936dcc774f88d11b29b038f75f33676f3b2225de64d9da06a83a",
+        "tests/contract/test_verification_boundary.py": "24d1b7d8ea62ad1cb67b8e1f81f3fd5e00a5ec9d0bcfaed02918117318a81e92",
+        "tests/fixtures/README.md": "98367561c6665e16a8cab1431323d5dab0946ee334928ff553f5b70a04e50921",
+        "tests/fixtures/adversarial/case_index.json": "2f50e90a8229dfe3613385fa80730fa049ae789fbce198a95323660980245cb2",
+        "tests/fixtures/adversarial/phase3_cases.json": "e810ffdec2894d43dffb5bc806d88b6de419cab5a823bb8048e81e96fdfacf6d",
+        "tests/fixtures/adversarial/phase4_report_cases.json": "09bd8226afc4e68522d827f02d14fd3bbd6a5b65c2c9edc08cc982d8ca1f5ff5",
+        "tests/fixtures/hero/H7-01.bundle.json": "06d342e4d12457dd186c48d917ed023a30e24f66e4226dd1ebf769a6365c47f7",
+        "tests/fixtures/hero/H7-V01.bundle.json": "98f3b5b1d8e1214211adbdbdaa5cdcb71e5bb1b226fb26c2615648bcd49e5d09",
+        "tests/fixtures/hero/H7-V02.bundle.json": "043d7c3652035042ca2602d48efeed250d6599874b7ae7206cd74de23f596663",
+        "tests/fixtures/hero/H7-V03.bundle.json": "213e84942b77e43291ffec5feed4628ef075ddeb9262224c3d326b9402eae013",
+        "tests/fixtures/hero/fixture_manifest.json": "607fad79a03d6388e15cc3384c738cea6a1757574af9d333aca34676d141b7a6",
+        "tests/fixtures/micro/case_index.json": "580ca1560e69bb0b4583821eac3c554d7fd73d8d4cd07c131225de420d088ed9",
+        "tests/fixtures/micro/phase3_cases.json": "0be6460c8a59fb5ab3bff950e9eb56ff05891278a6331b741da0b7b953cedeac",
+        "tests/fixtures/micro/phase4_public_cases.json": "66fa953e6c11225f1848c2da02b4544b349f380b4f4293805058579e531e81bb",
+        "tests/golden/H7-01.logical.json": "bec2d971ded08baeaeb85f3ca340e05e959381540adf944bb437eeef4bf640d5",
+        "tests/golden/H7-V01.logical.json": "7cfb2f5d09175e0f658dac6d5db09777eab2b57406312775b18c0796b147b9ac",
+        "tests/golden/H7-V02.logical.json": "4bcd1bb23086e475d35830fe01487dde8d4740b5010f59b1da34e4f8445f4134",
+        "tests/golden/H7-V03.logical.json": "44f5315b7a6e50aae7a9f0d800b7c94f6b6a06425473c7982af100822150487d",
+        "tests/golden/README.md": "df5a664f6ce0cba56bc61e4af303a7aa88ea96da57ca614bb46b55d50edcbe41",
+        "tests/golden/phase3_core_expectations.json": "4effefea17e607309259c27a908f9db0540f9755d600d592db2be83fc6ee4677",
+        "tests/golden/phase4_reference_report.json": "8b65b805bcc8fa8f0b2cb6701d5bd88b028142f7037c25166c90dbddbc61bf48",
+        "tests/golden/phase4_reference_report.md": "776b2eaae10b3301681cb5a106753823bff5e4a9ff4a5a09325ed3a271f49bdd",
+        "tests/golden/phase4_report_expectations.json": "c1dbbbc7248e3c9f8d832a23619377daf5f658327dcdb5d7484d506652bbdfe0",
+        "tests/integration/README.md": "e41ffc1c4c55d70e5a8d0a708311d97b349362c4a57bb960822091c19b0e7d82",
+        "tests/integration/test_analytical_determinism.py": "cccc2ffdd92f328d7ee384e208cfb68135139c78b3004772145dd9b0500406f2",
+        "tests/integration/test_analytical_hero_inputs.py": "e197a08623417d1d7623e3acbd6342b80c10fed9c6abb124af75f7221d20fee4",
+        "tests/integration/test_analytical_installed_runtime.py": "434cb51f159da5ec71025e35130befe9ecbff95d5a8d613d1eaf897142ccafcb",
+        "tests/integration/test_analytical_pipeline.py": "381cdc6d0233e715352c9e85c28d7b96655cd7eaa730244134a271c7d35e796b",
+        "tests/integration/test_preparation_capability_boundary.py": "aaa25f2a0fd256d116599e135d975ba7a77ffb6a6ae468495342ba4e358e74f6",
+        "tests/integration/test_preparation_pipeline.py": "14161e83956f428f7219474da0c37203f32f3ed3591054f2b14a50881cabf0a7",
+        "tests/integration/test_prepared_hero_inputs.py": "60eb14b6e0942222721ebed083cb4a2328fef8d79dd9ab22c792666634f4e232",
+        "tests/integration/test_public_audit.py": "46ecd804138b77a4365d78bbacea808602949556a59aceb3e1dc8d078a7f46d9",
+        "tests/scaffold/test_api_stubs.py": "0441d0bbb735e70225331099c5c01688b24af1877eb63ef12796de00bab9974a",
+        "tests/scaffold/test_baseline_integrity.py": "b345c30ed2775b54e70f51797ad1d4a670799303902d1a0b4a8f3d54329aa0b8",
+        "tests/scaffold/test_ci_contract.py": "6070b92b44855cb0b4568ec4854bd3d5e06604cdca84d9951c0d8ce155b4a605",
+        "tests/scaffold/test_cli_scaffold.py": "8d69b2d20f8c2e1430ba78ab53076d46b28d9e2a54f2c1357e0cdaaa59164f22",
+        "tests/scaffold/test_contract_catalogs.py": "828589f6f544d7b5b9a0997a78a4dd92cea72524f943935027818ed6cb987472",
+        "tests/scaffold/test_fixture_integrity.py": "4c0de7dbc7e6a6e5c3cd0b9447aef7b96c7411cbc314a54daf773d9fdd3679db",
+        "tests/scaffold/test_imports.py": "2e6697b242e631ebfb652832b073b531fa4b44e7ae3e8669ef45be91570d7ff9",
+        "tests/scaffold/test_layer_boundaries.py": "8c73fa2ad9ec2748f154ab664da4e77d56f1110cdeba704cc46630f9398df65b",
+        "tests/scaffold/test_module_manifest.py": "35bd81f50cf65e95eec3dce65724ac07e80ffbb92dc3f7b466e8d0e7686b7e2d",
+        "tests/scaffold/test_no_runtime_implementation.py": "abcf0653adf4663ea4fcd6ac3861645caf07a5518c6d4bafae9c76fc0b6f969d",
+        "tests/scaffold/test_packaging.py": "cfc891098830d9adf1f2ee3a0c3bcc06e884fb00f356aa5a8e1822feb1aa5d93",
+        "tests/security/test_analytical_adversarial.py": "6be473d7e4c9c6f572e865e0ded856ee17a8b932ceb1b60d9e7935037e29e91e",
+        "tests/security/test_analytical_diagnostics.py": "c05a2b798cf0e7fcc8051d31485f96f490cd187439f4cc45d8c80cd546339dfa",
+        "tests/security/test_analytical_inertness.py": "1fe18d69dbe960e4ba401de7bde75740dbf1747c4aac88c5102c9257baf25ca6",
+        "tests/security/test_analytical_interruption.py": "9e1fc19c39e68efbafc95433d7140706fcf2fdb3fbb259a047f226bdf2748106",
+        "tests/security/test_analytical_resource_limits.py": "c47860822db6e49c8444af1e489ad66f4aa6587fb2f24d93ad6008fb523dc14d",
+        "tests/security/test_graph_limits.py": "1f6ac6254173bb477cb7b843c24c223a24858d4452b09d8cc3d01f83c54dc4b3",
+        "tests/security/test_input_capture.py": "9e5ffee442ce1de7844474787d0549a3690b6efe2cfe9124ad6461a8911d2ce9",
+        "tests/security/test_input_diagnostics.py": "f03e0d91796d39fcc8d90f0ff87914bd45feab9ad219db56f3f9c59c6dd4dc56",
+        "tests/security/test_input_resource_limits.py": "9df86868eb78c5f14ffd3e4977182e08a3785bfbb3f3d737396b2119ae05e466",
+        "tests/security/test_preparation_inertness.py": "b7cbdfc0f4b3a909c5ae58bc2a4c12e2272bf4cf1c92b31e2531239d9fe7d544",
+        "tests/security/test_public_api_boundary.py": "5d588685427287a425fdf6fb2c29297209c933e6b1c8705b5d4c31e56da45cc9",
+        "tests/security/test_rendering.py": "8eae4b6e6ee552d982d5fec5b3afcf0b8112d9e518c23bf16b44f8ca449a129b",
+        "tests/security/test_report_disclosure.py": "a82c6e85e5940c8be218a4183e28c64cca8f17e4574ac056e4c794038be83c72",
+        "tests/security/test_report_resource_limits.py": "2609fcb1819d4bbfa1af8c8aeff7db999ea1bfa624caba12f5e46674464a2e95",
+        "tests/security/test_scaffold_inertness.py": "7179bb00e004e833d7448172cae2068f912e25adb3860c7d5fba9d46396619ba",
+        "tests/security/test_scaffold_no_native_loading.py": "add4a523f73deba8380a257a1846d8c044249996ec88ca56be1f4903563a96a6",
+        "tests/security/test_scaffold_no_network.py": "fafa792547d3e3a5b8800308a9b63869b063dd8baa1ef01ab044203760ca23b2",
+        "tests/unit/README.md": "780ce188f9f9ae364008304bd844dd51c81bee01d607a27b457c1e54f6535078",
+        "tests/unit/test_ancestry_frontiers.py": "53669615bf8eb7f183d71dfac16e1e744cc58010877e339d81c34d6ca8bd845b",
+        "tests/unit/test_context_preservation.py": "05b98397397de7df9509d0ea40bd641386fb71c1d39ad22a6c622cc4add164bc",
+        "tests/unit/test_contribution_profile.py": "8c8645dceb3c697ed2657c96f103234e1f2a6a115131fcadf0aa50794cf5e389",
+        "tests/unit/test_correction_outcomes.py": "2c06937c4c9c75521d3c29d5843c7b34afa27d061437b0a636a64957d18fa55b",
+        "tests/unit/test_correction_routes.py": "288a12d6e5b69a0ca2ca8616d87faee222b748aeef59ab7a66f017c654c1526b",
+        "tests/unit/test_evaluator_lineage.py": "f90ba1b288bf7203eb11a2660d19ef0fb5358a82dbe8ff9e864d9b5c87a0a947",
+        "tests/unit/test_evidence_domain_index.py": "addc34a1d7252f0d2aabe34239b626ffa497982eb43bf09db6a75593600ec730",
+        "tests/unit/test_findings.py": "3624f78945a17e8d9af3f2ed2449d786cdab702b73c1e1c6ddbac4cfe0220b61",
+        "tests/unit/test_graph_cycles.py": "8c6340a9cbf527305b17110f155369a15d4b79b50943918cb2d4536aca2925b0",
+        "tests/unit/test_graph_traversal.py": "6fc863e073c743f4c77eb809487ea2a3659dcfc0ef5836d3ed2d7a693ad47d7a",
+        "tests/unit/test_graph_witnesses.py": "b013d94df8e39c166fef7eea013515ecd0b9d1bee585ffa5d12171fee3015eb4",
+        "tests/unit/test_human_review.py": "07a8b60cbba11e5218a670ca3345b4b5f9a78fb091574872cd6cef77757f4ddd",
+        "tests/unit/test_immediate_inheritance.py": "bf5e50af4b5a39a8c393df4a9802774338ff3413b9df31ed1659f02284155704",
+        "tests/unit/test_input_decoding.py": "7852ae877408b4f1e56e98235f8082553bb9a5a84f095712b776a1bd09977541",
+        "tests/unit/test_inventory.py": "c84ae72fa7f56f728bc3830936e18e46944358610e475c8af320bc3db195f2ab",
+        "tests/unit/test_origins.py": "4b529c0950a4874fcec7ea18139a5b1ab0369d6bd6cfd36c8eb9896eb3726915",
+        "tests/unit/test_pipeline_cohorts.py": "1aa6c71d7b5fa803024be342a82af3998857bbbdfe2f6f34854ddf6a4314b597",
+        "tests/unit/test_presence.py": "400fbb77bad550ce1aae88f4a1f89c23e30ae15db0b9f4b9de082c793aff40b2",
+        "tests/unit/test_process_comparison.py": "a98345a7bf2319caf85eb8cb4064b38060dc1b64d790cdcd0b3914b034b37aaa",
+        "tests/unit/test_provenance_profile.py": "74b599ede4cc638a430cc48fa19f7ccb5573f9b1f4ed7d9f9216ddfb8f1f9ab1",
+        "tests/unit/test_reference_validation.py": "9bc483127d8657ba8209789985f9d6cdc725ca98545ab49328a0c44b1145fd69",
+        "tests/unit/test_value_capture.py": "e42c870f28d0f8216ad365b306eb77acd9116297f986a37ca10a97f6a7d64137"
+      }
+    },
+    "actual_test_nodes": {
+      "root_and_run": [
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+        "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline"
+      ],
+      "frozen_public_access": [
+        "tests/contract/test_report_contract.py::test_w07_abort_retains_rejection_when_diagnostic_pair_cannot_be_delivered",
+        "tests/contract/test_report_contract.py::test_w07_delivered_report_attributes_and_nested_values_remain_immutable",
+        "tests/contract/test_report_contract.py::test_w07_generic_serialization_cannot_dump_private_report_byte_caches",
+        "tests/contract/test_report_contract.py::test_w07_rejection_transport_extension_does_not_allow_invented_state_pairs",
+        "tests/contract/test_report_contract.py::test_w07_safe_transport_traceback_slot_rejects_invalid_values_and_hostile_names",
+        "tests/contract/test_report_contract.py::test_w07_safe_transports_cross_contextmanager_with_original_exception_identity",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/security/test_public_api_boundary.py::test_internal_complete_invocation_has_no_observed_file_network_native_or_process_effect",
+        "tests/security/test_public_api_boundary.py::test_internal_invocation_rejects_hostile_input_without_executing_protocols",
+        "tests/security/test_public_api_boundary.py::test_internal_native_fault_surface_does_not_format_or_retain_source_exception",
+        "tests/security/test_public_api_boundary.py::test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes",
+        "tests/security/test_public_api_boundary.py::test_w07_public_entry_points_still_refuse_without_touching_arguments"
+      ],
+      "one_ledger_and_stops": [
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+        "tests/security/test_public_api_boundary.py::test_internal_complete_invocation_has_no_observed_file_network_native_or_process_effect",
+        "tests/security/test_public_api_boundary.py::test_internal_invocation_rejects_hostile_input_without_executing_protocols",
+        "tests/security/test_public_api_boundary.py::test_internal_native_fault_surface_does_not_format_or_retain_source_exception",
+        "tests/security/test_public_api_boundary.py::test_internal_report_contains_only_frozen_disclosure_and_two_cached_bytes",
+        "tests/security/test_public_api_boundary.py::test_w07_public_entry_points_still_refuse_without_touching_arguments",
+        "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+        "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+        "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+        "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+        "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+        "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+        "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+        "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+        "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+        "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+        "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+        "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+        "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+        "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+        "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+        "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+        "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+        "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+        "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+        "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+        "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+        "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+        "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+        "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+        "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+        "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+        "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+        "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+        "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+        "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+        "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+        "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
+      ],
+      "witness_and_output_limits": [
+        "tests/contract/test_report_assembly.py::test_w07_exact_private_owner_credits_and_new_occurrences",
+        "tests/contract/test_report_assembly.py::test_w07_final_finding_dedup_precedes_witness_quota",
+        "tests/contract/test_report_assembly.py::test_w07_nonpath_primary_keeps_same_owner_trace_accounting",
+        "tests/contract/test_report_assembly.py::test_w07_quota_enabled_reference_preserves_independent_bytes",
+        "tests/contract/test_report_assembly.py::test_w07_unbound_equal_component_cannot_borrow_an_owner_credit",
+        "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+        "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+        "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+        "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+        "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+        "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+        "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+        "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+        "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+        "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+        "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+        "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+        "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+        "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+        "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+        "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+        "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+        "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+        "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+        "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+        "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+        "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+        "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+        "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+        "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+        "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+        "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+        "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+        "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+        "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+        "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+        "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
+      ],
+      "canonical_json": [
+        "tests/contract/test_json_report.py::test_actual_selected_report_matches_independent_reference_bytes",
+        "tests/contract/test_json_report.py::test_allowed_scalars_adjacent_to_control_ranges_keep_utf8",
+        "tests/contract/test_json_report.py::test_encoder_rejects_untrusted_types_before_custom_protocols",
+        "tests/contract/test_json_report.py::test_every_required_control_scalar_has_lowercase_long_escape",
+        "tests/contract/test_json_report.py::test_exact_private_atoms_use_literal_shortest_representations",
+        "tests/contract/test_json_report.py::test_exact_scalar_types_and_empty_containers",
+        "tests/contract/test_json_report.py::test_invalid_trusted_components_fail_without_values_in_exception",
+        "tests/contract/test_json_report.py::test_keys_use_unicode_scalar_order_without_normalization",
+        "tests/contract/test_json_report.py::test_original_fractions_ordered_arrays_and_duplicate_occurrences_survive",
+        "tests/contract/test_json_report.py::test_quotes_backslash_slash_multilingual_and_combining_forms",
+        "tests/contract/test_json_report.py::test_report_entry_requires_frozen_project_root",
+        "tests/contract/test_json_report.py::test_report_wrapper_adds_exactly_one_lf_to_j",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats"
+      ],
+      "exact_markdown": [
+        "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
+        "tests/contract/test_report_parity.py::test_available_completion_interval_retains_exact_endpoints_without_extra_decimal_line",
+        "tests/contract/test_report_parity.py::test_counterevidence_is_retained_and_independent_parser_rejects_its_omission",
+        "tests/contract/test_report_parity.py::test_diagnostic_envelopes_keep_empty_results_safe_diagnostics_and_actual_input_state",
+        "tests/contract/test_report_parity.py::test_exact_layout_oracle_rejects_framing_and_presentation_mutants",
+        "tests/contract/test_report_parity.py::test_fraction_display_uses_half_up_six_places_and_keeps_original_components",
+        "tests/contract/test_report_parity.py::test_independent_parser_rejects_each_substantive_omission",
+        "tests/contract/test_report_parity.py::test_nonresults_keep_null_value_reasons_and_never_gain_a_decimal",
+        "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
+        "tests/contract/test_report_parity.py::test_reason_details_follow_canonical_reason_order_without_reordering_result_refs",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+        "tests/security/test_rendering.py::test_control_and_bidi_scalars_are_exposed_as_exact_lowercase_json_escapes",
+        "tests/security/test_rendering.py::test_fence_is_one_longer_than_longest_literal_backtick_run",
+        "tests/security/test_rendering.py::test_invalid_component_header_text_cannot_become_markdown_structure",
+        "tests/security/test_rendering.py::test_markup_canaries_stay_in_encoded_blocks_and_retain_exact_values",
+        "tests/security/test_rendering.py::test_multilingual_combining_forms_and_terminal_sequences_are_not_dropped",
+        "tests/security/test_rendering.py::test_result_and_repeated_reason_details_keep_source_text_inside_safe_blocks"
+      ],
+      "semantic_parity": [
+        "tests/contract/test_report_parity.py::test_all_root_members_complete_results_reasons_and_native_qualifications_survive",
+        "tests/contract/test_report_parity.py::test_available_completion_interval_retains_exact_endpoints_without_extra_decimal_line",
+        "tests/contract/test_report_parity.py::test_counterevidence_is_retained_and_independent_parser_rejects_its_omission",
+        "tests/contract/test_report_parity.py::test_diagnostic_envelopes_keep_empty_results_safe_diagnostics_and_actual_input_state",
+        "tests/contract/test_report_parity.py::test_exact_layout_oracle_rejects_framing_and_presentation_mutants",
+        "tests/contract/test_report_parity.py::test_fraction_display_uses_half_up_six_places_and_keeps_original_components",
+        "tests/contract/test_report_parity.py::test_independent_parser_rejects_each_substantive_omission",
+        "tests/contract/test_report_parity.py::test_nonresults_keep_null_value_reasons_and_never_gain_a_decimal",
+        "tests/contract/test_report_parity.py::test_real_selected_document_matches_both_independent_exact_byte_references",
+        "tests/contract/test_report_parity.py::test_reason_details_follow_canonical_reason_order_without_reordering_result_refs",
+        "tests/integration/test_public_audit.py::test_delivered_report_caches_and_frozen_graph_do_not_reenter_runtime",
+        "tests/integration/test_public_audit.py::test_empty_declared_dimensions_preserve_explicit_nonresults",
+        "tests/integration/test_public_audit.py::test_existing_private_entry_preserves_real_analysis_without_public_delivery",
+        "tests/integration/test_public_audit.py::test_explicit_dimension_empty_seed_ratios_complete_as_unavailable",
+        "tests/integration/test_public_audit.py::test_finite_declared_inputs_have_literal_public_inventory_and_family_facts",
+        "tests/integration/test_public_audit.py::test_full_reference_is_subject_to_the_actual_whole_invocation_limit",
+        "tests/integration/test_public_audit.py::test_one_actual_invocation_delivers_both_formats_on_one_unchanged_budget",
+        "tests/integration/test_public_audit.py::test_run_identity_unknown_times_and_disclosure_are_retained",
+        "tests/integration/test_public_audit.py::test_source_mutation_after_delivery_cannot_change_report_or_encodings",
+        "tests/integration/test_public_audit.py::test_structural_rejection_delivers_complete_safe_diagnostic_formats",
+        "tests/security/test_report_resource_limits.py::test_actual_output_cap_below_equal_next_byte_is_rejected_prospectively",
+        "tests/security/test_report_resource_limits.py::test_cancellation_at_each_stage_has_actual_state_and_never_returns_report",
+        "tests/security/test_report_resource_limits.py::test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair",
+        "tests/security/test_report_resource_limits.py::test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation",
+        "tests/security/test_report_resource_limits.py::test_duplicate_encoding_port_request_cannot_reset_existing_output_counts",
+        "tests/security/test_report_resource_limits.py::test_each_invocation_stage_obeys_same_global_work_and_original_deadline",
+        "tests/security/test_report_resource_limits.py::test_encoding_name_cannot_select_extra_counter_or_invoke_custom_comparison",
+        "tests/security/test_report_resource_limits.py::test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report",
+        "tests/security/test_report_resource_limits.py::test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget",
+        "tests/security/test_report_resource_limits.py::test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation",
+        "tests/security/test_report_resource_limits.py::test_fixed_output_counters_are_separate_cumulative_and_not_new_work_allowances",
+        "tests/security/test_report_resource_limits.py::test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling",
+        "tests/security/test_report_resource_limits.py::test_l14_emergency_delivery_uses_existing_reserve_once_without_payload",
+        "tests/security/test_report_resource_limits.py::test_late_report_limit_preserves_earlier_analytical_stop_and_blocks_both_ports",
+        "tests/security/test_report_resource_limits.py::test_local_job_stop_retains_only_atomically_committed_results_in_complete_report",
+        "tests/security/test_report_resource_limits.py::test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object",
+        "tests/security/test_report_resource_limits.py::test_markdown_cap_includes_pretty_spaces_fences_and_all_linefeeds",
+        "tests/security/test_report_resource_limits.py::test_markdown_final_lf_uses_actual_cap_without_prefix_delivery",
+        "tests/security/test_report_resource_limits.py::test_markdown_mid_output_stop_returns_no_partial_bytes",
+        "tests/security/test_report_resource_limits.py::test_mid_encoding_stop_returns_no_prefix_and_preserves_actual_acceptance",
+        "tests/security/test_report_resource_limits.py::test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order",
+        "tests/security/test_report_resource_limits.py::test_output_count_requires_exact_nonnegative_integer_without_protocols",
+        "tests/security/test_report_resource_limits.py::test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values",
+        "tests/security/test_report_resource_limits.py::test_real_utf8_encoder_obeys_remaining_fixed_byte_cap_without_clipping",
+        "tests/security/test_report_resource_limits.py::test_report_abort_mapping_rejects_unknown_exception_without_private_protocols",
+        "tests/security/test_report_resource_limits.py::test_report_encoding_requires_current_owner_and_existing_finalization",
+        "tests/security/test_report_resource_limits.py::test_report_final_lf_counts_against_actual_cap_and_no_partial_report_returns",
+        "tests/security/test_report_resource_limits.py::test_report_phase_keeps_original_deadline_at_equality_and_next_nanosecond",
+        "tests/security/test_report_resource_limits.py::test_report_port_has_no_new_clock_job_acceptance_or_reset_authority",
+        "tests/security/test_report_resource_limits.py::test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery",
+        "tests/security/test_report_resource_limits.py::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts",
+        "tests/security/test_report_resource_limits.py::test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency"
+      ]
+    },
+    "unicode_scalar_profile": {
+      "receipt": {
+        "status": "passed",
+        "legal_scalars": 1112064,
+        "chunks": 17376,
+        "surrogates_rejected": 2048,
+        "elapsed_seconds": 0.999342883999816,
+        "source_sha256": "a23088d560d616ede7f9a31254e7a96ff4b78c08afcb5b34047f52db87d3b8d2",
+        "source_unchanged": true,
+        "scope": "Independent scalar-profile equality using a counting component port; not a bounded complete-invocation proof.",
+        "work_units": 999869,
+        "output_bytes": 4419730
+      },
+      "raw": {
+        "file": "p4w07-unicode-equivalence.json",
+        "sha256": "20efa8c30fd19c46bbfa9054bbef6966e57b5ceda90674d47f655cc0c7af113f",
+        "bytes": 433
+      }
+    },
+    "pipeline_stage_probes": [
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-001.json",
+          "sha256": "06659c66b9889a9cda9945cb5d43e1253e2092ab48e36f985df5ff4d5b9d938b",
+          "bytes": 1058
+        },
+        "facts": {
+          "purpose": "Diagnose the actual N12 minimal dossier abort after focused run 001",
+          "source": "Direct boundary stage wrappers delegate to the actual product and observe its single real budget; no limit or port replacement",
+          "result_type": "AuditAbort",
+          "processing_state": "interrupted",
+          "reason_code": "resource_limit_reached",
+          "input_state": "accepted",
+          "used": 9999998,
+          "stop_kind": "global",
+          "phase": "stopped",
+          "limit_id": "WU9-L11",
+          "stage_cumulative_work": [
+            [
+              "_admit",
+              "done",
+              48236
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              53579
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1325599
+            ],
+            [
+              "_assemble_selected_report",
+              "done",
+              4565483
+            ],
+            [
+              "_encode_json_report",
+              "done",
+              6145764
+            ],
+            [
+              "_encode_markdown_report",
+              "done",
+              8345065
+            ],
+            [
+              "_verify_json_report",
+              "stop",
+              9999998,
+              "_AnalysisAborted"
+            ]
+          ],
+          "exit_code": 0,
+          "limits_changed": false,
+          "source_hash_snapshot": "No independent before/after snapshot was captured for this short diagnostic probe. The preceding focused run has its own complete source hashes and raw failures."
+        },
+        "source_snapshots_retained_in_raw": false
+      },
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-002.json",
+          "sha256": "538ea20cd9f659fa491730315a5248c1aa23bf8f8ced99c58daac67e05f56948",
+          "bytes": 52995
+        },
+        "facts": {
+          "type": "AuditAbort",
+          "processing_state": "interrupted",
+          "reason_code": "resource_limit_reached",
+          "used": 10000000,
+          "remaining": 0,
+          "owner_count": 1,
+          "stop_kind": "global",
+          "phase": "stopped",
+          "input_state": "accepted",
+          "limit_id": "WU9-L11",
+          "stages": [
+            [
+              "_admit",
+              "done",
+              48236
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              53579
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1325599
+            ],
+            [
+              "_assemble_selected_report",
+              "done",
+              4565483
+            ],
+            [
+              "_encode_json_report",
+              "done",
+              6145764
+            ],
+            [
+              "_encode_markdown_report",
+              "done",
+              8345065
+            ],
+            [
+              "_verify_json_report",
+              "done",
+              8976361
+            ],
+            [
+              "_verify_markdown_report",
+              "stop",
+              10000000,
+              "_AnalysisAborted"
+            ]
+          ],
+          "source_bytes_unchanged": true
+        },
+        "source_snapshots_retained_in_raw": true
+      },
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-003.json",
+          "sha256": "7fe41819c4d11801f764ea07f74c7e17d232c0fcf88d3c42047e6e8302a5152a",
+          "bytes": 53005
+        },
+        "facts": {
+          "type": "AuditReport",
+          "json_bytes": 219712,
+          "markdown_bytes": 302556,
+          "used": 9992491,
+          "remaining": 7509,
+          "owner_count": 1,
+          "stop_kind": null,
+          "phase": "finalization",
+          "input_state": "accepted",
+          "limit_id": null,
+          "stages": [
+            [
+              "_admit",
+              "done",
+              48236
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              53579
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1325599
+            ],
+            [
+              "_assemble_selected_report",
+              "done",
+              4565483
+            ],
+            [
+              "_encode_json_report",
+              "done",
+              6145764
+            ],
+            [
+              "_encode_markdown_report",
+              "done",
+              8345065
+            ],
+            [
+              "_verify_json_report",
+              "done",
+              8976361
+            ],
+            [
+              "_verify_markdown_report",
+              "done",
+              9992482
+            ],
+            [
+              "_deliver_report",
+              "done",
+              9992491
+            ]
+          ],
+          "source_bytes_unchanged": true
+        },
+        "source_snapshots_retained_in_raw": true
+      },
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-004.json",
+          "sha256": "8120289c34bda91a9842d6158cd5896b8f732a5a0c895f11fdd5e6a3b759ddeb",
+          "bytes": 52725
+        },
+        "facts": {
+          "type": "AuditAbort",
+          "processing_state": "failed",
+          "reason_code": "execution_failed",
+          "case": "acquisition",
+          "used": 2883337,
+          "remaining": 7116663,
+          "owner_count": 1,
+          "stop_kind": "failure",
+          "phase": "stopped",
+          "input_state": "accepted",
+          "limit_id": null,
+          "stages": [
+            [
+              "_admit",
+              "done",
+              48330
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              54749
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1899414
+            ],
+            [
+              "_assemble_selected_report",
+              "stop",
+              2883337,
+              "_ReportContractError"
+            ]
+          ],
+          "source_bytes_unchanged": true
+        },
+        "source_snapshots_retained_in_raw": true
+      },
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-005.json",
+          "sha256": "8120289c34bda91a9842d6158cd5896b8f732a5a0c895f11fdd5e6a3b759ddeb",
+          "bytes": 52725
+        },
+        "facts": {
+          "type": "AuditAbort",
+          "processing_state": "failed",
+          "reason_code": "execution_failed",
+          "case": "acquisition",
+          "used": 2883337,
+          "remaining": 7116663,
+          "owner_count": 1,
+          "stop_kind": "failure",
+          "phase": "stopped",
+          "input_state": "accepted",
+          "limit_id": null,
+          "stages": [
+            [
+              "_admit",
+              "done",
+              48330
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              54749
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1899414
+            ],
+            [
+              "_assemble_selected_report",
+              "stop",
+              2883337,
+              "_ReportContractError"
+            ]
+          ],
+          "source_bytes_unchanged": true
+        },
+        "source_snapshots_retained_in_raw": true
+      },
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-006.json",
+          "sha256": "41823351e9db9694cb4b8e14317be37603086348742fe191f48252c689a862cb",
+          "bytes": 52876
+        },
+        "facts": {
+          "type": "AuditAbort",
+          "processing_state": "interrupted",
+          "reason_code": "resource_limit_reached",
+          "case": "acquisition",
+          "used": 10000000,
+          "remaining": 0,
+          "owner_count": 1,
+          "stop_kind": "global",
+          "phase": "stopped",
+          "input_state": "accepted",
+          "limit_id": "WU9-L11",
+          "stages": [
+            [
+              "_admit",
+              "done",
+              48330
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              54749
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1899414
+            ],
+            [
+              "_assemble_selected_report",
+              "done",
+              5956594
+            ],
+            [
+              "_encode_json_report",
+              "done",
+              8058660
+            ],
+            [
+              "_encode_markdown_report",
+              "stop",
+              10000000,
+              "_AnalysisAborted"
+            ]
+          ],
+          "source_bytes_unchanged": true
+        },
+        "source_snapshots_retained_in_raw": true
+      },
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-007.json",
+          "sha256": "af2089195b3c2f348607df38a59252b285a988d936dd1dd9ddf2e55d301a6b67",
+          "bytes": 53021
+        },
+        "facts": {
+          "type": "AuditAbort",
+          "processing_state": "interrupted",
+          "reason_code": "resource_limit_reached",
+          "case": "acquisition",
+          "used": 10000000,
+          "remaining": 0,
+          "owner_count": 1,
+          "stop_kind": "global",
+          "phase": "stopped",
+          "input_state": "accepted",
+          "limit_id": "WU9-L11",
+          "stages": [
+            [
+              "_admit",
+              "done",
+              48330
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              54749
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1899414
+            ],
+            [
+              "_assemble_selected_report",
+              "done",
+              5956594
+            ],
+            [
+              "_encode_json_report",
+              "done",
+              6876622
+            ],
+            [
+              "_encode_markdown_report",
+              "done",
+              8442300
+            ],
+            [
+              "_verify_json_report",
+              "done",
+              9269391
+            ],
+            [
+              "_verify_markdown_report",
+              "stop",
+              10000000,
+              "_AnalysisAborted"
+            ]
+          ],
+          "source_bytes_unchanged": false
+        },
+        "source_snapshots_retained_in_raw": true
+      },
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-008.json",
+          "sha256": "f67be507806a60a290d220a1726d82f883441118ff1629db4fcdbb2b2daf323b",
+          "bytes": 53020
+        },
+        "facts": {
+          "type": "AuditAbort",
+          "processing_state": "interrupted",
+          "reason_code": "resource_limit_reached",
+          "case": "acquisition",
+          "used": 10000000,
+          "remaining": 0,
+          "owner_count": 1,
+          "stop_kind": "global",
+          "phase": "stopped",
+          "input_state": "accepted",
+          "limit_id": "WU9-L11",
+          "stages": [
+            [
+              "_admit",
+              "done",
+              48330
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              54749
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1899414
+            ],
+            [
+              "_assemble_selected_report",
+              "done",
+              5956594
+            ],
+            [
+              "_encode_json_report",
+              "done",
+              6884423
+            ],
+            [
+              "_encode_markdown_report",
+              "done",
+              8264713
+            ],
+            [
+              "_verify_json_report",
+              "done",
+              8946130
+            ],
+            [
+              "_verify_markdown_report",
+              "stop",
+              10000000,
+              "_AnalysisAborted"
+            ]
+          ],
+          "source_bytes_unchanged": true
+        },
+        "source_snapshots_retained_in_raw": true
+      },
+      {
+        "raw": {
+          "file": "p4w07-pipeline-probe-009.json",
+          "sha256": "46e6447055e641e6b3d04a7fab039cc05920cbc4f7511df3b5c466a0e4cb1fef",
+          "bytes": 53032
+        },
+        "facts": {
+          "type": "AuditReport",
+          "json_bytes": 293616,
+          "markdown_bytes": 388746,
+          "case": "acquisition",
+          "used": 9885484,
+          "remaining": 114516,
+          "owner_count": 1,
+          "stop_kind": null,
+          "phase": "finalization",
+          "input_state": "accepted",
+          "limit_id": null,
+          "stages": [
+            [
+              "_admit",
+              "done",
+              48330
+            ],
+            [
+              "_plan_analysis",
+              "done",
+              54749
+            ],
+            [
+              "_complete_analysis",
+              "done",
+              1899414
+            ],
+            [
+              "_assemble_selected_report",
+              "done",
+              5956594
+            ],
+            [
+              "_encode_json_report",
+              "done",
+              6884423
+            ],
+            [
+              "_encode_markdown_report",
+              "done",
+              8058626
+            ],
+            [
+              "_verify_json_report",
+              "done",
+              8740043
+            ],
+            [
+              "_verify_markdown_report",
+              "done",
+              9885407
+            ],
+            [
+              "_deliver_report",
+              "done",
+              9885484
+            ]
+          ],
+          "source_bytes_unchanged": true
+        },
+        "source_snapshots_retained_in_raw": true
+      }
+    ],
+    "private_regression": {
+      "execution": {
+        "command": [
+          "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/integration/test_analytical_pipeline.py",
+          "tests/security/test_analytical_interruption.py",
+          "tests/security/test_analytical_diagnostics.py",
+          "tests/security/test_analytical_resource_limits.py",
+          "--junitxml=/workspace/scratch/4e5267fe5990/p4w07-private-runtime-001.xml"
+        ],
+        "started_at": "2026-10-26T03:17:06.916358+00:00",
+        "elapsed_seconds": 173.25644176600053,
+        "exit_code": 0,
+        "source_before": {
+          "src/source_integrity_toolkit/runtime/boundary.py": "7383cf3a3a35aa875d98595e2c90ff2daea05eaee8182695a41c8fcf9bc30728",
+          "src/source_integrity_toolkit/runtime/diagnostics.py": "39660879b726b128db96079a32e3bf5bc55bbd98609384f711c408fd59999b22",
+          "src/source_integrity_toolkit/runtime/resources.py": "a6c6ac966cc039e79d94569ec9139ba5088bc21a354750cefed8910487d6287f",
+          "src/source_integrity_toolkit/contracts/report.py": "a165e1fecf99dcacaa9a778a8d110da0d618019c270188e902d8e3980fa2606e"
+        },
+        "source_after": {
+          "src/source_integrity_toolkit/runtime/boundary.py": "7383cf3a3a35aa875d98595e2c90ff2daea05eaee8182695a41c8fcf9bc30728",
+          "src/source_integrity_toolkit/runtime/diagnostics.py": "39660879b726b128db96079a32e3bf5bc55bbd98609384f711c408fd59999b22",
+          "src/source_integrity_toolkit/runtime/resources.py": "a6c6ac966cc039e79d94569ec9139ba5088bc21a354750cefed8910487d6287f",
+          "src/source_integrity_toolkit/contracts/report.py": "7865b95cfe66dc4ed9f0969b1774962c78b59b9df33854528d21097365c352b1"
+        },
+        "observed_paths_unchanged": false,
+        "note": "Focused old private regression at W07 working source. Root final unified run binds final full source."
+      },
+      "execution_raw": {
+        "file": "p4w07-private-runtime-001-execution.json",
+        "sha256": "15bd90cb0630665845dee1b72723cf5996e3c00df0af43f56eaafc06569a31b5",
+        "bytes": 1736
+      },
+      "junit": {
+        "case_count": 146,
+        "counts": {
+          "passed": 146,
+          "failure": 0,
+          "error": 0,
+          "skipped": 0
+        },
+        "junit_seconds": 172.84,
+        "suite_attributes": [
+          {
+            "name": "pytest",
+            "errors": "0",
+            "failures": "0",
+            "skipped": "0",
+            "tests": "146",
+            "time": "172.840",
+            "timestamp": "2026-10-26T14:17:07.184434+11:00",
+            "hostname": "6b04d9b59a2f"
+          }
+        ],
+        "raw": {
+          "file": "p4w07-private-runtime-001.xml",
+          "sha256": "0fe38585e0e77ab2ced6a897806ed4e60d88a3db5fd706b84ae1f41f4a8795fb",
+          "bytes": 25356
+        }
+      },
+      "cases_by_classname": {
+        "tests.integration.test_analytical_pipeline": 36,
+        "tests.security.test_analytical_diagnostics": 29,
+        "tests.security.test_analytical_interruption": 21,
+        "tests.security.test_analytical_resource_limits": 60
+      },
+      "failed_case_ids": [],
+      "raw": [
+        {
+          "file": "p4w07-private-runtime-001.log",
+          "sha256": "dd1be2e40d3606e9dc4c956087b7ad9f57847b7215ffc32037a16527cfdd22cd",
+          "bytes": 272
+        },
+        {
+          "file": "p4w07-private-runtime-001-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "file": "p4w07-private-runtime-001.xml",
+          "sha256": "0fe38585e0e77ab2ced6a897806ed4e60d88a3db5fd706b84ae1f41f4a8795fb",
+          "bytes": 25356
+        }
+      ]
+    },
+    "scope": "Internal _audit_value only. Existing audit_bundle/audit_file and CLI refusals remain; W08-W10, merge and release are not started.",
+    "independent_review": {
+      "status": "passed_no_remaining_blocking_findings",
+      "receipt": {
+        "status": "passed_no_remaining_blocking_findings",
+        "reviewed_at_utc": "2026-10-26T03:58:59.636999+00:00",
+        "review_kind": "Independent tool-assisted read-only code and actual-evidence review; not an external human audit.",
+        "baseline": "e2cd1217ac7873c338d1d0503c0cdef259ce2f3c",
+        "review_checkout_head": "944298a1df694c5ae9a67109f6a238444c408ea2",
+        "plan_sha256": "5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
+        "source_hashes": {
+          "src/source_integrity_toolkit/contracts/report.py": "3e3fc661eeb30dbd15cd23ede62104c42897c900d27d4108332fbe4666ba30b6",
+          "src/source_integrity_toolkit/contracts/execution.py": "1e3a8f146569db22893b80669d50cf53be2eb396b1525caef66c68ab93a40c06",
+          "src/source_integrity_toolkit/reporting/assemble.py": "6db4f8707ccac48ac1a434d0144b991c9f043a48dda9a3b34011c72763eaf4a1",
+          "src/source_integrity_toolkit/runtime/disclosure.py": "40a79d5288b4cc11ceaf26f57adb3ac85b3a9bdd6ff5870edb9047a64e13e88a",
+          "src/source_integrity_toolkit/reporting/escaping.py": "a23088d560d616ede7f9a31254e7a96ff4b78c08afcb5b34047f52db87d3b8d2",
+          "src/source_integrity_toolkit/reporting/json_report.py": "8c047f778534e9e2febbd4cb1d5f413adc72ebca13fe80db179bdbadd10f6ee1",
+          "src/source_integrity_toolkit/reporting/markdown_report.py": "e1e40d1669b7b9df09814fef33f9f3408961031f59368f8d89a34e7e2e434994",
+          "src/source_integrity_toolkit/runtime/resources.py": "a6c6ac966cc039e79d94569ec9139ba5088bc21a354750cefed8910487d6287f",
+          "src/source_integrity_toolkit/runtime/diagnostics.py": "39660879b726b128db96079a32e3bf5bc55bbd98609384f711c408fd59999b22",
+          "src/source_integrity_toolkit/runtime/boundary.py": "7a497488f4524589c8de0a3ba5a10474fe5f4319c7f6eda9365e9e417a805d39",
+          "tests/contract/test_report_contract.py": "858a694b3da8a8afcc2eef2a5a2c6f6e433a55653999854226ea4d00f7dc7045",
+          "tests/contract/test_report_assembly.py": "3eae54d14134b90211e85bb9307ebd7668df7fb7ff3b88c5e4dc40c6e21a2c5f",
+          "tests/contract/test_json_report.py": "b727c6f75c6e098ca2491ccfd111c4951ef871717d8debba45a602bddba081f1",
+          "tests/contract/test_report_parity.py": "762e28af92e365577d7134f170d129916206d16503ffe19b55510cf3f432bf86",
+          "tests/security/test_report_disclosure.py": "a82c6e85e5940c8be218a4183e28c64cca8f17e4574ac056e4c794038be83c72",
+          "tests/security/test_rendering.py": "8eae4b6e6ee552d982d5fec5b3afcf0b8112d9e518c23bf16b44f8ca449a129b",
+          "tests/security/test_report_resource_limits.py": "2609fcb1819d4bbfa1af8c8aeff7db999ea1bfa624caba12f5e46674464a2e95",
+          "tests/security/test_public_api_boundary.py": "5d588685427287a425fdf6fb2c29297209c933e6b1c8705b5d4c31e56da45cc9",
+          "tests/integration/test_public_audit.py": "46ecd804138b77a4365d78bbacea808602949556a59aceb3e1dc8d078a7f46d9",
+          "tests/contract/test_report_test_oracles.py": "2f8d1add11c82b5a60f3160e83b0e5e6866cd7ffcc9260bd10660e1e751bc3a4"
+        },
+        "focused_run": {
+          "tests": 6276,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "junit_seconds": 489.114,
+          "failed_nodes": [
+            "tests.security.test_report_resource_limits::test_two_encoders_share_one_ledger_and_keep_distinct_byte_counts"
+          ],
+          "passed": 6275,
+          "exit_code": 1,
+          "source_files": 232,
+          "source_hashes_unchanged": true,
+          "receipt": "p4w07-targeted-001-exit.json"
+        },
+        "constructor_closure": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "junit_seconds": 15.528,
+          "failed_nodes": [],
+          "exit_code": 0,
+          "source_files": 232,
+          "source_hashes_unchanged": true,
+          "changed_path": "src/source_integrity_toolkit/contracts/report.py",
+          "change": "Four constructor defaults only; original failing assertion retained. Reconstructed previous source hash matches the full run. All other 231 files unchanged.",
+          "receipt": "p4w07-constructor-repair.json"
+        },
+        "verification_conclusion": "The ten-file run passed 6,275 of 6,276 cases. Its sole original constructor-message failure is closed by a six-case final-source run after four default values were restored. This is scoped closure, not a new all-6,276 pass run.",
+        "private_regression": {
+          "tests": 146,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "junit_seconds": 172.84,
+          "exit_code": 0,
+          "whole_source_frozen": false,
+          "scope": "Four existing private suites passed 146 cases. P01 changed concurrently only in public delivery representation; this is not a full frozen-final-tree run. Current P10 reconstructs the tested hash exactly after removing its two later public-only cache lines; P09/P08 equal tested before/after hashes. All original P01 definitions except AuditReport remain AST-identical to W06; four original private stop classes remain AST-identical.",
+          "receipt": "p4w07-private-runtime-001-execution.json"
+        },
+        "original_test_preservation": {
+          "tests/contract/test_report_contract.py": {
+            "baseline_definitions": 146,
+            "unchanged_definitions": 145,
+            "changed_existing_definitions": [
+              "test_abort_and_cancellation_cannot_invent_a_validation_state"
+            ],
+            "missing_definitions": []
+          },
+          "tests/contract/test_report_assembly.py": {
+            "baseline_definitions": 62,
+            "unchanged_definitions": 62,
+            "changed_existing_definitions": [],
+            "missing_definitions": []
+          },
+          "tests/security/test_report_resource_limits.py": {
+            "baseline_definitions": 27,
+            "unchanged_definitions": 27,
+            "changed_existing_definitions": [],
+            "missing_definitions": []
+          }
+        },
+        "unicode_equivalence": {
+          "status": "passed",
+          "legal_scalars": 1112064,
+          "chunks": 17376,
+          "surrogates_rejected": 2048,
+          "elapsed_seconds": 0.999342883999816,
+          "source_sha256": "a23088d560d616ede7f9a31254e7a96ff4b78c08afcb5b34047f52db87d3b8d2",
+          "source_unchanged": true,
+          "scope": "Independent scalar-profile equality using a counting component port; not a bounded complete-invocation proof.",
+          "work_units": 999869,
+          "output_bytes": 4419730
+        },
+        "findings_closed": [
+          {
+            "finding": "A supporting complete_trace could enter a final Finding without an original-owner registration.",
+            "resolution": "Contributing reconstruction now uses _owner_component; the non-path-primary plus complete_trace regression is included in final N02."
+          },
+          {
+            "finding": "Frozen dataclass report could expose cached encodings through generic dataclasses.asdict.",
+            "resolution": "Paid private sixteen-root MappingProxyType backing blocks generic dataclass/deepcopy dumping; final constructor closure tests retention and serialization refusal."
+          },
+          {
+            "finding": "Frozen exception setters prevented normal contextlib traceback propagation.",
+            "resolution": "Public AuditAbort/AuditCancelled retain frozen validated safe fields and allow only standard Exception.with_traceback metadata assignment. No guard exception or reflective access was added."
+          },
+          {
+            "finding": "Complete invocation including required consistency exceeded 10M in earlier implementations.",
+            "resolution": "Bounded static native scalar/fence passes and invocation-local paid frozen-mapping order reuse remove repeated actual work while preserving unchanged caps, output rules and source meanings. Independent Unicode and original byte oracles plus the actual finite unavailable case were checked."
+          },
+          {
+            "finding": "Direct AuditReport() lost its original fixed rejection message after representation construction changed.",
+            "resolution": "Four None defaults restored exact rejection through existing post-init validation; unchanged original N10 assertion passes in final six-case closure."
+          }
+        ],
+        "reviewed_design": [
+          "One real invocation ledger/start/deadline/reserve reaches admission, analysis, disclosure, assembly, both encodings, paid consistency and atomic report delivery.",
+          "Both consistency passes consume the original port. Decoded JSON string meaning is compared; exact scalar spelling remains the renderer obligation verified independently. No second full encoding buffer or second output quota is introduced.",
+          "The ordering cache retains exact frozen object identities, pays first stable merge sort and subsequent accesses, is scoped to one completed report pair, and is not an analytical cross-job cache.",
+          "L13 uses concrete retained owner identity and deduplicated final Finding occurrences. Existing wrappers/links are not recounted; new retained witnesses/member occurrences debit the original pending+retained ledger.",
+          "Rejected-input diagnostic output failure preserves rejected input fact; cancellation does not fabricate an execution reason; established first causes remain bounded safe transport.",
+          "The delivered report retains only a read-only sixteen-root mapping, immutable nested values and two completed bytes. Source/prepared state, budget, cache and construction seal are not retained."
+        ],
+        "limitations": [
+          "W07 internal composition only. Public audit_bundle/audit_file and CLI remain at their existing refusal boundary until their authorized stages.",
+          "Full W02 reference may truthfully hit the unchanged whole-invocation cap; finite complete cases do not prove every input finishes.",
+          "AuditUsageError contextlib compatibility remains for W08 activation and is not included in the two repaired public exception types.",
+          "No final W07 hosted matrix result, installed public surface, merge or release is claimed.",
+          "D04/D05 record-only updates may follow this review; reviewed product/test hashes must remain unchanged."
+        ]
+      },
+      "raw": {
+        "file": "p4w07-independent-review.json",
+        "sha256": "b7830debedb4f8f340f2cf9361aa65821ccadf0efe0df7e42a191fa28186296e",
+        "bytes": 9586
+      }
+    }
   }
 }

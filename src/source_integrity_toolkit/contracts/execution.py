@@ -178,7 +178,7 @@ def _transport_require(ok: bool) -> None:
 
 
 @dataclass(frozen=True, slots=True, repr=False, eq=False)
-class AuditAbort(Exception):
+class _AuditAbortFields(Exception):
     """No conforming report can be delivered; retain only established states.
 
     Publication is fixed to not_published in the in-memory Phase 4 surface.
@@ -194,10 +194,14 @@ class AuditAbort(Exception):
         _transport_require(type(self.input_validation_state) is str)
         _transport_require(type(self.reason_code) is str)
         _transport_require(type(self.publication_state) is str)
-        _transport_require(self.input_validation_state in ("accepted", "not_completed"))
+        _transport_require(self.input_validation_state in ("accepted", "rejected", "not_completed"))
         _transport_require(self.publication_state == "not_published")
-        _transport_require((self.processing_state, self.reason_code) in (
-            ("interrupted", "resource_limit_reached"), ("failed", "execution_failed")))
+        if self.processing_state == "rejected":
+            _transport_require(self.input_validation_state == "rejected" and
+                               self.reason_code == "input_not_accepted")
+        else:
+            _transport_require((self.processing_state, self.reason_code) in (
+                ("interrupted", "resource_limit_reached"), ("failed", "execution_failed")))
 
     @property
     def args(self) -> tuple:
@@ -214,8 +218,22 @@ class AuditAbort(Exception):
         return "AuditAbort()"
 
 
+class AuditAbort(_AuditAbortFields):
+    """Immutable public fields with normal Python traceback propagation."""
+    __slots__ = ()
+
+    def __setattr__(self, name, value):
+        if type(name) is str and name == "__traceback__":
+            Exception.with_traceback(self, value)
+            return
+        raise AttributeError("AuditAbort fields are immutable.")
+
+    def __delattr__(self, name):
+        raise AttributeError("AuditAbort fields are immutable.")
+
+
 @dataclass(frozen=True, slots=True, repr=False, eq=False)
-class AuditCancelled(Exception):
+class _AuditCancelledFields(Exception):
     """Caller cancellation, with no fabricated execution Reason code."""
     input_validation_state: str
     publication_state: str = "not_published"
@@ -239,6 +257,20 @@ class AuditCancelled(Exception):
 
     def __repr__(self) -> str:
         return "AuditCancelled()"
+
+
+class AuditCancelled(_AuditCancelledFields):
+    """Immutable public fields with normal Python traceback propagation."""
+    __slots__ = ()
+
+    def __setattr__(self, name, value):
+        if type(name) is str and name == "__traceback__":
+            Exception.with_traceback(self, value)
+            return
+        raise AttributeError("AuditCancelled fields are immutable.")
+
+    def __delattr__(self, name):
+        raise AttributeError("AuditCancelled fields are immutable.")
 
 
 @dataclass(frozen=True, slots=True, repr=False, eq=False)
@@ -275,9 +307,9 @@ class _ReportEncodingPort(_FinalizationPort, Protocol):
 
 
 class _ReportFinalizationPort(_ReportEncodingPort, Protocol):
-    """Later composition adds witness accounting to bounded report encoding.
+    """One invocation's restricted report encoding and witness accounting.
 
-    This declaration does not activate runtime composition or report delivery.
+    The semantic owner supplies only newly retained report occurrences.
     No clock, I/O, caller callback, new ledger or configurable limit is exposed.
     """
     def reserve_report_witness(self, witnesses: int, members: int) -> None:
@@ -285,14 +317,34 @@ class _ReportFinalizationPort(_ReportEncodingPort, Protocol):
 
 
 @dataclass(frozen=True, slots=True, repr=False, eq=False)
+class _ReportDeliveryStop:
+    """A rejected input's diagnostic could not be completely delivered.
+
+    Structural rejection remains an established input fact. A subsequent
+    delivery guard or defect determines this transport's processing reason;
+    it does not turn the rejected input into accepted or unexamined input.
+    The older private preparation and analysis stop combinations stay fixed.
+    """
+    input_state: str
+    execution_state: str
+    reason_code: str
+
+    def __post_init__(self) -> None:
+        _transport_require(type(self.input_state) is str and self.input_state == "rejected")
+        _transport_require(type(self.execution_state) is str and type(self.reason_code) is str)
+        _transport_require((self.execution_state, self.reason_code) in (
+            ("interrupted", "resource_limit_reached"), ("failed", "execution_failed")))
+
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
 class _ReportAborted(Exception):
-    """Private output-limit propagation without changing earlier stop classes."""
-    stop: _PreparationStop
+    """Private report-delivery propagation without changing earlier stops."""
+    stop: _PreparationStop | _ReportDeliveryStop
     limit_id: str | None = None
 
     def __post_init__(self) -> None:
-        _transport_require(type(self.stop) is _PreparationStop)
-        _transport_require(self.stop.input_state in ("accepted", "not_completed"))
+        _transport_require(type(self.stop) in (_PreparationStop, _ReportDeliveryStop))
+        _transport_require(self.stop.input_state in ("accepted", "rejected", "not_completed"))
         if self.stop.execution_state == "interrupted":
             _transport_require(type(self.limit_id) is str and
                                self.limit_id in _ANALYSIS_LIMIT_IDS + ("WU9-L14",))

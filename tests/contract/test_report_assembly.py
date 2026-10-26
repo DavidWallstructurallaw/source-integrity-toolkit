@@ -12,6 +12,7 @@ import copy
 from dataclasses import replace
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -1374,6 +1375,159 @@ def test_runtime_review_scan_and_repeated_source_slots_keep_owner_order(review_s
     assert roles[0]['qualifications'] == [
         'Repeated original owner role slot; no additional human is inferred.']
     assert 0 < port.units <= 10_000_000
+
+
+class WitnessQuotaPort(RecordingPort):
+    """Record new retained occurrences; fixed-cap integration lives in N10."""
+    def __init__(self):
+        super().__init__()
+        self.reservations = []
+
+    def reserve_report_witness(self, witnesses, members):
+        assert type(witnesses) is int and type(members) is int
+        assert witnesses >= 0 and members >= 0
+        self.reservations.append((witnesses, members))
+
+
+def _quota_component_state(reference_outcome, specifications):
+    """Explicit three-member owner payload and two input links, no oracle dump.
+
+    Each specification declares a wrapper identity and the exact original
+    payload object it uses. These are trusted component controls, not claims
+    that the synthetic rows were produced by a real analytical invocation.
+    """
+    refs = tuple(_InputRef('records', name) for name in ('W07-A', 'W07-B', 'W07-C'))
+    shared = ('selected_members', refs, 3)
+    port = WitnessQuotaPort()
+    state = SimpleNamespace(port=port, reserve_witnesses=True,
+                            component_sources={}, rows={'findings': []})
+    for existing, fresh_payload, extra_input in specifications:
+        payload = tuple(list(shared)) if fresh_payload else shared
+        component = {'type': 'selected_members', 'members': refs, 'member_count': 3}
+        assemble._remember_component(state, component, payload)
+        owner = object()
+        if existing:
+            witness = contract._DetachedFindingWitness(refs[:2], (payload,), 3)
+            owner = replace(reference_outcome.findings[0], witness=witness)
+        inputs = refs if extra_input else refs[:2]
+        state.rows['findings'].append({'owner': owner, 'body': {
+            'witness': {'input_refs': inputs, 'components': (component,)}}})
+    return state
+
+
+@pytest.mark.parametrize('specifications,expected', [
+    # Existing wrapper + its two input links + one component link are paid.
+    (((True, False, False),), [(0, 0)]),
+    # Two existing wrappers share one paid owner component. Its second actual
+    # retained payload occurrence adds one witness and three member occurrences.
+    (((True, False, False), (True, False, False)), [(0, 0), (1, 3)]),
+    # Equal content from different actual owners keeps both original credits.
+    (((True, False, False), (True, True, False)), [(0, 0), (0, 0)]),
+    # New wrapper: one witness, two input links and one component link.
+    (((False, False, False),), [(1, 3)]),
+    (((False, False, False), (False, False, False)), [(1, 3), (2, 6)]),
+    # An additional input link consumes one member even on an old wrapper.
+    (((True, False, True),), [(0, 1)]),
+])
+def test_w07_exact_private_owner_credits_and_new_occurrences(reference_outcome,
+                                                           specifications, expected):
+    state = _quota_component_state(reference_outcome, specifications)
+    assemble._reserve_report_witnesses(state)
+    assert state.port.reservations == expected
+
+
+def test_w07_unbound_equal_component_cannot_borrow_an_owner_credit(reference_outcome):
+    state = _quota_component_state(reference_outcome, ((True, False, False),))
+    witness = state.rows['findings'][0]['body']['witness']
+    witness['components'] = (dict(witness['components'][0]),)
+    with pytest.raises(contract._ReportContractError):
+        assemble._reserve_report_witnesses(state)
+    assert state.port.reservations == []
+
+
+def test_w07_quota_enabled_reference_preserves_independent_bytes(reference_outcome):
+    port = WitnessQuotaPort()
+    document = disclosure_runtime._assemble_selected_report(reference_outcome, port,
+        reserve_witnesses=True)
+    _strict_equal(_plain(document), _reference_document())
+    assert len(port.reservations) == 22
+    assert all(witnesses >= 0 and members >= 0 for witnesses, members in port.reservations)
+    assert any(witnesses > 0 for witnesses, members in port.reservations)
+
+
+def test_w07_final_finding_dedup_precedes_witness_quota(reference_outcome):
+    # An identical explanatory Finding has one final identity, even if reached
+    # through two distinct private carriers. No extra output witness is retained.
+    original = reference_outcome.findings[0]
+    repeated = replace(original)
+    expanded = replace(reference_outcome, findings=reference_outcome.findings + (repeated,))
+    ports = (WitnessQuotaPort(), WitnessQuotaPort())
+    baseline = disclosure_runtime._assemble_selected_report(reference_outcome, ports[0],
+        reserve_witnesses=True)
+    duplicate = disclosure_runtime._assemble_selected_report(expanded, ports[1],
+        reserve_witnesses=True)
+    _strict_equal(_plain(duplicate), _plain(baseline))
+    assert ports[0].reservations == ports[1].reservations
+    assert len(ports[0].reservations) == 22
+
+
+def test_w07_nonpath_primary_keeps_same_owner_trace_accounting(reference_outcome):
+    # Independently authored absence + complete trace from one exact owner.
+    # The trace enters through the supporting-record branch, including when
+    # there is no path primary. Both components already own private quota.
+    scope = next(result.ref.scope for result in reference_outcome.results
+                 if result.ref.field_key == 'single_origin_contribution_hhi')
+    start, target = _InputRef('records', 'P4-E1'), _InputRef('records', 'P4-O1')
+    node = ('node', start, 'evidence_item')
+    target_node = ('node', target, 'origin_event')
+    public_node = {'ref': _source(start), 'kind': 'evidence_item'}
+    public_target = {'ref': _source(target), 'kind': 'origin_event'}
+    fields = ('nodes', 'members', 'starts', 'examined_nodes', 'frontiers', 'terminals',
+              'edges', 'internal_edges', 'exit_edges', 'examined_edges', 'observations')
+    payloads, components = [], []
+    for kind, count in (('no_witness_in_examined_view', 4), ('complete_trace', 3)):
+        material = {name: () for name in fields}
+        material.update(starts=(node,), examined_nodes=(node,), terminals=(node,),
+                        target=target_node if kind == 'no_witness_in_examined_view' else None)
+        payloads.append(('graph_witness', kind, scope.inquiry_ref.identifier,
+            tuple(ref.identifier for ref in scope.claim_refs), scope.dependency_dimension,
+            scope.graph_view, scope.operation_anchor, tuple(material.items()), count))
+        selected = {name: [] for name in fields}
+        selected.update(type='graph_witness', kind=kind, member_count=count,
+            starts=[public_node], examined_nodes=[public_node], terminals=[public_node],
+            target=public_target if kind == 'no_witness_in_examined_view' else None)
+        components.append(selected)
+    link = values._WitnessRef(scope, 'member_set', ('w07-accounting', start))
+    record = contract._WitnessRecord((link,), tuple(payloads), (), 7)
+    result_ref = values._ResultRef('SIT-M014', 'anomaly_context_disclosures', scope)
+    result = values._Result(result_ref, (), 'completed', 'available', 'attributed_record',
+        'record_disclosures', values._RecordDisclosures(()), (), (), (link,), (),
+        'Constructed finite witness accounting control.')
+    basis = []
+    for ref in (start, target):
+        row = copy.deepcopy(next(entry for entry in _reference_document()['basis_index']
+            if entry['source'] == _source(ref)))
+        del row['id']
+        del row['source']
+        row['check_refs'] = ()
+        basis.append((values._BasisRef(ref), row))
+    port = WitnessQuotaPort()
+    selected = contract._capture_report_disclosure(tuple(basis),
+        ((result_ref, {'records': []}),), (), port,
+        owner_witnesses=((record, {'input_refs': [_source(start), _source(target)],
+                                  'components': components}),))
+    outcome = replace(reference_outcome, results=(result,), findings=(),
+                      witnesses=(record,), capabilities=(), domains=())
+    state = assemble._Assembly(outcome, selected, port, reserve_witnesses=True)
+    state.result(result)
+    assemble._assemble_witnesses(state)
+    state.identities_for_rows()
+    assemble._reserve_report_witnesses(state)
+    assert port.reservations == [(1, 4)]
+    witness = state.resolve(state.rows['findings'][0]['body'])['witness']
+    assert [item['kind'] for item in witness['components']] == [
+        'no_witness_in_examined_view', 'complete_trace']
+    assert [item['member_count'] for item in witness['components']] == [4, 3]
 
 
 def test_empty_seed_dimension_preserves_completed_trace_and_unavailable_ratios():

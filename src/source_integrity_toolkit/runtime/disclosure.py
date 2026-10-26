@@ -701,7 +701,8 @@ def _select_report_disclosure(outcome, port):
     return selection
 
 
-def _assemble_selected_report(outcome, port, *, tool_version='0.1.0.dev0'):
+def _assemble_selected_report(outcome, port, *, tool_version='0.1.0.dev0', reserve_witnesses=False):
     """Select and assemble under the same caller-owned bounded internal port."""
     selected = _select_report_disclosure(outcome, port)
-    return _a._assemble_report(outcome, selected, port, tool_version=tool_version)
+    return _a._assemble_report(outcome, selected, port, tool_version=tool_version,
+        reserve_witnesses=reserve_witnesses)

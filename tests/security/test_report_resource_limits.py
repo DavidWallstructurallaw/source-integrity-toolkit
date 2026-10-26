@@ -557,3 +557,446 @@ def test_complete_json_does_not_make_later_failed_markdown_a_delivered_pair(cloc
     public = diagnostics._report_abort(stopped.value)
     assert public.input_validation_state == 'accepted' and public.publication_state == 'not_published'
     assert not hasattr(public, 'report') and not hasattr(public, 'prefix')
+
+
+# W07 controls below execute the internal whole invocation, including actual
+# admission, analysis, selection, logical assembly and both bounded encoders.
+# The earlier W05/W06 component controls remain unchanged above.
+@pytest.fixture
+def invocation_source():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        'p4_w07_resource_pipeline_helpers', ROOT / 'tests/integration/test_public_audit.py')
+    helpers = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(helpers)
+    return helpers._minimal_value()
+
+
+def _observe_invocation(monkeypatch):
+    from source_integrity_toolkit.runtime import boundary
+    created = []
+    factory = boundary._new_analysis_budget
+
+    def observed_factory():
+        owner = factory()
+        created.append(owner)
+        assert owner.used == 1024 and not owner._emergency_taken
+        return owner
+
+    monkeypatch.setattr(boundary, '_new_analysis_budget', observed_factory)
+    return boundary, created
+
+
+def _actual_port(owner):
+    return owner._finalizer if owner._phase == 'finalization' else owner
+
+
+def _assert_public_abort(stopped, input_state, reason='resource_limit_reached'):
+    assert type(stopped) is AuditAbort
+    assert (stopped.input_validation_state, stopped.reason_code,
+            stopped.publication_state) == (input_state, reason, 'not_published')
+    assert stopped.processing_state == ('failed' if reason == 'execution_failed' else 'interrupted')
+    assert stopped.args == ('Audit could not be completed.',)
+    for name in ('report', 'prefix', 'source', 'snapshot', 'budget', 'original_exception'):
+        assert not hasattr(stopped, name)
+
+
+_INVOCATION_STAGES = (
+    '_admit', '_plan_analysis', '_execute_job', '_assemble_analysis',
+    '_assemble_selected_report', '_encode_json_report',
+    '_encode_markdown_report', '_verify_json_report', '_verify_markdown_report',
+    '_deliver_report',
+)
+
+
+def test_whole_invocation_uses_one_factory_ledger_deadline_and_reserved_emergency(
+        monkeypatch, clock, invocation_source):
+    boundary, created = _observe_invocation(monkeypatch)
+    stages = []
+    made = []
+    initialize = resources._AnalysisBudget.__post_init__
+
+    def initialization(owner):
+        initialize(owner)
+        made.append(owner)
+
+    monkeypatch.setattr(resources._AnalysisBudget, '__post_init__', initialization)
+    for name in _INVOCATION_STAGES:
+        original = getattr(boundary, name)
+
+        def observed(*args, _name=name, _original=original, **kwargs):
+            assert len(created) == 1 and made == created
+            owner = created[0]
+            assert owner._start == 100 and owner.used >= 1024
+            if _name == '_admit':
+                assert kwargs['budget'] is owner and owner.input_state == 'not_completed'
+            elif _name == '_plan_analysis':
+                assert args[1] is owner and owner.input_state == 'not_completed'
+            else:
+                assert args[-1]._owner is owner and owner.input_state == 'accepted'
+            before = owner.used
+            result = _original(*args, **kwargs)
+            assert owner.used > before
+            stages.append((_name, before, owner.used))
+            return result
+
+        monkeypatch.setattr(boundary, name, observed)
+    delivered = boundary._audit_value(invocation_source)
+    assert type(delivered) is report_contract.AuditReport
+    assert {row[0] for row in stages} == set(_INVOCATION_STAGES)
+    assert len(created) == len(made) == 1
+    owner = created[0]
+    assert owner._start == 100 and not owner._emergency_taken
+    assert 1024 < owner.used < 10_000_000
+    assert counters(owner) == (len(delivered.to_json_bytes()), len(delivered.to_markdown_bytes()))
+    before = owner.used
+    json_bytes, markdown_bytes = delivered.to_json_bytes(), delivered.to_markdown_bytes()
+    clock[0] = owner._start + 60_000_000_001
+    for _ in range(3):
+        assert delivered.to_json_bytes() is json_bytes
+        assert delivered.to_markdown_bytes() is markdown_bytes
+    assert owner.used == before and not owner._emergency_taken
+
+
+@pytest.mark.parametrize('stage', _INVOCATION_STAGES)
+@pytest.mark.parametrize('limit', ('work', 'time'))
+def test_each_invocation_stage_obeys_same_global_work_and_original_deadline(
+        monkeypatch, clock, invocation_source, stage, limit):
+    boundary, created = _observe_invocation(monkeypatch)
+    original = getattr(boundary, stage)
+    reached = []
+
+    def stopped_stage(*args, **kwargs):
+        assert len(created) == 1
+        owner = created[0]
+        reached.append((owner.used, owner.input_state))
+        port = _actual_port(owner)
+        if limit == 'work':
+            port.charge(owner.remaining + 1)
+        else:
+            clock[0] = owner._start + 60_000_000_001
+            port.check()
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(boundary, stage, stopped_stage)
+    with pytest.raises(AuditAbort) as stopped:
+        boundary._audit_value(invocation_source)
+    assert len(created) == len(reached) == 1
+    owner = created[0]
+    expected = 'not_completed' if stage in ('_admit', '_plan_analysis') else 'accepted'
+    _assert_public_abort(stopped.value, expected)
+    assert reached[0][1] == expected and owner._start == 100
+    assert owner._emergency_taken and owner.used == reached[0][0]
+    assert owner._cause.limit_id == ('WU9-L11' if limit == 'work' else 'WU9-L12')
+    with pytest.raises(RuntimeError, match='^emergency_delivery_already_used$'):
+        owner.take_emergency()
+
+
+@pytest.mark.parametrize('stage', _INVOCATION_STAGES)
+def test_cancellation_at_each_stage_has_actual_state_and_never_returns_report(
+        monkeypatch, clock, invocation_source, stage):
+    boundary, created = _observe_invocation(monkeypatch)
+    reached = []
+
+    def cancelled(*args, **kwargs):
+        reached.append(created[0].input_state)
+        raise KeyboardInterrupt('PRIVATE_W07_CANCEL_DETAILS')
+
+    monkeypatch.setattr(boundary, stage, cancelled)
+    with pytest.raises(AuditCancelled) as stopped:
+        boundary._audit_value(invocation_source)
+    expected = 'not_completed' if stage in ('_admit', '_plan_analysis') else 'accepted'
+    assert reached == [expected] and len(created) == 1
+    assert stopped.value.input_validation_state == expected
+    assert stopped.value.publication_state == 'not_published'
+    assert not hasattr(stopped.value, 'reason_code') and not hasattr(stopped.value, 'report')
+    assert 'PRIVATE_W07_CANCEL_DETAILS' not in str(stopped.value) + repr(stopped.value)
+    assert created[0]._emergency_taken
+
+
+@pytest.mark.parametrize('stage', ('_admit', '_execute_job'))
+def test_failure_before_finalization_can_deliver_only_safe_diagnostic_on_same_budget(
+        monkeypatch, clock, invocation_source, stage):
+    boundary, created = _observe_invocation(monkeypatch)
+
+    def failed(*args, **kwargs):
+        raise RuntimeError('PRIVATE_W07_FAILURE_DETAILS')
+
+    monkeypatch.setattr(boundary, stage, failed)
+    delivered = boundary._audit_value(invocation_source)
+    assert type(delivered) is report_contract.AuditReport and len(created) == 1
+    document = json.loads(delivered.to_json_bytes())
+    assert document['report_kind'] == 'processing_diagnostics'
+    assert document['run']['processing_state'] == 'failed'
+    assert document['input_validation']['state'] == ('not_completed' if stage == '_admit' else 'accepted')
+    assert document['run']['diagnostics'][0]['code'] == 'execution_failed'
+    for name in ('scopes', 'populations', 'basis_index', 'capabilities', 'checks',
+                 'observability_domains', 'results', 'findings'):
+        assert document[name] == []
+    # Reporting 16.1 empties analytical arrays, retaining safe execution Reasons.
+    assert document['reasons'] and all(reason['code'] == 'execution_failed' and
+        reason['classification'] == 'execution' and reason['scope_ref'] is None and
+        reason['affected_result_refs'] == [] and reason['input_refs'] == []
+        for reason in document['reasons'])
+    assert b'PRIVATE_W07_FAILURE_DETAILS' not in delivered.to_json_bytes()
+    assert b'PRIVATE_W07_FAILURE_DETAILS' not in delivered.to_markdown_bytes()
+    assert counters(created[0]) == (len(delivered.to_json_bytes()), len(delivered.to_markdown_bytes()))
+    assert created[0]._start == 100 and 1024 < created[0].used <= 10_000_000
+
+
+@pytest.mark.parametrize('stage', ('_assemble_analysis', '_assemble_selected_report',
+                                 '_encode_json_report', '_encode_markdown_report',
+                                 '_verify_json_report', '_verify_markdown_report', '_deliver_report'))
+def test_failure_after_finalization_cannot_restart_or_deliver_a_partial_report(
+        monkeypatch, clock, invocation_source, stage):
+    boundary, created = _observe_invocation(monkeypatch)
+
+    def failed(*args, **kwargs):
+        raise RuntimeError('PRIVATE_W07_FINALIZATION_FAILURE')
+
+    monkeypatch.setattr(boundary, stage, failed)
+    with pytest.raises(AuditAbort) as stopped:
+        boundary._audit_value(invocation_source)
+    _assert_public_abort(stopped.value, 'accepted', 'execution_failed')
+    assert len(created) == 1 and created[0]._emergency_taken
+    assert 'PRIVATE_W07_FINALIZATION_FAILURE' not in str(stopped.value) + repr(stopped.value)
+
+
+def test_complete_json_followed_by_real_markdown_cap_refuses_whole_invocation(
+        monkeypatch, clock, invocation_source):
+    boundary, created = _observe_invocation(monkeypatch)
+    original = boundary._encode_markdown_report
+    completed_json = []
+
+    def no_markdown_space(document, port):
+        owner = created[0]
+        assert port._owner is owner and owner._json_output_bytes > 0
+        completed_json.append(owner._json_output_bytes)
+        port.charge_output('markdown', OUTPUT_LIMIT)
+        return original(document, port)
+
+    monkeypatch.setattr(boundary, '_encode_markdown_report', no_markdown_space)
+    with pytest.raises(AuditAbort) as stopped:
+        boundary._audit_value(invocation_source)
+    _assert_public_abort(stopped.value, 'accepted')
+    assert len(created) == len(completed_json) == 1
+    assert counters(created[0]) == (completed_json[0], OUTPUT_LIMIT)
+    assert created[0]._cause.limit_id == 'WU9-L14'
+
+
+@pytest.mark.parametrize('after_commit', (False, True))
+def test_local_job_stop_retains_only_atomically_committed_results_in_complete_report(
+        monkeypatch, clock, invocation_source, after_commit):
+    from source_integrity_toolkit.runtime import boundary
+    control = json.loads(boundary._audit_value(invocation_source).to_json_bytes())
+    boundary, created = _observe_invocation(monkeypatch)
+    execute = boundary._execute_job
+    calls = []
+
+    def local_stop(prepared, spec, ledger, port):
+        calls.append(spec.family)
+        if len(calls) == 2:
+            if after_commit:
+                execute(prepared, spec, ledger, port)
+                assert port._committed and port._committed[0]
+            port.charge(1_000_000 - port.used + 1)
+        return execute(prepared, spec, ledger, port)
+
+    monkeypatch.setattr(boundary, '_execute_job', local_stop)
+    delivered = boundary._audit_value(invocation_source)
+    assert type(delivered) is report_contract.AuditReport and len(created) == 1
+    document = json.loads(delivered.to_json_bytes())
+    assert calls == ['SIT-M001', 'SIT-M002']
+    assert document['run']['processing_state'] == 'interrupted'
+    assert document['input_validation']['state'] == 'accepted'
+    for family in calls[:2 if after_commit else 1]:
+        actual = [row for row in document['results'] if row['diagnostic_id'] == family]
+        expected = [row for row in control['results'] if row['diagnostic_id'] == family]
+        assert [(row['field_key'], row['execution_state'], row['result_state'], row['value']) for row in actual] == [
+            (row['field_key'], row['execution_state'], row['result_state'], row['value']) for row in expected]
+    uncompleted = [row for row in document['results']
+                   if row['diagnostic_id'] not in calls[:2 if after_commit else 1]]
+    assert uncompleted and all(row['result_state'] == 'not_evaluated' and row['value'] is None for row in uncompleted)
+    assert all(row['execution_state'] == ('interrupted' if row['diagnostic_id'] == calls[1]
+                                         else 'not_performed') for row in uncompleted)
+    assert created[0]._cause.limit_id == 'WU9-L11' and created[0]._stop_kind == 'job'
+    assert counters(created[0]) == (len(delivered.to_json_bytes()), len(delivered.to_markdown_bytes()))
+
+
+@pytest.mark.parametrize('later', ('output', 'failure'))
+def test_first_witness_stop_survives_later_finalization_failure_in_actual_invocation(
+        monkeypatch, clock, invocation_source, later):
+    boundary, created = _observe_invocation(monkeypatch)
+    execute = boundary._execute_job
+    calls, first_causes = [], []
+
+    def witness_stop(prepared, spec, ledger, port):
+        calls.append(spec.family)
+        if len(calls) == 2:
+            try:
+                ledger.reserve(witnesses=20_001)
+            except _AnalysisAborted as stopped:
+                first_causes.append(stopped)
+                raise
+        return execute(prepared, spec, ledger, port)
+
+    def later_failure(document, port):
+        assert first_causes and port._owner._cause is first_causes[0]
+        if later == 'output':
+            port.charge_output('markdown', OUTPUT_LIMIT + 1)
+        raise RuntimeError('PRIVATE_SECONDARY_FAILURE')
+
+    monkeypatch.setattr(boundary, '_execute_job', witness_stop)
+    monkeypatch.setattr(boundary, '_encode_markdown_report', later_failure)
+    with pytest.raises(AuditAbort) as stopped:
+        boundary._audit_value(invocation_source)
+    _assert_public_abort(stopped.value, 'accepted')
+    assert len(created) == len(first_causes) == 1 and calls == ['SIT-M001', 'SIT-M002']
+    assert created[0]._cause is first_causes[0] and first_causes[0].limit_id == 'WU9-L13'
+    assert created[0]._json_output_bytes > 0 and created[0]._markdown_output_bytes == 0
+
+
+@pytest.mark.parametrize('encoding', ('json', 'markdown'))
+def test_same_length_semantic_encoding_corruption_blocks_whole_report_delivery(
+        monkeypatch, clock, invocation_source, encoding):
+    boundary, created = _observe_invocation(monkeypatch)
+    name = '_encode_' + encoding + '_report'
+    original = getattr(boundary, name)
+    corrupted = []
+
+    def changed(document, port):
+        valid = original(document, port)
+        assert b'not_recorded_by_SIT-RP-0.1' in valid
+        invalid = valid.replace(b'not_recorded_by_SIT-RP-0.1', b'NOT_recorded_by_SIT-RP-0.1', 1)
+        assert invalid != valid and len(invalid) == len(valid)
+        corrupted.append((valid, invalid))
+        return invalid
+
+    monkeypatch.setattr(boundary, name, changed)
+    with pytest.raises(AuditAbort) as stopped:
+        boundary._audit_value(invocation_source)
+    _assert_public_abort(stopped.value, 'accepted', 'execution_failed')
+    assert len(created) == len(corrupted) == 1
+    assert all(count > 0 for count in counters(created[0]))
+
+
+@pytest.mark.parametrize('counter,maximum', (('witnesses', 20_000), ('members', 100_000)))
+@pytest.mark.parametrize('pending', (False, True))
+def test_formal_witness_additions_share_private_pending_and_retained_fixed_ceiling(
+        clock, counter, maximum, pending):
+    owner = resources._new_analysis_budget()
+    owner.record_input_acceptance()  # Trusted component setup for actual quota arithmetic.
+    job = owner.start_job()
+    ledger = owner.witnesses
+    token = ledger.reserve(**{counter: maximum - 1})
+    if not pending:
+        ledger.retain(token)
+    owner.finish_job(job)
+    finalizer = owner.begin_finalization()
+    port = owner.begin_report_encoding(finalizer)
+    before = (ledger._reserved_witnesses, ledger._reserved_members,
+              ledger._retained_witnesses, ledger._retained_members)
+    port.reserve_report_witness(0, 0)  # Exact reuse has no additional retained occurrence.
+    assert owner._witness_ledger is ledger
+    assert (ledger._reserved_witnesses, ledger._reserved_members,
+            ledger._retained_witnesses, ledger._retained_members) == before
+    addition = (1, 0) if counter == 'witnesses' else (0, 1)
+    port.reserve_report_witness(*addition)
+    count = (ledger._reserved_witnesses + ledger._retained_witnesses if counter == 'witnesses'
+             else ledger._reserved_members + ledger._retained_members)
+    assert count == maximum
+    retained = (ledger._retained_witnesses, ledger._retained_members)
+    with pytest.raises(_AnalysisAborted) as stopped:
+        port.reserve_report_witness(*addition)
+    assert stopped.value.limit_id == 'WU9-L13'
+    assert (ledger._retained_witnesses, ledger._retained_members) == retained
+    assert owner._witness_ledger is ledger and owner._start == 100
+    public = diagnostics._emergency_report_abort(owner)
+    _assert_public_abort(public, 'accepted')
+
+
+def test_owned_mapping_order_cache_hit_is_charged_and_encoding_still_visits_values(
+        monkeypatch, clock):
+    owner, _, real = encoding_context()
+    value = report_contract._copy_report_value({'z': 'second', 'a': 'first'}, real)
+    assert type(value) is report_contract._ReportMapping
+    comparisons = []
+    compare = escaping._compare_text
+
+    def observed_compare(left, right, port):
+        comparisons.append((left, right))
+        return compare(left, right, port)
+
+    monkeypatch.setattr(escaping, '_compare_text', observed_compare)
+    wrapped = escaping._CachedEncodingPort(real)
+    assert wrapped._owner is owner
+    before = owner.used
+    first = escaping._sorted_report_pairs(value, wrapped)
+    assert first == (('a', 'first'), ('z', 'second'))
+    assert comparisons and owner.used > before
+    compared, before = len(comparisons), owner.used
+    second = escaping._sorted_report_pairs(value, wrapped)
+    assert second is first and owner.used > before
+    assert len(comparisons) == compared and counters(owner) == (0, 0)
+    expected = b'{"a":"first","z":"second"}'
+    first_bytes = escaping._encode_j(value, wrapped)
+    after_encoding = owner.used
+    second_bytes = escaping._encode_j(value, wrapped)
+    assert first_bytes == second_bytes == expected and owner.used > after_encoding
+    assert len(comparisons) == compared
+    assert counters(owner) == (2 * len(expected), 0)
+
+
+def test_mapping_order_cache_is_local_to_wrapper_and_exact_owned_object(monkeypatch, clock):
+    owner, _, real = encoding_context()
+    left = report_contract._copy_report_value({'z': 'left-z', 'a': 'left-a'}, real)
+    right = report_contract._copy_report_value({'z': 'right-z', 'a': 'right-a'}, real)
+    assert type(left) is type(right) is report_contract._ReportMapping and left is not right
+    comparisons = []
+    compare = escaping._compare_text
+
+    def observed_compare(first, second, port):
+        comparisons.append((first, second))
+        return compare(first, second, port)
+
+    monkeypatch.setattr(escaping, '_compare_text', observed_compare)
+    first_wrapper = escaping._CachedEncodingPort(real)
+    left_pairs = escaping._sorted_report_pairs(left, first_wrapper)
+    compared, before = len(comparisons), owner.used
+    right_pairs = escaping._sorted_report_pairs(right, first_wrapper)
+    assert right_pairs == (('a', 'right-a'), ('z', 'right-z'))
+    assert right_pairs is not left_pairs and len(comparisons) > compared and owner.used > before
+    second_wrapper = escaping._CachedEncodingPort(real)
+    compared, before = len(comparisons), owner.used
+    second_pairs = escaping._sorted_report_pairs(left, second_wrapper)
+    assert second_pairs == left_pairs and second_pairs is not left_pairs
+    assert len(comparisons) > compared and owner.used > before
+    assert first_wrapper._owner is second_wrapper._owner is owner
+    assert escaping._sorted_report_pairs(left, first_wrapper) is left_pairs
+
+
+def test_new_invocation_cannot_reuse_another_invocations_paid_mapping_order(monkeypatch, clock):
+    first_owner, _, first_port = encoding_context()
+    value = report_contract._copy_report_value({'z': 'second', 'a': 'first'}, first_port)
+    first_wrapper = escaping._CachedEncodingPort(first_port)
+    first_pairs = escaping._sorted_report_pairs(value, first_wrapper)
+    before_first = first_owner.used
+    second_owner, _, second_port = encoding_context()
+    assert second_owner is not first_owner
+    second_wrapper = escaping._CachedEncodingPort(second_port)
+    comparisons = []
+    compare = escaping._compare_text
+
+    def observed_compare(left, right, port):
+        comparisons.append((left, right))
+        assert port._owner is second_owner
+        return compare(left, right, port)
+
+    monkeypatch.setattr(escaping, '_compare_text', observed_compare)
+    before_second = second_owner.used
+    second_pairs = escaping._sorted_report_pairs(value, second_wrapper)
+    assert second_pairs == first_pairs and second_pairs is not first_pairs
+    assert comparisons and second_owner.used > before_second
+    assert first_owner.used == before_first
+    assert first_wrapper._owner is first_owner and second_wrapper._owner is second_owner
+    assert counters(first_owner) == counters(second_owner) == (0, 0)

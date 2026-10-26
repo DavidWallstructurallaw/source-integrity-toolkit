@@ -9,7 +9,8 @@ The preparation-only contracts retain their earlier meaning: only PC01 has
 completed after W05 admission and PC02-PC24 remain execution-pending. W13
 delivery links the separate actual owners' analytical facts and complete cells.
 """
-from dataclasses import dataclass
+from dataclasses import dataclass, InitVar
+from types import MappingProxyType
 from .bundle import _require
 
 DOMAIN_LABELS = (
@@ -1518,26 +1519,33 @@ class _ReportMapping(Mapping):
         return '_ReportMapping()'
 
 
-class AuditReport:
-    """Read-only report interface; W02 cannot construct a completed audit.
+class _ReportDeliverySeal:
+    """Private construction marker; never retained in a delivered report."""
+    __slots__ = ()
 
-    The future private completion owner must store only a frozen document and
+
+@dataclass(frozen=True, slots=True, repr=False, eq=False)
+class AuditReport:
+    """Read-only report delivered by the internal bounded completion owner.
+
+    The private completion owner stores only a frozen document and
     the two already complete immutable byte strings. No budget, source tree,
     prepared snapshot, private index or encoder is retained by this interface.
     """
-    __slots__ = ('_document', '_json_bytes', '_markdown_bytes')
+    _document: MappingProxyType = None
+    _json_bytes: bytes = None
+    _markdown_bytes: bytes = None
+    _seal: InitVar[object] = None
 
-    def __new__(cls, *args, **kwargs):
-        raise TypeError('AuditReport is delivered only by audit_bundle.')
+    def __post_init__(self, _seal):
+        if (type(_seal) is not _ReportDeliverySeal or
+                type(self._document) is not MappingProxyType or
+                type(self._json_bytes) is not bytes or
+                type(self._markdown_bytes) is not bytes):
+            raise TypeError('AuditReport is delivered only by audit_bundle.')
 
     def __init_subclass__(cls, **kwargs):
         raise TypeError('AuditReport cannot be subclassed.')
-
-    def __setattr__(self, name, value):
-        raise TypeError('AuditReport is immutable.')
-
-    def __delattr__(self, name):
-        raise TypeError('AuditReport is immutable.')
 
     def __repr__(self):
         return 'AuditReport()'
@@ -1611,6 +1619,31 @@ class AuditReport:
     @property
     def release_limits(self):
         return self._document['release_limits']
+
+
+def _deliver_report(document, json_bytes, markdown_bytes, port):
+    """Retain an already validated document and its checked immutable pair.
+
+    The runtime must complete both bounded renderers and their content checks
+    on this same document before entering this private construction seam.
+    No source, execution context or mutable backing is retained.
+    """
+    port.charge(9)
+    _report_require(type(document) is _ReportMapping)
+    _report_require(type(json_bytes) is bytes and type(markdown_bytes) is bytes)
+    _report_require(bool(json_bytes) and bool(markdown_bytes))
+    # A fresh unexposed backing holds just the sixteen roots. Besides a read-
+    # only surface, the proxy prevents generic dataclass/deepcopy serialization
+    # from walking into the private encoded caches. Nested values stay frozen.
+    port.charge(2)
+    roots = {}
+    for name, value in document._pairs:
+        _byte_work(port, 4 * len(name), 3)
+        roots[name] = value
+    port.charge(2)
+    report = AuditReport(MappingProxyType(roots), json_bytes, markdown_bytes, _ReportDeliverySeal())
+    port.check()
+    return report
 
 
 def _report_text_work(value, port):

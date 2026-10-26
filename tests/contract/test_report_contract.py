@@ -437,8 +437,16 @@ def test_abort_rejects_invented_or_mismatched_stop_classification(state, reason)
 
 @pytest.mark.parametrize("input_state", ("rejected", "unknown", True, None, "private input"))
 def test_abort_and_cancellation_cannot_invent_a_validation_state(input_state):
-    with pytest.raises(TypeError, match="^invalid_audit_transport$"):
-        execution.AuditAbort("failed", input_state, "execution_failed")
+    if input_state == "rejected":
+        # W07 reaches diagnostic output after structural rejection. Architecture
+        # 18.4 preserves actual validation state when later output failure wins.
+        error = execution.AuditAbort("failed", input_state, "execution_failed")
+        assert error.input_validation_state == "rejected"
+        assert error.processing_state == "failed"
+        assert error.reason_code == "execution_failed"
+    else:
+        with pytest.raises(TypeError, match="^invalid_audit_transport$"):
+            execution.AuditAbort("failed", input_state, "execution_failed")
     with pytest.raises(TypeError, match="^invalid_audit_transport$"):
         execution.AuditCancelled(input_state)
 
@@ -2747,3 +2755,152 @@ def test_all_160_closed_schema_objects_have_explicit_positive_and_member_control
                 assert evidence['missing_rejected_cases'], (pointer, member)
             else:
                 assert evidence['optional_omission_accepted_cases'], (pointer, member)
+
+
+@pytest.mark.parametrize("state,reason", (
+    ("interrupted", "resource_limit_reached"),
+    ("failed", "execution_failed"),
+    ("rejected", "input_not_accepted"),
+))
+def test_w07_abort_retains_rejection_when_diagnostic_pair_cannot_be_delivered(state, reason):
+    # Architecture 18.4: actual acceptance survives output failure. Governance
+    # 22.3: an earlier established rejection survives later caller cancellation.
+    error = execution.AuditAbort(state, "rejected", reason)
+    assert error.processing_state == state
+    assert error.input_validation_state == "rejected"
+    assert error.reason_code == reason
+    assert error.publication_state == "not_published"
+    assert error.args == ("Audit could not be completed.",)
+    assert repr(error) == "AuditAbort()"
+    with pytest.raises((AttributeError, TypeError)):
+        error.input_validation_state = "accepted"
+    with pytest.raises(TypeError, match="^invalid_audit_transport$"):
+        execution.AuditCancelled("rejected")
+
+
+@pytest.mark.parametrize("state,input_state,reason", (
+    ("rejected", "accepted", "input_not_accepted"),
+    ("rejected", "not_completed", "input_not_accepted"),
+    ("rejected", "rejected", "execution_failed"),
+    ("rejected", "rejected", "resource_limit_reached"),
+    ("interrupted", "rejected", "input_not_accepted"),
+    ("failed", "rejected", "input_not_accepted"),
+    ("completed", "rejected", "input_not_accepted"),
+    ("cancelled", "rejected", "input_not_accepted"),
+))
+def test_w07_rejection_transport_extension_does_not_allow_invented_state_pairs(state, input_state, reason):
+    with pytest.raises(TypeError, match="^invalid_audit_transport$"):
+        execution.AuditAbort(state, input_state, reason)
+
+
+def test_w07_delivered_report_attributes_and_nested_values_remain_immutable():
+    from source_integrity_toolkit.runtime.boundary import _audit_value
+    report = _audit_value({})
+    assert type(report) is report_contract.AuditReport
+    assert report.report_kind == "validation_diagnostics"
+    for member in ROOT_MEMBERS:
+        original = getattr(report, member)
+        with pytest.raises((AttributeError, TypeError)):
+            setattr(report, member, None)
+        with pytest.raises((AttributeError, TypeError)):
+            delattr(report, member)
+        assert getattr(report, member) is original
+    for member in report_contract.AuditReport.__slots__:
+        with pytest.raises((AttributeError, TypeError)):
+            setattr(report, member, None)
+    with pytest.raises(TypeError):
+        report.run["processing_state"] = "completed"
+    with pytest.raises(TypeError):
+        report.run["started_at"]["state"] = "known"
+    with pytest.raises(TypeError):
+        report.run["requested_diagnostic_ids"][0] = "invented"
+    with pytest.raises((AttributeError, TypeError)):
+        report.run._pairs = ()
+    with pytest.raises(TypeError):
+        report_contract.AuditReport({})
+    with pytest.raises(TypeError):
+        class CallerReport(report_contract.AuditReport):
+            pass
+
+
+@pytest.mark.parametrize("kind", ("abort", "cancelled"))
+def test_w07_safe_transports_cross_contextmanager_with_original_exception_identity(kind):
+    from contextlib import contextmanager
+    from dataclasses import fields
+
+    error = (execution.AuditAbort("interrupted", "accepted", "resource_limit_reached")
+             if kind == "abort" else execution.AuditCancelled("accepted"))
+
+    @contextmanager
+    def transparent_context():
+        yield
+
+    with pytest.raises(type(error)) as caught:
+        with transparent_context():
+            raise error
+    assert caught.value is error
+    assert error.__traceback__ is not None
+    assert error.input_validation_state == "accepted"
+    assert error.publication_state == "not_published"
+    for field in fields(error):
+        value = getattr(error, field.name)
+        with pytest.raises((AttributeError, TypeError)):
+            setattr(error, field.name, "caller_secret")
+        with pytest.raises((AttributeError, TypeError)):
+            delattr(error, field.name)
+        assert getattr(error, field.name) == value
+    for name in ("args", "safe_message", "caller_secret"):
+        with pytest.raises((AttributeError, TypeError)):
+            setattr(error, name, "caller_secret")
+
+
+@pytest.mark.parametrize("kind", ("abort", "cancelled"))
+def test_w07_safe_transport_traceback_slot_rejects_invalid_values_and_hostile_names(kind):
+    calls = []
+
+    def touched(*args, **kwargs):
+        calls.append("protocol")
+        raise AssertionError("transport executed hostile protocol")
+
+    class Hostile:
+        __str__ = __repr__ = __eq__ = __bool__ = touched
+
+    class HostileName(str):
+        __str__ = __repr__ = __eq__ = touched
+
+    error = (execution.AuditAbort("failed", "not_completed", "execution_failed")
+             if kind == "abort" else execution.AuditCancelled("not_completed"))
+    for value in (True, 1, {}, Hostile()):
+        with pytest.raises(TypeError):
+            error.__traceback__ = value
+        assert error.__traceback__ is None
+    for name in (Hostile(), HostileName("__traceback__")):
+        with pytest.raises((AttributeError, TypeError)):
+            type(error).__setattr__(error, name, None)
+    error.__traceback__ = None
+    assert error.__traceback__ is None and calls == []
+    assert error.input_validation_state == "not_completed"
+    assert error.publication_state == "not_published"
+
+
+def test_w07_generic_serialization_cannot_dump_private_report_byte_caches():
+    from dataclasses import asdict
+    from types import MappingProxyType
+    from source_integrity_toolkit.runtime.boundary import _audit_value
+
+    report = _audit_value({})
+    assert type(report._document) is MappingProxyType
+    assert set(report._document) == set(ROOT_MEMBERS)
+    original_fields = tuple(getattr(report, name) for name in ROOT_MEMBERS)
+    json_bytes, markdown_bytes = report.to_json_bytes(), report.to_markdown_bytes()
+    for serialize in (asdict, copy.deepcopy, json.dumps):
+        with pytest.raises(TypeError):
+            serialize(report)
+    with pytest.raises(TypeError):
+        json.dumps(report, default=asdict)
+    with pytest.raises(TypeError):
+        report._document["run"] = None
+    for name, original in zip(ROOT_MEMBERS, original_fields):
+        assert getattr(report, name) is original
+    assert report.to_json_bytes() is json_bytes
+    assert report.to_markdown_bytes() is markdown_bytes

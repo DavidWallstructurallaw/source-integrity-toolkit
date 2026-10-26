@@ -7,7 +7,7 @@ restricted same-context encoding port. No source projection, analytical work,
 new budget, public AuditReport construction or filesystem access occurs here.
 """
 from ..contracts.report import _ReportMapping, _ReportContractError
-from .escaping import _JWriter
+from .escaping import _JWriter, _CheckingWriter
 
 
 def _encode_json_report(document, port):
@@ -24,3 +24,14 @@ def _encode_json_report(document, port):
     writer.value(document)
     writer.literal(b'\n')
     return writer.finish()
+
+
+def _verify_json_report(document, encoded, port):
+    """Check complete framing and scalar content against the frozen document."""
+    port.charge(1)
+    if type(document) is not _ReportMapping:
+        raise _ReportContractError('invalid_report_contract') from None
+    writer = _CheckingWriter(port, 'json', encoded)
+    writer.value(document)
+    writer.literal(b'\n')
+    writer.finish()

@@ -196,7 +196,7 @@ def _anchor(value, port):
 
 
 class _Assembly:
-    def __init__(self, outcome, selection, port):
+    def __init__(self, outcome, selection, port, reserve_witnesses=False):
         self.outcome, self.selection, self.port = outcome, selection, port
         self.rows = {name: [] for name, unused in _PREFIXES}
         self.objects, self.result_slots, self.basis_slots = {}, {}, {}
@@ -206,6 +206,8 @@ class _Assembly:
         self.scope_keys = {}
         self.scope_identities = {}
         self.reference_tokens = {}
+        self.reserve_witnesses = reserve_witnesses
+        self.component_sources = {}
         for kind, entries in (('basis', selection.basis_entries),
                 ('disclosure', selection.disclosures), ('finding', selection.finding_witnesses),
                 ('owner', selection.owner_witnesses)):
@@ -418,6 +420,10 @@ class _Assembly:
             self.reason(item)
         witness = self.choose('finding', value)
         _check_finding_witness(value, witness, self)
+        if self.reserve_witnesses:
+            for component, payload in zip(_field(witness, 'components', self.port),
+                    value.witness.owner_witnesses):
+                _remember_component(self, component, payload)
         self.add('findings', value, _anchor(value, self.port), {
             'observation_kind': value.observation_kind, 'condition_code': value.condition_code,
             'diagnostic_refs': _sort(list(value.diagnostic_refs), self.port),
@@ -672,6 +678,31 @@ def _graph_component(payload, port):
     return result
 
 
+def _remember_component(assembly, component, payload):
+    """Retain a proved source-owner identity, never a content-based credit."""
+    if assembly.reserve_witnesses:
+        assembly.port.charge(4)
+        _require(type(payload) is tuple and bool(payload))
+        old = assembly.component_sources.get(id(component))
+        _require(old is None or (old[0] is component and old[1] is payload))
+        # Keeping the component itself prevents recycled object IDs from
+        # acquiring another owner's paid witness reservation.
+        assembly.component_sources[id(component)] = (component, payload)
+    return component
+
+
+def _owner_component(assembly, payload):
+    return _remember_component(assembly, _graph_component(payload, assembly.port), payload)
+
+
+def _copy_component_owner(assembly, original, copied):
+    if assembly.reserve_witnesses:
+        assembly.port.charge(2)
+        source = assembly.component_sources.get(id(original))
+        _require(source is not None and source[0] is original)
+        _remember_component(assembly, copied, source[1])
+
+
 
 def _selected_component(payload, port):
     _require(type(payload) is tuple and bool(payload))
@@ -846,6 +877,7 @@ def _assemble_witnesses(assembly):
         for component in components:
             if _field(component, 'type', port) == 'graph_witness':
                 row = {name: child for name, child in component._pairs}
+                _copy_component_owner(assembly, component, row)
                 if row['kind'] == 'path':
                     paths.append((row, _field(chosen, 'input_refs', port),
                         _proof_context(finding.scope_ref, port), finding.basis_refs))
@@ -872,7 +904,7 @@ def _assemble_witnesses(assembly):
             selected = assembly.choose('owner', record)
             components = _field(selected, 'components', port)
             _require(len(components) == len(record.payload))
-            canonical = tuple(_graph_component(payload, port) for payload in record.payload)
+            canonical = tuple(_owner_component(assembly, payload) for payload in record.payload)
             for component, actual in zip(components, canonical):
                 _require(_same(component, actual, assembly))
             for component in canonical:
@@ -956,7 +988,7 @@ def _assemble_witnesses(assembly):
             supporting, related, input_rows = [], [], []
             for record in group['records']:
                 selected = assembly.choose('owner', record)
-                actual = tuple(_graph_component(payload, port) for payload in record.payload)
+                actual = tuple(_owner_component(assembly, payload) for payload in record.payload)
                 contributes = any(_same(part, primary, assembly) or
                     (part['kind'] == 'complete_trace' and
                      primary['kind'] == 'path' and _component_matches_path(primary, part, assembly))
@@ -1166,13 +1198,71 @@ def _run(state, completed, diagnostics, tool_version):
         'qualifications': _c._REPORT_RUN_QUALIFICATIONS}
 
 
-def _assemble_report(outcome, selection, port, *, tool_version='0.1.0.dev0'):
+def _reserve_report_witnesses(assembly):
+    """Reconcile final Finding occurrences before final document allocation.
+
+    Candidate rows and selected projections are charged staging views. Only
+    the existing full-body deduplication decides which Findings are retained.
+    A concrete private owner pays for its first represented component, while
+    another actual component occurrence consumes new witness/member quota.
+    A Finding ID reused by Result links never visits this loop a second time.
+    """
+    if not assembly.reserve_witnesses:
+        return
+    port, consumed = assembly.port, set()
+    for row in assembly.rows['findings']:
+        port.charge(4)
+        witness = row['body']['witness']
+        if type(witness) is dict:
+            inputs, components = witness['input_refs'], witness['components']
+        else:
+            inputs = _field(witness, 'input_refs', port)
+            components = _field(witness, 'components', port)
+        owner = row['owner']
+        original_links = {}
+        if type(owner) is _c._PrivateFinding:
+            old_inputs = _ref_keys(owner.witness.input_refs, port)
+            new_inputs = _ref_keys(tuple(_as_input(ref, port) for ref in inputs), port)
+            for key in old_inputs:
+                _charge_key((key, new_inputs), port)
+                _require(key in new_inputs)
+            new_witnesses, new_members = 0, len(new_inputs) - len(old_inputs)
+            for payload in owner.witness.owner_witnesses:
+                port.charge(3)
+                original_links[id(payload)] = original_links.get(id(payload), 0) + 1
+        else:
+            new_witnesses, new_members = 1, len(inputs)
+        for component in components:
+            port.charge(5)
+            source = assembly.component_sources.get(id(component))
+            _require(source is not None and source[0] is component)
+            payload = source[1]
+            identity = id(payload)
+            available = original_links.get(identity, 0)
+            if available:
+                original_links[identity] = available - 1
+            else:
+                new_members += 1
+            if identity in consumed:
+                count = component['member_count'] if type(component) is dict else _field(component, 'member_count', port)
+                _require(type(count) is int and count >= 0)
+                new_witnesses += 1
+                new_members += count
+            else:
+                consumed.add(identity)
+        # No unbounded report body is copied or frozen before its new retained
+        # quota is secured. Existing private pending/retained quotas stay put.
+        port.reserve_report_witness(new_witnesses, new_members)
+
+
+def _assemble_report(outcome, selection, port, *, tool_version='0.1.0.dev0', reserve_witnesses=False):
     """Assemble one logical envelope under the supplied current invocation port."""
     port.check()
     port.charge(14)
     _require(type(outcome) is _c._AnalyticalOutcome)
+    _require(type(reserve_witnesses) is bool)
     _c._validate_selected_report_disclosure(selection, port)
-    assembly = _Assembly(outcome, selection, port)
+    assembly = _Assembly(outcome, selection, port, reserve_witnesses)
     for result in outcome.results:
         assembly.result(result)
     for finding in outcome.findings:
@@ -1181,6 +1271,7 @@ def _assemble_report(outcome, selection, port, *, tool_version='0.1.0.dev0'):
     _assemble_witnesses(assembly)
     _require(assembly.used == set(assembly.selected))
     assembly.identities_for_rows()
+    _reserve_report_witnesses(assembly)
     document = {'contract_version': 'sit-report/0.1', 'report_kind': 'audit_report',
         'report_id': 'SIT-RPT-000001', 'input_identity': _identity(outcome.prepared, port),
         'input_validation': {'state': 'accepted', 'diagnostics': ()},

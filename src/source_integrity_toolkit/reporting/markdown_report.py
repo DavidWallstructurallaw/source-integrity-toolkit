@@ -12,7 +12,7 @@ from ..contracts.execution import _byte_work
 from ..contracts.report import _ReportMapping, _REPORT_ROOT_FIELDS
 from ..contracts.results import FIELD_BINDINGS
 from .escaping import (
-    _JWriter, _require, _sorted_report_pairs, _fence_length,
+    _JWriter, _CheckingWriter, _require, _sorted_report_pairs, _fence_length,
     _repeat_syntax, _write_pretty_j, _MAX_INTEGER,
 )
 
@@ -186,6 +186,15 @@ def _encode_markdown_report(document, port):
     Only this one immutable document supplies both ordinary sections and
     repeated Result/Reason details. No partial bytes or report escape failure.
     """
+    return _write_markdown_report(document, port, _JWriter(port, 'markdown'))
+
+
+def _verify_markdown_report(document, encoded, port):
+    """Check all framing and scalar content, including repeated details."""
+    _write_markdown_report(document, port, _CheckingWriter(port, 'markdown', encoded))
+
+
+def _write_markdown_report(document, port, writer):
     fields = _fields(document, port)
     port.charge(len(_REPORT_ROOT_FIELDS) + 1)
     _require(len(fields) == len(_REPORT_ROOT_FIELDS))
@@ -203,7 +212,6 @@ def _encode_markdown_report(document, port):
     index = _reason_index(reasons, port)
     results = _member(fields, 'results', port)
     _require(type(results) is tuple)
-    writer = _JWriter(port, 'markdown')
     writer.literal(b'# Source Integrity Audit\n\nReport kind: ')
     _ascii(writer, kind)
     writer.literal(b'\nProcessing state: ')
