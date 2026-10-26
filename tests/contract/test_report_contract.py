@@ -520,9 +520,46 @@ def test_hostile_protocols_cannot_run_during_contract_or_transport_rejection():
 
 def test_w02_keeps_both_public_audit_functions_in_their_existing_refusal_state():
     import source_integrity_toolkit as package
-    assert package.__all__ == ("audit_bundle", "audit_file", "__version__")
-    with pytest.raises(NotImplementedError):
-        package.audit_bundle({})
+    from tools import check_scaffold_boundary as guard
+
+    state = guard.current_local_state(ROOT)
+    if state["activation_stage"] < 8:
+        assert package.__all__ == ("audit_bundle", "audit_file", "__version__")
+        with pytest.raises(NotImplementedError):
+            package.audit_bundle({})
+    else:
+        assert package.__all__ == ("audit_bundle", "audit_file", "__version__",
+            "AuditReport", "AuditAbort", "AuditCancelled", "AuditUsageError")
+        source = {}
+        report = package.audit_bundle(source)
+        assert type(report) is package.AuditReport and source == {}
+        assert report.report_kind == "validation_diagnostics"
+        assert report.input_validation["state"] == "rejected"
+        json_bytes, markdown_bytes = report.to_json_bytes(), report.to_markdown_bytes()
+        assert type(json_bytes) is bytes and type(markdown_bytes) is bytes
+        document = json.loads(json_bytes)
+        assert_both(document)
+        assert document["run"]["processing_state"] == "rejected"
+        assert document["input_validation"]["state"] == "rejected"
+        assert b'"state": "rejected"' in markdown_bytes
+        assert report.to_json_bytes() is json_bytes
+        assert report.to_markdown_bytes() is markdown_bytes
+
+        calls = []
+
+        def touch(*args, **kwargs):
+            calls.append("dossier touched")
+            raise AssertionError("invalid options accessed the dossier")
+
+        class Hostile:
+            __getattribute__ = __repr__ = __str__ = __iter__ = __len__ = touch
+            __bool__ = __getitem__ = __eq__ = __hash__ = touch
+
+        with pytest.raises(package.AuditUsageError) as caught:
+            package.audit_bundle(Hostile(), options={"raw_file_digest": True})
+        assert str(caught.value) == "Invalid audit invocation."
+        assert caught.value.code == "invalid_invocation"
+        assert calls == []
     with pytest.raises(NotImplementedError):
         package.audit_file(object(), object())
 

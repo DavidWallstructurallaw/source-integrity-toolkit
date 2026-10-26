@@ -1,8 +1,8 @@
 {
   "phase": "P4",
-  "current_unit": "P4-W07",
+  "current_unit": "P4-W02",
   "activation_stage": 7,
-  "status": "W07 local implementation and scoped verification retained; hosted Python3.13 immutability-test mismatch diagnosed and repaired without product changes; corrected local Python3.12 affected control passes, corrected hosted Python3.13 remains pending.",
+  "status": "Preventive original-owner W02 boundary assertion repair prepared at verified activation stage7; clean-checkpoint targeted test and future stage8 path verification pending.",
   "owner_authorization": "Approved PHASE_4_PLAN.md, explicit user instruction to continue W07, and original-owner repair authorization in plan section 9; plan hash 5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
   "previous_checkpoint": {
     "phase": "P4",
@@ -6347,5 +6347,31 @@
       "The next current-candidate hosted matrix supplies corrected Python3.13 evidence; no rerun was triggered by this repair."
     ],
     "recorded_at_utc": "2026-10-26T04:56:38.928921+00:00"
+  },
+  "w02_public_activation_assertion_repair": {
+    "owner": "P4-W02",
+    "activation_stage": 7,
+    "base_head": "d1b812315364576d0099518abd5ae152531c8fc8",
+    "previous_current_unit": "P4-W07",
+    "previous_status": "W07 local implementation and scoped verification retained; hosted Python3.13 immutability-test mismatch diagnosed and repaired without product changes; corrected local Python3.12 affected control passes, corrected hosted Python3.13 remains pending.",
+    "discovery": "Static inspection while implementing approved W08 found the W02 N01 assertion unconditionally required three exports and audit_bundle refusal. No test failure was executed or claimed for this discovery.",
+    "changed_paths": [
+      "tests/contract/test_report_contract.py",
+      "phase4/implementation_evidence.json"
+    ],
+    "authority": "PHASE_4_PLAN.md sections4.1,6 W02/W08,7.2 and9: preserve original-owner scope and use verified activation state; normal test-wiring fixes require no additional approval.",
+    "repair": "Only the existing boundary test changes. It derives activation_stage from guard.current_local_state(ROOT), which verifies actual Git ancestry and checkout. Before stage8 the exact original exports/refusals remain. At stage8 onward it verifies seven exports, a real rejected dual-encoding report from audit_bundle({}), schema/runtime validation, immutable cached bytes, safe invalid-options refusal before hostile dossier access and continuing audit_file refusal.",
+    "definition_preservation": {
+      "original_top_level_definitions": 152,
+      "changed_definition": "test_w02_keeps_both_public_audit_functions_in_their_existing_refusal_state",
+      "other_151_definitions_AST_unchanged": true,
+      "case_identity_retained": true
+    },
+    "verification": {
+      "status": "pending_clean_stage7_targeted_run",
+      "future_stage8_path": "W08 final candidate targeted integration is required; not yet run."
+    },
+    "unchanged": "No product, N12, API, scope guard, schema, golden, vocabulary, limit, dependency or workflow change.",
+    "recorded_at_utc": "2026-10-26T05:00:53.289315+00:00"
   }
 }
