@@ -2,7 +2,7 @@
   "phase": "P4",
   "current_unit": "P4-W08",
   "activation_stage": 8,
-  "status": "W08 public in-memory audit implementation prepared; actual complete scoped and installed verification still pending.",
+  "status": "W08 public in-memory audit activation and recorded scoped local/installed verification complete; W09 field obligations and W10 final hosted acceptance remain pending.",
   "owner_authorization": "Approved PHASE_4_PLAN.md and explicit user instruction W08 继续.",
   "previous_checkpoint": {
     "phase": "P4",
@@ -6614,9 +6614,753 @@
         "source_files": 5,
         "source_hashes_unchanged": true,
         "passed_in_recorded_scope": true
+      },
+      {
+        "execution": {
+          "command": [
+            "/workspace/scratch/4e5267fe5990/p4w01-venv/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/scaffold/test_api_stubs.py",
+            "tests/scaffold/test_packaging.py",
+            "tests/scaffold/test_ci_contract.py",
+            "tests/security/test_scaffold_inertness.py",
+            "tests/integration/test_preparation_capability_boundary.py",
+            "tests/contract/test_analytical_observability.py",
+            "tests/contract/test_phase2_transition.py",
+            "tests/integration/test_analytical_installed_runtime.py",
+            "tests/contract/test_public_api.py",
+            "tests/security/test_public_api_boundary.py",
+            "tests/integration/test_public_audit.py",
+            "tests/integration/test_public_installed_runtime.py",
+            "tests/contract/test_report_contract.py::test_w02_keeps_both_public_audit_functions_in_their_existing_refusal_state",
+            "tests/contract/test_report_contract.py::test_usage_error_has_only_the_fixed_trusted_invocation_message_and_code",
+            "tests/contract/test_report_contract.py::test_hostile_protocols_cannot_run_during_contract_or_transport_rejection",
+            "--junitxml=/workspace/scratch/4e5267fe5990/p4w08-targeted-001.xml",
+            "--durations=15",
+            "--basetemp=/workspace/scratch/4e5267fe5990/p4w08-targeted-001-pytest"
+          ],
+          "started_at_utc": "2026-10-26T05:03:13.998859+00:00",
+          "elapsed_seconds": 335.6938662619996,
+          "exit_code": 0,
+          "timeout_seconds": 1200,
+          "timed_out": false,
+          "interrupted": false,
+          "incomplete": false,
+          "head": "e0039d506e7aeb3b10e05efae70385e1a3b94e69",
+          "tree": "cd4d1f373ac915e7b971d92f5e697cf67598049a",
+          "source_files": 234,
+          "source_bytes_unchanged": true,
+          "scope": "W08 changed public API, migrated old guarantees, direct receipt controls, real installed preparation/analysis/public paths, and three affected N01 controls. Local Python 3.12 scope; no full-suite or hosted-matrix attestation."
+        },
+        "distinct_case_count": 231,
+        "case_counts": {
+          "passed": 231,
+          "failure": 0,
+          "error": 0,
+          "skipped": 0
+        },
+        "junit_suite_tests_including_any_subtests": 376,
+        "junit_seconds": 335.298,
+        "identities_sha256": "1233b3b695ec85a60c040e1e4d89ac728b9d2a17168d16f36be208c4d39c5748",
+        "raw": [
+          {
+            "file": "p4w08-targeted-001-exit.json",
+            "sha256": "a6109261e62236d34e8608a81b17251e14ac6e465b197582012ccc86e821b486",
+            "bytes": 1870
+          },
+          {
+            "file": "p4w08-targeted-001.xml",
+            "sha256": "2a93881e5f4dfa5034c233740adeadb755325c595f6212ae74478878b3d48425",
+            "bytes": 37701
+          },
+          {
+            "file": "p4w08-targeted-001.log",
+            "sha256": "b7c15b6eee32d25dca9878fb0c332c7d727ce22a8009be8946c18cd25da592e3",
+            "bytes": 2417
+          },
+          {
+            "file": "p4w08-targeted-001-source-before.json",
+            "sha256": "b608b1c26991dba468271941c907523b376f936d2d5da4bbb93a9995802e9671",
+            "bytes": 25795
+          },
+          {
+            "file": "p4w08-targeted-001-source-after.json",
+            "sha256": "b608b1c26991dba468271941c907523b376f936d2d5da4bbb93a9995802e9671",
+            "bytes": 25795
+          }
+        ],
+        "successful_subtests_actual": 145,
+        "successful_subtests_basis": "Successful JUnit suite tests minus distinct testcase identities; only computed for exit 0 with no failure/error/skip. These events are not additional independent cases.",
+        "source_files": 234,
+        "source_hashes_unchanged": true,
+        "passed_in_recorded_scope": true
       }
     ],
-    "installed_receipts": [],
+    "installed_receipts": [
+      {
+        "raw": {
+          "file": "p4w08-installed-runtime.json",
+          "sha256": "509f4ccef7fb0c5a9850da8fde086a669cbdadee713ce0420fd8207f4c180960",
+          "bytes": 95366
+        },
+        "head": "e0039d506e7aeb3b10e05efae70385e1a3b94e69",
+        "unit": "P4-W08",
+        "activation_stage": 8,
+        "ok": true,
+        "public_test_sources": {
+          "tests/integration/test_public_installed_runtime.py": "092cab24b2820f62c23973307231ff8af012001c9e619fc14ff01cb2c08efe01"
+        },
+        "distribution_count": 3,
+        "three_public_distribution_modes_executed": true,
+        "public_installations": [
+          {
+            "mode": "direct_wheel",
+            "source_archive": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+            "source_archive_sha256": "cf46e75e9fc6eec00336f4c49d2a75314f776bd2690128ef231b604585409e62",
+            "module_count": 48,
+            "module_hashes_sha256": "e13ea146aca847764bae4b60eb8673d15ee5adb38fdcd47db70204b979e38328",
+            "public_audit": {
+              "basis_members": [
+                [
+                  "inquiries",
+                  "I"
+                ],
+                [
+                  "records",
+                  "A"
+                ],
+                [
+                  "records",
+                  "C"
+                ]
+              ],
+              "basis_total": 3,
+              "cached_identity_reads": 3,
+              "case_id": "P4-W08-INSTALLED",
+              "counts": {
+                "claim_artifact_record_count": 0,
+                "nominal_seed_artifact_record_count": 0,
+                "seed_evidence_item_count": 0,
+                "unresolved_seed_artifact_reference_count": 0
+              },
+              "detached_after_source_clear": true,
+              "expectations_sha256": "2c6b002b7dc8f00f6d07ba854bf0e3c5a67e72facabb961a2b9487fc55bea21e",
+              "family_ids": [
+                "SIT-M001",
+                "SIT-M002",
+                "SIT-M003",
+                "SIT-M004",
+                "SIT-M005",
+                "SIT-M006",
+                "SIT-M007",
+                "SIT-M008",
+                "SIT-M009",
+                "SIT-M010",
+                "SIT-M011",
+                "SIT-M012",
+                "SIT-M013",
+                "SIT-M014",
+                "SIT-M015"
+              ],
+              "immutable_roots_and_nested": true,
+              "input_sha256": "fbf2cc1eb831127300be268f620afde5e57b3f68d6966ca8460a05945c967ca9",
+              "input_state": "accepted",
+              "json": {
+                "bytes": 290127,
+                "independent_sha256": "186c741321b45085f78f94f726ec4e3e195839c384b684348efd35896a39fffb",
+                "sha256": "186c741321b45085f78f94f726ec4e3e195839c384b684348efd35896a39fffb"
+              },
+              "markdown": {
+                "bytes": 384800,
+                "independent_sha256": "d36557c5a8540ed50997ea39d092ddcb18e80247f03783f3c1f25544984feb64",
+                "sha256": "d36557c5a8540ed50997ea39d092ddcb18e80247f03783f3c1f25544984feb64"
+              },
+              "processing_state": "completed",
+              "report_kind": "audit_report",
+              "root_members": [
+                "contract_version",
+                "report_kind",
+                "report_id",
+                "run",
+                "input_identity",
+                "input_validation",
+                "scopes",
+                "populations",
+                "basis_index",
+                "capabilities",
+                "checks",
+                "observability_domains",
+                "results",
+                "findings",
+                "reasons",
+                "release_limits"
+              ],
+              "source_unchanged": true,
+              "unavailable_fractions": [
+                "single_origin_contribution_hhi",
+                "documentary_origin_resolution_fraction",
+                "inherited_only_seed_fraction"
+              ]
+            },
+            "public_refusals": 1,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ]
+          },
+          {
+            "mode": "sdist",
+            "source_archive": "source_integrity_toolkit-0.1.0.dev0.tar.gz",
+            "source_archive_sha256": "bcdb4538b0ed7c5af74c8b837e6a9136401a0b0545ae201ca60ca66aef062500",
+            "module_count": 48,
+            "module_hashes_sha256": "e13ea146aca847764bae4b60eb8673d15ee5adb38fdcd47db70204b979e38328",
+            "public_audit": {
+              "basis_members": [
+                [
+                  "inquiries",
+                  "I"
+                ],
+                [
+                  "records",
+                  "A"
+                ],
+                [
+                  "records",
+                  "C"
+                ]
+              ],
+              "basis_total": 3,
+              "cached_identity_reads": 3,
+              "case_id": "P4-W08-INSTALLED",
+              "counts": {
+                "claim_artifact_record_count": 0,
+                "nominal_seed_artifact_record_count": 0,
+                "seed_evidence_item_count": 0,
+                "unresolved_seed_artifact_reference_count": 0
+              },
+              "detached_after_source_clear": true,
+              "expectations_sha256": "2c6b002b7dc8f00f6d07ba854bf0e3c5a67e72facabb961a2b9487fc55bea21e",
+              "family_ids": [
+                "SIT-M001",
+                "SIT-M002",
+                "SIT-M003",
+                "SIT-M004",
+                "SIT-M005",
+                "SIT-M006",
+                "SIT-M007",
+                "SIT-M008",
+                "SIT-M009",
+                "SIT-M010",
+                "SIT-M011",
+                "SIT-M012",
+                "SIT-M013",
+                "SIT-M014",
+                "SIT-M015"
+              ],
+              "immutable_roots_and_nested": true,
+              "input_sha256": "fbf2cc1eb831127300be268f620afde5e57b3f68d6966ca8460a05945c967ca9",
+              "input_state": "accepted",
+              "json": {
+                "bytes": 290127,
+                "independent_sha256": "186c741321b45085f78f94f726ec4e3e195839c384b684348efd35896a39fffb",
+                "sha256": "186c741321b45085f78f94f726ec4e3e195839c384b684348efd35896a39fffb"
+              },
+              "markdown": {
+                "bytes": 384800,
+                "independent_sha256": "d36557c5a8540ed50997ea39d092ddcb18e80247f03783f3c1f25544984feb64",
+                "sha256": "d36557c5a8540ed50997ea39d092ddcb18e80247f03783f3c1f25544984feb64"
+              },
+              "processing_state": "completed",
+              "report_kind": "audit_report",
+              "root_members": [
+                "contract_version",
+                "report_kind",
+                "report_id",
+                "run",
+                "input_identity",
+                "input_validation",
+                "scopes",
+                "populations",
+                "basis_index",
+                "capabilities",
+                "checks",
+                "observability_domains",
+                "results",
+                "findings",
+                "reasons",
+                "release_limits"
+              ],
+              "source_unchanged": true,
+              "unavailable_fractions": [
+                "single_origin_contribution_hhi",
+                "documentary_origin_resolution_fraction",
+                "inherited_only_seed_fraction"
+              ]
+            },
+            "public_refusals": 1,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ]
+          },
+          {
+            "mode": "rebuilt_wheel",
+            "source_archive": "source_integrity_toolkit-0.1.0.dev0-py3-none-any.whl",
+            "source_archive_sha256": "929feb73153f163098493f9ad85711961886861cb90ea5cc5328d2861feb3938",
+            "module_count": 48,
+            "module_hashes_sha256": "e13ea146aca847764bae4b60eb8673d15ee5adb38fdcd47db70204b979e38328",
+            "public_audit": {
+              "basis_members": [
+                [
+                  "inquiries",
+                  "I"
+                ],
+                [
+                  "records",
+                  "A"
+                ],
+                [
+                  "records",
+                  "C"
+                ]
+              ],
+              "basis_total": 3,
+              "cached_identity_reads": 3,
+              "case_id": "P4-W08-INSTALLED",
+              "counts": {
+                "claim_artifact_record_count": 0,
+                "nominal_seed_artifact_record_count": 0,
+                "seed_evidence_item_count": 0,
+                "unresolved_seed_artifact_reference_count": 0
+              },
+              "detached_after_source_clear": true,
+              "expectations_sha256": "2c6b002b7dc8f00f6d07ba854bf0e3c5a67e72facabb961a2b9487fc55bea21e",
+              "family_ids": [
+                "SIT-M001",
+                "SIT-M002",
+                "SIT-M003",
+                "SIT-M004",
+                "SIT-M005",
+                "SIT-M006",
+                "SIT-M007",
+                "SIT-M008",
+                "SIT-M009",
+                "SIT-M010",
+                "SIT-M011",
+                "SIT-M012",
+                "SIT-M013",
+                "SIT-M014",
+                "SIT-M015"
+              ],
+              "immutable_roots_and_nested": true,
+              "input_sha256": "fbf2cc1eb831127300be268f620afde5e57b3f68d6966ca8460a05945c967ca9",
+              "input_state": "accepted",
+              "json": {
+                "bytes": 290127,
+                "independent_sha256": "186c741321b45085f78f94f726ec4e3e195839c384b684348efd35896a39fffb",
+                "sha256": "186c741321b45085f78f94f726ec4e3e195839c384b684348efd35896a39fffb"
+              },
+              "markdown": {
+                "bytes": 384800,
+                "independent_sha256": "d36557c5a8540ed50997ea39d092ddcb18e80247f03783f3c1f25544984feb64",
+                "sha256": "d36557c5a8540ed50997ea39d092ddcb18e80247f03783f3c1f25544984feb64"
+              },
+              "processing_state": "completed",
+              "report_kind": "audit_report",
+              "root_members": [
+                "contract_version",
+                "report_kind",
+                "report_id",
+                "run",
+                "input_identity",
+                "input_validation",
+                "scopes",
+                "populations",
+                "basis_index",
+                "capabilities",
+                "checks",
+                "observability_domains",
+                "results",
+                "findings",
+                "reasons",
+                "release_limits"
+              ],
+              "source_unchanged": true,
+              "unavailable_fractions": [
+                "single_origin_contribution_hhi",
+                "documentary_origin_resolution_fraction",
+                "inherited_only_seed_fraction"
+              ]
+            },
+            "public_refusals": 1,
+            "normal_effects": [],
+            "negative_events": [
+              "open",
+              "socket.getaddrinfo",
+              "ctypes.dlopen"
+            ],
+            "runtime_distributions": [
+              "source-integrity-toolkit"
+            ]
+          }
+        ],
+        "retained_preparation_analysis_receipt": {
+          "admitted_fixture_modes": null,
+          "rejected_empty_modes": null,
+          "hero_modes": [
+            {
+              "case": "H7-01",
+              "completed_inventory_fields": [
+                "claim_artifact_record_count",
+                "claim_unassigned_seed_artifact_record_count",
+                "nominal_seed_artifact_record_count",
+                "seed_evidence_item_count",
+                "unresolved_seed_artifact_reference_count"
+              ],
+              "delivered_result_count": 0,
+              "delivery_type": "_AnalyticalDiagnostic",
+              "execution_state": "interrupted",
+              "finalization_rejected_charge": [
+                {
+                  "elapsed_ns": 6852668692,
+                  "requested": 4,
+                  "used_before": 9999999
+                }
+              ],
+              "first_rejected_charge": [
+                {
+                  "elapsed_ns": 3480762784,
+                  "job_before": 1000000,
+                  "kind": "job",
+                  "requested": 5,
+                  "used_before": 5012999
+                }
+              ],
+              "input_state": "accepted",
+              "input_unchanged": true,
+              "limit": "WU9-L11",
+              "mode": "value",
+              "stop_kind": "job",
+              "used": 9999999
+            },
+            {
+              "case": "H7-01",
+              "completed_inventory_fields": [
+                "claim_artifact_record_count",
+                "claim_unassigned_seed_artifact_record_count",
+                "nominal_seed_artifact_record_count",
+                "seed_evidence_item_count",
+                "unresolved_seed_artifact_reference_count"
+              ],
+              "delivered_result_count": 0,
+              "delivery_type": "_AnalyticalDiagnostic",
+              "execution_state": "interrupted",
+              "finalization_rejected_charge": [
+                {
+                  "elapsed_ns": 6319428026,
+                  "requested": 4,
+                  "used_before": 10000000
+                }
+              ],
+              "first_rejected_charge": [
+                {
+                  "elapsed_ns": 3206228689,
+                  "job_before": 1000000,
+                  "kind": "job",
+                  "requested": 5,
+                  "used_before": 5537231
+                }
+              ],
+              "input_state": "accepted",
+              "input_unchanged": true,
+              "limit": "WU9-L11",
+              "mode": "utf8",
+              "stop_kind": "job",
+              "used": 10000000
+            },
+            {
+              "case": "H7-V01",
+              "completed_inventory_fields": [
+                "claim_artifact_record_count",
+                "claim_unassigned_seed_artifact_record_count",
+                "nominal_seed_artifact_record_count",
+                "seed_evidence_item_count",
+                "unresolved_seed_artifact_reference_count"
+              ],
+              "delivered_result_count": 0,
+              "delivery_type": "_AnalyticalDiagnostic",
+              "execution_state": "interrupted",
+              "finalization_rejected_charge": [
+                {
+                  "elapsed_ns": 7055591996,
+                  "requested": 1,
+                  "used_before": 10000000
+                }
+              ],
+              "first_rejected_charge": [
+                {
+                  "elapsed_ns": 3571709473,
+                  "job_before": 1000000,
+                  "kind": "job",
+                  "requested": 1,
+                  "used_before": 4993665
+                }
+              ],
+              "input_state": "accepted",
+              "input_unchanged": true,
+              "limit": "WU9-L11",
+              "mode": "value",
+              "stop_kind": "job",
+              "used": 10000000
+            },
+            {
+              "case": "H7-V01",
+              "completed_inventory_fields": [
+                "claim_artifact_record_count",
+                "claim_unassigned_seed_artifact_record_count",
+                "nominal_seed_artifact_record_count",
+                "seed_evidence_item_count",
+                "unresolved_seed_artifact_reference_count"
+              ],
+              "delivered_result_count": 0,
+              "delivery_type": "_AnalyticalDiagnostic",
+              "execution_state": "interrupted",
+              "finalization_rejected_charge": [
+                {
+                  "elapsed_ns": 7512302139,
+                  "requested": 22,
+                  "used_before": 9999991
+                }
+              ],
+              "first_rejected_charge": [
+                {
+                  "elapsed_ns": 3380162707,
+                  "job_before": 1000000,
+                  "kind": "job",
+                  "requested": 1,
+                  "used_before": 5517829
+                }
+              ],
+              "input_state": "accepted",
+              "input_unchanged": true,
+              "limit": "WU9-L11",
+              "mode": "utf8",
+              "stop_kind": "job",
+              "used": 9999991
+            },
+            {
+              "case": "H7-V02",
+              "completed_inventory_fields": [
+                "claim_artifact_record_count",
+                "claim_unassigned_seed_artifact_record_count",
+                "nominal_seed_artifact_record_count",
+                "seed_evidence_item_count",
+                "unresolved_seed_artifact_reference_count"
+              ],
+              "delivered_result_count": 0,
+              "delivery_type": "_AnalyticalDiagnostic",
+              "execution_state": "interrupted",
+              "finalization_rejected_charge": [
+                {
+                  "elapsed_ns": 8268377911,
+                  "requested": 1,
+                  "used_before": 10000000
+                }
+              ],
+              "first_rejected_charge": [
+                {
+                  "elapsed_ns": 4336378735,
+                  "job_before": 1000000,
+                  "kind": "job",
+                  "requested": 1,
+                  "used_before": 5234918
+                }
+              ],
+              "input_state": "accepted",
+              "input_unchanged": true,
+              "limit": "WU9-L11",
+              "mode": "value",
+              "stop_kind": "job",
+              "used": 10000000
+            },
+            {
+              "case": "H7-V02",
+              "completed_inventory_fields": [
+                "claim_artifact_record_count",
+                "claim_unassigned_seed_artifact_record_count",
+                "nominal_seed_artifact_record_count",
+                "seed_evidence_item_count",
+                "unresolved_seed_artifact_reference_count"
+              ],
+              "delivered_result_count": 0,
+              "delivery_type": "_AnalyticalDiagnostic",
+              "execution_state": "interrupted",
+              "finalization_rejected_charge": [
+                {
+                  "elapsed_ns": 7159348511,
+                  "requested": 1,
+                  "used_before": 10000000
+                }
+              ],
+              "first_rejected_charge": [
+                {
+                  "elapsed_ns": 4080571280,
+                  "job_before": 1000000,
+                  "kind": "job",
+                  "requested": 1,
+                  "used_before": 5786689
+                }
+              ],
+              "input_state": "accepted",
+              "input_unchanged": true,
+              "limit": "WU9-L11",
+              "mode": "utf8",
+              "stop_kind": "job",
+              "used": 10000000
+            },
+            {
+              "case": "H7-V03",
+              "completed_inventory_fields": [
+                "claim_artifact_record_count",
+                "claim_unassigned_seed_artifact_record_count",
+                "nominal_seed_artifact_record_count",
+                "seed_evidence_item_count",
+                "unresolved_seed_artifact_reference_count"
+              ],
+              "delivered_result_count": 0,
+              "delivery_type": "_AnalyticalDiagnostic",
+              "execution_state": "interrupted",
+              "finalization_rejected_charge": [
+                {
+                  "elapsed_ns": 6254200335,
+                  "requested": 2,
+                  "used_before": 10000000
+                }
+              ],
+              "first_rejected_charge": [
+                {
+                  "elapsed_ns": 2998085349,
+                  "job_before": 1000000,
+                  "kind": "job",
+                  "requested": 1,
+                  "used_before": 5190170
+                }
+              ],
+              "input_state": "accepted",
+              "input_unchanged": true,
+              "limit": "WU9-L11",
+              "mode": "value",
+              "stop_kind": "job",
+              "used": 10000000
+            },
+            {
+              "case": "H7-V03",
+              "completed_inventory_fields": [
+                "claim_artifact_record_count",
+                "claim_unassigned_seed_artifact_record_count",
+                "nominal_seed_artifact_record_count",
+                "seed_evidence_item_count",
+                "unresolved_seed_artifact_reference_count"
+              ],
+              "delivered_result_count": 0,
+              "delivery_type": "_AnalyticalDiagnostic",
+              "execution_state": "interrupted",
+              "finalization_rejected_charge": [
+                {
+                  "elapsed_ns": 7229924491,
+                  "requested": 1,
+                  "used_before": 10000000
+                }
+              ],
+              "first_rejected_charge": [
+                {
+                  "elapsed_ns": 3772662466,
+                  "job_before": 1000000,
+                  "kind": "job",
+                  "requested": 1,
+                  "used_before": 5736688
+                }
+              ],
+              "input_state": "accepted",
+              "input_unchanged": true,
+              "limit": "WU9-L11",
+              "mode": "utf8",
+              "stop_kind": "job",
+              "used": 10000000
+            }
+          ],
+          "completed_finite_modes": [
+            {
+              "capabilities": 15,
+              "counts": {
+                "claim_artifact_record_count": 1,
+                "documentary_origin_boundary_record_count": 1,
+                "nominal_seed_artifact_record_count": 1,
+                "reached_origin_record_count": 1,
+                "seed_evidence_item_count": 2
+              },
+              "domains": 5,
+              "hhi": [
+                4,
+                4
+              ],
+              "memberships": {
+                "e": [
+                  "origin"
+                ],
+                "e2": [
+                  "origin"
+                ]
+              },
+              "mode": "value",
+              "source_unchanged": true,
+              "state": "completed"
+            },
+            {
+              "capabilities": 15,
+              "counts": {
+                "claim_artifact_record_count": 1,
+                "documentary_origin_boundary_record_count": 1,
+                "nominal_seed_artifact_record_count": 1,
+                "reached_origin_record_count": 1,
+                "seed_evidence_item_count": 2
+              },
+              "domains": 5,
+              "hhi": [
+                4,
+                4
+              ],
+              "memberships": {
+                "e": [
+                  "origin"
+                ],
+                "e2": [
+                  "origin"
+                ]
+              },
+              "mode": "utf8",
+              "source_unchanged": true,
+              "state": "completed"
+            }
+          ],
+          "invalid_modes": 2
+        },
+        "scope": "Actual receipt facts; source/head and inventory reconciliation are separately evidenced by the recorded runner checks."
+      }
+    ],
     "supporting_receipts": {
       "public_test_migration": [
         {
@@ -7005,12 +7749,37 @@
             }
           }
         }
+      ],
+      "actual_installed_reconciliation": [
+        {
+          "raw": {
+            "file": "p4w08-installed-receipts.json",
+            "sha256": "636d27abb224136cdfde57c0df1ba5475b723755beacd34427f5c9e8813887a0",
+            "bytes": 102026
+          },
+          "record": {
+            "scope": "Full structured contents retained in the hash-bound external receipt.",
+            "top_level_keys": [
+              "status",
+              "head",
+              "receipt",
+              "receipt_sha256",
+              "module_count",
+              "public_installations",
+              "private_hero_modes",
+              "private_completed_finite_modes",
+              "actual_archives",
+              "retained_preparation_test",
+              "scope"
+            ]
+          }
+        }
       ]
     },
     "notes": [],
-    "status": "pending",
-    "status_meaning": "W08 public in-memory audit implementation prepared; actual complete scoped and installed verification still pending.",
-    "recorded_at_utc": "2026-10-26T05:02:10.535014+00:00",
+    "status": "locally_verified",
+    "status_meaning": "W08 public in-memory audit activation and recorded scoped local/installed verification complete; W09 field obligations and W10 final hosted acceptance remain pending.",
+    "recorded_at_utc": "2026-10-26T05:12:10.597117+00:00",
     "evidence_scope": "Only explicitly recorded runs, source scopes and installed receipts are claimed. No new full-suite or four-profile success follows from this record.",
     "reviewed_source_hashes": {
       "README.md": "6710253de63e02fe8b4214a43cca208e197b564252a819468efaaebbc330e5f2",
@@ -7029,6 +7798,151 @@
       "tests/scaffold/test_packaging.py": "5a62c98eea65ce8130b9bad0f9133f13185966b46a27ec179a7861a5fa7514f0",
       "tests/security/test_public_api_boundary.py": "1b6c15adebb20e193f54cf46bf4c2b5b9076016b730d18d14cfc028f05192ed3",
       "tests/security/test_scaffold_inertness.py": "fad05f940189ac8fe9680246832d3bea42d0b49a82d72553027c7a0885b245ee"
+    },
+    "independent_review": {
+      "raw": {
+        "file": "p4w08-independent-review.json",
+        "sha256": "088d93a6c5357fbbf8ae9a21cc81e4262b1823085172fa7f68b9f08e4098056f",
+        "bytes": 9483
+      },
+      "record": {
+        "status": "passed_no_remaining_blocking_findings",
+        "review_kind": "Independent tool-assisted read-only review of the W08 scoped implementation checkpoint; not external human audit or final hosted acceptance.",
+        "reviewed_at_utc": "2026-10-26T05:11:40.418757+00:00",
+        "reviewed_head": "e0039d506e7aeb3b10e05efae70385e1a3b94e69",
+        "reviewed_tree": "cd4d1f373ac915e7b971d92f5e697cf67598049a",
+        "base": "e9b6bfd3f65de31841606a7b1d44e0fe4cb3282d",
+        "plan_sha256": "5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48",
+        "reviewed_source_hashes": {
+          "README.md": "6710253de63e02fe8b4214a43cca208e197b564252a819468efaaebbc330e5f2",
+          "src/source_integrity_toolkit/__init__.py": "79cb024eb81bcef26a8dc94100b995e27f6207e7b2aac343eab7c57e488532d0",
+          "src/source_integrity_toolkit/api.py": "1ce3a72b8cc064718133b75e4991e14ac4d56072cdf6f2017af292e449789f7f",
+          "src/source_integrity_toolkit/contracts/execution.py": "d11944bc016528f8642701f5ba6df49bb98697911edb2dd537fdd19dcae5a390",
+          "tests/contract/test_analytical_observability.py": "ed307fd5243ea47e1561bd7ae797691ff710ed97f5b2009f012332da03de83c6",
+          "tests/contract/test_phase2_transition.py": "4d2e6ff10d19820b33185d7fad76fa52fcf609a7d37f9cd32b439bf5d7455b22",
+          "tests/contract/test_public_api.py": "7ca5422483ee15d0b9b98b8435bf672ea1bc60be3478559aafe3454f9830248a",
+          "tests/contract/test_report_contract.py": "b6b87588f6bde52a86af331c6ae08e523502de4a70725b729e9dd61e69033228",
+          "tests/integration/test_analytical_installed_runtime.py": "64f83d86e57b8ca52c85775cd89c50e448acebaa2fad291ef88c5d4495ff43c6",
+          "tests/integration/test_preparation_capability_boundary.py": "c757f20cc1cc3d6abfdb160fa6a766242f07fd0046ee9e67be15280542260300",
+          "tests/integration/test_public_audit.py": "74d905212c0366794b21f6d9823f2b39187be3c8d20c77f84d612d3f79bab5ac",
+          "tests/integration/test_public_installed_runtime.py": "092cab24b2820f62c23973307231ff8af012001c9e619fc14ff01cb2c08efe01",
+          "tests/scaffold/test_api_stubs.py": "cbac5ab7257f94d215a856b5125786115df3f215bebc358dac1a223ab3de05b1",
+          "tests/scaffold/test_ci_contract.py": "d6e91cc44ad2967d4feaca45d3f9bb696e439c8ed2caa0a5e777de4deaf895ce",
+          "tests/scaffold/test_packaging.py": "5a62c98eea65ce8130b9bad0f9133f13185966b46a27ec179a7861a5fa7514f0",
+          "tests/security/test_public_api_boundary.py": "1b6c15adebb20e193f54cf46bf4c2b5b9076016b730d18d14cfc028f05192ed3",
+          "tests/security/test_scaffold_inertness.py": "fad05f940189ac8fe9680246832d3bea42d0b49a82d72553027c7a0885b245ee"
+        },
+        "unchanged_boundary_hashes": {
+          "src/source_integrity_toolkit/contracts/report.py": "3e3fc661eeb30dbd15cd23ede62104c42897c900d27d4108332fbe4666ba30b6",
+          "src/source_integrity_toolkit/runtime/boundary.py": "7a497488f4524589c8de0a3ba5a10474fe5f4319c7f6eda9365e9e417a805d39",
+          "src/source_integrity_toolkit/cli.py": "0c3ee9522fbdf1774a707ec14ed630ce34a901da1f83f63b8aee0f25393d26bc",
+          "tools/check_scaffold_boundary.py": "020da86c79c8ca2b3fb35792d90a349ebb0ef6b58911c7613677329d1c1ddf63",
+          ".github/workflows/phase1-ci.yml": "7863586a7be20c3b6d2aa88e7879a30b7cea6960607787ac52078f8e86fba341",
+          "PHASE_4_PLAN.md": "5fac7a2a796338faae9b98af6e0cc4519396e378ba10b8c5afeb4d029d97cd48"
+        },
+        "reviewed_design": [
+          "Only P02/P11/P12 change product bytes. audit_bundle validates exact dictionary options, bounded to at most one pair, with exact key/value type checks before equality or truth testing; no caller hash, repr, protocol or dossier access precedes usage rejection.",
+          "The existing W07 _audit_value path is reused without a new ledger, deadline, limit or altered analysis/rendering semantics. P01/P10 remain unchanged.",
+          "AuditUsageError retains fixed message, safe args and code; ordinary traceback propagation is permitted while other fields remain immutable. Seven exports have exact identity/order and the development version is unchanged.",
+          "audit_file function source is byte-identical; CLI, guard, workflow and approved plan bytes are unchanged. Old file/CLI/effect/private controls remain directly exercised.",
+          "V03 changes only installed public receipt reconciliation and its direct counterexamples. Policy, collection, workflow, execution limits and old receipt bindings remain.",
+          "All three install origins perform actual isolated public invocations, compare exact bytes to independent standard-library encodings of all sixteen exposed roots and literal semantic expectations, bind all 48 module hashes, and retain file refusal and effect negative controls.",
+          "README accurately documents in-memory behavior, safe states and options while preserving pending W09/W10, file/CLI and release boundaries."
+        ],
+        "findings_closed": [
+          {
+            "finding": "Public refusal count changes from 2 to 1 would let bool True pass a plain equality check; new zero-valued semantic counters also need exact integer typing.",
+            "resolution": "V03 now requires exact int for public_refusals, basis_total and every expected count. True/False receipt mutants are rejected. The final unified run covers these controls."
+          }
+        ],
+        "scoped_validation": {
+          "raw": {
+            "file": "p4w08-targeted-001.xml",
+            "sha256": "2a93881e5f4dfa5034c233740adeadb755325c595f6212ae74478878b3d48425"
+          },
+          "execution": {
+            "file": "p4w08-targeted-001-exit.json",
+            "sha256": "a6109261e62236d34e8608a81b17251e14ac6e465b197582012ccc86e821b486"
+          },
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+          "independent_tests_passed": 231,
+          "successful_subtests_separately_recorded": 145,
+          "junit_aggregate": 376,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "junit_seconds": 335.298,
+          "runner_seconds": 335.6938662619996,
+          "source_files": 234,
+          "all_source_hashes_stable": true,
+          "scope": "Twelve named W08 test files plus three affected N01 nodes; no complete-suite or four-profile claim."
+        },
+        "installed_verification": {
+          "receipt": {
+            "file": "p4w08-installed-runtime.json",
+            "sha256": "509f4ccef7fb0c5a9850da8fde086a669cbdadee713ce0420fd8207f4c180960"
+          },
+          "reconciliation": {
+            "file": "p4w08-installed-receipts.json",
+            "sha256": "636d27abb224136cdfde57c0df1ba5475b723755beacd34427f5c9e8813887a0"
+          },
+          "origins": [
+            "direct_wheel",
+            "sdist",
+            "rebuilt_wheel"
+          ],
+          "matching_modules_per_origin": 48,
+          "exact_archives_independently_rechecked": 6,
+          "json": {
+            "bytes": 290127,
+            "independent_sha256": "186c741321b45085f78f94f726ec4e3e195839c384b684348efd35896a39fffb",
+            "sha256": "186c741321b45085f78f94f726ec4e3e195839c384b684348efd35896a39fffb"
+          },
+          "markdown": {
+            "bytes": 384800,
+            "independent_sha256": "d36557c5a8540ed50997ea39d092ddcb18e80247f03783f3c1f25544984feb64",
+            "sha256": "d36557c5a8540ed50997ea39d092ddcb18e80247f03783f3c1f25544984feb64"
+          },
+          "private_hero_modes_retained": 8,
+          "private_completed_finite_modes_retained": 2,
+          "preparation_local_receipt_limit": {
+            "passed": true,
+            "junit_seconds": 45.034,
+            "receipt_retained_locally": false,
+            "limitation": "The existing local unittest deletes its temporary receipt. Its actual passing assertions are evidenced by JUnit; hosted mode retains the receipt."
+          }
+        },
+        "separate_repairs": [
+          {
+            "owner": "P4-W07",
+            "commit": "d1b812315364576d0099518abd5ae152531c8fc8",
+            "scope": "N12/D05 only; Python 3.13 FrozenInstanceError versus earlier TypeError assertion. Read-only enforcement was already correct; state/caches/budget preservation strengthened. Both original failures retained, local affected node passed, final W08 node passed."
+          },
+          {
+            "owner": "P4-W02",
+            "commits": [
+              "9329aeeab6958895100e33ac997b8db6dbadd65d",
+              "f2e4b2a8b8b6eb7aed4c6215e8504cc7ee1daaa2"
+            ],
+            "scope": "N01/D05 only; old refusal test becomes verified-stage-aware while preserving its original identity and pre-W08 refusal. Clean stage7 control and final stage8 real public branch both passed."
+          }
+        ],
+        "earlier_attempts": "The first new fast N06 run had 35 passed/1 failed due to an omitted period in its fixed-message regex; the corrected test retained original product wording, then 36 passed. These records and the W07 hosted failures remain preserved.",
+        "limitations": [
+          "Local execution used Python 3.12.14. New Python 3.11/3.13 and Windows hosted candidate results remain pending; prior repaired Python 3.13 failure is not presented as a new hosted success.",
+          "All 228 public field obligations and W09/W10 final acceptance remain pending. This review does not authorize merge, release, native file APIs or CLI auditing.",
+          "Final D04/D05 evidence records may follow this reviewed executable/test checkpoint; all other reviewed source hashes must remain unchanged.",
+          "Historical Windows Python 3.13 suite time was 2300.669 seconds under the unchanged 2400-second budget. Static W08 estimates and the new local durations show narrow timing margin; they do not establish a hosted timeout or success. No gate or limit was relaxed. See p4w08-runtime-headroom-review.json."
+        ],
+        "scope_receipt": {
+          "file": "p4w08-initial-committed-scope.json",
+          "sha256": "00999a5a9181c16a8179be9240e0bc4953247d3a7c4de34932815b250a6f28fa"
+        },
+        "timing_review": {
+          "file": "p4w08-runtime-headroom-review.json",
+          "sha256": "6a009b7331031e68156cedbbbf1ec952f591dfcbabed0e7883e5d8cf0bc6b905"
+        }
+      }
     }
   },
   "historical_top_level_scope": "All pre-existing checkpoint changes, validation, package_boundary, failures, remaining, unchanged_boundaries, timestamps, publication note and original-owner repair fields retain their original historical scope. Current W08 facts are in w08_checkpoint; no previous record is recursively copied or erased."
